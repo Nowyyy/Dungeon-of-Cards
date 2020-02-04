@@ -26,9 +26,12 @@ int main(void){
 	int continuer = 1, etat = labyrinthe;
 
 	t_image images[3];
+	t_image commandes;
+	t_image instructions;
 
 	salle_t salle;
 	salle.salle_prec = NULL;
+	salle.salle_id = 0;//première salle
 
 	t_perso pers;
 
@@ -60,10 +63,22 @@ int main(void){
 					charge_image(MUR1_PATH,&images[1], rendu);
 					charge_image(SOL2_PATH,&images[2], rendu);
 					charge_sprites_personnage(pers.sprites, rendu);
+					charge_image("../Images/commandes.png", &commandes, rendu);
+					charge_image("../Images/instructions.png", &instructions, rendu);
+
+					//init la salle et créé les portes
 					init_salle(salle.salle);
 					aleatoire_porte(&salle);
+
+					//on place le personnage dans la salle
 					pers.sprites[0].rectangle.x = pers.x;
 					pers.sprites[0].rectangle.y = pers.y;
+
+					//on donne les coordonnées pour placer l'image des commandes et des instructions
+					commandes.rectangle.x=0;
+					commandes.rectangle.y=WIN_HEIGHT/4;
+					instructions.rectangle.x=800;
+					instructions.rectangle.y=WIN_HEIGHT/30;
 	//************************* BOUCLE DE JEU ********************************************************************
 
 					while(continuer){
@@ -79,6 +94,11 @@ int main(void){
 							SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
 
 							SDL_RenderClear(rendu);//nettoie l'écran pour supprimer tout ce qui est dessus
+
+							if(salle.salle_id == 0){//affichage des commandes et rêgles du jeu si on est dans la première salle
+								SDL_RenderCopy(rendu, commandes.img, NULL, &commandes.rectangle);
+								SDL_RenderCopy(rendu, instructions.img, NULL, &instructions.rectangle);
+							}
 
 							afficher_salle(salle.salle, rendu, images);
 							SDL_RenderCopy(rendu, pers.sprites[0].img, NULL, &pers.sprites[0].rectangle);
@@ -101,6 +121,8 @@ int main(void){
 		}
 	}
 
+	SDL_DestroyTexture(instructions.img);
+	SDL_DestroyTexture(commandes.img);
 	SDL_DestroyTexture(pers.sprites[0].img);
 	SDL_DestroyTexture(images[0].img);
 	SDL_DestroyTexture(images[1].img);
