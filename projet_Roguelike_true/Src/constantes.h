@@ -19,13 +19,31 @@
 #define WIN_WIDTH 1080
 
 #define FONT_PATH "../Font/BebasNeue.ttf"
+#define SOL1_PATH "../Images/herbe.png"
+#define MUR1_PATH "../Images/mur.png"
+#define SOL2_PATH "../Images/herbe1.png"
+#define SPRITE_PATH "../Images/sprite.png"
 
 #define TRUE 1
 #define FALSE 0
 
-#define TAILLE_SALLE 9 //Taille de la matrice d'un salle
+#define TAILLE_SALLE 8 //Taille de la matrice d'un salle
 
 #define TAILLE_IMAGE 64 //taille du coté d'une image
+
+#define NB_SPRITES_PERSONNAGE 12
+
+#define EMPLACEMENT_DEPART_DESSIN_SALLE_X 256
+#define EMPLACEMENT_DEPART_DESSIN_SALLE_Y 20
+
+#define VITESSE_PERSO 5
+
+/**
+* \enum t_types_textures
+
+* \brief les types de textures sur lequel le perso peut tomber
+*/
+typedef enum{sol =0, mur, porte}t_types_textures;
 
 
 /**
@@ -57,3 +75,14 @@ typedef struct salle_s{
   int salle[TAILLE_SALLE][TAILLE_SALLE], salle_id;
   struct salle_s *salle_bas, *salle_haut, *salle_gauche, *salle_droite, *salle_prec;
 }salle_t;
+
+
+/**
+\struct t_perso
+\brief Représente un personnage, ses sprites et ses coordonnées
+*/
+typedef struct{
+
+	int x, y;
+	t_image sprites[NB_SPRITES_PERSONNAGE];
+}t_perso;

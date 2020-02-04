@@ -54,14 +54,14 @@ void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction){
       //Nord
       if(direction == 0){
         if(i == 0){
-          if(j == millieu-1 || j == millieu || j== millieu+1){
+          if(j == millieu-1 || j == millieu){
             salle[i][j]=2;
           }
         }
       }
       if(direction == 1){
         if(j == 0){
-          if(i == millieu-1 || i == millieu || i== millieu+1){
+          if(i == millieu-1 || i == millieu){
             salle[i][j]=2;
           }
         }
@@ -70,7 +70,7 @@ void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction){
       //Sud
       if(direction == 2){
         if(j == TAILLE_SALLE-1){
-          if(i == millieu-1 || i == millieu || i== millieu+1){
+          if(i == millieu-1 || i == millieu){
             salle[i][j]=2;
           }
         }
@@ -79,7 +79,7 @@ void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction){
       //Est
       if(direction == 3){
         if(i == TAILLE_SALLE-1){
-          if(j == millieu-1 || j == millieu || j== millieu+1){
+          if(j == millieu-1 || j == millieu){
             salle[i][j]=2;
           }
         }
@@ -146,7 +146,7 @@ void aleatoire_porte(salle_t *salle){
  */
 void afficher_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], SDL_Renderer *rendu, t_image texture[]){
 
-  int coorX = 256, coorY = 20;
+  int coorX = EMPLACEMENT_DEPART_DESSIN_SALLE_X, coorY = EMPLACEMENT_DEPART_DESSIN_SALLE_Y;
 
   for(int i = 0; i<TAILLE_SALLE; i++){
 

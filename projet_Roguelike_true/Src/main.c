@@ -11,6 +11,7 @@
 #include "initialisation_sdl_fonctions.h"
 #include "main_menu_screen.h"
 #include "salle.h"
+#include "personnage.h"
 
 
 int main(void){
@@ -28,7 +29,11 @@ int main(void){
 
 	salle_t salle;
 	salle.salle_prec = NULL;
-	SDL_Event event;
+
+	t_perso pers;
+
+	pers.x = WIN_WIDTH / 2;
+	pers.y = WIN_HEIGHT / 2;
 
 //************************* INITIALISATION SDL + TTF ********************************************************
 
@@ -51,11 +56,14 @@ int main(void){
 				if(!police)
 					printf("Erreur police\n");
 				else{
-					charge_image("../Images/herbe.png",&images[0], rendu);
-					charge_image("../Images/mur.png",&images[1], rendu);
-					charge_image("../Images/herbe1.png",&images[2], rendu);
+					charge_image(SOL1_PATH,&images[0], rendu);
+					charge_image(MUR1_PATH,&images[1], rendu);
+					charge_image(SOL2_PATH,&images[2], rendu);
+					charge_sprites_personnage(pers.sprites, rendu);
 					init_salle(salle.salle);
 					aleatoire_porte(&salle);
+					pers.sprites[0].rectangle.x = pers.x;
+					pers.sprites[0].rectangle.y = pers.y;
 	//************************* BOUCLE DE JEU ********************************************************************
 
 					while(continuer){
@@ -73,13 +81,11 @@ int main(void){
 							SDL_RenderClear(rendu);//nettoie l'écran pour supprimer tout ce qui est dessus
 
 							afficher_salle(salle.salle, rendu, images);
+							SDL_RenderCopy(rendu, pers.sprites[0].img, NULL, &pers.sprites[0].rectangle);
 
 							SDL_RenderPresent(rendu);//applique les modifs précédentes
 
-							while(SDL_PollEvent(&event)){
-								if(event.type == SDL_QUIT)//croix de la fenetre
-									continuer = FALSE;
-							}
+							deplacement_personnage(&pers, salle, &continuer);
 						}
 						else if(etat == tourParTour){
 							//le combat tour par tour, le fait de le séparer fera une pause automatique dans
@@ -94,6 +100,11 @@ int main(void){
 			}
 		}
 	}
+
+	SDL_DestroyTexture(pers.sprites[0].img);
+	SDL_DestroyTexture(images[0].img);
+	SDL_DestroyTexture(images[1].img);
+	SDL_DestroyTexture(images[2].img);
 
 //************************* FERMETURES ***********************************************************************
 	IMG_Quit();
