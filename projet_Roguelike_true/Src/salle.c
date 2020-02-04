@@ -130,7 +130,7 @@ void aleatoire_porte(salle_t *salle){
       cmp++;
     }
     else if(cmp==0){
-      ajout_porte_salle(salle->salle, 3);
+      ajout_porte_salle(salle->salle, rand()%4);
     }
   }
 
@@ -143,6 +143,8 @@ void aleatoire_porte(salle_t *salle){
  * \fn afficher_salle(int salle[TAILLE_SALLE][TAILLE_SALLE])
  * \brief fonction qui génère une salle en un tableau
  * \param salle[TAILLE_SALLE][TAILLE_SALLE] est le tableau de TAILLE_SALLE qui comprend la salle
+ * \param *rendu, le renderer sur lequel on dessine
+ * \param texture[], contient toutes les images utilisées sauf celle du personnage
  */
 void afficher_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], SDL_Renderer *rendu, t_image texture[]){
 

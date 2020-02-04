@@ -8,7 +8,7 @@
 */
 #include "constantes.h"
 
-/* *
+/**
 * \fn initialisation_sdl
 
 * \param **window contiendra la fenetre du jeu

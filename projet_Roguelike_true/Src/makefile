@@ -1,5 +1,5 @@
 ## variables
-^ = main.o initialisation_sdl_fonctions.o main_menu_screen.o salle.o personnage.o
+^ = main.o initialisation_sdl_fonctions.o main_menu_screen.o salle.o personnage.o labyrinthe.o
 @ = main
 LIBS = -lSDL2_image -lSDL2_ttf -o
 SDL = `sdl2-config --cflags --libs`

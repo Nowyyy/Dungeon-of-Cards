@@ -36,6 +36,7 @@ void charge_sprites_personnage(t_image sprites[], SDL_Renderer *rendu){
 
 * \param pers, la structure du pêrsonnage que l'on souhaite déplacer
 * \param salle, la salle dans laquelle le personnage se déplace
+* \param *continuer, pointeur sur variable permettant de savoir si le joueur souhaite quitter le programme
 
 * \brief Gère les déplacement du personnage dans une salle
 */
