@@ -19,7 +19,7 @@
 #define WIN_WIDTH 1080
 
 #define FONT_PATH "../Font/BebasNeue.ttf"
-#define SOL1_PATH "../Images/herbe.png"
+#define SOL1_PATH "../Images/herbe2.png"
 #define MUR1_PATH "../Images/mur.png"
 #define SOL2_PATH "../Images/herbe1.png"
 #define SPRITE_PATH "../Images/sprite.png"
