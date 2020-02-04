@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "structures.h"
 #include "fonctions.h"
 /*!
@@ -8,7 +9,7 @@
 * \brief Ce programme contient les fonctions liées aux cartes
 * \author Timothée Marin
 * \version 0.1
-* \date 30 janvier 2020œ
+* \date 30 janvier 2020
 *
 *
 *
@@ -26,23 +27,25 @@
 */
 
 int main(){
-  int pv = 20;
+  /*Initialisation */
+  int i;
   perso_t * perso = creer_perso();
+  ennemi_t * ennemi = creer_ennemi("zombie");
   carte_t * deck[TAILLE_DECK];
   deck[0] = creer_carte("soin", DEFENSE, &(perso->pv), 10);
-  deck[1] = creer_carte("épée", ATTAQUE, &pv, 10);
-  deck[2] = creer_carte("épée", ATTAQUE, &pv, 10);
-  deck[3] = creer_carte("épée", ATTAQUE, &pv, 10);
-  deck[4] = creer_carte("boule de feu", ATTAQUE, &pv, 20);
-  int i;
+  deck[1] = creer_carte("épée", ATTAQUE, &(ennemi->pv), 10);
+  deck[2] = creer_carte("épée", ATTAQUE, &(ennemi->pv), 10);
+  deck[3] = creer_carte("épée", ATTAQUE, &(ennemi->pv), 10);
+  deck[4] = creer_carte("boule de feu", ATTAQUE, &(ennemi->pv), 20);
+
+  /*Combat*/
+  combat(perso, ennemi, deck);
+
+
+  /*Libération de mémoire */
   for(i=0;i<5;i++){
-    *(deck[i]->cible) += deck[i]->type * deck[i]->valeur;
-    printf("Tour %d : \n", i+1);
-    printf("Carte utilisée : %s\n", deck[i]->nom);
-    printf("%d\n", deck[i]->type * deck[i]->valeur);
-    printf("pv joueur : %d\n", perso->pv);
-    printf("pv ennemi : %d\n\n", pv);
+    detruire_carte(&(deck[i]));
   }
   detruire_perso(&perso);
+  detruire_ennemi(&ennemi);
 }
-
