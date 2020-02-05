@@ -22,7 +22,7 @@
 #define SOL1_PATH "../Images/herbe2.png"
 #define MUR1_PATH "../Images/mur.png"
 #define SOL2_PATH "../Images/herbe1.png"
-#define SPRITE_PATH "../Images/sprite.png"
+#define SPRITE_PATH "../Images/sprite2.png"
 #define COMMANDES_PATH "../Images/commandes.png"
 #define INSTRUCTIONS_PATH "../Images/instructions.png"
 
@@ -76,6 +76,10 @@ typedef struct{
 typedef struct salle_s{
   int salle[TAILLE_SALLE][TAILLE_SALLE], salle_id;
   struct salle_s *salle_bas, *salle_haut, *salle_gauche, *salle_droite, *salle_prec;
+
+  SDL_Rect murs[TAILLE_SALLE*TAILLE_SALLE];
+  int nb_murs;
+
 }salle_t;
 
 

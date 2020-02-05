@@ -60,18 +60,18 @@ void charge_toutes_textures(t_image images[], t_perso *pers, SDL_Renderer *rendu
 * \brief Permet d'afficher une salle, le personnage et si on est dans la premiere salle, les instructions et commandes du jeu
 
 */
-void affichage_salle_personnage(t_perso pers, salle_t salle, SDL_Renderer *rendu, t_image images[]){
+void affichage_salle_personnage(t_perso pers, salle_t *salle, SDL_Renderer *rendu, t_image images[]){
 
 	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
 
 	SDL_RenderClear(rendu);//nettoie l'écran pour supprimer tout ce qui est dessus
 
-	if(salle.salle_id == 0){//affichage des commandes et rêgles du jeu si on est dans la première salle
+	if(salle->salle_id == 0){//affichage des commandes et rêgles du jeu si on est dans la première salle
 		SDL_RenderCopy(rendu, images[commandes].img, NULL, &images[commandes].rectangle);
 		SDL_RenderCopy(rendu, images[instructions].img, NULL, &images[instructions].rectangle);
 	}
 
-	afficher_salle(salle.salle, rendu, images);
+	salle->nb_murs = afficher_salle(salle->salle, rendu, images, salle->murs);
 
 	SDL_RenderCopy(rendu, pers.sprites[0].img, NULL, &pers.sprites[0].rectangle);
 
@@ -106,14 +106,15 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu){
 
 	//init la salle et créé les portes
 	init_salle(salle.salle);
-	aleatoire_porte(&salle);
+	aleatoire_porte(&salle, 3); //on indique -1 pour préciser qu'il n'y a pas besoin de génerer 
+	//de porte d'arrivée car c'est la première salle
 
 	charge_toutes_textures(images, &pers, rendu);
 
 	
 	while(*etat == labyrinthe && *continuer){
 
-		affichage_salle_personnage(pers, salle, rendu, images);
+		affichage_salle_personnage(pers, &salle, rendu, images);
 
 		deplacement_personnage(&pers, salle, continuer);
 	}

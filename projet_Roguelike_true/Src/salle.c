@@ -93,8 +93,9 @@ void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction){
  * \fn aleatoire_salle(salle_t *salle)
  * \brief fonction qui créer aléatoirement des portes dans une salle
  * \param salle_t *salle est la structure représentant une salle
+ * \param porte_arrivee, permet d'indiquer si on vient d'une autre salle afin de générer une porte à l'endroit auquel le joueur arrive
  */
-void aleatoire_porte(salle_t *salle){
+void aleatoire_porte(salle_t *salle, int porte_arrivee){
   SDL_Delay(10);
   srand(time(NULL));
   int alea;
@@ -105,27 +106,27 @@ void aleatoire_porte(salle_t *salle){
 
     //Nord
     alea = rand()%9;
-    if(alea > 5){
+    if(alea > 5 || porte_arrivee == 0){
       ajout_porte_salle(salle->salle, 0);
       cmp++;
     }
     //Ouest
     alea = rand()%9;
-    if(alea > 5){
+    if(alea > 5 || porte_arrivee == 1){
       ajout_porte_salle(salle->salle, 1);
       cmp++;
 
     }
     //Sud
     alea = rand()%9;
-    if(alea > 5){
+    if(alea > 5 || porte_arrivee == 2){
       ajout_porte_salle(salle->salle, 2);
       cmp++;
 
     }
     //Est
     alea = rand()%9;
-    if(alea > 5){
+    if(alea > 5 || porte_arrivee == 3){
       ajout_porte_salle(salle->salle, 3);
       cmp++;
     }
@@ -145,16 +146,26 @@ void aleatoire_porte(salle_t *salle){
  * \param salle[TAILLE_SALLE][TAILLE_SALLE] est le tableau de TAILLE_SALLE qui comprend la salle
  * \param *rendu, le renderer sur lequel on dessine
  * \param texture[], contient toutes les images utilisées sauf celle du personnage
+
+ * \return le nombre de murs dans la salle
  */
-void afficher_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], SDL_Renderer *rendu, t_image texture[]){
+int afficher_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], SDL_Renderer *rendu, t_image texture[], SDL_Rect murs[]){
 
   int coorX = EMPLACEMENT_DEPART_DESSIN_SALLE_X, coorY = EMPLACEMENT_DEPART_DESSIN_SALLE_Y;
+  int indice = 0;
 
   for(int i = 0; i<TAILLE_SALLE; i++){
 
     for(int j=0; j<TAILLE_SALLE; j++){
       texture[salle[i][j]].rectangle.x = coorX;
       texture[salle[i][j]].rectangle.y = coorY;
+
+      if(salle[i][j] == mur){
+        murs[indice].x = coorX;
+        murs[indice].y = coorY;
+        murs[indice].w = TAILLE_IMAGE;
+        murs[indice++].h = TAILLE_IMAGE;
+      }
 
       SDL_RenderCopy(rendu, texture[salle[i][j]].img, NULL, &texture[salle[i][j]].rectangle);
 
@@ -163,4 +174,6 @@ void afficher_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], SDL_Renderer *rendu, 
     coorX = 256;
     coorY += TAILLE_IMAGE;
   }
+
+  return indice;
 }

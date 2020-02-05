@@ -31,6 +31,42 @@ void charge_sprites_personnage(t_image sprites[], SDL_Renderer *rendu){
 
 
 /**
+* \fn test_collision
+
+* \param salle, la salle pour laquelle on test les collisions
+* \param pers, le personnage pour lequel on test les collisions
+* \param direction, la direction dans laquelle se rend le personnage
+
+* \brief permet de regarder si le personnage entre en collision avec un des murs de la salle
+
+* \return 1 en cas de collision, 0 si aucune collision
+*/
+int test_collision(salle_t salle, t_perso pers, int direction){
+
+	int i = 0;
+
+	for( ; i < salle.nb_murs; i++){
+
+		if(direction == 0)//haut
+			pers.sprites[0].rectangle.y -= 2;
+		else if(direction == 1) //droite
+			pers.sprites[0].rectangle.x += 2;
+		else if(direction == 2) //bas
+			pers.sprites[0].rectangle.y += 2;
+		else //gauche
+			pers.sprites[0].rectangle.x -= 2;
+
+		if(SDL_HasIntersection(&salle.murs[i], &pers.sprites[0].rectangle)){
+			return 1;
+		}
+
+		//printf("x perso %d, y perso %d, x mur +tailleimage %d, y mur, %d\n", pers.sprites[0].rectangle.x, pers.sprites[0].rectangle.y, salle.murs[i].x + TAILLE_IMAGE, salle.murs[i].y);
+	}
+	return 0;
+}
+
+
+/**
 
 * \fn deplacement_personnage
 
@@ -48,22 +84,26 @@ void deplacement_personnage(t_perso *pers, salle_t salle, int *continuer){
 
 		if(event.type == SDL_KEYDOWN){	//touche enfoncée
 			if(event.key.keysym.sym == SDLK_DOWN){ //touche du bas
-				if(salle.salle[pers->x - EMPLACEMENT_DEPART_DESSIN_SALLE_X][pers->y - EMPLACEMENT_DEPART_DESSIN_SALLE_Y] != mur){
+				//if(salle.salle[pers->x - EMPLACEMENT_DEPART_DESSIN_SALLE_X][pers->y - EMPLACEMENT_DEPART_DESSIN_SALLE_Y] != mur){
+				if(!test_collision(salle,*pers, 2)){
 					pers->y += VITESSE_PERSO;
 				}
 			}
 			else if(event.key.keysym.sym == SDLK_RIGHT){ //touche droite
-				if(salle.salle[pers->x - EMPLACEMENT_DEPART_DESSIN_SALLE_X][pers->y - EMPLACEMENT_DEPART_DESSIN_SALLE_Y] != mur){
+				//if(salle.salle[pers->x - EMPLACEMENT_DEPART_DESSIN_SALLE_X][pers->y - EMPLACEMENT_DEPART_DESSIN_SALLE_Y] != mur){
+				if(!test_collision(salle,*pers, 1)){
 					pers->x += VITESSE_PERSO;
 				}
 			}
 			else if(event.key.keysym.sym == SDLK_LEFT){ //touche gauche
-				if(salle.salle[pers->x - EMPLACEMENT_DEPART_DESSIN_SALLE_X][pers->y - EMPLACEMENT_DEPART_DESSIN_SALLE_Y] != mur){
+				//if(salle.salle[pers->x - EMPLACEMENT_DEPART_DESSIN_SALLE_X][pers->y - EMPLACEMENT_DEPART_DESSIN_SALLE_Y] != mur){
+				if(!test_collision(salle,*pers, 3)){
 					pers->x -= VITESSE_PERSO;
 				}
 			}
 			else if(event.key.keysym.sym == SDLK_UP){ //touche haut
-				if(salle.salle[pers->x - EMPLACEMENT_DEPART_DESSIN_SALLE_X][pers->y - EMPLACEMENT_DEPART_DESSIN_SALLE_Y] != mur){
+				//if(salle.salle[pers->x - EMPLACEMENT_DEPART_DESSIN_SALLE_X][pers->y - EMPLACEMENT_DEPART_DESSIN_SALLE_Y] != mur){
+				if(!test_collision(salle,*pers, 0)){
 					pers->y -= VITESSE_PERSO;
 				}
 			}
