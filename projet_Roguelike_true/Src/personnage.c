@@ -48,13 +48,13 @@ int test_collision(salle_t salle, t_perso pers, int direction){
 	for( ; i < salle.nb_murs; i++){
 
 		if(direction == 0)//haut
-			pers.sprites[0].rectangle.y -= 2;
+			pers.sprites[0].rectangle.y -= 1;
 		else if(direction == 1) //droite
-			pers.sprites[0].rectangle.x += 2;
+			pers.sprites[0].rectangle.x += 1;
 		else if(direction == 2) //bas
-			pers.sprites[0].rectangle.y += 2;
+			pers.sprites[0].rectangle.y += 1;
 		else //gauche
-			pers.sprites[0].rectangle.x -= 2;
+			pers.sprites[0].rectangle.x -= 1;
 
 		if(SDL_HasIntersection(&salle.murs[i], &pers.sprites[0].rectangle)){
 			return 1;

@@ -15,6 +15,7 @@
 #include "salle.h"
 #include "initialisation_sdl_fonctions.h"
 #include "personnage.h"
+#include "file.h"
 
 
 
@@ -127,6 +128,50 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu){
 	SDL_DestroyTexture(images[mur].img);
 	SDL_DestroyTexture(images[porte].img);	
 }
+/*
 
+void generation_laby_alea(salle_t *salle, int nb_salle, int porte_arrivee){
 
+	if(!file_vide() && nb_salle != 0){
+		salle_t *salle_cree = malloc(sizeof(salle_cree));
+		int nb_portes;
 
+		if(salle_cree == NULL){
+			printf("Error création salle\n");
+		}
+
+		link_salle(salle_cree, salle, porte_arrivee);
+
+		nb_salle -= aleatoire_porte(salle_cree, porte_arrivee);
+
+		if(salle_cree->salle_haut != NULL && salle_cree->salle_haut != salle){
+			generation_laby_alea()
+		}
+	}
+}
+
+*/
+/**
+* \fn link_salle()
+
+* \param *dest, la salle de destination, celle ou l'on arrive
+* \param *src, la salle d'ou l'on vient
+* \param porte_arrivee, la porte par laquelle on arrive
+
+* \brief Permet de lier la porte d'arrivée dans la salle destination à la salle de départ
+
+*/
+/*
+void link_salle(salle_t *dest, salle_t *src, int porte_arrivee){
+
+	switch(porte_arrivee){
+		case -1 : dest->salle_prec = NULL; break;
+		case 0 : dest->salle_haut = src; src->salle_bas = dest; break;
+		case 1 : dest->salle_droite = src; src->salle_gauche = dest;break;
+		case 2 : dest->salle_bas = src; src->salle_haut = dest; break;
+		case 3 : dest->salle_gauche = src; src->salle_droite = dest; break;
+	}
+	if(dest->salle_prec != NULL)
+		dest->salle_prec = src;
+}
+*/

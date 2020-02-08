@@ -94,8 +94,10 @@ void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction){
  * \brief fonction qui créer aléatoirement des portes dans une salle
  * \param salle_t *salle est la structure représentant une salle
  * \param porte_arrivee, permet d'indiquer si on vient d'une autre salle afin de générer une porte à l'endroit auquel le joueur arrive
+
+ * \return le nombre de portes créées
  */
-void aleatoire_porte(salle_t *salle, int porte_arrivee){
+int aleatoire_porte(salle_t *salle, int porte_arrivee){
   SDL_Delay(10);
   srand(time(NULL));
   int alea;
@@ -132,7 +134,10 @@ void aleatoire_porte(salle_t *salle, int porte_arrivee){
     }
     else if(cmp==0){
       ajout_porte_salle(salle->salle, rand()%4);
+      cmp++;
     }
+
+    return cmp;
   }
 
   //Si pas salle de départ
