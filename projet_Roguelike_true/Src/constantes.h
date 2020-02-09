@@ -74,10 +74,13 @@ typedef struct{
 \brief Représente une salle et ses liaisons aux autres salles
 */
 typedef struct salle_s{
+
   int salle[TAILLE_SALLE][TAILLE_SALLE], salle_id;
+
   struct salle_s *salle_bas, *salle_haut, *salle_gauche, *salle_droite, *salle_prec;
 
   SDL_Rect murs[TAILLE_SALLE*TAILLE_SALLE];
+  
   int nb_murs;
 
 }salle_t;

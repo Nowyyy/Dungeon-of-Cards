@@ -7,7 +7,7 @@ SDL = `sdl2-config --cflags --libs`
 
 ## preprocessing, compiling, assembling, linking
 $@ : $^
-	gcc $^ $(SDL) $(LIBS) $@
+	gcc -g $^ $(SDL) $(LIBS) $@
 
 %o : %c
 	gcc $*c -c
@@ -16,4 +16,4 @@ $@ : $^
 
 ## Cleaning temps
 clean :
-	rm *.o $@
+	rm *.o

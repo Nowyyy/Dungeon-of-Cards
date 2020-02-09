@@ -10,7 +10,7 @@
 
 #include "constantes.h"
 
-#define MAX 100
+#define MAX 1000
 
 int tete, queue;
 salle_t *salles_a_creer[MAX];
@@ -49,13 +49,12 @@ int file_vide(){
 */
 void ajoute_file(salle_t *salle){
 
-	if(queue < MAX){
-		salles_a_creer[tete] = salle;
-		queue++;
+	if(queue < MAX && tete -1 != queue){
+		salles_a_creer[queue++] = salle;
 	}
-	else if(queue == MAX - 1 && tete != 0) {
+	else if(queue == MAX - 1 && tete > 0) {
 		queue = 0;
-		salles_a_creer[tete] = salle;
+		salles_a_creer[queue] = salle;
 	}
 }
 
@@ -71,8 +70,8 @@ void ajoute_file(salle_t *salle){
 void retire_file(salle_t *salle){
 
 	if(!file_vide()){
-		salle = salles_a_creer[tete--];
-		if(tete < 0)
-			tete = MAX -1;
+		salle = salles_a_creer[tete++];
+		if(tete == MAX -1 && !file_vide())
+			tete = 0;
 	}
 }

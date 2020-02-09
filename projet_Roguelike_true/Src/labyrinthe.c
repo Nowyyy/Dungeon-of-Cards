@@ -67,7 +67,7 @@ void affichage_salle_personnage(t_perso pers, salle_t *salle, SDL_Renderer *rend
 
 	SDL_RenderClear(rendu);//nettoie l'écran pour supprimer tout ce qui est dessus
 
-	if(salle->salle_id == 0){//affichage des commandes et rêgles du jeu si on est dans la première salle
+	if(salle->salle_prec == NULL){//affichage des commandes et rêgles du jeu si on est dans la première salle
 		SDL_RenderCopy(rendu, images[commandes].img, NULL, &images[commandes].rectangle);
 		SDL_RenderCopy(rendu, images[instructions].img, NULL, &images[instructions].rectangle);
 	}
@@ -79,6 +79,46 @@ void affichage_salle_personnage(t_perso pers, salle_t *salle, SDL_Renderer *rend
 	SDL_RenderPresent(rendu);//applique les modifs précédentes
 }
 
+
+/**
+
+* \fn generation_laby_alea
+
+* \param nb_salle, le nombre de salles restantes a créer
+* \param porte_arrivee, le côté de la salle par lequel on arrive, permet de générer une porte au bon endroit
+
+* \brief genere un labyrinthe aléatoire par appel récursif
+*/
+void generation_laby_alea(int nb_salle, int porte_arrivee){
+
+	salle_t *src, *dest;
+
+	int nb = nb_salle;
+
+	if(!file_vide() && nb_salle != 0){
+		retire_file(dest);
+		retire_file(src);
+
+		dest = malloc(sizeof(salle_t));
+
+		if(dest == NULL){
+			printf("Erreur création salle\n");
+		}
+
+		init_salle(dest->salle);
+
+		nb -= aleatoire_porte2(dest, porte_arrivee, nb_salle);
+
+		if(dest->salle_haut != NULL && dest->salle_haut != src)
+			generation_laby_alea(nb, 0);
+		if(dest->salle_bas != NULL && dest->salle_bas != src)
+			generation_laby_alea(nb, 2);
+		if(dest->salle_droite != NULL && dest->salle_droite != src)
+			generation_laby_alea(nb, 1);
+		if(dest->salle_gauche != NULL && dest->salle_gauche != src)
+			generation_laby_alea(nb, 3);
+	}
+}
 
 
 /**
@@ -101,23 +141,48 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu){
 	pers.x = WIN_WIDTH / 2;
 	pers.y = WIN_HEIGHT / 2;
 
-	salle_t salle;
-	salle.salle_prec = NULL;
-	salle.salle_id = 0;//première salle
+	int nb_salles_a_creer = 15;
+
+	init_file();
+
+	
+	salle_t *salle_depart = malloc(sizeof(salle_t));
+
+	if(salle_depart == NULL)
+		printf("Erreur création salle départ\n");
+
+	salle_depart->salle_prec = NULL;
+	salle_depart->salle_bas = NULL;
+ 	salle_depart->salle_haut = NULL;
+ 	salle_depart->salle_gauche = NULL;
+ 	salle_depart->salle_droite = NULL;
 
 	//init la salle et créé les portes
-	init_salle(salle.salle);
-	aleatoire_porte(&salle, 3); //on indique -1 pour préciser qu'il n'y a pas besoin de génerer 
+	init_salle(salle_depart->salle);
+
+	nb_salles_a_creer -= aleatoire_porte(salle_depart, -1, nb_salles_a_creer); //on indique -1 pour préciser qu'il n'y a pas besoin de génerer 
 	//de porte d'arrivée car c'est la première salle
+	if(salle_depart->salle_haut != NULL){
+		generation_laby_alea(nb_salles_a_creer, 0);
+	}
+	else if(salle_depart->salle_bas != NULL){
+		generation_laby_alea(nb_salles_a_creer, 2);
+	}
+	else if(salle_depart->salle_droite != NULL){
+		generation_laby_alea(nb_salles_a_creer, 1);
+	}
+	else if(salle_depart->salle_gauche != NULL){
+		generation_laby_alea(nb_salles_a_creer, 3);
+	}
 
 	charge_toutes_textures(images, &pers, rendu);
 
 	
 	while(*etat == labyrinthe && *continuer){
 
-		affichage_salle_personnage(pers, &salle, rendu, images);
+		affichage_salle_personnage(pers, salle_depart, rendu, images);
 
-		deplacement_personnage(&pers, salle, continuer);
+		deplacement_personnage(&pers, *salle_depart, continuer);
 	}
 
 	//on libère tous les emplacements mémoires utilisés par les images
@@ -128,50 +193,3 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu){
 	SDL_DestroyTexture(images[mur].img);
 	SDL_DestroyTexture(images[porte].img);	
 }
-/*
-
-void generation_laby_alea(salle_t *salle, int nb_salle, int porte_arrivee){
-
-	if(!file_vide() && nb_salle != 0){
-		salle_t *salle_cree = malloc(sizeof(salle_cree));
-		int nb_portes;
-
-		if(salle_cree == NULL){
-			printf("Error création salle\n");
-		}
-
-		link_salle(salle_cree, salle, porte_arrivee);
-
-		nb_salle -= aleatoire_porte(salle_cree, porte_arrivee);
-
-		if(salle_cree->salle_haut != NULL && salle_cree->salle_haut != salle){
-			generation_laby_alea()
-		}
-	}
-}
-
-*/
-/**
-* \fn link_salle()
-
-* \param *dest, la salle de destination, celle ou l'on arrive
-* \param *src, la salle d'ou l'on vient
-* \param porte_arrivee, la porte par laquelle on arrive
-
-* \brief Permet de lier la porte d'arrivée dans la salle destination à la salle de départ
-
-*/
-/*
-void link_salle(salle_t *dest, salle_t *src, int porte_arrivee){
-
-	switch(porte_arrivee){
-		case -1 : dest->salle_prec = NULL; break;
-		case 0 : dest->salle_haut = src; src->salle_bas = dest; break;
-		case 1 : dest->salle_droite = src; src->salle_gauche = dest;break;
-		case 2 : dest->salle_bas = src; src->salle_haut = dest; break;
-		case 3 : dest->salle_gauche = src; src->salle_droite = dest; break;
-	}
-	if(dest->salle_prec != NULL)
-		dest->salle_prec = src;
-}
-*/
