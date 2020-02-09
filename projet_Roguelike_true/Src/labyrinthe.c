@@ -122,6 +122,43 @@ void generation_laby_alea(int nb_salle, int porte_arrivee){
 
 
 /**
+*\fn creer_premiere_salle
+
+*\brief permet la création de la premiere salle du labyrinthe puis d'appeler la génération du laby
+
+* \param *salle, la salle que l'on créé
+* \param nb_salles_a_creer, le nombre de salles dans la laby final
+*/
+void creer_premiere_salle(salle_t *salle, int nb_salles_a_creer){
+
+	salle->salle_prec = NULL;
+	salle->salle_bas = NULL;
+ 	salle->salle_haut = NULL;
+ 	salle->salle_gauche = NULL;
+ 	salle->salle_droite = NULL;
+
+	//init la salle et créé les portes
+	init_salle(salle->salle);
+
+	nb_salles_a_creer -= aleatoire_porte(salle, -1, nb_salles_a_creer); //on indique -1 pour préciser qu'il n'y a pas besoin de génerer 
+	//de porte d'arrivée car c'est la première salle
+	if(salle->salle_haut != NULL){
+		generation_laby_alea(nb_salles_a_creer, 0);
+	}
+	else if(salle->salle_bas != NULL){
+		generation_laby_alea(nb_salles_a_creer, 2);
+	}
+	else if(salle->salle_droite != NULL){
+		generation_laby_alea(nb_salles_a_creer, 1);
+	}
+	else if(salle->salle_gauche != NULL){
+		generation_laby_alea(nb_salles_a_creer, 3);
+	}
+
+}
+
+
+/**
 * \fn boucle_labyrinthe
 
 * \param *continuer, pointeur sur variable permettant de savoir si le joueur souhaite quitter le programme
@@ -144,45 +181,24 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu){
 	int nb_salles_a_creer = 15;
 
 	init_file();
-
 	
 	salle_t *salle_depart = malloc(sizeof(salle_t));
+	salle_t *salle_courante;
 
 	if(salle_depart == NULL)
 		printf("Erreur création salle départ\n");
 
-	salle_depart->salle_prec = NULL;
-	salle_depart->salle_bas = NULL;
- 	salle_depart->salle_haut = NULL;
- 	salle_depart->salle_gauche = NULL;
- 	salle_depart->salle_droite = NULL;
-
-	//init la salle et créé les portes
-	init_salle(salle_depart->salle);
-
-	nb_salles_a_creer -= aleatoire_porte(salle_depart, -1, nb_salles_a_creer); //on indique -1 pour préciser qu'il n'y a pas besoin de génerer 
-	//de porte d'arrivée car c'est la première salle
-	if(salle_depart->salle_haut != NULL){
-		generation_laby_alea(nb_salles_a_creer, 0);
-	}
-	else if(salle_depart->salle_bas != NULL){
-		generation_laby_alea(nb_salles_a_creer, 2);
-	}
-	else if(salle_depart->salle_droite != NULL){
-		generation_laby_alea(nb_salles_a_creer, 1);
-	}
-	else if(salle_depart->salle_gauche != NULL){
-		generation_laby_alea(nb_salles_a_creer, 3);
-	}
+	creer_premiere_salle(salle_depart, nb_salles_a_creer);
 
 	charge_toutes_textures(images, &pers, rendu);
 
+	salle_courante = salle_depart;
 	
 	while(*etat == labyrinthe && *continuer){
 
-		affichage_salle_personnage(pers, salle_depart, rendu, images);
+		affichage_salle_personnage(pers, salle_courante, rendu, images);
 
-		deplacement_personnage(&pers, *salle_depart, continuer);
+		deplacement_personnage(&pers, *salle_courante, continuer);
 	}
 
 	//on libère tous les emplacements mémoires utilisés par les images
