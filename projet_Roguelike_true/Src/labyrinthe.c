@@ -91,23 +91,41 @@ void affichage_salle_personnage(t_perso pers, salle_t *salle, SDL_Renderer *rend
 */
 void generation_laby_alea(int nb_salle, int porte_arrivee){
 
-	salle_t *src, *dest;
+	salle_t *src, *dest = malloc(sizeof(salle_t));
+
+	dest->salle_haut = NULL;
+	dest->salle_bas = NULL;
+	dest->salle_gauche = NULL;
+	dest->salle_droite = NULL;
+	dest->salle_prec = NULL;
 
 	int nb = nb_salle;
 
 	if(!file_vide() && nb_salle != 0){
-		retire_file(dest);
+
 		retire_file(src);
 
-		dest = malloc(sizeof(salle_t));
-
-		if(dest == NULL){
-			printf("Erreur création salle\n");
+		if(porte_arrivee == 0){
+			src->salle_bas = dest;
+			dest->salle_haut = src;
+		}
+		else if(porte_arrivee == 1){
+			src->salle_gauche = dest;
+			dest->salle_droite = src;
+		}
+		else if(porte_arrivee == 2){
+			src->salle_haut = dest;
+			dest->salle_bas = src;
+		}
+		else if(porte_arrivee == 3){
+			src->salle_droite = dest;
+			dest->salle_gauche = src;
 		}
 
 		init_salle(dest->salle);
 
 		nb -= aleatoire_porte2(dest, porte_arrivee, nb_salle);
+		printf("%d old %d new\n", nb_salle, nb);
 
 		if(dest->salle_haut != NULL && dest->salle_haut != src)
 			generation_laby_alea(nb, 0);
@@ -142,16 +160,17 @@ void creer_premiere_salle(salle_t *salle, int nb_salles_a_creer){
 
 	nb_salles_a_creer -= aleatoire_porte(salle, -1, nb_salles_a_creer); //on indique -1 pour préciser qu'il n'y a pas besoin de génerer 
 	//de porte d'arrivée car c'est la première salle
-	if(salle->salle_haut != NULL){
+
+	if(salle->porte == 0){
 		generation_laby_alea(nb_salles_a_creer, 0);
 	}
-	else if(salle->salle_bas != NULL){
+	else if(salle->porte == 1){
 		generation_laby_alea(nb_salles_a_creer, 2);
 	}
-	else if(salle->salle_droite != NULL){
+	else if(salle->porte == 2){
 		generation_laby_alea(nb_salles_a_creer, 1);
 	}
-	else if(salle->salle_gauche != NULL){
+	else if(salle->porte == 3){
 		generation_laby_alea(nb_salles_a_creer, 3);
 	}
 

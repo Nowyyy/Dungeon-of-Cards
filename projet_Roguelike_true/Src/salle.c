@@ -99,95 +99,72 @@ void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction){
 
  * \return le nombre de portes créées
  */
-int aleatoire_porte(salle_t *salle, int porte_arrivee, int max_porte){
+int aleatoire_porte(salle_t **salle, int porte_arrivee, int max_porte){
 
   srand(time(NULL));
   int alea;
   int cmp = 0;
 
-  salle_t *salle_cree = malloc(sizeof(salle_t));
-
   //Nord
   alea = rand()%9;
   if((alea > 5 || porte_arrivee == 0) && max_porte > 0){
-    ajout_porte_salle(salle->salle, 0);
+    ajout_porte_salle((*salle)->salle, 0);
     cmp++;
-    ajoute_file(salle_cree);
-    ajoute_file(salle);
-    salle->salle_haut = salle_cree;
-    salle_cree->salle_bas = salle->salle_haut;
+    ajoute_file(*salle);
+    (*salle)->porte = 0;
   }
-  else{
-    free(salle_cree);
-  }
-
-  salle_cree = malloc(sizeof(salle_t));
 
   //Ouest
   alea = rand()%9;
   if((alea > 5 || porte_arrivee == 1 ) && max_porte -cmp > 0){
-    ajout_porte_salle(salle->salle, 1);
+    ajout_porte_salle((*salle)->salle, 1);
     cmp++;
-    ajoute_file(salle_cree);
-    ajoute_file(salle);
-    salle->salle_gauche = salle_cree;
-    salle_cree->salle_droite = salle->salle_gauche;
+    ajoute_file(*salle);
+    if((*salle)->porte != 0)
+     (*salle)->porte = 1;
   }
-  else{
-    free(salle_cree);
-  }
-
-  salle_cree = malloc(sizeof(salle_t));
 
   //Sud
   alea = rand()%9;
   if((alea > 5 || porte_arrivee == 2) && max_porte -cmp > 0){
-    ajout_porte_salle(salle->salle, 2);
+    ajout_porte_salle((*salle)->salle, 2);
     cmp++;
-    ajoute_file(salle_cree);
-    ajoute_file(salle);
-    salle->salle_bas = salle_cree;
-    salle_cree->salle_haut = salle->salle_bas;
-  }
-  else{
-    free(salle_cree);
+    ajoute_file(*salle);
+    if((*salle)->porte != 0)
+     (*salle)->porte = 2;
   }
 
-  salle_cree = malloc(sizeof(salle_t));
 
   //Est
   alea = rand()%9;
   if((alea > 5 || porte_arrivee == 3) && max_porte - cmp > 0){
-    ajout_porte_salle(salle->salle, 3);
+    ajout_porte_salle((*salle)->salle, 3);
     cmp++;
-    ajoute_file(salle_cree);
-    ajoute_file(salle);
-    salle->salle_droite = salle_cree;
-    salle_cree->salle_gauche = salle->salle_droite;
+    ajoute_file(*salle);
+    if((*salle)->porte != 0)
+      (*salle)->porte = 3;
   }
-  else{
-    free(salle_cree);
-  }
-
-  salle_cree = malloc(sizeof(salle_t));
 
   if(cmp==0  && max_porte > 0){
     alea = rand()%4;
-    ajout_porte_salle(salle->salle, alea);
+    ajout_porte_salle((*salle)->salle, alea);
+    ajoute_file(*salle);
 
     switch(alea){
-      case 0 : salle->salle_haut = salle_cree; salle_cree->salle_bas = salle->salle_haut; break;
-      case 1 : salle->salle_droite = salle_cree; salle_cree->salle_droite= salle->salle_gauche; break;
-      case 2 : salle->salle_bas = salle_cree; salle_cree->salle_haut = salle->salle_bas; break;
-      case 3 : salle->salle_gauche = salle_cree;  salle_cree->salle_gauche = salle->salle_droite; break;
+      case 0 : (*salle)->porte = 0; break;
+      case 1 : if((*salle)->porte != 0)
+                (*salle)->porte = 1;
+               break;
+      case 2 : if((*salle)->porte != 0)
+                  (*salle)->porte = 2;
+                break;
+      case 3 : if((*salle)->porte != 0)
+                  (*salle)->porte = 3; 
+                break;
     }
-    ajoute_file(salle_cree);
-    ajoute_file(salle);
     cmp++;
   }
-  else{
-    free(salle_cree);
-  }
+
 
   return cmp;
 }
@@ -245,91 +222,55 @@ int aleatoire_porte2(salle_t *salle, int porte_arrivee, int max_porte){
   int alea;
   int cmp = 0;
 
-  salle_t *salle_cree = malloc(sizeof(salle_t));
-
   //Nord
   alea = rand()%9;
   if((alea > 5 && porte_arrivee != 0) && max_porte > 0){
-    printf("test\n");
     ajout_porte_salle(salle->salle, 0);
     cmp++;
-    printf("test2\n");
-    ajoute_file(salle_cree);
+    salle->porte = 0;
     ajoute_file(salle);
-    salle->salle_haut = salle_cree;
-    salle_cree->salle_bas = salle->salle_haut;
-    free(salle_cree);
   }
   else if(porte_arrivee == 0){
     ajout_porte_salle(salle->salle, 0);
-    free(salle_cree);
   }
-  else{
-    free(salle_cree);
-  }
-
-  salle_cree = malloc(sizeof(salle_t));
 
   //Ouest
   alea = rand()%9;
   if((alea > 5 && porte_arrivee != 1 ) && max_porte -cmp > 0){
     ajout_porte_salle(salle->salle, 1);
     cmp++;
-    ajoute_file(salle_cree);
+    if(salle->porte != 0)
+     salle->porte = 1;
     ajoute_file(salle);
-    salle->salle_gauche = salle_cree;
-    salle_cree->salle_droite = salle->salle_gauche;
-    free(salle_cree);
   }
   else if(porte_arrivee == 1){
     ajout_porte_salle(salle->salle, 1);
-    free(salle_cree);
   }
-  else{
-    free(salle_cree);
-  }
-    
-
-  salle_cree = malloc(sizeof(salle_t));
 
   //Sud
   alea = rand()%9;
   if((alea > 5 && porte_arrivee != 2) && max_porte -cmp > 0){
     ajout_porte_salle(salle->salle, 2);
     cmp++;
-    ajoute_file(salle_cree);
+    if(salle->porte != 0)
+     salle->porte = 2;
     ajoute_file(salle);
-    salle->salle_bas = salle_cree;
-    salle_cree->salle_haut = salle->salle_bas;
-    free(salle_cree);
   }
   else if(porte_arrivee == 2){
     ajout_porte_salle(salle->salle, 2);
-    free(salle_cree);
   }
-  else{
-    free(salle_cree);
-  }
-
-  salle_cree = malloc(sizeof(salle_t));
 
   //Est
   alea = rand()%9;
   if((alea > 5 && porte_arrivee != 3) && max_porte - cmp > 0){
     ajout_porte_salle(salle->salle, 3);
     cmp++;
-    ajoute_file(salle_cree);
+    if(salle->porte != 0)
+      salle->porte = 3;
     ajoute_file(salle);
-    salle->salle_droite = salle_cree;
-    salle_cree->salle_gauche = salle->salle_droite;
-    free(salle_cree);
   }
   else if(porte_arrivee == 3){
     ajout_porte_salle(salle->salle, 3);
-    free(salle_cree);
-  }
-  else{
-    free(salle_cree);
   }
 
   return cmp;

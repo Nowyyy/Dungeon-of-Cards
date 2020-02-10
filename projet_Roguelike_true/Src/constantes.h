@@ -75,7 +75,7 @@ typedef struct{
 */
 typedef struct salle_s{
 
-  int salle[TAILLE_SALLE][TAILLE_SALLE], salle_id;
+  int salle[TAILLE_SALLE][TAILLE_SALLE], porte;
 
   struct salle_s *salle_bas, *salle_haut, *salle_gauche, *salle_droite, *salle_prec;
 
