@@ -67,10 +67,10 @@ void ajoute_file(salle_t *salle){
 * \brief retire une salle a la file
 
 */
-void retire_file(salle_t *salle){
+void retire_file(salle_t **salle){
 
 	if(!file_vide()){
-		salle = salles_a_creer[tete++];
+		*salle = salles_a_creer[tete++];
 		if(tete == MAX -1 && !file_vide())
 			tete = 0;
 	}

@@ -16,9 +16,10 @@
 #include "initialisation_sdl_fonctions.h"
 #include "personnage.h"
 #include "file.h"
+#include <time.h>
 
 
-
+int cpt = 0;
 /**
 * \fn charge_toutes_textures
 
@@ -85,38 +86,68 @@ void affichage_salle_personnage(t_perso pers, salle_t *salle, SDL_Renderer *rend
 * \fn generation_laby_alea
 
 * \param nb_salle, le nombre de salles restantes a créer
-* \param porte_arrivee, le côté de la salle par lequel on arrive, permet de générer une porte au bon endroit
 
 * \brief genere un labyrinthe aléatoire par appel récursif
 */
-void generation_laby_alea(int nb_salle, int porte_arrivee){
+void generation_laby_alea(int nb_salle){
 
-	salle_t *src, *dest;
+	salle_t *src, *dest = malloc(sizeof(salle_t));
 
-	int nb = nb_salle;
+	dest->salle_haut = NULL;
+	dest->salle_bas = NULL;
+	dest->salle_gauche = NULL;
+	dest->salle_droite = NULL;
+	dest->salle_prec = NULL;
+	int nb = nb_salle, test = 0, porte_arrivee;
 
-	if(!file_vide() && nb_salle != 0){
-		retire_file(dest);
-		retire_file(src);
+	if(!file_vide() || nb_salle != 0){
 
-		dest = malloc(sizeof(salle_t));
+		retire_file(&src);
 
-		if(dest == NULL){
-			printf("Erreur création salle\n");
+		//lie les salles entre elles
+		if(src->haut == 1){
+			src->salle_bas = dest;
+			dest->salle_haut = src;
+			src->haut = 0;
+			test ++;
+			porte_arrivee = 0;
+		}
+		else if(src->droite == 1){
+			src->salle_gauche = dest;
+			dest->salle_droite = src;
+			src->droite = 0;
+			test++;
+			porte_arrivee = 1;
+		}
+		else if(src->bas == 1){
+			src->salle_haut = dest;
+			dest->salle_bas = src;
+			src->bas = 0;
+			test++;
+			porte_arrivee = 2;
+		}
+		else if(src->gauche){
+			src->salle_droite = dest;
+			dest->salle_gauche = src;
+			src->gauche = 0;
+			test++;
+			porte_arrivee = 3;
 		}
 
-		init_salle(dest->salle);
+		//remplit la salle et continue la generation alétoire
+		if(test){
+			init_salle(dest->salle);
 
-		nb -= aleatoire_porte2(dest, porte_arrivee, nb_salle);
-
-		if(dest->salle_haut != NULL && dest->salle_haut != src)
-			generation_laby_alea(nb, 0);
-		if(dest->salle_bas != NULL && dest->salle_bas != src)
-			generation_laby_alea(nb, 2);
-		if(dest->salle_droite != NULL && dest->salle_droite != src)
-			generation_laby_alea(nb, 1);
-		if(dest->salle_gauche != NULL && dest->salle_gauche != src)
-			generation_laby_alea(nb, 3);
+			nb -= aleatoire_porte(dest, porte_arrivee, nb_salle);
+			cpt++;
+			generation_laby_alea(nb);
+		}
+		else{
+			//toutes les portes ont été pourvues en salle
+			ajoute_file(src);
+			free(dest);
+			generation_laby_alea(nb_salle);
+		}
 	}
 }
 
@@ -131,30 +162,65 @@ void generation_laby_alea(int nb_salle, int porte_arrivee){
 */
 void creer_premiere_salle(salle_t *salle, int nb_salles_a_creer){
 
+	srand(time(NULL));
+
 	salle->salle_prec = NULL;
 	salle->salle_bas = NULL;
  	salle->salle_haut = NULL;
  	salle->salle_gauche = NULL;
  	salle->salle_droite = NULL;
 
-	//init la salle et créé les portes
+	//initialise la salle et créé les portes dans la matrice
 	init_salle(salle->salle);
 
-	nb_salles_a_creer -= aleatoire_porte(salle, -1, nb_salles_a_creer); //on indique -1 pour préciser qu'il n'y a pas besoin de génerer 
+	nb_salles_a_creer -= aleatoire_porte(salle, rand()%4, nb_salles_a_creer); //on indique -1 pour préciser qu'il n'y a pas besoin de génerer 
 	//de porte d'arrivée car c'est la première salle
-	if(salle->salle_haut != NULL){
-		generation_laby_alea(nb_salles_a_creer, 0);
-	}
-	else if(salle->salle_bas != NULL){
-		generation_laby_alea(nb_salles_a_creer, 2);
-	}
-	else if(salle->salle_droite != NULL){
-		generation_laby_alea(nb_salles_a_creer, 1);
+
+	generation_laby_alea(nb_salles_a_creer);
+}
+
+
+/**
+* \fn detruire_salles
+
+*\bief détruit toues les salles créées dynamiquement par appel récusif
+
+* \param nb_salles_a_detruire, nb de salles a detruire
+* \param *salle, la salle a détruire
+*/
+void detruire_salles(salle_t *salle){
+
+	salle_t *s_haut, *s_bas, *s_droite, *s_gauche;
+
+	if(salle->salle_droite != NULL){
+		s_droite = salle->salle_droite;
+		salle->salle_droite->salle_gauche = NULL;
 	}
 	else if(salle->salle_gauche != NULL){
-		generation_laby_alea(nb_salles_a_creer, 3);
-	}
+		s_gauche = salle->salle_gauche;
 
+	}
+	else if(salle->salle_bas != NULL){
+		s_bas = salle->salle_bas;
+		salle->salle_bas->salle_haut = NULL;
+	}
+	else if(salle->salle_haut != NULL){
+		s_haut = salle->salle_haut;
+		salle->salle_haut->salle_bas = NULL;
+	}
+	cpt--;
+	printf("%d\n", cpt);	
+	
+	free(salle);
+
+	if(s_haut != NULL)
+		detruire_salles(s_haut);
+	if(s_bas != NULL)
+		detruire_salles(s_bas);
+	if(s_gauche != NULL)
+		detruire_salles(s_gauche);
+	if(s_droite != NULL)
+		detruire_salles(s_droite);
 }
 
 
@@ -200,6 +266,8 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu){
 
 		deplacement_personnage(&pers, *salle_courante, continuer);
 	}
+
+	detruire_salles(salle_depart);
 
 	//on libère tous les emplacements mémoires utilisés par les images
 	SDL_DestroyTexture(images[instructions].img);
