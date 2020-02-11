@@ -2,7 +2,7 @@
  * \file salle.c
  * \brief Programme qui créé une salle et l'affiche.
  * \author Axel Jourry
- * \version 1.0
+ * \version 0.1
  * \date 30 Janvier 2020
  */
 
@@ -48,6 +48,7 @@ void init_salle(int salle[TAILLE_SALLE][TAILLE_SALLE]){
  * \param direction correspond à un nombre entre 0 et 3 indiquant quel mur est seléctionné.
  */
 void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction){
+
   int millieu = TAILLE_SALLE / 2;
   for(int i = 0; i<TAILLE_SALLE; i++){
     for(int j=0; j<TAILLE_SALLE; j++){
@@ -89,85 +90,6 @@ void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction){
   }
 }
 
-
-/**
- * \fn aleatoire_salle(salle_t *salle)
- * \brief fonction qui créer aléatoirement des portes dans une salle
- * \param salle_t *salle est la structure représentant une salle
- * \param porte_arrivee, permet d'indiquer si on vient d'une autre salle afin de générer une porte à l'endroit auquel le joueur arrive
- * \param max_porte, le nombre max de porte que l'on souhaite créer
-
- * \return le nombre de portes créées
- */
-int aleatoire_porte(salle_t **salle, int porte_arrivee, int max_porte){
-
-  srand(time(NULL));
-  int alea;
-  int cmp = 0;
-
-  //Nord
-  alea = rand()%9;
-  if((alea > 5 || porte_arrivee == 0) && max_porte > 0){
-    ajout_porte_salle((*salle)->salle, 0);
-    cmp++;
-    ajoute_file(*salle);
-    (*salle)->porte = 0;
-  }
-
-  //Ouest
-  alea = rand()%9;
-  if((alea > 5 || porte_arrivee == 1 ) && max_porte -cmp > 0){
-    ajout_porte_salle((*salle)->salle, 1);
-    cmp++;
-    ajoute_file(*salle);
-    if((*salle)->porte != 0)
-     (*salle)->porte = 1;
-  }
-
-  //Sud
-  alea = rand()%9;
-  if((alea > 5 || porte_arrivee == 2) && max_porte -cmp > 0){
-    ajout_porte_salle((*salle)->salle, 2);
-    cmp++;
-    ajoute_file(*salle);
-    if((*salle)->porte != 0)
-     (*salle)->porte = 2;
-  }
-
-
-  //Est
-  alea = rand()%9;
-  if((alea > 5 || porte_arrivee == 3) && max_porte - cmp > 0){
-    ajout_porte_salle((*salle)->salle, 3);
-    cmp++;
-    ajoute_file(*salle);
-    if((*salle)->porte != 0)
-      (*salle)->porte = 3;
-  }
-
-  if(cmp==0  && max_porte > 0){
-    alea = rand()%4;
-    ajout_porte_salle((*salle)->salle, alea);
-    ajoute_file(*salle);
-
-    switch(alea){
-      case 0 : (*salle)->porte = 0; break;
-      case 1 : if((*salle)->porte != 0)
-                (*salle)->porte = 1;
-               break;
-      case 2 : if((*salle)->porte != 0)
-                  (*salle)->porte = 2;
-                break;
-      case 3 : if((*salle)->porte != 0)
-                  (*salle)->porte = 3; 
-                break;
-    }
-    cmp++;
-  }
-
-
-  return cmp;
-}
 
 /**
  * \fn afficher_salle(int salle[TAILLE_SALLE][TAILLE_SALLE])
@@ -216,7 +138,7 @@ int afficher_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], SDL_Renderer *rendu, t
 
  * \return le nombre de portes créées
  */
-int aleatoire_porte2(salle_t *salle, int porte_arrivee, int max_porte){
+int aleatoire_porte(salle_t *salle, int porte_arrivee, int max_porte){
 
   srand(time(NULL));
   int alea;
@@ -227,7 +149,7 @@ int aleatoire_porte2(salle_t *salle, int porte_arrivee, int max_porte){
   if((alea > 5 && porte_arrivee != 0) && max_porte > 0){
     ajout_porte_salle(salle->salle, 0);
     cmp++;
-    salle->porte = 0;
+    salle->haut = 1;
     ajoute_file(salle);
   }
   else if(porte_arrivee == 0){
@@ -239,8 +161,7 @@ int aleatoire_porte2(salle_t *salle, int porte_arrivee, int max_porte){
   if((alea > 5 && porte_arrivee != 1 ) && max_porte -cmp > 0){
     ajout_porte_salle(salle->salle, 1);
     cmp++;
-    if(salle->porte != 0)
-     salle->porte = 1;
+    salle->gauche = 1;
     ajoute_file(salle);
   }
   else if(porte_arrivee == 1){
@@ -252,8 +173,7 @@ int aleatoire_porte2(salle_t *salle, int porte_arrivee, int max_porte){
   if((alea > 5 && porte_arrivee != 2) && max_porte -cmp > 0){
     ajout_porte_salle(salle->salle, 2);
     cmp++;
-    if(salle->porte != 0)
-     salle->porte = 2;
+    salle->bas = 1;
     ajoute_file(salle);
   }
   else if(porte_arrivee == 2){
@@ -265,12 +185,25 @@ int aleatoire_porte2(salle_t *salle, int porte_arrivee, int max_porte){
   if((alea > 5 && porte_arrivee != 3) && max_porte - cmp > 0){
     ajout_porte_salle(salle->salle, 3);
     cmp++;
-    if(salle->porte != 0)
-      salle->porte = 3;
+    salle->droite = 1;
     ajoute_file(salle);
   }
   else if(porte_arrivee == 3){
     ajout_porte_salle(salle->salle, 3);
+  }
+
+  if(cmp == 0 && max_porte > 0){
+
+    alea = rand()%4;
+
+    switch(alea){
+      case 0: salle->haut = 1; ajout_porte_salle(salle->salle, 0); break;
+      case 1: salle->droite = 1; ajout_porte_salle(salle->salle, 1); break;
+      case 2: salle->bas = 1; ajout_porte_salle(salle->salle, 2); break;
+      case 3: salle->gauche = 1; ajout_porte_salle(salle->salle, 3); break;
+    }
+    ajoute_file(salle);
+    cmp++;
   }
 
   return cmp;
