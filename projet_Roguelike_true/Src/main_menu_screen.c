@@ -23,7 +23,7 @@
 
 * \return retourne False pour fermer la fenetre, True pour la garder  ouverte
 */
-int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect quitter, SDL_Rect *rect_sel){
+int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect quitter, SDL_Rect **rect_sel){
 
 	SDL_Event event;
 
@@ -31,22 +31,23 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 
 		if(event.type == SDL_KEYDOWN){	//touche enfoncée
 			if(event.key.keysym.sym == SDLK_DOWN){
-				if(rect_sel->y != quitter.y){//on n'est pas sur la dernière option, on peut descendre
-					if(rect_sel->y == jouer.y){
-						rect_sel->y = charger.y;
+				if((*rect_sel)->y != quitter.y){//on n'est pas sur la dernière option, on peut descendre
+					if((*rect_sel)->y == jouer.y - RECT_SELECT_Y_DIFF){
+						(*rect_sel)->y = charger.y - RECT_SELECT_Y_DIFF;
 					}
-					else if(rect_sel->y == charger.y){
-						rect_sel->y = quitter.y;
+					else if((*rect_sel)->y == charger.y - RECT_SELECT_Y_DIFF){
+						(*rect_sel)->y = quitter.y - RECT_SELECT_Y_DIFF;
 					}
 				}
 			}
 			else if(event.key.keysym.sym == SDLK_UP){
-				if(rect_sel->y != jouer.y){//on n'est pas sur la premiere option, on peut monter
-					if(rect_sel->y == charger.y){
-						rect_sel->y = jouer.y;
+				printf("rectangle_selection x = %d, jouer.x = %d\n", (*rect_sel)->y, jouer.y);
+				if((*rect_sel)->y != jouer.y){//on n'est pas sur la premiere option, on peut monter
+					if((*rect_sel)->y == charger.y - RECT_SELECT_Y_DIFF){
+						(*rect_sel)->y = jouer.y - RECT_SELECT_Y_DIFF;
 					}
-					else if(rect_sel->y == quitter.y){
-						rect_sel->y = charger.y;
+					else if((*rect_sel)->y == quitter.y - RECT_SELECT_Y_DIFF){
+						(*rect_sel)->y = charger.y - RECT_SELECT_Y_DIFF;
 					}
 				}
 			}
@@ -74,7 +75,7 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 * \brief Affiche sur le rendu les différentes textures et rectangles passés en paramètre
 
 */
-void affichage_menu(SDL_Renderer *rendu, SDL_Texture *jouer_text, SDL_Texture *charger_text, SDL_Texture *quitter_text, SDL_Rect rect_sel, SDL_Rect jouer_rect, SDL_Rect charger_rect, SDL_Rect quitter_rect){
+void affichage_menu(SDL_Renderer *rendu, SDL_Texture *jouer_text, SDL_Texture *charger_text, SDL_Texture *quitter_text, SDL_Rect *rect_sel, SDL_Rect jouer_rect, SDL_Rect charger_rect, SDL_Rect quitter_rect){
 
 	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
 
@@ -82,7 +83,7 @@ void affichage_menu(SDL_Renderer *rendu, SDL_Texture *jouer_text, SDL_Texture *c
 
 	SDL_SetRenderDrawColor(rendu, 255,255,255,255); //couleur blanche pour dessiner le rectangle_selection
 
-	SDL_RenderDrawRect(rendu, &rect_sel);
+	SDL_RenderDrawRect(rendu, rect_sel);
 
 	//affichages des textes
 	SDL_RenderCopy(rendu, jouer_text, NULL, &jouer_rect);
@@ -106,7 +107,8 @@ void affichage_menu(SDL_Renderer *rendu, SDL_Texture *jouer_text, SDL_Texture *c
 */ 
 void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police){
 
-	SDL_Rect jouer_text, charger_text, quitter_text, rectangle_selection;
+	SDL_Rect jouer_text, charger_text, quitter_text;
+	SDL_Rect *rectangle_selection = malloc(sizeof(SDL_Rect));
 	SDL_Texture *jouer_texture, *charger_texture, *quitter_texture;
 
 	int x_jouer = WIN_WIDTH / 2-175, x_charger = WIN_WIDTH / 2- 150, x_quitter = WIN_WIDTH / 2 - 100;
@@ -119,10 +121,10 @@ void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police)
 	get_text_and_rect(rendu, x_charger, y_charger, charger, police, &charger_texture, &charger_text);
 	get_text_and_rect(rendu, x_quitter, y_quitter, quitter, police, &quitter_texture, &quitter_text);
 
-	rectangle_selection.x = jouer_text.x - 50;
-	rectangle_selection.y = jouer_text.y - 25;
-	rectangle_selection.w = jouer_text.w +100;
-	rectangle_selection.h = jouer_text.h +50;
+	rectangle_selection->x = jouer_text.x - RECT_SELECT_X_DIFF;
+	rectangle_selection->y = jouer_text.y - RECT_SELECT_Y_DIFF;
+	rectangle_selection->w = jouer_text.w +100;
+	rectangle_selection->h = jouer_text.h +50;
 
 	while(*continuer && *etat == mainMenu){
 
@@ -132,6 +134,8 @@ void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police)
 		*continuer = deplacement_rectangle_selection(jouer_text, charger_text, quitter_text, &rectangle_selection);
 
 	}
+
+	free(rectangle_selection);
 
 	SDL_DestroyTexture(jouer_texture);
 	SDL_DestroyTexture(charger_texture);

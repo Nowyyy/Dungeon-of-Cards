@@ -24,7 +24,7 @@ int main(void){
 
 	TTF_Font *police = NULL;
 
-	int continuer = 1, etat = labyrinthe;
+	int continuer = 1, etat = mainMenu/*labyrinthe*/;
 
 //************************* INITIALISATION SDL + TTF ********************************************************
 

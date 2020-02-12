@@ -40,6 +40,9 @@
 
 #define VITESSE_PERSO 5
 
+#define RECT_SELECT_Y_DIFF 25
+#define RECT_SELECT_X_DIFF 50
+
 /**
 * \enum t_types_textures
 
