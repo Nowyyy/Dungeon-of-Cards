@@ -19,7 +19,6 @@
 #include <time.h>
 
 
-int cpt = 0;
 /**
 * \fn charge_toutes_textures
 
@@ -139,7 +138,7 @@ void generation_laby_alea(int nb_salle){
 			init_salle(dest->salle);
 
 			nb -= aleatoire_porte(dest, porte_arrivee, nb_salle);
-			cpt++;
+
 			generation_laby_alea(nb);
 		}
 		else{
@@ -185,31 +184,27 @@ void creer_premiere_salle(salle_t *salle, int nb_salles_a_creer){
 
 *\bief détruit toues les salles créées dynamiquement par appel récusif
 
-* \param nb_salles_a_detruire, nb de salles a detruire
 * \param *salle, la salle a détruire
 */
 void detruire_salles(salle_t *salle){
 
-	salle_t *s_haut, *s_bas, *s_droite, *s_gauche;
+	salle_t *s_haut = NULL, *s_bas = NULL, *s_droite = NULL, *s_gauche = NULL;
 
 	if(salle->salle_droite != NULL){
 		s_droite = salle->salle_droite;
 		salle->salle_droite->salle_gauche = NULL;
 	}
-	else if(salle->salle_gauche != NULL){
+	if(salle->salle_gauche != NULL){
 		s_gauche = salle->salle_gauche;
-
 	}
-	else if(salle->salle_bas != NULL){
+	if(salle->salle_bas != NULL){
 		s_bas = salle->salle_bas;
 		salle->salle_bas->salle_haut = NULL;
 	}
-	else if(salle->salle_haut != NULL){
+	if(salle->salle_haut != NULL){
 		s_haut = salle->salle_haut;
 		salle->salle_haut->salle_bas = NULL;
-	}
-	cpt--;
-	printf("%d\n", cpt);	
+	}	
 	
 	free(salle);
 
