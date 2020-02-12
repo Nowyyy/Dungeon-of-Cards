@@ -93,40 +93,72 @@ void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction){
 
 /**
  * \fn afficher_salle(int salle[TAILLE_SALLE][TAILLE_SALLE])
+
  * \brief fonction qui génère une salle en un tableau
- * \param salle[TAILLE_SALLE][TAILLE_SALLE] est le tableau de TAILLE_SALLE qui comprend la salle
+
+ * \param *salle est une salle comportant le tableau a afficher
  * \param *rendu, le renderer sur lequel on dessine
  * \param texture[], contient toutes les images utilisées sauf celle du personnage
 
- * \return le nombre de murs dans la salle
  */
-int afficher_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], SDL_Renderer *rendu, t_image texture[], SDL_Rect murs[]){
+void afficher_salle(salle_t *salle, SDL_Renderer *rendu, t_image texture[]){
 
   int coorX = EMPLACEMENT_DEPART_DESSIN_SALLE_X, coorY = EMPLACEMENT_DEPART_DESSIN_SALLE_Y;
-  int indice = 0;
 
   for(int i = 0; i<TAILLE_SALLE; i++){
 
     for(int j=0; j<TAILLE_SALLE; j++){
-      texture[salle[i][j]].rectangle.x = coorX;
-      texture[salle[i][j]].rectangle.y = coorY;
 
-      if(salle[i][j] == mur){
-        murs[indice].x = coorX;
-        murs[indice].y = coorY;
-        murs[indice].w = TAILLE_IMAGE;
-        murs[indice++].h = TAILLE_IMAGE;
-      }
+      texture[salle->salle[i][j]].rectangle.x = coorX;
+      texture[salle->salle[i][j]].rectangle.y = coorY;
 
-      SDL_RenderCopy(rendu, texture[salle[i][j]].img, NULL, &texture[salle[i][j]].rectangle);
+      SDL_RenderCopy(rendu, texture[salle->salle[i][j]].img, NULL, &texture[salle->salle[i][j]].rectangle);
 
       coorX += TAILLE_IMAGE;
     }
     coorX = 256;
     coorY += TAILLE_IMAGE;
   }
+}
 
-  return indice;
+
+
+/**
+* \fn rempli_tableau_salle_murs_portes
+
+* \param *salle la salle pour laquelle on va completer les tableaux
+
+* \brief rempli les tableaux des murs et des portes de la salle afin de pouvoir gérer les collisions plus tard
+*/
+void rempli_tableau_murs_portes(salle_t *salle){
+
+  int indice = 0, indice_porte = 0;
+  int coorX = EMPLACEMENT_DEPART_DESSIN_SALLE_X, coorY = EMPLACEMENT_DEPART_DESSIN_SALLE_Y;
+
+  for(int i = 0; i<TAILLE_SALLE; i++){
+
+    for(int j=0; j<TAILLE_SALLE; j++){
+
+      if(salle->salle[i][j] == mur){
+        salle->murs[indice].x = coorX;
+        salle->murs[indice].y = coorY;
+        salle->murs[indice].w = TAILLE_IMAGE;
+        salle->murs[indice++].h = TAILLE_IMAGE;
+      }
+      else if(salle->salle[i][j] == porte){
+        salle->portes[indice_porte].x = coorX;
+        salle->portes[indice_porte].y = coorY;
+        salle->portes[indice_porte].w = TAILLE_IMAGE;
+        salle->portes[indice_porte++].h = TAILLE_IMAGE;
+      }
+      coorX += TAILLE_IMAGE;
+    }
+    coorX = 256;
+    coorY += TAILLE_IMAGE;
+  }
+
+  salle->nb_murs = indice;
+  salle->nb_portes = indice_porte;
 }
 
 /**

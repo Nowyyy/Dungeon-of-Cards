@@ -72,7 +72,7 @@ void affichage_salle_personnage(t_perso pers, salle_t *salle, SDL_Renderer *rend
 		SDL_RenderCopy(rendu, images[instructions].img, NULL, &images[instructions].rectangle);
 	}
 
-	salle->nb_murs = afficher_salle(salle->salle, rendu, images, salle->murs);
+	afficher_salle(salle, rendu, images);
 
 	SDL_RenderCopy(rendu, pers.sprites[0].img, NULL, &pers.sprites[0].rectangle);
 
@@ -139,6 +139,8 @@ void generation_laby_alea(int nb_salle){
 
 			nb -= aleatoire_porte(dest, porte_arrivee, nb_salle);
 
+			rempli_tableau_murs_portes(dest);
+
 			generation_laby_alea(nb);
 		}
 		else{
@@ -172,8 +174,9 @@ void creer_premiere_salle(salle_t *salle, int nb_salles_a_creer){
 	//initialise la salle et créé les portes dans la matrice
 	init_salle(salle->salle);
 
-	nb_salles_a_creer -= aleatoire_porte(salle, rand()%4, nb_salles_a_creer); //on indique -1 pour préciser qu'il n'y a pas besoin de génerer 
-	//de porte d'arrivée car c'est la première salle
+	nb_salles_a_creer -= aleatoire_porte(salle, rand()%4, nb_salles_a_creer); 
+
+	rempli_tableau_murs_portes(salle);
 
 	generation_laby_alea(nb_salles_a_creer);
 }

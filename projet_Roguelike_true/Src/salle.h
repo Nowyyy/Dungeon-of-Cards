@@ -1,4 +1,5 @@
 void init_salle(int salle[TAILLE_SALLE][TAILLE_SALLE]);
 void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction);
 int aleatoire_porte(salle_t *salle, int porte_arrivee, int max_porte);
-int afficher_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], SDL_Renderer *rendu, t_image texture[], SDL_Rect murs[]);
+void afficher_salle(salle_t *salle, SDL_Renderer *rendu, t_image texture[]);
+void rempli_tableau_murs_portes(salle_t *salle);
