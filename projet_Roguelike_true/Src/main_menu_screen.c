@@ -23,7 +23,7 @@
 
 * \return retourne False pour fermer la fenetre, True pour la garder  ouverte
 */
-int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect quitter, SDL_Rect **rect_sel){
+int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect quitter, SDL_Rect **rect_sel, int *etat){
 
 	SDL_Event event;
 
@@ -41,7 +41,6 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 				}
 			}
 			else if(event.key.keysym.sym == SDLK_UP){
-				printf("rectangle_selection x = %d, jouer.x = %d\n", (*rect_sel)->y, jouer.y);
 				if((*rect_sel)->y != jouer.y){//on n'est pas sur la premiere option, on peut monter
 					if((*rect_sel)->y == charger.y - RECT_SELECT_Y_DIFF){
 						(*rect_sel)->y = jouer.y - RECT_SELECT_Y_DIFF;
@@ -49,6 +48,17 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 					else if((*rect_sel)->y == quitter.y - RECT_SELECT_Y_DIFF){
 						(*rect_sel)->y = charger.y - RECT_SELECT_Y_DIFF;
 					}
+				}
+			}
+			else if(event.key.keysym.sym == SDLK_RETURN){//touche entrée
+				if((*rect_sel)->y == jouer.y - RECT_SELECT_Y_DIFF){
+					*etat = labyrinthe;
+				}
+				else if((*rect_sel)->y == quitter.y - RECT_SELECT_Y_DIFF){
+					return FALSE;
+				}
+				else if((*rect_sel)->y == charger.y - RECT_SELECT_Y_DIFF){
+					//*etat = charger_partie;
 				}
 			}
 		}
@@ -131,7 +141,7 @@ void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police)
 		
 		affichage_menu(rendu, jouer_texture, charger_texture, quitter_texture, rectangle_selection, jouer_text, charger_text, quitter_text);
 
-		*continuer = deplacement_rectangle_selection(jouer_text, charger_text, quitter_text, &rectangle_selection);
+		*continuer = deplacement_rectangle_selection(jouer_text, charger_text, quitter_text, &rectangle_selection, etat);
 
 	}
 

@@ -57,7 +57,7 @@ typedef enum{sol =0, mur, porte, commandes, instructions}t_types_textures;
 * \brief les états que peut prendre le jeu afin de naviguer entre les menus
 */
 
-typedef enum{mainMenu = 0, labyrinthe, tourParTour, pauseScreen}t_etat;
+typedef enum{mainMenu = 0, labyrinthe, tourParTour, pauseScreen, charger_partie}t_etat;
 
 
 
