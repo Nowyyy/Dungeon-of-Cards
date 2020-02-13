@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include "structures.h"
+#include "constantes.h"
 #include "fonctions.h"
 /*!
 * \file cartes.c
