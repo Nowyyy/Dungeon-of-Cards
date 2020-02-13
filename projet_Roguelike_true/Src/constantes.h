@@ -140,9 +140,9 @@ typedef struct ennemi_s {
 */
 
 typedef struct carte_s {
-  char * nom ;
-  type_carte type;
-  int * cible;
-  int valeur;
+  char * nom ;/** Nom d'une carte */
+  type_carte type;/** Type d'une carte */
+  int * cible;/** Cible d'une carte */
+  int valeur;/** Valeur d'une carte */
 } carte_t ;
 © 2020 GitHub, Inc.
