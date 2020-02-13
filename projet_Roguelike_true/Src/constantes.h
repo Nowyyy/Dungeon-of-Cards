@@ -33,6 +33,9 @@
 
 #define TAILLE_IMAGE 64 //taille du coté d'une image
 
+#define TAILLE 20 //Taille des chaînes de caractères
+#define TAILLE_DECK 5
+
 #define NB_SPRITES_PERSONNAGE 12
 
 #define EMPLACEMENT_DEPART_DESSIN_SALLE_X 256
@@ -58,6 +61,14 @@ typedef enum{sol =0, mur, porte, commandes, instructions}t_types_textures;
 */
 
 typedef enum{mainMenu = 0, labyrinthe, tourParTour, pauseScreen, charger_partie}t_etat;
+
+/**
+* \enum type_carte
+
+* \brief Les différents types de cartes
+*/
+
+typedef enum {ATTAQUE = -1, DEFENSE = 1} type_carte ;
 
 
 
@@ -90,12 +101,49 @@ typedef struct salle_s{
 }salle_t;
 
 
+
+
+
+
+
+
 /**
-\struct t_perso
+\struct perso_t
 \brief Représente un personnage, ses sprites et ses coordonnées
 */
-typedef struct{
 
-	int x, y;
-	t_image sprites[NB_SPRITES_PERSONNAGE];
-}t_perso;
+typedef struct perso_s {
+  int pv;
+  int vitesse;
+  int attaque;
+  int defense;
+  int x;
+  int y;
+  image_t sprites[NB_SPRITES_PERSONNAGE];
+} perso_t;
+
+/**
+\struct ennemi_t
+\brief Représente un ennemi, ses statistiques
+*/
+
+typedef struct ennemi_s {
+  int pv;
+  int vitesse;
+  int attaque;
+  int defense;
+  char* nom;
+} ennemi_t;
+
+/**
+\struct carte_t
+\brief Représente une carte
+*/
+
+typedef struct carte_s {
+  char * nom ;
+  type_carte type;
+  int * cible;
+  int valeur;
+} carte_t ;
+© 2020 GitHub, Inc.
