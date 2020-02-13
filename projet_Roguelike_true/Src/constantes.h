@@ -146,4 +146,3 @@ typedef struct carte_s {
   int * cible;/** Cible d'une carte */
   int valeur;/** Valeur d'une carte */
 } carte_t ;
-© 2020 GitHub, Inc.
