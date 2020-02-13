@@ -61,13 +61,8 @@ int main(void){
 							boucle_labyrinthe(&continuer, &etat, rendu);
 							
 						}
-						else if(etat == tourParTour){
-							//le combat tour par tour, le fait de le séparer fera une pause automatique dans
-							//toutes les actions qui pourraient se passer dans le laby pendant le combat
-						}
-						else if(etat == pauseScreen){
-
-							//ecran de pause en jeu tpt ou laby
+						else if(etat == charger_partie){
+							//charge les données du joueurs afin qu'il reprenne là où il s'était arrêté
 						}
 					}
 				}

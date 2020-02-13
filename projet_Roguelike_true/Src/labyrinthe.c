@@ -29,7 +29,7 @@
 * \brief Permet de charger toutes les images et de les ranger dans les structures correspondantes
 
 */
-void charge_toutes_textures(t_image images[], t_perso *pers, SDL_Renderer *rendu){
+void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu){
 
 	charge_image(SOL1_PATH,&images[sol], rendu);
 	charge_image(MUR1_PATH,&images[mur], rendu);
@@ -61,7 +61,7 @@ void charge_toutes_textures(t_image images[], t_perso *pers, SDL_Renderer *rendu
 * \brief Permet d'afficher une salle, le personnage et si on est dans la premiere salle, les instructions et commandes du jeu
 
 */
-void affichage_salle_personnage(t_perso pers, salle_t *salle, SDL_Renderer *rendu, t_image images[]){
+void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[]){
 
 	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
 
@@ -222,6 +222,267 @@ void detruire_salles(salle_t *salle){
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void liaison_entre_salles(salle_t *src, salle_t *dest, int max_salles){
+
+	if(src->haut == 1){
+		src->haut = 0;
+		src->salle_haut = dest;
+		dest->salle_bas = src;
+		dest->nb_portes = aleatoire_porte(dest, 0, max_salles);
+	}
+	else if(src->droite == 1){
+		src->droite = 0;
+		src->salle_droite = dest;
+		dest->salle_gauche = src;
+		dest->nb_portes = aleatoire_porte(dest, 1, max_salles);
+	}
+	else if(src->bas == 1){
+		src->bas = 0;
+		src->salle_bas = dest;
+		dest->salle_haut = src;
+		dest->nb_portes = aleatoire_porte(dest, 2, max_salles);
+	}
+	else if(src->gauche == 1){
+		src->gauche = 0;
+		src->salle_gauche = dest;
+		dest->salle_droite = src;
+		dest->nb_portes = aleatoire_porte(dest, 3, max_salles);
+	}
+}
+
+
+
+//créé les salles par malloc, mets les pointeurs à NULL, initialise l'intérieur des salles
+void creer_salles(salle_t *salles[], int taille){
+
+	int i;
+
+	for(i = 0; i < taille; i++){
+		salles[i] = malloc(sizeof(salle_t));
+		if(!salles[i])
+			printf("Erreur création salles malloc\n");
+		else{
+			salles[i]->salle_haut = NULL;
+			salles[i]->salle_bas = NULL;
+			salles[i]->salle_droite = NULL;
+			salles[i]->salle_gauche = NULL;
+			salles[i]->salle_prec = NULL;
+			salles[i]->haut = 0;
+			salles[i]->bas = 0;
+			salles[i]->gauche = 0;
+			salles[i]->droite = 0;
+		}
+	}
+
+	for(i = 0; i < taille; i++){
+		init_salle(salles[i]->salle);
+	}
+}
+
+
+int cherche_portes_non_connectees(salle_t *salles[], int taille, int indice, int position){
+
+	int i = indice, position_salle;
+
+	switch(position){
+		case 0 : position_salle = 2; break;
+		case 1 : position_salle = 3; break;
+		case 2 : position_salle = 0; break;
+		case 3 : position_salle = 1; break;
+	}
+
+	while(i < taille){
+		if(salles[i]->bas && position_salle == 2){
+			return i;
+		}
+		else if(salles[i]->haut && position_salle == 0){
+			return i;
+		}
+		else if(salles[i]->droite && position_salle == 1){
+			return i;
+		}
+		else if (salles[i]->gauche && position_salle == 3){
+			return i;
+		}
+		i++;
+	}
+	return -1;
+}
+
+int porte_non_connectee(salle_t *salle){
+
+	if(salle->bas)
+		return 2;
+	if(salle->haut)
+		return 0;
+	if(salle->droite)
+		return 1;
+	if(salle->gauche)
+		return 3;
+
+	return -1;
+}
+
+
+void cree_liaisons(salle_t *s1, salle_t *s2, int porteS1){
+
+	switch(porteS1){
+
+		case 0 : s1->salle_haut = s2; 
+				 s2->salle_bas = s1;
+				 s1->haut = 0;
+				 s2->bas = 0;
+				 break;
+		case 1 : s1->salle_droite = s2; 
+				 s2->salle_gauche = s1;
+				 s1->droite = 0;
+				 s2->gauche = 0;
+				 break;
+		case 2 : s1->salle_bas = s2; 
+				 s2->salle_haut = s1;
+				 s1->bas = 0;
+				 s2->haut = 0;
+				 break;
+		case 3 : s1->salle_gauche = s2; 
+				 s2->salle_droite = s1;
+				 s1->gauche = 0;
+				 s2->droite = 0;
+				 break;
+	}
+}
+
+
+void cree_salle_copine_et_lie(salle_t *s1, salle_t **s2, int porteS1){
+
+	(*s2) = malloc(sizeof(salle_t));
+	init_salle((*s2)->salle);
+
+	if(!(*s2))
+		printf("Erreur création salle copine\n");
+	else{
+
+		switch(porteS1){
+
+		case 0 : s1->salle_haut = (*s2); 
+				 (*s2)->salle_bas = s1;
+				 (*s2)->haut = 0;
+				 (*s2)->salle_haut = NULL;
+				 (*s2)->salle_droite = NULL;
+				 (*s2)->salle_gauche = NULL;
+				 aleatoire_porte((*s2), 2, 0);
+				 break;
+		case 1 : s1->salle_droite = (*s2); 
+				 (*s2)->salle_gauche = s1;
+				 s1->droite = 0;
+				 (*s2)->salle_haut = NULL;
+				 (*s2)->salle_droite = NULL;
+				 (*s2)->salle_bas = NULL; 
+				 aleatoire_porte((*s2), 3, 0);
+				 break;
+		case 2 : s1->salle_bas = (*s2); 
+				 (*s2)->salle_haut = s1;
+				 s1->bas = 0;
+				 (*s2)->salle_bas = NULL;
+				 (*s2)->salle_droite = NULL;
+				 (*s2)->salle_gauche = NULL;
+				 aleatoire_porte((*s2), 0, 0);
+				 break;
+		case 3 : s1->salle_gauche = (*s2); 
+				 (*s2)->salle_droite = s1;
+				 s1->gauche = 0;
+				 (*s2)->salle_haut = NULL;
+				 (*s2)->salle_gauche = NULL;
+				 (*s2)->salle_bas = NULL;
+				 aleatoire_porte((*s2), 1, 0);
+				 break;
+		}
+
+		(*s2)->bas = 0;
+		(*s2)->droite = 0;
+		(*s2)->gauche = 0;
+		(*s2)->haut = 0;
+	}
+
+}
+
+
+int connecte_salles_restantes(salle_t *salles[], int taille){
+
+	int i = 0, porte, salle_copine;
+
+	while(i < taille){
+		porte =  porte_non_connectee(salles[i]);
+
+		if(porte >= 0){
+			salle_copine = cherche_portes_non_connectees(salles, taille, i+1, porte);
+			if(salle_copine != -1)
+				cree_liaisons(salles[i], salles[salle_copine], porte);
+			else{
+				salles = realloc(salles, sizeof(salle_t)*(taille+1));
+				taille++;
+				cree_salle_copine_et_lie(salles[i], &salles[taille-1], porte);
+			}
+		}
+		else{
+			i++;
+		}
+	}
+
+	return taille;
+}
+
+
+int generer_labyrinthe_aleatoire(salle_t *salles[], int taille){
+
+	int max_salles = taille - 1, indice = 0, fin = taille -1;
+	srand(time(NULL));
+
+	creer_salles(salles, taille);
+
+	while(max_salles > 0 || indice < taille && indice != fin){
+
+		salles[indice]->nb_portes = aleatoire_porte(salles[indice], -1, max_salles);
+
+		max_salles -= salles[indice]->nb_portes;
+
+		for(int j = 0; j < salles[indice]->nb_portes; j++, fin--){
+			liaison_entre_salles(salles[indice], salles[fin], max_salles);
+		}
+		indice++;
+	}
+
+	taille = connecte_salles_restantes(salles, taille);
+
+	for(int i = 0; i < taille; i++){
+		rempli_tableau_murs_portes(salles[i]);
+	}
+
+	return taille;
+}
+
 /**
 * \fn boucle_labyrinthe
 
@@ -235,26 +496,25 @@ void detruire_salles(salle_t *salle){
 void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu){
 
 
-	t_image images[5];
+	image_t images[5];
 
-	t_perso pers;
+	perso_t pers;
 
 	pers.x = WIN_WIDTH / 2;
 	pers.y = WIN_HEIGHT / 2;
 
-	int nb_salles_a_creer = 15;
+	int taille = 15;
 
-	init_file();
+	salle_t **salles = malloc(sizeof(salle_t)*taille);
 	
-	salle_t *salle_depart = malloc(sizeof(salle_t));
-	salle_t *salle_courante;
+	salle_t *salle_depart, *salle_courante;
 
-	if(salle_depart == NULL)
-		printf("Erreur création salle départ\n");
-
-	creer_premiere_salle(salle_depart, nb_salles_a_creer);
+	//creer_premiere_salle(salle_depart, nb_salles_a_creer);
+	taille = generer_labyrinthe_aleatoire(salles, taille);
 
 	charge_toutes_textures(images, &pers, rendu);
+
+	salle_depart = salles[0];
 
 	salle_courante = salle_depart;
 	
@@ -265,7 +525,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu){
 		deplacement_personnage(&pers, *salle_courante, continuer);
 	}
 
-	detruire_salles(salle_depart);
+	//detruire_salles(salle_depart);
 
 	//on libère tous les emplacements mémoires utilisés par les images
 	SDL_DestroyTexture(images[instructions].img);

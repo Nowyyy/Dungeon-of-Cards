@@ -70,8 +70,6 @@ typedef enum{mainMenu = 0, labyrinthe, tourParTour, pauseScreen, charger_partie}
 
 typedef enum {ATTAQUE = -1, DEFENSE = 1} type_carte ;
 
-
-
 /**
 * \struct t_image
 
@@ -99,14 +97,6 @@ typedef struct salle_s{
   int nb_murs, haut, bas, gauche, droite, nb_portes;
 
 }salle_t;
-
-
-
-
-
-
-
-
 
 
 /**

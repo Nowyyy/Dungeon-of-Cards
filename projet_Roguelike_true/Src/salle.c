@@ -101,7 +101,7 @@ void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction){
  * \param texture[], contient toutes les images utilisées sauf celle du personnage
 
  */
-void afficher_salle(salle_t *salle, SDL_Renderer *rendu, t_image texture[]){
+void afficher_salle(salle_t *salle, SDL_Renderer *rendu, image_t texture[]){
 
   int coorX = EMPLACEMENT_DEPART_DESSIN_SALLE_X, coorY = EMPLACEMENT_DEPART_DESSIN_SALLE_Y;
 
@@ -172,7 +172,6 @@ void rempli_tableau_murs_portes(salle_t *salle){
  */
 int aleatoire_porte(salle_t *salle, int porte_arrivee, int max_porte){
 
-  srand(time(NULL));
   int alea;
   int cmp = 0;
 
@@ -182,22 +181,24 @@ int aleatoire_porte(salle_t *salle, int porte_arrivee, int max_porte){
     ajout_porte_salle(salle->salle, 0);
     cmp++;
     salle->haut = 1;
-    ajoute_file(salle);
   }
   else if(porte_arrivee == 0){
     ajout_porte_salle(salle->salle, 0);
+    salle->haut = 1;
+    cmp++;
   }
 
-  //Ouest
+  //Est
   alea = rand()%9;
   if((alea > 5 && porte_arrivee != 1 ) && max_porte -cmp > 0){
     ajout_porte_salle(salle->salle, 1);
     cmp++;
-    salle->gauche = 1;
-    ajoute_file(salle);
+    salle->droite = 1;
   }
   else if(porte_arrivee == 1){
     ajout_porte_salle(salle->salle, 1);
+    salle->droite = 1;
+    cmp++;
   }
 
   //Sud
@@ -206,22 +207,24 @@ int aleatoire_porte(salle_t *salle, int porte_arrivee, int max_porte){
     ajout_porte_salle(salle->salle, 2);
     cmp++;
     salle->bas = 1;
-    ajoute_file(salle);
   }
   else if(porte_arrivee == 2){
     ajout_porte_salle(salle->salle, 2);
+    salle->bas = 1;
+    cmp++;
   }
 
-  //Est
+  //Ouest
   alea = rand()%9;
   if((alea > 5 && porte_arrivee != 3) && max_porte - cmp > 0){
     ajout_porte_salle(salle->salle, 3);
     cmp++;
-    salle->droite = 1;
-    ajoute_file(salle);
+    salle->gauche = 1;
   }
   else if(porte_arrivee == 3){
     ajout_porte_salle(salle->salle, 3);
+    salle->gauche = 1;
+    cmp++;
   }
 
   if(cmp == 0 && max_porte > 0){
@@ -234,7 +237,6 @@ int aleatoire_porte(salle_t *salle, int porte_arrivee, int max_porte){
       case 2: salle->bas = 1; ajout_porte_salle(salle->salle, 2); break;
       case 3: salle->gauche = 1; ajout_porte_salle(salle->salle, 3); break;
     }
-    ajoute_file(salle);
     cmp++;
   }
 

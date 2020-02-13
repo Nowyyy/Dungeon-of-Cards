@@ -24,7 +24,7 @@ int initialisation_sdl(SDL_Window **window, SDL_Renderer **rendu){
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 		return 1;
 
-	*window = SDL_CreateWindow("fenetre", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_SHOWN);
+	*window = SDL_CreateWindow("Roguelike", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_SHOWN);
 
 	if(window == NULL)
 		return 1;
@@ -132,7 +132,7 @@ extern void get_text_and_rect(SDL_Renderer *renderer, int x, int y, char *text,T
 
 * \return 1 si echec, 0 si réussite
 */
-int charge_image(char *path_img, t_image *struct_image, SDL_Renderer *rendu){
+int charge_image(char *path_img, image_t *struct_image, SDL_Renderer *rendu){
 
 	SDL_Surface *image = IMG_Load(path_img);
 

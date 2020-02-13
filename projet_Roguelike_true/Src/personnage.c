@@ -22,7 +22,7 @@
 
 *\brief fonction qui charge tous les sprites du personnage
 */
-void charge_sprites_personnage(t_image sprites[], SDL_Renderer *rendu){
+void charge_sprites_personnage(image_t sprites[], SDL_Renderer *rendu){
 
 	//for(int i = 0; i < NB_SPRITES_PERSONNAGE; i++){
 		charge_image(SPRITE_PATH, &sprites[0], rendu);
@@ -41,7 +41,7 @@ void charge_sprites_personnage(t_image sprites[], SDL_Renderer *rendu){
 
 * \return 1 en cas de collision, 0 si aucune collision
 */
-int test_collision(salle_t salle, t_perso pers, int direction){
+int test_collision(salle_t salle, perso_t pers, int direction){
 
 	int i = 0;
 
@@ -76,7 +76,7 @@ int test_collision(salle_t salle, t_perso pers, int direction){
 
 * \brief Gère les déplacement du personnage dans une salle
 */
-void deplacement_personnage(t_perso *pers, salle_t salle, int *continuer){
+void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer){
 
 	SDL_Event event;
 
