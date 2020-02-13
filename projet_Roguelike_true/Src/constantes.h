@@ -121,7 +121,7 @@ typedef struct perso_s {
   int x;/**Placement sur l'axe des abscisses d'un personnage*/
   int y;/**Placement sur l'axe des ordonnés d'un personnage*/
   image_t sprites[NB_SPRITES_PERSONNAGE];
-} perso_t
+} perso_t;
 
 /**
 *\struct ennemi_t
@@ -133,7 +133,7 @@ typedef struct ennemi_s {
   int attaque;/**Attaque d'un ennemi*/
   int defense;/**Défense d'un ennemi*/
   char* nom;/** Nom de l'ennemi*/
-} ennemi_t
+} ennemi_t;
 
 /**
 \struct carte_t
