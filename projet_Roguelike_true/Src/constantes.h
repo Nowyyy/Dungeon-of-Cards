@@ -4,7 +4,7 @@
 * \date 30/01/2020
 * \version 0.1
 
-* \brief Constantes et structures du projet Casse-brique
+* \brief Constantes et structures du projet Roguelike
 */
 
 #include <SDL2/SDL.h>
