@@ -81,7 +81,7 @@ typedef struct{
 
 	SDL_Texture *img;
 	SDL_Rect rectangle;
-}t_image;
+}image_t;
 
 /**
 \struct salle_t
@@ -120,6 +120,7 @@ typedef struct perso_s {
   int defense;/**Défense d'un personnage*/
   int x;/**Placement sur l'axe des abscisses d'un personnage*/
   int y;/**Placement sur l'axe des ordonnés d'un personnage*/
+  image_t sprites[NB_SPRITES_PERSONNAGE];
 } perso_t
 
 /**
