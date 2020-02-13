@@ -1,9 +1,7 @@
 void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu);
 void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[]);
 void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu);
-void generation_laby_alea(int nb_salle);
-void creer_premiere_salle(salle_t *salle, int nb_salles_a_creer);
-void detruire_salles(salle_t *salle);
+void detruire_salles(salle_t *salle[], int taille);
 void creer_salles(salle_t *salles[], int taille);
 int cherche_portes_non_connectees(salle_t *salles[], int taille, int indice, int position);
 int porte_non_connectee(salle_t *salle);

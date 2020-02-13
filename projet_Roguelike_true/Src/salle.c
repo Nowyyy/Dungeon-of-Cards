@@ -7,7 +7,6 @@
  */
 
 #include "constantes.h"
-#include "file.h"
 
 /**
  * \fn init_salle(int salle[TAILLE_SALLE][TAILLE_SALLE])

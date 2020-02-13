@@ -114,3 +114,64 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer){
 	pers->sprites[0].rectangle.x = pers->x;
 	pers->sprites[0].rectangle.y = pers->y;
 }
+
+
+
+/**
+* \fn changement_de_salle
+
+* \param *pers, la structure du personnage
+* \param *salle, la salle dans laquelle on se trouve
+* \param *continuer la variable permettant de quitter le jeu
+
+* \brief permet de téléporter le personnage dans la salle dont il passe la porter
+
+* \return la salle dans laquelle le joueur arrive
+*/
+salle_t *changement_de_salle(perso_t *pers, salle_t *salle){
+
+	SDL_Event event;
+	salle_t *salle_s = salle;
+
+	for(int i = 0; i < salle->nb_portes; i++){
+		if(SDL_HasIntersection(&salle->portes[i], &pers->sprites[0].rectangle)){
+			salle_s = salle->salle_bas;
+		//	pers->x = TAILLE_SALLE / 2 - TAILLE_IMAGE / 2;
+		//pers->y = TAILLE_IMAGE +5;
+			pers->x = WIN_WIDTH / 2;
+			pers->y = WIN_HEIGHT / 2;
+		}
+	}
+	for(int i = 0; i < salle->nb_portes; i++){
+		if(SDL_HasIntersection(&salle->portes[i], &pers->sprites[0].rectangle)){
+			salle_s = salle->salle_droite;
+			/*pers->x = TAILLE_IMAGE + 5;
+			pers->y = TAILLE_SALLE /2 - TAILLE_IMAGE /2;*/
+			pers->x = WIN_WIDTH / 2;
+			pers->y = WIN_HEIGHT / 2;
+		}
+	}
+	for(int i = 0; i < salle->nb_portes; i++){
+		if(SDL_HasIntersection(&salle->portes[i], &pers->sprites[0].rectangle)){
+			salle_s = salle->salle_gauche;
+			/*pers->x = TAILLE_SALLE - TAILLE_IMAGE - 5;
+			pers->y = TAILLE_SALLE /2 - TAILLE_IMAGE /2;*/
+			pers->x = WIN_WIDTH / 2;
+			pers->y = WIN_HEIGHT / 2;
+		}
+	}
+	for(int i = 0; i < salle->nb_portes; i++){
+		if(SDL_HasIntersection(&salle->portes[i], &pers->sprites[0].rectangle)){
+			salle_s = salle->salle_haut;
+			/*pers->x = TAILLE_SALLE / 2 - TAILLE_IMAGE / 2;
+			pers->y = TAILLE_SALLE - TAILLE_IMAGE - 5;*/
+			pers->x = WIN_WIDTH / 2;
+			pers->y = WIN_HEIGHT / 2;
+		}
+	}
+
+	pers->sprites[0].rectangle.x = pers->x;
+	pers->sprites[0].rectangle.y = pers->y;
+
+	return salle_s;
+}
