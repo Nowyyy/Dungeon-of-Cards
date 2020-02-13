@@ -107,33 +107,32 @@ typedef struct salle_s{
 
 
 
-/**
-\struct perso_t
-\brief Représente un personnage, ses sprites et ses coordonnées
-*/
 
+
+/**
+*\struct perso_t
+*\Permet de définir un personnage
+*/
 typedef struct perso_s {
-  int pv;
-  int vitesse;
-  int attaque;
-  int defense;
-  int x;
-  int y;
-  image_t sprites[NB_SPRITES_PERSONNAGE];
-} perso_t;
+  int pv;/**Point de vie d'un personnage*/
+  int vitesse;/**Vitesse d'un personnage*/
+  int attaque;/**Attaque d'un personnage*/
+  int defense;/**Défense d'un personnage*/
+  int x;/**Placement sur l'axe des abscisses d'un personnage*/
+  int y;/**Placement sur l'axe des ordonnés d'un personnage*/
+} perso_t
 
 /**
-\struct ennemi_t
-\brief Représente un ennemi, ses statistiques
+*\struct ennemi_t
+*\Permet de définir un ennemi
 */
-
 typedef struct ennemi_s {
-  int pv;
-  int vitesse;
-  int attaque;
-  int defense;
-  char* nom;
-} ennemi_t;
+  int pv;/**Point de vie d'un ennemi*/
+  int vitesse;/**Vitesse d'un ennemi*/
+  int attaque;/**Attaque d'un ennemi*/
+  int defense;/**Défense d'un ennemi*/
+  char* nom;/** Nom de l'ennemi*/
+} ennemi_t
 
 /**
 \struct carte_t
