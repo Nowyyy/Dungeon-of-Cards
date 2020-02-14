@@ -41,7 +41,7 @@
 #define EMPLACEMENT_DEPART_DESSIN_SALLE_X 256
 #define EMPLACEMENT_DEPART_DESSIN_SALLE_Y 40
 
-#define VITESSE_PERSO 5
+#define VITESSE_PERSO 15
 
 #define RECT_SELECT_Y_DIFF 25
 #define RECT_SELECT_X_DIFF 50
@@ -101,14 +101,6 @@ typedef struct salle_s{
 }salle_t;
 
 
-
-
-
-
-
-
-
-
 /**
 *\struct perso_t
 *\Permet de définir un personnage
@@ -147,3 +139,14 @@ typedef struct carte_s {
   int valeur;/** Valeur d'une carte */
   int consommable;/** 1 si la carte est à usage unique*/
 } carte_t ;
+
+// Definition du type d'un element de liste
+typedef struct element {
+  carte_t * carte;
+  struct element* pred;
+  struct element* succ;
+} element_t;
+
+// Declaration des listes (drapeau et element courant)
+element_t* drapeau;
+element_t* ec;
