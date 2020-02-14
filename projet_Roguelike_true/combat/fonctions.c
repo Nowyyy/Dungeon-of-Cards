@@ -14,17 +14,6 @@
 
 // Mise en oeuvre dynamique d'une liste de cartes
 
-// Definition du type d'un element de liste
-typedef struct element {
-  carte_t * carte;
-  struct element* pred;
-  struct element* succ;
-} element_t;
-
-// Declaration des listes (drapeau et element courant)
-element_t* drapeau;
-element_t* ec;
-
 
 // Primitives de manipulation de la liste
 
@@ -85,12 +74,12 @@ void oter_elt(carte_t t){
 		}
 }
 
-void ajout_droit(carte_t t){
+void ajout_droit(carte_t * t){
 	element_t* nouv;
 
 	if (liste_vide() || !hors_liste()){
 		nouv = malloc(sizeof(element_t));
-		nouv->carte = &t;
+		nouv->carte = t;
 		nouv->pred = ec;
 		nouv->succ = ec->succ;
 		(ec->succ)->pred = nouv;
@@ -99,12 +88,12 @@ void ajout_droit(carte_t t){
 	}
 }
 
-void ajout_gauche(carte_t t){
+void ajout_gauche(carte_t * t){
 	element_t* nouv;
 
 	if (liste_vide() || !hors_liste()){
 		nouv = malloc(sizeof(element_t));
-		nouv->carte = &t;
+		nouv->carte = t;
 		nouv->succ = ec;
 		nouv->pred = ec->pred;
 		(ec->pred)->succ = nouv;
@@ -261,13 +250,11 @@ void tour_ennemi(perso_t * perso,ennemi_t * ennemi)
 *\param perso Pointeur sur une structure qui permet de prendre les caractéristiques de l'ennemi qui vont être modifié par l'action du personnage
 *\param deck Pointeur sur un pointeur de fonction qui permet de connaître le deck du personnage
 */
-int tour_perso(int choix,perso_t *perso,ennemi_t * ennemi)
+int tour_perso(int choix,perso_t * perso,ennemi_t * ennemi)
 {
-  choix--;
-  printf("Vous utilisez %s !\n", ec->carte->nom);
-  *(ec->carte->cible) += ec->carte->type * ec->carte->valeur;
-  /*if (deck[choix]->consommable)*/
-
+  int i;
+  for(i = 0, choix--, en_tete();i < choix || !hors_liste();i++, suivant());
+  printf("%s\n", ec->carte->)
 
 }
 
@@ -283,10 +270,9 @@ void combat(perso_t * perso, ennemi_t * ennemi)
     int choix, i;
     printf("Vous avez %d pv et le %s a %d pv\n",perso->pv, ennemi->nom, ennemi->pv);
     printf("Vous avez %d de vitesse et le %s a %d de vitesse\n",perso->vitesse,ennemi->nom, ennemi->vitesse);
-    /*for(i=0 ; !liste_vide() ; i++, suivant()){
+    for(i=0, en_tete() ; !hors_liste() ; i++, suivant()){
       printf("[%d] : %s\n", i+1, ec->carte->nom);
-      suivant();
-    }*/
+    }
     scanf("%d",&choix);
     if (initiative(perso, ennemi)){
       tour_perso(choix, perso, ennemi);
