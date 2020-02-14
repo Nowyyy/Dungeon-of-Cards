@@ -91,12 +91,12 @@ typedef struct salle_s{
 
   int salle[TAILLE_SALLE][TAILLE_SALLE];
 
-  struct salle_s *salle_bas, *salle_haut, *salle_gauche, *salle_droite, *salle_prec;
+  int s_b, s_h, s_g, s_d;
 
   SDL_Rect murs[TAILLE_SALLE*TAILLE_SALLE];
   SDL_Rect portes[TAILLE_SALLE];
 
-  int nb_murs, haut, bas, gauche, droite, nb_portes;
+  int nb_murs, haut, bas, gauche, droite, nb_portes, id;
 
 }salle_t;
 
