@@ -38,7 +38,7 @@ int main(){
   srand(time(NULL));
   int i;
   perso_t * perso = creer_perso();
-  ennemi_t * ennemi = creer_ennemi("zombie");
+  ennemi_t * ennemi = generer_ennemi(1);
   init_liste();
   ajout_droit(creer_carte("soin", DEFENSE, &(perso->pv), 5, 0));
   ajout_droit(creer_carte("potion", DEFENSE, &(perso->pv), 20, 1));

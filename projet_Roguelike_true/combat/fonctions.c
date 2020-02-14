@@ -11,6 +11,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
 // Mise en oeuvre dynamique d'une liste de cartes
 
@@ -152,7 +153,7 @@ perso_t * creer_perso()
 *\param nom pour le nom d'un ennemi
 *\return un pointeur sur une variable structure ennemi_t
 */
-ennemi_t * creer_ennemi(char * nom)
+ennemi_t * creer_ennemi(char * nom, int pv, int vitesse, int attaque, int defense)
 {
   ennemi_t * ennemi = NULL ;
   static unsigned long int cpt = 0 ;
@@ -168,6 +169,10 @@ ennemi_t * creer_ennemi(char * nom)
   ennemi->defense = 10;
 
   return(ennemi);
+}
+
+ennemi_t * generer_ennemi(int niveau){
+  return ennemis_niveau1[0];
 }
 /**
 *\fn void detruire_carte(carte_t ** carte)
@@ -230,11 +235,11 @@ void tour_ennemi(perso_t * perso,ennemi_t * ennemi)
   int i;
   if(ennemi->pv > perso->attaque){
         printf("Le %s attaque \n", ennemi->nom);
-        perso->pv += -10;
+        perso->pv += ennemi->attaque;
       }
   else if (ennemi->pv < perso->attaque){
         printf("Le %s se soigne \n", ennemi->nom);
-        ennemi->pv += 10;
+        ennemi->pv += 5;
       }
   else{
     printf("Le %s tacle \n", ennemi->nom);
@@ -252,9 +257,12 @@ void tour_ennemi(perso_t * perso,ennemi_t * ennemi)
 */
 int tour_perso(int choix,perso_t * perso,ennemi_t * ennemi)
 {
+  en_tete();
+  choix--;
   int i;
-  for(i = 0, choix--, en_tete();i < choix || !hors_liste();i++, suivant());
-  printf("%s\n", ec->carte->)
+  for(i=0;i<choix && !hors_liste();i++,suivant());
+  printf("Vous avez choisi %s\n", ec->carte->nom);
+  *(ec->carte->cible) += ec->carte->valeur * ec->carte->type;
 
 }
 
@@ -266,8 +274,9 @@ int tour_perso(int choix,perso_t * perso,ennemi_t * ennemi)
 */
 void combat(perso_t * perso, ennemi_t * ennemi)
 {
+  int choix, i, vitesse;
+  vitesse = perso->vitesse;
   while(ennemi->pv > 0 && perso->pv > 0){
-    int choix, i;
     printf("Vous avez %d pv et le %s a %d pv\n",perso->pv, ennemi->nom, ennemi->pv);
     printf("Vous avez %d de vitesse et le %s a %d de vitesse\n",perso->vitesse,ennemi->nom, ennemi->vitesse);
     for(i=0, en_tete() ; !hors_liste() ; i++, suivant()){
@@ -291,5 +300,5 @@ void combat(perso_t * perso, ennemi_t * ennemi)
   else{
     printf("Vous avez été vaincu par le %s\n", ennemi->nom);
   }
-
+  perso->vitesse = vitesse;
 }

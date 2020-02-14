@@ -28,7 +28,9 @@ perso_t * creer_perso();
 *\param nom pour le nom d'un ennemi
 *\return un pointeur sur une variable structure ennemi_t
 */
-ennemi_t * creer_ennemi(char *);
+ennemi_t * creer_ennemi(char *, int, int, int, int);
+
+ennemi_t * generer_ennemi(int);
 
 /**
 *\fn void detruire_carte(carte_t **)
@@ -97,5 +99,5 @@ void suivant();
 void valeur_elt(carte_t*);
 void modif_elt(carte_t);
 void oter_elt();
-void ajout_droit(carte_t);
-void ajout_gauche(carte_t);
+void ajout_droit(carte_t*);
+void ajout_gauche(carte_t*);
