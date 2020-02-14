@@ -4,7 +4,6 @@
 #include <time.h>
 #include "constantes.h"
 #include "fonctions.h"
-#include "listes.h"
 /*!
 * \file cartes.c
 * \brief Ce programme contient les fonctions liées aux cartes
@@ -41,8 +40,13 @@ int main(){
   perso_t * perso = creer_perso();
   ennemi_t * ennemi = creer_ennemi("zombie");
   init_liste();
-  ajout_droit(*(creer_carte("soin", DEFENSE, &(perso->pv), 5, 0)));
-  printf("%d\n", liste_vide());
+  ajout_droit(creer_carte("soin", DEFENSE, &(perso->pv), 5, 0));
+  ajout_droit(creer_carte("potion", DEFENSE, &(perso->pv), 20, 1));
+  ajout_droit(creer_carte("épée", ATTAQUE, &(ennemi->pv), 10, 0));
+  ajout_droit(creer_carte("épée", ATTAQUE, &(ennemi->pv), 10, 0));
+  ajout_droit(creer_carte("boule de feu", ATTAQUE, &(ennemi->pv), 20, 0));
+
+
   /*deck[1] = creer_carte("potion", DEFENSE, &(perso->pv), 20, 1);
   deck[2] = creer_carte("épée", ATTAQUE, &(ennemi->pv), 10, 0);
   deck[3] = creer_carte("épée", ATTAQUE, &(ennemi->pv), 10, 0);
@@ -50,7 +54,8 @@ int main(){
 
   /*Combat*/
   generer_carte(1);
-  
+  combat(perso,ennemi);
+
   /*Libération de mémoire */
   /*for(i=0;i<5;i++){
     detruire_carte(&(deck[i]));
