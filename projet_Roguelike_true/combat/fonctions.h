@@ -14,7 +14,7 @@
 *\param cible pour la cible de la carte
 *\param valeur pour la valeur de la force de la carte
 */
-carte_t * creer_carte(char *, type_carte, int *, int);
+carte_t * creer_carte(char *, type_carte, int *, int, int);
 
 /**
 *\fn perso_t * creer_perso()
@@ -32,21 +32,21 @@ ennemi_t * creer_ennemi(char *);
 
 /**
 *\fn void detruire_carte(carte_t **)
-*\brief Fonction qui permet de détruire une carte 
+*\brief Fonction qui permet de détruire une carte
 *\param carte Un pointeur de pointeur de carte qui permet de détruire le pointeur qui pointe sur la structure carte
 */
 void detruire_carte(carte_t **);
 
 /**
 *\fn detruire_perso(perso_t **)
-*\brief Fonction qui permet de détruire un personnage 
+*\brief Fonction qui permet de détruire un personnage
 *\param perso Un pointeur de pointeur de perso qui permet de détruire le pointeur qui pointe sur la structure perso
 */
 void detruire_perso(perso_t **);
 
 /**
 *\fn void detruire_ennemi(ennemi_t **)
-*\brief Fonction qui permet de détruire un ennemi 
+*\brief Fonction qui permet de détruire un ennemi
 *\param perso Un pointeur de pointeur de ennemi qui permet de détruire le pointeur qui pointe sur la structure ennemi
 */
 void detruire_ennemi(ennemi_t **);
@@ -85,4 +85,17 @@ int tour_perso(int, perso_t *, ennemi_t *, carte_t **);
 *\param perso Pointeur sur une structure qui permet de prendre les caractéristiques de l'ennemi qui vont être modifié par l'action du personnage
 *\*\param deck Pointeur sur un pointeur de fonction qui permet de connaître le deck du personnage
 */
-void combat(perso_t *, ennemi_t *, carte_t **);
+void combat(perso_t *, ennemi_t *);
+
+void init_liste();
+int liste_vide();
+int hors_liste();
+void en_tete();
+void en_queue();
+void precedent();
+void suivant();
+void valeur_elt(carte_t*);
+void modif_elt(carte_t);
+void oter_elt();
+void ajout_droit(carte_t);
+void ajout_gauche(carte_t);

@@ -11,6 +11,108 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+
+// Mise en oeuvre dynamique d'une liste de cartes
+
+// Definition du type d'un element de liste
+typedef struct element {
+  carte_t * carte;
+  struct element* pred;
+  struct element* succ;
+} element_t;
+
+// Declaration des listes (drapeau et element courant)
+element_t* drapeau;
+element_t* ec;
+
+
+// Primitives de manipulation de la liste
+
+void init_liste(){
+	drapeau = malloc(sizeof(element_t));
+	drapeau->pred = drapeau;
+	drapeau->succ = drapeau;
+	ec = drapeau;
+}
+
+int liste_vide(){
+	return drapeau->pred==drapeau;
+}
+
+int hors_liste(){
+	return ec==drapeau;
+}
+
+void en_tete(){
+	if (!liste_vide())
+		ec = drapeau->succ;
+}
+
+void en_queue(){
+	if (!liste_vide())
+		ec = drapeau->pred;
+}
+
+void precedent(){
+	if (!hors_liste())
+		ec = ec->pred;
+}
+
+void suivant(){
+	if (!hors_liste())
+		ec = ec->succ;
+}
+
+void valeur_elt(carte_t * t){
+	if (!hors_liste())
+		*t = *ec->carte;
+}
+
+void modif_elt(carte_t t){
+	if (!hors_liste())
+		*ec->carte = t;
+}
+
+void oter_elt(carte_t t){
+	element_t * temp;
+
+	if (!hors_liste()){
+		(ec->succ)->pred = ec->pred;
+		(ec->pred)->succ = ec->succ;
+		temp = ec;
+		ec = ec->pred;
+		free(temp);
+		}
+}
+
+void ajout_droit(carte_t t){
+	element_t* nouv;
+
+	if (liste_vide() || !hors_liste()){
+		nouv = malloc(sizeof(element_t));
+		nouv->carte = &t;
+		nouv->pred = ec;
+		nouv->succ = ec->succ;
+		(ec->succ)->pred = nouv;
+		ec->succ = nouv;
+		ec = nouv;
+	}
+}
+
+void ajout_gauche(carte_t t){
+	element_t* nouv;
+
+	if (liste_vide() || !hors_liste()){
+		nouv = malloc(sizeof(element_t));
+		nouv->carte = &t;
+		nouv->succ = ec;
+		nouv->pred = ec->pred;
+		(ec->pred)->succ = nouv;
+		ec->pred = nouv;
+		ec = nouv;
+	}
+}
+
 /**
 *\fn carte_t * creer_carte(char * nom, type_carte type, int * cible, int valeur)
 *\brief permet de créer une carte selon différentes caractéristiques donnés
@@ -20,7 +122,7 @@
 *\param valeur pour la valeur de la force de la carte
 *\return un pointeur sur une variable structure carte_t
 */
-carte_t * creer_carte(char * nom, type_carte type, int * cible, int valeur)
+carte_t * creer_carte(char * nom, type_carte type, int * cible, int valeur, int consommable)
 {
   carte_t * carte = NULL ;
   static unsigned long int cpt = 0 ;
@@ -32,7 +134,7 @@ carte_t * creer_carte(char * nom, type_carte type, int * cible, int valeur)
   carte->valeur = valeur;
   carte->cible = cible;
   carte->type = type;
-
+  carte->consommable = consommable;
   return(carte);
 }
 /**
@@ -80,7 +182,7 @@ ennemi_t * creer_ennemi(char * nom)
 }
 /**
 *\fn void detruire_carte(carte_t ** carte)
-*\brief Fonction qui permet de détruire une carte 
+*\brief Fonction qui permet de détruire une carte
 *\param carte Un pointeur de pointeur de carte qui permet de détruire le pointeur qui pointe sur la structure carte
 */
 void detruire_carte(carte_t ** carte)
@@ -91,7 +193,7 @@ void detruire_carte(carte_t ** carte)
 
 /**
 *\fn void detruire_perso(perso_t ** perso)
-*\brief Fonction qui permet de détruire un personnage 
+*\brief Fonction qui permet de détruire un personnage
 *\param perso Un pointeur de pointeur de perso qui permet de détruire le pointeur qui pointe sur la structure perso
 */
 void detruire_perso(perso_t ** perso)
@@ -100,7 +202,7 @@ void detruire_perso(perso_t ** perso)
 }
 /**
 *\fn void detruire_ennemi(ennemi_t ** ennemi)
-*\brief Fonction qui permet de détruire un ennemi 
+*\brief Fonction qui permet de détruire un ennemi
 *\param perso Un pointeur de pointeur de ennemi qui permet de détruire le pointeur qui pointe sur la structure ennemi
 */
 void detruire_ennemi(ennemi_t ** ennemi)
@@ -159,11 +261,13 @@ void tour_ennemi(perso_t * perso,ennemi_t * ennemi)
 *\param perso Pointeur sur une structure qui permet de prendre les caractéristiques de l'ennemi qui vont être modifié par l'action du personnage
 *\param deck Pointeur sur un pointeur de fonction qui permet de connaître le deck du personnage
 */
-int tour_perso(int choix,perso_t *perso,ennemi_t * ennemi, carte_t ** deck)
+int tour_perso(int choix,perso_t *perso,ennemi_t * ennemi)
 {
   choix--;
-  printf("Vous utilisez %s !\n", deck[choix]->nom);
-  *(deck[choix]->cible) += deck[choix]->type * deck[choix]->valeur;
+  printf("Vous utilisez %s !\n", ec->carte->nom);
+  *(ec->carte->cible) += ec->carte->type * ec->carte->valeur;
+  /*if (deck[choix]->consommable)*/
+
 
 }
 
@@ -173,25 +277,26 @@ int tour_perso(int choix,perso_t *perso,ennemi_t * ennemi, carte_t ** deck)
 *\param perso Pointeur sur une structure qui permet de prendre les caractéristiques de l'ennemi qui vont être modifié par l'action du personnage
 *\*\param deck Pointeur sur un pointeur de fonction qui permet de connaître le deck du personnage
 */
-void combat(perso_t * perso, ennemi_t * ennemi, carte_t ** deck)
+void combat(perso_t * perso, ennemi_t * ennemi)
 {
   while(ennemi->pv > 0 && perso->pv > 0){
     int choix, i;
     printf("Vous avez %d pv et le %s a %d pv\n",perso->pv, ennemi->nom, ennemi->pv);
     printf("Vous avez %d de vitesse et le %s a %d de vitesse\n",perso->vitesse,ennemi->nom, ennemi->vitesse);
-    for(i=0 ; i<TAILLE_DECK ; i++){
-      printf("[%d] : %s\n", i+1, deck[i]->nom);
-    }
+    /*for(i=0 ; !liste_vide() ; i++, suivant()){
+      printf("[%d] : %s\n", i+1, ec->carte->nom);
+      suivant();
+    }*/
     scanf("%d",&choix);
     if (initiative(perso, ennemi)){
-      tour_perso(choix, perso, ennemi, deck);
+      tour_perso(choix, perso, ennemi);
       if(ennemi->pv)
         tour_ennemi(perso, ennemi);
     }
     else{
       tour_ennemi(perso, ennemi);
       if(perso->pv)
-        tour_perso(choix, perso, ennemi, deck);
+        tour_perso(choix, perso, ennemi);
     }
   }
   if(!ennemi->pv){
