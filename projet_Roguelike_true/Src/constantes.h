@@ -4,7 +4,7 @@
 * \date 30/01/2020
 * \version 0.1
 
-* \brief Constantes et structures du projet Roguelike
+* \brief Constantes et structures du projet Casse-brique
 */
 
 #include <SDL2/SDL.h>
@@ -70,6 +70,8 @@ typedef enum{mainMenu = 0, labyrinthe, tourParTour, pauseScreen, charger_partie}
 
 typedef enum {ATTAQUE = -1, DEFENSE = 1} type_carte ;
 
+
+
 /**
 * \struct t_image
 
@@ -93,10 +95,18 @@ typedef struct salle_s{
 
   SDL_Rect murs[TAILLE_SALLE*TAILLE_SALLE];
   SDL_Rect portes[TAILLE_SALLE];
-  
+
   int nb_murs, haut, bas, gauche, droite, nb_portes;
 
 }salle_t;
+
+
+
+
+
+
+
+
 
 
 /**
@@ -135,4 +145,5 @@ typedef struct carte_s {
   type_carte type;/** Type d'une carte */
   int * cible;/** Cible d'une carte */
   int valeur;/** Valeur d'une carte */
+  int consommable;/** 1 si la carte est à usage unique*/
 } carte_t ;
