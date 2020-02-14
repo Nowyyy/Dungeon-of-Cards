@@ -1,4 +1,4 @@
-/** 
+/**
 * \file personnage.c
 * \author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
 * \date 04/02/2020
@@ -128,50 +128,43 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer){
 
 * \return la salle dans laquelle le joueur arrive
 */
-salle_t *changement_de_salle(perso_t *pers, salle_t *salle){
+int changement_de_salle(perso_t *pers, salle_t salle, int indice){
 
-	SDL_Event event;
-	salle_t *salle_s = salle;
+	for(int i = 0; i < salle.nb_portes; i++){
 
-	for(int i = 0; i < salle->nb_portes; i++){
-		if(SDL_HasIntersection(&salle->portes[i], &pers->sprites[0].rectangle)){
-			salle_s = salle->salle_bas;
-		//	pers->x = TAILLE_SALLE / 2 - TAILLE_IMAGE / 2;
-		//pers->y = TAILLE_IMAGE +5;
-			pers->x = WIN_WIDTH / 2;
-			pers->y = WIN_HEIGHT / 2;
-		}
-	}
-	for(int i = 0; i < salle->nb_portes; i++){
-		if(SDL_HasIntersection(&salle->portes[i], &pers->sprites[0].rectangle)){
-			salle_s = salle->salle_droite;
-			/*pers->x = TAILLE_IMAGE + 5;
-			pers->y = TAILLE_SALLE /2 - TAILLE_IMAGE /2;*/
-			pers->x = WIN_WIDTH / 2;
-			pers->y = WIN_HEIGHT / 2;
-		}
-	}
-	for(int i = 0; i < salle->nb_portes; i++){
-		if(SDL_HasIntersection(&salle->portes[i], &pers->sprites[0].rectangle)){
-			salle_s = salle->salle_gauche;
-			/*pers->x = TAILLE_SALLE - TAILLE_IMAGE - 5;
-			pers->y = TAILLE_SALLE /2 - TAILLE_IMAGE /2;*/
-			pers->x = WIN_WIDTH / 2;
-			pers->y = WIN_HEIGHT / 2;
-		}
-	}
-	for(int i = 0; i < salle->nb_portes; i++){
-		if(SDL_HasIntersection(&salle->portes[i], &pers->sprites[0].rectangle)){
-			salle_s = salle->salle_haut;
-			/*pers->x = TAILLE_SALLE / 2 - TAILLE_IMAGE / 2;
-			pers->y = TAILLE_SALLE - TAILLE_IMAGE - 5;*/
-			pers->x = WIN_WIDTH / 2;
-			pers->y = WIN_HEIGHT / 2;
+		if(SDL_HasIntersection(&salle.portes[i], &pers->sprites[0].rectangle)){
+
+			if(salle.portes[i].y == EMPLACEMENT_DEPART_DESSIN_SALLE_Y){
+				pers->x = TAILLE_SALLE / 2 - TAILLE_IMAGE / 2 + EMPLACEMENT_DEPART_DESSIN_SALLE_X;
+				pers->y = TAILLE_IMAGE +10 + EMPLACEMENT_DEPART_DESSIN_SALLE_Y;
+				return salle.s_h;
+			}
+			else if(salle.portes[i].x == EMPLACEMENT_DEPART_DESSIN_SALLE_X * 2){
+			//	pers->x = TAILLE_SALLE / 2 - TAILLE_IMAGE / 2;
+			//pers->y = TAILLE_IMAGE +5;
+				pers->x = WIN_WIDTH / 2;
+				pers->y = WIN_HEIGHT / 2;
+				return salle.s_b;
+			}
+			else if(salle.portes[i].x == EMPLACEMENT_DEPART_DESSIN_SALLE_X){
+			//	pers->x = TAILLE_SALLE / 2 - TAILLE_IMAGE / 2;
+			//pers->y = TAILLE_IMAGE +5;
+				pers->x = WIN_WIDTH / 2;
+				pers->y = WIN_HEIGHT / 2;
+				return salle.s_g;
+			}
+			else{
+			//	pers->x = TAILLE_SALLE / 2 - TAILLE_IMAGE / 2;
+			//pers->y = TAILLE_IMAGE +5;
+				pers->x = WIN_WIDTH / 2;
+				pers->y = WIN_HEIGHT / 2;
+				return salle.s_d;
+			}
 		}
 	}
 
 	pers->sprites[0].rectangle.x = pers->x;
 	pers->sprites[0].rectangle.y = pers->y;
 
-	return salle_s;
+	return indice;
 }
