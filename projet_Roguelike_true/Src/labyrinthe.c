@@ -112,47 +112,6 @@ void initialise_salles(salle_t tab[], int taille){
 
 
 /**
-* \fn liaison_entre_salles
-
-* \param tab[], le tableau de salles
-* \param salle1, l'indice de la première salle
-* \param salle2, l'indice de la seconde salle
-* \param *max_salles, le nombre maximun de salles que l'on souhaite créer
-
-* \brief effectue la liaison entre deux salles et créée la porte correspondante dans la salle2
-*/
-void liaisons_entre_salles(salle_t tab[], int salle1, int salle2, int *max_salle){
-
-	if(tab[salle1].haut == 1){
-		tab[salle1].haut = 0;
-		tab[salle1].s_h = salle2;
-		tab[salle2].s_b = salle1;
-		tab[salle1].nb_portes = aleatoire_porte(&tab[salle2], 2, *max_salle);
-	}
-	else if(tab[salle1].droite == 1){
-		tab[salle1].droite = 0;
-		tab[salle1].s_d = salle2;
-		tab[salle2].s_g = salle1;
-		tab[salle1].nb_portes = aleatoire_porte(&tab[salle2], 3, *max_salle);
-	}
-	else if(tab[salle1].bas == 1){
-		tab[salle1].bas = 0;
-		tab[salle1].s_b = salle2;
-		tab[salle2].s_h = salle1;
-		tab[salle1].nb_portes = aleatoire_porte(&tab[salle2], 0, *max_salle);
-	}
-	else if(tab[salle1].gauche == 1){
-		tab[salle1].gauche = 0;
-		tab[salle1].s_g = salle2;
-		tab[salle2].s_d = salle1;
-		tab[salle1].nb_portes = aleatoire_porte(&tab[salle2], 1, *max_salle);
-	}
-
-	*max_salle -= tab[salle2].nb_portes;
-}
-
-
-/**
 * \fn porte_non_connectee
 
 * \param salle, la salle dans laquelle on cherche
@@ -192,26 +151,21 @@ int porte_non_connectee(salle_t salle){
 */
 int cherche_porte_libre(salle_t salles[], int indice, int taille, int position){
 
-	int i = indice, position_salle;
+	int i = 0, position_salle;
 
-	switch(position){
-		case 0 : position_salle = 2; break;
-		case 1 : position_salle = 3; break;
-		case 2 : position_salle = 0; break;
-		case 3 : position_salle = 1; break;
-	}
+	position_salle = inverse_porte(position);
 
 	while(i < taille){
-		if(salles[i].bas && position_salle == 2){
+		if(salles[i].bas == 1 && position_salle == 2 && i != indice){
 			return i;
 		}
-		else if(salles[i].haut && position_salle == 0){
+		else if(salles[i].haut == 1 && position_salle == 0 && i != indice){
 			return i;
 		}
-		else if(salles[i].droite && position_salle == 1){
+		else if(salles[i].droite == 1 && position_salle == 1 && i != indice){
 			return i;
 		}
-		else if (salles[i].gauche && position_salle == 3){
+		else if (salles[i].gauche == 1 && position_salle == 3 && i != indice){
 			return i;
 		}
 		i++;
@@ -260,93 +214,6 @@ void cree_liaison(salle_t tab[], int salle1, int salle2, int porteS1){
 
 
 /**
-* \fn cree_salle_copine_et_lie
-
-* \param *s1, la première salle pour laquelle on effectue les liaisons
-* \param *s2, la seconde salle pour laquelle on effectue les liaisons
-* \param porteS1, la porte de la première salle à laquelle on va rattacher la seconde
-
-* \brief Créée les liaisons entre deux salles, et créé la porte dans la seconde en fonction de la porte libre sur la première
-*/
-void creer_salle_copine(salle_t salle[], int salle1, int salle2, int porteS1){
-
-	switch(porteS1){
-
-		case 0 : salle[salle1].s_h = salle2;
-				 salle[salle2].s_b = salle1;
-				 salle[salle1].haut = 0;
-				 aleatoire_porte(&salle[salle2], 2, 0);
-				 break;
-		case 1 : salle[salle1].s_d = salle2;
-				 salle[salle2].s_g = salle1;
-				 salle[salle1].droite = 0;
-				 aleatoire_porte(&salle[salle2], 3, 0);
-				 break;
-		case 2 : salle[salle1].s_b = salle2;
-				 salle[salle2].s_h = salle1;
-				 salle[salle1].bas = 0;
-				 aleatoire_porte(&salle[salle2], 0, 0);
-				 break;
-		case 3 : salle[salle1].s_g = salle2;
-				 salle[salle2].s_d = salle1;
-				 salle[salle1].gauche = 0;
-				 aleatoire_porte(&salle[salle2], 1, 0);
-				 break;
-	}
-
-	salle[salle1].bas = 0;
-	salle[salle1].haut = 0;
-	salle[salle1].droite = 0;
-	salle[salle1].gauche= 0;
-}
-
-
-
-
-
-
-/**
-
-* \fn connecte_salles_restantes
-
-* \param tab[], le tableau de salles du labyrinthe
-* \param taille, la taille du tableau
-* \param taille max, l'espace mémoire supplémentaire alloué en cas de besoin, afin de créer des salles supplémentaires
-
-* \return la nouvelle taille du tableau en fonction des besoins suppélementaires ou non de mémoire
-
-* \brief connecte les salles restantes dont certaines portes sont sans liaisons. Connecte uniquement entres elles des portes opposées.
-*/
-int connecte_portes_restantes(salle_t tab[], int taille, int taille_max){
-
-	int i = 0, porte, salle_copine;
-
-	while(i < taille_max){
-
-		porte = porte_non_connectee(tab[i]);
-
-		if(porte >= 0){
-
-			salle_copine = cherche_porte_libre(tab, i+1, taille, porte);
-
-			if(salle_copine != -1){
-				cree_liaison(tab, i, salle_copine, porte);
-			}
-			else{
-				taille++;
-				creer_salle_copine(tab, i, taille, porte);
-			}
-		}
-		else{
-			i++;
-		}
-	}
-
-	return taille;
-}
-
-
-/**
 * \fn generer_labyrinthe
 
 * \param salle[], le tableau de salles du labyrinthe
@@ -362,28 +229,73 @@ int generation_labyrinthe(salle_t salles[], int taille, int max_salles, int tail
 
 	srand(time(NULL));
 
-	int deb = 0, fin = taille -1, salles_restantes = max_salles;
+	int deb = 0, fin = taille, salle_compatible, porte, porte2;
 
-	while(deb <= fin && salles_restantes > 0){
+	while(deb < taille){
 
-		if(deb != fin){
+			aleatoire_porte(&salles[deb], rand()%4, taille);
+			deb++;
+	}
 
-			salles[deb].nb_portes = aleatoire_porte(&salles[deb], -1, salles_restantes);
+	deb = 0;
 
-			for(int i = 0; i < salles[deb].nb_portes; i++, fin--){
-				liaisons_entre_salles(salles, deb, fin, &salles_restantes);
+	while(deb < fin ){
+
+		porte = porte_non_connectee(salles[deb]);
+
+		if(porte > -1){//porte sans liaison détectée
+
+			salle_compatible = cherche_porte_libre(salles, deb, taille, porte);
+
+			if(salle_compatible > -1){//il y a une salle comportant une porte pouvant être réliée à celle-ci
+
+				cree_liaison(salles, deb, salle_compatible, porte);
 			}
+			else{
+
+				if(fin < taille_max){
+
+					aleatoire_porte(&salles[fin], inverse_porte(porte), fin);
+					porte2 = porte_non_connectee(salles[fin]);
+
+					if(porte_libre_existe(salles[fin],inverse_porte(porte))){
+						cree_liaison(salles, deb, fin, porte);
+						fin++;
+					}
+					else{
+						printf("%d porte, %d porte2\n", porte, porte2);
+						deb++;
+					}
+				}
+				else{
+					ferme_porte_inutile(salles, deb);
+				}
+			}
+		}
+		else{//toutes les portes ont une liaison vers une autre salle
 			deb++;
 		}
 	}
 
-	taille = connecte_portes_restantes(salles, taille, taille_max);
+	printf("\n\n");
+
+
+	deb = 0;
+
+	while(deb < fin){
+		porte = porte_non_connectee(salles[deb]);
+
+		if(porte > -1){
+			ferme_porte_inutile(salles, deb);
+		}
+		deb++;
+	}
 
 	for(int i = 0; i < taille; i++){
 		rempli_tableau_murs_portes(salles, i);
 	}
 
-	return taille;
+	return fin;
 }
 
 
@@ -407,7 +319,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu){
 	pers.x = WIN_WIDTH / 2;
 	pers.y = WIN_HEIGHT / 2;
 
-	int taille = 10, taille_max = taille *5, salle_courante, prev;
+	int taille = 10, taille_max = taille *2, salle_courante, prev;
 
 	salle_t salles[taille_max];
 
@@ -419,6 +331,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu){
 
 	salle_courante = 0;
 	prev = 0;
+	printf("%d salles existantes\n", taille);
 
 	for(int i = 0; i < taille; i++){
 		if(salles[i].s_h >= 0)

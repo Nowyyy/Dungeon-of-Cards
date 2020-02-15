@@ -135,29 +135,35 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice){
 		if(SDL_HasIntersection(&salle.portes[i], &pers->sprites[0].rectangle)){
 
 			if(salle.portes[i].y == EMPLACEMENT_DEPART_DESSIN_SALLE_Y){
-				pers->x = TAILLE_SALLE / 2 - TAILLE_IMAGE / 2 + EMPLACEMENT_DEPART_DESSIN_SALLE_X;
-				pers->y = TAILLE_IMAGE +10 + EMPLACEMENT_DEPART_DESSIN_SALLE_Y;
+			//porte en haut
+				pers->x = salle.portes[i].x;
+				pers->y = salle.portes[i].y + TAILLE_IMAGE + 40;
+				printf("Salle %d, vas vers %d\n", salle.id, salle.s_h);
+
 				return salle.s_h;
 			}
-			else if(salle.portes[i].x == EMPLACEMENT_DEPART_DESSIN_SALLE_X * 2){
-			//	pers->x = TAILLE_SALLE / 2 - TAILLE_IMAGE / 2;
-			//pers->y = TAILLE_IMAGE +5;
-				pers->x = WIN_WIDTH / 2;
-				pers->y = WIN_HEIGHT / 2;
+			else if(salle.portes[i].y == 488){
+			//porte en bas
+				pers->x = salle.portes[i].x;
+				pers->y = salle.portes[i].y - TAILLE_IMAGE - 40;
+				printf("Salle %d, vas vers %d\n", salle.id, salle.s_b);
+
 				return salle.s_b;
 			}
 			else if(salle.portes[i].x == EMPLACEMENT_DEPART_DESSIN_SALLE_X){
-			//	pers->x = TAILLE_SALLE / 2 - TAILLE_IMAGE / 2;
-			//pers->y = TAILLE_IMAGE +5;
-				pers->x = WIN_WIDTH / 2;
-				pers->y = WIN_HEIGHT / 2;
+			//porte à gauche
+				pers->x = salle.portes[i].x + TAILLE_IMAGE + 20;
+				pers->y = salle.portes[i].y;
+				printf("Salle %d, vas vers %d\n", salle.id, salle.s_g);
+
 				return salle.s_g;
 			}
 			else{
-			//	pers->x = TAILLE_SALLE / 2 - TAILLE_IMAGE / 2;
-			//pers->y = TAILLE_IMAGE +5;
-				pers->x = WIN_WIDTH / 2;
-				pers->y = WIN_HEIGHT / 2;
+			//porte à droite
+				pers->x = salle.portes[i].x - TAILLE_IMAGE - 60;
+				pers->y = salle.portes[i].y;
+				printf("Salle %d, vas vers %d\n", salle.id, salle.s_d);
+
 				return salle.s_d;
 			}
 		}

@@ -49,6 +49,7 @@ void init_salle(int salle[TAILLE_SALLE][TAILLE_SALLE]){
 void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction){
 
   int millieu = TAILLE_SALLE / 2;
+
   for(int i = 0; i<TAILLE_SALLE; i++){
     for(int j=0; j<TAILLE_SALLE; j++){
 
@@ -241,4 +242,68 @@ int aleatoire_porte(salle_t *salle, int porte_arrivee, int max_porte){
   }
 
   return cmp;
+}
+
+
+
+
+int inverse_porte(int porte){
+
+  if(porte == 0)
+    return 2;
+  if(porte == 1)
+    return 3;
+  if(porte == 2)
+    return 0;
+  if(porte == 3)
+    return 1;
+}
+
+
+void ferme_porte_inutile(salle_t salles[], int indice){
+
+  int i, millieu = TAILLE_SALLE / 2;
+
+  if(salles[indice].haut == 1){
+
+    salles[indice].haut = 0;
+    salles[indice].salle[0][millieu] = 1;
+    salles[indice].salle[0][millieu-1] = 1;
+  }
+
+  if(salles[indice].droite == 1){
+
+    salles[indice].droite = 0;
+    salles[indice].salle[TAILLE_SALLE-1][millieu] = 1;
+    salles[indice].salle[TAILLE_SALLE-1][millieu-1] = 1;
+  }
+
+  if(salles[indice].bas == 1){
+
+    salles[indice].bas = 0;
+    salles[indice].salle[millieu][TAILLE_SALLE-1] = 1;
+    salles[indice].salle[millieu-1][TAILLE_SALLE-1] = 1;
+  }
+
+  if(salles[indice].gauche == 1){
+
+    salles[indice].gauche = 0;
+    salles[indice].salle[millieu][0] = 1;
+    salles[indice].salle[millieu-1][0] = 1;
+  }
+}
+
+
+int porte_libre_existe(salle_t salle, int porte_libre){
+
+  if(porte_libre == 0 && salle.haut == 1)
+    return TRUE;
+  else if(porte_libre == 1 && salle.droite == 1)
+    return TRUE;
+  else if(porte_libre == 2 && salle.bas == 1)
+    return TRUE;
+  else if(porte_libre == 3 && salle.gauche == 1)
+    return TRUE;
+  else
+    return FALSE;
 }
