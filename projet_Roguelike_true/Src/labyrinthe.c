@@ -249,23 +249,25 @@ int generation_labyrinthe(salle_t salles[], int taille, int max_salles, int tail
 
 			if(salle_compatible > -1){//il y a une salle comportant une porte pouvant être réliée à celle-ci
 
-				cree_liaison(salles, deb, salle_compatible, porte);
+				if(porte_disponible(salles, deb, salle_compatible)){
+					cree_liaison(salles, deb, salle_compatible, porte);
+				}
+				else{
+					do{
+						salle_compatible = cherche_porte_libre(salles, deb, salle_compatible, porte);
+					}while(!porte_disponible(salles, deb, salle_compatible) && salle_compatible != -1);
+
+					if(salle_compatible != -1){
+						cree_liaison(salles, deb, salle_compatible, porte);
+					}
+					else{
+						fin = rajoute_salle_ou_ferme_porte(salles, deb, fin, porte, taille_max);
+					}
+				}
 			}
 			else{
 
-				if(fin < taille_max){
-
-					aleatoire_porte(&salles[fin], inverse_porte(porte), fin);
-					porte2 = porte_non_connectee(salles[fin]);
-
-					if(porte_libre_existe(salles[fin],inverse_porte(porte))){
-						cree_liaison(salles, deb, fin, porte);
-						fin++;
-					}
-				}
-				else{
-					ferme_porte_inutile(salles, deb);
-				}
+				fin = rajoute_salle_ou_ferme_porte(salles, deb, fin, porte, taille_max);
 			}
 		}
 		else{//toutes les portes ont une liaison vers une autre salle
