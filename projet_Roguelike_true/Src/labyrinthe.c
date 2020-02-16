@@ -273,17 +273,11 @@ int generation_labyrinthe(salle_t salles[], int taille, int max_salles, int tail
 		}
 	}
 
-	printf("\n\n");
-
-
 	deb = 0;
 
 	while(deb < fin){
-		porte = porte_non_connectee(salles[deb]);
-
-		if(porte > -1){
-			ferme_porte_inutile(salles, deb);
-		}
+		
+		ferme_porte_inutile(salles, deb);
 		verifie_porte_ouverte(salles, deb, fin);
 		deb++;
 	}
@@ -328,7 +322,6 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu){
 
 	salle_courante = 0;
 	prev = 0;
-	printf("%d salles existantes\n", taille);
 
 	for(int i = 0; i < taille; i++){
 		if(salles[i].s_h >= 0)

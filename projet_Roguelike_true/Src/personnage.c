@@ -136,29 +136,30 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice){
 
 			if(salle.portes[i].y == EMPLACEMENT_DEPART_DESSIN_SALLE_Y){
 			//porte en haut
-				pers->x = salle.portes[i].x;
-				pers->y = salle.portes[i].y + TAILLE_IMAGE + 40;
+				pers->x = WIN_WIDTH / 2 - TAILLE_IMAGE;
+				pers->y = salle.murs[salle.nb_murs -1].y - TAILLE_IMAGE;
 
 				return salle.s_h;
 			}
 			else if(salle.portes[i].y == 488){
 			//porte en bas
-				pers->x = salle.portes[i].x;
-				pers->y = salle.portes[i].y - TAILLE_IMAGE - 40;
+				pers->x = WIN_WIDTH / 2 - TAILLE_IMAGE;
+				
+				pers->y = salle.murs[0].y + TAILLE_IMAGE;
 
 				return salle.s_b;
 			}
 			else if(salle.portes[i].x == EMPLACEMENT_DEPART_DESSIN_SALLE_X){
 			//porte à gauche
-				pers->x = salle.portes[i].x + TAILLE_IMAGE + 20;
-				pers->y = salle.portes[i].y;
+				pers->x = WIN_WIDTH / 2 + 100;
+				pers->y = WIN_HEIGHT / 2 - TAILLE_IMAGE / 2;
 
 				return salle.s_g;
 			}
 			else{
 			//porte à droite
-				pers->x = salle.portes[i].x - TAILLE_IMAGE - 60;
-				pers->y = salle.portes[i].y;
+				pers->x = salle.murs[0].x + TAILLE_IMAGE;
+				pers->y = WIN_HEIGHT / 2 - TAILLE_IMAGE / 2;
 
 				return salle.s_d;
 			}

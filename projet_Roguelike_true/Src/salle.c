@@ -246,7 +246,15 @@ int aleatoire_porte(salle_t *salle, int porte_arrivee, int max_porte){
 
 
 
+/**
+* \fn inverse_porte
 
+* \param porte, la porte que l'on souhaite inverser
+
+* \return l'inverse de la porte passée en paramètre
+
+* \brief Renvoie l'opposée de la porte passée en paramètre
+*/
 int inverse_porte(int porte){
 
   if(porte == 0)
@@ -260,6 +268,14 @@ int inverse_porte(int porte){
 }
 
 
+/**
+* \fn ferme_porte_inutile
+
+* \param salles[], le tableau contenant les salles du labyrinthe
+* \param indice, l'indice de la salle pour laquelle on veut faire une modification
+
+* \brief Ferme une porte dans la salle, pour laquelle on n'a pu effectuer de liaison vers une autre
+*/
 void ferme_porte_inutile(salle_t salles[], int indice){
 
   int i, millieu = TAILLE_SALLE / 2;
@@ -267,33 +283,44 @@ void ferme_porte_inutile(salle_t salles[], int indice){
   if(salles[indice].haut == 1 || salles[indice].s_h == -1){
 
     salles[indice].haut = 0;
-    salles[indice].salle[0][millieu] = 1;
-    salles[indice].salle[0][millieu-1] = 1;
+    salles[indice].salle[0][millieu] = mur;
+    salles[indice].salle[0][millieu-1] = mur;
   }
 
   if(salles[indice].droite == 1 || salles[indice].s_d == -1){
 
     salles[indice].droite = 0;
-    salles[indice].salle[millieu][TAILLE_SALLE-1] = 1;
-    salles[indice].salle[millieu-1][TAILLE_SALLE-1] = 1;
+    salles[indice].salle[millieu][TAILLE_SALLE-1] = mur;
+    salles[indice].salle[millieu-1][TAILLE_SALLE-1] = mur;
   }
 
   if(salles[indice].bas == 1 || salles[indice].s_b == -1){
 
     salles[indice].bas = 0;
-    salles[indice].salle[TAILLE_SALLE-1][millieu] = 1;
-    salles[indice].salle[TAILLE_SALLE-1][millieu-1] = 1;
+    salles[indice].salle[TAILLE_SALLE-1][millieu] = mur;
+    salles[indice].salle[TAILLE_SALLE-1][millieu-1] = mur;
   }
 
   if(salles[indice].gauche == 1 || salles[indice].s_g == -1){
 
     salles[indice].gauche = 0;
-    salles[indice].salle[millieu][0] = 1;
-    salles[indice].salle[millieu-1][0] = 1;
+    salles[indice].salle[millieu][0] = mur;
+    salles[indice].salle[millieu-1][0] = mur;
   }
 }
 
 
+
+/**
+* \fn porte_libre_existe
+
+* \param salles[], le tableau contenant les salles du labyrinthe
+* \param porte_libre, la porte pour laquelle on veut savoir si elle est sans liaison
+
+* \return 1 si la porte est libre, 0 sinon
+
+* \brief Regarde si la porte passée en paramètre est disponible pour effectuer une liaison
+*/
 int porte_libre_existe(salle_t salle, int porte_libre){
 
   if(porte_libre == 0 && salle.haut == 1)
@@ -310,6 +337,15 @@ int porte_libre_existe(salle_t salle, int porte_libre){
 
 
 
+/**
+* \fn verifie_porte_ouverte
+
+* \param salles[], le tableau contenant les salles du labyrinthe
+* \param indice, l'indice de la salle pour laquelle on veut faire une modification
+* \param taille, la taille du tableau de salle
+
+* \brief Ouvre une porte si la liaison existe mais pas sa représentation physique
+*/
 void verifie_porte_ouverte(salle_t salles[], int indice, int taille){
 
   int s_h = salles[indice].s_h, s_d = salles[indice].s_d, s_g = salles[indice].s_g, s_b = salles[indice].s_b, millieu = TAILLE_SALLE / 2;
@@ -318,15 +354,17 @@ void verifie_porte_ouverte(salle_t salles[], int indice, int taille){
     salles[indice].salle[0][millieu] = 2;
     salles[indice].salle[0][millieu-1] = 2;
   }
+
   else if(salles[indice].s_d == inverse_porte(salles[s_d].s_g)){
-    
     salles[indice].salle[millieu][TAILLE_SALLE-1] = 2;
     salles[indice].salle[millieu-1][TAILLE_SALLE-1] = 2;
   }
+
   else if(salles[indice].s_b == inverse_porte(salles[s_b].s_h)){
     salles[indice].salle[TAILLE_SALLE-1][millieu] = 2;
     salles[indice].salle[TAILLE_SALLE-1][millieu-1] = 2;
   }
+
   else if(salles[indice].s_g == inverse_porte(salles[s_g].s_d)){
     salles[indice].salle[millieu][0] = 2;
     salles[indice].salle[millieu-1][0] = 2;
