@@ -32,7 +32,8 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 
 	charge_image(SOL1_PATH,&images[sol], rendu);
 	charge_image(MUR1_PATH,&images[mur], rendu);
-	charge_image(SOL2_PATH,&images[porte], rendu);
+	charge_image(PORTE_PATH,&images[porte], rendu);
+	charge_image(SOL2_PATH,&images[sol2], rendu);
 	charge_image(COMMANDES_PATH, &images[commandes], rendu);
 	charge_image(INSTRUCTIONS_PATH, &images[instructions], rendu);
 
@@ -305,7 +306,7 @@ int generation_labyrinthe(salle_t salles[], int taille, int max_salles, int tail
 void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu){
 
 
-	image_t images[5];
+	image_t images[NB_TEXTURES];
 
 	perso_t pers;
 
@@ -338,6 +339,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu){
 		printf("\n\n");
 	}
 
+	modifie_texture_affichee(salles, taille, images);
 
 	while(*etat == labyrinthe && *continuer){
 

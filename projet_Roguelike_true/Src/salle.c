@@ -118,7 +118,7 @@ void afficher_salle(salle_t *salle, SDL_Renderer *rendu, image_t texture[]){
 
       coorX += TAILLE_IMAGE;
     }
-    coorX = 256;
+    coorX = EMPLACEMENT_DEPART_DESSIN_SALLE_X;
     coorY += TAILLE_IMAGE;
   }
 }
@@ -427,4 +427,27 @@ int rajoute_salle_ou_ferme_porte(salle_t salles[], int deb, int fin, int porte, 
   }
 
   return fin;
+}
+
+
+
+void modifie_texture_affichee(salle_t salles[], int taille, image_t images[]){
+
+  int i, j, k, alea;
+
+  for(i = 0; i < taille; i++){
+
+    for(j = 0; j < TAILLE_SALLE; j++){
+
+      for(k = 0; k < TAILLE_SALLE; k++){
+
+        if(salles[i].salle[j][k] == 0){
+          alea = rand()%2;
+
+          if(alea == 1)
+            salles[i].salle[j][k] = sol2;
+        }
+      }
+    }
+  }
 }

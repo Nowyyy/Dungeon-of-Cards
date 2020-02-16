@@ -9,3 +9,4 @@ int porte_libre_existe(salle_t salle, int porte_libre);
 void verifie_porte_ouverte(salle_t salles[], int indice, int taille);
 int porte_disponible(salle_t salles[], int indice, int porte_possible);
 int rajoute_salle_ou_ferme_porte(salle_t salles[], int deb, int fin, int porte, int taille_max);
+void modifie_texture_affichee(salle_t salles[], int taille, image_t images[]);
