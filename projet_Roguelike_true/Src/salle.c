@@ -57,7 +57,7 @@ void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction){
       if(direction == 0){
         if(i == 0){
           if(j == millieu-1 || j == millieu){
-            salle[i][j]=2;
+            salle[i][j]=porte;
           }
         }
       }
@@ -65,25 +65,25 @@ void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction){
       if(direction == 3){
         if(j == 0){
           if(i == millieu-1 || i == millieu){
-            salle[i][j]=2;
+            salle[i][j]=porte;
           }
         }
       }
 
       //Sud
       if(direction == 2){
-        if(j == TAILLE_SALLE-1){
-          if(i == millieu-1 || i == millieu){
-            salle[i][j]=2;
+        if(i == TAILLE_SALLE-1){
+          if(j == millieu-1 || j == millieu){
+            salle[i][j]=porte;
           }
         }
       }
 
       //Est
       if(direction == 1){
-        if(i == TAILLE_SALLE-1){
-          if(j == millieu-1 || j == millieu){
-            salle[i][j]=2;
+        if(j == TAILLE_SALLE-1){
+          if(i == millieu-1 || i == millieu){
+            salle[i][j]=porte;
           }
         }
       }
@@ -264,28 +264,28 @@ void ferme_porte_inutile(salle_t salles[], int indice){
 
   int i, millieu = TAILLE_SALLE / 2;
 
-  if(salles[indice].haut == 1){
+  if(salles[indice].haut == 1 || salles[indice].s_h == -1){
 
     salles[indice].haut = 0;
     salles[indice].salle[0][millieu] = 1;
     salles[indice].salle[0][millieu-1] = 1;
   }
 
-  if(salles[indice].droite == 1){
+  if(salles[indice].droite == 1 || salles[indice].s_d == -1){
 
     salles[indice].droite = 0;
-    salles[indice].salle[TAILLE_SALLE-1][millieu] = 1;
-    salles[indice].salle[TAILLE_SALLE-1][millieu-1] = 1;
-  }
-
-  if(salles[indice].bas == 1){
-
-    salles[indice].bas = 0;
     salles[indice].salle[millieu][TAILLE_SALLE-1] = 1;
     salles[indice].salle[millieu-1][TAILLE_SALLE-1] = 1;
   }
 
-  if(salles[indice].gauche == 1){
+  if(salles[indice].bas == 1 || salles[indice].s_b == -1){
+
+    salles[indice].bas = 0;
+    salles[indice].salle[TAILLE_SALLE-1][millieu] = 1;
+    salles[indice].salle[TAILLE_SALLE-1][millieu-1] = 1;
+  }
+
+  if(salles[indice].gauche == 1 || salles[indice].s_g == -1){
 
     salles[indice].gauche = 0;
     salles[indice].salle[millieu][0] = 1;
@@ -306,4 +306,29 @@ int porte_libre_existe(salle_t salle, int porte_libre){
     return TRUE;
   else
     return FALSE;
+}
+
+
+
+void verifie_porte_ouverte(salle_t salles[], int indice, int taille){
+
+  int s_h = salles[indice].s_h, s_d = salles[indice].s_d, s_g = salles[indice].s_g, s_b = salles[indice].s_b, millieu = TAILLE_SALLE / 2;
+
+  if(salles[indice].s_h == inverse_porte(salles[s_h].s_b)){
+    salles[indice].salle[0][millieu] = 2;
+    salles[indice].salle[0][millieu-1] = 2;
+  }
+  else if(salles[indice].s_d == inverse_porte(salles[s_d].s_g)){
+    
+    salles[indice].salle[millieu][TAILLE_SALLE-1] = 2;
+    salles[indice].salle[millieu-1][TAILLE_SALLE-1] = 2;
+  }
+  else if(salles[indice].s_b == inverse_porte(salles[s_b].s_h)){
+    salles[indice].salle[TAILLE_SALLE-1][millieu] = 2;
+    salles[indice].salle[TAILLE_SALLE-1][millieu-1] = 2;
+  }
+  else if(salles[indice].s_g == inverse_porte(salles[s_g].s_d)){
+    salles[indice].salle[millieu][0] = 2;
+    salles[indice].salle[millieu-1][0] = 2;
+  }
 }

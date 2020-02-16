@@ -6,3 +6,4 @@ void rempli_tableau_murs_portes(salle_t salle[], int indiceT);
 void ferme_porte_inutile(salle_t salles[], int indice);
 int inverse_porte(int porte);
 int porte_libre_existe(salle_t salle, int porte_libre);
+void verifie_porte_ouverte(salle_t salles[], int indice, int taille);

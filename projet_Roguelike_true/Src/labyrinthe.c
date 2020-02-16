@@ -151,11 +151,11 @@ int porte_non_connectee(salle_t salle){
 */
 int cherche_porte_libre(salle_t salles[], int indice, int taille, int position){
 
-	int i = 0, position_salle;
+	int i = taille - 1, position_salle;
 
 	position_salle = inverse_porte(position);
 
-	while(i < taille){
+	while(i >= 0){
 		if(salles[i].bas == 1 && position_salle == 2 && i != indice){
 			return i;
 		}
@@ -168,7 +168,7 @@ int cherche_porte_libre(salle_t salles[], int indice, int taille, int position){
 		else if (salles[i].gauche == 1 && position_salle == 3 && i != indice){
 			return i;
 		}
-		i++;
+		i--;
 	}
 	return -1;
 }
@@ -245,7 +245,7 @@ int generation_labyrinthe(salle_t salles[], int taille, int max_salles, int tail
 
 		if(porte > -1){//porte sans liaison détectée
 
-			salle_compatible = cherche_porte_libre(salles, deb, taille, porte);
+			salle_compatible = cherche_porte_libre(salles, deb, fin, porte);
 
 			if(salle_compatible > -1){//il y a une salle comportant une porte pouvant être réliée à celle-ci
 
@@ -261,10 +261,6 @@ int generation_labyrinthe(salle_t salles[], int taille, int max_salles, int tail
 					if(porte_libre_existe(salles[fin],inverse_porte(porte))){
 						cree_liaison(salles, deb, fin, porte);
 						fin++;
-					}
-					else{
-						printf("%d porte, %d porte2\n", porte, porte2);
-						deb++;
 					}
 				}
 				else{
@@ -288,10 +284,11 @@ int generation_labyrinthe(salle_t salles[], int taille, int max_salles, int tail
 		if(porte > -1){
 			ferme_porte_inutile(salles, deb);
 		}
+		verifie_porte_ouverte(salles, deb, fin);
 		deb++;
 	}
 
-	for(int i = 0; i < taille; i++){
+	for(int i = 0; i < fin; i++){
 		rempli_tableau_murs_portes(salles, i);
 	}
 
@@ -342,6 +339,8 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu){
 			printf("salle %d, porte bas existe, link to %d\n",i, salles[i].s_b);
 		if(salles[i].s_g >= 0)
 			printf("salle %d, porte gauche existe, link to %d\n",i, salles[i].s_g);
+
+		printf("\n\n");
 	}
 
 

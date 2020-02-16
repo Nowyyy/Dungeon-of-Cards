@@ -138,7 +138,6 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice){
 			//porte en haut
 				pers->x = salle.portes[i].x;
 				pers->y = salle.portes[i].y + TAILLE_IMAGE + 40;
-				printf("Salle %d, vas vers %d\n", salle.id, salle.s_h);
 
 				return salle.s_h;
 			}
@@ -146,7 +145,6 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice){
 			//porte en bas
 				pers->x = salle.portes[i].x;
 				pers->y = salle.portes[i].y - TAILLE_IMAGE - 40;
-				printf("Salle %d, vas vers %d\n", salle.id, salle.s_b);
 
 				return salle.s_b;
 			}
@@ -154,7 +152,6 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice){
 			//porte à gauche
 				pers->x = salle.portes[i].x + TAILLE_IMAGE + 20;
 				pers->y = salle.portes[i].y;
-				printf("Salle %d, vas vers %d\n", salle.id, salle.s_g);
 
 				return salle.s_g;
 			}
@@ -162,7 +159,6 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice){
 			//porte à droite
 				pers->x = salle.portes[i].x - TAILLE_IMAGE - 60;
 				pers->y = salle.portes[i].y;
-				printf("Salle %d, vas vers %d\n", salle.id, salle.s_d);
 
 				return salle.s_d;
 			}
