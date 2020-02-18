@@ -14,6 +14,11 @@
 
 // Primitives de manipulation de la liste
 
+
+/**
+*\fn void init_liste()
+*\brief Fonction d'initialiser une liste
+*/
 void init_liste(){
 	drapeau = malloc(sizeof(element_t));
 	drapeau->pred = drapeau;
@@ -21,44 +26,83 @@ void init_liste(){
 	ec = drapeau;
 }
 
+/**
+*\fn int liste_vide()
+*\brief Fonction qui permet de vérifier si une liste est vide 
+*\return 1 si la liste est vide, 0 si la liste est pas vide
+*/
 int liste_vide(){
 	return drapeau->pred==drapeau;
 }
-
+/**
+*\fn int hors_liste()
+*\brief Fonction qui permet de vérifier si on est pas hors liste
+*\return 1 si on est dans la liste, 0 si on est hors liste
+*/
 int hors_liste(){
 	return ec==drapeau;
 }
 
+/**
+*\fn void en_tete()
+*\brief Fonction qui permet de se mettre au début de la liste
+*/
 void en_tete(){
 	if (!liste_vide())
 		ec = drapeau->succ;
 }
 
+/**
+*\fn void en_queue()
+*\brief Fonction qui permet de se mettre en fin de la liste
+*/
 void en_queue(){
 	if (!liste_vide())
 		ec = drapeau->pred;
 }
 
+/**
+*\fn void precedent()
+*\brief Fonction qui permet de reculer dans la liste
+*/
 void precedent(){
 	if (!hors_liste())
 		ec = ec->pred;
 }
 
+/**
+*\fn void suivant()
+*\brief Fonction qui permet d'avancer dans la liste
+*/
 void suivant(){
 	if (!hors_liste())
 		ec = ec->succ;
 }
-
+/**
+*\fn void valeur_elt(carte_t * t)
+*\brief Fonction qui permet de prendre une valeur de la liste
+*\param t un pointeur qui permet de prendre une valeur dans la liste
+*/
 void valeur_elt(carte_t * t){
 	if (!hors_liste())
 		*t = *ec->carte;
 }
 
+/**
+*\fn void modif_elt(carte_t t)
+*\brief Fonction qui permet de modifier une valeur dans une liste
+*\param t une variable qui permet de modifier une valeur dans la liste
+*/
 void modif_elt(carte_t t){
 	if (!hors_liste())
 		*ec->carte = t;
 }
 
+/**
+*\fn void oter_elt(carte_t t)
+*\brief Fonction qui permet de supprimer une valeur de la liste
+*\param t une variable qui va être supprimer de la liste
+*/
 void oter_elt(carte_t t){
 	element_t * temp;
 
@@ -71,6 +115,11 @@ void oter_elt(carte_t t){
 		}
 }
 
+/**
+*\fn void ajout_droit(carte_t * t)
+*\brief Fonction qui permet d'ajouter un objet après l'objet sur lequel l'utilisteur se trouve
+*\param t un pointeur qui va contenir une valeur qui va être rajouté
+*/
 void ajout_droit(carte_t * t){
 	element_t* nouv;
 
@@ -85,6 +134,11 @@ void ajout_droit(carte_t * t){
 	}
 }
 
+/**
+*\fn void ajout_gauche(carte_t * t)
+*\brief Fonction qui permet d'ajouter un objet avant l'objet sur lequel l'utilisteur se trouve
+*\param t un pointeur qui va contenir une valeur qui va être rajouté
+*/
 void ajout_gauche(carte_t * t){
 	element_t* nouv;
 
