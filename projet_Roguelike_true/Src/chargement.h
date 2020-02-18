@@ -1,0 +1,1 @@
+void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police);

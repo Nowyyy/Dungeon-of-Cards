@@ -58,7 +58,7 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 					return FALSE;
 				}
 				else if((*rect_sel)->y == charger.y - RECT_SELECT_Y_DIFF){
-					//*etat = charger_partie;
+					*etat = charger_partie;
 				}
 			}
 		}
