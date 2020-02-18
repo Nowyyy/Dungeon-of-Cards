@@ -116,6 +116,7 @@ typedef struct perso_s {
   int defense;/**Défense d'un personnage*/
   int x;/**Placement sur l'axe des abscisses d'un personnage*/
   int y;/**Placement sur l'axe des ordonnés d'un personnage*/
+  int etage;
   image_t sprites[NB_SPRITES_PERSONNAGE];
 } perso_t;
 

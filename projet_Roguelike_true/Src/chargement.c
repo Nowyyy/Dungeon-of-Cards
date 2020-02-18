@@ -20,10 +20,34 @@ void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Fon
 
 	SDL_Texture *retour_texture, *charger_texture;
 
-	char retour_text[] = "Retourner au menu principal", pas_de_save[] = "Pas de sauvegarde trouvée.";
+	char retour_text[] = "Retourner au menu principal", *charger_text;
+
+	int x_retour = WIN_WIDTH * 0.75, y_retour = WIN_HEIGHT * 0.75;
+	int x_charger = WIN_WIDTH * 0.50, y_charger = WIN_HEIGHT * 0.50;
+
+	if(!save_existe()){
+
+		strcpy(charger_text, "Pas de sauvegarde trouvée");
+	}
+	else{
+		//lire info pour afficher
+	}
+
+	//On créé les textures qui contiendront les textes
+	get_text_and_rect(rendu, x_charger, y_charger, charger_text, police, &charger_texture, &charger_rect);
+	get_text_and_rect(rendu, x_retour, y_retour, retour_text, police, &retour_texture, &retour_rect);
+
+	rectangle_selection->x = x_charger - RECT_SELECT_X_DIFF;
+	rectangle_selection->y = y_charger - RECT_SELECT_Y_DIFF;
+	rectangle_selection->w = charger_rect.w + 100;
+	rectangle_selection->h = charger_rect.h + 50;
+
 
 
 
 
 	free(rectangle_selection);
+	free(charger_text);
+	SDL_DestroyTexture(retour_texture);
+	SDL_DestroyTexture(charger_texture);
 }
