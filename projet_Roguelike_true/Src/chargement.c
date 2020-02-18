@@ -22,6 +22,8 @@ void afficher_chagrer_partie(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture
 
 	SDL_SetRenderDrawColor(rendu, 255,255,255,255); //couleur blanche pour dessiner le rectangle_selection
 
+	SDL_RenderDrawRect(rendu, &rect_sel);
+
 	SDL_RenderCopy(rendu, charger_texture, NULL, &charger_rect);
 	SDL_RenderCopy(rendu, retour_texture, NULL, &retour_rect);
 
@@ -78,19 +80,21 @@ int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SD
 
 void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police){
 
+	printf("On rentre\n");
+
 	SDL_Rect retour_rect, charger_rect;
 	SDL_Rect *rectangle_selection = malloc(sizeof(SDL_Rect));
 
 	SDL_Texture *retour_texture, *charger_texture;
 
-	char retour_text[] = "Retourner au menu principal", *charger_text;
+	char retour_text[] = "Retourner au menu principal", *charger_text = malloc(sizeof(char)* 500);
 
-	int x_retour = WIN_WIDTH * 0.75, y_retour = WIN_HEIGHT * 0.75;
-	int x_charger = WIN_WIDTH * 0.50, y_charger = WIN_HEIGHT * 0.50;
+	int x_retour = WIN_WIDTH * 0.30, y_retour = WIN_HEIGHT * 0.75;
+	int x_charger = WIN_WIDTH * 0.30, y_charger = WIN_HEIGHT * 0.50;
 
 	if(!save_existe()){
 
-		strcpy(charger_text, "Pas de sauvegarde trouvée");
+		charger_text = strcpy(charger_text, "Pas de sauvegarde trouvee");
 	}
 	else{
 		//lire info pour afficher

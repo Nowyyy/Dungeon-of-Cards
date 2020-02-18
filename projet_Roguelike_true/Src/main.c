@@ -16,6 +16,7 @@
 #include "salle.h"
 #include "personnage.h"
 #include "labyrinthe.h"
+#include "chargement.h"
 
 
 int main(int argc, char* args[]){
@@ -66,6 +67,7 @@ int main(int argc, char* args[]){
 						}
 						else if(etat == charger_partie){
 							//charge les données du joueurs afin qu'il reprenne là où il s'était arrêté
+							menu_charger_partie(&continuer, &etat, rendu, police);
 						}
 					}
 				}
