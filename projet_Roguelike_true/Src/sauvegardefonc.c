@@ -7,6 +7,7 @@
 */
 
 #include "constantes.h"
+#include "fonctions.h"
 
 /**
 *\fn void savecarte (carte_t* carte2)
@@ -51,6 +52,7 @@ void readcarte(carte_t* carte2){
    if (fichier != NULL)
     {
         while(!feof(fichier)){
+
           printf("%d %d %d %s\n",carte2->type,carte2->valeur,carte2->consommable,carte2->nom);
           ajout_droit(creer_carte(carte2->nom,carte2->type,carte2->valeur,carte2->consommable));
           fscanf(fichier,"%d %d %d %[^\n]",&carte2->type,&carte2->valeur,&carte2->consommable,carte2->nom);
@@ -95,12 +97,11 @@ void saveperso (perso_t *perso){
 *\brief Fonction qui permet de lire les données du personnage
 *\param perso Pour savoir les données du perso à sauvegarder
 */
-
 void readperso(perso_t*perso){
 
   FILE *fichier=NULL;
   fichier=fopen("perso1.txt","r");
-  
+
   if (fichier != NULL)
    {
        fscanf(fichier,"%d %d %d %d %d %d\n",&perso->pv,&perso->vitesse,&perso->attaque,&perso->defense,&perso->x,&perso->y);
