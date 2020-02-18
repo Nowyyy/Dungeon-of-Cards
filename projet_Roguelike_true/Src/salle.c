@@ -1,7 +1,7 @@
 /**
  * \file salle.c
  * \brief Programme qui créé une salle et l'affiche.
- * \author Axel Jourry
+ * \author {Axel Jourry, Aurélien Tudoret}
  * \version 0.1
  * \date 30 Janvier 2020
  */
