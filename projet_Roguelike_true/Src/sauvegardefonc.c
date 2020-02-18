@@ -8,6 +8,7 @@
 
 #include "constantes.h"
 #include "fonctions.h"
+<<<<<<< HEAD
 
 
 
@@ -29,6 +30,8 @@ int save_existe(){
   else 
     return 1;
 }
+=======
+>>>>>>> master
 
 /**
 *\fn void savecarte (carte_t* carte2)
