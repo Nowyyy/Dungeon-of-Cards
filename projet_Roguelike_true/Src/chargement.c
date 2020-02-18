@@ -15,5 +15,15 @@
 
 void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police){
 
+	SDL_Rect retour_rect, charger_rect;
+	SDL_Rect *rectangle_selection = malloc(sizeof(SDL_Rect));
 
+	SDL_Texture *retour_texture, *charger_texture;
+
+	char retour_text[] = "Retourner au menu principal", pas_de_save[] = "Pas de sauvegarde trouvée.";
+
+
+
+
+	free(rectangle_selection);
 }
