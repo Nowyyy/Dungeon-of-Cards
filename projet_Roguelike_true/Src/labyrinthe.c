@@ -326,6 +326,11 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu){
 	salle_courante = 0;
 	prev = 0;
 
+	verifie_salles_accessibles(salles, taille);
+
+	for(int i = 0; i < taille; i++)
+		ferme_porte_inutile(salles, i);
+
 	for(int i = 0; i < taille; i++){
 		if(salles[i].s_h >= 0)
 			printf("salle %d, porte haut existe, link to %d\n",i, salles[i].s_h);
@@ -339,7 +344,9 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu){
 		printf("\n\n");
 	}
 
-	modifie_texture_affichee(salles, taille, images);
+	textures_aleatoires(salles, taille);
+
+	printf("Il y a %d salles en tout\n", taille);
 
 	while(*etat == labyrinthe && *continuer){
 

@@ -281,28 +281,28 @@ void ferme_porte_inutile(salle_t salles[], int indice){
 
   int i, millieu = TAILLE_SALLE / 2;
 
-  if(salles[indice].haut == 1 || salles[indice].s_h == -1){
+  if(salles[indice].haut == 1 || (salles[indice].haut == 0 && salles[indice].s_h == -1) || salles[indice].s_h == -1){
 
     salles[indice].haut = 0;
     salles[indice].salle[0][millieu] = mur;
     salles[indice].salle[0][millieu-1] = mur;
   }
 
-  if(salles[indice].droite == 1 || salles[indice].s_d == -1){
+  if(salles[indice].droite == 1 || (salles[indice].droite == 0 && salles[indice].s_d == -1) || salles[indice].s_d == -1){
 
     salles[indice].droite = 0;
     salles[indice].salle[millieu][TAILLE_SALLE-1] = mur;
     salles[indice].salle[millieu-1][TAILLE_SALLE-1] = mur;
   }
 
-  if(salles[indice].bas == 1 || salles[indice].s_b == -1){
+  if(salles[indice].bas == 1 || (salles[indice].bas == 0 && salles[indice].s_b == -1) || salles[indice].s_b == -1){
 
     salles[indice].bas = 0;
     salles[indice].salle[TAILLE_SALLE-1][millieu] = mur;
     salles[indice].salle[TAILLE_SALLE-1][millieu-1] = mur;
   }
 
-  if(salles[indice].gauche == 1 || salles[indice].s_g == -1){
+  if(salles[indice].gauche == 1 || (salles[indice].gauche == 0 && salles[indice].s_g == -1) || salles[indice].s_g == -1){
 
     salles[indice].gauche = 0;
     salles[indice].salle[millieu][0] = mur;
@@ -431,7 +431,16 @@ int rajoute_salle_ou_ferme_porte(salle_t salles[], int deb, int fin, int porte, 
 
 
 
-void modifie_texture_affichee(salle_t salles[], int taille, image_t images[]){
+
+/**
+* \fn textures_aleatoires
+
+* \param salles[], le tableau contenant les salles du labyrinthe
+* \param taille, la taille de la salle
+
+* \brief Permet de placer des textures différentes afin de varier le visuel des salles
+*/
+void textures_aleatoires(salle_t salles[], int taille){
 
   int i, j, k, alea;
 
@@ -448,6 +457,211 @@ void modifie_texture_affichee(salle_t salles[], int taille, image_t images[]){
             salles[i].salle[j][k] = sol2;
         }
       }
+    }
+  }
+}
+
+
+/**
+* \fn remplit_tab_salle_0
+
+* \param salle, la salle que l'on va inspecter
+* \param tab[], le tableau contenant les indices des salles accessibles
+
+* \return le nombre de cases de tab[] remplies
+
+* \brief Permet de remplir le tableau à partir de la première salle du labyrinthe.
+*/
+int remplit_tab_salle_0(salle_t salle, int tab[]){
+
+  int i = 0;
+
+  tab[i++] = salle.id;
+
+  if(salle.s_h >= 0){
+    tab[i++] = salle.s_h;
+  }
+  if(salle.s_d >= 0){
+    tab[i++] = salle.s_d;
+  }
+  if(salle.s_b >= 0){
+    tab[i++] = salle.s_b;
+  }
+  if(salle.s_g >= 0){
+    tab[i++] = salle.s_g;
+  }
+
+  return i;
+}
+
+
+/**
+* \fn cherche_acces_salle
+
+* \param salle, la salle que l'on va inspecter
+* \param tab[], le tableau contenant les indices des salles accessibles
+* \param tailleTab, la taille actuelle du tableau
+
+* \return le nombre de cases de tab[] remplies
+
+* \brief Si la salle n'a jamais été entrée dans le tableau et qu'elle est joignable par des salles desjé connues, on l'ajoute au tableau ainsi que ses liaisons inconnues.
+*/
+int cherche_acces_salle(salle_t salle, int tab[], int tailleTab){
+
+  int i, j = 0, bas = 0, gauche = 0, droite = 0, haut = 0, id = 0;
+
+  for(i = 0; i < tailleTab; i++){
+
+    if(salle.s_g == tab[i]){
+      gauche++;
+    }
+    else if(salle.s_h == tab[i]){
+      haut++;
+    }
+    else if(salle.s_d == tab[i]){
+      droite++;
+    }
+    else if(salle.s_b == tab[i]){
+      bas++;
+    }
+    if(salle.id == tab[i])
+      id++;
+  }
+
+  if(bas || gauche || droite || haut){
+    
+    if(id == 0){
+      tab[tailleTab + j] = salle.id;
+      j++;
+    }
+    if(!bas && salle.s_b >= 0){
+      tab[tailleTab + j] = salle.s_b;
+      j++;
+    }
+    if(!haut  && salle.s_h >= 0){
+      tab[tailleTab + j] = salle.s_h;
+      j++;
+    }
+    if(!droite  && salle.s_d >= 0){
+      tab[tailleTab + j] = salle.s_d;
+      j++;
+    }
+    if(!gauche && salle.s_g >= 0){
+      tab[tailleTab + j] = salle.s_g;
+      j++;
+    }
+    return j;
+  }
+  else{
+    return j;
+  }
+}
+
+
+/**
+* \fn lie_salles_et_cree_portes
+
+* \param salles[], le tableau contenant les salles du labyrinthe
+* \param salle1, la première salle que l'on veut modifier
+* \param salle2, la seconde salle que l'on veut modifier
+
+* \brief Ajoute des portes et lie deux salles selon leur portes inexistantes actuellement
+*/
+void lie_salles_et_cree_portes(salle_t salles[], int salle1, int salle2){
+
+  if(salles[salle1].s_h == -1 && salles[salle2].s_b == -1){
+
+    ajout_porte_salle(salles[salle1].salle, 0);
+    ajout_porte_salle(salles[salle2].salle, 2);
+    cree_liaison(salles, salle1, salle2, 0);
+  }
+
+  else if(salles[salle1].s_d == -1 && salles[salle2].s_g == -1){
+
+    ajout_porte_salle(salles[salle1].salle, 1);
+    ajout_porte_salle(salles[salle2].salle, 3);
+    cree_liaison(salles, salle1, salle2, 1);
+  }
+
+  else if(salles[salle1].s_b == -1 && salles[salle2].s_h == -1){
+
+    ajout_porte_salle(salles[salle1].salle, 2);
+    ajout_porte_salle(salles[salle2].salle, 0);
+    cree_liaison(salles, salle1, salle2, 2);
+  }
+
+  else if(salles[salle1].s_g == -1 && salles[salle2].s_d == -1){
+
+    ajout_porte_salle(salles[salle1].salle, 3);
+    ajout_porte_salle(salles[salle2].salle, 1);
+    cree_liaison(salles, salle1, salle2, 3);
+  }
+}
+
+
+
+/**
+* \fn verifie_salles_accessibles
+
+* \param salles[], le tableau contenant les salles du labyrinthe
+* \param taille, la taille du tableau de salles
+
+* \brief Parcours les salles pour rechercher les salles inaccessibles, s'il en trouve, les lie a une accessible. Fonction récursive tant que toutes les salles ne sont pas reliées
+*/
+void verifie_salles_accessibles(salle_t salles[], int taille){
+
+  int tab[taille], tab2[taille];
+  int i = 0, j = 1, compteur1, compteur2 = 0, test, salle, salle2;
+
+  for( ; i < taille; i++){
+    tab[i] = 0;
+  }
+
+  i = 0;
+
+  compteur1 = remplit_tab_salle_0(salles[i++], tab);
+
+//on stocke dans le tableau toutes les salles accessibles depuis celle de départ, plusieurs passages sont nécessaires
+  while(i < taille && compteur1 <= taille){
+
+    compteur1 += cherche_acces_salle(salles[i], tab, compteur1);
+    i++;
+
+    if(j < taille / 2){
+      j++;
+      i = 1;
+    }
+  }
+
+  for(i = 0; i < compteur1; i++){
+    printf("%d ", tab[i]);
+  }
+
+  printf("\nil y a %d salles connectées\n\n", compteur1);
+
+  if(compteur1 < taille){
+
+//permet de récupèrer toutes les salles non liées à celle de départ
+    for(i = 0; i < taille; i++){
+
+      test = 0;
+      for(j = 0; j < taille; j++){
+
+        if(i != tab[j])
+          test = 1;
+      }
+
+      if(test)
+        tab2[compteur2++] = i;
+    }
+
+    salle = rand()%compteur2;
+    salle2 = rand()%compteur1;
+
+    lie_salles_et_cree_portes(salles, salle, salle2);
+
+    if(compteur1 + 1 < taille){
+      verifie_salles_accessibles(salles, taille);
     }
   }
 }
