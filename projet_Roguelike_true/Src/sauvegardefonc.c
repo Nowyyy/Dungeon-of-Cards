@@ -8,7 +8,7 @@
 
 #include "constantes.h"
 #include "fonctions.h"
-<<<<<<< HEAD
+
 
 
 
@@ -30,8 +30,6 @@ int save_existe(){
   else 
     return 1;
 }
-=======
->>>>>>> master
 
 /**
 *\fn void savecarte (carte_t* carte2)
@@ -58,7 +56,7 @@ void savecarte (carte_t* carte2){
        printf("Impossible d'ouvrir le fichier sauvegarde.txt");
    }
    fclose(fichier);
-
+}
 
 /**
 *\fn void readcarte(carte_t* carte2)
@@ -87,7 +85,7 @@ void readcarte(carte_t* carte2){
         // On affiche un message d'erreur si on veut
         printf("Impossible d'ouvrir le fichier sauvegarde.txt");
     }
-    fclose(fichier)
+    fclose(fichier);
 }
 
 

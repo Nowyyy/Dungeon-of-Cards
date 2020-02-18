@@ -6,6 +6,7 @@
 *\date 13/02/2020
 */
 
+
 /**
 *\fn carte_t * creer_carte(char *, type_carte, int *, int)
 *\brief permet de créer une carte selon différentes caractéristiques donnés
@@ -14,7 +15,7 @@
 *\param cible pour la cible de la carte
 *\param valeur pour la valeur de la force de la carte
 */
-carte_t * creer_carte(char *, type_carte, int *, int, int);
+carte_t * creer_carte(char *, type_carte, int, int);
 
 /**
 *\fn perso_t * creer_perso()

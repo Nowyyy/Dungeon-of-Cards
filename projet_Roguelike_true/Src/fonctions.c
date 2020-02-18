@@ -162,7 +162,7 @@ void ajout_gauche(carte_t * t){
 *\param valeur pour la valeur de la force de la carte
 *\return un pointeur sur une variable structure carte_t
 */
-carte_t * creer_carte(char * nom, type_carte type, int * cible, int valeur, int consommable)
+carte_t * creer_carte(char * nom, type_carte type, int valeur, int consommable)
 {
   carte_t * carte = NULL ;
   static unsigned long int cpt = 0 ;
@@ -172,7 +172,7 @@ carte_t * creer_carte(char * nom, type_carte type, int * cible, int valeur, int 
   carte->nom = malloc(sizeof(char)*TAILLE);
   strcpy(carte->nom , nom);
   carte->valeur = valeur;
-  carte->cible = cible;
+  carte->cible = NULL;
   carte->type = type;
   carte->consommable = consommable;
   return(carte);
@@ -220,10 +220,10 @@ ennemi_t * creer_ennemi(char * nom, int pv, int vitesse, int attaque, int defens
 
   return(ennemi);
 }
-
+/*
 ennemi_t * generer_ennemi(int niveau){
   return ennemis_niveau1[0];
-}
+}*/
 /**
 *\fn void detruire_carte(carte_t ** carte)
 *\brief Fonction qui permet de détruire une carte
