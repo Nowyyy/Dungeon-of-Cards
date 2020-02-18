@@ -633,12 +633,6 @@ void verifie_salles_accessibles(salle_t salles[], int taille){
     }
   }
 
-  for(i = 0; i < compteur1; i++){
-    printf("%d ", tab[i]);
-  }
-
-  printf("\nil y a %d salles connectées\n\n", compteur1);
-
   if(compteur1 < taille){
 
 //permet de récupèrer toutes les salles non liées à celle de départ

@@ -313,7 +313,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu){
 	pers.x = WIN_WIDTH / 2;
 	pers.y = WIN_HEIGHT / 2;
 
-	int taille = 10, taille_max = taille *2, salle_courante, prev;
+	int taille = 10, taille_max = taille *2, salle_courante;
 
 	salle_t salles[taille_max];
 
@@ -324,29 +324,13 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu){
 	taille = generation_labyrinthe(salles, taille, taille, taille_max);
 
 	salle_courante = 0;
-	prev = 0;
 
 	verifie_salles_accessibles(salles, taille);
 
 	for(int i = 0; i < taille; i++)
 		ferme_porte_inutile(salles, i);
 
-	for(int i = 0; i < taille; i++){
-		if(salles[i].s_h >= 0)
-			printf("salle %d, porte haut existe, link to %d\n",i, salles[i].s_h);
-		if(salles[i].s_d >= 0)
-			printf("salle %d, porte droite existe, link to %d\n",i, salles[i].s_d);
-		if(salles[i].s_b >= 0)
-			printf("salle %d, porte bas existe, link to %d\n",i, salles[i].s_b);
-		if(salles[i].s_g >= 0)
-			printf("salle %d, porte gauche existe, link to %d\n",i, salles[i].s_g);
-
-		printf("\n\n");
-	}
-
 	textures_aleatoires(salles, taille);
-
-	printf("Il y a %d salles en tout\n", taille);
 
 	while(*etat == labyrinthe && *continuer){
 
@@ -355,11 +339,6 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu){
 		deplacement_personnage(&pers, salles[salle_courante], continuer);
 
 		salle_courante = changement_de_salle(&pers, salles[salle_courante], salle_courante);
-
-		if(prev != salle_courante){
-			printf("Salle %d atteinte\n", salle_courante);
-			prev= salle_courante;
-		}
 	}
 
 	//on libère tous les emplacements mémoires utilisés par les images
