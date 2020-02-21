@@ -12,12 +12,13 @@
 
 #include "constantes.h"
 #include "initialisation_sdl_fonctions.h"
+#include "musique.h"
 #include "main_menu_screen.h"
 #include "salle.h"
 #include "personnage.h"
 #include "labyrinthe.h"
 #include "chargement.h"
-#include "musique.h"
+
 
 
 int main(int argc, char* args[]){

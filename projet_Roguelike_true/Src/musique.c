@@ -1,5 +1,4 @@
-#include "SDL2/SDL.h"
-#include "SDL2/SDL_mixer.h"
+#include "constantes.h"
 
 int lire_musique(const char *MUSIC) {
     int result = 0;

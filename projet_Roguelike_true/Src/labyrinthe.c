@@ -76,7 +76,7 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 
 	afficher_salle(salle, rendu, images);
 
-	SDL_RenderCopy(rendu, pers.sprites[0].img, NULL, &pers.sprites[0].rectangle);
+	SDL_RenderCopy(rendu, pers.sprites[courant].img, NULL, &pers.sprites[0].rectangle);
 
 	SDL_RenderPresent(rendu);//applique les modifs précédentes
 }
@@ -315,6 +315,10 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	pers.x = WIN_WIDTH / 2;
 	pers.y = WIN_HEIGHT / 2;
 
+	animation_t anim;
+
+	init_animations(&anim);
+
 	int taille = 10, taille_max = taille *2, salle_courante;
 
 	salle_t salles[taille_max];
@@ -342,7 +346,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 		affichage_salle_personnage(pers, &salles[salle_courante], rendu, images);
 
-		deplacement_personnage(&pers, salles[salle_courante], continuer);
+		deplacement_personnage(&pers, salles[salle_courante], continuer, &anim);
 
 		salle_courante = changement_de_salle(&pers, salles[salle_courante], salle_courante, change_salle);
 	}
