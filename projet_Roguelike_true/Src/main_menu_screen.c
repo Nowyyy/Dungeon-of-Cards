@@ -11,9 +11,7 @@
 #include "constantes.h"
 #include "initialisation_sdl_fonctions.h"
 #include "musique.h"
-
-#include "SDL2/SDL.h"
-#include "SDL2/SDL_mixer.h"
+#include "clavier.h"
 
 
 /**
@@ -31,49 +29,53 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 
 	SDL_Event event;
 
+	touches_t clavier;
+
+	init_tab_clavier(clavier.tab);
+
 	while(SDL_PollEvent(&event)){ //On attend un évènement au clavier
 
-		if(event.type == SDL_KEYDOWN){	//touche enfoncée
-			if(event.key.keysym.sym == SDLK_DOWN){
-				if((*rect_sel)->y != quitter.y){//on n'est pas sur la dernière option, on peut descendre
-					if((*rect_sel)->y == jouer.y - RECT_SELECT_Y_DIFF){
-						(*rect_sel)->y = charger.y - RECT_SELECT_Y_DIFF;
-						Mix_PlayChannel(0, move, 1);
-					}
-					else if((*rect_sel)->y == charger.y - RECT_SELECT_Y_DIFF){
-						(*rect_sel)->y = quitter.y - RECT_SELECT_Y_DIFF;
-						Mix_PlayChannel(0, move, 1);
-					}
-				}
-			}
-			else if(event.key.keysym.sym == SDLK_UP){
-				if((*rect_sel)->y != jouer.y){//on n'est pas sur la premiere option, on peut monter
-					if((*rect_sel)->y == charger.y - RECT_SELECT_Y_DIFF){
-						(*rect_sel)->y = jouer.y - RECT_SELECT_Y_DIFF;
-						Mix_PlayChannel(0, move, 1);
+		event_clavier(&clavier, event);
 
-					}
-					else if((*rect_sel)->y == quitter.y - RECT_SELECT_Y_DIFF){
-						(*rect_sel)->y = charger.y - RECT_SELECT_Y_DIFF;
-						Mix_PlayChannel(0, move, 1);
-
-					}
-				}
-			}
-			else if(event.key.keysym.sym == SDLK_RETURN){//touche entrée
+		if(clavier.tab[down] == 1){
+			if((*rect_sel)->y != quitter.y){//on n'est pas sur la dernière option, on peut descendre
 				if((*rect_sel)->y == jouer.y - RECT_SELECT_Y_DIFF){
-					*etat = labyrinthe;
-					Mix_PlayChannel(1, select, 1);
+					(*rect_sel)->y = charger.y - RECT_SELECT_Y_DIFF;
+					Mix_PlayChannel(0, move, 1);
+				}
+				else if((*rect_sel)->y == charger.y - RECT_SELECT_Y_DIFF){
+					(*rect_sel)->y = quitter.y - RECT_SELECT_Y_DIFF;
+					Mix_PlayChannel(0, move, 1);
+				}
+			}
+		}
+		else if(clavier.tab[up] == 1){
+			if((*rect_sel)->y != jouer.y){//on n'est pas sur la premiere option, on peut monter
+				if((*rect_sel)->y == charger.y - RECT_SELECT_Y_DIFF){
+					(*rect_sel)->y = jouer.y - RECT_SELECT_Y_DIFF;
+					Mix_PlayChannel(0, move, 1);
 
 				}
 				else if((*rect_sel)->y == quitter.y - RECT_SELECT_Y_DIFF){
-					Mix_PlayChannel(1, select, 1);
-					return FALSE;
+					(*rect_sel)->y = charger.y - RECT_SELECT_Y_DIFF;
+					Mix_PlayChannel(0, move, 1);
+
 				}
-				else if((*rect_sel)->y == charger.y - RECT_SELECT_Y_DIFF){
-					Mix_PlayChannel(1, select, 1);
-					*etat = charger_partie;
-				}
+			}
+		}
+		else if(clavier.tab[entree] == 1){//touche entrée
+			if((*rect_sel)->y == jouer.y - RECT_SELECT_Y_DIFF){
+				*etat = labyrinthe;
+				Mix_PlayChannel(1, select, 1);
+
+			}
+			else if((*rect_sel)->y == quitter.y - RECT_SELECT_Y_DIFF){
+				Mix_PlayChannel(1, select, 1);
+				return FALSE;
+			}
+			else if((*rect_sel)->y == charger.y - RECT_SELECT_Y_DIFF){
+				Mix_PlayChannel(1, select, 1);
+				*etat = charger_partie;
 			}
 		}
 

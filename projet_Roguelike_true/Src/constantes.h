@@ -53,6 +53,17 @@
 #define RECT_SELECT_Y_DIFF 25
 #define RECT_SELECT_X_DIFF 50
 
+#define NB_TOUCHES_UTILISEES 5
+
+
+/**
+* \enum t_sprites_perso
+
+* \brief les types de sprites pour les animations du personnage
+*/
+
+typedef enum{courant, idle_droit, idle_gauche, marche1_droite, marche2_droit, marche1_gauche, marche2_gauche}t_sprites_perso;
+
 /**
 * \enum t_types_textures
 
@@ -78,6 +89,24 @@ typedef enum{mainMenu = 0, labyrinthe, tourParTour, pauseScreen, charger_partie}
 typedef enum {ATTAQUE = -1, DEFENSE = 1} type_carte ;
 
 
+/**
+* \enum t_touches_clavier
+
+* \brief Les différents types de touches utilisées
+*/
+typedef enum{up, down, entree, right, left}t_touches_clavier;
+
+
+/**
+* \struct touchs_t
+
+* \brief permet de gèrer les touches utilisées
+*/
+
+typedef struct{
+  
+  int tab[NB_TOUCHES_UTILISEES];
+}touches_t;
 
 /**
 * \struct t_image

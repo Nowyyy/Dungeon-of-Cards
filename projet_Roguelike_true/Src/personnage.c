@@ -10,6 +10,7 @@
 
 #include "constantes.h"
 #include "initialisation_sdl_fonctions.h"
+#include "clavier.h"
 
 
 
@@ -80,37 +81,43 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer){
 
 	SDL_Event event;
 
+	touches_t clavier;
+
+	init_tab_clavier(clavier.tab);
+
 	while(SDL_PollEvent(&event)){ //On attend un évènement au clavier
 
-		if(event.type == SDL_KEYDOWN){	//touche enfoncée
-			if(event.key.keysym.sym == SDLK_DOWN){ //touche du bas
-				//if(salle.salle[pers->x - EMPLACEMENT_DEPART_DESSIN_SALLE_X][pers->y - EMPLACEMENT_DEPART_DESSIN_SALLE_Y] != mur){
-				if(!test_collision(salle,*pers, 2)){
-					pers->y += VITESSE_PERSO;
-				}
-			}
-			else if(event.key.keysym.sym == SDLK_RIGHT){ //touche droite
-				//if(salle.salle[pers->x - EMPLACEMENT_DEPART_DESSIN_SALLE_X][pers->y - EMPLACEMENT_DEPART_DESSIN_SALLE_Y] != mur){
-				if(!test_collision(salle,*pers, 1)){
-					pers->x += VITESSE_PERSO;
-				}
-			}
-			else if(event.key.keysym.sym == SDLK_LEFT){ //touche gauche
-				//if(salle.salle[pers->x - EMPLACEMENT_DEPART_DESSIN_SALLE_X][pers->y - EMPLACEMENT_DEPART_DESSIN_SALLE_Y] != mur){
-				if(!test_collision(salle,*pers, 3)){
-					pers->x -= VITESSE_PERSO;
-				}
-			}
-			else if(event.key.keysym.sym == SDLK_UP){ //touche haut
-				//if(salle.salle[pers->x - EMPLACEMENT_DEPART_DESSIN_SALLE_X][pers->y - EMPLACEMENT_DEPART_DESSIN_SALLE_Y] != mur){
-				if(!test_collision(salle,*pers, 0)){
-					pers->y -= VITESSE_PERSO;
-				}
+		event_clavier(&clavier, event);
+
+		if(clavier.tab[down] == 1){ //touche du bas
+
+			if(!test_collision(salle,*pers, 2)){
+				pers->y += VITESSE_PERSO;
 			}
 		}
-		if(event.type == SDL_QUIT)//croix de la fenetre
-			*continuer = FALSE;
+		else if(clavier.tab[right] == 1){ //touche droite
+	
+			if(!test_collision(salle,*pers, 1)){
+				pers->x += VITESSE_PERSO;
+			}
+		}
+		else if(clavier.tab[left] == 1){ //touche gauche
+
+			if(!test_collision(salle,*pers, 3)){
+				pers->x -= VITESSE_PERSO;
+			}
+		}
+		else if(clavier.tab[up] == 1){ //touche haut
+			
+			if(!test_collision(salle,*pers, 0)){
+				pers->y -= VITESSE_PERSO;
+			}
+		}
+	
+	if(event.type == SDL_QUIT)//croix de la fenetre
+		*continuer = FALSE;
 	}
+		
 	pers->sprites[0].rectangle.x = pers->x;
 	pers->sprites[0].rectangle.y = pers->y;
 }
@@ -175,3 +182,7 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *cha
 
 	return indice;
 }
+
+
+
+
