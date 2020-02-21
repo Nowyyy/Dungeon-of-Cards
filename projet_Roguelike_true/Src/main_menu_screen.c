@@ -1,4 +1,4 @@
-/** 
+/**
 * \file main_menu_screen.c
 * \author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
 * \date 30/01/2020
@@ -10,6 +10,10 @@
 
 #include "constantes.h"
 #include "initialisation_sdl_fonctions.h"
+#include "musique.h"
+
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_mixer.h"
 
 
 /**
@@ -23,7 +27,7 @@
 
 * \return retourne False pour fermer la fenetre, True pour la garder  ouverte
 */
-int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect quitter, SDL_Rect **rect_sel, int *etat){
+int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect quitter, SDL_Rect **rect_sel, int *etat, Mix_Chunk *select, Mix_Chunk *move){
 
 	SDL_Event event;
 
@@ -34,9 +38,11 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 				if((*rect_sel)->y != quitter.y){//on n'est pas sur la dernière option, on peut descendre
 					if((*rect_sel)->y == jouer.y - RECT_SELECT_Y_DIFF){
 						(*rect_sel)->y = charger.y - RECT_SELECT_Y_DIFF;
+						Mix_PlayChannel(0, move, 1);
 					}
 					else if((*rect_sel)->y == charger.y - RECT_SELECT_Y_DIFF){
 						(*rect_sel)->y = quitter.y - RECT_SELECT_Y_DIFF;
+						Mix_PlayChannel(0, move, 1);
 					}
 				}
 			}
@@ -44,29 +50,38 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 				if((*rect_sel)->y != jouer.y){//on n'est pas sur la premiere option, on peut monter
 					if((*rect_sel)->y == charger.y - RECT_SELECT_Y_DIFF){
 						(*rect_sel)->y = jouer.y - RECT_SELECT_Y_DIFF;
+						Mix_PlayChannel(0, move, 1);
+
 					}
 					else if((*rect_sel)->y == quitter.y - RECT_SELECT_Y_DIFF){
 						(*rect_sel)->y = charger.y - RECT_SELECT_Y_DIFF;
+						Mix_PlayChannel(0, move, 1);
+
 					}
 				}
 			}
 			else if(event.key.keysym.sym == SDLK_RETURN){//touche entrée
 				if((*rect_sel)->y == jouer.y - RECT_SELECT_Y_DIFF){
 					*etat = labyrinthe;
+					Mix_PlayChannel(1, select, 1);
+
 				}
 				else if((*rect_sel)->y == quitter.y - RECT_SELECT_Y_DIFF){
+					Mix_PlayChannel(1, select, 1);
 					return FALSE;
 				}
 				else if((*rect_sel)->y == charger.y - RECT_SELECT_Y_DIFF){
+					Mix_PlayChannel(1, select, 1);
 					*etat = charger_partie;
 				}
 			}
 		}
 
-		if(event.type == SDL_QUIT)//croix de la fenetre
+		if(event.type == SDL_QUIT){//croix de la fenetre
+			Mix_PlayChannel(1, select, 1);
 			return FALSE;
+		}
 	}
-
 	return TRUE;
 }
 
@@ -114,8 +129,8 @@ void affichage_menu(SDL_Renderer *rendu, SDL_Texture *jouer_text, SDL_Texture *c
 * \param *police, la police utilisée pour écrire sur l'écran
 
 * \brief gère l'affichage à l'écran du menu principal, permet de choisir entre différentes options (jouer, charger, quitter)
-*/ 
-void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police){
+*/
+void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *select, Mix_Chunk *move, Mix_Music *music){
 
 	SDL_Rect jouer_text, charger_text, quitter_text;
 	SDL_Rect *rectangle_selection = malloc(sizeof(SDL_Rect));
@@ -136,14 +151,19 @@ void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police)
 	rectangle_selection->w = jouer_text.w +100;
 	rectangle_selection->h = jouer_text.h +50;
 
+
+	
+
 	while(*continuer && *etat == mainMenu){
 
-		
+
 		affichage_menu(rendu, jouer_texture, charger_texture, quitter_texture, rectangle_selection, jouer_text, charger_text, quitter_text);
 
-		*continuer = deplacement_rectangle_selection(jouer_text, charger_text, quitter_text, &rectangle_selection, etat);
+		*continuer = deplacement_rectangle_selection(jouer_text, charger_text, quitter_text, &rectangle_selection, etat, select, move);
 
 	}
+
+	//On arrête et libère la musique quand on quitte le menu principal
 
 	free(rectangle_selection);
 

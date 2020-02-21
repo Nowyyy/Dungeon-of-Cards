@@ -1,4 +1,4 @@
-/** 
+/**
 * \file chargement.c
 * \author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
 * \date 18/02/2020
@@ -33,7 +33,7 @@ void afficher_chagrer_partie(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture
 
 
 
-int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SDL_Rect retour_rect, SDL_Rect **rect_sel){
+int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SDL_Rect retour_rect, SDL_Rect **rect_sel, Mix_Chunk *select, Mix_Chunk *move){
 
 
 	SDL_Event event;
@@ -45,6 +45,7 @@ int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SD
 				if((*rect_sel)->y != retour_rect.y){//on n'est pas sur la dernière option, on peut descendre
 					if((*rect_sel)->y == charger_rect.y - RECT_SELECT_Y_DIFF){
 						(*rect_sel)->y = retour_rect.y - RECT_SELECT_Y_DIFF;
+						Mix_PlayChannel(0, move, 1);
 					}
 				}
 			}
@@ -52,15 +53,18 @@ int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SD
 				if((*rect_sel)->y != charger_rect.y){//on n'est pas sur la premiere option, on peut monter
 					if((*rect_sel)->y == retour_rect.y - RECT_SELECT_Y_DIFF){
 						(*rect_sel)->y = charger_rect.y - RECT_SELECT_Y_DIFF;
+						Mix_PlayChannel(0, move, 1);
 					}
 				}
 			}
 			else if(event.key.keysym.sym == SDLK_RETURN){//touche entrée
 				if((*rect_sel)->y == charger_rect.y - RECT_SELECT_Y_DIFF){
 					*etat = labyrinthe;
+					Mix_PlayChannel(1, select, 1);
 				}
 				else if((*rect_sel)->y == retour_rect.y - RECT_SELECT_Y_DIFF){
 					*etat = mainMenu;
+					Mix_PlayChannel(1, select, 1);
 				}
 			}
 		}
@@ -78,7 +82,7 @@ int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SD
 
 
 
-void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police){
+void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *select, Mix_Chunk *move){
 
 	printf("On rentre\n");
 
@@ -113,7 +117,7 @@ void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Fon
 
 		afficher_chagrer_partie(rendu, *rectangle_selection, charger_texture, charger_rect, retour_texture, retour_rect);
 
-		*continuer = deplacement_rectangle_selection_charger(etat, charger_rect, retour_rect, &rectangle_selection);
+		*continuer = deplacement_rectangle_selection_charger(etat, charger_rect, retour_rect, &rectangle_selection, select, move);
 	}
 
 

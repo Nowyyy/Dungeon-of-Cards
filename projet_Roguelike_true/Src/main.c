@@ -7,7 +7,7 @@
 
 */
 
-// gcc main.c initialisation_sdl_fonctions.c main_menu_screen.c salle.c personnage.c labyrinthe.c -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -o main  
+// gcc main.c initialisation_sdl_fonctions.c main_menu_screen.c salle.c personnage.c labyrinthe.c -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -o main
 //pour compiler sous windows avec sdl2, sdl2  ttf et sdl2 image installés
 
 #include "constantes.h"
@@ -17,7 +17,9 @@
 #include "personnage.h"
 #include "labyrinthe.h"
 #include "chargement.h"
-
+#include "musique.h"
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_mixer.h"
 
 int main(int argc, char* args[]){
 
@@ -29,6 +31,24 @@ int main(int argc, char* args[]){
 	TTF_Font *police = NULL;
 
 	int continuer = 1, etat = mainMenu/*labyrinthe*/;
+	int result = 0;
+	int flags = MIX_INIT_MP3;
+
+	//On initialise le sample joué dans le menu principal
+	const char *MOVE = "../Sound/menu_move.wav";
+	const char *SELECT = "../Sound/menu_select.wav";
+	const char *MENU = "../Sound/menu_song.mp3";
+
+
+	//On charge le sample dans une variable
+	Mix_OpenAudio(44100, AUDIO_S16SYS,6, 4096);
+	Mix_AllocateChannels(6);
+	Mix_Chunk *move = Mix_LoadWAV(MOVE);
+	Mix_Chunk *select = Mix_LoadWAV(SELECT);
+	Mix_Music *music = Mix_LoadMUS(MENU);
+
+
+
 
 //************************* INITIALISATION SDL + TTF ********************************************************
 
@@ -51,23 +71,48 @@ int main(int argc, char* args[]){
 				if(!police)
 					printf("Erreur police\n");
 				else{
+
+					if (SDL_Init(SDL_INIT_AUDIO) < 0) {
+			        printf("Failed to init SDL\n");
+			        exit(1);
+			    }
+					else{
+
+
+						if (flags != (result = Mix_Init(flags))) {
+								printf("Could not initialize mixer (result: %d).\n", result);
+								printf("Mix_Init: %s\n", Mix_GetError());
+								exit(1);
+						}
+						else {
+
+							//On met le volume à fond pour couvrir par dessus la musique
+							Mix_VolumeChunk(move, 128);
+							Mix_VolumeChunk(select, 128);
+							Mix_VolumeMusic(64);
+						}
+
+					}
 //************************* BOUCLE DE JEU ********************************************************************
 
 					while(continuer){
 
 						if(etat == mainMenu){
-
-							main_menu(&continuer, &etat, rendu, police);
+							if(Mix_PlayingMusic() == 0){
+								Mix_PlayMusic(music, 1);
+							}
+							main_menu(&continuer, &etat, rendu, police, select, move, music);
 
 						}
 						else if (etat == labyrinthe){
 							//tout ce qui sera relatif à l'explo dans le laby
+							Mix_PauseMusic();
 							boucle_labyrinthe(&continuer, &etat, rendu);
-							
+
 						}
 						else if(etat == charger_partie){
 							//charge les données du joueurs afin qu'il reprenne là où il s'était arrêté
-							menu_charger_partie(&continuer, &etat, rendu, police);
+							menu_charger_partie(&continuer, &etat, rendu, police, select, move);
 						}
 					}
 				}
@@ -81,6 +126,11 @@ int main(int argc, char* args[]){
 	quit_sdl(&rendu, &window);
 	SDL_Quit();
 	init_or_quit_ttf(0);//quitte TTF
+	Mix_FreeChunk(select);
+	Mix_FreeChunk(move);
+	Mix_FreeMusic(music);
+	Mix_CloseAudio();
+
 
 	printf("Tout est fermé\n");//affiche dans la console
 
