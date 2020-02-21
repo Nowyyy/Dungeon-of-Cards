@@ -182,7 +182,3 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *cha
 
 	return indice;
 }
-
-
-
-
