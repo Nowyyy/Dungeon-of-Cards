@@ -23,6 +23,7 @@
 #define FONT_PATH "../Font/BebasNeue.ttf"
 #define SOL1_PATH "../Images/dalle3.png"
 #define MUR1_PATH "../Images/mur.png"
+#define MUR2_PATH "../Images/mur_feu.png"
 #define SOL2_PATH "../Images/dalle_cailloux.png"
 #define SOL3_PATH "../Images/dalle_eau.png"
 #define PORTE_PATH "../Images/dalle3.png"
@@ -30,7 +31,7 @@
 #define COMMANDES_PATH "../Images/commandes.png"
 #define INSTRUCTIONS_PATH "../Images/instructions.png"
 
-#define NB_TEXTURES 8
+#define NB_TEXTURES 9
 
 #define TRUE 1
 #define FALSE 0
@@ -57,7 +58,7 @@
 
 * \brief les types de textures sur lequel le perso peut tomber
 */
-typedef enum{sol =0, mur, porte, sol2, commandes, instructions, sol3}t_types_textures;
+typedef enum{sol =0, mur, porte, sol2, commandes, instructions, sol3, mur2}t_types_textures;
 
 
 /**

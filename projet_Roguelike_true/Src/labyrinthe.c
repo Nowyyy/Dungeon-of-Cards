@@ -32,6 +32,7 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 
 	charge_image(SOL1_PATH,&images[sol], rendu);
 	charge_image(MUR1_PATH,&images[mur], rendu);
+	charge_image(MUR2_PATH,&images[mur2], rendu);
 	charge_image(PORTE_PATH,&images[porte], rendu);
 	charge_image(SOL2_PATH,&images[sol2], rendu);
 	charge_image(SOL3_PATH,&images[sol3], rendu);

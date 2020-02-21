@@ -450,13 +450,20 @@ void textures_aleatoires(salle_t salles[], int taille){
 
       for(k = 0; k < TAILLE_SALLE; k++){
 
-        if(salles[i].salle[j][k] == 0){
+        if(salles[i].salle[j][k] == sol){
           alea = rand()%13+1;
 
           if(alea >= 6 && alea <= 8)
             salles[i].salle[j][k] = sol2;
           else if(alea > 12)
             salles[i].salle[j][k] = sol3;
+        }
+
+        else if(salles[i].salle[j][k] == mur){
+          alea = rand()%10;
+
+          if(alea >=8)
+            salles[i].salle[j][k] = mur2;
         }
       }
     }
