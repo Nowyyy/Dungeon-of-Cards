@@ -27,11 +27,20 @@
 #define SOL2_PATH "../Images/dalle_cailloux.png"
 #define SOL3_PATH "../Images/dalle_eau.png"
 #define PORTE_PATH "../Images/dalle3.png"
-#define SPRITE_PATH "../Images/sprite2.png"
 #define COMMANDES_PATH "../Images/commandes.png"
 #define INSTRUCTIONS_PATH "../Images/instructions.png"
 
-#define NB_TEXTURES 9
+#define SPRITE1_PATH "../Images/Animations_personnage/idle_droite.png"
+#define SPRITE2_PATH "../Images/Animations_personnage/idle_gauche.png"
+#define SPRITE3_PATH "../Images/Animations_personnage/droite1.png"
+#define SPRITE4_PATH "../Images/Animations_personnage/droite2.png"
+#define SPRITE5_PATH "../Images/Animations_personnage/gauche2.png"
+#define SPRITE6_PATH "../Images/Animations_personnage/gauche1.png"
+#define SPRITE8_PATH "../Images/Animations_personnage/gauche3.png"
+#define SPRITE9_PATH "../Images/Animations_personnage/droite3.png"
+#define SPRITE7_PATH "../Images/Animations_personnage/dead.png"
+
+#define NB_TEXTURES 8
 
 #define TRUE 1
 #define FALSE 0
@@ -43,17 +52,19 @@
 #define TAILLE 20 //Taille des chaînes de caractères
 #define TAILLE_DECK 5
 
-#define NB_SPRITES_PERSONNAGE 12
+#define NB_SPRITES_PERSONNAGE 11
 
 #define EMPLACEMENT_DEPART_DESSIN_SALLE_X 256
 #define EMPLACEMENT_DEPART_DESSIN_SALLE_Y 40
 
-#define VITESSE_PERSO 15
+#define VITESSE_PERSO 10
 
 #define RECT_SELECT_Y_DIFF 25
 #define RECT_SELECT_X_DIFF 50
 
 #define NB_TOUCHES_UTILISEES 5
+
+#define DELAIS_ANIMATIONS 100
 
 
 /**
@@ -62,7 +73,7 @@
 * \brief les types de sprites pour les animations du personnage
 */
 
-typedef enum{courant, idle_droit, idle_gauche, marche1_droite, marche2_droit, marche1_gauche, marche2_gauche}t_sprites_perso;
+typedef enum{courant, idle_droite, idle_gauche, droite1, droite2, droite3, gauche2, gauche1, gauche3, dead}t_sprites_perso;
 
 /**
 * \enum t_types_textures
@@ -94,7 +105,22 @@ typedef enum {ATTAQUE = -1, DEFENSE = 1} type_carte ;
 
 * \brief Les différents types de touches utilisées
 */
-typedef enum{up, down, entree, right, left}t_touches_clavier;
+typedef enum{up, down, right, left, entree}t_touches_clavier;
+
+
+/**
+* \struct animation_t
+
+* \brief permet de gèrer les animations du personnage
+*/
+typedef struct{
+  
+  int actuel;
+
+  unsigned int last_use;
+
+}animation_t;
+
 
 
 /**
@@ -102,7 +128,6 @@ typedef enum{up, down, entree, right, left}t_touches_clavier;
 
 * \brief permet de gèrer les touches utilisées
 */
-
 typedef struct{
   
   int tab[NB_TOUCHES_UTILISEES];
@@ -150,6 +175,7 @@ typedef struct perso_s {
   int y;/**Placement sur l'axe des ordonnés d'un personnage*/
   int etage;
   image_t sprites[NB_SPRITES_PERSONNAGE];
+  unsigned int dernier_animation;
 } perso_t;
 
 /**

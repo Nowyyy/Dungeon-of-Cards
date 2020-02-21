@@ -25,9 +25,17 @@
 */
 void charge_sprites_personnage(image_t sprites[], SDL_Renderer *rendu){
 
-	//for(int i = 0; i < NB_SPRITES_PERSONNAGE; i++){
-		charge_image(SPRITE_PATH, &sprites[0], rendu);
-	//}
+	charge_image(SPRITE1_PATH, &sprites[idle_droite], rendu);
+	charge_image(SPRITE2_PATH, &sprites[idle_gauche], rendu);
+	charge_image(SPRITE3_PATH, &sprites[droite1], rendu);
+	charge_image(SPRITE4_PATH, &sprites[droite2], rendu);
+	charge_image(SPRITE5_PATH, &sprites[gauche2], rendu);
+	charge_image(SPRITE6_PATH, &sprites[gauche1], rendu);
+	charge_image(SPRITE7_PATH, &sprites[dead], rendu);
+	charge_image(SPRITE8_PATH, &sprites[gauche3], rendu);
+	charge_image(SPRITE9_PATH, &sprites[droite3], rendu);
+
+	charge_image(SPRITE2_PATH, &sprites[courant], rendu);
 }
 
 
@@ -49,13 +57,13 @@ int test_collision(salle_t salle, perso_t pers, int direction){
 	for( ; i < salle.nb_murs; i++){
 
 		if(direction == 0)//haut
-			pers.sprites[0].rectangle.y -= 1;
+			pers.sprites[courant].rectangle.y -= 1;
 		else if(direction == 1) //droite
-			pers.sprites[0].rectangle.x += 1;
+			pers.sprites[courant].rectangle.x += 1;
 		else if(direction == 2) //bas
-			pers.sprites[0].rectangle.y += 1;
+			pers.sprites[courant].rectangle.y += 1;
 		else //gauche
-			pers.sprites[0].rectangle.x -= 1;
+			pers.sprites[courant].rectangle.x -= 1;
 
 		if(SDL_HasIntersection(&salle.murs[i], &pers.sprites[0].rectangle)){
 			return 1;
@@ -69,6 +77,84 @@ int test_collision(salle_t salle, perso_t pers, int direction){
 
 /**
 
+* \fn init_animations
+
+* \param *anim, la structure qui gère les animations
+
+* \brief Initialise la structure d'animations
+
+*/
+void init_animations(animation_t *anim){
+
+	anim->actuel = courant;
+	anim->last_use = SDL_GetTicks() - DELAIS_ANIMATIONS;
+}
+
+
+
+/**
+* \fn animations_personnage
+
+* \param sprites[], le tableau de sprites du personnage
+* \param timer, le temps d'execution du jeu
+* \param clavier, la structure de touches du clavier
+* \param *anim, la structure qui gère les animations
+
+* \brief permet de changer d'animation selon le déplacement du personnage
+
+*/
+void animations_personnage(image_t sprites[], unsigned int timer, touches_t clavier, animation_t *anim){
+
+	int i;
+
+	for(i = 0; i <= left && clavier.tab[i] != 1; i++);
+
+	if(i <= left){
+		if(anim->last_use + DELAIS_ANIMATIONS <= timer){
+
+			if(i == right && sprites[courant].img == sprites[droite3].img){
+				sprites[courant] = sprites[droite2];
+				anim->actuel = droite2;
+				anim->last_use = SDL_GetTicks();
+			}
+			else if (i == right && sprites[courant].img == sprites[droite2].img){
+				sprites[courant] = sprites[droite1];
+				anim->actuel = droite1;
+				anim->last_use = SDL_GetTicks();
+			}
+			else if (i == right){
+				sprites[courant] = sprites[droite3];
+				anim->actuel = droite3;
+				anim->last_use = SDL_GetTicks();
+			}
+
+			if(i == left && sprites[courant].img == sprites[gauche1].img){
+				sprites[courant] = sprites[gauche2];
+				anim->actuel = gauche2;
+				anim->last_use = SDL_GetTicks();
+			}
+			else if (i== left && sprites[courant].img == sprites[gauche2].img){
+				sprites[courant] = sprites[gauche3];
+				anim->actuel = gauche1;
+				anim->last_use = SDL_GetTicks();
+			}
+			else if (i == left ){
+				sprites[courant] = sprites[gauche1];
+				anim->actuel = gauche3;
+				anim->last_use = SDL_GetTicks();
+			}
+		}
+	}
+	else{
+		sprites[courant] = sprites[idle_droite];
+		anim->actuel = idle_droite; 
+		anim->last_use = SDL_GetTicks() - DELAIS_ANIMATIONS;
+	}
+}
+
+
+/**
+
 * \fn deplacement_personnage
 
 * \param pers, la structure du pêrsonnage que l'on souhaite déplacer
@@ -77,9 +163,11 @@ int test_collision(salle_t salle, perso_t pers, int direction){
 
 * \brief Gère les déplacement du personnage dans une salle
 */
-void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer){
+void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animation_t *anim){
 
 	SDL_Event event;
+
+	unsigned int temps = SDL_GetTicks();
 
 	touches_t clavier;
 
@@ -93,24 +181,28 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer){
 
 			if(!test_collision(salle,*pers, 2)){
 				pers->y += VITESSE_PERSO;
+				animations_personnage(pers->sprites, temps, clavier, anim);
 			}
 		}
 		else if(clavier.tab[right] == 1){ //touche droite
 	
 			if(!test_collision(salle,*pers, 1)){
 				pers->x += VITESSE_PERSO;
+				animations_personnage(pers->sprites, temps, clavier, anim);
 			}
 		}
 		else if(clavier.tab[left] == 1){ //touche gauche
 
 			if(!test_collision(salle,*pers, 3)){
 				pers->x -= VITESSE_PERSO;
+				animations_personnage(pers->sprites, temps, clavier, anim);
 			}
 		}
 		else if(clavier.tab[up] == 1){ //touche haut
 			
 			if(!test_collision(salle,*pers, 0)){
 				pers->y -= VITESSE_PERSO;
+				animations_personnage(pers->sprites, temps, clavier, anim);
 			}
 		}
 	
@@ -118,8 +210,8 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer){
 		*continuer = FALSE;
 	}
 		
-	pers->sprites[0].rectangle.x = pers->x;
-	pers->sprites[0].rectangle.y = pers->y;
+	pers->sprites[courant].rectangle.x = pers->x;
+	pers->sprites[courant].rectangle.y = pers->y;
 }
 
 
@@ -177,8 +269,8 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *cha
 		}
 	}
 
-	pers->sprites[0].rectangle.x = pers->x;
-	pers->sprites[0].rectangle.y = pers->y;
+	pers->sprites[courant].rectangle.x = pers->x;
+	pers->sprites[courant].rectangle.y = pers->y;
 
 	return indice;
 }
