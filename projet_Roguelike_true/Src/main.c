@@ -92,6 +92,8 @@ int main(int argc, char* args[]){
 							//On met le volume à fond pour couvrir par dessus la musique
 							Mix_VolumeChunk(move, 128);
 							Mix_VolumeChunk(select, 128);
+							Mix_VolumeChunk(change_salle, 128);
+
 							Mix_VolumeMusic(64);
 						}
 
