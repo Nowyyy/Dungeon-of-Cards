@@ -18,8 +18,7 @@
 #include "labyrinthe.h"
 #include "chargement.h"
 #include "musique.h"
-#include "SDL2/SDL.h"
-#include "SDL2/SDL_mixer.h"
+
 
 int main(int argc, char* args[]){
 
