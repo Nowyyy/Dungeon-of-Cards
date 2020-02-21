@@ -116,10 +116,10 @@ void afficher_salle(salle_t *salle, SDL_Renderer *rendu, image_t texture[]){
 
       SDL_RenderCopy(rendu, texture[salle->salle[i][j]].img, NULL, &texture[salle->salle[i][j]].rectangle);
 
-      coorX += TAILLE_IMAGE;
+      coorX += TAILLE_IMAGE-1;
     }
     coorX = EMPLACEMENT_DEPART_DESSIN_SALLE_X;
-    coorY += TAILLE_IMAGE;
+    coorY += TAILLE_IMAGE - 1;
   }
 }
 
@@ -451,10 +451,12 @@ void textures_aleatoires(salle_t salles[], int taille){
       for(k = 0; k < TAILLE_SALLE; k++){
 
         if(salles[i].salle[j][k] == 0){
-          alea = rand()%2;
+          alea = rand()%13+1;
 
-          if(alea == 1)
+          if(alea >= 6 && alea <= 8)
             salles[i].salle[j][k] = sol2;
+          else if(alea > 12)
+            salles[i].salle[j][k] = sol3;
         }
       }
     }
@@ -649,13 +651,16 @@ void verifie_salles_accessibles(salle_t salles[], int taille){
         tab2[compteur2++] = i;
     }
 
-    salle = rand()%compteur2;
-    salle2 = rand()%compteur1;
+    if(compteur2 > 0){
 
-    lie_salles_et_cree_portes(salles, salle, salle2);
+      salle = rand()%compteur1;
+      salle2 = rand()%compteur2;
 
-    if(compteur1 + 1 < taille){
-      verifie_salles_accessibles(salles, taille);
+      lie_salles_et_cree_portes(salles, tab[salle], tab2[salle2]);
+
+      if(compteur1 + 1 < taille){
+        verifie_salles_accessibles(salles, taille);
+      }
     }
   }
 }

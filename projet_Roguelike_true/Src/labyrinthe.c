@@ -34,6 +34,7 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 	charge_image(MUR1_PATH,&images[mur], rendu);
 	charge_image(PORTE_PATH,&images[porte], rendu);
 	charge_image(SOL2_PATH,&images[sol2], rendu);
+	charge_image(SOL3_PATH,&images[sol3], rendu);
 	charge_image(COMMANDES_PATH, &images[commandes], rendu);
 	charge_image(INSTRUCTIONS_PATH, &images[instructions], rendu);
 
@@ -329,6 +330,10 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu){
 
 	for(int i = 0; i < taille; i++)
 		ferme_porte_inutile(salles, i);
+
+	for(int i = 0; i < taille; i++){
+		rempli_tableau_murs_portes(salles, i);
+	}
 
 	textures_aleatoires(salles, taille);
 
