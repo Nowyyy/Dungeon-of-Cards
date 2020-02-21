@@ -37,6 +37,8 @@ int main(int argc, char* args[]){
 	//On initialise le sample joué dans le menu principal
 	const char *MOVE = "../Sound/menu_move.wav";
 	const char *SELECT = "../Sound/menu_select.wav";
+	const char *CHANGE = "../Sound/laby_change.wav";
+
 	const char *MENU = "../Sound/menu_song.mp3";
 
 
@@ -45,6 +47,8 @@ int main(int argc, char* args[]){
 	Mix_AllocateChannels(6);
 	Mix_Chunk *move = Mix_LoadWAV(MOVE);
 	Mix_Chunk *select = Mix_LoadWAV(SELECT);
+	Mix_Chunk *change_salle = Mix_LoadWAV(CHANGE);
+
 	Mix_Music *music = Mix_LoadMUS(MENU);
 
 
@@ -107,7 +111,7 @@ int main(int argc, char* args[]){
 						else if (etat == labyrinthe){
 							//tout ce qui sera relatif à l'explo dans le laby
 							Mix_PauseMusic();
-							boucle_labyrinthe(&continuer, &etat, rendu);
+							boucle_labyrinthe(&continuer, &etat, rendu, change_salle);
 
 						}
 						else if(etat == charger_partie){

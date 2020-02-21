@@ -128,7 +128,7 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer){
 
 * \return la salle dans laquelle le joueur arrive
 */
-int changement_de_salle(perso_t *pers, salle_t salle, int indice){
+int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *change_salle){
 
 	for(int i = 0; i < salle.nb_portes; i++){
 
@@ -138,14 +138,16 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice){
 			//porte en haut
 				pers->x = WIN_WIDTH / 2 - TAILLE_IMAGE;
 				pers->y = salle.murs[salle.nb_murs -1].y - TAILLE_IMAGE;
+				Mix_PlayChannel(0, change_salle, 1);
 
 				return salle.s_h;
 			}
 			else if(salle.portes[i].y == 488){
 			//porte en bas
 				pers->x = WIN_WIDTH / 2 - TAILLE_IMAGE;
-				
+
 				pers->y = salle.murs[0].y + TAILLE_IMAGE;
+				Mix_PlayChannel(0, change_salle, 1);
 
 				return salle.s_b;
 			}
@@ -153,6 +155,7 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice){
 			//porte à gauche
 				pers->x = WIN_WIDTH / 2 + 100;
 				pers->y = WIN_HEIGHT / 2 - TAILLE_IMAGE / 2;
+				Mix_PlayChannel(0, change_salle, 1);
 
 				return salle.s_g;
 			}
@@ -160,6 +163,7 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice){
 			//porte à droite
 				pers->x = salle.murs[0].x + TAILLE_IMAGE;
 				pers->y = WIN_HEIGHT / 2 - TAILLE_IMAGE / 2;
+				Mix_PlayChannel(0, change_salle, 1);
 
 				return salle.s_d;
 			}

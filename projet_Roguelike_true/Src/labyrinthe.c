@@ -281,7 +281,7 @@ int generation_labyrinthe(salle_t salles[], int taille, int max_salles, int tail
 	deb = 0;
 
 	while(deb < fin){
-		
+
 		ferme_porte_inutile(salles, deb);
 		verifie_porte_ouverte(salles, deb, fin);
 		deb++;
@@ -305,7 +305,7 @@ int generation_labyrinthe(salle_t salles[], int taille, int max_salles, int tail
 * \brief Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...
 
 */
-void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu){
+void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *change_salle){
 
 
 	image_t images[NB_TEXTURES];
@@ -344,7 +344,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu){
 
 		deplacement_personnage(&pers, salles[salle_courante], continuer);
 
-		salle_courante = changement_de_salle(&pers, salles[salle_courante], salle_courante);
+		salle_courante = changement_de_salle(&pers, salles[salle_courante], salle_courante, change_salle);
 	}
 
 	//on libère tous les emplacements mémoires utilisés par les images
