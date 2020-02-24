@@ -11,8 +11,22 @@
 #include "constantes.h"
 #include "initialisation_sdl_fonctions.h"
 #include "sauvegardefonc.h"
+#include "personnage.h"
 
 
+/**
+* \fn affichage_chagrer_partie
+
+* \param*rendu, le renderer sur lequel on dessine
+* \param rect_sel, le rectangle de sélection du menu
+* \param *charger_texture la texture pour le texte "Charger partie"
+* \param *retour_texture la texture pour le texte "Quitter"
+* \param charger_rect le rectangle pour charger une sauvegarde
+* \param retour_rect le rectangle pour le texte "retour"
+
+* \brief Affiche sur le rendu les différentes textures et rectangles passés en paramètre
+
+*/
 void afficher_chagrer_partie(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture *charger_texture, SDL_Rect charger_rect, SDL_Texture *retour_texture, SDL_Rect retour_rect){
 
 
@@ -32,9 +46,19 @@ void afficher_chagrer_partie(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture
 
 
 
+/**
+* \fn deplacement_rectangle_selection
 
+* \param *etat, permet de changer l'affuchage selon l'écran dans lequel se trouve le jeu
+* \param charger_rect, le rectangle contenant le texte relatif à la sauvegarde
+* \param retour_rect, le rectangle contenant le texte "retour", pour retourner au menu principal
+* \param **rect_sel, le rectangle de sélection permettant de sélectionner une option
+
+* \brief Permet de déplacer d'option en option le rectangle de sélection
+
+* \return retourne False pour fermer la fenetre, True pour la garder  ouverte
+*/
 int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SDL_Rect retour_rect, SDL_Rect **rect_sel, Mix_Chunk *select, Mix_Chunk *move){
-
 
 	SDL_Event event;
 
@@ -81,10 +105,21 @@ int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SD
 
 
 
+/**
+* \fn menu_charger_partie
 
-void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *select, Mix_Chunk *move){
+* \param *continuer, pointeur sur un int permettant de savoir si le joueur veut quitter le jeu
+* \param *etat, pointeur sur un int permettant de connaitre le prochain écran auquel le joueur veut accèder
+* \param *rendu, le renderer sur lequel on dessine
+* \param *police, la police d'écriture pour TTF
+* \param *select, don't know
+* \param *move, don't know
+* \param *pers, la structure du personnage
 
-	printf("On rentre\n");
+* \brief Permet d'afficher et de récupèrer une sauvegarde éventuelle puis de lancer le jeu 
+
+*/
+void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *select, Mix_Chunk *move, perso_t *pers, carte_t *cartes){
 
 	SDL_Rect retour_rect, charger_rect;
 	SDL_Rect *rectangle_selection = malloc(sizeof(SDL_Rect));
@@ -92,6 +127,7 @@ void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Fon
 	SDL_Texture *retour_texture, *charger_texture;
 
 	char retour_text[] = "Retourner au menu principal", *charger_text = malloc(sizeof(char)* 500);
+	char intermediaire[50];
 
 	int x_retour = WIN_WIDTH * 0.30, y_retour = WIN_HEIGHT * 0.75;
 	int x_charger = WIN_WIDTH * 0.30, y_charger = WIN_HEIGHT * 0.50;
@@ -99,9 +135,14 @@ void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Fon
 	if(!save_existe()){
 
 		charger_text = strcpy(charger_text, "Pas de sauvegarde trouvee");
+		initialise_personnage(pers);
+		//initialise_deck_cartes(cartes);
 	}
 	else{
-		//lire info pour afficher
+		readperso(pers);
+		readcarte(cartes);
+		sprintf(intermediaire,"Etage %d, Points de vie %d", pers->etage, pers->pv);
+		charger_text = strcpy(charger_text, intermediaire);
 	}
 
 	//On créé les textures qui contiendront les textes
@@ -119,8 +160,6 @@ void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Fon
 
 		*continuer = deplacement_rectangle_selection_charger(etat, charger_rect, retour_rect, &rectangle_selection, select, move);
 	}
-
-
 
 	free(rectangle_selection);
 	free(charger_text);

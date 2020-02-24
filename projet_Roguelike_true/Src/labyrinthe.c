@@ -305,15 +305,9 @@ int generation_labyrinthe(salle_t salles[], int taille, int max_salles, int tail
 * \brief Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...
 
 */
-void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *change_salle){
-
+void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *change_salle, perso_t *pers, carte_t *cartes){
 
 	image_t images[NB_TEXTURES];
-
-	perso_t pers;
-
-	pers.x = WIN_WIDTH / 2;
-	pers.y = WIN_HEIGHT / 2;
 
 	animation_t anim;
 
@@ -323,7 +317,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	salle_t salles[taille_max];
 
-	charge_toutes_textures(images, &pers, rendu);
+	charge_toutes_textures(images, pers, rendu);
 
 	initialise_salles(salles, taille_max);
 
@@ -344,18 +338,17 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	while(*etat == labyrinthe && *continuer){
 
-		affichage_salle_personnage(pers, &salles[salle_courante], rendu, images);
+		affichage_salle_personnage(*pers, &salles[salle_courante], rendu, images);
 
-		deplacement_personnage(&pers, salles[salle_courante], continuer, &anim);
+		deplacement_personnage(pers, salles[salle_courante], continuer, &anim);
 
-		salle_courante = changement_de_salle(&pers, salles[salle_courante], salle_courante, change_salle);
+		salle_courante = changement_de_salle(pers, salles[salle_courante], salle_courante, change_salle);
 	}
 
 	//on libère tous les emplacements mémoires utilisés par les images
-	SDL_DestroyTexture(images[instructions].img);
-	SDL_DestroyTexture(images[commandes].img);
-	SDL_DestroyTexture(pers.sprites[0].img);
-	SDL_DestroyTexture(images[sol].img);
-	SDL_DestroyTexture(images[mur].img);
-	SDL_DestroyTexture(images[porte].img);
+	for(int i = 0; i < NB_SPRITES_PERSONNAGE; i++)
+		SDL_DestroyTexture(pers->sprites[i].img);
+
+	for(int i = sol; i <= mur2; i++)
+		SDL_DestroyTexture(images[i].img);
 }

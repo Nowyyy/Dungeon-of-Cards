@@ -122,7 +122,7 @@ void animations_personnage(image_t sprites[], unsigned int timer, touches_t clav
 				anim->actuel = droite1;
 				anim->last_use = SDL_GetTicks();
 			}
-			else if (i == right){
+			else if (i == right || (i == right && sprites[courant].img == sprites[droite1].img)){
 				sprites[courant] = sprites[droite3];
 				anim->actuel = droite3;
 				anim->last_use = SDL_GetTicks();
@@ -138,7 +138,7 @@ void animations_personnage(image_t sprites[], unsigned int timer, touches_t clav
 				anim->actuel = gauche1;
 				anim->last_use = SDL_GetTicks();
 			}
-			else if (i == left ){
+			else if (i == left || (i == left && sprites[courant].img == sprites[gauche3].img)){
 				sprites[courant] = sprites[gauche1];
 				anim->actuel = gauche3;
 				anim->last_use = SDL_GetTicks();
@@ -273,4 +273,39 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *cha
 	pers->sprites[courant].rectangle.y = pers->y;
 
 	return indice;
+}
+
+
+
+/** 
+* \fn initialise_personnage
+
+* \param *pers, la structure du personnage
+
+* \brief initialise les valeurs de base pour le personnage
+*/
+void initialise_personnage(perso_t *pers){
+
+
+	pers->pv = PV_DEPART_PERSONNAGE;
+	pers->vitesse = VITESSE_DEPART_PERSONNAGE;
+	pers->attaque = ATTAQUE_DEPART_PERSONNAGE;
+	pers->defense = DEFENSE_DEPART_PERSONNAGE;
+
+	pers->x = WIN_WIDTH / 2;
+	pers->y = WIN_HEIGHT / 2;
+}
+
+
+
+/**
+* \fn initialise_deck_cartes
+
+* \param *cartes
+
+* \brief Initialise un deck de départ pour le joueur
+*/
+void initialise_deck_cartes(carte_t *cartes){
+
+	//do nothing pour le moment
 }

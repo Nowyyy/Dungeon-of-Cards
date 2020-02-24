@@ -34,6 +34,9 @@ int main(int argc, char* args[]){
 	int result = 0;
 	int flags = MIX_INIT_MP3;
 
+	perso_t pers;
+	carte_t *cartes;
+
 	//On initialise le sample joué dans le menu principal
 	const char *MOVE = "../Sound/menu_move.wav";
 	const char *SELECT = "../Sound/menu_select.wav";
@@ -109,16 +112,20 @@ int main(int argc, char* args[]){
 							}
 							main_menu(&continuer, &etat, rendu, police, select, move, music);
 
+							if(etat == labyrinthe){
+								//initialise_deck_cartes(cartes);
+								initialise_personnage(&pers);
+							}
 						}
 						else if (etat == labyrinthe){
 							//tout ce qui sera relatif à l'explo dans le laby
 							Mix_PauseMusic();
-							boucle_labyrinthe(&continuer, &etat, rendu, change_salle);
+							boucle_labyrinthe(&continuer, &etat, rendu, change_salle, &pers, cartes);
 
 						}
 						else if(etat == charger_partie){
 							//charge les données du joueurs afin qu'il reprenne là où il s'était arrêté
-							menu_charger_partie(&continuer, &etat, rendu, police, select, move);
+							menu_charger_partie(&continuer, &etat, rendu, police, select, move, &pers, cartes);
 						}
 					}
 				}

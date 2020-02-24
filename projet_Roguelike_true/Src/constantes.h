@@ -40,6 +40,9 @@
 #define SPRITE9_PATH "../Images/Animations_personnage/droite3.png"
 #define SPRITE7_PATH "../Images/Animations_personnage/dead.png"
 
+#define SAVE_PERSO_PATH "../Sauvegarde/personnage.txt"
+#define SAVE_CARTES_PATH "../Sauvegarde/cartes.txt"
+
 #define NB_TEXTURES 8
 
 #define TRUE 1
@@ -52,7 +55,7 @@
 #define TAILLE 20 //Taille des chaînes de caractères
 #define TAILLE_DECK 5
 
-#define NB_SPRITES_PERSONNAGE 11
+#define NB_SPRITES_PERSONNAGE 10
 
 #define EMPLACEMENT_DEPART_DESSIN_SALLE_X 256
 #define EMPLACEMENT_DEPART_DESSIN_SALLE_Y 40
@@ -64,7 +67,12 @@
 
 #define NB_TOUCHES_UTILISEES 5
 
-#define DELAIS_ANIMATIONS 100
+#define DELAIS_ANIMATIONS 300
+
+#define PV_DEPART_PERSONNAGE 50
+#define VITESSE_DEPART_PERSONNAGE 5
+#define ATTAQUE_DEPART_PERSONNAGE 10
+#define DEFENSE_DEPART_PERSONNAGE 10
 
 
 /**
@@ -175,7 +183,7 @@ typedef struct perso_s {
   int y;/**Placement sur l'axe des ordonnés d'un personnage*/
   int etage;
   image_t sprites[NB_SPRITES_PERSONNAGE];
-  unsigned int dernier_animation;
+  
 } perso_t;
 
 /**

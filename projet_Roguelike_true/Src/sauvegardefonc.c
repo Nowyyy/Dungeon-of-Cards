@@ -23,12 +23,13 @@ int save_existe(){
 
   FILE *f;
 
-  f = fopen("sauvegarde.txt", "r");
+  f = fopen(SAVE_PERSO_PATH, "r");
 
   if(!f)
     return 0;
-  else 
-    return 1;
+  
+  fclose(f);
+  return 1;
 }
 
 /**
@@ -39,7 +40,7 @@ int save_existe(){
 void savecarte (carte_t* carte2){
 
   FILE *fichier=NULL;
-  fichier=fopen("sauvegarde.txt","w");
+  fichier=fopen(SAVE_CARTES_PATH,"w");
   en_tete();
 
   if (fichier != NULL)
@@ -66,7 +67,7 @@ void savecarte (carte_t* carte2){
 void readcarte(carte_t* carte2){
 
   FILE *fichier=NULL;
-   fichier=fopen("perso1.txt","r");
+   fichier=fopen(SAVE_CARTES_PATH,"r");
    en_tete();
 
    fscanf(fichier,"%d %d %d %[^\n]",&carte2->type,&carte2->valeur,&carte2->consommable,carte2->nom);
@@ -98,11 +99,11 @@ void readcarte(carte_t* carte2){
 void saveperso (perso_t *perso){
 
   FILE *fichier=NULL;
-  fichier=fopen("perso.txt","w");
+  fichier=fopen(SAVE_PERSO_PATH,"w");
 
   if (fichier != NULL)
    {
-       fprintf(fichier,"%d %d %d %d %d %d\n",perso->pv,perso->vitesse,perso->attaque,perso->defense,perso->x,perso->y);
+       fprintf(fichier,"%d %d %d %d %d %d %d\n",perso->pv,perso->vitesse,perso->attaque,perso->defense,perso->x,perso->y, perso->etage);
    }
    else
    {
@@ -122,11 +123,11 @@ void saveperso (perso_t *perso){
 void readperso(perso_t*perso){
 
   FILE *fichier=NULL;
-  fichier=fopen("perso1.txt","r");
+  fichier=fopen(SAVE_PERSO_PATH,"r");
 
   if (fichier != NULL)
    {
-       fscanf(fichier,"%d %d %d %d %d %d\n",&perso->pv,&perso->vitesse,&perso->attaque,&perso->defense,&perso->x,&perso->y);
+       fscanf(fichier,"%d %d %d %d %d %d %d\n",&perso->pv,&perso->vitesse,&perso->attaque,&perso->defense,&perso->x,&perso->y,&perso->etage);
    }
    else
    {
