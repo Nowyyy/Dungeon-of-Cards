@@ -42,14 +42,14 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 	charge_sprites_personnage(pers->sprites, rendu);
 
 	//on donne les coordonnées pour placer les images des commandes et des instructions
-	images[commandes].rectangle.x=0;
-	images[commandes].rectangle.y=WIN_HEIGHT/4;
-	images[instructions].rectangle.x=800;
-	images[instructions].rectangle.y=WIN_HEIGHT/30;
+	images[commandes].rectangle.x = 0;
+	images[commandes].rectangle.y = WIN_HEIGHT/4;
+	images[instructions].rectangle.x = 800;
+	images[instructions].rectangle.y = WIN_HEIGHT/30;
 
 	//on place le personnage dans la premiere salle, au centre
-	pers->sprites[0].rectangle.x = pers->x;
-	pers->sprites[0].rectangle.y = pers->y;
+	pers->sprites[courant].rectangle.x = pers->x;
+	pers->sprites[courant].rectangle.y = pers->y;
 }
 
 
