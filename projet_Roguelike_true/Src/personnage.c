@@ -93,6 +93,25 @@ void init_animations(animation_t *anim){
 
 
 /**
+* \fn change_animation
+
+* \param sprites[], le tableau de sprites du personnage
+* \param *anim, la structure qui gère les animations
+* \param nouvelle_animation, l'indice du tableau ou se trouve la nouvelle animation a utiliser
+
+* \brief permet de changer d'animation selon la nouvelle passée en paramètre
+
+*/
+void change_animation(animation_t *anim, image_t sprites[], int nouvelle_animation){
+
+	sprites[courant] = sprites[nouvelle_animation];
+	anim->actuel = nouvelle_animation;
+	anim->last_use = SDL_GetTicks();
+}
+
+
+
+/**
 * \fn animations_personnage
 
 * \param sprites[], le tableau de sprites du personnage
@@ -107,48 +126,99 @@ void animations_personnage(image_t sprites[], unsigned int timer, touches_t clav
 
 	int i;
 
-	for(i = 0; i <= left && clavier.tab[i] != 1; i++);
+	for(i = 0; i <= left && clavier.tab[i] != 1; i++);//recherche d'une touche pressée
 
 	if(i <= left){
+
 		if(anim->last_use + DELAIS_ANIMATIONS <= timer){
 
+			//animation du personnage vers la droite
 			if(i == right && sprites[courant].img == sprites[droite3].img){
-				sprites[courant] = sprites[droite2];
-				anim->actuel = droite2;
-				anim->last_use = SDL_GetTicks();
+				change_animation(anim, sprites, droite2);
 			}
 			else if (i == right && sprites[courant].img == sprites[droite2].img){
-				sprites[courant] = sprites[droite1];
-				anim->actuel = droite1;
-				anim->last_use = SDL_GetTicks();
+				change_animation(anim, sprites, droite1);
 			}
 			else if (i == right || (i == right && sprites[courant].img == sprites[droite1].img)){
-				sprites[courant] = sprites[droite3];
-				anim->actuel = droite3;
-				anim->last_use = SDL_GetTicks();
+				change_animation(anim, sprites, droite3);
 			}
 
+			//animation du personnage vers la gauche
 			if(i == left && sprites[courant].img == sprites[gauche1].img){
-				sprites[courant] = sprites[gauche2];
-				anim->actuel = gauche2;
-				anim->last_use = SDL_GetTicks();
+				change_animation(anim, sprites, gauche2);
 			}
 			else if (i== left && sprites[courant].img == sprites[gauche2].img){
-				sprites[courant] = sprites[gauche3];
-				anim->actuel = gauche1;
-				anim->last_use = SDL_GetTicks();
+				change_animation(anim, sprites, gauche3);
 			}
 			else if (i == left || (i == left && sprites[courant].img == sprites[gauche3].img)){
-				sprites[courant] = sprites[gauche1];
-				anim->actuel = gauche3;
-				anim->last_use = SDL_GetTicks();
+				change_animation(anim, sprites, gauche1);
+			}
+
+			//animation du personnage vers le haut
+			if(i == up){
+				//on garde le personnage orienté dans sa direction d'origine
+				if(anim->actuel >= idle_droite && anim->actuel <= droite3){
+					if(sprites[courant].img == sprites[droite3].img){
+						change_animation(anim, sprites, droite2);
+					}
+					else if(sprites[courant].img == sprites[droite2].img){
+						change_animation(anim, sprites, droite1);
+					}
+					else{
+						change_animation(anim, sprites, droite3);
+					}
+				}
+				else{
+					if(sprites[courant].img == sprites[gauche1].img){
+						change_animation(anim, sprites, gauche2);
+					}
+					else if(sprites[courant].img == sprites[gauche2].img){
+						change_animation(anim, sprites, gauche3);
+					}
+					else{
+						change_animation(anim, sprites, gauche1);
+					}
+				}
+			}
+			else //animation du personnage vers le bas
+			if(i == down){
+				//on garde le personnage orienté dans sa direction d'origine
+				if(anim->actuel >= idle_droite && anim->actuel <= droite3){
+					if(sprites[courant].img == sprites[droite3].img){
+						change_animation(anim, sprites, droite2);
+					}
+					else if(sprites[courant].img == sprites[droite2].img){
+						change_animation(anim, sprites, droite1);
+					}
+					else{
+						change_animation(anim, sprites, droite3);
+					}
+				}
+				else{
+					if(sprites[courant].img == sprites[gauche1].img){
+						change_animation(anim, sprites, gauche2);
+					}
+					else if(sprites[courant].img == sprites[gauche2].img){
+						change_animation(anim, sprites, gauche3);
+					}
+					else{
+						change_animation(anim, sprites, gauche1);
+					}
+				}
 			}
 		}
 	}
 	else{
-		sprites[courant] = sprites[idle_droite];
-		anim->actuel = idle_droite; 
-		anim->last_use = SDL_GetTicks() - DELAIS_ANIMATIONS;
+
+		//aucune touche enfoncée, on revient a un état idle
+		if(sprites[courant].img == sprites[gauche3].img || sprites[courant].img == sprites[gauche2].img || sprites[courant].img == sprites[gauche1].img){
+			change_animation(anim, sprites, idle_gauche);
+		}
+		else{
+			change_animation(anim, sprites, idle_droite);
+		}
+
+		anim->last_use -= DELAIS_ANIMATIONS;
 	}
 }
 
@@ -208,6 +278,9 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 	
 	if(event.type == SDL_QUIT)//croix de la fenetre
 		*continuer = FALSE;
+	
+	animations_personnage(pers->sprites, temps, clavier, anim);
+	//permet au personnage de revenir à l'état idle quand aucune touche n'est enfoncée
 	}
 		
 	pers->sprites[courant].rectangle.x = pers->x;

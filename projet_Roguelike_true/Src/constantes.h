@@ -60,7 +60,7 @@
 #define EMPLACEMENT_DEPART_DESSIN_SALLE_X 256
 #define EMPLACEMENT_DEPART_DESSIN_SALLE_Y 40
 
-#define VITESSE_PERSO 10
+#define VITESSE_PERSO 8
 
 #define RECT_SELECT_Y_DIFF 25
 #define RECT_SELECT_X_DIFF 50
@@ -81,7 +81,7 @@
 * \brief les types de sprites pour les animations du personnage
 */
 
-typedef enum{courant, idle_droite, idle_gauche, droite1, droite2, droite3, gauche2, gauche1, gauche3, dead}t_sprites_perso;
+typedef enum{courant, idle_droite, droite1, droite2, droite3, idle_gauche, gauche2, gauche1, gauche3, dead}t_sprites_perso;
 
 /**
 * \enum t_types_textures

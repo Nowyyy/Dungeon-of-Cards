@@ -6,3 +6,4 @@ int test_collision(salle_t salle, perso_t pers, int direction);
 int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *change_salle);
 void initialise_personnage(perso_t *pers);
 void initialise_deck_cartes(carte_t *cartes);
+void change_animation(animation_t *anim, image_t sprites[], int nouvelle_animation);
