@@ -258,14 +258,16 @@ int aleatoire_porte(salle_t *salle, int porte_arrivee, int max_porte){
 */
 int inverse_porte(int porte){
 
-  if(porte == 0)
+  if(porte == 0){
     return 2;
-  if(porte == 1)
+  }
+  if(porte == 1){
     return 3;
-  if(porte == 2)
+  }
+  if(porte == 2){
     return 0;
-  if(porte == 3)
-    return 1;
+  }
+  return 1;
 }
 
 
@@ -386,7 +388,7 @@ void verifie_porte_ouverte(salle_t salles[], int indice, int taille){
 */
 int porte_disponible(salle_t salles[], int indice, int porte_possible){
 
-  if(salles[indice].s_h == porte_possible || salles[indice].s_b == porte_possible || 
+  if(salles[indice].s_h == porte_possible || salles[indice].s_b == porte_possible ||
     salles[indice].s_g == porte_possible || salles[indice].s_d == porte_possible)
 
     return FALSE;
@@ -538,7 +540,7 @@ int cherche_acces_salle(salle_t salle, int tab[], int tailleTab){
   }
 
   if(bas || gauche || droite || haut){
-    
+
     if(id == 0){
       tab[tailleTab + j] = salle.id;
       j++;

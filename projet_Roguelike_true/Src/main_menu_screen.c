@@ -10,7 +10,6 @@
 
 #include "constantes.h"
 #include "initialisation_sdl_fonctions.h"
-#include "musique.h"
 #include "clavier.h"
 
 

@@ -29,6 +29,7 @@
 #define PORTE_PATH "../Images/dalle3.png"
 #define COMMANDES_PATH "../Images/commandes.png"
 #define INSTRUCTIONS_PATH "../Images/instructions.png"
+#define GAMEOVER_PATH "../Images/gameover.png"
 
 #define SPRITE1_PATH "../Images/Animations_personnage/idle_droite.png"
 #define SPRITE2_PATH "../Images/Animations_personnage/idle_gauche.png"
@@ -45,7 +46,7 @@
 #define SAVE_PERSO_PATH "../Sauvegarde/personnage.txt"
 #define SAVE_CARTES_PATH "../Sauvegarde/cartes.txt"
 
-#define NB_TEXTURES 8
+#define NB_TEXTURES 9
 
 #define TRUE 1
 #define FALSE 0
@@ -91,7 +92,7 @@ typedef enum{courant, idle_droite, droite1, droite2, droite3, idle_gauche, gauch
 
 * \brief les types de textures sur lequel le perso peut tomber
 */
-typedef enum{sol =0, mur, porte, sol2, commandes, instructions, sol3, mur2}t_types_textures;
+typedef enum{sol =0, mur, porte, sol2, commandes, instructions, sol3, mur2, gameover}t_types_textures;
 
 
 

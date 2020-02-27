@@ -16,6 +16,7 @@
 #include "initialisation_sdl_fonctions.h"
 #include "personnage.h"
 #include "fonctions.h"
+#include "sauvegardefonc.h"
 #include <time.h>
 
 
@@ -39,6 +40,7 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 	charge_image(SOL3_PATH,&images[sol3], rendu);
 	charge_image(COMMANDES_PATH, &images[commandes], rendu);
 	charge_image(INSTRUCTIONS_PATH, &images[instructions], rendu);
+	charge_image(GAMEOVER_PATH, &images[gameover], rendu);
 
 	charge_sprites_personnage(pers->sprites, rendu);
 
@@ -47,6 +49,8 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 	images[commandes].rectangle.y = WIN_HEIGHT/4;
 	images[instructions].rectangle.x = 800;
 	images[instructions].rectangle.y = WIN_HEIGHT/30;
+	images[gameover].rectangle.x = WIN_WIDTH/2;
+	images[gameover].rectangle.y = WIN_HEIGHT/2;
 
 	//on place le personnage dans la premiere salle, au centre
 	pers->sprites[courant].rectangle.x = pers->x;
@@ -356,6 +360,95 @@ int generation_labyrinthe(salle_t salles[], int taille, int max_salles, int tail
 	return fin;
 }
 
+/**
+* \fn mort
+
+* \param *etat, variable contenant le mode de jeu actuel
+* \param *pers, contient le personnage afin de le sauvegarder
+* \param *rendu, le renderer sur lequel on dessine
+* \param gameOverMusic, musique de mort du joueur
+* \param gameOverFrame, bruit de mort du joueur
+* \param images[], contient toutes les images du jeu sauf celles du personnage
+
+* \param pers
+* \param cartes
+
+* \brief Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...
+
+*/
+
+void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusic, Mix_Chunk *gameOverFrame, image_t images[]){
+	Mix_HaltMusic();
+	initialise_personnage(pers);
+  saveperso(pers);
+
+	//Apparition du rectangle de mort
+  SDL_Rect rect;
+  rect.x = 405;
+  rect.y = 232;
+  rect.w = 270;
+  rect.h = 155;
+
+  SDL_SetRenderDrawColor(rendu, 0, 0, 0, 255);
+	Mix_PlayChannel(0, gameOverFrame, 0);
+  SDL_RenderFillRect(rendu, &rect);
+  SDL_RenderPresent(rendu);
+	SDL_Delay(500);
+
+	rect.x = 270; //160
+	rect.y = 155; //102
+	rect.w = 540;
+	rect.h = 310;
+
+	SDL_SetRenderDrawColor(rendu, 0, 0, 0, 255);
+	Mix_PlayChannel(0, gameOverFrame, 0);
+	SDL_RenderFillRect(rendu, &rect);
+	SDL_RenderPresent(rendu);
+	SDL_Delay(500);
+
+	rect.x = 135; //160
+	rect.y = 77; //102
+	rect.w = 810;
+	rect.h = 465;
+
+	SDL_SetRenderDrawColor(rendu, 0, 0, 0, 255);
+	Mix_PlayChannel(0, gameOverFrame, 0);
+	SDL_RenderFillRect(rendu, &rect);
+	SDL_RenderPresent(rendu);
+	SDL_Delay(500);
+
+	rect.x = 0; //160
+	rect.y = 0; //102
+	rect.w = 1080;
+	rect.h = 620;
+
+	SDL_SetRenderDrawColor(rendu, 0, 0, 0, 255);
+	Mix_PlayChannel(0, gameOverFrame, 0);
+	SDL_RenderFillRect(rendu, &rect);
+	SDL_RenderPresent(rendu);
+
+	//Ecran de game over
+	Mix_VolumeMusic(64);
+	Mix_PlayMusic(gameOverMusic, 1);
+
+	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
+	SDL_RenderClear(rendu);
+	images[gameover].rectangle.x = 135;
+	images[gameover].rectangle.y = -100;
+
+	SDL_RenderCopy(rendu, images[gameover].img, NULL, &images[gameover].rectangle);
+	pers->sprites[dead].rectangle.x = pers->x-50;
+	pers->sprites[dead].rectangle.y = pers->y;
+	pers->sprites[courant] = pers->sprites[dead];
+	SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
+
+	SDL_RenderPresent(rendu);
+
+	//Des que la musique s'arrête, on revient au menu principal
+  while(Mix_PlayingMusic() == 1);
+  *etat = mainMenu;
+}
+
 
 /**
 * \fn boucle_labyrinthe
@@ -365,11 +458,15 @@ int generation_labyrinthe(salle_t salles[], int taille, int max_salles, int tail
 * \param *rendu, le renderer sur lequel on dessine
 * \param *change_salle, le son de changement de salle
 * \param *footsteps, les bruits de pas du personnage
+* \param *gameOverMusic, la musique de mort
+* \param *gameOverFrame, les bruits de mort
+* \param *pers, le renderer sur lequel on dessine
+* \param cartes
 
 * \brief Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...
 
 */
-void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *change_salle, Mix_Chunk *footsteps, perso_t *pers, carte_t *cartes){
+void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *change_salle, Mix_Chunk *footsteps, Mix_Music *gameOverMusic, Mix_Chunk *gameOverFrame, perso_t *pers, carte_t *cartes){
 
 
 /////////////////////////// Déclarations variables ////////////////////////////////////////////
@@ -415,7 +512,15 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 		deplacement_personnage(pers, salles[salle_courante], continuer, &anim, footsteps);
 
+		//Si le joueur meurt
+		if(pers->pv <= 0){
+			mort(etat, pers, rendu, gameOverMusic, gameOverFrame, images);
+		}
+
 		salle_courante = changement_de_salle(pers, salles[salle_courante], salle_courante, change_salle);
+
+		//Tester animation de mort
+		//pers->pv -= 1;
 
 		//collision avec un ennemi
 		if(combat_declenche(salles[salle_courante], *pers, *ennemi)){

@@ -29,7 +29,7 @@ void init_liste(){
 
 /**
 *\fn int liste_vide()
-*\brief Fonction qui permet de vérifier si une liste est vide 
+*\brief Fonction qui permet de vérifier si une liste est vide
 *\return 1 si la liste est vide, 0 si la liste est pas vide
 */
 int liste_vide(){
@@ -276,6 +276,7 @@ int initiative (perso_t * perso,ennemi_t * ennemi)
   else if(ennemi->vitesse==perso->vitesse){
     return rand()%2;
   }
+	return 0;
 }
 
 /**
@@ -309,7 +310,7 @@ void tour_ennemi(perso_t * perso,ennemi_t * ennemi)
 *\param perso Pointeur sur une structure qui permet de prendre les caractéristiques de l'ennemi qui vont être modifié par l'action du personnage
 *\param deck Pointeur sur un pointeur de fonction qui permet de connaître le deck du personnage
 */
-int tour_perso(int choix,perso_t * perso,ennemi_t * ennemi)
+void tour_perso(int choix,perso_t * perso,ennemi_t * ennemi)
 {
   en_tete();
   choix--;

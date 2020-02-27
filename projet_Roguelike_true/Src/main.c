@@ -12,7 +12,6 @@
 
 #include "constantes.h"
 #include "initialisation_sdl_fonctions.h"
-#include "musique.h"
 #include "main_menu_screen.h"
 #include "salle.h"
 #include "personnage.h"
@@ -43,10 +42,11 @@ int main(int argc, char* args[]){
 	const char *SELECT = "../Sound/menu_select.wav";
 	const char *CHANGE = "../Sound/laby_change.wav";
 	const char *FOOT = "../Sound/footstep.wav";
+	const char *GAMEOVERFRAME = "../Sound/gameover_frame.wav";
 
 	const char *MENU = "../Sound/menu_song.mp3";
 	const char *LVL1 = "../Sound/level1.mp3";
-
+	const char *GAMEOVER = "../Sound/gameover.mp3";
 
 	//On charge les samples et musiques dans des variables
 	Mix_OpenAudio(44100, AUDIO_S16SYS,6, 4096);
@@ -55,10 +55,11 @@ int main(int argc, char* args[]){
 	Mix_Chunk *select = Mix_LoadWAV(SELECT);
 	Mix_Chunk *change_salle = Mix_LoadWAV(CHANGE);
 	Mix_Chunk *footsteps = Mix_LoadWAV(FOOT);
+	Mix_Chunk *gameOverFrame = Mix_LoadWAV(GAMEOVERFRAME);
 
 	Mix_Music *level1 = Mix_LoadMUS(LVL1);
 	Mix_Music *music = Mix_LoadMUS(MENU);
-
+	Mix_Music *gameOverMusic = Mix_LoadMUS(GAMEOVER);
 
 
 
@@ -102,7 +103,8 @@ int main(int argc, char* args[]){
 							Mix_VolumeChunk(move, 128);
 							Mix_VolumeChunk(select, 128);
 							Mix_VolumeChunk(change_salle, 128);
-							Mix_VolumeChunk(footsteps, 32);
+							Mix_VolumeChunk(footsteps, 64);
+							Mix_VolumeChunk(gameOverFrame, 32);
 
 							Mix_VolumeMusic(24);
 
@@ -129,8 +131,9 @@ int main(int argc, char* args[]){
 							//tout ce qui sera relatif à l'explo dans le laby
 							Mix_PauseMusic();
 							Mix_PlayMusic(level1, 1);
-							boucle_labyrinthe(&continuer, &etat, rendu, change_salle, footsteps, &pers, cartes);
-
+							boucle_labyrinthe(&continuer, &etat, rendu, change_salle, footsteps, gameOverMusic, gameOverFrame, &pers, cartes);
+							Mix_HaltMusic();
+							Mix_VolumeMusic(24);
 						}
 						else if(etat == charger_partie){
 							//charge les données du joueurs afin qu'il reprenne là où il s'était arrêté
@@ -154,8 +157,11 @@ int main(int argc, char* args[]){
 	Mix_FreeChunk(move);
 	Mix_FreeChunk(change_salle);
 	Mix_FreeChunk(footsteps);
+	Mix_FreeChunk(gameOverFrame);
+
 	Mix_FreeMusic(music);
 	Mix_FreeMusic(level1);
+	Mix_FreeMusic(gameOverMusic);
 	Mix_CloseAudio();
 
 
