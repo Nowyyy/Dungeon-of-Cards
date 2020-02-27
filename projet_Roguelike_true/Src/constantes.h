@@ -94,6 +94,10 @@ typedef enum{courant, idle_droite, droite1, droite2, droite3, idle_gauche, gauch
 typedef enum{sol =0, mur, porte, sol2, commandes, instructions, sol3, mur2}t_types_textures;
 
 
+
+typedef enum{squelette, minautore, cyclope}t_type_ennemis;
+
+
 /**
 * \enum t_etat
 
@@ -169,6 +173,8 @@ typedef struct salle_s{
   SDL_Rect portes[TAILLE_SALLE];
 
   int nb_murs, haut, bas, gauche, droite, nb_portes, id;
+
+  int ennemi_present, nb_ennemi, x_ennemi1, x_ennemi2, y_ennemi1, y_ennemi2;
 
 }salle_t;
 

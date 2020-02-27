@@ -65,7 +65,7 @@ int test_collision(salle_t salle, perso_t pers, int direction){
 		else //gauche
 			pers.sprites[courant].rectangle.x -= 1;
 
-		if(SDL_HasIntersection(&salle.murs[i], &pers.sprites[0].rectangle)){
+		if(SDL_HasIntersection(&salle.murs[i], &pers.sprites[courant].rectangle)){
 			return 1;
 		}
 
@@ -401,4 +401,32 @@ void initialise_personnage(perso_t *pers){
 void initialise_deck_cartes(carte_t *cartes){
 
 	//do nothing pour le moment
+}
+
+
+
+
+int collision_perso_ennemi(perso_t pers, ennemi_t ennemi, int x, int y){
+
+	ennemi.sprites[courant].rectangle.x = (x*TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_X;
+	ennemi.sprites[courant].rectangle.y = (y*TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_Y; 	
+
+	return SDL_HasIntersection(&pers.sprites[courant].rectangle, &ennemi.sprites[courant].rectangle);
+}
+
+
+int combat_declenche(salle_t salle, perso_t pers, ennemi_t ennemi){
+
+	if(salle.ennemi_present){
+		if(collision_perso_ennemi(pers, ennemi, salle.x_ennemi1, salle.y_ennemi1))
+			return TRUE;
+
+		if(salle.nb_ennemi == 2)
+			if(collision_perso_ennemi(pers, ennemi, salle.x_ennemi2, salle.y_ennemi2))
+				return TRUE;
+
+		return FALSE;
+	}
+	else
+		return FALSE;
 }

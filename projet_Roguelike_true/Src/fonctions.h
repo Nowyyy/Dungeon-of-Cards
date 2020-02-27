@@ -17,11 +17,7 @@
 */
 carte_t * creer_carte(char *, type_carte, int, int);
 
-/**
-*\fn perso_t * creer_perso()
-*\brief permet de créer un personnage selon différentes caractéristiques
-*/
-perso_t * creer_perso();
+
 
 /**
 *\fn ennemi_t * creer_ennemi(char *)
@@ -29,7 +25,7 @@ perso_t * creer_perso();
 *\param nom pour le nom d'un ennemi
 *\return un pointeur sur une variable structure ennemi_t
 */
-ennemi_t * creer_ennemi(char *, int, int, int, int);
+ennemi_t * creer_ennemi(char *, int, int, int, int, int, SDL_Renderer *);
 
 ennemi_t * generer_ennemi(int);
 
@@ -39,13 +35,6 @@ ennemi_t * generer_ennemi(int);
 *\param carte Un pointeur de pointeur de carte qui permet de détruire le pointeur qui pointe sur la structure carte
 */
 void detruire_carte(carte_t **);
-
-/**
-*\fn detruire_perso(perso_t **)
-*\brief Fonction qui permet de détruire un personnage
-*\param perso Un pointeur de pointeur de perso qui permet de détruire le pointeur qui pointe sur la structure perso
-*/
-void detruire_perso(perso_t **);
 
 /**
 *\fn void detruire_ennemi(ennemi_t **)

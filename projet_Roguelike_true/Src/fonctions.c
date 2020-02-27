@@ -8,6 +8,7 @@
 
 
 #include "constantes.h"
+#include "initialisation_sdl_fonctions.h"
 
 // Mise en oeuvre dynamique d'une liste de cartes
 
@@ -203,7 +204,7 @@ perso_t * creer_perso()
 *\param nom pour le nom d'un ennemi
 *\return un pointeur sur une variable structure ennemi_t
 */
-ennemi_t * creer_ennemi(char * nom, int pv, int vitesse, int attaque, int defense)
+ennemi_t * creer_ennemi(char * nom, int pv, int vitesse, int attaque, int defense, int type, SDL_Renderer *rendu)
 {
   ennemi_t * ennemi = NULL ;
   static unsigned long int cpt = 0 ;
@@ -213,10 +214,20 @@ ennemi_t * creer_ennemi(char * nom, int pv, int vitesse, int attaque, int defens
   ennemi->nom = malloc(sizeof(char)*TAILLE);
   strcpy(ennemi->nom , nom);
 
-  ennemi->pv = 20;
-  ennemi->vitesse = 10;
-  ennemi->attaque = 10;
-  ennemi->defense = 10;
+  ennemi->pv = pv;
+  ennemi->vitesse = vitesse;
+  ennemi->attaque = attaque;
+  ennemi->defense = defense;
+
+  if(type == squelette){
+    charge_image(SQUELETTE_IDLE_PATH, &ennemi->sprites[0], rendu);
+  }
+  else if(type == minautore){
+    //do stuff ...
+  }
+  else if(type == cyclope){
+    //do other stuff
+  }
 
   return(ennemi);
 }
@@ -235,15 +246,7 @@ void detruire_carte(carte_t ** carte)
   free(*carte);
 }
 
-/**
-*\fn void detruire_perso(perso_t ** perso)
-*\brief Fonction qui permet de détruire un personnage
-*\param perso Un pointeur de pointeur de perso qui permet de détruire le pointeur qui pointe sur la structure perso
-*/
-void detruire_perso(perso_t ** perso)
-{
-  free(*perso);
-}
+
 /**
 *\fn void detruire_ennemi(ennemi_t ** ennemi)
 *\brief Fonction qui permet de détruire un ennemi
@@ -252,6 +255,7 @@ void detruire_perso(perso_t ** perso)
 void detruire_ennemi(ennemi_t ** ennemi)
 {
   free((*ennemi)->nom);
+  SDL_DestroyTexture((*ennemi)->sprites[0].img);
   free(*ennemi);
 }
 

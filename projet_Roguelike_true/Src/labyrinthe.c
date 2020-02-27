@@ -15,6 +15,7 @@
 #include "salle.h"
 #include "initialisation_sdl_fonctions.h"
 #include "personnage.h"
+#include "fonctions.h"
 #include <time.h>
 
 
@@ -63,7 +64,7 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 * \brief Permet d'afficher une salle, le personnage et si on est dans la premiere salle, les instructions et commandes du jeu
 
 */
-void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[]){
+void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[], ennemi_t monstre){
 
 	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
 
@@ -76,7 +77,20 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 
 	afficher_salle(salle, rendu, images);
 
-	SDL_RenderCopy(rendu, pers.sprites[courant].img, NULL, &pers.sprites[0].rectangle);
+	SDL_RenderCopy(rendu, pers.sprites[courant].img, NULL, &pers.sprites[courant].rectangle);
+
+	if(salle->ennemi_present){
+
+		monstre.sprites[courant].rectangle.x = (salle->x_ennemi1 * TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_X;
+		monstre.sprites[courant].rectangle.y = (salle->y_ennemi1 * TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_Y;
+		SDL_RenderCopy(rendu, monstre.sprites[courant].img, NULL, &monstre.sprites[courant].rectangle);
+
+		if(salle->nb_ennemi == 2){
+			monstre.sprites[courant].rectangle.x = (salle->x_ennemi2 * TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_X;
+			monstre.sprites[courant].rectangle.y = (salle->y_ennemi2 * TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_Y;
+			SDL_RenderCopy(rendu, monstre.sprites[courant].img, NULL, &monstre.sprites[courant].rectangle);
+		}
+	}
 
 	SDL_RenderPresent(rendu);//applique les modifs précédentes
 }
@@ -93,7 +107,7 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 */
 void initialise_salles(salle_t tab[], int taille){
 
-	int i;
+	int i, alea;
 
 	for(i = 0; i < taille; i++){
 
@@ -110,6 +124,54 @@ void initialise_salles(salle_t tab[], int taille){
 		tab[i].bas = 0;
 		tab[i].droite = 0;
 		tab[i].gauche = 0;
+
+///////////décide si un ennemi ou un coffre existe
+
+		if(i != 0 && i != taille - 1){
+			alea = rand()%10;
+
+			if(alea <= 7){
+				tab[i].ennemi_present = 1;
+
+				alea = rand()%8;
+
+				tab[i].x_ennemi1 = rand()%TAILLE_SALLE;
+				tab[i].y_ennemi1 = rand()%TAILLE_SALLE;
+
+
+				if(tab[i].x_ennemi1 == 0)
+					tab[i].x_ennemi1 += 1;
+				else if(tab[i].x_ennemi1 == TAILLE_SALLE - 1)
+					tab[i].x_ennemi1 -= 1;
+
+				if(tab[i].y_ennemi1 == 0)
+					tab[i].y_ennemi1 += 1;
+				else if(tab[i].y_ennemi1 ==  TAILLE_SALLE - 1)
+					tab[i].y_ennemi1 -= 1;
+
+				if(alea <= 4){
+					tab[i].nb_ennemi = 1;
+				}
+				else{
+					tab[i].x_ennemi2 = rand()%TAILLE_SALLE;
+					tab[i].y_ennemi2 = rand()%TAILLE_SALLE;
+
+					if(tab[i].x_ennemi2 == 0)
+						tab[i].x_ennemi2 += 1;
+					else if(tab[i].x_ennemi2 == TAILLE_SALLE - 1)
+						tab[i].x_ennemi2 -= 1;
+
+					if(tab[i].y_ennemi2 == 0)
+						tab[i].y_ennemi2 += 1;
+					else if(tab[i].y_ennemi2 ==  TAILLE_SALLE - 1)
+						tab[i].y_ennemi2 -= 1;
+
+					tab[i].nb_ennemi = 2;
+				}
+			}
+			else
+				tab[i].ennemi_present = 0;
+		}
 	}
 }
 
@@ -319,6 +381,11 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	animation_t anim;
 
+	ennemi_t *ennemi = creer_ennemi("Squelette", 10, 10, 10, 10, squelette, rendu);
+
+	ennemi->sprites[0].rectangle.y = WIN_HEIGHT / 2 - 50;
+	ennemi->sprites[0].rectangle.x = WIN_WIDTH / 2 - 50;
+
 /////////////////////////// Génération aléatoire ////////////////////////////////////////////
 
 	initialise_salles(salles, taille_max);
@@ -344,11 +411,19 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	while(*etat == labyrinthe && *continuer){
 
-		affichage_salle_personnage(*pers, &salles[salle_courante], rendu, images);
+		affichage_salle_personnage(*pers, &salles[salle_courante], rendu, images, *ennemi);
 
 		deplacement_personnage(pers, salles[salle_courante], continuer, &anim, footsteps);
 
 		salle_courante = changement_de_salle(pers, salles[salle_courante], salle_courante, change_salle);
+
+		//collision avec un ennemi
+		if(combat_declenche(salles[salle_courante], *pers, *ennemi)){
+			printf("Combat !\n");
+		}
+		else{
+			printf("pas combat\n");
+		}
 	}
 
 //////////////////////// On libère tous les emplacements mémoires utilisés par les images ////

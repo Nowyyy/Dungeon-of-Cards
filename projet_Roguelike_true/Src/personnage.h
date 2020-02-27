@@ -7,3 +7,5 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *cha
 void initialise_personnage(perso_t *pers);
 void initialise_deck_cartes(carte_t *cartes);
 void change_animation(animation_t *anim, image_t sprites[], int nouvelle_animation);
+int collision_perso_ennemi(perso_t pers, ennemi_t ennemi, int x, int y);
+int combat_declenche(salle_t salle, perso_t pers, ennemi_t ennemi);

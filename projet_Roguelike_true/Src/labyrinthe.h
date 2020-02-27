@@ -1,5 +1,5 @@
 void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu);
-void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[]);
+void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[], ennemi_t monstre);
 void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *change_salle, Mix_Chunk *footsteps, perso_t *pers, carte_t *cartes);
 int generation_labyrinthe(salle_t salles[], int taille, int max_salles, int taille_max);
 void cree_liaison(salle_t tab[], int salle1, int salle2, int porteS1);
