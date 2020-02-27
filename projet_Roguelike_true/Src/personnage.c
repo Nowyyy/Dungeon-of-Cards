@@ -385,6 +385,8 @@ void initialise_personnage(perso_t *pers){
 
 	pers->x = WIN_WIDTH / 2;
 	pers->y = WIN_HEIGHT / 2;
+
+	pers->etage = 1;
 }
 
 

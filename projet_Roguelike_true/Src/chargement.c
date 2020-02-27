@@ -142,7 +142,7 @@ void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Fon
 	}
 	else{
 		readperso(pers);
-		readcarte(cartes);
+		//readcarte(cartes);
 		sprintf(intermediaire,"Etage %d, Points de vie %d", pers->etage, pers->pv);
 		charger_text = strcpy(charger_text, intermediaire);
 	}

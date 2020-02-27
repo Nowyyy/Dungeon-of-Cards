@@ -99,7 +99,12 @@ void readcarte(carte_t* carte2){
 void saveperso (perso_t *perso){
 
   FILE *fichier=NULL;
-  fichier=fopen(SAVE_PERSO_PATH,"w");
+
+  char *nom_fichier = malloc(sizeof(char)* 100);
+
+  strcpy(nom_fichier, SAVE_PERSO_PATH);
+
+  fichier=fopen(nom_fichier,"w+");
 
   if (fichier != NULL)
    {
@@ -111,6 +116,7 @@ void saveperso (perso_t *perso){
        printf("Impossible d'ouvrir le fichier sauvegarde.txt");
    }
    fclose(fichier);
+   free(nom_fichier);
 }
 
 
@@ -123,7 +129,12 @@ void saveperso (perso_t *perso){
 void readperso(perso_t*perso){
 
   FILE *fichier=NULL;
-  fichier=fopen(SAVE_PERSO_PATH,"r");
+
+  char *nom_fichier = malloc(sizeof(char)* 100);
+
+  strcpy(nom_fichier, SAVE_PERSO_PATH);
+
+  fichier=fopen(nom_fichier,"r");
 
   if (fichier != NULL)
    {
@@ -135,4 +146,5 @@ void readperso(perso_t*perso){
        printf("Impossible d'ouvrir le fichier sauvegarde.txt");
    }
    fclose(fichier);
+   free(nom_fichier);
 }

@@ -40,6 +40,8 @@
 #define SPRITE9_PATH "../Images/Animations_personnage/droite3.png"
 #define SPRITE7_PATH "../Images/Animations_personnage/dead.png"
 
+#define SQUELETTE_IDLE_PATH "../Images/sprites_mobs/squelette.png"
+
 #define SAVE_PERSO_PATH "../Sauvegarde/personnage.txt"
 #define SAVE_CARTES_PATH "../Sauvegarde/cartes.txt"
 
@@ -56,6 +58,7 @@
 #define TAILLE_DECK 5
 
 #define NB_SPRITES_PERSONNAGE 10
+#define NB_SPRITES_MONSTRE 2
 
 #define EMPLACEMENT_DEPART_DESSIN_SALLE_X 256
 #define EMPLACEMENT_DEPART_DESSIN_SALLE_Y 40
@@ -196,6 +199,8 @@ typedef struct ennemi_s {
   int attaque;/**Attaque d'un ennemi*/
   int defense;/**Défense d'un ennemi*/
   char* nom;/** Nom de l'ennemi*/
+
+  image_t sprites[NB_SPRITES_MONSTRE];
 } ennemi_t;
 
 /**

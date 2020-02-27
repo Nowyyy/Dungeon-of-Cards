@@ -18,6 +18,7 @@
 #include "personnage.h"
 #include "labyrinthe.h"
 #include "chargement.h"
+#include "sauvegardefonc.h"
 
 
 
@@ -121,6 +122,7 @@ int main(int argc, char* args[]){
 							if(etat == labyrinthe){
 								//initialise_deck_cartes(cartes);
 								initialise_personnage(&pers);
+								saveperso(&pers);
 							}
 						}
 						else if (etat == labyrinthe){

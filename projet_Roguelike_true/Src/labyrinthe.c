@@ -309,34 +309,38 @@ int generation_labyrinthe(salle_t salles[], int taille, int max_salles, int tail
 */
 void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *change_salle, Mix_Chunk *footsteps, perso_t *pers, carte_t *cartes){
 
+
+/////////////////////////// Déclarations variables ////////////////////////////////////////////
 	image_t images[NB_TEXTURES];
 
-	animation_t anim;
-
-	init_animations(&anim);
-
-	int taille = 10, taille_max = taille *2, salle_courante;
+	int taille = 10, taille_max = taille *2, salle_courante = 0;
 
 	salle_t salles[taille_max];
 
-	charge_toutes_textures(images, pers, rendu);
+	animation_t anim;
+
+/////////////////////////// Génération aléatoire ////////////////////////////////////////////
 
 	initialise_salles(salles, taille_max);
 
 	taille = generation_labyrinthe(salles, taille, taille, taille_max);
 
-	salle_courante = 0;
-
 	verifie_salles_accessibles(salles, taille);
 
-	for(int i = 0; i < taille; i++)
-		ferme_porte_inutile(salles, i);
-
 	for(int i = 0; i < taille; i++){
+		ferme_porte_inutile(salles, i);
 		rempli_tableau_murs_portes(salles, i);
 	}
 
+/////////////////////////// Textures ///////////////////////////////////////////////////////
+
+	init_animations(&anim);
+
+	charge_toutes_textures(images, pers, rendu);
+
 	textures_aleatoires(salles, taille);
+
+/////////////////////////// boucle du labyrinthe / explo / combat ///////////////////////////
 
 	while(*etat == labyrinthe && *continuer){
 
@@ -347,7 +351,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 		salle_courante = changement_de_salle(pers, salles[salle_courante], salle_courante, change_salle);
 	}
 
-	//on libère tous les emplacements mémoires utilisés par les images
+//////////////////////// On libère tous les emplacements mémoires utilisés par les images ////
 	for(int i = 0; i < NB_SPRITES_PERSONNAGE; i++)
 		SDL_DestroyTexture(pers->sprites[i].img);
 
