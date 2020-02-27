@@ -255,7 +255,7 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 			}
 		}
 		else if(clavier.tab[right] == 1){ //touche droite
-	
+
 			if(!test_collision(salle,*pers, 1)){
 				pers->x += VITESSE_PERSO;
 				animations_personnage(pers->sprites, temps, clavier, anim);
@@ -269,20 +269,20 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 			}
 		}
 		else if(clavier.tab[up] == 1){ //touche haut
-			
+
 			if(!test_collision(salle,*pers, 0)){
 				pers->y -= VITESSE_PERSO;
 				animations_personnage(pers->sprites, temps, clavier, anim);
 			}
 		}
-	
+
 	if(event.type == SDL_QUIT)//croix de la fenetre
 		*continuer = FALSE;
-	
+
 	animations_personnage(pers->sprites, temps, clavier, anim);
 	//permet au personnage de revenir à l'état idle quand aucune touche n'est enfoncée
 	}
-		
+
 	pers->sprites[courant].rectangle.x = pers->x;
 	pers->sprites[courant].rectangle.y = pers->y;
 }
@@ -295,6 +295,7 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 * \param *pers, la structure du personnage
 * \param *salle, la salle dans laquelle on se trouve
 * \param *continuer la variable permettant de quitter le jeu
+* \param *change_salle, le son de changement de salle
 
 * \brief permet de téléporter le personnage dans la salle dont il passe la porter
 
@@ -310,7 +311,7 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *cha
 			//porte en haut
 				pers->x = WIN_WIDTH / 2 - TAILLE_IMAGE;
 				pers->y = salle.murs[salle.nb_murs -1].y - TAILLE_IMAGE;
-				Mix_PlayChannel(0, change_salle, 1);
+				Mix_PlayChannel(0, change_salle, 0);
 
 				return salle.s_h;
 			}
@@ -319,7 +320,7 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *cha
 				pers->x = WIN_WIDTH / 2 - TAILLE_IMAGE;
 
 				pers->y = salle.murs[0].y + TAILLE_IMAGE;
-				Mix_PlayChannel(0, change_salle, 1);
+				Mix_PlayChannel(0, change_salle, 0);
 
 				return salle.s_b;
 			}
@@ -327,7 +328,7 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *cha
 			//porte à gauche
 				pers->x = WIN_WIDTH / 2 + 100;
 				pers->y = WIN_HEIGHT / 2 - TAILLE_IMAGE / 2;
-				Mix_PlayChannel(0, change_salle, 1);
+				Mix_PlayChannel(0, change_salle, 0);
 
 				return salle.s_g;
 			}
@@ -335,7 +336,7 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *cha
 			//porte à droite
 				pers->x = salle.murs[0].x + TAILLE_IMAGE;
 				pers->y = WIN_HEIGHT / 2 - TAILLE_IMAGE / 2;
-				Mix_PlayChannel(0, change_salle, 1);
+				Mix_PlayChannel(0, change_salle, 0);
 
 				return salle.s_d;
 			}
@@ -350,7 +351,7 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *cha
 
 
 
-/** 
+/**
 * \fn initialise_personnage
 
 * \param *pers, la structure du personnage

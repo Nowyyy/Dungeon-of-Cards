@@ -37,7 +37,7 @@ int main(int argc, char* args[]){
 	perso_t pers;
 	carte_t *cartes;
 
-	//On initialise le sample joué dans le menu principal
+	//On initialise les samples et musiques utilisés dans le jeu
 	const char *MOVE = "../Sound/menu_move.wav";
 	const char *SELECT = "../Sound/menu_select.wav";
 	const char *CHANGE = "../Sound/laby_change.wav";
@@ -45,7 +45,7 @@ int main(int argc, char* args[]){
 	const char *MENU = "../Sound/menu_song.mp3";
 
 
-	//On charge le sample dans une variable
+	//On charge les samples et musiques dans des variables
 	Mix_OpenAudio(44100, AUDIO_S16SYS,6, 4096);
 	Mix_AllocateChannels(6);
 	Mix_Chunk *move = Mix_LoadWAV(MOVE);
@@ -98,7 +98,7 @@ int main(int argc, char* args[]){
 							Mix_VolumeChunk(select, 128);
 							Mix_VolumeChunk(change_salle, 128);
 
-							Mix_VolumeMusic(64);
+							Mix_VolumeMusic(32);
 						}
 
 					}
@@ -139,8 +139,11 @@ int main(int argc, char* args[]){
 	quit_sdl(&rendu, &window);
 	SDL_Quit();
 	init_or_quit_ttf(0);//quitte TTF
+
+	//On libère toutes les variables de son
 	Mix_FreeChunk(select);
 	Mix_FreeChunk(move);
+	Mix_FreeChunk(change_salle);
 	Mix_FreeMusic(music);
 	Mix_CloseAudio();
 

@@ -20,6 +20,8 @@
 * \param charger, le rectangle contenant le texte "Charger partie"
 * \param quitter, le rectangle contenant le texte "Quitter"
 * \param *rect_sel, le rectangle de sélection permettant de sélectionner une option
+* \param *select, le son quand on sélectionne une option
+* \param *move, le son quand on se déplace dans le menu
 
 * \brief Permet de déplacer d'option en option le rectangle de sélection
 
@@ -41,11 +43,11 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 			if((*rect_sel)->y != quitter.y){//on n'est pas sur la dernière option, on peut descendre
 				if((*rect_sel)->y == jouer.y - RECT_SELECT_Y_DIFF){
 					(*rect_sel)->y = charger.y - RECT_SELECT_Y_DIFF;
-					Mix_PlayChannel(0, move, 1);
+					Mix_PlayChannel(0, move, 0);
 				}
 				else if((*rect_sel)->y == charger.y - RECT_SELECT_Y_DIFF){
 					(*rect_sel)->y = quitter.y - RECT_SELECT_Y_DIFF;
-					Mix_PlayChannel(0, move, 1);
+					Mix_PlayChannel(0, move, 0);
 				}
 			}
 		}
@@ -53,12 +55,12 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 			if((*rect_sel)->y != jouer.y){//on n'est pas sur la premiere option, on peut monter
 				if((*rect_sel)->y == charger.y - RECT_SELECT_Y_DIFF){
 					(*rect_sel)->y = jouer.y - RECT_SELECT_Y_DIFF;
-					Mix_PlayChannel(0, move, 1);
+					Mix_PlayChannel(0, move, 0);
 
 				}
 				else if((*rect_sel)->y == quitter.y - RECT_SELECT_Y_DIFF){
 					(*rect_sel)->y = charger.y - RECT_SELECT_Y_DIFF;
-					Mix_PlayChannel(0, move, 1);
+					Mix_PlayChannel(0, move, 0);
 
 				}
 			}
@@ -66,21 +68,21 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 		else if(clavier.tab[entree] == 1){//touche entrée
 			if((*rect_sel)->y == jouer.y - RECT_SELECT_Y_DIFF){
 				*etat = labyrinthe;
-				Mix_PlayChannel(1, select, 1);
+				Mix_PlayChannel(1, select, 0);
 
 			}
 			else if((*rect_sel)->y == quitter.y - RECT_SELECT_Y_DIFF){
-				Mix_PlayChannel(1, select, 1);
+				Mix_PlayChannel(1, select, 0);
 				return FALSE;
 			}
 			else if((*rect_sel)->y == charger.y - RECT_SELECT_Y_DIFF){
-				Mix_PlayChannel(1, select, 1);
+				Mix_PlayChannel(1, select, 0);
 				*etat = charger_partie;
 			}
 		}
 
 		if(event.type == SDL_QUIT){//croix de la fenetre
-			Mix_PlayChannel(1, select, 1);
+			Mix_PlayChannel(1, select, 0);
 			return FALSE;
 		}
 	}
@@ -129,6 +131,9 @@ void affichage_menu(SDL_Renderer *rendu, SDL_Texture *jouer_text, SDL_Texture *c
 * \param *etat, représente l'écran dans lequel on est, actuellement me menu du jeu
 * \param *rendu, le rendu que l'on utilise pour dessiner à l'écran
 * \param *police, la police utilisée pour écrire sur l'écran
+* \param *select, le son quand on sélectionne une option
+* \param *move, le son quand on se déplace dans le menu
+* \param *music, la musique du menu principal
 
 * \brief gère l'affichage à l'écran du menu principal, permet de choisir entre différentes options (jouer, charger, quitter)
 */
@@ -154,7 +159,7 @@ void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police,
 	rectangle_selection->h = jouer_text.h +50;
 
 
-	
+
 
 	while(*continuer && *etat == mainMenu){
 

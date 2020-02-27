@@ -301,6 +301,7 @@ int generation_labyrinthe(salle_t salles[], int taille, int max_salles, int tail
 * \param *continuer, pointeur sur variable permettant de savoir si le joueur souhaite quitter le programme
 * \param *etat, pointeur sur variable permettant de connaître l'écran dans lequel on est
 * \param *rendu, le renderer sur lequel on dessine
+* \param *change_salle, le son de changement de salle
 
 * \brief Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...
 
