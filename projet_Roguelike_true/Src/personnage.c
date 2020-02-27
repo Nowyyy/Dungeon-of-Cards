@@ -118,11 +118,12 @@ void change_animation(animation_t *anim, image_t sprites[], int nouvelle_animati
 * \param timer, le temps d'execution du jeu
 * \param clavier, la structure de touches du clavier
 * \param *anim, la structure qui gère les animations
+* \param *footsteps, les sons de pas du personnage
 
 * \brief permet de changer d'animation selon le déplacement du personnage
 
 */
-void animations_personnage(image_t sprites[], unsigned int timer, touches_t clavier, animation_t *anim){
+void animations_personnage(image_t sprites[], unsigned int timer, touches_t clavier, animation_t *anim, Mix_Chunk *footsteps){
 
 	int i;
 
@@ -135,12 +136,16 @@ void animations_personnage(image_t sprites[], unsigned int timer, touches_t clav
 			//animation du personnage vers la droite
 			if(i == right && sprites[courant].img == sprites[droite3].img){
 				change_animation(anim, sprites, droite2);
+
 			}
 			else if (i == right && sprites[courant].img == sprites[droite2].img){
 				change_animation(anim, sprites, droite1);
+				Mix_PlayChannel(0, footsteps, 0);
+
 			}
 			else if (i == right || (i == right && sprites[courant].img == sprites[droite1].img)){
 				change_animation(anim, sprites, droite3);
+
 			}
 
 			//animation du personnage vers la gauche
@@ -152,6 +157,8 @@ void animations_personnage(image_t sprites[], unsigned int timer, touches_t clav
 			}
 			else if (i == left || (i == left && sprites[courant].img == sprites[gauche3].img)){
 				change_animation(anim, sprites, gauche1);
+				Mix_PlayChannel(0, footsteps, 0);
+
 			}
 
 			//animation du personnage vers le haut
@@ -163,6 +170,8 @@ void animations_personnage(image_t sprites[], unsigned int timer, touches_t clav
 					}
 					else if(sprites[courant].img == sprites[droite2].img){
 						change_animation(anim, sprites, droite1);
+						Mix_PlayChannel(0, footsteps, 0);
+
 					}
 					else{
 						change_animation(anim, sprites, droite3);
@@ -177,6 +186,8 @@ void animations_personnage(image_t sprites[], unsigned int timer, touches_t clav
 					}
 					else{
 						change_animation(anim, sprites, gauche1);
+						Mix_PlayChannel(0, footsteps, 0);
+
 					}
 				}
 			}
@@ -189,6 +200,8 @@ void animations_personnage(image_t sprites[], unsigned int timer, touches_t clav
 					}
 					else if(sprites[courant].img == sprites[droite2].img){
 						change_animation(anim, sprites, droite1);
+						Mix_PlayChannel(0, footsteps, 0);
+
 					}
 					else{
 						change_animation(anim, sprites, droite3);
@@ -203,6 +216,8 @@ void animations_personnage(image_t sprites[], unsigned int timer, touches_t clav
 					}
 					else{
 						change_animation(anim, sprites, gauche1);
+						Mix_PlayChannel(0, footsteps, 0);
+
 					}
 				}
 			}
@@ -230,10 +245,12 @@ void animations_personnage(image_t sprites[], unsigned int timer, touches_t clav
 * \param pers, la structure du pêrsonnage que l'on souhaite déplacer
 * \param salle, la salle dans laquelle le personnage se déplace
 * \param *continuer, pointeur sur variable permettant de savoir si le joueur souhaite quitter le programme
+* \param *footsteps, les sons de pas du personnage
+
 
 * \brief Gère les déplacement du personnage dans une salle
 */
-void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animation_t *anim){
+void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animation_t *anim, Mix_Chunk *footsteps){
 
 	SDL_Event event;
 
@@ -251,35 +268,35 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 
 			if(!test_collision(salle,*pers, 2)){
 				pers->y += VITESSE_PERSO;
-				animations_personnage(pers->sprites, temps, clavier, anim);
+				animations_personnage(pers->sprites, temps, clavier, anim, footsteps);
 			}
 		}
 		else if(clavier.tab[right] == 1){ //touche droite
 
 			if(!test_collision(salle,*pers, 1)){
 				pers->x += VITESSE_PERSO;
-				animations_personnage(pers->sprites, temps, clavier, anim);
+				animations_personnage(pers->sprites, temps, clavier, anim, footsteps);
 			}
 		}
 		else if(clavier.tab[left] == 1){ //touche gauche
 
 			if(!test_collision(salle,*pers, 3)){
 				pers->x -= VITESSE_PERSO;
-				animations_personnage(pers->sprites, temps, clavier, anim);
+				animations_personnage(pers->sprites, temps, clavier, anim, footsteps);
 			}
 		}
 		else if(clavier.tab[up] == 1){ //touche haut
 
 			if(!test_collision(salle,*pers, 0)){
 				pers->y -= VITESSE_PERSO;
-				animations_personnage(pers->sprites, temps, clavier, anim);
+				animations_personnage(pers->sprites, temps, clavier, anim, footsteps);
 			}
 		}
 
 	if(event.type == SDL_QUIT)//croix de la fenetre
 		*continuer = FALSE;
 
-	animations_personnage(pers->sprites, temps, clavier, anim);
+	animations_personnage(pers->sprites, temps, clavier, anim, footsteps);
 	//permet au personnage de revenir à l'état idle quand aucune touche n'est enfoncée
 	}
 

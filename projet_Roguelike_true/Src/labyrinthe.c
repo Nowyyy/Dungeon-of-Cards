@@ -302,11 +302,12 @@ int generation_labyrinthe(salle_t salles[], int taille, int max_salles, int tail
 * \param *etat, pointeur sur variable permettant de connaître l'écran dans lequel on est
 * \param *rendu, le renderer sur lequel on dessine
 * \param *change_salle, le son de changement de salle
+* \param *footsteps, les bruits de pas du personnage
 
 * \brief Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...
 
 */
-void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *change_salle, perso_t *pers, carte_t *cartes){
+void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *change_salle, Mix_Chunk *footsteps, perso_t *pers, carte_t *cartes){
 
 	image_t images[NB_TEXTURES];
 
@@ -341,7 +342,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 		affichage_salle_personnage(*pers, &salles[salle_courante], rendu, images);
 
-		deplacement_personnage(pers, salles[salle_courante], continuer, &anim);
+		deplacement_personnage(pers, salles[salle_courante], continuer, &anim, footsteps);
 
 		salle_courante = changement_de_salle(pers, salles[salle_courante], salle_courante, change_salle);
 	}

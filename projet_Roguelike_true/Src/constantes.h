@@ -67,7 +67,7 @@
 
 #define NB_TOUCHES_UTILISEES 5
 
-#define DELAIS_ANIMATIONS 300
+#define DELAIS_ANIMATIONS 100
 
 #define PV_DEPART_PERSONNAGE 50
 #define VITESSE_DEPART_PERSONNAGE 5
@@ -122,7 +122,7 @@ typedef enum{up, down, right, left, entree}t_touches_clavier;
 * \brief permet de gèrer les animations du personnage
 */
 typedef struct{
-  
+
   int actuel;
 
   unsigned int last_use;
@@ -137,7 +137,7 @@ typedef struct{
 * \brief permet de gèrer les touches utilisées
 */
 typedef struct{
-  
+
   int tab[NB_TOUCHES_UTILISEES];
 }touches_t;
 
@@ -183,7 +183,7 @@ typedef struct perso_s {
   int y;/**Placement sur l'axe des ordonnés d'un personnage*/
   int etage;
   image_t sprites[NB_SPRITES_PERSONNAGE];
-  
+
 } perso_t;
 
 /**

@@ -41,8 +41,10 @@ int main(int argc, char* args[]){
 	const char *MOVE = "../Sound/menu_move.wav";
 	const char *SELECT = "../Sound/menu_select.wav";
 	const char *CHANGE = "../Sound/laby_change.wav";
+	const char *FOOT = "../Sound/footstep.wav";
 
 	const char *MENU = "../Sound/menu_song.mp3";
+	const char *LVL1 = "../Sound/level1.mp3";
 
 
 	//On charge les samples et musiques dans des variables
@@ -51,7 +53,9 @@ int main(int argc, char* args[]){
 	Mix_Chunk *move = Mix_LoadWAV(MOVE);
 	Mix_Chunk *select = Mix_LoadWAV(SELECT);
 	Mix_Chunk *change_salle = Mix_LoadWAV(CHANGE);
+	Mix_Chunk *footsteps = Mix_LoadWAV(FOOT);
 
+	Mix_Music *level1 = Mix_LoadMUS(LVL1);
 	Mix_Music *music = Mix_LoadMUS(MENU);
 
 
@@ -97,8 +101,10 @@ int main(int argc, char* args[]){
 							Mix_VolumeChunk(move, 128);
 							Mix_VolumeChunk(select, 128);
 							Mix_VolumeChunk(change_salle, 128);
+							Mix_VolumeChunk(footsteps, 32);
 
-							Mix_VolumeMusic(32);
+							Mix_VolumeMusic(24);
+
 						}
 
 					}
@@ -120,7 +126,8 @@ int main(int argc, char* args[]){
 						else if (etat == labyrinthe){
 							//tout ce qui sera relatif à l'explo dans le laby
 							Mix_PauseMusic();
-							boucle_labyrinthe(&continuer, &etat, rendu, change_salle, &pers, cartes);
+							Mix_PlayMusic(level1, 1);
+							boucle_labyrinthe(&continuer, &etat, rendu, change_salle, footsteps, &pers, cartes);
 
 						}
 						else if(etat == charger_partie){
@@ -144,7 +151,9 @@ int main(int argc, char* args[]){
 	Mix_FreeChunk(select);
 	Mix_FreeChunk(move);
 	Mix_FreeChunk(change_salle);
+	Mix_FreeChunk(footsteps);
 	Mix_FreeMusic(music);
+	Mix_FreeMusic(level1);
 	Mix_CloseAudio();
 
 
