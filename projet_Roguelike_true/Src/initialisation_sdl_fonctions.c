@@ -24,7 +24,7 @@ int initialisation_sdl(SDL_Window **window, SDL_Renderer **rendu){
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 		return 1;
 
-	*window = SDL_CreateWindow("Roguelike", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_SHOWN);
+	*window = SDL_CreateWindow("Dungeon Of Cards", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_SHOWN);
 
 	if(window == NULL)
 		return 1;

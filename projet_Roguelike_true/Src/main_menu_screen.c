@@ -152,10 +152,10 @@ void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police,
 	logo[0].rectangle.x = 140;
 	logo[0].rectangle.y = 60;
 
-	int x_jouer = WIN_WIDTH / 2-175, x_charger = WIN_WIDTH / 2- 150, x_quitter = WIN_WIDTH / 2 - 100;
+	int x_jouer = WIN_WIDTH / 2-175, x_charger = WIN_WIDTH / 2- 180, x_quitter = WIN_WIDTH / 2 - 150;
 	int y_jouer = WIN_HEIGHT * 0.4, y_charger = WIN_HEIGHT * 0.6, y_quitter = WIN_HEIGHT * 0.8;
 
-	char jouer[] = "Commencer une partie", charger[] = "Charger une partie", quitter[] = "Quitter le jeu";
+	char jouer[] = "Nouvelle partie", charger[] = "Continuer partie", quitter[] = "Quitter le jeu";
 
 	//On créé les textures qui contiendront les textes
 	get_text_and_rect(rendu, x_jouer, y_jouer, jouer, police, &jouer_texture, &jouer_text);

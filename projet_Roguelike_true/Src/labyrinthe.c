@@ -179,6 +179,11 @@ void initialise_salles(salle_t tab[], int taille){
 			else
 				tab[i].ennemi_present = 0;
 		}
+
+		if(i == 0 || i == taille -1){
+			if(tab[i].ennemi_present)
+				tab[i].ennemi_present = 0;
+		}
 	}
 }
 
@@ -383,25 +388,33 @@ int generation_labyrinthe(salle_t salles[], int taille, int max_salles, int tail
 void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusic, Mix_Chunk *gameOverFrame, image_t images[], TTF_Font *police, SDL_Texture *cmpPartie_texture){
 	int mort_tmp;
 
+	int x_cmpPartie = WIN_WIDTH / 2-90;
+	int y_cmpPartie = WIN_HEIGHT * 0.8;
+
+	//textes
+	SDL_Rect cmpPartie_text;
+
+	char cmpPartie[20];
+
 	Mix_HaltMusic();
 
 	//Reinitialisation de la sauvegarde et compteur de mort
 	mort_tmp = pers->cmpMort;
 	initialise_personnage(pers);
 	pers->cmpMort = mort_tmp+1;
-  saveperso(pers);
+  	saveperso(pers);
 
 	//Apparition du rectangle de mort
-  SDL_Rect rect;
-  rect.x = 405;
-  rect.y = 232;
-  rect.w = 270;
-  rect.h = 155;
+ 	SDL_Rect rect;
+ 	rect.x = 405;
+ 	rect.y = 232;
+ 	rect.w = 270;
+ 	rect.h = 155;
 
-  SDL_SetRenderDrawColor(rendu, 0, 0, 0, 255);
+ 	SDL_SetRenderDrawColor(rendu, 0, 0, 0, 255);
 	Mix_PlayChannel(0, gameOverFrame, 0);
-  SDL_RenderFillRect(rendu, &rect);
-  SDL_RenderPresent(rendu);
+  	SDL_RenderFillRect(rendu, &rect);
+  	SDL_RenderPresent(rendu);
 	SDL_Delay(500);
 
 	rect.x = 270; //160
@@ -455,19 +468,13 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusi
 	pers->sprites[courant] = pers->sprites[dead];
 	SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
 
-	//textes
-	SDL_Rect cmpPartie_text;
-
-	int x_cmpPartie = WIN_WIDTH / 2-90;
-	int y_cmpPartie = WIN_HEIGHT * 0.8;
-
-	char cmpPartie[20];
+	
 
 	if(pers->cmpMort ==1){
 		sprintf(cmpPartie, "%dere mort", pers->cmpMort);
 	}
 	else{
-		sprintf(cmpPartie, "%deme mort", pers->cmpMort);
+		sprintf(cmpPartie, "%deme morts", pers->cmpMort);
 	}
 
 	get_text_and_rect(rendu, x_cmpPartie, y_cmpPartie, cmpPartie, police, &cmpPartie_texture, &cmpPartie_text);
@@ -476,8 +483,9 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusi
 	SDL_RenderPresent(rendu);
 
 	//Des que la musique s'arrête, on revient au menu principal
-  while(Mix_PlayingMusic() == 1);
-  *etat = mainMenu;
+ 	while(Mix_PlayingMusic() == 1);
+
+ 	*etat = mainMenu;
 }
 
 
@@ -512,9 +520,6 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	animation_t anim;
 
 	ennemi_t *ennemi = creer_ennemi("Squelette", 10, 10, 10, 10, squelette, rendu);
-
-	ennemi->sprites[0].rectangle.y = WIN_HEIGHT / 2 - 50;
-	ennemi->sprites[0].rectangle.x = WIN_WIDTH / 2 - 50;
 
 /////////////////////////// Génération aléatoire ////////////////////////////////////////////
 
@@ -557,10 +562,10 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 		//collision avec un ennemi
 		if(combat_declenche(salles[salle_courante], *pers, *ennemi)){
-			printf("Combat !\n");
+			//printf("Combat !\n");
 		}
 		else{
-			printf("pas combat\n");
+			//printf("pas combat\n");
 		}
 	}
 
@@ -573,5 +578,5 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	detruire_ennemi(&ennemi);
 
-	//SDL_DestroyTexture(cmpPartie_texture);
+	SDL_DestroyTexture(cmpPartie_texture);
 }

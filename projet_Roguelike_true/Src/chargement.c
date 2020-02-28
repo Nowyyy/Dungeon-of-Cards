@@ -131,30 +131,38 @@ void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Fon
 	char retour_text[] = "Retourner au menu principal", *charger_text = malloc(sizeof(char)* 500);
 	char intermediaire[50];
 
-	int x_retour = WIN_WIDTH * 0.30, y_retour = WIN_HEIGHT * 0.75;
-	int x_charger = WIN_WIDTH * 0.30, y_charger = WIN_HEIGHT * 0.50;
+	int x_retour, x_charger, y_retour, y_charger;
+
+	x_retour = WIN_WIDTH * 0.30;
+	y_retour = WIN_HEIGHT * 0.75;
 
 	if(!save_existe()){
 
 		charger_text = strcpy(charger_text, "Pas de sauvegarde trouvee");
 		initialise_personnage(pers);
+		x_charger = WIN_WIDTH * 0.30;
+		y_charger = WIN_HEIGHT * 0.50;
 		//initialise_deck_cartes(cartes);
 	}
 	else{
 		readperso(pers);
 		//readcarte(cartes);
+		x_charger = WIN_WIDTH * 0.33;
+		y_charger = WIN_HEIGHT * 0.50;
 		sprintf(intermediaire,"Etage %d, Points de vie %d", pers->etage, pers->pv);
 		charger_text = strcpy(charger_text, intermediaire);
 	}
 
+	
+	
 	//On créé les textures qui contiendront les textes
 	get_text_and_rect(rendu, x_charger, y_charger, charger_text, police, &charger_texture, &charger_rect);
 	get_text_and_rect(rendu, x_retour, y_retour, retour_text, police, &retour_texture, &retour_rect);
 
-	rectangle_selection->x = x_charger - RECT_SELECT_X_DIFF;
-	rectangle_selection->y = y_charger - RECT_SELECT_Y_DIFF;
-	rectangle_selection->w = charger_rect.w + 100;
-	rectangle_selection->h = charger_rect.h + 50;
+	rectangle_selection->x = x_retour - RECT_SELECT_X_DIFF;
+	rectangle_selection->y = y_retour - RECT_SELECT_Y_DIFF;
+	rectangle_selection->w = retour_rect.w + 100;
+	rectangle_selection->h = retour_rect.h + 50;
 
 	while(*continuer && *etat == charger_partie){
 
