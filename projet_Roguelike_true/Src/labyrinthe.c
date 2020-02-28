@@ -474,7 +474,7 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusi
 		sprintf(cmpPartie, "%dere mort", pers->cmpMort);
 	}
 	else{
-		sprintf(cmpPartie, "%deme morts", pers->cmpMort);
+		sprintf(cmpPartie, "%d morts", pers->cmpMort);
 	}
 
 	get_text_and_rect(rendu, x_cmpPartie, y_cmpPartie, cmpPartie, police, &cmpPartie_texture, &cmpPartie_text);
@@ -558,7 +558,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 		salle_courante = changement_de_salle(pers, salles[salle_courante], salle_courante, change_salle);
 
 		//Tester animation de mort
-		//pers->pv -= 1;
+		pers->pv -= 1;
 
 		//collision avec un ennemi
 		if(combat_declenche(salles[salle_courante], *pers, *ennemi)){

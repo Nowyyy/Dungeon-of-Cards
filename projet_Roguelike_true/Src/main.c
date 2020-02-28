@@ -129,7 +129,7 @@ int main(int argc, char* args[]){
 						}
 						else if (etat == labyrinthe){
 							//tout ce qui sera relatif à l'explo dans le laby
-							Mix_PauseMusic();
+							Mix_HaltMusic();
 							Mix_PlayMusic(level1, 1);
 							boucle_labyrinthe(&continuer, &etat, rendu, change_salle, footsteps, gameOverMusic, gameOverFrame, &pers, cartes, police);
 							Mix_HaltMusic();
