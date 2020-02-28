@@ -103,7 +103,7 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 * \brief Affiche sur le rendu les différentes textures et rectangles passés en paramètre
 
 */
-void affichage_menu(SDL_Renderer *rendu, SDL_Texture *jouer_text, SDL_Texture *charger_text, SDL_Texture *quitter_text, SDL_Rect *rect_sel, SDL_Rect jouer_rect, SDL_Rect charger_rect, SDL_Rect quitter_rect){
+void affichage_menu(SDL_Renderer *rendu, SDL_Texture *jouer_text, SDL_Texture *charger_text, SDL_Texture *quitter_text, SDL_Rect *rect_sel, SDL_Rect jouer_rect, SDL_Rect charger_rect, SDL_Rect quitter_rect, image_t logo[]){
 
 	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
 
@@ -117,6 +117,10 @@ void affichage_menu(SDL_Renderer *rendu, SDL_Texture *jouer_text, SDL_Texture *c
 	SDL_RenderCopy(rendu, jouer_text, NULL, &jouer_rect);
 	SDL_RenderCopy(rendu, charger_text, NULL, &charger_rect);
 	SDL_RenderCopy(rendu, quitter_text, NULL, &quitter_rect);
+
+	//Affichage du logo
+	SDL_RenderCopy(rendu, logo[0].img, NULL, &logo[0].rectangle);
+
 
 	SDL_RenderPresent(rendu);//applique les modifs précédentes
 }
@@ -142,6 +146,12 @@ void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police,
 	SDL_Rect *rectangle_selection = malloc(sizeof(SDL_Rect));
 	SDL_Texture *jouer_texture, *charger_texture, *quitter_texture;
 
+	//initialisation du logo du jeu
+	image_t logo[1];
+	charge_image("../Images/logo.png", &logo[0], rendu);
+	logo[0].rectangle.x = 140;
+	logo[0].rectangle.y = 60;
+
 	int x_jouer = WIN_WIDTH / 2-175, x_charger = WIN_WIDTH / 2- 150, x_quitter = WIN_WIDTH / 2 - 100;
 	int y_jouer = WIN_HEIGHT * 0.4, y_charger = WIN_HEIGHT * 0.6, y_quitter = WIN_HEIGHT * 0.8;
 
@@ -163,7 +173,7 @@ void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police,
 	while(*continuer && *etat == mainMenu){
 
 
-		affichage_menu(rendu, jouer_texture, charger_texture, quitter_texture, rectangle_selection, jouer_text, charger_text, quitter_text);
+		affichage_menu(rendu, jouer_texture, charger_texture, quitter_texture, rectangle_selection, jouer_text, charger_text, quitter_text, logo);
 
 		*continuer = deplacement_rectangle_selection(jouer_text, charger_text, quitter_text, &rectangle_selection, etat, select, move);
 
@@ -176,4 +186,6 @@ void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police,
 	SDL_DestroyTexture(jouer_texture);
 	SDL_DestroyTexture(charger_texture);
 	SDL_DestroyTexture(quitter_texture);
+	SDL_DestroyTexture(logo[0].img);
+
 }
