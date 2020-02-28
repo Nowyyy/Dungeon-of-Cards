@@ -41,6 +41,7 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 	charge_image(COMMANDES_PATH, &images[commandes], rendu);
 	charge_image(INSTRUCTIONS_PATH, &images[instructions], rendu);
 	charge_image(GAMEOVER_PATH, &images[gameover], rendu);
+	charge_image(DEATHLIGHT_PATH, &images[deathlight], rendu);
 
 	charge_sprites_personnage(pers->sprites, rendu);
 
@@ -49,8 +50,10 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 	images[commandes].rectangle.y = WIN_HEIGHT/4;
 	images[instructions].rectangle.x = 800;
 	images[instructions].rectangle.y = WIN_HEIGHT/30;
-	images[gameover].rectangle.x = WIN_WIDTH/2;
-	images[gameover].rectangle.y = WIN_HEIGHT/2;
+	images[gameover].rectangle.x = 135;
+	images[gameover].rectangle.y = -100;
+	images[deathlight].rectangle.x = pers->x-100;
+	images[deathlight].rectangle.y = pers->y-65;
 
 	//on place le personnage dans la premiere salle, au centre
 	pers->sprites[courant].rectangle.x = pers->x;
@@ -428,15 +431,19 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusi
 	SDL_RenderPresent(rendu);
 
 	//Ecran de game over
+	//Musique
 	Mix_VolumeMusic(64);
 	Mix_PlayMusic(gameOverMusic, 1);
 
+	//Fond noir et logo game over
 	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
 	SDL_RenderClear(rendu);
-	images[gameover].rectangle.x = 135;
-	images[gameover].rectangle.y = -100;
-
 	SDL_RenderCopy(rendu, images[gameover].img, NULL, &images[gameover].rectangle);
+
+	//halo lumineux
+	SDL_RenderCopy(rendu, images[deathlight].img, NULL, &images[deathlight].rectangle);
+
+	//Sprite perso mort
 	pers->sprites[dead].rectangle.x = pers->x-50;
 	pers->sprites[dead].rectangle.y = pers->y;
 	pers->sprites[courant] = pers->sprites[dead];
