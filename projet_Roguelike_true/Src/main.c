@@ -7,9 +7,6 @@
 
 */
 
-// gcc main.c initialisation_sdl_fonctions.c main_menu_screen.c salle.c personnage.c labyrinthe.c -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -o main
-//pour compiler sous windows avec sdl2, sdl2  ttf et sdl2 image installés
-
 #include "constantes.h"
 #include "initialisation_sdl_fonctions.h"
 #include "main_menu_screen.h"
