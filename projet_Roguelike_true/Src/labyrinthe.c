@@ -392,7 +392,7 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusi
 	int y_cmpPartie = WIN_HEIGHT * 0.8;
 
 	//textes
-	SDL_Rect cmpPartie_text;
+	SDL_Rect cmpPartie_text, rect;
 
 	char cmpPartie[20];
 
@@ -400,75 +400,33 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusi
 
 	//Reinitialisation de la sauvegarde et compteur de mort
 	mort_tmp = pers->cmpMort;
+
 	initialise_personnage(pers);
+	
 	pers->cmpMort = mort_tmp+1;
+  	
   	saveperso(pers);
 
 	//Apparition du rectangle de mort
- 	SDL_Rect rect;
+ 	
  	rect.x = 405;
- 	rect.y = 232;
+ 	rect.y = 231;
  	rect.w = 270;
  	rect.h = 155;
 
- 	SDL_SetRenderDrawColor(rendu, 0, 0, 0, 255);
-	Mix_PlayChannel(0, gameOverFrame, 0);
-  	SDL_RenderFillRect(rendu, &rect);
-  	SDL_RenderPresent(rendu);
-	SDL_Delay(500);
+ 	//aggrandissement progressif du rectangle
+ 	while(rect.w <= WIN_WIDTH){
+ 		SDL_SetRenderDrawColor(rendu, 0, 0, 0, 255);
+		Mix_PlayChannel(0, gameOverFrame, 0);
+  		SDL_RenderFillRect(rendu, &rect);
+  		SDL_RenderPresent(rendu);
+		SDL_Delay(500);
 
-	rect.x = 270; //160
-	rect.y = 155; //102
-	rect.w = 540;
-	rect.h = 310;
-
-	SDL_SetRenderDrawColor(rendu, 0, 0, 0, 255);
-	Mix_PlayChannel(0, gameOverFrame, 0);
-	SDL_RenderFillRect(rendu, &rect);
-	SDL_RenderPresent(rendu);
-	SDL_Delay(500);
-
-	rect.x = 135; //160
-	rect.y = 77; //102
-	rect.w = 810;
-	rect.h = 465;
-
-	SDL_SetRenderDrawColor(rendu, 0, 0, 0, 255);
-	Mix_PlayChannel(0, gameOverFrame, 0);
-	SDL_RenderFillRect(rendu, &rect);
-	SDL_RenderPresent(rendu);
-	SDL_Delay(500);
-
-	rect.x = 0; //160
-	rect.y = 0; //102
-	rect.w = 1080;
-	rect.h = 620;
-
-	SDL_SetRenderDrawColor(rendu, 0, 0, 0, 255);
-	Mix_PlayChannel(0, gameOverFrame, 0);
-	SDL_RenderFillRect(rendu, &rect);
-	SDL_RenderPresent(rendu);
-
-	//Ecran de game over
-	//Musique
-	Mix_VolumeMusic(64);
-	Mix_PlayMusic(gameOverMusic, 1);
-
-	//Fond noir et logo game over
-	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
-	SDL_RenderClear(rendu);
-	SDL_RenderCopy(rendu, images[gameover].img, NULL, &images[gameover].rectangle);
-
-	//halo lumineux
-	SDL_RenderCopy(rendu, images[deathlight].img, NULL, &images[deathlight].rectangle);
-
-	//Sprite perso mort
-	pers->sprites[dead].rectangle.x = pers->x-50;
-	pers->sprites[dead].rectangle.y = pers->y;
-	pers->sprites[courant] = pers->sprites[dead];
-	SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
-
-	
+		rect.x -= 135;
+		rect.y -= 77;
+		rect.w += 270;
+		rect.h += 155;
+ 	}
 
 	if(pers->cmpMort ==1){
 		sprintf(cmpPartie, "%dere mort", pers->cmpMort);
