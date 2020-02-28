@@ -673,3 +673,78 @@ void verifie_salles_accessibles(salle_t salles[], int taille){
     }
   }
 }
+
+
+/**
+* \fn place_monstre_coffre_boss
+
+* \param tab[], tableau contenant les salles du labyrinthe
+* \param taille, taille du tableau
+
+* \brief rempli les salles de monstres, de coffre ou place un boss
+
+*/
+void place_monstre_coffre_boss(salle_t tab[], int taille){
+
+  int alea;
+
+  tab[taille-1].boss = 1;
+
+  for(int i = 0; i < taille - 1; i++){
+
+    tab[i].boss = 0;
+
+    //choix de monstres ou coffre dans les autres salles que celle du début et celle du boss
+    if(i != 0 && i != taille - 1){
+      alea = rand()%10;
+
+      //choix pour un monbre ou un coffre dans la salle
+      if(alea <= 7){
+        tab[i].ennemi_present = 1;
+
+        alea = rand()%8;
+
+        tab[i].x_ennemi1 = rand()%TAILLE_SALLE;
+        tab[i].y_ennemi1 = rand()%TAILLE_SALLE;
+
+        //on place l'ennemi dans la salle avec ses coordonnées
+        if(tab[i].x_ennemi1 == 0)
+          tab[i].x_ennemi1 += 1;
+        else if(tab[i].x_ennemi1 == TAILLE_SALLE - 1)
+          tab[i].x_ennemi1 -= 1;
+
+        if(tab[i].y_ennemi1 == 0)
+          tab[i].y_ennemi1 += 1;
+        else if(tab[i].y_ennemi1 ==  TAILLE_SALLE - 1)
+          tab[i].y_ennemi1 -= 1;
+
+        if(alea <= 4){
+          tab[i].nb_ennemi = 1;
+        }
+        //il y aura deux ennemis
+        else{
+          tab[i].x_ennemi2 = rand()%TAILLE_SALLE;
+          tab[i].y_ennemi2 = rand()%TAILLE_SALLE;
+
+          if(tab[i].x_ennemi2 == 0)
+            tab[i].x_ennemi2 += 1;
+          else if(tab[i].x_ennemi2 == TAILLE_SALLE - 1)
+            tab[i].x_ennemi2 -= 1;
+
+          if(tab[i].y_ennemi2 == 0)
+            tab[i].y_ennemi2 += 1;
+          else if(tab[i].y_ennemi2 ==  TAILLE_SALLE - 1)
+            tab[i].y_ennemi2 -= 1;
+
+          tab[i].nb_ennemi = 2;
+        }
+        tab[i].coffre = 0;
+      }
+      //pas d'ennemi dans la salle
+      else{
+        tab[i].ennemi_present = 0;
+        tab[i].coffre = 1;
+      }
+    }
+  }
+}

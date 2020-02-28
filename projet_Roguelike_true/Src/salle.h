@@ -14,3 +14,4 @@ int remplit_tab_salle_0(salle_t salle, int tab[]);
 int cherche_acces_salle(salle_t salle, int tab[], int tailleTab);
 void verifie_salles_accessibles(salle_t salles[], int taille);
 void lie_salles_et_cree_portes(salle_t salles[], int salle1, int salle2);
+void place_monstre_coffre_boss(salle_t salles[], int taille);

@@ -218,15 +218,22 @@ ennemi_t * creer_ennemi(char * nom, int pv, int vitesse, int attaque, int defens
   ennemi->vitesse = vitesse;
   ennemi->attaque = attaque;
   ennemi->defense = defense;
+  ennemi->boss = 0;
 
   if(type == squelette){
-    charge_image(SQUELETTE_IDLE_PATH, &ennemi->sprites[0], rendu);
+    charge_image(SQUELETTE_IDLE_PATH, &ennemi->sprites[courant], rendu);
   }
-  else if(type == minautore){
-    //do stuff ...
+  else if(type == minotaure){
+    charge_image(MINOTAURE_IDLE_PATH, &ennemi->sprites[courant], rendu);
+    ennemi->sprites[courant].rectangle.x = WIN_WIDTH / 2 - ennemi->sprites[courant].rectangle.w;
+    ennemi->sprites[courant].rectangle.y = WIN_HEIGHT / 2 - ennemi->sprites[courant].rectangle.h;
+    ennemi->boss = 1;
   }
   else if(type == cyclope){
-    //do other stuff
+    charge_image(CYCLOPE_IDLE_PATH, &ennemi->sprites[courant], rendu);
+    ennemi->sprites[courant].rectangle.x = WIN_WIDTH / 2 - ennemi->sprites[courant].rectangle.w;
+    ennemi->sprites[courant].rectangle.y = WIN_HEIGHT / 2 - ennemi->sprites[courant].rectangle.h;
+    ennemi->boss = 1;
   }
 
   return(ennemi);

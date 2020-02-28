@@ -410,8 +410,10 @@ void initialise_deck_cartes(carte_t *cartes){
 
 int collision_perso_ennemi(perso_t pers, ennemi_t ennemi, int x, int y){
 
-	ennemi.sprites[courant].rectangle.x = (x*TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_X;
-	ennemi.sprites[courant].rectangle.y = (y*TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_Y;
+	if(ennemi.boss == 0){
+		ennemi.sprites[courant].rectangle.x = (x*TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_X;
+		ennemi.sprites[courant].rectangle.y = (y*TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_Y;
+	}
 
 	return SDL_HasIntersection(&pers.sprites[courant].rectangle, &ennemi.sprites[courant].rectangle);
 }

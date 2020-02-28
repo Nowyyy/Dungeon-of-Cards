@@ -43,6 +43,8 @@
 #define SPRITE7_PATH "../Images/Animations_personnage/dead.png"
 
 #define SQUELETTE_IDLE_PATH "../Images/sprites_mobs/squelette.png"
+#define CYCLOPE_IDLE_PATH "../Images/sprites_mobs/cyclope.png"
+#define MINOTAURE_IDLE_PATH "../Images/sprites_mobs/minotaure.png"
 
 #define SAVE_PERSO_PATH "../Sauvegarde/personnage.txt"
 #define SAVE_CARTES_PATH "../Sauvegarde/cartes.txt"
@@ -97,7 +99,7 @@ typedef enum{sol =0, mur, porte, sol2, commandes, instructions, sol3, mur2, game
 
 
 
-typedef enum{squelette, minautore, cyclope}t_type_ennemis;
+typedef enum{squelette, minotaure, cyclope}t_type_ennemis;
 
 
 /**
@@ -176,7 +178,7 @@ typedef struct salle_s{
 
   int nb_murs, haut, bas, gauche, droite, nb_portes, id;
 
-  int ennemi_present, nb_ennemi, x_ennemi1, x_ennemi2, y_ennemi1, y_ennemi2;
+  int ennemi_present, nb_ennemi, x_ennemi1, x_ennemi2, y_ennemi1, y_ennemi2, boss, coffre;
 
 }salle_t;
 
@@ -208,6 +210,7 @@ typedef struct ennemi_s {
   int attaque;/**Attaque d'un ennemi*/
   int defense;/**Défense d'un ennemi*/
   char* nom;/** Nom de l'ennemi*/
+  int boss;
 
   image_t sprites[NB_SPRITES_MONSTRE];
 } ennemi_t;

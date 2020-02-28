@@ -21,6 +21,7 @@ SDL2_image
 Librairie sonore
 
 SDL2_mixer
+libmpg123
 
 Librairie texte
 
@@ -29,3 +30,4 @@ SDL2_ttf
 Sprites monstres, personnage, boss, items
 
 Elthen's Pixel Art Shop
+Jesse Munguia
