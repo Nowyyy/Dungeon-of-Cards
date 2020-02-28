@@ -194,6 +194,7 @@ typedef struct perso_s {
   int y;/**Placement sur l'axe des ordonnés d'un personnage*/
   int etage;
   image_t sprites[NB_SPRITES_PERSONNAGE];
+  int cmpMort;
 
 } perso_t;
 

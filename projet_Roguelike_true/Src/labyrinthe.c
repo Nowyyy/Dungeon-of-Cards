@@ -380,9 +380,15 @@ int generation_labyrinthe(salle_t salles[], int taille, int max_salles, int tail
 
 */
 
-void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusic, Mix_Chunk *gameOverFrame, image_t images[]){
+void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusic, Mix_Chunk *gameOverFrame, image_t images[], TTF_Font *police, SDL_Texture *cmpPartie_texture){
+	int mort_tmp;
+
 	Mix_HaltMusic();
+
+	//Reinitialisation de la sauvegarde et compteur de mort
+	mort_tmp = pers->cmpMort;
 	initialise_personnage(pers);
+	pers->cmpMort = mort_tmp+1;
   saveperso(pers);
 
 	//Apparition du rectangle de mort
@@ -449,6 +455,24 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusi
 	pers->sprites[courant] = pers->sprites[dead];
 	SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
 
+	//textes
+	SDL_Rect cmpPartie_text;
+
+	int x_cmpPartie = WIN_WIDTH / 2-90;
+	int y_cmpPartie = WIN_HEIGHT * 0.8;
+
+	char cmpPartie[20];
+
+	if(pers->cmpMort ==1){
+		sprintf(cmpPartie, "%dere mort", pers->cmpMort);
+	}
+	else{
+		sprintf(cmpPartie, "%deme mort", pers->cmpMort);
+	}
+
+	get_text_and_rect(rendu, x_cmpPartie, y_cmpPartie, cmpPartie, police, &cmpPartie_texture, &cmpPartie_text);
+	SDL_RenderCopy(rendu, cmpPartie_texture, NULL, &cmpPartie_text);
+
 	SDL_RenderPresent(rendu);
 
 	//Des que la musique s'arrête, on revient au menu principal
@@ -473,7 +497,7 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusi
 * \brief Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...
 
 */
-void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *change_salle, Mix_Chunk *footsteps, Mix_Music *gameOverMusic, Mix_Chunk *gameOverFrame, perso_t *pers, carte_t *cartes){
+void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *change_salle, Mix_Chunk *footsteps, Mix_Music *gameOverMusic, Mix_Chunk *gameOverFrame, perso_t *pers, carte_t *cartes, TTF_Font *police){
 
 
 /////////////////////////// Déclarations variables ////////////////////////////////////////////
@@ -482,6 +506,8 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	int taille = 10, taille_max = taille *2, salle_courante = 0;
 
 	salle_t salles[taille_max];
+
+	SDL_Texture *cmpPartie_texture;
 
 	animation_t anim;
 
@@ -521,7 +547,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 		//Si le joueur meurt
 		if(pers->pv <= 0){
-			mort(etat, pers, rendu, gameOverMusic, gameOverFrame, images);
+			mort(etat, pers, rendu, gameOverMusic, gameOverFrame, images, police, cmpPartie_texture);
 		}
 
 		salle_courante = changement_de_salle(pers, salles[salle_courante], salle_courante, change_salle);
@@ -546,4 +572,6 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 		SDL_DestroyTexture(images[i].img);
 
 	detruire_ennemi(&ennemi);
+
+	//SDL_DestroyTexture(cmpPartie_texture);
 }

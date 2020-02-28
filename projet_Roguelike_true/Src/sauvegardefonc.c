@@ -27,7 +27,7 @@ int save_existe(){
 
   if(!f)
     return 0;
-  
+
   fclose(f);
   return 1;
 }
@@ -71,7 +71,7 @@ void readcarte(carte_t* carte2){
    en_tete();
 
    fscanf(fichier,"%d %d %d %[^\n]",&carte2->type,&carte2->valeur,&carte2->consommable,carte2->nom);
-   
+
    if (fichier != NULL)
     {
         while(!feof(fichier)){
@@ -108,7 +108,7 @@ void saveperso (perso_t *perso){
 
   if (fichier != NULL)
    {
-       fprintf(fichier,"%d %d %d %d %d %d %d\n",perso->pv,perso->vitesse,perso->attaque,perso->defense,perso->x,perso->y, perso->etage);
+       fprintf(fichier,"%d %d %d %d %d %d %d %d\n",perso->pv,perso->vitesse,perso->attaque,perso->defense,perso->x,perso->y, perso->etage, perso->cmpMort);
    }
    else
    {
@@ -138,7 +138,7 @@ void readperso(perso_t*perso){
 
   if (fichier != NULL)
    {
-       fscanf(fichier,"%d %d %d %d %d %d %d\n",&perso->pv,&perso->vitesse,&perso->attaque,&perso->defense,&perso->x,&perso->y,&perso->etage);
+       fscanf(fichier,"%d %d %d %d %d %d %d %d\n",&perso->pv,&perso->vitesse,&perso->attaque,&perso->defense,&perso->x,&perso->y,&perso->etage, &perso->cmpMort);
    }
    else
    {

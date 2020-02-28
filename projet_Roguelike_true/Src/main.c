@@ -131,7 +131,7 @@ int main(int argc, char* args[]){
 							//tout ce qui sera relatif à l'explo dans le laby
 							Mix_PauseMusic();
 							Mix_PlayMusic(level1, 1);
-							boucle_labyrinthe(&continuer, &etat, rendu, change_salle, footsteps, gameOverMusic, gameOverFrame, &pers, cartes);
+							boucle_labyrinthe(&continuer, &etat, rendu, change_salle, footsteps, gameOverMusic, gameOverFrame, &pers, cartes, police);
 							Mix_HaltMusic();
 							Mix_VolumeMusic(24);
 						}
