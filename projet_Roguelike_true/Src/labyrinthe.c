@@ -440,7 +440,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 /////////////////////////// Déclarations variables ////////////////////////////////////////////
 	image_t images[NB_TEXTURES];
 
-	int taille = 10, taille_max = taille *2, salle_courante = 0;
+	int taille = 5, taille_max = taille *2, salle_courante = 0;
 
 	salle_t salles[taille_max];
 
