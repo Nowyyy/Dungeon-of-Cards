@@ -134,7 +134,7 @@ void initialise_salles(salle_t tab[], int taille){
 		tab[i].haut = 0;
 		tab[i].bas = 0;
 		tab[i].droite = 0;
-		tab[i].gauche = 0;	
+		tab[i].gauche = 0;
 	}
 }
 
@@ -353,13 +353,13 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusi
 	mort_tmp = pers->cmpMort;
 
 	initialise_personnage(pers);
-	
+
 	pers->cmpMort = mort_tmp+1;
-  	
+
   	saveperso(pers);
 
 	//Apparition du rectangle de mort
- 	
+
  	rect.x = 405;
  	rect.y = 231;
  	rect.w = 270;
@@ -369,8 +369,8 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusi
  	while(rect.w <= WIN_WIDTH){
  		SDL_SetRenderDrawColor(rendu, 0, 0, 0, 255);
 		Mix_PlayChannel(0, gameOverFrame, 0);
-  		SDL_RenderFillRect(rendu, &rect);
-  		SDL_RenderPresent(rendu);
+  	SDL_RenderFillRect(rendu, &rect);
+  	SDL_RenderPresent(rendu);
 		SDL_Delay(500);
 
 		rect.x -= 135;
@@ -385,6 +385,26 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusi
 	else{
 		sprintf(cmpPartie, "%d morts", pers->cmpMort);
 	}
+
+	//Ecran de game over
+		//Musique
+		Mix_VolumeMusic(64);
+		Mix_PlayMusic(gameOverMusic, 1);
+
+		//Fond noir et logo game over
+		SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
+		SDL_RenderClear(rendu);
+		SDL_RenderCopy(rendu, images[gameover].img, NULL, &images[gameover].rectangle);
+
+		//halo lumineux
+		SDL_RenderCopy(rendu, images[deathlight].img, NULL, &images[deathlight].rectangle);
+
+		//Sprite perso mort
+		pers->sprites[dead].rectangle.x = pers->x-50;
+		pers->sprites[dead].rectangle.y = pers->y;
+		pers->sprites[courant] = pers->sprites[dead];
+		SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
+
 
 	get_text_and_rect(rendu, x_cmpPartie, y_cmpPartie, cmpPartie, police, &cmpPartie_texture, &cmpPartie_text);
 	SDL_RenderCopy(rendu, cmpPartie_texture, NULL, &cmpPartie_text);
@@ -455,7 +475,6 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	place_monstre_coffre_boss(salles, taille);
 
 /////////////////////////// boucle du labyrinthe / explo / combat ///////////////////////////
-
 	while(*etat == labyrinthe && *continuer){
 
 		affichage_salle_personnage(*pers, &salles[salle_courante], rendu, images, *ennemi, *boss);
