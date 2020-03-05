@@ -90,12 +90,20 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 
 		monstre.sprites[courant].rectangle.x = (salle->x_ennemi1 * TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_X;
 		monstre.sprites[courant].rectangle.y = (salle->y_ennemi1 * TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_Y;
-		SDL_RenderCopy(rendu, monstre.sprites[courant].img, NULL, &monstre.sprites[courant].rectangle);
+		
+		if(salle->pv1)
+			SDL_RenderCopy(rendu, monstre.sprites[courant].img, NULL, &monstre.sprites[courant].rectangle);
+		else
+			SDL_RenderCopy(rendu, monstre.sprites[courant+1].img, NULL, &monstre.sprites[courant].rectangle);
 
 		if(salle->nb_ennemi == 2){
 			monstre.sprites[courant].rectangle.x = (salle->x_ennemi2 * TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_X;
 			monstre.sprites[courant].rectangle.y = (salle->y_ennemi2 * TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_Y;
-			SDL_RenderCopy(rendu, monstre.sprites[courant].img, NULL, &monstre.sprites[courant].rectangle);
+
+			if(salle->pv2)
+				SDL_RenderCopy(rendu, monstre.sprites[courant].img, NULL, &monstre.sprites[courant].rectangle);
+			else
+				SDL_RenderCopy(rendu, monstre.sprites[courant+1].img, NULL, &monstre.sprites[courant].rectangle);
 		}
 	}
 
@@ -492,11 +500,17 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 		//pers->pv -= 1;
 
 		//collision avec un ennemi
-		if(combat_declenche(salles[salle_courante], *pers, *ennemi) || (salle_courante == taille - 1 && combat_declenche(salles[salle_courante], *pers, *boss))){
-			printf("Combat !\n");
+		if(salle_courante == taille - 1 && combat_declenche(salles[salle_courante], *pers, *boss)){
+			combat_t_p_t(pers, boss, cartes);
+			if(boss->pv == 0){
+				//etage suivant
+			}
 		}
-		else{
-			//printf("pas combat\n");
+		if(combat_declenche(salles[salle_courante], *pers, *ennemi) == 1){
+			salles[salle_courante].pv1 = combat_t_p_t(pers, ennemi, cartes);
+		}
+		else if(combat_declenche(salles[salle_courante], *pers, *ennemi) == 2){
+			salles[salle_courante].pv2 = combat_t_p_t(pers, ennemi, cartes);
 		}
 	}
 
