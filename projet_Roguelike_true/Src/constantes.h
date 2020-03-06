@@ -238,6 +238,3 @@ typedef struct element {
 // Declaration des listes (drapeau et element courant)
 element_t* drapeau;
 element_t* ec;
-
-ennemi_t * ennemis_niveau1[3];
-ennemis_niveau1[0];
