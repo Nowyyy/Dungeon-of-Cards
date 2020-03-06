@@ -240,4 +240,4 @@ element_t* drapeau;
 element_t* ec;
 
 ennemi_t * ennemis_niveau1[3];
-ennemis_niveau1[0]
+ennemis_niveau1[0];
