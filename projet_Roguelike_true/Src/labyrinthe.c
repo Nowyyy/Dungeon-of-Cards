@@ -501,16 +501,16 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 		//collision avec un ennemi
 		if(salle_courante == taille - 1 && combat_declenche(salles[salle_courante], *pers, *boss)){
-			combat_t_p_t(pers, boss, cartes);
+			//combat_t_p_t(pers, boss, cartes);
 			if(boss->pv == 0){
 				//etage suivant
 			}
 		}
 		if(combat_declenche(salles[salle_courante], *pers, *ennemi) == 1){
-			salles[salle_courante].pv1 = combat_t_p_t(pers, ennemi, cartes);
+			//salles[salle_courante].pv1 = combat_t_p_t(pers, ennemi, cartes);
 		}
 		else if(combat_declenche(salles[salle_courante], *pers, *ennemi) == 2){
-			salles[salle_courante].pv2 = combat_t_p_t(pers, ennemi, cartes);
+			//salles[salle_courante].pv2 = combat_t_p_t(pers, ennemi, cartes);
 		}
 	}
 
