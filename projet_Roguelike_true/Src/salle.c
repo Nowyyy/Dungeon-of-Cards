@@ -695,14 +695,14 @@ void place_monstre_coffre_boss(salle_t tab[], int taille){
     tab[i].boss = 0;
 
     //choix de monstres ou coffre dans les autres salles que celle du début et celle du boss
-    if(i = 0){
+    if(i == 0){
       tab[i].ennemi_present = 0;
 
     }
     else{
       alea = rand()%10;
-      pv1 = 1;
-      pv2 = 1;
+      tab[i].pv1 = 1;
+      tab[i].pv2 = 1;
 
       //choix pour un monbre ou un coffre dans la salle
       if(alea <= 7){
