@@ -171,7 +171,7 @@ void rempli_tableau_murs_portes(salle_t salle[], int indiceT){
  * \param max_porte, le nombre max de porte que l'on souhaite créer
 
  * \return le nombre de portes créées
- */
+ *//*
 int aleatoire_porte(salle_t *salle, int porte_arrivee, int max_porte){
 
   int alea;
@@ -243,7 +243,7 @@ int aleatoire_porte(salle_t *salle, int porte_arrivee, int max_porte){
   }
 
   return cmp;
-}
+}*/
 
 
 
@@ -268,167 +268,6 @@ int inverse_porte(int porte){
     return 0;
   }
   return 1;
-}
-
-
-/**
-* \fn ferme_porte_inutile
-
-* \param salles[], le tableau contenant les salles du labyrinthe
-* \param indice, l'indice de la salle pour laquelle on veut faire une modification
-
-* \brief Ferme une porte dans la salle, pour laquelle on n'a pu effectuer de liaison vers une autre
-*/
-void ferme_porte_inutile(salle_t salles[], int indice){
-
-  int i, millieu = TAILLE_SALLE / 2;
-
-  if(salles[indice].haut == 1 || (salles[indice].haut == 0 && salles[indice].s_h == -1) || salles[indice].s_h == -1){
-
-    salles[indice].haut = 0;
-    salles[indice].salle[0][millieu] = mur;
-    salles[indice].salle[0][millieu-1] = mur;
-  }
-
-  if(salles[indice].droite == 1 || (salles[indice].droite == 0 && salles[indice].s_d == -1) || salles[indice].s_d == -1){
-
-    salles[indice].droite = 0;
-    salles[indice].salle[millieu][TAILLE_SALLE-1] = mur;
-    salles[indice].salle[millieu-1][TAILLE_SALLE-1] = mur;
-  }
-
-  if(salles[indice].bas == 1 || (salles[indice].bas == 0 && salles[indice].s_b == -1) || salles[indice].s_b == -1){
-
-    salles[indice].bas = 0;
-    salles[indice].salle[TAILLE_SALLE-1][millieu] = mur;
-    salles[indice].salle[TAILLE_SALLE-1][millieu-1] = mur;
-  }
-
-  if(salles[indice].gauche == 1 || (salles[indice].gauche == 0 && salles[indice].s_g == -1) || salles[indice].s_g == -1){
-
-    salles[indice].gauche = 0;
-    salles[indice].salle[millieu][0] = mur;
-    salles[indice].salle[millieu-1][0] = mur;
-  }
-}
-
-
-
-/**
-* \fn porte_libre_existe
-
-* \param salles[], le tableau contenant les salles du labyrinthe
-* \param porte_libre, la porte pour laquelle on veut savoir si elle est sans liaison
-
-* \return 1 si la porte est libre, 0 sinon
-
-* \brief Regarde si la porte passée en paramètre est disponible pour effectuer une liaison
-*/
-int porte_libre_existe(salle_t salle, int porte_libre){
-
-  if(porte_libre == 0 && salle.haut == 1)
-    return TRUE;
-  else if(porte_libre == 1 && salle.droite == 1)
-    return TRUE;
-  else if(porte_libre == 2 && salle.bas == 1)
-    return TRUE;
-  else if(porte_libre == 3 && salle.gauche == 1)
-    return TRUE;
-  else
-    return FALSE;
-}
-
-
-
-/**
-* \fn verifie_porte_ouverte
-
-* \param salles[], le tableau contenant les salles du labyrinthe
-* \param indice, l'indice de la salle pour laquelle on veut faire une modification
-* \param taille, la taille du tableau de salle
-
-* \brief Ouvre une porte si la liaison existe mais pas sa représentation physique
-*/
-void verifie_porte_ouverte(salle_t salles[], int indice, int taille){
-
-  int s_h = salles[indice].s_h, s_d = salles[indice].s_d, s_g = salles[indice].s_g, s_b = salles[indice].s_b, millieu = TAILLE_SALLE / 2;
-
-  if(salles[indice].s_h == inverse_porte(salles[s_h].s_b)){
-    salles[indice].salle[0][millieu] = porte;
-    salles[indice].salle[0][millieu-1] = porte;
-  }
-
-  else if(salles[indice].s_d == inverse_porte(salles[s_d].s_g)){
-    salles[indice].salle[millieu][TAILLE_SALLE-1] = porte;
-    salles[indice].salle[millieu-1][TAILLE_SALLE-1] = porte;
-  }
-
-  else if(salles[indice].s_b == inverse_porte(salles[s_b].s_h)){
-    salles[indice].salle[TAILLE_SALLE-1][millieu] = porte;
-    salles[indice].salle[TAILLE_SALLE-1][millieu-1] = porte;
-  }
-
-  else if(salles[indice].s_g == inverse_porte(salles[s_g].s_d)){
-    salles[indice].salle[millieu][0] = porte;
-    salles[indice].salle[millieu-1][0] = porte;
-  }
-}
-
-
-/**
-* \fn porte_disponible
-
-* \param salles[], le tableau contenant les salles du labyrinthe
-* \param indice, l'indice de la salle pour laquelle on veut faire une modification
-* \param porte_possible, la porte pour laquelle on cherche un double éventuel
-
-* \return Return vrai si la salle possède déjà une connexion vers la salle passée en paramètre, faux sinon
-
-* \brief Return vrai si la salle possède déjà une connexion vers la salle passée en paramètre, faux sinon
-*/
-int porte_disponible(salle_t salles[], int indice, int porte_possible){
-
-  if(salles[indice].s_h == porte_possible || salles[indice].s_b == porte_possible ||
-    salles[indice].s_g == porte_possible || salles[indice].s_d == porte_possible)
-
-    return FALSE;
-  else
-    return TRUE;
-}
-
-
-/**
-* \fn rajoute_salle_ou_ferme_porte
-
-* \param salles[], le tableau contenant les salles du labyrinthe
-* \param deb, l'indice de la salle pour laquelle on veut chercher une porte à raccorder
-* \param fin, l'indice de fin du tableau actuel
-* \param porte, la porte pour laquelle on cherche une correspondance
-* \param taille_max, la taille maximale que peut prendre le tableau
-
-* \return la nouvelle taille du tableau
-
-* \brief Ajoute une salle a laquelle raccorder la salle courante, ou ferme la porte concernée si l'on n'as plus la place pour créer d'autres salles
-*/
-int rajoute_salle_ou_ferme_porte(salle_t salles[], int deb, int fin, int porte, int taille_max){
-
-  int porte2;
-
-  if(fin < taille_max){
-
-    aleatoire_porte(&salles[fin], inverse_porte(porte), fin);
-    porte2 = porte_non_connectee(salles[fin]);
-
-    if(porte_libre_existe(salles[fin],inverse_porte(porte))){
-      cree_liaison(salles, deb, fin, porte);
-      fin++;
-    }
-  }
-  else{
-    ferme_porte_inutile(salles, deb);
-  }
-
-  return fin;
 }
 
 
@@ -473,207 +312,6 @@ void textures_aleatoires(salle_t salles[], int taille){
 }
 
 
-/**
-* \fn remplit_tab_salle_0
-
-* \param salle, la salle que l'on va inspecter
-* \param tab[], le tableau contenant les indices des salles accessibles
-
-* \return le nombre de cases de tab[] remplies
-
-* \brief Permet de remplir le tableau à partir de la première salle du labyrinthe.
-*/
-int remplit_tab_salle_0(salle_t salle, int tab[]){
-
-  int i = 0;
-
-  tab[i++] = salle.id;
-
-  if(salle.s_h >= 0){
-    tab[i++] = salle.s_h;
-  }
-  if(salle.s_d >= 0){
-    tab[i++] = salle.s_d;
-  }
-  if(salle.s_b >= 0){
-    tab[i++] = salle.s_b;
-  }
-  if(salle.s_g >= 0){
-    tab[i++] = salle.s_g;
-  }
-
-  return i;
-}
-
-
-/**
-* \fn cherche_acces_salle
-
-* \param salle, la salle que l'on va inspecter
-* \param tab[], le tableau contenant les indices des salles accessibles
-* \param tailleTab, la taille actuelle du tableau
-
-* \return le nombre de cases de tab[] remplies
-
-* \brief Si la salle n'a jamais été entrée dans le tableau et qu'elle est joignable par des salles desjé connues, on l'ajoute au tableau ainsi que ses liaisons inconnues.
-*/
-int cherche_acces_salle(salle_t salle, int tab[], int tailleTab){
-
-  int i, j = 0, bas = 0, gauche = 0, droite = 0, haut = 0, id = 0;
-
-  for(i = 0; i < tailleTab; i++){
-
-    if(salle.s_g == tab[i]){
-      gauche++;
-    }
-    else if(salle.s_h == tab[i]){
-      haut++;
-    }
-    else if(salle.s_d == tab[i]){
-      droite++;
-    }
-    else if(salle.s_b == tab[i]){
-      bas++;
-    }
-    if(salle.id == tab[i])
-      id++;
-  }
-
-  if(bas || gauche || droite || haut){
-
-    if(id == 0){
-      tab[tailleTab + j] = salle.id;
-      j++;
-    }
-    if(!bas && salle.s_b >= 0){
-      tab[tailleTab + j] = salle.s_b;
-      j++;
-    }
-    if(!haut  && salle.s_h >= 0){
-      tab[tailleTab + j] = salle.s_h;
-      j++;
-    }
-    if(!droite  && salle.s_d >= 0){
-      tab[tailleTab + j] = salle.s_d;
-      j++;
-    }
-    if(!gauche && salle.s_g >= 0){
-      tab[tailleTab + j] = salle.s_g;
-      j++;
-    }
-    return j;
-  }
-  else{
-    return j;
-  }
-}
-
-
-/**
-* \fn lie_salles_et_cree_portes
-
-* \param salles[], le tableau contenant les salles du labyrinthe
-* \param salle1, la première salle que l'on veut modifier
-* \param salle2, la seconde salle que l'on veut modifier
-
-* \brief Ajoute des portes et lie deux salles selon leur portes inexistantes actuellement
-*/
-void lie_salles_et_cree_portes(salle_t salles[], int salle1, int salle2){
-
-  if(salles[salle1].s_h == -1 && salles[salle2].s_b == -1){
-
-    ajout_porte_salle(salles[salle1].salle, 0);
-    ajout_porte_salle(salles[salle2].salle, 2);
-    cree_liaison(salles, salle1, salle2, 0);
-  }
-
-  else if(salles[salle1].s_d == -1 && salles[salle2].s_g == -1){
-
-    ajout_porte_salle(salles[salle1].salle, 1);
-    ajout_porte_salle(salles[salle2].salle, 3);
-    cree_liaison(salles, salle1, salle2, 1);
-  }
-
-  else if(salles[salle1].s_b == -1 && salles[salle2].s_h == -1){
-
-    ajout_porte_salle(salles[salle1].salle, 2);
-    ajout_porte_salle(salles[salle2].salle, 0);
-    cree_liaison(salles, salle1, salle2, 2);
-  }
-
-  else if(salles[salle1].s_g == -1 && salles[salle2].s_d == -1){
-
-    ajout_porte_salle(salles[salle1].salle, 3);
-    ajout_porte_salle(salles[salle2].salle, 1);
-    cree_liaison(salles, salle1, salle2, 3);
-  }
-}
-
-
-
-/**
-* \fn verifie_salles_accessibles
-
-* \param salles[], le tableau contenant les salles du labyrinthe
-* \param taille, la taille du tableau de salles
-
-* \brief Parcours les salles pour rechercher les salles inaccessibles, s'il en trouve, les lie a une accessible. Fonction récursive tant que toutes les salles ne sont pas reliées
-*/
-void verifie_salles_accessibles(salle_t salles[], int taille){
-
-  int tab[taille], tab2[taille];
-  int i = 0, j = 1, compteur1, compteur2 = 0, test, salle, salle2;
-
-  for( ; i < taille; i++){
-    tab[i] = 0;
-  }
-
-  i = 0;
-
-  compteur1 = remplit_tab_salle_0(salles[i++], tab);
-
-//on stocke dans le tableau toutes les salles accessibles depuis celle de départ, plusieurs passages sont nécessaires
-  while(i < taille && compteur1 <= taille){
-
-    compteur1 += cherche_acces_salle(salles[i], tab, compteur1);
-    i++;
-
-    if(j < taille / 2){
-      j++;
-      i = 1;
-    }
-  }
-
-  if(compteur1 < taille){
-
-//permet de récupèrer toutes les salles non liées à celle de départ
-    for(i = 0; i < taille; i++){
-
-      test = 0;
-      for(j = 0; j < taille; j++){
-
-        if(i != tab[j])
-          test = 1;
-      }
-
-      if(test)
-        tab2[compteur2++] = i;
-    }
-
-    if(compteur2 > 0){
-
-      salle = rand()%compteur1;
-      salle2 = rand()%compteur2;
-
-      lie_salles_et_cree_portes(salles, tab[salle], tab2[salle2]);
-
-      if(compteur1 + 1 < taille){
-        verifie_salles_accessibles(salles, taille);
-      }
-    }
-  }
-}
-
 
 /**
 * \fn place_monstre_coffre_boss
@@ -688,18 +326,14 @@ void place_monstre_coffre_boss(salle_t tab[], int taille){
 
   int alea;
 
-  tab[taille-1].boss = 1;
-
   for(int i = 0; i < taille - 1; i++){
-
-    tab[i].boss = 0;
 
     //choix de monstres ou coffre dans les autres salles que celle du début et celle du boss
     if(i == 0){
       tab[i].ennemi_present = 0;
 
     }
-    else{
+    else if (tab[i].salle_existe && tab[i].boss == FALSE){
       alea = rand()%10;
       tab[i].pv1 = 1;
       tab[i].pv2 = 1;
