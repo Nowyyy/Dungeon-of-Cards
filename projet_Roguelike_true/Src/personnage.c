@@ -250,54 +250,51 @@ void animations_personnage(image_t sprites[], unsigned int timer, touches_t clav
 
 * \brief Gère les déplacement du personnage dans une salle
 */
-void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animation_t *anim, Mix_Chunk *footsteps){
+void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animation_t *anim, Mix_Chunk *footsteps, touches_t *clavier){
 
 	SDL_Event event;
 
 	unsigned int temps = SDL_GetTicks();
 
-	touches_t clavier;
-
-	init_tab_clavier(clavier.tab);
 
 	while(SDL_PollEvent(&event)){ //On attend un évènement au clavier
 
-		event_clavier(&clavier, event);
+		event_clavier(clavier, event);
 
-		if(clavier.tab[down] == 1){ //touche du bas
+		if(event.type == SDL_QUIT)//croix de la fenetre
+			*continuer = FALSE;
 
-			if(!test_collision(salle,*pers, 2)){
-				pers->y += VITESSE_PERSO;
-				animations_personnage(pers->sprites, temps, clavier, anim, footsteps);
-			}
-		}
-		else if(clavier.tab[right] == 1){ //touche droite
-
-			if(!test_collision(salle,*pers, 1)){
-				pers->x += VITESSE_PERSO;
-				animations_personnage(pers->sprites, temps, clavier, anim, footsteps);
-			}
-		}
-		else if(clavier.tab[left] == 1){ //touche gauche
-
-			if(!test_collision(salle,*pers, 3)){
-				pers->x -= VITESSE_PERSO;
-				animations_personnage(pers->sprites, temps, clavier, anim, footsteps);
-			}
-		}
-		else if(clavier.tab[up] == 1){ //touche haut
-
-			if(!test_collision(salle,*pers, 0)){
-				pers->y -= VITESSE_PERSO;
-				animations_personnage(pers->sprites, temps, clavier, anim, footsteps);
-			}
-		}
-
-	if(event.type == SDL_QUIT)//croix de la fenetre
-		*continuer = FALSE;
-
-	animations_personnage(pers->sprites, temps, clavier, anim, footsteps);
+		animations_personnage(pers->sprites, temps, *clavier, anim, footsteps);
 	//permet au personnage de revenir à l'état idle quand aucune touche n'est enfoncée
+	}
+
+	if(clavier->tab[down] == 1){ //touche du bas
+
+		if(!test_collision(salle,*pers, 2)){
+			pers->y += VITESSE_PERSO;
+			animations_personnage(pers->sprites, temps, *clavier, anim, footsteps);
+		}
+	}
+	else if(clavier->tab[right] == 1){ //touche droite
+
+		if(!test_collision(salle,*pers, 1)){
+			pers->x += VITESSE_PERSO;
+			animations_personnage(pers->sprites, temps, *clavier, anim, footsteps);
+		}
+	}
+	else if(clavier->tab[left] == 1){ //touche gauche
+
+		if(!test_collision(salle,*pers, 3)){
+			pers->x -= VITESSE_PERSO;
+			animations_personnage(pers->sprites, temps, *clavier, anim, footsteps);
+		}
+	}
+	else if(clavier->tab[up] == 1){ //touche haut
+
+		if(!test_collision(salle,*pers, 0)){
+			pers->y -= VITESSE_PERSO;
+			animations_personnage(pers->sprites, temps, *clavier, anim, footsteps);
+		}
 	}
 
 	pers->sprites[courant].rectangle.x = pers->x;

@@ -17,6 +17,7 @@
 #include "../include/personnage.h"
 #include "../include/fonctions.h"
 #include "../include/sauvegardefonc.h"
+#include "../include/clavier.h"
 
 /**
 * \fn charge_toutes_textures
@@ -271,7 +272,18 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusi
 }
 
 
+/**
+* \fn tirage_au_sort_porte_a_creer
 
+* \param salles[], tableau des salles du labyrinthe
+* \param taille, la taille d'une ligne ou d'une colonne du tableau
+* \param indice, l'indice de la salle courante
+
+* \return la direction valide dans laquelle créée une porte selon l'emplacement de la salle actuelle
+
+* \brief Permet de renvoyer la direction vers laquelle on peut tenter de créer une liaison avec une autre salle
+
+*/
 int tirage_au_sort_porte_a_creer(int indice, int taille, salle_t salles[]){
 
 	int alea = rand()%4;
@@ -297,19 +309,31 @@ int tirage_au_sort_porte_a_creer(int indice, int taille, salle_t salles[]){
 		return tirage_au_sort_porte_a_creer(indice, taille, salles);
 
 
-	else if(alea == haut && salles[indice].s_h == -1)
+	else if(alea == haut && salles[indice].s_h == -1 && salles[alea].s_b == -1)
 		return alea;
-	else if(alea == bas && salles[indice].s_b == -1)
+	else if(alea == bas && salles[indice].s_b == -1 && salles[alea].s_h == -1)
 		return alea;
-	else if(alea == droite && salles[indice].s_b == -1)
+	else if(alea == droite && salles[indice].s_b == -1 && salles[alea].s_g == -1)
 		return alea;
-	else if(alea == gauche && salles[indice].s_g == -1)
+	else if(alea == gauche && salles[indice].s_g == -1 && salles[alea].s_d == -1)
 		return alea;
 	else
 		return tirage_au_sort_porte_a_creer(indice, taille, salles);
 }
 
 
+
+/**
+* \fn indice_salle
+
+* \param salle_actuelle, l'indice de la salle ou l'on se trouve actuellement
+* \param porte_salle_actuelle, la porte par laquelle on passe pour rejoindre une autre salle
+* \param taille, la taille d'une ligne ou d'une colonne du tableau
+
+* \return l'indice de la salle à lier avec la salle courante
+
+* \brief Renvoie l'indice d'une salle correspondant à la direction dans laquelle on crée la porte
+*/
 int indice_salle(int salle_actuelle, int porte_salle_actuelle, int taille){
 
 	if(porte_salle_actuelle == bas)
@@ -327,38 +351,58 @@ int indice_salle(int salle_actuelle, int porte_salle_actuelle, int taille){
 
 
 
+/**
+* \fn creation_labyrinthe
+
+* \param salles[], le tableau contenant les salles du jeu
+* \param taille, la taille d'une ligne ou d'une colonne du tableau
+* \param nb_salles_a_creer, le nombre de salles que l'on souhaite pouvoir parcourir dans le donjon
+
+* \brief créer un labyrinthe de salles connectées entres elles, généré aléatoirement
+
+*/
 void creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer){
 
-
-	int i = 0, porte, nouvelle_salle, porte_nouv_salle;
+	int i = 0, porte, nouvelle_salle, porte_nouv_salle, pred, cpt;
 
 	initialise_salles(salles, taille*taille); //initialisation de toutes les salles.
 
 	salles[i].salle_existe = TRUE;
+	pred = 0;
 
 	while(nb_salles_a_creer > 0){
 
-		printf("Salle %2d ", i);
+		cpt = 0;
+		//on boucle tant qu'aucune salle ne répond aux critères pour faire une liaison		
+		do{
+			porte = tirage_au_sort_porte_a_creer(i, taille, salles);
+			ajout_porte_salle(salles[i].salle, porte);
+			nouvelle_salle = indice_salle(i, porte, taille);
+			
+			if(cpt >= 5){
+			//si aucune salle n'est trouvée malgré plusieurs tentatives, on rècupère la salle précédente et on tente avec elle
+				i = pred;
+				cpt = 0;
+			}
+			else
+				cpt++;
+		}while(salles[nouvelle_salle].salle_existe);
 
-		porte = tirage_au_sort_porte_a_creer(i, taille, salles);
-		printf("Porte %2d ", porte);
-		ajout_porte_salle(salles[i].salle, porte);
-		nouvelle_salle = indice_salle(i, porte, taille);
-		printf("nouvelle_salle %2d ", nouvelle_salle);
 		porte_nouv_salle = inverse_porte(porte);
-		printf("Porte %2d ", porte_nouv_salle);
 		ajout_porte_salle(salles[nouvelle_salle].salle, porte_nouv_salle);
 		cree_liaison(salles, i, nouvelle_salle, porte);
+
 		salles[nouvelle_salle].salle_existe = TRUE;
 		salles[i].boss = FALSE;
 
+		pred = i;//archivage de la salle actuelle si besoin
 		i = nouvelle_salle;
 		nb_salles_a_creer --;
-		printf("next\n");
 	}
 
-	salles[i].boss = TRUE;
+	salles[i].boss = TRUE; // on marque tout de suite la salle du boss
 
+	//remplissage tableau de collisions pour les murs et les portes
 	for(i = 0; i < taille * taille -1; i++){
 		if(salles[i].salle_existe)
 			rempli_tableau_murs_portes(salles, i);
@@ -397,10 +441,10 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	animation_t anim;
 
+	touches_t clavier;
+
 	ennemi_t *ennemi = creer_ennemi("Squelette", 10, 10, 10, 10, squelette, rendu);
 	ennemi_t *boss = creer_ennemi("Minotaure", 10, 10, 10, 10, minotaure, rendu);
-
-	printf("\nLet's go ! \n\n");
 
 /////////////////////////// Génération aléatoire ////////////////////////////////////////////
 
@@ -415,12 +459,14 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	place_monstre_coffre_boss(salles, taille*taille);
 
+	init_tab_clavier(clavier.tab);
+
 /////////////////////////// boucle du labyrinthe / explo / combat ///////////////////////////
 	while(*etat == labyrinthe && *continuer){
 
 		affichage_salle_personnage(*pers, &salles[salle_courante], rendu, images, *ennemi, *boss);
 
-		deplacement_personnage(pers, salles[salle_courante], continuer, &anim, footsteps);
+		deplacement_personnage(pers, salles[salle_courante], continuer, &anim, footsteps, &clavier);
 
 		//Si le joueur meurt
 		if(pers->pv <= 0){
