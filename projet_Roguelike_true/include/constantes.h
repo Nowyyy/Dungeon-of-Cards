@@ -126,6 +126,7 @@ typedef enum {ATTAQUE = -1, DEFENSE = 1} type_carte ;
 */
 typedef enum{up, down, right, left, entree}t_touches_clavier;
 
+typedef enum{haut, droite, bas, gauche}t_direction;
 
 /**
 * \struct animation_t
@@ -176,7 +177,7 @@ typedef struct salle_s{
   SDL_Rect murs[TAILLE_SALLE*TAILLE_SALLE];
   SDL_Rect portes[TAILLE_SALLE];
 
-  int nb_murs, haut, bas, gauche, droite, nb_portes, id;
+  int nb_murs, nb_portes, id, salle_existe;
 
   int ennemi_present, nb_ennemi, x_ennemi1, x_ennemi2, y_ennemi1, y_ennemi2, boss, coffre, pv1, pv2;
 
