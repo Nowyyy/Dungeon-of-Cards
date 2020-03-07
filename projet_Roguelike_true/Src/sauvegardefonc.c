@@ -6,8 +6,8 @@
 *\date 14/02/2020
 */
 
-#include "constantes.h"
-#include "fonctions.h"
+#include "../include/constantes.h"
+#include "../include/fonctions.h"
 
 
 

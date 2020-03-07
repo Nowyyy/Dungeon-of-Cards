@@ -6,7 +6,7 @@
 * \brief fonctions de la sdl pour son initialisation, fichier .c
 
 */
-#include "constantes.h"
+#include "../include/constantes.h"
 
 /**
 * \fn initialisation_sdl

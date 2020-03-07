@@ -7,8 +7,8 @@
 */
 
 
-#include "constantes.h"
-#include "initialisation_sdl_fonctions.h"
+#include "../include/constantes.h"
+#include "../include/initialisation_sdl_fonctions.h"
 
 // Mise en oeuvre dynamique d'une liste de cartes
 

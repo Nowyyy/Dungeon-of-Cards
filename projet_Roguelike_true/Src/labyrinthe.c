@@ -11,14 +11,12 @@
 * \brief contient et fait appel a toutes fonctions nécessaires pour la  gestion du labyrinthe
 */
 
-#include "constantes.h"
-#include "salle.h"
-#include "initialisation_sdl_fonctions.h"
-#include "personnage.h"
-#include "fonctions.h"
-#include "sauvegardefonc.h"
-#include <time.h>
-
+#include "../include/constantes.h"
+#include "../include/salle.h"
+#include "../include/initialisation_sdl_fonctions.h"
+#include "../include/personnage.h"
+#include "../include/fonctions.h"
+#include "../include/sauvegardefonc.h"
 
 /**
 * \fn charge_toutes_textures

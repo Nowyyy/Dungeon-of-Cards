@@ -8,10 +8,10 @@
 
 */
 
-#include "constantes.h"
-#include "initialisation_sdl_fonctions.h"
-#include "sauvegardefonc.h"
-#include "personnage.h"
+#include "../include/constantes.h"
+#include "../include/initialisation_sdl_fonctions.h"
+#include "../include/sauvegardefonc.h"
+#include "../include/personnage.h"
 
 
 /**

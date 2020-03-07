@@ -7,14 +7,14 @@
 
 */
 
-#include "constantes.h"
-#include "initialisation_sdl_fonctions.h"
-#include "main_menu_screen.h"
-#include "salle.h"
-#include "personnage.h"
-#include "labyrinthe.h"
-#include "chargement.h"
-#include "sauvegardefonc.h"
+#include "../include/constantes.h"
+#include "../include/initialisation_sdl_fonctions.h"
+#include "../include/main_menu_screen.h"
+#include "../include/salle.h"
+#include "../include/personnage.h"
+#include "../include/labyrinthe.h"
+#include "../include/chargement.h"
+#include "../include/sauvegardefonc.h"
 
 
 

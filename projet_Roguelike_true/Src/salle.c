@@ -6,8 +6,8 @@
  * \date 30 Janvier 2020
  */
 
-#include "constantes.h"
-#include "labyrinthe.h"
+#include "../include/constantes.h"
+#include "../include/labyrinthe.h"
 
 /**
  * \fn init_salle(int salle[TAILLE_SALLE][TAILLE_SALLE])
