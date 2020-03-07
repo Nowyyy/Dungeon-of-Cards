@@ -458,4 +458,103 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	detruire_ennemi(&boss);
 
 	SDL_DestroyTexture(cmpPartie_texture);
+<<<<<<< HEAD
+=======
+}
+
+
+
+
+void creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer){
+
+
+	int i = 0, porte, nouvelle_salle, porte_nouv_salle;
+
+	initialise_salles(salles, taille*taille); //initialisation de toutes les salles.
+
+	salles[i].salle_existe = TRUE;
+
+	while(nb_salles_a_creer > 0){
+
+		printf("Salle %2d ", i);
+
+		porte = tirage_au_sort_porte_a_creer(i, taille, salles);
+		printf("Porte %2d ", porte);
+		ajout_porte_salle(salles[i].salle, porte);
+		nouvelle_salle = indice_salle(i, porte, taille);
+		printf("nouvelle_salle %2d ", nouvelle_salle);
+		porte_nouv_salle = inverse_porte(porte);
+		printf("Porte %2d ", porte_nouv_salle);
+		ajout_porte_salle(salles[nouvelle_salle].salle, porte_nouv_salle);
+		cree_liaison(salles, i, nouvelle_salle, porte);
+		salles[nouvelle_salle].salle_existe = TRUE;
+		salles[i].boss = FALSE;
+
+		i = nouvelle_salle;
+		nb_salles_a_creer --;
+		printf("next\n");
+	}
+
+	salles[i].boss = TRUE;
+
+	for(i = 0; i < taille * taille -1; i++){
+		if(salles[i].salle_existe)
+			rempli_tableau_murs_portes(salles, i);
+	}
+}
+
+
+
+int tirage_au_sort_porte_a_creer(int indice, int taille, salle_t salles[]){
+
+	int alea = rand()%4;
+
+	if(indice == 0 && (alea == haut || alea == gauche)) //première case du tableau
+	//on ne peut créer de liaison vers le haut ou la gauche
+		return tirage_au_sort_porte_a_creer(indice, taille, salles);
+
+	else if(indice % taille == 0 && alea == gauche)//colonnes toutes a droite du tableau
+	//on ne peut créer de liaison vers la gauche
+		return tirage_au_sort_porte_a_creer(indice, taille, salles);
+
+	else if(indice + 1 % taille == 0 && alea == droite)//colonnes toutes a gauche du tableau
+	//on ne peut créer de liaison vers la droite
+		return tirage_au_sort_porte_a_creer(indice, taille, salles);
+
+	else if(indice < taille && alea == haut)//lignes toutes en haut du tableau
+	//on ne peut créer de liaison vers le haut
+		return tirage_au_sort_porte_a_creer(indice, taille, salles);
+
+	else if(indice > (taille * taille - taille -1) && alea == bas)//lignes toutes en bas du tableau
+	//on ne peut créer de liaison vers le bas
+		return tirage_au_sort_porte_a_creer(indice, taille, salles);
+
+
+	else if(alea == haut && salles[indice].s_h == -1)
+		return alea;
+	else if(alea == bas && salles[indice].s_b == -1)
+		return alea;
+	else if(alea == droite && salles[indice].s_b == -1)
+		return alea;
+	else if(alea == gauche && salles[indice].s_g == -1)
+		return alea;
+	else
+		return tirage_au_sort_porte_a_creer(indice, taille, salles);
+}
+
+
+int indice_salle(int salle_actuelle, int porte_salle_actuelle, int taille){
+
+	if(porte_salle_actuelle == bas)
+		return salle_actuelle + taille;
+
+	else if(porte_salle_actuelle == gauche)
+		return salle_actuelle - 1;
+
+	else if(porte_salle_actuelle == haut)
+		return salle_actuelle - taille;
+
+	else //obligatoirement a droite
+		return salle_actuelle + 1;
+>>>>>>> master
 }
