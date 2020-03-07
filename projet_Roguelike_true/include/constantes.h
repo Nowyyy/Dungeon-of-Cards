@@ -126,6 +126,11 @@ typedef enum {ATTAQUE = -1, DEFENSE = 1} type_carte ;
 */
 typedef enum{up, down, right, left, entree}t_touches_clavier;
 
+/**
+* \enum t_direction
+
+* \brief Les différents types de touches utilisées
+*/
 typedef enum{haut, droite, bas, gauche}t_direction;
 
 /**

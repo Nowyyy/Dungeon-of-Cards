@@ -25,6 +25,8 @@ int main(int argc, char* args[]){
 	SDL_Window *window;
 	SDL_Renderer *rendu;
 
+	srand(time(NULL));
+
 	TTF_Font *police = NULL;
 
 	int continuer = 1, etat = mainMenu/*labyrinthe*/;
