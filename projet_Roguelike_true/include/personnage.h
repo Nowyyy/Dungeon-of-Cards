@@ -5,7 +5,7 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 int test_collision(salle_t salle, perso_t pers, int direction);
 int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *change_salle);
 void initialise_personnage(perso_t *pers);
-void initialise_deck_cartes(carte_t *cartes);
 void change_animation(animation_t *anim, image_t sprites[], int nouvelle_animation);
 int collision_perso_ennemi(perso_t pers, ennemi_t ennemi, int x, int y);
 int combat_declenche(salle_t salle, perso_t pers, ennemi_t ennemi);
+void creer_texture_depuis_char(image_t *texte_pv, image_t *texte_etage, perso_t perso, SDL_Renderer *rendu);

@@ -1,0 +1,591 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Dungeon of Cards: Référence du fichier labyrinthe.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Dungeon of Cards
+   &#160;<span id="projectnumber">1</span>
+   </div>
+   <div id="projectbrief">Ce projet à pour but de créer un jeu roguelike pour le module Projet de notre seconde année de licence</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier labyrinthe.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>contient et fait appel a toutes fonctions nécessaires pour la gestion du labyrinthe  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;../include/constantes.h&quot;</code><br />
+<code>#include &quot;../include/salle.h&quot;</code><br />
+<code>#include &quot;../include/initialisation_sdl_fonctions.h&quot;</code><br />
+<code>#include &quot;../include/personnage.h&quot;</code><br />
+<code>#include &quot;../include/fonctions.h&quot;</code><br />
+<code>#include &quot;../include/sauvegardefonc.h&quot;</code><br />
+<code>#include &quot;../include/clavier.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de labyrinthe.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="labyrinthe_8c__incl.png" border="0" usemap="#labyrinthe_8c" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ae7ba54121ba01810050ad04afa756ea9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="labyrinthe_8c.html#ae7ba54121ba01810050ad04afa756ea9">charge_toutes_textures</a> (image_t images[], perso_t *pers, SDL_Renderer *rendu)</td></tr>
+<tr class="memdesc:ae7ba54121ba01810050ad04afa756ea9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de charger toutes les images et de les ranger dans les structures correspondantes.  <a href="#ae7ba54121ba01810050ad04afa756ea9">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae7ba54121ba01810050ad04afa756ea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ff3aa514d409355438b38dd6b845d0a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="labyrinthe_8c.html#a0ff3aa514d409355438b38dd6b845d0a">affichage_salle_personnage</a> (perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[], ennemi_t monstre, ennemi_t boss)</td></tr>
+<tr class="memdesc:a0ff3aa514d409355438b38dd6b845d0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet d'afficher une salle, le personnage et si on est dans la premiere salle, les instructions et commandes du jeu.  <a href="#a0ff3aa514d409355438b38dd6b845d0a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0ff3aa514d409355438b38dd6b845d0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6611ded1089f127ef4ba210a728fcef3"><td class="memItemLeft" align="right" valign="top"><a id="a6611ded1089f127ef4ba210a728fcef3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="labyrinthe_8c.html#a6611ded1089f127ef4ba210a728fcef3">initialise_salles</a> (salle_t tab[], int taille)</td></tr>
+<tr class="memdesc:a6611ded1089f127ef4ba210a728fcef3"><td class="mdescLeft">&#160;</td><td class="mdescRight">remplit les tableaux des salles, initialise les variables <br /></td></tr>
+<tr class="separator:a6611ded1089f127ef4ba210a728fcef3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dae688c154d2ac7dbe22ed996476d18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="labyrinthe_8c.html#a8dae688c154d2ac7dbe22ed996476d18">cree_liaison</a> (salle_t tab[], int salle1, int salle2, int porteS1)</td></tr>
+<tr class="memdesc:a8dae688c154d2ac7dbe22ed996476d18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Créée les liaisons entre deux salles enfonction de la porte libre sur la première.  <a href="#a8dae688c154d2ac7dbe22ed996476d18">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8dae688c154d2ac7dbe22ed996476d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2a274c6c6ce1841e4c9e1c5f75e4e57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="labyrinthe_8c.html#af2a274c6c6ce1841e4c9e1c5f75e4e57">mort</a> (int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusic, Mix_Chunk *gameOverFrame, image_t images[], TTF_Font *police, SDL_Texture *cmpPartie_texture)</td></tr>
+<tr class="memdesc:af2a274c6c6ce1841e4c9e1c5f75e4e57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...  <a href="#af2a274c6c6ce1841e4c9e1c5f75e4e57">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af2a274c6c6ce1841e4c9e1c5f75e4e57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bc907a044d63cc8043b1260be1d7ca5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="labyrinthe_8c.html#a1bc907a044d63cc8043b1260be1d7ca5">tirage_au_sort_porte_a_creer</a> (int indice, int taille, salle_t salles[])</td></tr>
+<tr class="memdesc:a1bc907a044d63cc8043b1260be1d7ca5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de renvoyer la direction vers laquelle on peut tenter de créer une liaison avec une autre salle.  <a href="#a1bc907a044d63cc8043b1260be1d7ca5">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1bc907a044d63cc8043b1260be1d7ca5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8694792a04ea90eb0f99f37ea5bcb12"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="labyrinthe_8c.html#ae8694792a04ea90eb0f99f37ea5bcb12">indice_salle</a> (int salle_actuelle, int porte_salle_actuelle, int taille)</td></tr>
+<tr class="memdesc:ae8694792a04ea90eb0f99f37ea5bcb12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie l'indice d'une salle correspondant à la direction dans laquelle on crée la porte.  <a href="#ae8694792a04ea90eb0f99f37ea5bcb12">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae8694792a04ea90eb0f99f37ea5bcb12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4a34ef08e82ee13e6e358aa33dbb0e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="labyrinthe_8c.html#aa4a34ef08e82ee13e6e358aa33dbb0e8">creation_labyrinthe</a> (salle_t salles[], int taille, int nb_salles_a_creer)</td></tr>
+<tr class="memdesc:aa4a34ef08e82ee13e6e358aa33dbb0e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">créer un labyrinthe de salles connectées entres elles, généré aléatoirement  <a href="#aa4a34ef08e82ee13e6e358aa33dbb0e8">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa4a34ef08e82ee13e6e358aa33dbb0e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abaa4040d143e371a6afae52cc3a9841e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="labyrinthe_8c.html#abaa4040d143e371a6afae52cc3a9841e">boucle_labyrinthe</a> (int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *change_salle, Mix_Chunk *footsteps, Mix_Music *gameOverMusic, Mix_Chunk *gameOverFrame, perso_t *pers, carte_t *cartes, TTF_Font *police)</td></tr>
+<tr class="memdesc:abaa4040d143e371a6afae52cc3a9841e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...  <a href="#abaa4040d143e371a6afae52cc3a9841e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:abaa4040d143e371a6afae52cc3a9841e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>contient et fait appel a toutes fonctions nécessaires pour la gestion du labyrinthe </p>
+<dl class="section author"><dt>Auteur</dt><dd>{Tudoret Aurélien, Jourry Axel, Marin Timothée, Malabry Thomas}</dd></dl>
+<dl class="section date"><dt>Date</dt><dd>04/02/2020</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a0ff3aa514d409355438b38dd6b845d0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ff3aa514d409355438b38dd6b845d0a">&#9670;&nbsp;</a></span>affichage_salle_personnage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichage_salle_personnage </td>
+          <td>(</td>
+          <td class="paramtype">perso_t&#160;</td>
+          <td class="paramname"><em>pers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">salle_t *&#160;</td>
+          <td class="paramname"><em>salle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">image_t&#160;</td>
+          <td class="paramname"><em>images</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ennemi_t&#160;</td>
+          <td class="paramname"><em>monstre</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ennemi_t&#160;</td>
+          <td class="paramname"><em>boss</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet d'afficher une salle, le personnage et si on est dans la premiere salle, les instructions et commandes du jeu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">images[],contient</td><td>toutes les images utilisées sauf celle du personnage </td></tr>
+    <tr><td class="paramname">pers,la</td><td>structure contenant le personnage </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abaa4040d143e371a6afae52cc3a9841e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abaa4040d143e371a6afae52cc3a9841e">&#9670;&nbsp;</a></span>boucle_labyrinthe()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void boucle_labyrinthe </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>continuer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>etat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>change_salle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>footsteps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Music *&#160;</td>
+          <td class="paramname"><em>gameOverMusic</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>gameOverFrame</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">perso_t *&#160;</td>
+          <td class="paramname"><em>pers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">carte_t *&#160;</td>
+          <td class="paramname"><em>cartes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>police</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage... </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*continuer,pointeur</td><td>sur variable permettant de savoir si le joueur souhaite quitter le programme </td></tr>
+    <tr><td class="paramname">*etat,pointeur</td><td>sur variable permettant de connaître l'écran dans lequel on est </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">*change_salle,le</td><td>son de changement de salle </td></tr>
+    <tr><td class="paramname">*footsteps,les</td><td>bruits de pas du personnage </td></tr>
+    <tr><td class="paramname">*gameOverMusic,la</td><td>musique de mort </td></tr>
+    <tr><td class="paramname">*gameOverFrame,les</td><td>bruits de mort </td></tr>
+    <tr><td class="paramname">*pers,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">cartes</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae7ba54121ba01810050ad04afa756ea9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7ba54121ba01810050ad04afa756ea9">&#9670;&nbsp;</a></span>charge_toutes_textures()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void charge_toutes_textures </td>
+          <td>(</td>
+          <td class="paramtype">image_t&#160;</td>
+          <td class="paramname"><em>images</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">perso_t *&#160;</td>
+          <td class="paramname"><em>pers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet de charger toutes les images et de les ranger dans les structures correspondantes. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">images[],contient</td><td>toutes les images utilisées sauf celle du personnage </td></tr>
+    <tr><td class="paramname">*pers,pointeur</td><td>sur la structure contenant le personnage </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa4a34ef08e82ee13e6e358aa33dbb0e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4a34ef08e82ee13e6e358aa33dbb0e8">&#9670;&nbsp;</a></span>creation_labyrinthe()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void creation_labyrinthe </td>
+          <td>(</td>
+          <td class="paramtype">salle_t&#160;</td>
+          <td class="paramname"><em>salles</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>taille</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb_salles_a_creer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>créer un labyrinthe de salles connectées entres elles, généré aléatoirement </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">salles[],le</td><td>tableau contenant les salles du jeu </td></tr>
+    <tr><td class="paramname">taille,la</td><td>taille d'une ligne ou d'une colonne du tableau </td></tr>
+    <tr><td class="paramname">nb_salles_a_creer,le</td><td>nombre de salles que l'on souhaite pouvoir parcourir dans le donjon </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8dae688c154d2ac7dbe22ed996476d18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dae688c154d2ac7dbe22ed996476d18">&#9670;&nbsp;</a></span>cree_liaison()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void cree_liaison </td>
+          <td>(</td>
+          <td class="paramtype">salle_t&#160;</td>
+          <td class="paramname"><em>tab</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>salle1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>salle2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>porteS1</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Créée les liaisons entre deux salles enfonction de la porte libre sur la première. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*s1,la</td><td>première salle pour laquelle on effectue les liaisons </td></tr>
+    <tr><td class="paramname">*s2,la</td><td>seconde salle pour laquelle on effectue les liaisons </td></tr>
+    <tr><td class="paramname">porteS1,la</td><td>porte de la première salle à laquelle on va rattacher la seconde </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae8694792a04ea90eb0f99f37ea5bcb12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8694792a04ea90eb0f99f37ea5bcb12">&#9670;&nbsp;</a></span>indice_salle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int indice_salle </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>salle_actuelle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>porte_salle_actuelle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>taille</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie l'indice d'une salle correspondant à la direction dans laquelle on crée la porte. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">salle_actuelle,l'indice</td><td>de la salle ou l'on se trouve actuellement </td></tr>
+    <tr><td class="paramname">porte_salle_actuelle,la</td><td>porte par laquelle on passe pour rejoindre une autre salle </td></tr>
+    <tr><td class="paramname">taille,la</td><td>taille d'une ligne ou d'une colonne du tableau</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>l'indice de la salle à lier avec la salle courante </dd></dl>
+
+</div>
+</div>
+<a id="af2a274c6c6ce1841e4c9e1c5f75e4e57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2a274c6c6ce1841e4c9e1c5f75e4e57">&#9670;&nbsp;</a></span>mort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mort </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>etat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">perso_t *&#160;</td>
+          <td class="paramname"><em>pers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Music *&#160;</td>
+          <td class="paramname"><em>gameOverMusic</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>gameOverFrame</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">image_t&#160;</td>
+          <td class="paramname"><em>images</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>police</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>cmpPartie_texture</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage... </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*etat,variable</td><td>contenant le mode de jeu actuel </td></tr>
+    <tr><td class="paramname">*pers,contient</td><td>le personnage afin de le sauvegarder </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">gameOverMusic,musique</td><td>de mort du joueur </td></tr>
+    <tr><td class="paramname">gameOverFrame,bruit</td><td>de mort du joueur </td></tr>
+    <tr><td class="paramname">images[],contient</td><td>toutes les images du jeu sauf celles du personnage </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1bc907a044d63cc8043b1260be1d7ca5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bc907a044d63cc8043b1260be1d7ca5">&#9670;&nbsp;</a></span>tirage_au_sort_porte_a_creer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int tirage_au_sort_porte_a_creer </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>indice</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>taille</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">salle_t&#160;</td>
+          <td class="paramname"><em>salles</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet de renvoyer la direction vers laquelle on peut tenter de créer une liaison avec une autre salle. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">salles[],tableau</td><td>des salles du labyrinthe </td></tr>
+    <tr><td class="paramname">taille,la</td><td>taille d'une ligne ou d'une colonne du tableau </td></tr>
+    <tr><td class="paramname">indice,l'indice</td><td>de la salle courante</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>la direction valide dans laquelle créée une porte selon l'emplacement de la salle actuelle </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

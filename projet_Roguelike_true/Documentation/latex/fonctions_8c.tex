@@ -1,0 +1,260 @@
+\hypertarget{fonctions_8c}{}\section{Référence du fichier fonctions.\+c}
+\label{fonctions_8c}\index{fonctions.\+c@{fonctions.\+c}}
+
+
+fichier qui permet de référencé tous les fonctions du système de combat.  
+
+
+{\ttfamily \#include \char`\"{}../include/constantes.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/initialisation\+\_\+sdl\+\_\+fonctions.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de fonctions.\+c\+:
+% FIG 0
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{fonctions_8c_ab80fe591c4ab95f27b317a9e6f6955e1}\label{fonctions_8c_ab80fe591c4ab95f27b317a9e6f6955e1}} 
+void \hyperlink{fonctions_8c_ab80fe591c4ab95f27b317a9e6f6955e1}{init\+\_\+liste} ()
+\begin{DoxyCompactList}\small\item\em Fonction d\textquotesingle{}initialiser une liste. \end{DoxyCompactList}\item 
+int \hyperlink{fonctions_8c_a9c70c18ad120ac199ddcd39f0824a865}{liste\+\_\+vide} ()
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de vérifier si une liste est vide. \end{DoxyCompactList}\item 
+int \hyperlink{fonctions_8c_adda7a0d25a9bfeed725f12efc6c254f8}{hors\+\_\+liste} ()
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de vérifier si on est pas hors liste. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fonctions_8c_a205229e638af73f963938189b0dd12d4}\label{fonctions_8c_a205229e638af73f963938189b0dd12d4}} 
+void \hyperlink{fonctions_8c_a205229e638af73f963938189b0dd12d4}{en\+\_\+tete} ()
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de se mettre au début de la liste. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fonctions_8c_ab0ff9fb3b16656cf42a159f527244501}\label{fonctions_8c_ab0ff9fb3b16656cf42a159f527244501}} 
+void \hyperlink{fonctions_8c_ab0ff9fb3b16656cf42a159f527244501}{en\+\_\+queue} ()
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de se mettre en fin de la liste. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fonctions_8c_a7508531ae1735a204a105dedbdc06ee3}\label{fonctions_8c_a7508531ae1735a204a105dedbdc06ee3}} 
+void \hyperlink{fonctions_8c_a7508531ae1735a204a105dedbdc06ee3}{precedent} ()
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de reculer dans la liste. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fonctions_8c_ad99c86c7caff6844bb873680d5e9f26b}\label{fonctions_8c_ad99c86c7caff6844bb873680d5e9f26b}} 
+void \hyperlink{fonctions_8c_ad99c86c7caff6844bb873680d5e9f26b}{suivant} ()
+\begin{DoxyCompactList}\small\item\em Fonction qui permet d\textquotesingle{}avancer dans la liste. \end{DoxyCompactList}\item 
+void \hyperlink{fonctions_8c_a6ca5fa7980628d03752d196d561f29c7}{valeur\+\_\+elt} (carte\+\_\+t $\ast$t)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de prendre une valeur de la liste. \end{DoxyCompactList}\item 
+void \hyperlink{fonctions_8c_af97c08a21ffaaf3024fafd53a1a87921}{modif\+\_\+elt} (carte\+\_\+t t)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de modifier une valeur dans une liste. \end{DoxyCompactList}\item 
+void \hyperlink{fonctions_8c_a655bcaf1ee330c2c05bf11057f983de8}{oter\+\_\+elt} (carte\+\_\+t t)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de supprimer une valeur de la liste. \end{DoxyCompactList}\item 
+void \hyperlink{fonctions_8c_aa44f89ec4da70467c269566bb0b35d2f}{ajout\+\_\+droit} (carte\+\_\+t $\ast$t)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet d\textquotesingle{}ajouter un objet après l\textquotesingle{}objet sur lequel l\textquotesingle{}utilisteur se trouve. \end{DoxyCompactList}\item 
+void \hyperlink{fonctions_8c_a0342296839dd4a75d97f808fb1db9ba3}{ajout\+\_\+gauche} (carte\+\_\+t $\ast$t)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet d\textquotesingle{}ajouter un objet avant l\textquotesingle{}objet sur lequel l\textquotesingle{}utilisteur se trouve. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fonctions_8c_ab4a2fdf32520afb30abba6ccc91fd47f}\label{fonctions_8c_ab4a2fdf32520afb30abba6ccc91fd47f}} 
+carte\+\_\+t $\ast$ {\bfseries creer\+\_\+carte} (char $\ast$nom, type\+\_\+carte type, int valeur, int consommable)
+\item 
+perso\+\_\+t $\ast$ \hyperlink{fonctions_8c_a12e5098148c887c498e3497547cecc88}{creer\+\_\+perso} ()
+\begin{DoxyCompactList}\small\item\em permet de créer un personnage selon différentes caractéristiques \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fonctions_8c_a35b91131e66d74bad78281354745f76f}\label{fonctions_8c_a35b91131e66d74bad78281354745f76f}} 
+ennemi\+\_\+t $\ast$ {\bfseries creer\+\_\+ennemi} (char $\ast$nom, int pv, int vitesse, int attaque, int defense, int type, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
+\item 
+void \hyperlink{fonctions_8c_a46537a1af57b2735c29b55ed06765950}{detruire\+\_\+carte} (carte\+\_\+t $\ast$$\ast$carte)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de détruire une carte. \end{DoxyCompactList}\item 
+void \hyperlink{fonctions_8c_a10827fcceed76a61d146d8d52cce0df3}{detruire\+\_\+ennemi} (ennemi\+\_\+t $\ast$$\ast$ennemi)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de détruire un ennemi. \end{DoxyCompactList}\item 
+int \hyperlink{fonctions_8c_a13ce91664374b7de3628ef32a595912e}{initiative} (perso\+\_\+t $\ast$perso, ennemi\+\_\+t $\ast$ennemi)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet savoir si c\textquotesingle{}est l\textquotesingle{}ennemi ou le personnage qui combat en premier. \end{DoxyCompactList}\item 
+void \hyperlink{fonctions_8c_ad75ac8db97d3acd100b5535c1b27bd8d}{tour\+\_\+ennemi} (perso\+\_\+t $\ast$perso, ennemi\+\_\+t $\ast$ennemi)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet à l\textquotesingle{}ennemi d\textquotesingle{}effectuer une action. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fonctions_8c_a0f3c581ae1c85a773980aaff18e77d8c}\label{fonctions_8c_a0f3c581ae1c85a773980aaff18e77d8c}} 
+void {\bfseries tour\+\_\+perso} (int choix, perso\+\_\+t $\ast$perso, ennemi\+\_\+t $\ast$ennemi)
+\item 
+\mbox{\Hypertarget{fonctions_8c_a9108e889c9631bf9aafb3462adcdb2f8}\label{fonctions_8c_a9108e889c9631bf9aafb3462adcdb2f8}} 
+void {\bfseries combat} (perso\+\_\+t $\ast$perso, ennemi\+\_\+t $\ast$ennemi)
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+fichier qui permet de référencé tous les fonctions du système de combat. 
+
+\begin{DoxyAuthor}{Auteur}
+\{Malabry Thomas Aurélien Tudoret Jourry Axel Marin Timothée\} 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+13/02/2020 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{fonctions_8c_aa44f89ec4da70467c269566bb0b35d2f}\label{fonctions_8c_aa44f89ec4da70467c269566bb0b35d2f}} 
+\index{fonctions.\+c@{fonctions.\+c}!ajout\+\_\+droit@{ajout\+\_\+droit}}
+\index{ajout\+\_\+droit@{ajout\+\_\+droit}!fonctions.\+c@{fonctions.\+c}}
+\subsubsection{\texorpdfstring{ajout\+\_\+droit()}{ajout\_droit()}}
+{\footnotesize\ttfamily void ajout\+\_\+droit (\begin{DoxyParamCaption}\item[{carte\+\_\+t $\ast$}]{t }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet d\textquotesingle{}ajouter un objet après l\textquotesingle{}objet sur lequel l\textquotesingle{}utilisteur se trouve. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em t} & un pointeur qui va contenir une valeur qui va être rajouté \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{fonctions_8c_a0342296839dd4a75d97f808fb1db9ba3}\label{fonctions_8c_a0342296839dd4a75d97f808fb1db9ba3}} 
+\index{fonctions.\+c@{fonctions.\+c}!ajout\+\_\+gauche@{ajout\+\_\+gauche}}
+\index{ajout\+\_\+gauche@{ajout\+\_\+gauche}!fonctions.\+c@{fonctions.\+c}}
+\subsubsection{\texorpdfstring{ajout\+\_\+gauche()}{ajout\_gauche()}}
+{\footnotesize\ttfamily void ajout\+\_\+gauche (\begin{DoxyParamCaption}\item[{carte\+\_\+t $\ast$}]{t }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet d\textquotesingle{}ajouter un objet avant l\textquotesingle{}objet sur lequel l\textquotesingle{}utilisteur se trouve. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em t} & un pointeur qui va contenir une valeur qui va être rajouté \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{fonctions_8c_a12e5098148c887c498e3497547cecc88}\label{fonctions_8c_a12e5098148c887c498e3497547cecc88}} 
+\index{fonctions.\+c@{fonctions.\+c}!creer\+\_\+perso@{creer\+\_\+perso}}
+\index{creer\+\_\+perso@{creer\+\_\+perso}!fonctions.\+c@{fonctions.\+c}}
+\subsubsection{\texorpdfstring{creer\+\_\+perso()}{creer\_perso()}}
+{\footnotesize\ttfamily perso\+\_\+t $\ast$ creer\+\_\+perso (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+permet de créer un personnage selon différentes caractéristiques 
+
+\begin{DoxyReturn}{Renvoie}
+un pointeur sur une variable structure perso\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{fonctions_8c_a46537a1af57b2735c29b55ed06765950}\label{fonctions_8c_a46537a1af57b2735c29b55ed06765950}} 
+\index{fonctions.\+c@{fonctions.\+c}!detruire\+\_\+carte@{detruire\+\_\+carte}}
+\index{detruire\+\_\+carte@{detruire\+\_\+carte}!fonctions.\+c@{fonctions.\+c}}
+\subsubsection{\texorpdfstring{detruire\+\_\+carte()}{detruire\_carte()}}
+{\footnotesize\ttfamily void detruire\+\_\+carte (\begin{DoxyParamCaption}\item[{carte\+\_\+t $\ast$$\ast$}]{carte }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet de détruire une carte. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em carte} & Un pointeur de pointeur de carte qui permet de détruire le pointeur qui pointe sur la structure carte \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{fonctions_8c_a10827fcceed76a61d146d8d52cce0df3}\label{fonctions_8c_a10827fcceed76a61d146d8d52cce0df3}} 
+\index{fonctions.\+c@{fonctions.\+c}!detruire\+\_\+ennemi@{detruire\+\_\+ennemi}}
+\index{detruire\+\_\+ennemi@{detruire\+\_\+ennemi}!fonctions.\+c@{fonctions.\+c}}
+\subsubsection{\texorpdfstring{detruire\+\_\+ennemi()}{detruire\_ennemi()}}
+{\footnotesize\ttfamily void detruire\+\_\+ennemi (\begin{DoxyParamCaption}\item[{ennemi\+\_\+t $\ast$$\ast$}]{ennemi }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet de détruire un ennemi. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em perso} & Un pointeur de pointeur de ennemi qui permet de détruire le pointeur qui pointe sur la structure ennemi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{fonctions_8c_adda7a0d25a9bfeed725f12efc6c254f8}\label{fonctions_8c_adda7a0d25a9bfeed725f12efc6c254f8}} 
+\index{fonctions.\+c@{fonctions.\+c}!hors\+\_\+liste@{hors\+\_\+liste}}
+\index{hors\+\_\+liste@{hors\+\_\+liste}!fonctions.\+c@{fonctions.\+c}}
+\subsubsection{\texorpdfstring{hors\+\_\+liste()}{hors\_liste()}}
+{\footnotesize\ttfamily int hors\+\_\+liste (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet de vérifier si on est pas hors liste. 
+
+\begin{DoxyReturn}{Renvoie}
+1 si on est dans la liste, 0 si on est hors liste 
+\end{DoxyReturn}
+\mbox{\Hypertarget{fonctions_8c_a13ce91664374b7de3628ef32a595912e}\label{fonctions_8c_a13ce91664374b7de3628ef32a595912e}} 
+\index{fonctions.\+c@{fonctions.\+c}!initiative@{initiative}}
+\index{initiative@{initiative}!fonctions.\+c@{fonctions.\+c}}
+\subsubsection{\texorpdfstring{initiative()}{initiative()}}
+{\footnotesize\ttfamily int initiative (\begin{DoxyParamCaption}\item[{perso\+\_\+t $\ast$}]{perso,  }\item[{ennemi\+\_\+t $\ast$}]{ennemi }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet savoir si c\textquotesingle{}est l\textquotesingle{}ennemi ou le personnage qui combat en premier. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em perso} & Un pointeur sur la structure perso\+\_\+t qui permet de prendre la vitesse pour la comparé à l\textquotesingle{}ennemi \\
+\hline
+{\em perso} & Un pointeur sur la structure ennemi\+\_\+t qui permet de prendre la vitesse pour la comparé au personnage \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{fonctions_8c_a9c70c18ad120ac199ddcd39f0824a865}\label{fonctions_8c_a9c70c18ad120ac199ddcd39f0824a865}} 
+\index{fonctions.\+c@{fonctions.\+c}!liste\+\_\+vide@{liste\+\_\+vide}}
+\index{liste\+\_\+vide@{liste\+\_\+vide}!fonctions.\+c@{fonctions.\+c}}
+\subsubsection{\texorpdfstring{liste\+\_\+vide()}{liste\_vide()}}
+{\footnotesize\ttfamily int liste\+\_\+vide (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet de vérifier si une liste est vide. 
+
+\begin{DoxyReturn}{Renvoie}
+1 si la liste est vide, 0 si la liste est pas vide 
+\end{DoxyReturn}
+\mbox{\Hypertarget{fonctions_8c_af97c08a21ffaaf3024fafd53a1a87921}\label{fonctions_8c_af97c08a21ffaaf3024fafd53a1a87921}} 
+\index{fonctions.\+c@{fonctions.\+c}!modif\+\_\+elt@{modif\+\_\+elt}}
+\index{modif\+\_\+elt@{modif\+\_\+elt}!fonctions.\+c@{fonctions.\+c}}
+\subsubsection{\texorpdfstring{modif\+\_\+elt()}{modif\_elt()}}
+{\footnotesize\ttfamily void modif\+\_\+elt (\begin{DoxyParamCaption}\item[{carte\+\_\+t}]{t }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet de modifier une valeur dans une liste. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em t} & une variable qui permet de modifier une valeur dans la liste \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{fonctions_8c_a655bcaf1ee330c2c05bf11057f983de8}\label{fonctions_8c_a655bcaf1ee330c2c05bf11057f983de8}} 
+\index{fonctions.\+c@{fonctions.\+c}!oter\+\_\+elt@{oter\+\_\+elt}}
+\index{oter\+\_\+elt@{oter\+\_\+elt}!fonctions.\+c@{fonctions.\+c}}
+\subsubsection{\texorpdfstring{oter\+\_\+elt()}{oter\_elt()}}
+{\footnotesize\ttfamily void oter\+\_\+elt (\begin{DoxyParamCaption}\item[{carte\+\_\+t}]{t }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet de supprimer une valeur de la liste. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em t} & une variable qui va être supprimer de la liste \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{fonctions_8c_ad75ac8db97d3acd100b5535c1b27bd8d}\label{fonctions_8c_ad75ac8db97d3acd100b5535c1b27bd8d}} 
+\index{fonctions.\+c@{fonctions.\+c}!tour\+\_\+ennemi@{tour\+\_\+ennemi}}
+\index{tour\+\_\+ennemi@{tour\+\_\+ennemi}!fonctions.\+c@{fonctions.\+c}}
+\subsubsection{\texorpdfstring{tour\+\_\+ennemi()}{tour\_ennemi()}}
+{\footnotesize\ttfamily void tour\+\_\+ennemi (\begin{DoxyParamCaption}\item[{perso\+\_\+t $\ast$}]{perso,  }\item[{ennemi\+\_\+t $\ast$}]{ennemi }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet à l\textquotesingle{}ennemi d\textquotesingle{}effectuer une action. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em perso} & Pointeur sur une structure qui permet de prendre les caractéristiques du personnage qui vont être modifié par l\textquotesingle{}action de l\textquotesingle{}ennemi \\
+\hline
+{\em perso} & Pointeur sur une structure qui permet de prendre les caractéristiques de l\textquotesingle{}ennemi qui vont être modifié par l\textquotesingle{}action de l\textquotesingle{}ennemi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{fonctions_8c_a6ca5fa7980628d03752d196d561f29c7}\label{fonctions_8c_a6ca5fa7980628d03752d196d561f29c7}} 
+\index{fonctions.\+c@{fonctions.\+c}!valeur\+\_\+elt@{valeur\+\_\+elt}}
+\index{valeur\+\_\+elt@{valeur\+\_\+elt}!fonctions.\+c@{fonctions.\+c}}
+\subsubsection{\texorpdfstring{valeur\+\_\+elt()}{valeur\_elt()}}
+{\footnotesize\ttfamily void valeur\+\_\+elt (\begin{DoxyParamCaption}\item[{carte\+\_\+t $\ast$}]{t }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet de prendre une valeur de la liste. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em t} & un pointeur qui permet de prendre une valeur dans la liste \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,277 @@
+\hypertarget{personnage_8c}{}\section{Référence du fichier personnage.\+c}
+\label{personnage_8c}\index{personnage.\+c@{personnage.\+c}}
+
+
+Gère toute la partie concernant le personnage.  
+
+
+{\ttfamily \#include \char`\"{}../include/constantes.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/initialisation\+\_\+sdl\+\_\+fonctions.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/clavier.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de personnage.\+c\+:
+% FIG 0
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{personnage_8c_a268829dc6c85b9473a074eb2f9c122d4}{charge\+\_\+sprites\+\_\+personnage} (image\+\_\+t sprites\mbox{[}$\,$\mbox{]}, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
+\begin{DoxyCompactList}\small\item\em fonction qui charge tous les sprites du personnage \end{DoxyCompactList}\item 
+int \hyperlink{personnage_8c_aa7ec414a47a9f81c27ac3ae34666e621}{test\+\_\+collision} (salle\+\_\+t salle, perso\+\_\+t pers, int direction)
+\begin{DoxyCompactList}\small\item\em permet de regarder si le personnage entre en collision avec un des murs de la salle \end{DoxyCompactList}\item 
+void \hyperlink{personnage_8c_ab8bc861d999d116d1d6b93be954a9c7e}{init\+\_\+animations} (animation\+\_\+t $\ast$anim)
+\begin{DoxyCompactList}\small\item\em Initialise la structure d\textquotesingle{}animations. \end{DoxyCompactList}\item 
+void \hyperlink{personnage_8c_aec71a35c8d05712c6c14e86bc93ba2a3}{change\+\_\+animation} (animation\+\_\+t $\ast$anim, image\+\_\+t sprites\mbox{[}$\,$\mbox{]}, int nouvelle\+\_\+animation)
+\begin{DoxyCompactList}\small\item\em permet de changer d\textquotesingle{}animation selon la nouvelle passée en paramètre \end{DoxyCompactList}\item 
+void \hyperlink{personnage_8c_a077c16328a6af89e080980aebbb2ed58}{animations\+\_\+personnage} (image\+\_\+t sprites\mbox{[}$\,$\mbox{]}, unsigned int timer, touches\+\_\+t clavier, animation\+\_\+t $\ast$anim, Mix\+\_\+\+Chunk $\ast$footsteps)
+\begin{DoxyCompactList}\small\item\em permet de changer d\textquotesingle{}animation selon le déplacement du personnage \end{DoxyCompactList}\item 
+void \hyperlink{personnage_8c_aab64e8e27a88db2c970630904f7d9962}{deplacement\+\_\+personnage} (perso\+\_\+t $\ast$pers, salle\+\_\+t salle, int $\ast$continuer, animation\+\_\+t $\ast$anim, Mix\+\_\+\+Chunk $\ast$footsteps, touches\+\_\+t $\ast$clavier)
+\begin{DoxyCompactList}\small\item\em Gère les déplacement du personnage dans une salle. \end{DoxyCompactList}\item 
+int \hyperlink{personnage_8c_a74f1cab9f9b642e407f86883189090d6}{changement\+\_\+de\+\_\+salle} (perso\+\_\+t $\ast$pers, salle\+\_\+t salle, int indice, Mix\+\_\+\+Chunk $\ast$change\+\_\+salle)
+\begin{DoxyCompactList}\small\item\em permet de téléporter le personnage dans la salle dont il passe la porter \end{DoxyCompactList}\item 
+void \hyperlink{personnage_8c_aac7caf413c5c0bcee056174d8ee983d2}{initialise\+\_\+personnage} (perso\+\_\+t $\ast$pers)
+\begin{DoxyCompactList}\small\item\em initialise les valeurs de base pour le personnage \end{DoxyCompactList}\item 
+int \hyperlink{personnage_8c_a164a6183e890b64230e0d534fb32734c}{collision\+\_\+perso\+\_\+ennemi} (perso\+\_\+t pers, ennemi\+\_\+t ennemi, int x, int y)
+\begin{DoxyCompactList}\small\item\em Vérifie la collision ou non entre un ennemi spécifique et le joueur. \end{DoxyCompactList}\item 
+int \hyperlink{personnage_8c_a0d1b81f2e14ad354088835416a58d147}{combat\+\_\+declenche} (salle\+\_\+t salle, perso\+\_\+t pers, ennemi\+\_\+t ennemi)
+\begin{DoxyCompactList}\small\item\em Regarde si le personnage entre en combat avec un ennemi dans la salle. \end{DoxyCompactList}\item 
+void \hyperlink{personnage_8c_afc28a0bae05f1bc308a30f9598766d07}{creer\+\_\+texture\+\_\+depuis\+\_\+char} (image\+\_\+t $\ast$texte\+\_\+pv, image\+\_\+t $\ast$texte\+\_\+etage, perso\+\_\+t perso, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
+\begin{DoxyCompactList}\small\item\em Crée des images à partir de texte issu des données du personnage, range ces images dans les structures correspondantes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Gère toute la partie concernant le personnage. 
+
+\begin{DoxyAuthor}{Auteur}
+\{Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas\} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+04/02/2020 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{personnage_8c_a077c16328a6af89e080980aebbb2ed58}\label{personnage_8c_a077c16328a6af89e080980aebbb2ed58}} 
+\index{personnage.\+c@{personnage.\+c}!animations\+\_\+personnage@{animations\+\_\+personnage}}
+\index{animations\+\_\+personnage@{animations\+\_\+personnage}!personnage.\+c@{personnage.\+c}}
+\subsubsection{\texorpdfstring{animations\+\_\+personnage()}{animations\_personnage()}}
+{\footnotesize\ttfamily void animations\+\_\+personnage (\begin{DoxyParamCaption}\item[{image\+\_\+t}]{sprites\mbox{[}$\,$\mbox{]},  }\item[{unsigned int}]{timer,  }\item[{touches\+\_\+t}]{clavier,  }\item[{animation\+\_\+t $\ast$}]{anim,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{footsteps }\end{DoxyParamCaption})}
+
+
+
+permet de changer d\textquotesingle{}animation selon le déplacement du personnage 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em sprites\mbox{[}$\,$\mbox{]},le} & tableau de sprites du personnage \\
+\hline
+{\em timer,le} & temps d\textquotesingle{}execution du jeu \\
+\hline
+{\em clavier,la} & structure de touches du clavier \\
+\hline
+{\em $\ast$anim,la} & structure qui gère les animations \\
+\hline
+{\em $\ast$footsteps,les} & sons de pas du personnage \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{personnage_8c_aec71a35c8d05712c6c14e86bc93ba2a3}\label{personnage_8c_aec71a35c8d05712c6c14e86bc93ba2a3}} 
+\index{personnage.\+c@{personnage.\+c}!change\+\_\+animation@{change\+\_\+animation}}
+\index{change\+\_\+animation@{change\+\_\+animation}!personnage.\+c@{personnage.\+c}}
+\subsubsection{\texorpdfstring{change\+\_\+animation()}{change\_animation()}}
+{\footnotesize\ttfamily void change\+\_\+animation (\begin{DoxyParamCaption}\item[{animation\+\_\+t $\ast$}]{anim,  }\item[{image\+\_\+t}]{sprites\mbox{[}$\,$\mbox{]},  }\item[{int}]{nouvelle\+\_\+animation }\end{DoxyParamCaption})}
+
+
+
+permet de changer d\textquotesingle{}animation selon la nouvelle passée en paramètre 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em sprites\mbox{[}$\,$\mbox{]},le} & tableau de sprites du personnage \\
+\hline
+{\em $\ast$anim,la} & structure qui gère les animations \\
+\hline
+{\em nouvelle\+\_\+animation,l\textquotesingle{}indice} & du tableau ou se trouve la nouvelle animation a utiliser \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{personnage_8c_a74f1cab9f9b642e407f86883189090d6}\label{personnage_8c_a74f1cab9f9b642e407f86883189090d6}} 
+\index{personnage.\+c@{personnage.\+c}!changement\+\_\+de\+\_\+salle@{changement\+\_\+de\+\_\+salle}}
+\index{changement\+\_\+de\+\_\+salle@{changement\+\_\+de\+\_\+salle}!personnage.\+c@{personnage.\+c}}
+\subsubsection{\texorpdfstring{changement\+\_\+de\+\_\+salle()}{changement\_de\_salle()}}
+{\footnotesize\ttfamily int changement\+\_\+de\+\_\+salle (\begin{DoxyParamCaption}\item[{perso\+\_\+t $\ast$}]{pers,  }\item[{salle\+\_\+t}]{salle,  }\item[{int}]{indice,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{change\+\_\+salle }\end{DoxyParamCaption})}
+
+
+
+permet de téléporter le personnage dans la salle dont il passe la porter 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$pers,la} & structure du personnage \\
+\hline
+{\em $\ast$salle,la} & salle dans laquelle on se trouve \\
+\hline
+{\em $\ast$continuer} & la variable permettant de quitter le jeu \\
+\hline
+{\em $\ast$change\+\_\+salle,le} & son de changement de salle\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+la salle dans laquelle le joueur arrive 
+\end{DoxyReturn}
+\mbox{\Hypertarget{personnage_8c_a268829dc6c85b9473a074eb2f9c122d4}\label{personnage_8c_a268829dc6c85b9473a074eb2f9c122d4}} 
+\index{personnage.\+c@{personnage.\+c}!charge\+\_\+sprites\+\_\+personnage@{charge\+\_\+sprites\+\_\+personnage}}
+\index{charge\+\_\+sprites\+\_\+personnage@{charge\+\_\+sprites\+\_\+personnage}!personnage.\+c@{personnage.\+c}}
+\subsubsection{\texorpdfstring{charge\+\_\+sprites\+\_\+personnage()}{charge\_sprites\_personnage()}}
+{\footnotesize\ttfamily void charge\+\_\+sprites\+\_\+personnage (\begin{DoxyParamCaption}\item[{image\+\_\+t}]{sprites\mbox{[}$\,$\mbox{]},  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu }\end{DoxyParamCaption})}
+
+
+
+fonction qui charge tous les sprites du personnage 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em sprites\mbox{[}$\,$\mbox{]},tableau} & qui contiendra tous les sprites du personnage \\
+\hline
+{\em $\ast$rendu,le} & rendu sur lequel on dessinera le personnage \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{personnage_8c_a164a6183e890b64230e0d534fb32734c}\label{personnage_8c_a164a6183e890b64230e0d534fb32734c}} 
+\index{personnage.\+c@{personnage.\+c}!collision\+\_\+perso\+\_\+ennemi@{collision\+\_\+perso\+\_\+ennemi}}
+\index{collision\+\_\+perso\+\_\+ennemi@{collision\+\_\+perso\+\_\+ennemi}!personnage.\+c@{personnage.\+c}}
+\subsubsection{\texorpdfstring{collision\+\_\+perso\+\_\+ennemi()}{collision\_perso\_ennemi()}}
+{\footnotesize\ttfamily int collision\+\_\+perso\+\_\+ennemi (\begin{DoxyParamCaption}\item[{perso\+\_\+t}]{pers,  }\item[{ennemi\+\_\+t}]{ennemi,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Vérifie la collision ou non entre un ennemi spécifique et le joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em pers,la} & structure du personnage \\
+\hline
+{\em ennemi,l\textquotesingle{}ennemi} & présent dans la salle \\
+\hline
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+T\+R\+UE si une collision a lieu, F\+A\+L\+SE sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{personnage_8c_a0d1b81f2e14ad354088835416a58d147}\label{personnage_8c_a0d1b81f2e14ad354088835416a58d147}} 
+\index{personnage.\+c@{personnage.\+c}!combat\+\_\+declenche@{combat\+\_\+declenche}}
+\index{combat\+\_\+declenche@{combat\+\_\+declenche}!personnage.\+c@{personnage.\+c}}
+\subsubsection{\texorpdfstring{combat\+\_\+declenche()}{combat\_declenche()}}
+{\footnotesize\ttfamily int combat\+\_\+declenche (\begin{DoxyParamCaption}\item[{salle\+\_\+t}]{salle,  }\item[{perso\+\_\+t}]{pers,  }\item[{ennemi\+\_\+t}]{ennemi }\end{DoxyParamCaption})}
+
+
+
+Regarde si le personnage entre en combat avec un ennemi dans la salle. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em salle,la} & salle du labyrinthe dans laquelle on se situe \\
+\hline
+{\em pers,la} & structure du personnage \\
+\hline
+{\em ennemi,l\textquotesingle{}ennemi} & présent dans la salle\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+T\+R\+UE si une collision est detéctée avec un ennemi, F\+A\+L\+SE sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{personnage_8c_afc28a0bae05f1bc308a30f9598766d07}\label{personnage_8c_afc28a0bae05f1bc308a30f9598766d07}} 
+\index{personnage.\+c@{personnage.\+c}!creer\+\_\+texture\+\_\+depuis\+\_\+char@{creer\+\_\+texture\+\_\+depuis\+\_\+char}}
+\index{creer\+\_\+texture\+\_\+depuis\+\_\+char@{creer\+\_\+texture\+\_\+depuis\+\_\+char}!personnage.\+c@{personnage.\+c}}
+\subsubsection{\texorpdfstring{creer\+\_\+texture\+\_\+depuis\+\_\+char()}{creer\_texture\_depuis\_char()}}
+{\footnotesize\ttfamily void creer\+\_\+texture\+\_\+depuis\+\_\+char (\begin{DoxyParamCaption}\item[{image\+\_\+t $\ast$}]{texte\+\_\+pv,  }\item[{image\+\_\+t $\ast$}]{texte\+\_\+etage,  }\item[{perso\+\_\+t}]{perso,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu }\end{DoxyParamCaption})}
+
+
+
+Crée des images à partir de texte issu des données du personnage, range ces images dans les structures correspondantes. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$texte\+\_\+pv,une} & structure qui contiendra l\textquotesingle{}image du texte a afficher \\
+\hline
+{\em $\ast$texte\+\_\+etage,une} & structure qui contiendra l\textquotesingle{}image du texte a afficher \\
+\hline
+{\em pers,le} & personnage à partir duquel on va récupérer des informations \\
+\hline
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{personnage_8c_aab64e8e27a88db2c970630904f7d9962}\label{personnage_8c_aab64e8e27a88db2c970630904f7d9962}} 
+\index{personnage.\+c@{personnage.\+c}!deplacement\+\_\+personnage@{deplacement\+\_\+personnage}}
+\index{deplacement\+\_\+personnage@{deplacement\+\_\+personnage}!personnage.\+c@{personnage.\+c}}
+\subsubsection{\texorpdfstring{deplacement\+\_\+personnage()}{deplacement\_personnage()}}
+{\footnotesize\ttfamily void deplacement\+\_\+personnage (\begin{DoxyParamCaption}\item[{perso\+\_\+t $\ast$}]{pers,  }\item[{salle\+\_\+t}]{salle,  }\item[{int $\ast$}]{continuer,  }\item[{animation\+\_\+t $\ast$}]{anim,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{footsteps,  }\item[{touches\+\_\+t $\ast$}]{clavier }\end{DoxyParamCaption})}
+
+
+
+Gère les déplacement du personnage dans une salle. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em pers,la} & structure du pêrsonnage que l\textquotesingle{}on souhaite déplacer \\
+\hline
+{\em salle,la} & salle dans laquelle le personnage se déplace \\
+\hline
+{\em $\ast$continuer,pointeur} & sur variable permettant de savoir si le joueur souhaite quitter le programme \\
+\hline
+{\em $\ast$footsteps,les} & sons de pas du personnage \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{personnage_8c_ab8bc861d999d116d1d6b93be954a9c7e}\label{personnage_8c_ab8bc861d999d116d1d6b93be954a9c7e}} 
+\index{personnage.\+c@{personnage.\+c}!init\+\_\+animations@{init\+\_\+animations}}
+\index{init\+\_\+animations@{init\+\_\+animations}!personnage.\+c@{personnage.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+animations()}{init\_animations()}}
+{\footnotesize\ttfamily void init\+\_\+animations (\begin{DoxyParamCaption}\item[{animation\+\_\+t $\ast$}]{anim }\end{DoxyParamCaption})}
+
+
+
+Initialise la structure d\textquotesingle{}animations. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$anim,la} & structure qui gère les animations \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{personnage_8c_aac7caf413c5c0bcee056174d8ee983d2}\label{personnage_8c_aac7caf413c5c0bcee056174d8ee983d2}} 
+\index{personnage.\+c@{personnage.\+c}!initialise\+\_\+personnage@{initialise\+\_\+personnage}}
+\index{initialise\+\_\+personnage@{initialise\+\_\+personnage}!personnage.\+c@{personnage.\+c}}
+\subsubsection{\texorpdfstring{initialise\+\_\+personnage()}{initialise\_personnage()}}
+{\footnotesize\ttfamily void initialise\+\_\+personnage (\begin{DoxyParamCaption}\item[{perso\+\_\+t $\ast$}]{pers }\end{DoxyParamCaption})}
+
+
+
+initialise les valeurs de base pour le personnage 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$pers,la} & structure du personnage \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{personnage_8c_aa7ec414a47a9f81c27ac3ae34666e621}\label{personnage_8c_aa7ec414a47a9f81c27ac3ae34666e621}} 
+\index{personnage.\+c@{personnage.\+c}!test\+\_\+collision@{test\+\_\+collision}}
+\index{test\+\_\+collision@{test\+\_\+collision}!personnage.\+c@{personnage.\+c}}
+\subsubsection{\texorpdfstring{test\+\_\+collision()}{test\_collision()}}
+{\footnotesize\ttfamily int test\+\_\+collision (\begin{DoxyParamCaption}\item[{salle\+\_\+t}]{salle,  }\item[{perso\+\_\+t}]{pers,  }\item[{int}]{direction }\end{DoxyParamCaption})}
+
+
+
+permet de regarder si le personnage entre en collision avec un des murs de la salle 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em salle,la} & salle pour laquelle on test les collisions \\
+\hline
+{\em pers,le} & personnage pour lequel on test les collisions \\
+\hline
+{\em direction,la} & direction dans laquelle se rend le personnage\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+1 en cas de collision, 0 si aucune collision 
+\end{DoxyReturn}

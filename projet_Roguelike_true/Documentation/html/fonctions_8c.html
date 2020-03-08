@@ -1,0 +1,483 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Dungeon of Cards: Référence du fichier fonctions.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Dungeon of Cards
+   &#160;<span id="projectnumber">1</span>
+   </div>
+   <div id="projectbrief">Ce projet à pour but de créer un jeu roguelike pour le module Projet de notre seconde année de licence</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier fonctions.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>fichier qui permet de référencé tous les fonctions du système de combat.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;../include/constantes.h&quot;</code><br />
+<code>#include &quot;../include/initialisation_sdl_fonctions.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de fonctions.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="fonctions_8c__incl.png" border="0" usemap="#fonctions_8c" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ab80fe591c4ab95f27b317a9e6f6955e1"><td class="memItemLeft" align="right" valign="top"><a id="ab80fe591c4ab95f27b317a9e6f6955e1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8c.html#ab80fe591c4ab95f27b317a9e6f6955e1">init_liste</a> ()</td></tr>
+<tr class="memdesc:ab80fe591c4ab95f27b317a9e6f6955e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction d'initialiser une liste. <br /></td></tr>
+<tr class="separator:ab80fe591c4ab95f27b317a9e6f6955e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c70c18ad120ac199ddcd39f0824a865"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8c.html#a9c70c18ad120ac199ddcd39f0824a865">liste_vide</a> ()</td></tr>
+<tr class="memdesc:a9c70c18ad120ac199ddcd39f0824a865"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de vérifier si une liste est vide.  <a href="#a9c70c18ad120ac199ddcd39f0824a865">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9c70c18ad120ac199ddcd39f0824a865"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adda7a0d25a9bfeed725f12efc6c254f8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8c.html#adda7a0d25a9bfeed725f12efc6c254f8">hors_liste</a> ()</td></tr>
+<tr class="memdesc:adda7a0d25a9bfeed725f12efc6c254f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de vérifier si on est pas hors liste.  <a href="#adda7a0d25a9bfeed725f12efc6c254f8">Plus de détails...</a><br /></td></tr>
+<tr class="separator:adda7a0d25a9bfeed725f12efc6c254f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a205229e638af73f963938189b0dd12d4"><td class="memItemLeft" align="right" valign="top"><a id="a205229e638af73f963938189b0dd12d4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8c.html#a205229e638af73f963938189b0dd12d4">en_tete</a> ()</td></tr>
+<tr class="memdesc:a205229e638af73f963938189b0dd12d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de se mettre au début de la liste. <br /></td></tr>
+<tr class="separator:a205229e638af73f963938189b0dd12d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0ff9fb3b16656cf42a159f527244501"><td class="memItemLeft" align="right" valign="top"><a id="ab0ff9fb3b16656cf42a159f527244501"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8c.html#ab0ff9fb3b16656cf42a159f527244501">en_queue</a> ()</td></tr>
+<tr class="memdesc:ab0ff9fb3b16656cf42a159f527244501"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de se mettre en fin de la liste. <br /></td></tr>
+<tr class="separator:ab0ff9fb3b16656cf42a159f527244501"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7508531ae1735a204a105dedbdc06ee3"><td class="memItemLeft" align="right" valign="top"><a id="a7508531ae1735a204a105dedbdc06ee3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8c.html#a7508531ae1735a204a105dedbdc06ee3">precedent</a> ()</td></tr>
+<tr class="memdesc:a7508531ae1735a204a105dedbdc06ee3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de reculer dans la liste. <br /></td></tr>
+<tr class="separator:a7508531ae1735a204a105dedbdc06ee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad99c86c7caff6844bb873680d5e9f26b"><td class="memItemLeft" align="right" valign="top"><a id="ad99c86c7caff6844bb873680d5e9f26b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8c.html#ad99c86c7caff6844bb873680d5e9f26b">suivant</a> ()</td></tr>
+<tr class="memdesc:ad99c86c7caff6844bb873680d5e9f26b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet d'avancer dans la liste. <br /></td></tr>
+<tr class="separator:ad99c86c7caff6844bb873680d5e9f26b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ca5fa7980628d03752d196d561f29c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8c.html#a6ca5fa7980628d03752d196d561f29c7">valeur_elt</a> (carte_t *t)</td></tr>
+<tr class="memdesc:a6ca5fa7980628d03752d196d561f29c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de prendre une valeur de la liste.  <a href="#a6ca5fa7980628d03752d196d561f29c7">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a6ca5fa7980628d03752d196d561f29c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af97c08a21ffaaf3024fafd53a1a87921"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8c.html#af97c08a21ffaaf3024fafd53a1a87921">modif_elt</a> (carte_t t)</td></tr>
+<tr class="memdesc:af97c08a21ffaaf3024fafd53a1a87921"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de modifier une valeur dans une liste.  <a href="#af97c08a21ffaaf3024fafd53a1a87921">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af97c08a21ffaaf3024fafd53a1a87921"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a655bcaf1ee330c2c05bf11057f983de8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8c.html#a655bcaf1ee330c2c05bf11057f983de8">oter_elt</a> (carte_t t)</td></tr>
+<tr class="memdesc:a655bcaf1ee330c2c05bf11057f983de8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de supprimer une valeur de la liste.  <a href="#a655bcaf1ee330c2c05bf11057f983de8">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a655bcaf1ee330c2c05bf11057f983de8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa44f89ec4da70467c269566bb0b35d2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8c.html#aa44f89ec4da70467c269566bb0b35d2f">ajout_droit</a> (carte_t *t)</td></tr>
+<tr class="memdesc:aa44f89ec4da70467c269566bb0b35d2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet d'ajouter un objet après l'objet sur lequel l'utilisteur se trouve.  <a href="#aa44f89ec4da70467c269566bb0b35d2f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa44f89ec4da70467c269566bb0b35d2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0342296839dd4a75d97f808fb1db9ba3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8c.html#a0342296839dd4a75d97f808fb1db9ba3">ajout_gauche</a> (carte_t *t)</td></tr>
+<tr class="memdesc:a0342296839dd4a75d97f808fb1db9ba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet d'ajouter un objet avant l'objet sur lequel l'utilisteur se trouve.  <a href="#a0342296839dd4a75d97f808fb1db9ba3">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0342296839dd4a75d97f808fb1db9ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4a2fdf32520afb30abba6ccc91fd47f"><td class="memItemLeft" align="right" valign="top"><a id="ab4a2fdf32520afb30abba6ccc91fd47f"></a>
+carte_t *&#160;</td><td class="memItemRight" valign="bottom"><b>creer_carte</b> (char *nom, type_carte type, int valeur, int consommable)</td></tr>
+<tr class="separator:ab4a2fdf32520afb30abba6ccc91fd47f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12e5098148c887c498e3497547cecc88"><td class="memItemLeft" align="right" valign="top">perso_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8c.html#a12e5098148c887c498e3497547cecc88">creer_perso</a> ()</td></tr>
+<tr class="memdesc:a12e5098148c887c498e3497547cecc88"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet de créer un personnage selon différentes caractéristiques  <a href="#a12e5098148c887c498e3497547cecc88">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a12e5098148c887c498e3497547cecc88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35b91131e66d74bad78281354745f76f"><td class="memItemLeft" align="right" valign="top"><a id="a35b91131e66d74bad78281354745f76f"></a>
+ennemi_t *&#160;</td><td class="memItemRight" valign="bottom"><b>creer_ennemi</b> (char *nom, int pv, int vitesse, int attaque, int defense, int type, SDL_Renderer *rendu)</td></tr>
+<tr class="separator:a35b91131e66d74bad78281354745f76f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46537a1af57b2735c29b55ed06765950"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8c.html#a46537a1af57b2735c29b55ed06765950">detruire_carte</a> (carte_t **carte)</td></tr>
+<tr class="memdesc:a46537a1af57b2735c29b55ed06765950"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de détruire une carte.  <a href="#a46537a1af57b2735c29b55ed06765950">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a46537a1af57b2735c29b55ed06765950"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10827fcceed76a61d146d8d52cce0df3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8c.html#a10827fcceed76a61d146d8d52cce0df3">detruire_ennemi</a> (ennemi_t **ennemi)</td></tr>
+<tr class="memdesc:a10827fcceed76a61d146d8d52cce0df3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de détruire un ennemi.  <a href="#a10827fcceed76a61d146d8d52cce0df3">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a10827fcceed76a61d146d8d52cce0df3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13ce91664374b7de3628ef32a595912e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8c.html#a13ce91664374b7de3628ef32a595912e">initiative</a> (perso_t *perso, ennemi_t *ennemi)</td></tr>
+<tr class="memdesc:a13ce91664374b7de3628ef32a595912e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet savoir si c'est l'ennemi ou le personnage qui combat en premier.  <a href="#a13ce91664374b7de3628ef32a595912e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a13ce91664374b7de3628ef32a595912e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad75ac8db97d3acd100b5535c1b27bd8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8c.html#ad75ac8db97d3acd100b5535c1b27bd8d">tour_ennemi</a> (perso_t *perso, ennemi_t *ennemi)</td></tr>
+<tr class="memdesc:ad75ac8db97d3acd100b5535c1b27bd8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet à l'ennemi d'effectuer une action.  <a href="#ad75ac8db97d3acd100b5535c1b27bd8d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ad75ac8db97d3acd100b5535c1b27bd8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f3c581ae1c85a773980aaff18e77d8c"><td class="memItemLeft" align="right" valign="top"><a id="a0f3c581ae1c85a773980aaff18e77d8c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>tour_perso</b> (int choix, perso_t *perso, ennemi_t *ennemi)</td></tr>
+<tr class="separator:a0f3c581ae1c85a773980aaff18e77d8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9108e889c9631bf9aafb3462adcdb2f8"><td class="memItemLeft" align="right" valign="top"><a id="a9108e889c9631bf9aafb3462adcdb2f8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>combat</b> (perso_t *perso, ennemi_t *ennemi)</td></tr>
+<tr class="separator:a9108e889c9631bf9aafb3462adcdb2f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>fichier qui permet de référencé tous les fonctions du système de combat. </p>
+<dl class="section author"><dt>Auteur</dt><dd>{Malabry Thomas Aurélien Tudoret Jourry Axel Marin Timothée} </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>13/02/2020 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="aa44f89ec4da70467c269566bb0b35d2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa44f89ec4da70467c269566bb0b35d2f">&#9670;&nbsp;</a></span>ajout_droit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ajout_droit </td>
+          <td>(</td>
+          <td class="paramtype">carte_t *&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui permet d'ajouter un objet après l'objet sur lequel l'utilisteur se trouve. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>un pointeur qui va contenir une valeur qui va être rajouté </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0342296839dd4a75d97f808fb1db9ba3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0342296839dd4a75d97f808fb1db9ba3">&#9670;&nbsp;</a></span>ajout_gauche()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ajout_gauche </td>
+          <td>(</td>
+          <td class="paramtype">carte_t *&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui permet d'ajouter un objet avant l'objet sur lequel l'utilisteur se trouve. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>un pointeur qui va contenir une valeur qui va être rajouté </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a12e5098148c887c498e3497547cecc88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12e5098148c887c498e3497547cecc88">&#9670;&nbsp;</a></span>creer_perso()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">perso_t * creer_perso </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>permet de créer un personnage selon différentes caractéristiques </p>
+<dl class="section return"><dt>Renvoie</dt><dd>un pointeur sur une variable structure perso_t </dd></dl>
+
+</div>
+</div>
+<a id="a46537a1af57b2735c29b55ed06765950"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46537a1af57b2735c29b55ed06765950">&#9670;&nbsp;</a></span>detruire_carte()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruire_carte </td>
+          <td>(</td>
+          <td class="paramtype">carte_t **&#160;</td>
+          <td class="paramname"><em>carte</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui permet de détruire une carte. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">carte</td><td>Un pointeur de pointeur de carte qui permet de détruire le pointeur qui pointe sur la structure carte </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a10827fcceed76a61d146d8d52cce0df3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10827fcceed76a61d146d8d52cce0df3">&#9670;&nbsp;</a></span>detruire_ennemi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruire_ennemi </td>
+          <td>(</td>
+          <td class="paramtype">ennemi_t **&#160;</td>
+          <td class="paramname"><em>ennemi</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui permet de détruire un ennemi. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">perso</td><td>Un pointeur de pointeur de ennemi qui permet de détruire le pointeur qui pointe sur la structure ennemi </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="adda7a0d25a9bfeed725f12efc6c254f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adda7a0d25a9bfeed725f12efc6c254f8">&#9670;&nbsp;</a></span>hors_liste()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int hors_liste </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui permet de vérifier si on est pas hors liste. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>1 si on est dans la liste, 0 si on est hors liste </dd></dl>
+
+</div>
+</div>
+<a id="a13ce91664374b7de3628ef32a595912e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13ce91664374b7de3628ef32a595912e">&#9670;&nbsp;</a></span>initiative()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int initiative </td>
+          <td>(</td>
+          <td class="paramtype">perso_t *&#160;</td>
+          <td class="paramname"><em>perso</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ennemi_t *&#160;</td>
+          <td class="paramname"><em>ennemi</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui permet savoir si c'est l'ennemi ou le personnage qui combat en premier. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">perso</td><td>Un pointeur sur la structure perso_t qui permet de prendre la vitesse pour la comparé à l'ennemi </td></tr>
+    <tr><td class="paramname">perso</td><td>Un pointeur sur la structure ennemi_t qui permet de prendre la vitesse pour la comparé au personnage </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9c70c18ad120ac199ddcd39f0824a865"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c70c18ad120ac199ddcd39f0824a865">&#9670;&nbsp;</a></span>liste_vide()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int liste_vide </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui permet de vérifier si une liste est vide. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>1 si la liste est vide, 0 si la liste est pas vide </dd></dl>
+
+</div>
+</div>
+<a id="af97c08a21ffaaf3024fafd53a1a87921"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af97c08a21ffaaf3024fafd53a1a87921">&#9670;&nbsp;</a></span>modif_elt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void modif_elt </td>
+          <td>(</td>
+          <td class="paramtype">carte_t&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui permet de modifier une valeur dans une liste. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>une variable qui permet de modifier une valeur dans la liste </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a655bcaf1ee330c2c05bf11057f983de8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a655bcaf1ee330c2c05bf11057f983de8">&#9670;&nbsp;</a></span>oter_elt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oter_elt </td>
+          <td>(</td>
+          <td class="paramtype">carte_t&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui permet de supprimer une valeur de la liste. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>une variable qui va être supprimer de la liste </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad75ac8db97d3acd100b5535c1b27bd8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad75ac8db97d3acd100b5535c1b27bd8d">&#9670;&nbsp;</a></span>tour_ennemi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tour_ennemi </td>
+          <td>(</td>
+          <td class="paramtype">perso_t *&#160;</td>
+          <td class="paramname"><em>perso</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ennemi_t *&#160;</td>
+          <td class="paramname"><em>ennemi</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui permet à l'ennemi d'effectuer une action. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">perso</td><td>Pointeur sur une structure qui permet de prendre les caractéristiques du personnage qui vont être modifié par l'action de l'ennemi </td></tr>
+    <tr><td class="paramname">perso</td><td>Pointeur sur une structure qui permet de prendre les caractéristiques de l'ennemi qui vont être modifié par l'action de l'ennemi </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6ca5fa7980628d03752d196d561f29c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ca5fa7980628d03752d196d561f29c7">&#9670;&nbsp;</a></span>valeur_elt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void valeur_elt </td>
+          <td>(</td>
+          <td class="paramtype">carte_t *&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui permet de prendre une valeur de la liste. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>un pointeur qui permet de prendre une valeur dans la liste </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

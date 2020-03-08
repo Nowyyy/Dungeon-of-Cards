@@ -1,14 +1,14 @@
 /**
 
-* \file labyrinthe.c
+*\file labyrinthe.c
 
-* \author {Tudoret Aurélien, Jourry Axel, Marin Timothée, Malabry Thomas}
+*\author {Tudoret Aurélien, Jourry Axel, Marin Timothée, Malabry Thomas}
 
-* \date 04/02/2020
+*\date 04/02/2020
 
-* \version 0.1
+*\version 0.1
 
-* \brief contient et fait appel a toutes fonctions nécessaires pour la  gestion du labyrinthe
+*\brief contient et fait appel a toutes fonctions nécessaires pour la  gestion du labyrinthe
 */
 
 #include "../include/constantes.h"
@@ -20,13 +20,13 @@
 #include "../include/clavier.h"
 
 /**
-* \fn charge_toutes_textures
+*\fn void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu)
 
-* \param images[], contient toutes les images utilisées sauf celle du personnage
-* \param *pers, pointeur sur la structure contenant le personnage
-* \param *rendu, le renderer sur lequel on dessine
+*\param images[], contient toutes les images utilisées sauf celle du personnage
+*\param *pers, pointeur sur la structure contenant le personnage
+*\param *rendu, le renderer sur lequel on dessine
 
-* \brief Permet de charger toutes les images et de les ranger dans les structures correspondantes
+*\brief Permet de charger toutes les images et de les ranger dans les structures correspondantes
 
 */
 void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu){
@@ -41,6 +41,8 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 	charge_image(INSTRUCTIONS_PATH, &images[instructions], rendu);
 	charge_image(GAMEOVER_PATH, &images[gameover], rendu);
 	charge_image(DEATHLIGHT_PATH, &images[deathlight], rendu);
+	charge_image(HEART_PATH, &images[heart], rendu);
+	charge_image(TRAPDOOR_PATH, &images[trapdoor], rendu);
 
 	charge_sprites_personnage(pers->sprites, rendu);
 
@@ -53,6 +55,10 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 	images[gameover].rectangle.y = -100;
 	images[deathlight].rectangle.x = pers->x-100;
 	images[deathlight].rectangle.y = pers->y-65;
+	images[heart].rectangle.x = 0;
+	images[heart].rectangle.y = WIN_HEIGHT * 0.10;
+	images[trapdoor].rectangle.x = 0;
+	images[trapdoor].rectangle.y = WIN_HEIGHT * 0.02;
 
 	//on place le personnage dans la premiere salle, au centre
 	pers->sprites[courant].rectangle.x = pers->x;
@@ -61,16 +67,21 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 
 
 /**
-* \fn affichage_salle_personnage
+*\fn void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[], ennemi_t monstre, ennemi_t boss)
 
-* \param images[], contient toutes les images utilisées sauf celle du personnage
-* \param pers, la structure contenant le personnage
-* \param *rendu, le renderer sur lequel on dessine
+*\param images[], contient toutes les images utilisées sauf celle du personnage
+*\param pers, la structure contenant le personnage
+*\param *rendu, le renderer sur lequel on dessine
 
-* \brief Permet d'afficher une salle, le personnage et si on est dans la premiere salle, les instructions et commandes du jeu
+*\brief Permet d'afficher une salle, le personnage et si on est dans la premiere salle, les instructions et commandes du jeu
 
 */
 void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[], ennemi_t monstre, ennemi_t boss){
+
+	image_t pv, etage;
+
+	creer_texture_depuis_char(&pv, &etage, pers, rendu);
+
 
 	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
 
@@ -84,6 +95,11 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 	afficher_salle(salle, rendu, images);
 
 	SDL_RenderCopy(rendu, pers.sprites[courant].img, NULL, &pers.sprites[courant].rectangle);
+
+	SDL_RenderCopy(rendu, pv.img, NULL, &pv.rectangle);
+	SDL_RenderCopy(rendu, etage.img, NULL, &etage.rectangle);
+	SDL_RenderCopy(rendu, images[heart].img, NULL, &images[heart].rectangle);
+	SDL_RenderCopy(rendu, images[trapdoor].img, NULL, &images[trapdoor].rectangle);
 
 	if(salle->ennemi_present){
 
@@ -111,16 +127,19 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 	}
 
 	SDL_RenderPresent(rendu);//applique les modifs précédentes
+
+	SDL_DestroyTexture(pv.img);
+	SDL_DestroyTexture(etage.img);
 }
 
 
 
 /**
 
-* \fn initisalise_salles
+*\fn void initialise_salles(salle_t tab[], int taille)
 
 
-* \brief remplit les tableaux des salles, initialise les variables
+*\brief remplit les tableaux des salles, initialise les variables
 
 */
 void initialise_salles(salle_t tab[], int taille){
@@ -138,6 +157,9 @@ void initialise_salles(salle_t tab[], int taille){
 		tab[i].nb_murs = 0;
 		tab[i].nb_portes = 0;
 		tab[i].id = i;
+		tab[i].boss = FALSE;
+		tab[i].ennemi_present = FALSE;
+		tab[i].nb_ennemi = 0;
 		tab[i].salle_existe = FALSE;
 	}
 }
@@ -145,13 +167,13 @@ void initialise_salles(salle_t tab[], int taille){
 
 
 /**
-* \fn cree_liaison
+*\fn void cree_liaison(salle_t tab[], int salle1, int salle2, int porteS1)
 
-* \param *s1, la première salle pour laquelle on effectue les liaisons
-* \param *s2, la seconde salle pour laquelle on effectue les liaisons
-* \param porteS1, la porte de la première salle à laquelle on va rattacher la seconde
+*\param *s1, la première salle pour laquelle on effectue les liaisons
+*\param *s2, la seconde salle pour laquelle on effectue les liaisons
+*\param porteS1, la porte de la première salle à laquelle on va rattacher la seconde
 
-* \brief Créée les liaisons entre deux salles enfonction de la porte libre sur la première
+*\brief Créée les liaisons entre deux salles enfonction de la porte libre sur la première
 */
 void cree_liaison(salle_t tab[], int salle1, int salle2, int porteS1){
 
@@ -174,19 +196,16 @@ void cree_liaison(salle_t tab[], int salle1, int salle2, int porteS1){
 
 
 /**
-* \fn mort
+*\fn void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusic, Mix_Chunk *gameOverFrame, image_t images[], TTF_Font *police, SDL_Texture *cmpPartie_texture)
 
-* \param *etat, variable contenant le mode de jeu actuel
-* \param *pers, contient le personnage afin de le sauvegarder
-* \param *rendu, le renderer sur lequel on dessine
-* \param gameOverMusic, musique de mort du joueur
-* \param gameOverFrame, bruit de mort du joueur
-* \param images[], contient toutes les images du jeu sauf celles du personnage
+*\param *etat, variable contenant le mode de jeu actuel
+*\param *pers, contient le personnage afin de le sauvegarder
+*\param *rendu, le renderer sur lequel on dessine
+*\param gameOverMusic, musique de mort du joueur
+*\param gameOverFrame, bruit de mort du joueur
+*\param images[], contient toutes les images du jeu sauf celles du personnage
 
-* \param pers
-* \param cartes
-
-* \brief Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...
+*\brief Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...
 
 */
 
@@ -223,8 +242,8 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusi
  	while(rect.w <= WIN_WIDTH){
  		SDL_SetRenderDrawColor(rendu, 0, 0, 0, 255);
 		Mix_PlayChannel(0, gameOverFrame, 0);
-  	SDL_RenderFillRect(rendu, &rect);
-  	SDL_RenderPresent(rendu);
+  		SDL_RenderFillRect(rendu, &rect);
+  		SDL_RenderPresent(rendu);
 		SDL_Delay(500);
 
 		rect.x -= 135;
@@ -241,23 +260,24 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusi
 	}
 
 	//Ecran de game over
-		//Musique
-		Mix_VolumeMusic(64);
-		Mix_PlayMusic(gameOverMusic, 1);
 
-		//Fond noir et logo game over
-		SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
-		SDL_RenderClear(rendu);
-		SDL_RenderCopy(rendu, images[gameover].img, NULL, &images[gameover].rectangle);
+	//Musique
+	Mix_VolumeMusic(64);
+	Mix_PlayMusic(gameOverMusic, 1);
 
-		//halo lumineux
-		SDL_RenderCopy(rendu, images[deathlight].img, NULL, &images[deathlight].rectangle);
+	//Fond noir et logo game over
+	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
+	SDL_RenderClear(rendu);
+	SDL_RenderCopy(rendu, images[gameover].img, NULL, &images[gameover].rectangle);
 
-		//Sprite perso mort
-		pers->sprites[dead].rectangle.x = pers->x-50;
-		pers->sprites[dead].rectangle.y = pers->y;
-		pers->sprites[courant] = pers->sprites[dead];
-		SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
+	//halo lumineux
+	SDL_RenderCopy(rendu, images[deathlight].img, NULL, &images[deathlight].rectangle);
+
+	//Sprite perso mort
+	pers->sprites[dead].rectangle.x = pers->x-50;
+	pers->sprites[dead].rectangle.y = pers->y;
+	pers->sprites[courant] = pers->sprites[dead];
+	SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
 
 
 	get_text_and_rect(rendu, x_cmpPartie, y_cmpPartie, cmpPartie, police, &cmpPartie_texture, &cmpPartie_text);
@@ -269,19 +289,21 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusi
  	while(Mix_PlayingMusic() == 1);
 
  	*etat = mainMenu;
+
+ 	SDL_DestroyTexture(cmpPartie_texture);
 }
 
 
 /**
-* \fn tirage_au_sort_porte_a_creer
+*\fn int tirage_au_sort_porte_a_creer(int indice, int taille, salle_t salles[])
 
-* \param salles[], tableau des salles du labyrinthe
-* \param taille, la taille d'une ligne ou d'une colonne du tableau
-* \param indice, l'indice de la salle courante
+*\param salles[], tableau des salles du labyrinthe
+*\param taille, la taille d'une ligne ou d'une colonne du tableau
+*\param indice, l'indice de la salle courante
 
-* \return la direction valide dans laquelle créée une porte selon l'emplacement de la salle actuelle
+*\return la direction valide dans laquelle créée une porte selon l'emplacement de la salle actuelle
 
-* \brief Permet de renvoyer la direction vers laquelle on peut tenter de créer une liaison avec une autre salle
+*\brief Permet de renvoyer la direction vers laquelle on peut tenter de créer une liaison avec une autre salle
 
 */
 int tirage_au_sort_porte_a_creer(int indice, int taille, salle_t salles[]){
@@ -324,15 +346,15 @@ int tirage_au_sort_porte_a_creer(int indice, int taille, salle_t salles[]){
 
 
 /**
-* \fn indice_salle
+*\fn int indice_salle(int salle_actuelle, int porte_salle_actuelle, int taille)
 
-* \param salle_actuelle, l'indice de la salle ou l'on se trouve actuellement
-* \param porte_salle_actuelle, la porte par laquelle on passe pour rejoindre une autre salle
-* \param taille, la taille d'une ligne ou d'une colonne du tableau
+*\param salle_actuelle, l'indice de la salle ou l'on se trouve actuellement
+*\param porte_salle_actuelle, la porte par laquelle on passe pour rejoindre une autre salle
+*\param taille, la taille d'une ligne ou d'une colonne du tableau
 
-* \return l'indice de la salle à lier avec la salle courante
+*\return l'indice de la salle à lier avec la salle courante
 
-* \brief Renvoie l'indice d'une salle correspondant à la direction dans laquelle on crée la porte
+*\brief Renvoie l'indice d'une salle correspondant à la direction dans laquelle on crée la porte
 */
 int indice_salle(int salle_actuelle, int porte_salle_actuelle, int taille){
 
@@ -352,14 +374,13 @@ int indice_salle(int salle_actuelle, int porte_salle_actuelle, int taille){
 
 
 /**
-* \fn creation_labyrinthe
+*\fn void creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer)
 
-* \param salles[], le tableau contenant les salles du jeu
-* \param taille, la taille d'une ligne ou d'une colonne du tableau
-* \param nb_salles_a_creer, le nombre de salles que l'on souhaite pouvoir parcourir dans le donjon
+*\param salles[], le tableau contenant les salles du jeu
+*\param taille, la taille d'une ligne ou d'une colonne du tableau
+*\param nb_salles_a_creer, le nombre de salles que l'on souhaite pouvoir parcourir dans le donjon
 
-* \brief créer un labyrinthe de salles connectées entres elles, généré aléatoirement
-
+*\brief créer un labyrinthe de salles connectées entres elles, généré aléatoirement
 */
 void creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer){
 
@@ -412,20 +433,19 @@ void creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer){
 
 
 /**
-* \fn boucle_labyrinthe
+*\fn void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *change_salle, Mix_Chunk *footsteps, Mix_Music *gameOverMusic, Mix_Chunk *gameOverFrame, perso_t *pers, carte_t *cartes, TTF_Font *police)
 
-* \param *continuer, pointeur sur variable permettant de savoir si le joueur souhaite quitter le programme
-* \param *etat, pointeur sur variable permettant de connaître l'écran dans lequel on est
-* \param *rendu, le renderer sur lequel on dessine
-* \param *change_salle, le son de changement de salle
-* \param *footsteps, les bruits de pas du personnage
-* \param *gameOverMusic, la musique de mort
-* \param *gameOverFrame, les bruits de mort
-* \param *pers, le renderer sur lequel on dessine
-* \param cartes
+*\param *continuer, pointeur sur variable permettant de savoir si le joueur souhaite quitter le programme
+*\param *etat, pointeur sur variable permettant de connaître l'écran dans lequel on est
+*\param *rendu, le renderer sur lequel on dessine
+*\param *change_salle, le son de changement de salle
+*\param *footsteps, les bruits de pas du personnage
+*\param *gameOverMusic, la musique de mort
+*\param *gameOverFrame, les bruits de mort
+*\param *pers, le renderer sur lequel on dessine
+*\param cartes
 
-* \brief Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...
-
+*\brief Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...
 */
 void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *change_salle, Mix_Chunk *footsteps, Mix_Music *gameOverMusic, Mix_Chunk *gameOverFrame, perso_t *pers, carte_t *cartes, TTF_Font *police){
 
@@ -475,9 +495,6 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 		salle_courante = changement_de_salle(pers, salles[salle_courante], salle_courante, change_salle);
 
-		//Tester animation de mort
-		//pers->pv -= 1;
-
 		//collision avec un ennemi
 		if(salle_courante == taille - 1 && combat_declenche(salles[salle_courante], *pers, *boss)){
 			//combat_t_p_t(pers, boss, cartes, rendu);
@@ -485,7 +502,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 				//etage suivant
 			}
 		}
-		if(combat_declenche(salles[salle_courante], *pers, *ennemi) == 1){
+		else if(combat_declenche(salles[salle_courante], *pers, *ennemi) == 1){
 			//salles[salle_courante].pv1 = combat_t_p_t(pers, ennemi, cartes);
 		}
 		else if(combat_declenche(salles[salle_courante], *pers, *ennemi) == 2){
@@ -502,6 +519,4 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	detruire_ennemi(&ennemi);
 	detruire_ennemi(&boss);
-
-	SDL_DestroyTexture(cmpPartie_texture);
 }

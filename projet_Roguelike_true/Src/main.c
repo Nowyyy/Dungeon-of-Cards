@@ -4,7 +4,6 @@
 * \author {Tudoret Aurélien, Jourry Axel, Malabry Thomas, Marin Timothée}
 * \version 0.1
 * \brief Le projet de deuxième année de licence, un roguelike/rpg
-
 */
 
 #include "../include/constantes.h"

@@ -1,20 +1,19 @@
 /**
- * \file salle.c
- * \brief Programme qui créé une salle et l'affiche.
- * \author {Axel Jourry, Aurélien Tudoret}
- * \version 0.1
- * \date 30 Janvier 2020
+ *\file salle.c
+ *\brief Programme qui créé une salle et l'affiche.
+ *\author {Axel Jourry, Aurélien Tudoret}
+ *\version 0.1
+ *\date 30 Janvier 2020
  */
 
 #include "../include/constantes.h"
 #include "../include/labyrinthe.h"
 
 /**
- * \fn init_salle(int salle[TAILLE_SALLE][TAILLE_SALLE])
- * \brief fonction qui génère une salle en un tableau
- * \param salle[TAILLE_SALLE][TAILLE_SALLE] est le tableau de TAILLE_SALLE qui comprend la salle
+ *\fn void init_salle(int salle[TAILLE_SALLE][TAILLE_SALLE])
+ *\brief fonction qui génère une salle en un tableau
+ *\param salle[TAILLE_SALLE][TAILLE_SALLE] est le tableau de TAILLE_SALLE qui comprend la salle
  */
-
 void init_salle(int salle[TAILLE_SALLE][TAILLE_SALLE]){
 
   for(int i = 0; i<TAILLE_SALLE; i++){
@@ -42,10 +41,10 @@ void init_salle(int salle[TAILLE_SALLE][TAILLE_SALLE]){
 }
 
 /**
- * \fn init_salle(int salle[TAILLE_SALLE][TAILLE_SALLE])
- * \brief fonction qui ajoute une porte à un côté du carré
- * \param salle[TAILLE_SALLE][TAILLE_SALLE] est le tableau de TAILLE_SALLE qui comprend la salle
- * \param direction correspond à un nombre entre 0 et 3 indiquant quel mur est seléctionné.
+ *\fn void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction)
+ *\brief fonction qui ajoute une porte à un côté du carré
+ *\param salle[TAILLE_SALLE][TAILLE_SALLE] est le tableau de TAILLE_SALLE qui comprend la salle
+ *\param direction correspond à un nombre entre 0 et 3 indiquant quel mur est seléctionné.
  */
 void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction){
 
@@ -94,14 +93,13 @@ void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction){
 
 
 /**
- * \fn afficher_salle(int salle[TAILLE_SALLE][TAILLE_SALLE])
+ *\fn void afficher_salle(salle_t *salle, SDL_Renderer *rendu, image_t texture[])
 
- * \brief fonction qui génère une salle en un tableau
+ *\brief fonction qui génère une salle en un tableau
 
- * \param *salle est une salle comportant le tableau a afficher
- * \param *rendu, le renderer sur lequel on dessine
- * \param texture[], contient toutes les images utilisées sauf celle du personnage
-
+ *\param *salle est une salle comportant le tableau a afficher
+ *\param *rendu, le renderer sur lequel on dessine
+ *\param texture[], contient toutes les images utilisées sauf celle du personnage
  */
 void afficher_salle(salle_t *salle, SDL_Renderer *rendu, image_t texture[]){
 
@@ -126,11 +124,11 @@ void afficher_salle(salle_t *salle, SDL_Renderer *rendu, image_t texture[]){
 
 
 /**
-* \fn rempli_tableau_salle_murs_portes
+*\fn void rempli_tableau_murs_portes(salle_t salle[], int indiceT)
 
-* \param *salle la salle pour laquelle on va completer les tableaux
+*\param *salle la salle pour laquelle on va completer les tableaux
 
-* \brief rempli les tableaux des murs et des portes de la salle afin de pouvoir gérer les collisions plus tard
+*\brief rempli les tableaux des murs et des portes de la salle afin de pouvoir gérer les collisions plus tard
 */
 void rempli_tableau_murs_portes(salle_t salle[], int indiceT){
 
@@ -163,98 +161,15 @@ void rempli_tableau_murs_portes(salle_t salle[], int indiceT){
   salle[indiceT].nb_portes = indice_porte;
 }
 
-/**
- * \fn aleatoire_salle(salle_t *salle)
- * \brief fonction qui créer aléatoirement des portes dans une salle, version 2 pour les salles mallocs
- * \param salle_t *salle est la structure représentant une salle
- * \param porte_arrivee, permet d'indiquer si on vient d'une autre salle afin de générer une porte à l'endroit auquel le joueur arrive
- * \param max_porte, le nombre max de porte que l'on souhaite créer
-
- * \return le nombre de portes créées
- *//*
-int aleatoire_porte(salle_t *salle, int porte_arrivee, int max_porte){
-
-  int alea;
-  int cmp = 0;
-
-  //Nord
-  alea = rand()%9;
-  if(alea > 5 && max_porte > 0){
-    ajout_porte_salle(salle->salle, 0);
-    cmp++;
-    salle->haut = 1;
-  }
-  else if(porte_arrivee == 0){
-    ajout_porte_salle(salle->salle, 0);
-    salle->haut = 1;
-    cmp++;
-  }
-
-  //Est
-  alea = rand()%9;
-  if(alea > 5&& max_porte -cmp > 0){
-    ajout_porte_salle(salle->salle, 1);
-    cmp++;
-    salle->droite = 1;
-  }
-  else if(porte_arrivee == 1){
-    ajout_porte_salle(salle->salle, 1);
-    salle->droite = 1;
-    cmp++;
-  }
-
-  //Sud
-  alea = rand()%9;
-  if(alea > 5 && max_porte -cmp > 0){
-    ajout_porte_salle(salle->salle, 2);
-    cmp++;
-    salle->bas = 1;
-  }
-  else if(porte_arrivee == 2){
-    ajout_porte_salle(salle->salle, 2);
-    salle->bas = 1;
-    cmp++;
-  }
-
-  //Ouest
-  alea = rand()%9;
-  if(alea > 5 && max_porte - cmp > 0){
-    ajout_porte_salle(salle->salle, 3);
-    cmp++;
-    salle->gauche = 1;
-  }
-  else if(porte_arrivee == 3){
-    ajout_porte_salle(salle->salle, 3);
-    salle->gauche = 1;
-    cmp++;
-  }
-
-  if(cmp == 0 && max_porte > 0){
-
-    alea = rand()%4;
-
-    switch(alea){
-      case 0: salle->haut = 1; ajout_porte_salle(salle->salle, 0); break;
-      case 1: salle->droite = 1; ajout_porte_salle(salle->salle, 1); break;
-      case 2: salle->bas = 1; ajout_porte_salle(salle->salle, 2); break;
-      case 3: salle->gauche = 1; ajout_porte_salle(salle->salle, 3); break;
-    }
-    cmp++;
-  }
-
-  return cmp;
-}*/
-
-
 
 /**
-* \fn inverse_porte
+*\fn int inverse_porte(int porte)
 
-* \param porte, la porte que l'on souhaite inverser
+*\param porte, la porte que l'on souhaite inverser
 
-* \return l'inverse de la porte passée en paramètre
+*\return l'inverse de la porte passée en paramètre
 
-* \brief Renvoie l'opposée de la porte passée en paramètre
+*\brief Renvoie l'opposée de la porte passée en paramètre
 */
 int inverse_porte(int porte){
 
@@ -274,12 +189,12 @@ int inverse_porte(int porte){
 
 
 /**
-* \fn textures_aleatoires
+*\fn void textures_aleatoires(salle_t salles[], int taille)
 
-* \param salles[], le tableau contenant les salles du labyrinthe
-* \param taille, la taille de la salle
+*\param salles[], le tableau contenant les salles du labyrinthe
+*\param taille, la taille de la salle
 
-* \brief Permet de placer des textures différentes afin de varier le visuel des salles
+*\brief Permet de placer des textures différentes afin de varier le visuel des salles
 */
 void textures_aleatoires(salle_t salles[], int taille){
 
@@ -314,13 +229,12 @@ void textures_aleatoires(salle_t salles[], int taille){
 
 
 /**
-* \fn place_monstre_coffre_boss
+*\fn void place_monstre_coffre_boss(salle_t tab[], int taille)
 
-* \param tab[], tableau contenant les salles du labyrinthe
-* \param taille, taille du tableau
+*\param tab[], tableau contenant les salles du labyrinthe
+*\param taille, taille du tableau
 
-* \brief rempli les salles de monstres, de coffre ou place un boss
-
+*\brief rempli les salles de monstres, de coffre ou place un boss
 */
 void place_monstre_coffre_boss(salle_t tab[], int taille){
 
@@ -339,7 +253,7 @@ void place_monstre_coffre_boss(salle_t tab[], int taille){
       tab[i].pv2 = 1;
 
       //choix pour un monbre ou un coffre dans la salle
-      if(alea <= 7){
+      if(alea <= 8){
         tab[i].ennemi_present = 1;
 
         alea = rand()%8;
@@ -382,7 +296,6 @@ void place_monstre_coffre_boss(salle_t tab[], int taille){
       }
       //pas d'ennemi dans la salle
       else{
-        tab[i].ennemi_present = 0;
         tab[i].coffre = 1;
       }
     }

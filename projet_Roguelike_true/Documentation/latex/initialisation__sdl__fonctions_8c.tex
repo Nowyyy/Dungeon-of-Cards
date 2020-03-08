@@ -1,0 +1,147 @@
+\hypertarget{initialisation__sdl__fonctions_8c}{}\section{Référence du fichier initialisation\+\_\+sdl\+\_\+fonctions.\+c}
+\label{initialisation__sdl__fonctions_8c}\index{initialisation\+\_\+sdl\+\_\+fonctions.\+c@{initialisation\+\_\+sdl\+\_\+fonctions.\+c}}
+
+
+fonctions de la sdl pour son initialisation, fichier .c  
+
+
+{\ttfamily \#include \char`\"{}../include/constantes.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de initialisation\+\_\+sdl\+\_\+fonctions.\+c\+:
+% FIG 0
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{initialisation__sdl__fonctions_8c_a946b8c3da4a73e2b04c6e897425e7450}{initialisation\+\_\+sdl} (S\+D\+L\+\_\+\+Window $\ast$$\ast$window, S\+D\+L\+\_\+\+Renderer $\ast$$\ast$rendu)
+\begin{DoxyCompactList}\small\item\em Initialise et créé fenetre et rendu par leur pointeur, si une initialisation échoue, on détruit tout et on retourne 1 pour signifier une erreur. \end{DoxyCompactList}\item 
+void \hyperlink{initialisation__sdl__fonctions_8c_a4f2a701369fda6b4fed1b4da436cbb1d}{quit\+\_\+sdl} (S\+D\+L\+\_\+\+Renderer $\ast$$\ast$rendu, S\+D\+L\+\_\+\+Window $\ast$$\ast$window)
+\begin{DoxyCompactList}\small\item\em détruit les renderer et window passés en paramètre \end{DoxyCompactList}\item 
+int \hyperlink{initialisation__sdl__fonctions_8c_acdf700da33c3cfb9c437a634e37bc206}{init\+\_\+or\+\_\+quit\+\_\+ttf} (int action)
+\begin{DoxyCompactList}\small\item\em Initialise la librairie ttf. \end{DoxyCompactList}\item 
+void \hyperlink{initialisation__sdl__fonctions_8c_a9b2ba8c51c599a13e6d6a61e493f4bc3}{get\+\_\+text\+\_\+and\+\_\+rect} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, int x, int y, char $\ast$text, T\+T\+F\+\_\+\+Font $\ast$font, S\+D\+L\+\_\+\+Texture $\ast$$\ast$texture, S\+D\+L\+\_\+\+Rect $\ast$rect)
+\begin{DoxyCompactList}\small\item\em Modifie une texture et un rect afin d\textquotesingle{}afficher le texte aux coordonnées données sur le renderer avec la police. \end{DoxyCompactList}\item 
+int \hyperlink{initialisation__sdl__fonctions_8c_a627009429f149fc9407b6cba0f1a399a}{charge\+\_\+image} (char $\ast$path\+\_\+img, image\+\_\+t $\ast$struct\+\_\+image, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
+\begin{DoxyCompactList}\small\item\em charge une image dans une structure pouvant la contenir \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+fonctions de la sdl pour son initialisation, fichier .c 
+
+\begin{DoxyAuthor}{Auteur}
+\{Jourry Axel, Tudoret Aurélien, Malabry Thomas, Marin Timothée\} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/01/2020 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{initialisation__sdl__fonctions_8c_a627009429f149fc9407b6cba0f1a399a}\label{initialisation__sdl__fonctions_8c_a627009429f149fc9407b6cba0f1a399a}} 
+\index{initialisation\+\_\+sdl\+\_\+fonctions.\+c@{initialisation\+\_\+sdl\+\_\+fonctions.\+c}!charge\+\_\+image@{charge\+\_\+image}}
+\index{charge\+\_\+image@{charge\+\_\+image}!initialisation\+\_\+sdl\+\_\+fonctions.\+c@{initialisation\+\_\+sdl\+\_\+fonctions.\+c}}
+\subsubsection{\texorpdfstring{charge\+\_\+image()}{charge\_image()}}
+{\footnotesize\ttfamily int charge\+\_\+image (\begin{DoxyParamCaption}\item[{char $\ast$}]{path\+\_\+img,  }\item[{image\+\_\+t $\ast$}]{struct\+\_\+image,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu }\end{DoxyParamCaption})}
+
+
+
+charge une image dans une structure pouvant la contenir 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$path\+\_\+img} & contient le chemin et nom de l\textquotesingle{}image que l\textquotesingle{}on souhaite charger \\
+\hline
+{\em $\ast$struct\+\_\+image} & est une structure contenant les champs nécessaires pour afficher l\textquotesingle{}image \\
+\hline
+{\em $\ast$rendu} & est le rendu sur lequel on souhaite dessiner\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+1 si echec, 0 si réussite 
+\end{DoxyReturn}
+\mbox{\Hypertarget{initialisation__sdl__fonctions_8c_a9b2ba8c51c599a13e6d6a61e493f4bc3}\label{initialisation__sdl__fonctions_8c_a9b2ba8c51c599a13e6d6a61e493f4bc3}} 
+\index{initialisation\+\_\+sdl\+\_\+fonctions.\+c@{initialisation\+\_\+sdl\+\_\+fonctions.\+c}!get\+\_\+text\+\_\+and\+\_\+rect@{get\+\_\+text\+\_\+and\+\_\+rect}}
+\index{get\+\_\+text\+\_\+and\+\_\+rect@{get\+\_\+text\+\_\+and\+\_\+rect}!initialisation\+\_\+sdl\+\_\+fonctions.\+c@{initialisation\+\_\+sdl\+\_\+fonctions.\+c}}
+\subsubsection{\texorpdfstring{get\+\_\+text\+\_\+and\+\_\+rect()}{get\_text\_and\_rect()}}
+{\footnotesize\ttfamily void get\+\_\+text\+\_\+and\+\_\+rect (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{char $\ast$}]{text,  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{font,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$$\ast$}]{texture,  }\item[{S\+D\+L\+\_\+\+Rect $\ast$}]{rect }\end{DoxyParamCaption})}
+
+
+
+Modifie une texture et un rect afin d\textquotesingle{}afficher le texte aux coordonnées données sur le renderer avec la police. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer,le} & rendu sur lequel on va dessiner le texte \\
+\hline
+{\em x,la} & position x a laquelle sera le texte \\
+\hline
+{\em y,la} & position y a laquelle sera le texte \\
+\hline
+{\em $\ast$text,le} & texte que l\textquotesingle{}on souhaite dessiner à l\textquotesingle{}écran \\
+\hline
+{\em $\ast$font,la} & police utilisée pour écrire \\
+\hline
+{\em $\ast$$\ast$texture,la} & texture qui contiendra le texte \\
+\hline
+{\em $\ast$rect,le} & rectangle qui contiendra la texture \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{initialisation__sdl__fonctions_8c_acdf700da33c3cfb9c437a634e37bc206}\label{initialisation__sdl__fonctions_8c_acdf700da33c3cfb9c437a634e37bc206}} 
+\index{initialisation\+\_\+sdl\+\_\+fonctions.\+c@{initialisation\+\_\+sdl\+\_\+fonctions.\+c}!init\+\_\+or\+\_\+quit\+\_\+ttf@{init\+\_\+or\+\_\+quit\+\_\+ttf}}
+\index{init\+\_\+or\+\_\+quit\+\_\+ttf@{init\+\_\+or\+\_\+quit\+\_\+ttf}!initialisation\+\_\+sdl\+\_\+fonctions.\+c@{initialisation\+\_\+sdl\+\_\+fonctions.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+or\+\_\+quit\+\_\+ttf()}{init\_or\_quit\_ttf()}}
+{\footnotesize\ttfamily int init\+\_\+or\+\_\+quit\+\_\+ttf (\begin{DoxyParamCaption}\item[{int}]{action }\end{DoxyParamCaption})}
+
+
+
+Initialise la librairie ttf. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em action,permet} & de définir si l\textquotesingle{}on souhaite initialiser ttf ou le fermer\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 si tout c\textquotesingle{}est bien passé, 1 si une erreur est apparue 
+\end{DoxyReturn}
+\mbox{\Hypertarget{initialisation__sdl__fonctions_8c_a946b8c3da4a73e2b04c6e897425e7450}\label{initialisation__sdl__fonctions_8c_a946b8c3da4a73e2b04c6e897425e7450}} 
+\index{initialisation\+\_\+sdl\+\_\+fonctions.\+c@{initialisation\+\_\+sdl\+\_\+fonctions.\+c}!initialisation\+\_\+sdl@{initialisation\+\_\+sdl}}
+\index{initialisation\+\_\+sdl@{initialisation\+\_\+sdl}!initialisation\+\_\+sdl\+\_\+fonctions.\+c@{initialisation\+\_\+sdl\+\_\+fonctions.\+c}}
+\subsubsection{\texorpdfstring{initialisation\+\_\+sdl()}{initialisation\_sdl()}}
+{\footnotesize\ttfamily int initialisation\+\_\+sdl (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Window $\ast$$\ast$}]{window,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$$\ast$}]{rendu }\end{DoxyParamCaption})}
+
+
+
+Initialise et créé fenetre et rendu par leur pointeur, si une initialisation échoue, on détruit tout et on retourne 1 pour signifier une erreur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$$\ast$window} & contiendra la fenetre du jeu \\
+\hline
+{\em $\ast$$\ast$rendu} & est le rendu dans la fenetre sur lequel on dessinera par la suite\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 si tout c\textquotesingle{}est bien passé, 1 si une erreur est apparue 
+\end{DoxyReturn}
+\mbox{\Hypertarget{initialisation__sdl__fonctions_8c_a4f2a701369fda6b4fed1b4da436cbb1d}\label{initialisation__sdl__fonctions_8c_a4f2a701369fda6b4fed1b4da436cbb1d}} 
+\index{initialisation\+\_\+sdl\+\_\+fonctions.\+c@{initialisation\+\_\+sdl\+\_\+fonctions.\+c}!quit\+\_\+sdl@{quit\+\_\+sdl}}
+\index{quit\+\_\+sdl@{quit\+\_\+sdl}!initialisation\+\_\+sdl\+\_\+fonctions.\+c@{initialisation\+\_\+sdl\+\_\+fonctions.\+c}}
+\subsubsection{\texorpdfstring{quit\+\_\+sdl()}{quit\_sdl()}}
+{\footnotesize\ttfamily void quit\+\_\+sdl (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$$\ast$}]{rendu,  }\item[{S\+D\+L\+\_\+\+Window $\ast$$\ast$}]{window }\end{DoxyParamCaption})}
+
+
+
+détruit les renderer et window passés en paramètre 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$$\ast$window} & contient la fenetre du jeu que l\textquotesingle{}on veut détruire \\
+\hline
+{\em $\ast$$\ast$rendu} & est le rendu dans la fenetre que l\textquotesingle{}on veut détruire\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 si tout c\textquotesingle{}est bien passé, 1 si une erreur est apparue 
+\end{DoxyReturn}

@@ -13,11 +13,11 @@
 
 
 /**
-* \fn save_existe
+*\fn int save_existe()
 
-* \return Retourne 1 si une sauvegarde existe, 0 sinon
+*\return Retourne 1 si une sauvegarde existe, 0 sinon
 
-* \brief Regarde si une sauvegarde existe
+*\brief Regarde si une sauvegarde existe
 */
 int save_existe(){
 

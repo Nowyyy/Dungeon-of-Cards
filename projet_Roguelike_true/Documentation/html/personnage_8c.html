@@ -1,0 +1,632 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Dungeon of Cards: Référence du fichier personnage.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Dungeon of Cards
+   &#160;<span id="projectnumber">1</span>
+   </div>
+   <div id="projectbrief">Ce projet à pour but de créer un jeu roguelike pour le module Projet de notre seconde année de licence</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier personnage.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gère toute la partie concernant le personnage.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;../include/constantes.h&quot;</code><br />
+<code>#include &quot;../include/initialisation_sdl_fonctions.h&quot;</code><br />
+<code>#include &quot;../include/clavier.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de personnage.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="personnage_8c__incl.png" border="0" usemap="#personnage_8c" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a268829dc6c85b9473a074eb2f9c122d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="personnage_8c.html#a268829dc6c85b9473a074eb2f9c122d4">charge_sprites_personnage</a> (image_t sprites[], SDL_Renderer *rendu)</td></tr>
+<tr class="memdesc:a268829dc6c85b9473a074eb2f9c122d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui charge tous les sprites du personnage  <a href="#a268829dc6c85b9473a074eb2f9c122d4">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a268829dc6c85b9473a074eb2f9c122d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7ec414a47a9f81c27ac3ae34666e621"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="personnage_8c.html#aa7ec414a47a9f81c27ac3ae34666e621">test_collision</a> (salle_t salle, perso_t pers, int direction)</td></tr>
+<tr class="memdesc:aa7ec414a47a9f81c27ac3ae34666e621"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet de regarder si le personnage entre en collision avec un des murs de la salle  <a href="#aa7ec414a47a9f81c27ac3ae34666e621">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa7ec414a47a9f81c27ac3ae34666e621"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8bc861d999d116d1d6b93be954a9c7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="personnage_8c.html#ab8bc861d999d116d1d6b93be954a9c7e">init_animations</a> (animation_t *anim)</td></tr>
+<tr class="memdesc:ab8bc861d999d116d1d6b93be954a9c7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise la structure d'animations.  <a href="#ab8bc861d999d116d1d6b93be954a9c7e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab8bc861d999d116d1d6b93be954a9c7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec71a35c8d05712c6c14e86bc93ba2a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="personnage_8c.html#aec71a35c8d05712c6c14e86bc93ba2a3">change_animation</a> (animation_t *anim, image_t sprites[], int nouvelle_animation)</td></tr>
+<tr class="memdesc:aec71a35c8d05712c6c14e86bc93ba2a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet de changer d'animation selon la nouvelle passée en paramètre  <a href="#aec71a35c8d05712c6c14e86bc93ba2a3">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aec71a35c8d05712c6c14e86bc93ba2a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a077c16328a6af89e080980aebbb2ed58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="personnage_8c.html#a077c16328a6af89e080980aebbb2ed58">animations_personnage</a> (image_t sprites[], unsigned int timer, touches_t clavier, animation_t *anim, Mix_Chunk *footsteps)</td></tr>
+<tr class="memdesc:a077c16328a6af89e080980aebbb2ed58"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet de changer d'animation selon le déplacement du personnage  <a href="#a077c16328a6af89e080980aebbb2ed58">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a077c16328a6af89e080980aebbb2ed58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab64e8e27a88db2c970630904f7d9962"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="personnage_8c.html#aab64e8e27a88db2c970630904f7d9962">deplacement_personnage</a> (perso_t *pers, salle_t salle, int *continuer, animation_t *anim, Mix_Chunk *footsteps, touches_t *clavier)</td></tr>
+<tr class="memdesc:aab64e8e27a88db2c970630904f7d9962"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère les déplacement du personnage dans une salle.  <a href="#aab64e8e27a88db2c970630904f7d9962">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aab64e8e27a88db2c970630904f7d9962"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74f1cab9f9b642e407f86883189090d6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="personnage_8c.html#a74f1cab9f9b642e407f86883189090d6">changement_de_salle</a> (perso_t *pers, salle_t salle, int indice, Mix_Chunk *change_salle)</td></tr>
+<tr class="memdesc:a74f1cab9f9b642e407f86883189090d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet de téléporter le personnage dans la salle dont il passe la porter  <a href="#a74f1cab9f9b642e407f86883189090d6">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a74f1cab9f9b642e407f86883189090d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac7caf413c5c0bcee056174d8ee983d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="personnage_8c.html#aac7caf413c5c0bcee056174d8ee983d2">initialise_personnage</a> (perso_t *pers)</td></tr>
+<tr class="memdesc:aac7caf413c5c0bcee056174d8ee983d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise les valeurs de base pour le personnage  <a href="#aac7caf413c5c0bcee056174d8ee983d2">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aac7caf413c5c0bcee056174d8ee983d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a164a6183e890b64230e0d534fb32734c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="personnage_8c.html#a164a6183e890b64230e0d534fb32734c">collision_perso_ennemi</a> (perso_t pers, ennemi_t ennemi, int x, int y)</td></tr>
+<tr class="memdesc:a164a6183e890b64230e0d534fb32734c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie la collision ou non entre un ennemi spécifique et le joueur.  <a href="#a164a6183e890b64230e0d534fb32734c">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a164a6183e890b64230e0d534fb32734c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d1b81f2e14ad354088835416a58d147"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="personnage_8c.html#a0d1b81f2e14ad354088835416a58d147">combat_declenche</a> (salle_t salle, perso_t pers, ennemi_t ennemi)</td></tr>
+<tr class="memdesc:a0d1b81f2e14ad354088835416a58d147"><td class="mdescLeft">&#160;</td><td class="mdescRight">Regarde si le personnage entre en combat avec un ennemi dans la salle.  <a href="#a0d1b81f2e14ad354088835416a58d147">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0d1b81f2e14ad354088835416a58d147"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc28a0bae05f1bc308a30f9598766d07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="personnage_8c.html#afc28a0bae05f1bc308a30f9598766d07">creer_texture_depuis_char</a> (image_t *texte_pv, image_t *texte_etage, perso_t perso, SDL_Renderer *rendu)</td></tr>
+<tr class="memdesc:afc28a0bae05f1bc308a30f9598766d07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée des images à partir de texte issu des données du personnage, range ces images dans les structures correspondantes.  <a href="#afc28a0bae05f1bc308a30f9598766d07">Plus de détails...</a><br /></td></tr>
+<tr class="separator:afc28a0bae05f1bc308a30f9598766d07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Gère toute la partie concernant le personnage. </p>
+<dl class="section author"><dt>Auteur</dt><dd>{Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas} </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>04/02/2020 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a077c16328a6af89e080980aebbb2ed58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a077c16328a6af89e080980aebbb2ed58">&#9670;&nbsp;</a></span>animations_personnage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void animations_personnage </td>
+          <td>(</td>
+          <td class="paramtype">image_t&#160;</td>
+          <td class="paramname"><em>sprites</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>timer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">touches_t&#160;</td>
+          <td class="paramname"><em>clavier</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">animation_t *&#160;</td>
+          <td class="paramname"><em>anim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>footsteps</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>permet de changer d'animation selon le déplacement du personnage </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sprites[],le</td><td>tableau de sprites du personnage </td></tr>
+    <tr><td class="paramname">timer,le</td><td>temps d'execution du jeu </td></tr>
+    <tr><td class="paramname">clavier,la</td><td>structure de touches du clavier </td></tr>
+    <tr><td class="paramname">*anim,la</td><td>structure qui gère les animations </td></tr>
+    <tr><td class="paramname">*footsteps,les</td><td>sons de pas du personnage </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aec71a35c8d05712c6c14e86bc93ba2a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec71a35c8d05712c6c14e86bc93ba2a3">&#9670;&nbsp;</a></span>change_animation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void change_animation </td>
+          <td>(</td>
+          <td class="paramtype">animation_t *&#160;</td>
+          <td class="paramname"><em>anim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">image_t&#160;</td>
+          <td class="paramname"><em>sprites</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nouvelle_animation</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>permet de changer d'animation selon la nouvelle passée en paramètre </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sprites[],le</td><td>tableau de sprites du personnage </td></tr>
+    <tr><td class="paramname">*anim,la</td><td>structure qui gère les animations </td></tr>
+    <tr><td class="paramname">nouvelle_animation,l'indice</td><td>du tableau ou se trouve la nouvelle animation a utiliser </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a74f1cab9f9b642e407f86883189090d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74f1cab9f9b642e407f86883189090d6">&#9670;&nbsp;</a></span>changement_de_salle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int changement_de_salle </td>
+          <td>(</td>
+          <td class="paramtype">perso_t *&#160;</td>
+          <td class="paramname"><em>pers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">salle_t&#160;</td>
+          <td class="paramname"><em>salle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>indice</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>change_salle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>permet de téléporter le personnage dans la salle dont il passe la porter </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*pers,la</td><td>structure du personnage </td></tr>
+    <tr><td class="paramname">*salle,la</td><td>salle dans laquelle on se trouve </td></tr>
+    <tr><td class="paramname">*continuer</td><td>la variable permettant de quitter le jeu </td></tr>
+    <tr><td class="paramname">*change_salle,le</td><td>son de changement de salle</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>la salle dans laquelle le joueur arrive </dd></dl>
+
+</div>
+</div>
+<a id="a268829dc6c85b9473a074eb2f9c122d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a268829dc6c85b9473a074eb2f9c122d4">&#9670;&nbsp;</a></span>charge_sprites_personnage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void charge_sprites_personnage </td>
+          <td>(</td>
+          <td class="paramtype">image_t&#160;</td>
+          <td class="paramname"><em>sprites</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fonction qui charge tous les sprites du personnage </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sprites[],tableau</td><td>qui contiendra tous les sprites du personnage </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>rendu sur lequel on dessinera le personnage </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a164a6183e890b64230e0d534fb32734c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a164a6183e890b64230e0d534fb32734c">&#9670;&nbsp;</a></span>collision_perso_ennemi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int collision_perso_ennemi </td>
+          <td>(</td>
+          <td class="paramtype">perso_t&#160;</td>
+          <td class="paramname"><em>pers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ennemi_t&#160;</td>
+          <td class="paramname"><em>ennemi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie la collision ou non entre un ennemi spécifique et le joueur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pers,la</td><td>structure du personnage </td></tr>
+    <tr><td class="paramname">ennemi,l'ennemi</td><td>présent dans la salle </td></tr>
+    <tr><td class="paramname">x</td><td></td></tr>
+    <tr><td class="paramname">y</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>TRUE si une collision a lieu, FALSE sinon </dd></dl>
+
+</div>
+</div>
+<a id="a0d1b81f2e14ad354088835416a58d147"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d1b81f2e14ad354088835416a58d147">&#9670;&nbsp;</a></span>combat_declenche()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int combat_declenche </td>
+          <td>(</td>
+          <td class="paramtype">salle_t&#160;</td>
+          <td class="paramname"><em>salle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">perso_t&#160;</td>
+          <td class="paramname"><em>pers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ennemi_t&#160;</td>
+          <td class="paramname"><em>ennemi</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Regarde si le personnage entre en combat avec un ennemi dans la salle. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">salle,la</td><td>salle du labyrinthe dans laquelle on se situe </td></tr>
+    <tr><td class="paramname">pers,la</td><td>structure du personnage </td></tr>
+    <tr><td class="paramname">ennemi,l'ennemi</td><td>présent dans la salle</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>TRUE si une collision est detéctée avec un ennemi, FALSE sinon </dd></dl>
+
+</div>
+</div>
+<a id="afc28a0bae05f1bc308a30f9598766d07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc28a0bae05f1bc308a30f9598766d07">&#9670;&nbsp;</a></span>creer_texture_depuis_char()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void creer_texture_depuis_char </td>
+          <td>(</td>
+          <td class="paramtype">image_t *&#160;</td>
+          <td class="paramname"><em>texte_pv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">image_t *&#160;</td>
+          <td class="paramname"><em>texte_etage</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">perso_t&#160;</td>
+          <td class="paramname"><em>perso</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crée des images à partir de texte issu des données du personnage, range ces images dans les structures correspondantes. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*texte_pv,une</td><td>structure qui contiendra l'image du texte a afficher </td></tr>
+    <tr><td class="paramname">*texte_etage,une</td><td>structure qui contiendra l'image du texte a afficher </td></tr>
+    <tr><td class="paramname">pers,le</td><td>personnage à partir duquel on va récupérer des informations </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aab64e8e27a88db2c970630904f7d9962"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab64e8e27a88db2c970630904f7d9962">&#9670;&nbsp;</a></span>deplacement_personnage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void deplacement_personnage </td>
+          <td>(</td>
+          <td class="paramtype">perso_t *&#160;</td>
+          <td class="paramname"><em>pers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">salle_t&#160;</td>
+          <td class="paramname"><em>salle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>continuer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">animation_t *&#160;</td>
+          <td class="paramname"><em>anim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>footsteps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">touches_t *&#160;</td>
+          <td class="paramname"><em>clavier</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gère les déplacement du personnage dans une salle. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pers,la</td><td>structure du pêrsonnage que l'on souhaite déplacer </td></tr>
+    <tr><td class="paramname">salle,la</td><td>salle dans laquelle le personnage se déplace </td></tr>
+    <tr><td class="paramname">*continuer,pointeur</td><td>sur variable permettant de savoir si le joueur souhaite quitter le programme </td></tr>
+    <tr><td class="paramname">*footsteps,les</td><td>sons de pas du personnage </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab8bc861d999d116d1d6b93be954a9c7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8bc861d999d116d1d6b93be954a9c7e">&#9670;&nbsp;</a></span>init_animations()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_animations </td>
+          <td>(</td>
+          <td class="paramtype">animation_t *&#160;</td>
+          <td class="paramname"><em>anim</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise la structure d'animations. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*anim,la</td><td>structure qui gère les animations </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aac7caf413c5c0bcee056174d8ee983d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac7caf413c5c0bcee056174d8ee983d2">&#9670;&nbsp;</a></span>initialise_personnage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initialise_personnage </td>
+          <td>(</td>
+          <td class="paramtype">perso_t *&#160;</td>
+          <td class="paramname"><em>pers</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initialise les valeurs de base pour le personnage </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*pers,la</td><td>structure du personnage </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa7ec414a47a9f81c27ac3ae34666e621"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7ec414a47a9f81c27ac3ae34666e621">&#9670;&nbsp;</a></span>test_collision()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int test_collision </td>
+          <td>(</td>
+          <td class="paramtype">salle_t&#160;</td>
+          <td class="paramname"><em>salle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">perso_t&#160;</td>
+          <td class="paramname"><em>pers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>direction</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>permet de regarder si le personnage entre en collision avec un des murs de la salle </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">salle,la</td><td>salle pour laquelle on test les collisions </td></tr>
+    <tr><td class="paramname">pers,le</td><td>personnage pour lequel on test les collisions </td></tr>
+    <tr><td class="paramname">direction,la</td><td>direction dans laquelle se rend le personnage</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>1 en cas de collision, 0 si aucune collision </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

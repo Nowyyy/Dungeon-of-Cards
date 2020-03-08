@@ -1,11 +1,10 @@
 /**
-* \file clavier.c
-* \author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
-* \date 04/02/2020
-* \version 0.1
+*\file clavier.c
+*\author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
+*\date 04/02/2020
+*\version 0.1
 
-* \brief Gère toute les évènements au clavier
-
+*\brief Gère toute les évènements au clavier
 */
 
 
@@ -15,13 +14,11 @@
 
 
 /**
-* \fn init_tab_clavier
+*\fn void init_tab_clavier(int tab[])
 
-* \param tab[], le tableau contenant les touches du clavier
+*\param tab[], le tableau contenant les touches du clavier
 
-
-* \brief initialise le tableau d'evenement
-
+*\brief initialise le tableau d'evenement
 */
 void init_tab_clavier(int tab[]){
 
@@ -30,14 +27,13 @@ void init_tab_clavier(int tab[]){
 }
 
 /**
-* \fn event_clavier
+*\fn void event_clavier(touches_t *clavier, SDL_Event event)
 
-* \param *clavier, la structure contenant les touches du clavier
+*\param *clavier, la structure contenant les touches du clavier
 
-* \param event, l'evenement lu au clavier
+*\param event, l'evenement lu au clavier
 
-* \brief Range dans un tableau les evenements lus au clavier
-
+*\brief Range dans un tableau les evenements lus au clavier
 */
 void event_clavier(touches_t *clavier, SDL_Event event){
 

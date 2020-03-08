@@ -1,11 +1,10 @@
 /**
-* \file chargement.c
-* \author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
-* \date 18/02/2020
-* \version 0.1
+*\file chargement.c
+*\author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
+*\date 18/02/2020
+*\version 0.1
 
-* \brief Gère toute la partie concernant le chargement de partie
-
+*\brief Gère toute la partie concernant le chargement de partie
 */
 
 #include "../include/constantes.h"
@@ -15,17 +14,16 @@
 
 
 /**
-* \fn affichage_chagrer_partie
+*\fn void afficher_chagrer_partie(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture *charger_texture, SDL_Rect charger_rect, SDL_Texture *retour_texture, SDL_Rect retour_rect)
 
-* \param*rendu, le renderer sur lequel on dessine
-* \param rect_sel, le rectangle de sélection du menu
-* \param *charger_texture la texture pour le texte "Charger partie"
-* \param *retour_texture la texture pour le texte "Quitter"
-* \param charger_rect le rectangle pour charger une sauvegarde
-* \param retour_rect le rectangle pour le texte "retour"
+*\param*rendu, le renderer sur lequel on dessine
+*\param rect_sel, le rectangle de sélection du menu
+*\param *charger_texture la texture pour le texte "Charger partie"
+*\param *retour_texture la texture pour le texte "Quitter"
+*\param charger_rect le rectangle pour charger une sauvegarde
+*\param retour_rect le rectangle pour le texte "retour"
 
-* \brief Affiche sur le rendu les différentes textures et rectangles passés en paramètre
-
+*\brief Affiche sur le rendu les différentes textures et rectangles passés en paramètre
 */
 void afficher_chagrer_partie(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture *charger_texture, SDL_Rect charger_rect, SDL_Texture *retour_texture, SDL_Rect retour_rect){
 
@@ -47,18 +45,18 @@ void afficher_chagrer_partie(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture
 
 
 /**
-* \fn deplacement_rectangle_selection
+*\fn int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SDL_Rect retour_rect, SDL_Rect **rect_sel, Mix_Chunk *select, Mix_Chunk *move)
 
-* \param *etat, permet de changer l'affuchage selon l'écran dans lequel se trouve le jeu
-* \param charger_rect, le rectangle contenant le texte relatif à la sauvegarde
-* \param retour_rect, le rectangle contenant le texte "retour", pour retourner au menu principal
-* \param **rect_sel, le rectangle de sélection permettant de sélectionner une option
-* \param *select, le son quand on sélectionne une option
-* \param *move, le son quand on se déplace dans le menu
+*\param *etat, permet de changer l'affuchage selon l'écran dans lequel se trouve le jeu
+*\param charger_rect, le rectangle contenant le texte relatif à la sauvegarde
+*\param retour_rect, le rectangle contenant le texte "retour", pour retourner au menu principal
+*\param **rect_sel, le rectangle de sélection permettant de sélectionner une option
+*\param *select, le son quand on sélectionne une option
+*\param *move, le son quand on se déplace dans le menu
 
-* \brief Permet de déplacer d'option en option le rectangle de sélection
+*\brief Permet de déplacer d'option en option le rectangle de sélection
 
-* \return retourne False pour fermer la fenetre, True pour la garder  ouverte
+*\return retourne False pour fermer la fenetre, True pour la garder  ouverte
 */
 int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SDL_Rect retour_rect, SDL_Rect **rect_sel, Mix_Chunk *select, Mix_Chunk *move){
 
@@ -108,18 +106,17 @@ int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SD
 
 
 /**
-* \fn menu_charger_partie
+*\fn void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *select, Mix_Chunk *move, perso_t *pers, carte_t *cartes)
 
-* \param *continuer, pointeur sur un int permettant de savoir si le joueur veut quitter le jeu
-* \param *etat, pointeur sur un int permettant de connaitre le prochain écran auquel le joueur veut accèder
-* \param *rendu, le renderer sur lequel on dessine
-* \param *police, la police d'écriture pour TTF
-* \param *select, le son quand on sélectionne une option
-* \param *move, le son quand on se déplace dans le menu
-* \param *pers, la structure du personnage
+*\param *continuer, pointeur sur un int permettant de savoir si le joueur veut quitter le jeu
+*\param *etat, pointeur sur un int permettant de connaitre le prochain écran auquel le joueur veut accèder
+*\param *rendu, le renderer sur lequel on dessine
+*\param *police, la police d'écriture pour TTF
+*\param *select, le son quand on sélectionne une option
+*\param *move, le son quand on se déplace dans le menu
+*\param *pers, la structure du personnage
 
-* \brief Permet d'afficher et de récupèrer une sauvegarde éventuelle puis de lancer le jeu
-
+*\brief Permet d'afficher et de récupèrer une sauvegarde éventuelle puis de lancer le jeu
 */
 void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *select, Mix_Chunk *move, perso_t *pers, carte_t *cartes){
 

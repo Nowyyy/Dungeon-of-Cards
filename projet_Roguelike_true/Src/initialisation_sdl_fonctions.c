@@ -1,23 +1,21 @@
 /**
-* \file initialisation_sdl_fonctions.c
-* \author {Jourry Axel, Tudoret Aurélien, Malabry Thomas, Marin Timothée}
-* \date 30/01/2020
-* \version 0.1
-* \brief fonctions de la sdl pour son initialisation, fichier .c
-
+*\file initialisation_sdl_fonctions.c
+*\author {Jourry Axel, Tudoret Aurélien, Malabry Thomas, Marin Timothée}
+*\date 30/01/2020
+*\version 0.1
+*\brief fonctions de la sdl pour son initialisation, fichier .c
 */
 #include "../include/constantes.h"
 
 /**
-* \fn initialisation_sdl
+*\fn int initialisation_sdl(SDL_Window **window, SDL_Renderer **rendu)
 
-* \param **window contiendra la fenetre du jeu
-* \param **rendu est le rendu dans la fenetre sur lequel on dessinera par la suite
+*\param **window contiendra la fenetre du jeu
+*\param **rendu est le rendu dans la fenetre sur lequel on dessinera par la suite
 
-* \return 0 si tout c'est bien passé, 1 si une erreur est apparue 
+*\return 0 si tout c'est bien passé, 1 si une erreur est apparue 
 
-
-* \brief Initialise et créé fenetre et rendu par leur pointeur, si une initialisation échoue, on détruit tout et on retourne 1 pour signifier une erreur
+*\brief Initialise et créé fenetre et rendu par leur pointeur, si une initialisation échoue, on détruit tout et on retourne 1 pour signifier une erreur
 */
 int initialisation_sdl(SDL_Window **window, SDL_Renderer **rendu){
 	
@@ -41,15 +39,14 @@ int initialisation_sdl(SDL_Window **window, SDL_Renderer **rendu){
 
 
 /**
-* \fn quit_sdl
+*\fn void quit_sdl(SDL_Renderer **rendu, SDL_Window **window)
 
-* \param **window contient la fenetre du jeu que l'on veut détruire
-* \param **rendu est le rendu dans la fenetre que l'on veut détruire
+*\param **window contient la fenetre du jeu que l'on veut détruire
+*\param **rendu est le rendu dans la fenetre que l'on veut détruire
 
-* \return 0 si tout c'est bien passé, 1 si une erreur est apparue 
+*\return 0 si tout c'est bien passé, 1 si une erreur est apparue 
 
-
-* \brief détruit les renderer et window passés en paramètre
+*\brief détruit les renderer et window passés en paramètre
 */
 void quit_sdl(SDL_Renderer **rendu, SDL_Window **window){
 	SDL_DestroyRenderer(*rendu);
@@ -60,14 +57,13 @@ void quit_sdl(SDL_Renderer **rendu, SDL_Window **window){
 
 
 /** 
-* \fn init_or_quit_ttf
+*\fn int init_or_quit_ttf(int action)
 
-* \param action, permet de définir si l'on souhaite initialiser ttf ou le fermer
+*\param action, permet de définir si l'on souhaite initialiser ttf ou le fermer
 
-* \return 0 si tout c'est bien passé, 1 si une erreur est apparue 
+*\return 0 si tout c'est bien passé, 1 si une erreur est apparue 
 
-
-* \brief Initialise la librairie ttf
+*\brief Initialise la librairie ttf
 */
 int init_or_quit_ttf(int action){
 
@@ -86,18 +82,17 @@ int init_or_quit_ttf(int action){
 
 
 /** 
-* \fn get_text_and_rect
+*\fn extern void get_text_and_rect(SDL_Renderer *renderer, int x, int y, char *text,TTF_Font *font, SDL_Texture **texture, SDL_Rect *rect)
 
-* \param renderer, le rendu sur lequel on va dessiner le texte
-* \param x, la position x a laquelle sera le texte
-* \param y, la position y a laquelle sera le texte
-* \param *text, le texte que l'on souhaite dessiner à l'écran
-* \param *font, la police utilisée pour écrire
-* \param **texture, la texture qui contiendra le texte
-* \param *rect, le rectangle qui contiendra la texture
+*\param renderer, le rendu sur lequel on va dessiner le texte
+*\param x, la position x a laquelle sera le texte
+*\param y, la position y a laquelle sera le texte
+*\param *text, le texte que l'on souhaite dessiner à l'écran
+*\param *font, la police utilisée pour écrire
+*\param **texture, la texture qui contiendra le texte
+*\param *rect, le rectangle qui contiendra la texture
 
-
-* \brief Modifie une texture et un rect afin d'afficher le texte aux coordonnées données sur le renderer avec la police
+*\brief Modifie une texture et un rect afin d'afficher le texte aux coordonnées données sur le renderer avec la police
 */
 extern void get_text_and_rect(SDL_Renderer *renderer, int x, int y, char *text,TTF_Font *font, SDL_Texture **texture, SDL_Rect *rect){
 
@@ -122,15 +117,15 @@ extern void get_text_and_rect(SDL_Renderer *renderer, int x, int y, char *text,T
 
 
 /**
-* \fn charge_image
+*\fn int charge_image(char *path_img, image_t *struct_image, SDL_Renderer *rendu)
 
-* \param *path_img contient le chemin et nom de l'image que l'on souhaite charger
-* \param *struct_image est une structure contenant les  champs nécessaires pour afficher l'image
-* \param *rendu est le rendu sur lequel on souhaite dessiner
+*\param *path_img contient le chemin et nom de l'image que l'on souhaite charger
+*\param *struct_image est une structure contenant les  champs nécessaires pour afficher l'image
+*\param *rendu est le rendu sur lequel on souhaite dessiner
 
-* \brief charge une image dans une structure pouvant la contenir
+*\brief charge une image dans une structure pouvant la contenir
 
-* \return 1 si echec, 0 si réussite
+*\return 1 si echec, 0 si réussite
 */
 int charge_image(char *path_img, image_t *struct_image, SDL_Renderer *rendu){
 

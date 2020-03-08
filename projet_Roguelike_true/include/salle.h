@@ -1,17 +1,7 @@
 void init_salle(int salle[TAILLE_SALLE][TAILLE_SALLE]);
 void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction);
-int aleatoire_porte(salle_t *salle, int porte_arrivee, int max_porte);
 void afficher_salle(salle_t *salle, SDL_Renderer *rendu, image_t texture[]);
 void rempli_tableau_murs_portes(salle_t salle[], int indiceT);
-void ferme_porte_inutile(salle_t salles[], int indice);
 int inverse_porte(int porte);
-int porte_libre_existe(salle_t salle, int porte_libre);
-void verifie_porte_ouverte(salle_t salles[], int indice, int taille);
-int porte_disponible(salle_t salles[], int indice, int porte_possible);
-int rajoute_salle_ou_ferme_porte(salle_t salles[], int deb, int fin, int porte, int taille_max);
 void textures_aleatoires(salle_t salles[], int taille);
-int remplit_tab_salle_0(salle_t salle, int tab[]);
-int cherche_acces_salle(salle_t salle, int tab[], int tailleTab);
-void verifie_salles_accessibles(salle_t salles[], int taille);
-void lie_salles_et_cree_portes(salle_t salles[], int salle1, int salle2);
 void place_monstre_coffre_boss(salle_t salles[], int taille);

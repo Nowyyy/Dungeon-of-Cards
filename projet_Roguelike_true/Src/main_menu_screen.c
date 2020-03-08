@@ -1,11 +1,10 @@
 /**
-* \file main_menu_screen.c
-* \author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
-* \date 30/01/2020
-* \version 0.1
+*\file main_menu_screen.c
+*\author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
+*\date 30/01/2020
+*\version 0.1
 
-* \brief Gère toute la partie représentant le menu principal du jeu
-
+*\brief Gère toute la partie représentant le menu principal du jeu
 */
 
 #include "../include/constantes.h"
@@ -14,17 +13,18 @@
 
 
 /**
-* \fn deplacement_rectangle_selection
-* \param jouer, le rectangle contenant le texte "Commencer partie"
-* \param charger, le rectangle contenant le texte "Charger partie"
-* \param quitter, le rectangle contenant le texte "Quitter"
-* \param *rect_sel, le rectangle de sélection permettant de sélectionner une option
-* \param *select, le son quand on sélectionne une option
-* \param *move, le son quand on se déplace dans le menu
+*\fn int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect quitter, SDL_Rect **rect_sel, int *etat, Mix_Chunk *select, Mix_Chunk *move)
 
-* \brief Permet de déplacer d'option en option le rectangle de sélection
+*\param jouer, le rectangle contenant le texte "Commencer partie"
+*\param charger, le rectangle contenant le texte "Charger partie"
+*\param quitter, le rectangle contenant le texte "Quitter"
+*\param *rect_sel, le rectangle de sélection permettant de sélectionner une option
+*\param *select, le son quand on sélectionne une option
+*\param *move, le son quand on se déplace dans le menu
 
-* \return retourne False pour fermer la fenetre, True pour la garder  ouverte
+*\brief Permet de déplacer d'option en option le rectangle de sélection
+
+*\return retourne False pour fermer la fenetre, True pour la garder  ouverte
 */
 int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect quitter, SDL_Rect **rect_sel, int *etat, Mix_Chunk *select, Mix_Chunk *move){
 
@@ -89,19 +89,18 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 }
 
 /**
-* \fn affichage_menu
+*\fn void affichage_menu(SDL_Renderer *rendu, SDL_Texture *jouer_text, SDL_Texture *charger_text, SDL_Texture *quitter_text, SDL_Rect *rect_sel, SDL_Rect jouer_rect, SDL_Rect charger_rect, SDL_Rect quitter_rect, image_t logo[])
 
-* \param *rendu, le rendu sur lequel on dessine
-* \param *jouer_text la texture pour le texte "Commencer partie"
-* \param *charger_text la texture pour le texte "Charger partie"
-* \param *quitter_text la texture pour le texte "Quitter"
-* \param jouer_rect le rectangle pour le texte "Commencer partie"
-* \param jouer_rect le rectangle pour le texte "Charger partie"
-* \param quitter_rect le rectangle pour le texte "Quitter"
-* \param rect_sel le rectangle de sélection
+*\param *rendu, le rendu sur lequel on dessine
+*\param *jouer_text la texture pour le texte "Commencer partie"
+*\param *charger_text la texture pour le texte "Charger partie"
+*\param *quitter_text la texture pour le texte "Quitter"
+*\param jouer_rect le rectangle pour le texte "Commencer partie"
+*\param jouer_rect le rectangle pour le texte "Charger partie"
+*\param quitter_rect le rectangle pour le texte "Quitter"
+*\param rect_sel le rectangle de sélection
 
-* \brief Affiche sur le rendu les différentes textures et rectangles passés en paramètre
-
+*\brief Affiche sur le rendu les différentes textures et rectangles passés en paramètre
 */
 void affichage_menu(SDL_Renderer *rendu, SDL_Texture *jouer_text, SDL_Texture *charger_text, SDL_Texture *quitter_text, SDL_Rect *rect_sel, SDL_Rect jouer_rect, SDL_Rect charger_rect, SDL_Rect quitter_rect, image_t logo[]){
 
@@ -129,16 +128,17 @@ void affichage_menu(SDL_Renderer *rendu, SDL_Texture *jouer_text, SDL_Texture *c
 
 
 /**
-* \fn main_menu
-* \param *continuer, permet de savoir si le joueur souhaite quitter le jeu ou non
-* \param *etat, représente l'écran dans lequel on est, actuellement me menu du jeu
-* \param *rendu, le rendu que l'on utilise pour dessiner à l'écran
-* \param *police, la police utilisée pour écrire sur l'écran
-* \param *select, le son quand on sélectionne une option
-* \param *move, le son quand on se déplace dans le menu
-* \param *music, la musique du menu principal
+*\fn void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *select, Mix_Chunk *move, Mix_Music *music)
 
-* \brief gère l'affichage à l'écran du menu principal, permet de choisir entre différentes options (jouer, charger, quitter)
+*\param *continuer, permet de savoir si le joueur souhaite quitter le jeu ou non
+*\param *etat, représente l'écran dans lequel on est, actuellement me menu du jeu
+*\param *rendu, le rendu que l'on utilise pour dessiner à l'écran
+*\param *police, la police utilisée pour écrire sur l'écran
+*\param *select, le son quand on sélectionne une option
+*\param *move, le son quand on se déplace dans le menu
+*\param *music, la musique du menu principal
+
+*\brief gère l'affichage à l'écran du menu principal, permet de choisir entre différentes options (jouer, charger, quitter)
 */
 void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *select, Mix_Chunk *move, Mix_Music *music){
 

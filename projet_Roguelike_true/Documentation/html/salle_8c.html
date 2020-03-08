@@ -1,0 +1,364 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Dungeon of Cards: Référence du fichier salle.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Dungeon of Cards
+   &#160;<span id="projectnumber">1</span>
+   </div>
+   <div id="projectbrief">Ce projet à pour but de créer un jeu roguelike pour le module Projet de notre seconde année de licence</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier salle.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Programme qui créé une salle et l'affiche.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;../include/constantes.h&quot;</code><br />
+<code>#include &quot;../include/labyrinthe.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de salle.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="salle_8c__incl.png" border="0" usemap="#salle_8c" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a72924cdd696e4afd7b839337ace19e9c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8c.html#a72924cdd696e4afd7b839337ace19e9c">init_salle</a> (int salle[TAILLE_SALLE][TAILLE_SALLE])</td></tr>
+<tr class="memdesc:a72924cdd696e4afd7b839337ace19e9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui génère une salle en un tableau  <a href="#a72924cdd696e4afd7b839337ace19e9c">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a72924cdd696e4afd7b839337ace19e9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a956c6af0fd478d5d77105b9b3e2d9ae8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8c.html#a956c6af0fd478d5d77105b9b3e2d9ae8">ajout_porte_salle</a> (int salle[TAILLE_SALLE][TAILLE_SALLE], int direction)</td></tr>
+<tr class="memdesc:a956c6af0fd478d5d77105b9b3e2d9ae8"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui ajoute une porte à un côté du carré  <a href="#a956c6af0fd478d5d77105b9b3e2d9ae8">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a956c6af0fd478d5d77105b9b3e2d9ae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02d63a57b719a5f2293a57004c6bdfe3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8c.html#a02d63a57b719a5f2293a57004c6bdfe3">afficher_salle</a> (salle_t *salle, SDL_Renderer *rendu, image_t texture[])</td></tr>
+<tr class="memdesc:a02d63a57b719a5f2293a57004c6bdfe3"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui génère une salle en un tableau  <a href="#a02d63a57b719a5f2293a57004c6bdfe3">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a02d63a57b719a5f2293a57004c6bdfe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aede6ff0302858d4beacbb91652be15c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8c.html#aede6ff0302858d4beacbb91652be15c3">rempli_tableau_murs_portes</a> (salle_t salle[], int indiceT)</td></tr>
+<tr class="memdesc:aede6ff0302858d4beacbb91652be15c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">rempli les tableaux des murs et des portes de la salle afin de pouvoir gérer les collisions plus tard  <a href="#aede6ff0302858d4beacbb91652be15c3">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aede6ff0302858d4beacbb91652be15c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa20d8212045b0c56094a82c56277951e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8c.html#aa20d8212045b0c56094a82c56277951e">inverse_porte</a> (int porte)</td></tr>
+<tr class="memdesc:aa20d8212045b0c56094a82c56277951e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie l'opposée de la porte passée en paramètre.  <a href="#aa20d8212045b0c56094a82c56277951e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa20d8212045b0c56094a82c56277951e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86a7d9453a068f07c6edeaf1c27d1f4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8c.html#a86a7d9453a068f07c6edeaf1c27d1f4c">textures_aleatoires</a> (salle_t salles[], int taille)</td></tr>
+<tr class="memdesc:a86a7d9453a068f07c6edeaf1c27d1f4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de placer des textures différentes afin de varier le visuel des salles.  <a href="#a86a7d9453a068f07c6edeaf1c27d1f4c">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a86a7d9453a068f07c6edeaf1c27d1f4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acda76565005ba739730eceb9e8927986"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8c.html#acda76565005ba739730eceb9e8927986">place_monstre_coffre_boss</a> (salle_t tab[], int taille)</td></tr>
+<tr class="memdesc:acda76565005ba739730eceb9e8927986"><td class="mdescLeft">&#160;</td><td class="mdescRight">rempli les salles de monstres, de coffre ou place un boss  <a href="#acda76565005ba739730eceb9e8927986">Plus de détails...</a><br /></td></tr>
+<tr class="separator:acda76565005ba739730eceb9e8927986"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Programme qui créé une salle et l'affiche. </p>
+<dl class="section author"><dt>Auteur</dt><dd>{Axel Jourry, Aurélien Tudoret} </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30 Janvier 2020 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a02d63a57b719a5f2293a57004c6bdfe3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02d63a57b719a5f2293a57004c6bdfe3">&#9670;&nbsp;</a></span>afficher_salle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void afficher_salle </td>
+          <td>(</td>
+          <td class="paramtype">salle_t *&#160;</td>
+          <td class="paramname"><em>salle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">image_t&#160;</td>
+          <td class="paramname"><em>texture</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fonction qui génère une salle en un tableau </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*salle</td><td>est une salle comportant le tableau a afficher </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">texture[],contient</td><td>toutes les images utilisées sauf celle du personnage </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a956c6af0fd478d5d77105b9b3e2d9ae8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a956c6af0fd478d5d77105b9b3e2d9ae8">&#9670;&nbsp;</a></span>ajout_porte_salle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ajout_porte_salle </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>salle</em>[TAILLE_SALLE][TAILLE_SALLE], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>direction</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fonction qui ajoute une porte à un côté du carré </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">salle[TAILLE_SALLE][TAILLE_SALLE]</td><td>est le tableau de TAILLE_SALLE qui comprend la salle </td></tr>
+    <tr><td class="paramname">direction</td><td>correspond à un nombre entre 0 et 3 indiquant quel mur est seléctionné. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a72924cdd696e4afd7b839337ace19e9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72924cdd696e4afd7b839337ace19e9c">&#9670;&nbsp;</a></span>init_salle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_salle </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>salle</em>[TAILLE_SALLE][TAILLE_SALLE]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fonction qui génère une salle en un tableau </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">salle[TAILLE_SALLE][TAILLE_SALLE]</td><td>est le tableau de TAILLE_SALLE qui comprend la salle </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa20d8212045b0c56094a82c56277951e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa20d8212045b0c56094a82c56277951e">&#9670;&nbsp;</a></span>inverse_porte()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int inverse_porte </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>porte</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie l'opposée de la porte passée en paramètre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">porte,la</td><td>porte que l'on souhaite inverser</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>l'inverse de la porte passée en paramètre </dd></dl>
+
+</div>
+</div>
+<a id="acda76565005ba739730eceb9e8927986"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acda76565005ba739730eceb9e8927986">&#9670;&nbsp;</a></span>place_monstre_coffre_boss()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void place_monstre_coffre_boss </td>
+          <td>(</td>
+          <td class="paramtype">salle_t&#160;</td>
+          <td class="paramname"><em>tab</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>taille</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>rempli les salles de monstres, de coffre ou place un boss </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tab[],tableau</td><td>contenant les salles du labyrinthe </td></tr>
+    <tr><td class="paramname">taille,taille</td><td>du tableau </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aede6ff0302858d4beacbb91652be15c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aede6ff0302858d4beacbb91652be15c3">&#9670;&nbsp;</a></span>rempli_tableau_murs_portes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rempli_tableau_murs_portes </td>
+          <td>(</td>
+          <td class="paramtype">salle_t&#160;</td>
+          <td class="paramname"><em>salle</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>indiceT</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>rempli les tableaux des murs et des portes de la salle afin de pouvoir gérer les collisions plus tard </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*salle</td><td>la salle pour laquelle on va completer les tableaux </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a86a7d9453a068f07c6edeaf1c27d1f4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86a7d9453a068f07c6edeaf1c27d1f4c">&#9670;&nbsp;</a></span>textures_aleatoires()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void textures_aleatoires </td>
+          <td>(</td>
+          <td class="paramtype">salle_t&#160;</td>
+          <td class="paramname"><em>salles</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>taille</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet de placer des textures différentes afin de varier le visuel des salles. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">salles[],le</td><td>tableau contenant les salles du labyrinthe </td></tr>
+    <tr><td class="paramname">taille,la</td><td>taille de la salle </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

@@ -1,0 +1,66 @@
+\hypertarget{clavier_8c}{}\section{Référence du fichier clavier.\+c}
+\label{clavier_8c}\index{clavier.\+c@{clavier.\+c}}
+
+
+Gère toute les évènements au clavier.  
+
+
+{\ttfamily \#include \char`\"{}../include/constantes.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de clavier.\+c\+:
+% FIG 0
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{clavier_8c_abbaff58e261b51faa0fb82dfd3d82451}{init\+\_\+tab\+\_\+clavier} (int tab\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em initialise le tableau d\textquotesingle{}evenement \end{DoxyCompactList}\item 
+void \hyperlink{clavier_8c_add3c65a63e195bdcbf92fa9c15df1d63}{event\+\_\+clavier} (touches\+\_\+t $\ast$clavier, S\+D\+L\+\_\+\+Event event)
+\begin{DoxyCompactList}\small\item\em Range dans un tableau les evenements lus au clavier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Gère toute les évènements au clavier. 
+
+\begin{DoxyAuthor}{Auteur}
+\{Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas\} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+04/02/2020 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{clavier_8c_add3c65a63e195bdcbf92fa9c15df1d63}\label{clavier_8c_add3c65a63e195bdcbf92fa9c15df1d63}} 
+\index{clavier.\+c@{clavier.\+c}!event\+\_\+clavier@{event\+\_\+clavier}}
+\index{event\+\_\+clavier@{event\+\_\+clavier}!clavier.\+c@{clavier.\+c}}
+\subsubsection{\texorpdfstring{event\+\_\+clavier()}{event\_clavier()}}
+{\footnotesize\ttfamily void event\+\_\+clavier (\begin{DoxyParamCaption}\item[{touches\+\_\+t $\ast$}]{clavier,  }\item[{S\+D\+L\+\_\+\+Event}]{event }\end{DoxyParamCaption})}
+
+
+
+Range dans un tableau les evenements lus au clavier. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$clavier,la} & structure contenant les touches du clavier\\
+\hline
+{\em event,l\textquotesingle{}evenement} & lu au clavier \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{clavier_8c_abbaff58e261b51faa0fb82dfd3d82451}\label{clavier_8c_abbaff58e261b51faa0fb82dfd3d82451}} 
+\index{clavier.\+c@{clavier.\+c}!init\+\_\+tab\+\_\+clavier@{init\+\_\+tab\+\_\+clavier}}
+\index{init\+\_\+tab\+\_\+clavier@{init\+\_\+tab\+\_\+clavier}!clavier.\+c@{clavier.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+tab\+\_\+clavier()}{init\_tab\_clavier()}}
+{\footnotesize\ttfamily void init\+\_\+tab\+\_\+clavier (\begin{DoxyParamCaption}\item[{int}]{tab\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+initialise le tableau d\textquotesingle{}evenement 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em tab\mbox{[}$\,$\mbox{]},le} & tableau contenant les touches du clavier \\
+\hline
+\end{DoxyParams}

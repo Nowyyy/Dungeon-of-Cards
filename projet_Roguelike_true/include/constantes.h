@@ -1,10 +1,10 @@
 /**
-* \file constantes.h
-* \author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
-* \date 30/01/2020
-* \version 0.1
+*\file constantes.h
+*\author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
+*\date 30/01/2020
+*\version 0.1
 
-* \brief Constantes et structures du projet Roguelike
+*\brief Constantes et structures du projet Roguelike
 */
 
 #include <SDL2/SDL.h>
@@ -21,6 +21,7 @@
 #define WIN_WIDTH 1080
 
 #define FONT_PATH "../Font/BebasNeue.ttf"
+
 #define SOL1_PATH "../Images/dalle3.png"
 #define MUR1_PATH "../Images/mur.png"
 #define MUR2_PATH "../Images/mur_feu.png"
@@ -31,6 +32,8 @@
 #define INSTRUCTIONS_PATH "../Images/instructions.png"
 #define GAMEOVER_PATH "../Images/gameover.png"
 #define DEATHLIGHT_PATH "../Images/deathlight.png"
+#define HEART_PATH "../Images/heart.png"
+#define TRAPDOOR_PATH "../Images/trapdoor2.png"
 
 #define SPRITE1_PATH "../Images/Animations_personnage/idle_droite.png"
 #define SPRITE2_PATH "../Images/Animations_personnage/idle_gauche.png"
@@ -49,7 +52,7 @@
 #define SAVE_PERSO_PATH "../Sauvegarde/personnage.txt"
 #define SAVE_CARTES_PATH "../Sauvegarde/cartes.txt"
 
-#define NB_TEXTURES 10
+#define NB_TEXTURES 12
 
 #define TRUE 1
 #define FALSE 0
@@ -67,7 +70,7 @@
 #define EMPLACEMENT_DEPART_DESSIN_SALLE_X 256
 #define EMPLACEMENT_DEPART_DESSIN_SALLE_Y 40
 
-#define VITESSE_PERSO 8
+#define VITESSE_PERSO 1
 
 #define RECT_SELECT_Y_DIFF 25
 #define RECT_SELECT_X_DIFF 50
@@ -83,60 +86,64 @@
 
 
 /**
-* \enum t_sprites_perso
+*\enum t_sprites_perso
 
-* \brief les types de sprites pour les animations du personnage
+*\brief les types de sprites pour les animations du personnage
 */
 
 typedef enum{courant, idle_droite, droite1, droite2, droite3, idle_gauche, gauche2, gauche1, gauche3, dead}t_sprites_perso;
 
 /**
-* \enum t_types_textures
+*\enum t_types_textures
 
-* \brief les types de textures sur lequel le perso peut tomber
+*\brief les types de textures sur lequel le perso peut tomber
 */
-typedef enum{sol =0, mur, porte, sol2, commandes, instructions, sol3, mur2, gameover, deathlight}t_types_textures;
+typedef enum{sol =0, mur, porte, sol2, commandes, instructions, sol3, mur2, gameover, deathlight, heart, trapdoor}t_types_textures;
 
 
+/**
+*\enum t_types_ennemis
 
+*\brief les types d'ennemis existants
+*/
 typedef enum{squelette, minotaure, cyclope}t_type_ennemis;
 
 
 /**
-* \enum t_etat
+*\enum t_etat
 
-* \brief les états que peut prendre le jeu afin de naviguer entre les menus
+*\brief les états que peut prendre le jeu afin de naviguer entre les menus
 */
 
 typedef enum{mainMenu = 0, labyrinthe, tourParTour, pauseScreen, charger_partie}t_etat;
 
 /**
-* \enum type_carte
+*\enum type_carte
 
-* \brief Les différents types de cartes
+*\brief Les différents types de cartes
 */
 
 typedef enum {ATTAQUE = -1, DEFENSE = 1} type_carte ;
 
 
 /**
-* \enum t_touches_clavier
+*\enum t_touches_clavier
 
-* \brief Les différents types de touches utilisées
+*\brief Les différents types de touches utilisées
 */
 typedef enum{up, down, right, left, entree}t_touches_clavier;
 
 /**
-* \enum t_direction
+*\enum t_direction
 
-* \brief Les différents types de touches utilisées
+*\brief Les différents types de touches utilisées
 */
 typedef enum{haut, droite, bas, gauche}t_direction;
 
 /**
-* \struct animation_t
+*\struct animation_t
 
-* \brief permet de gèrer les animations du personnage
+*\brief permet de gèrer les animations du personnage
 */
 typedef struct{
 
@@ -149,9 +156,9 @@ typedef struct{
 
 
 /**
-* \struct touchs_t
+*\struct touchs_t
 
-* \brief permet de gèrer les touches utilisées
+*\brief permet de gèrer les touches utilisées
 */
 typedef struct{
 
@@ -159,9 +166,9 @@ typedef struct{
 }touches_t;
 
 /**
-* \struct t_image
+*\struct t_image
 
-* \brief contient les éléments necéssaires au stockage d'une image
+*\brief contient les éléments necéssaires au stockage d'une image
 */
 typedef struct{
 
@@ -170,8 +177,8 @@ typedef struct{
 }image_t;
 
 /**
-\struct salle_t
-\brief Représente une salle et ses liaisons aux autres salles
+*\struct salle_t
+*\brief Représente une salle et ses liaisons aux autres salles
 */
 typedef struct salle_s{
 
