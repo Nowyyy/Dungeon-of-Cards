@@ -84,7 +84,7 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 
 	SDL_RenderClear(rendu);//nettoie l'écran pour supprimer tout ce qui est dessus
 
-	if(salle->id == 0){//affichage des commandes et rêgles du jeu si on est dans la première salle
+	if(salle->depart ==TRUE){//affichage des commandes et rêgles du jeu si on est dans la première salle
 		SDL_RenderCopy(rendu, images[commandes].img, NULL, &images[commandes].rectangle);
 		SDL_RenderCopy(rendu, images[instructions].img, NULL, &images[instructions].rectangle);
 	}
@@ -154,6 +154,7 @@ void initialise_salles(salle_t tab[], int taille){
 		tab[i].boss = FALSE;
 		tab[i].ennemi_present = FALSE;
 		tab[i].nb_ennemi = 0;
+		tab[i].depart = FALSE;
 		tab[i].salle_existe = FALSE;
 	}
 }
@@ -294,35 +295,48 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusi
 *\param salles[], tableau des salles du labyrinthe
 *\param taille, la taille d'une ligne ou d'une colonne du tableau
 *\param indice, l'indice de la salle courante
+*\param tentatives, le nombres d'essais pour trouver une liaison avec le jeu de données actuelles
 
 *\return la direction valide dans laquelle créée une porte selon l'emplacement de la salle actuelle
 
 *\brief Permet de renvoyer la direction vers laquelle on peut tenter de créer une liaison avec une autre salle
 
 */
-int tirage_au_sort_porte_a_creer(int indice, int taille, salle_t salles[]){
+int tirage_au_sort_porte_a_creer(int indice, int taille, salle_t salles[], int tentatives){
 
 	int alea = rand()%4;
 
 	if(indice == 0 && (alea == haut || alea == gauche)) //première case du tableau
 	//on ne peut créer de liaison vers le haut ou la gauche
-		return tirage_au_sort_porte_a_creer(indice, taille, salles);
+		return tirage_au_sort_porte_a_creer(indice, taille, salles, tentatives++);
+
+	else if(indice == taille - 1 && (alea == haut || alea == droite))//case en bas à droite du tableau
+	//on ne peut créer de liaison vers le haut ou la droite
+		return tirage_au_sort_porte_a_creer(indice, taille, salles, tentatives++);
+
+	else if(indice == taille * taille -1 && (alea == bas || alea == droite))//derniere case du tableau
+	//on ne peut créer de liaison vers le bas ou la droite
+		return tirage_au_sort_porte_a_creer(indice, taille, salles, tentatives++);
+
+	else if(indice == (taille * taille - taille) && (alea == bas || alea == gauche))//première case de la dernière ligne du tableau
+	//on ne peut créer de liaison vers le bas ou la gauche
+		return tirage_au_sort_porte_a_creer(indice, taille, salles, tentatives++);
 
 	else if(indice % taille == 0 && alea == gauche)//colonnes toutes a droite du tableau
 	//on ne peut créer de liaison vers la gauche
-		return tirage_au_sort_porte_a_creer(indice, taille, salles);
+		return tirage_au_sort_porte_a_creer(indice, taille, salles, tentatives++);
 
 	else if(indice + 1 % taille == 0 && alea == droite)//colonnes toutes a gauche du tableau
 	//on ne peut créer de liaison vers la droite
-		return tirage_au_sort_porte_a_creer(indice, taille, salles);
+		return tirage_au_sort_porte_a_creer(indice, taille, salles, tentatives++);
 
 	else if(indice < taille && alea == haut)//lignes toutes en haut du tableau
 	//on ne peut créer de liaison vers le haut
-		return tirage_au_sort_porte_a_creer(indice, taille, salles);
+		return tirage_au_sort_porte_a_creer(indice, taille, salles, tentatives++);
 
-	else if(indice > (taille * taille - taille -1) && alea == bas)//lignes toutes en bas du tableau
+	else if(indice > (taille * taille - taille) && alea == bas)//lignes toutes en bas du tableau
 	//on ne peut créer de liaison vers le bas
-		return tirage_au_sort_porte_a_creer(indice, taille, salles);
+		return tirage_au_sort_porte_a_creer(indice, taille, salles, tentatives++);
 
 
 	else if(alea == haut && salles[indice].s_h == -1 && salles[alea].s_b == -1)
@@ -333,8 +347,14 @@ int tirage_au_sort_porte_a_creer(int indice, int taille, salle_t salles[]){
 		return alea;
 	else if(alea == gauche && salles[indice].s_g == -1 && salles[alea].s_d == -1)
 		return alea;
-	else
-		return tirage_au_sort_porte_a_creer(indice, taille, salles);
+	else{
+		if(tentatives >= taille){
+			return -1;
+		}
+		else{
+			return tirage_au_sort_porte_a_creer(indice, taille, salles, ++tentatives);
+		}
+	}
 }
 
 
@@ -366,62 +386,110 @@ int indice_salle(int salle_actuelle, int porte_salle_actuelle, int taille){
 }
 
 
+int salles_compatibles(int salle1, int porte1, int salle2, int porte2, salle_t salles[]){
+
+	if(porte1 == droite && salles[salle1].s_d == -1 && porte2 == gauche && salles[salle2].s_g == -1)
+		return TRUE;
+
+	else if(porte1 == gauche && salles[salle1].s_g == -1 && porte2 == droite && salles[salle2].s_d == -1)
+		return TRUE;
+
+	else if(porte1 == bas && salles[salle1].s_b == -1 && porte2 == haut && salles[salle2].s_h == -1)
+		return TRUE;
+
+	else if(porte1 == haut && salles[salle1].s_h == -1 && porte2 == bas && salles[salle2].s_b == -1)
+		return TRUE;
+
+	else 
+		return FALSE;
+}
+
+
 
 /**
-*\fn void creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer)
+*\fn int creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer)
 
 *\param salles[], le tableau contenant les salles du jeu
 *\param taille, la taille d'une ligne ou d'une colonne du tableau
 *\param nb_salles_a_creer, le nombre de salles que l'on souhaite pouvoir parcourir dans le donjon
 
 *\brief créer un labyrinthe de salles connectées entres elles, généré aléatoirement
-*/
-void creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer){
 
-	int i = 0, porte, nouvelle_salle, porte_nouv_salle, pred, cpt;
+*\return l'indice de la première salle du laby
+*/
+int creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer){
+
+	int i = 0, porte, nouvelle_salle, porte_nouv_salle, cpt, alea, cpt2;
+	int salle_crees[nb_salles_a_creer], taille_tab = 0;
 
 	initialise_salles(salles, taille*taille); //initialisation de toutes les salles.
 
-	salles[i].salle_existe = TRUE;
-	pred = 0;
-
-	while(nb_salles_a_creer > 0){
+	do{
+		if(taille_tab == 0){
+			//on ajoute la première salle au tableau
+			alea = rand()%(taille*taille);
+			salle_crees[taille_tab++] = alea;
+			i = alea;
+			salles[i].salle_existe = TRUE;
+		}
+		else{
+			//des salles existent déjà
+			alea = rand()%taille_tab;
+			i = salle_crees[alea];
+		}
 
 		cpt = 0;
+		cpt2 = 0;
+
 		//on boucle tant qu'aucune salle ne répond aux critères pour faire une liaison		
 		do{
-			porte = tirage_au_sort_porte_a_creer(i, taille, salles);
-			ajout_porte_salle(salles[i].salle, porte);
+			//on boucle tant qu'aucune porte possible n'est trouvée
+			do{
+				porte = tirage_au_sort_porte_a_creer(i, taille, salles, 0);
+				cpt2++;
+
+				if(cpt2 > taille){
+					//la fonction récursive n'a pas réussie à trouver de liaisons compatibles
+					i = salle_crees[rand()%taille_tab];
+					cpt2 = 0;
+				}
+			}while(porte == -1);
+
 			nouvelle_salle = indice_salle(i, porte, taille);
+			porte_nouv_salle = inverse_porte(porte);
 			
 			if(cpt >= 5){
 			//si aucune salle n'est trouvée malgré plusieurs tentatives, on rècupère la salle précédente et on tente avec elle
-				i = pred;
+				i = salle_crees[rand()%taille_tab];
 				cpt = 0;
 			}
 			else
 				cpt++;
-		}while(salles[nouvelle_salle].salle_existe);
+		}while(salles_compatibles(i, porte, nouvelle_salle, porte_nouv_salle, salles) == FALSE);
 
-		porte_nouv_salle = inverse_porte(porte);
+		ajout_porte_salle(salles[i].salle, porte);
 		ajout_porte_salle(salles[nouvelle_salle].salle, porte_nouv_salle);
 		cree_liaison(salles, i, nouvelle_salle, porte);
 
 		salles[nouvelle_salle].salle_existe = TRUE;
 		salles[i].boss = FALSE;
 
-		pred = i;//archivage de la salle actuelle si besoin
-		i = nouvelle_salle;
+		salle_crees[taille_tab++] = nouvelle_salle;
 		nb_salles_a_creer --;
-	}
+
+	}while(nb_salles_a_creer > 0);
 
 	salles[i].boss = TRUE; // on marque tout de suite la salle du boss
+	salles[salle_crees[0]].salle_existe = TRUE;
+	salles[salle_crees[0]].depart = TRUE;
 
 	//remplissage tableau de collisions pour les murs et les portes
 	for(i = 0; i < taille * taille -1; i++){
-		if(salles[i].salle_existe)
+		if(salles[i].salle_existe == TRUE)
 			rempli_tableau_murs_portes(salles, i);
 	}
+
+	return salle_crees[0];
 }
 
 
@@ -467,7 +535,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 /////////////////////////// Déclarations variables ////////////////////////////////////////////
 	image_t images[NB_TEXTURES];
 
-	int taille = 10, nb_salles_a_creer = 10, salle_courante = 0;
+	int taille = 5, nb_salles_a_creer = 10, salle_courante;
 
 	salle_t salles[taille*taille];
 
@@ -482,7 +550,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 /////////////////////////// Génération aléatoire ////////////////////////////////////////////
 
-	creation_labyrinthe(salles, taille, nb_salles_a_creer);
+	salle_courante = creation_labyrinthe(salles, taille, nb_salles_a_creer);
 /////////////////////////// Textures ///////////////////////////////////////////////////////
 
 	init_animations(&anim);
@@ -503,6 +571,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 		affichage_salle_personnage(*pers, &salles[salle_courante], rendu, images, *ennemi, *boss);
 
 		deplacement_personnage(pers, salles[salle_courante], continuer, &anim, footsteps, &clavier);
+		SDL_Delay(5);
 
 		//Si le joueur meurt
 		if(pers->pv <= 0){
