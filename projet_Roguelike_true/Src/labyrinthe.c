@@ -84,7 +84,7 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 
 	SDL_RenderClear(rendu);//nettoie l'écran pour supprimer tout ce qui est dessus
 
-	if(salle->depart ==TRUE){//affichage des commandes et rêgles du jeu si on est dans la première salle
+	if(salle->depart ==TRUE && salle->decouverte == FALSE){//affichage des commandes et rêgles du jeu si on est dans la première salle
 		SDL_RenderCopy(rendu, images[commandes].img, NULL, &images[commandes].rectangle);
 		SDL_RenderCopy(rendu, images[instructions].img, NULL, &images[instructions].rectangle);
 	}
@@ -155,6 +155,7 @@ void initialise_salles(salle_t tab[], int taille){
 		tab[i].ennemi_present = FALSE;
 		tab[i].nb_ennemi = 0;
 		tab[i].depart = FALSE;
+		tab[i].decouverte = FALSE;
 		tab[i].salle_existe = FALSE;
 	}
 }
@@ -552,7 +553,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 /////////////////////////// Déclarations variables ////////////////////////////////////////////
 	image_t images[NB_TEXTURES];
 
-	int taille = 5, nb_salles_a_creer = 10, salle_courante;
+	int taille = 5, nb_salles_a_creer = 10, salle_courante, salle_pred;
 
 	salle_t salles[taille*taille];
 
@@ -568,6 +569,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 /////////////////////////// Génération aléatoire ////////////////////////////////////////////
 
 	salle_courante = creation_labyrinthe(salles, taille, nb_salles_a_creer);
+	salle_pred = salle_courante;
 /////////////////////////// Textures ///////////////////////////////////////////////////////
 
 	init_animations(&anim);
@@ -588,7 +590,6 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 		affichage_salle_personnage(*pers, &salles[salle_courante], rendu, images, *ennemi, *boss);
 
 		deplacement_personnage(pers, salles[salle_courante], continuer, &anim, footsteps, &clavier);
-		SDL_Delay(5);
 
 		//Si le joueur meurt
 		if(pers->pv <= 0){
@@ -596,6 +597,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 		}
 
 		salle_courante = changement_de_salle(pers, salles[salle_courante], salle_courante, change_salle);
+		SDL_Delay(5);
 
 		//collision avec un ennemi
 		if(salles[salle_courante].boss && combat_declenche(salles[salle_courante], *pers, *boss) && boss->pv > 0){
@@ -609,6 +611,11 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 		}
 		else if(combat_declenche(salles[salle_courante], *pers, *ennemi) == 2){
 			//salles[salle_courante].pv2 = combat_t_p_t(pers, ennemi, cartes);
+		}
+
+		if(salle_courante != salle_pred){
+			salles[salle_courante].decouverte = TRUE;
+			salle_pred = salle_courante;
 		}
 	}
 

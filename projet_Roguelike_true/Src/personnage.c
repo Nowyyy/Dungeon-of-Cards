@@ -56,14 +56,6 @@ int test_collision(salle_t salle, perso_t *pers, int direction){
 	for( ; i < salle.nb_murs; i++){
 
 		if(SDL_HasIntersection(&salle.murs[i], &pers->sprites[courant].rectangle)){
-			if(direction == bas)
-				pers->sprites[courant].rectangle.y -= 4;
-			else if(direction == haut)
-				pers->sprites[courant].rectangle.y += 4;
-			else if(direction == droite)
-				pers->sprites[courant].rectangle.x -= 4;
-			else if(direction == gauche)
-				pers->sprites[courant].rectangle.x += 4;
 			return 1;
 		}
 	}
@@ -263,6 +255,8 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 			pers->y += VITESSE_PERSO;
 			animations_personnage(pers->sprites, temps, *clavier, anim, footsteps);
 		}
+		else
+			pers->y -= VITESSE_PERSO;
 	}
 	else if(clavier->tab[right] == 1){ //touche droite
 
@@ -270,6 +264,8 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 			pers->x += VITESSE_PERSO;
 			animations_personnage(pers->sprites, temps, *clavier, anim, footsteps);
 		}
+		else
+			pers->x -= VITESSE_PERSO;
 	}
 	else if(clavier->tab[left] == 1){ //touche gauche
 
@@ -277,6 +273,8 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 			pers->x -= VITESSE_PERSO;
 			animations_personnage(pers->sprites, temps, *clavier, anim, footsteps);
 		}
+		else
+			pers->x += VITESSE_PERSO;
 	}
 	else if(clavier->tab[up] == 1){ //touche haut
 
@@ -284,6 +282,8 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 			pers->y -= VITESSE_PERSO;
 			animations_personnage(pers->sprites, temps, *clavier, anim, footsteps);
 		}
+		else
+			pers->y += VITESSE_PERSO;
 	}
 
 	pers->sprites[courant].rectangle.x = pers->x;
@@ -313,7 +313,7 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *cha
 			if(salle.portes[i].y == EMPLACEMENT_DEPART_DESSIN_SALLE_Y){
 			//porte en haut
 				pers->x = WIN_WIDTH / 2 - TAILLE_IMAGE;
-				pers->y = salle.murs[salle.nb_murs -1].y - TAILLE_IMAGE;
+				pers->y = salle.murs[salle.nb_murs -1].y - TAILLE_IMAGE- 50;
 				Mix_PlayChannel(0, change_salle, 0);
 
 				return salle.s_h;
@@ -322,14 +322,14 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *cha
 			//porte en bas
 				pers->x = WIN_WIDTH / 2 - TAILLE_IMAGE;
 
-				pers->y = salle.murs[0].y + TAILLE_IMAGE;
+				pers->y = salle.murs[0].y + TAILLE_IMAGE + 50;
 				Mix_PlayChannel(0, change_salle, 0);
 
 				return salle.s_b;
 			}
 			else if(salle.portes[i].x == EMPLACEMENT_DEPART_DESSIN_SALLE_X){
 			//porte à gauche
-				pers->x = WIN_WIDTH / 2 + 100;
+				pers->x = WIN_WIDTH / 2 + 50;
 				pers->y = WIN_HEIGHT / 2 - TAILLE_IMAGE / 2;
 				Mix_PlayChannel(0, change_salle, 0);
 
@@ -337,7 +337,7 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *cha
 			}
 			else{
 			//porte à droite
-				pers->x = salle.murs[0].x + TAILLE_IMAGE;
+				pers->x = salle.murs[0].x + TAILLE_IMAGE + 50;
 				pers->y = WIN_HEIGHT / 2 - TAILLE_IMAGE / 2;
 				Mix_PlayChannel(0, change_salle, 0);
 

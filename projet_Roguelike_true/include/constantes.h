@@ -191,7 +191,7 @@ typedef struct salle_s{
 
   int nb_murs, nb_portes, id, salle_existe;
 
-  int ennemi_present, nb_ennemi, x_ennemi1, x_ennemi2, y_ennemi1, y_ennemi2, boss, coffre, pv1, pv2, depart;
+  int ennemi_present, nb_ennemi, x_ennemi1, x_ennemi2, y_ennemi1, y_ennemi2, boss, coffre, pv1, pv2, depart, decouverte;
 
 }salle_t;
 
