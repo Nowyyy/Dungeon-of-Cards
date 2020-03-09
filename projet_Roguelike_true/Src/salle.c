@@ -114,10 +114,10 @@ void afficher_salle(salle_t *salle, SDL_Renderer *rendu, image_t texture[]){
 
       SDL_RenderCopy(rendu, texture[salle->salle[i][j]].img, NULL, &texture[salle->salle[i][j]].rectangle);
 
-      coorX += TAILLE_IMAGE-1;
+      coorX += TAILLE_IMAGE;
     }
     coorX = EMPLACEMENT_DEPART_DESSIN_SALLE_X;
-    coorY += TAILLE_IMAGE - 1;
+    coorY += TAILLE_IMAGE;
   }
 }
 
@@ -243,7 +243,7 @@ void place_monstre_coffre_boss(salle_t tab[], int taille){
   for(int i = 0; i < taille - 1; i++){
 
     //choix de monstres ou coffre dans les autres salles que celle du début et celle du boss
-    if(i == 0){
+    if(tab[i].depart == TRUE){
       tab[i].ennemi_present = 0;
 
     }

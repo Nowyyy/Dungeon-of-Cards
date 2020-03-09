@@ -386,6 +386,19 @@ int indice_salle(int salle_actuelle, int porte_salle_actuelle, int taille){
 }
 
 
+
+/**
+*\fn int salles_compatibles(int salle1, int porte1, int salle2, int porte2, salle_t salles[])
+
+*\param salle1, la première salle qu'on cherche a lier
+*\param porte1, la porte de la salle1 pour laquelle on cherche une correspondance dans la salle 2
+*\param salle2, la seconde salle qu'on cherche a lier
+*\param porte2, la porte de la salle2 pour laquelle on cherche une correspondance dans la salle 1
+
+*\return True si les salles sont compatibles, false sinon
+
+*\brief Permet de savoir si deux salles sont compatibles entre elles
+*/
 int salles_compatibles(int salle1, int porte1, int salle2, int porte2, salle_t salles[]){
 
 	if(porte1 == droite && salles[salle1].s_d == -1 && porte2 == gauche && salles[salle2].s_g == -1)
@@ -430,7 +443,6 @@ int creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer){
 			alea = rand()%(taille*taille);
 			salle_crees[taille_tab++] = alea;
 			i = alea;
-			salles[i].salle_existe = TRUE;
 		}
 		else{
 			//des salles existent déjà
@@ -482,6 +494,11 @@ int creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer){
 	salles[i].boss = TRUE; // on marque tout de suite la salle du boss
 	salles[salle_crees[0]].salle_existe = TRUE;
 	salles[salle_crees[0]].depart = TRUE;
+
+	if(salles[salle_crees[0]].boss == TRUE){
+		salles[salle_crees[0]].boss = FALSE;
+		salles[salle_crees[rand()%taille_tab + 1]].boss = TRUE;
+	}
 
 	//remplissage tableau de collisions pour les murs et les portes
 	for(i = 0; i < taille * taille -1; i++){

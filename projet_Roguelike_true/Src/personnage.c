@@ -34,7 +34,7 @@ void charge_sprites_personnage(image_t sprites[], SDL_Renderer *rendu){
 	charge_image(SPRITE8_PATH, &sprites[gauche3], rendu);
 	charge_image(SPRITE9_PATH, &sprites[droite3], rendu);
 
-	charge_image(SPRITE2_PATH, &sprites[courant], rendu);
+	sprites[courant] = sprites[idle_droite];
 }
 
 
@@ -49,26 +49,23 @@ void charge_sprites_personnage(image_t sprites[], SDL_Renderer *rendu){
 
 *\return 1 en cas de collision, 0 si aucune collision
 */
-int test_collision(salle_t salle, perso_t pers, int direction){
+int test_collision(salle_t salle, perso_t *pers, int direction){
 
 	int i = 0;
 
 	for( ; i < salle.nb_murs; i++){
 
-		if(direction == 0)//haut
-			pers.sprites[courant].rectangle.y -= 1;
-		else if(direction == 1) //droite
-			pers.sprites[courant].rectangle.x += 1;
-		else if(direction == 2) //bas
-			pers.sprites[courant].rectangle.y += 1;
-		else //gauche
-			pers.sprites[courant].rectangle.x -= 1;
-
-		if(SDL_HasIntersection(&salle.murs[i], &pers.sprites[courant].rectangle)){
+		if(SDL_HasIntersection(&salle.murs[i], &pers->sprites[courant].rectangle)){
+			if(direction == bas)
+				pers->sprites[courant].rectangle.y -= 4;
+			else if(direction == haut)
+				pers->sprites[courant].rectangle.y += 4;
+			else if(direction == droite)
+				pers->sprites[courant].rectangle.x -= 4;
+			else if(direction == gauche)
+				pers->sprites[courant].rectangle.x += 4;
 			return 1;
 		}
-
-		//printf("x perso %d, y perso %d, x mur +tailleimage %d, y mur, %d\n", pers.sprites[0].rectangle.x, pers.sprites[0].rectangle.y, salle.murs[i].x + TAILLE_IMAGE, salle.murs[i].y);
 	}
 	return 0;
 }
@@ -249,7 +246,6 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 
 	unsigned int temps = SDL_GetTicks();
 
-
 	while(SDL_PollEvent(&event)){ //On attend un évènement au clavier
 
 		event_clavier(clavier, event);
@@ -263,28 +259,28 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 
 	if(clavier->tab[down] == 1){ //touche du bas
 
-		if(!test_collision(salle,*pers, 2)){
+		if(!test_collision(salle,pers, bas)){
 			pers->y += VITESSE_PERSO;
 			animations_personnage(pers->sprites, temps, *clavier, anim, footsteps);
 		}
 	}
 	else if(clavier->tab[right] == 1){ //touche droite
 
-		if(!test_collision(salle,*pers, 1)){
+		if(!test_collision(salle,pers, droite)){
 			pers->x += VITESSE_PERSO;
 			animations_personnage(pers->sprites, temps, *clavier, anim, footsteps);
 		}
 	}
 	else if(clavier->tab[left] == 1){ //touche gauche
 
-		if(!test_collision(salle,*pers, 3)){
+		if(!test_collision(salle,pers, gauche)){
 			pers->x -= VITESSE_PERSO;
 			animations_personnage(pers->sprites, temps, *clavier, anim, footsteps);
 		}
 	}
 	else if(clavier->tab[up] == 1){ //touche haut
 
-		if(!test_collision(salle,*pers, 0)){
+		if(!test_collision(salle,pers, haut)){
 			pers->y -= VITESSE_PERSO;
 			animations_personnage(pers->sprites, temps, *clavier, anim, footsteps);
 		}
@@ -366,7 +362,6 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *cha
 *\brief initialise les valeurs de base pour le personnage
 */
 void initialise_personnage(perso_t *pers){
-
 
 	pers->pv = PV_DEPART_PERSONNAGE;
 	pers->pv_old = PV_DEPART_PERSONNAGE;
