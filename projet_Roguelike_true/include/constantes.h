@@ -52,7 +52,7 @@
 #define SAVE_PERSO_PATH "../Sauvegarde/personnage.txt"
 #define SAVE_CARTES_PATH "../Sauvegarde/cartes.txt"
 
-#define NB_TEXTURES 12
+#define NB_TEXTURES 14
 
 #define TRUE 1
 #define FALSE 0
@@ -98,7 +98,7 @@ typedef enum{courant, idle_droite, droite1, droite2, droite3, idle_gauche, gauch
 
 *\brief les types de textures sur lequel le perso peut tomber
 */
-typedef enum{sol =0, mur, porte, sol2, commandes, instructions, sol3, mur2, gameover, deathlight, heart, trapdoor}t_types_textures;
+typedef enum{sol =0, mur, porte, sol2, commandes, instructions, sol3, mur2, gameover, deathlight, heart, trapdoor, pv, etage}t_types_textures;
 
 
 /**
@@ -202,12 +202,14 @@ typedef struct salle_s{
 */
 typedef struct perso_s {
   int pv;/**Point de vie d'un personnage*/
+  int pv_old;
   int vitesse;/**Vitesse d'un personnage*/
   int attaque;/**Attaque d'un personnage*/
   int defense;/**Défense d'un personnage*/
   int x;/**Placement sur l'axe des abscisses d'un personnage*/
   int y;/**Placement sur l'axe des ordonnés d'un personnage*/
   int etage;
+  int etage_old;
   image_t sprites[NB_SPRITES_PERSONNAGE];
   int cmpMort;
 

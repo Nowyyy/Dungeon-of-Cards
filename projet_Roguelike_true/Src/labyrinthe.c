@@ -44,6 +44,8 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 	charge_image(HEART_PATH, &images[heart], rendu);
 	charge_image(TRAPDOOR_PATH, &images[trapdoor], rendu);
 
+	creer_texture_depuis_char(&images[pv], &images[etage], *pers, rendu);
+
 	charge_sprites_personnage(pers->sprites, rendu);
 
 	//on donne les coordonnées pour placer les images des commandes et des instructions
@@ -78,11 +80,6 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 */
 void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[], ennemi_t monstre, ennemi_t boss){
 
-	image_t pv, etage;
-
-	creer_texture_depuis_char(&pv, &etage, pers, rendu);
-
-
 	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
 
 	SDL_RenderClear(rendu);//nettoie l'écran pour supprimer tout ce qui est dessus
@@ -96,8 +93,8 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 
 	SDL_RenderCopy(rendu, pers.sprites[courant].img, NULL, &pers.sprites[courant].rectangle);
 
-	SDL_RenderCopy(rendu, pv.img, NULL, &pv.rectangle);
-	SDL_RenderCopy(rendu, etage.img, NULL, &etage.rectangle);
+	SDL_RenderCopy(rendu, images[pv].img, NULL, &images[pv].rectangle);
+	SDL_RenderCopy(rendu, images[etage].img, NULL, &images[etage].rectangle);
 	SDL_RenderCopy(rendu, images[heart].img, NULL, &images[heart].rectangle);
 	SDL_RenderCopy(rendu, images[trapdoor].img, NULL, &images[trapdoor].rectangle);
 
@@ -127,9 +124,6 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 	}
 
 	SDL_RenderPresent(rendu);//applique les modifs précédentes
-
-	SDL_DestroyTexture(pv.img);
-	SDL_DestroyTexture(etage.img);
 }
 
 
@@ -431,6 +425,26 @@ void creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer){
 }
 
 
+/**
+*\fn void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Renderer *rendu)
+
+*\param *pers, la structure contenant le personnage
+*\param *pv, la structure contenant la texture du HUD représentant les PV du personnage
+*\param *etage, la structure contenant la texture du HUD représentant l'étage où se situe le personnage
+*\param *rendu, le renderer sur lequel on dessine
+
+*\brief Permet de mettre à jour le HUD selon que les PDV ou l'étage soit différents
+*/
+void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Renderer *rendu){
+
+	if(pers->pv != pers->pv_old || pers->etage != pers->etage_old){
+		pers->pv_old = pers->pv;
+		pers->etage_old = pers->etage;
+		creer_texture_depuis_char(pv, etage, *pers, rendu);
+	}
+}
+
+
 
 /**
 *\fn void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *change_salle, Mix_Chunk *footsteps, Mix_Music *gameOverMusic, Mix_Chunk *gameOverFrame, perso_t *pers, carte_t *cartes, TTF_Font *police)
@@ -484,6 +498,8 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 /////////////////////////// boucle du labyrinthe / explo / combat ///////////////////////////
 	while(*etat == labyrinthe && *continuer){
 
+		modifie_texture_hud(pers, &images[pv], &images[etage], rendu);
+
 		affichage_salle_personnage(*pers, &salles[salle_courante], rendu, images, *ennemi, *boss);
 
 		deplacement_personnage(pers, salles[salle_courante], continuer, &anim, footsteps, &clavier);
@@ -496,7 +512,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 		salle_courante = changement_de_salle(pers, salles[salle_courante], salle_courante, change_salle);
 
 		//collision avec un ennemi
-		if(salle_courante == taille - 1 && combat_declenche(salles[salle_courante], *pers, *boss)){
+		if(salles[salle_courante].boss && combat_declenche(salles[salle_courante], *pers, *boss) && boss->pv > 0){
 			//combat_t_p_t(pers, boss, cartes, rendu);
 			if(boss->pv == 0){
 				//etage suivant
@@ -514,7 +530,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	for(int i = 0; i < NB_SPRITES_PERSONNAGE; i++)
 		SDL_DestroyTexture(pers->sprites[i].img);
 
-	for(int i = sol; i <= NB_TEXTURES-1; i++)
+	for(int i = sol; i < NB_TEXTURES; i++)
 		SDL_DestroyTexture(images[i].img);
 
 	detruire_ennemi(&ennemi);

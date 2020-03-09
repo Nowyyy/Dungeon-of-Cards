@@ -369,6 +369,7 @@ void initialise_personnage(perso_t *pers){
 
 
 	pers->pv = PV_DEPART_PERSONNAGE;
+	pers->pv_old = PV_DEPART_PERSONNAGE;
 	pers->vitesse = VITESSE_DEPART_PERSONNAGE;
 	pers->attaque = ATTAQUE_DEPART_PERSONNAGE;
 	pers->defense = DEFENSE_DEPART_PERSONNAGE;
@@ -377,6 +378,7 @@ void initialise_personnage(perso_t *pers){
 	pers->y = WIN_HEIGHT / 2;
 
 	pers->etage = 1;
+	pers->etage_old = 1;
 
 	pers->cmpMort = 0;
 }
