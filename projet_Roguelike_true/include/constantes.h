@@ -84,6 +84,9 @@
 #define ATTAQUE_DEPART_PERSONNAGE 10
 #define DEFENSE_DEPART_PERSONNAGE 10
 
+#define TAILLE_RECT_MINI_MAP_H 20
+#define TAILLE_RECT_MINI_MAP_W 30
+
 
 /**
 *\enum t_sprites_perso
@@ -194,6 +197,20 @@ typedef struct salle_s{
   int ennemi_present, nb_ennemi, x_ennemi1, x_ennemi2, y_ennemi1, y_ennemi2, boss, coffre, pv1, pv2, depart, decouverte;
 
 }salle_t;
+
+
+/**
+*\struct mini_map_t
+*\brief Structure de la mini map
+*/
+typedef struct mini_map_s{
+  
+  int taille;
+
+  SDL_Rect map[25];
+
+  int salles_decouvertes[25];
+}mini_map_t;
 
 
 /**

@@ -52,10 +52,20 @@ void charge_sprites_personnage(image_t sprites[], SDL_Renderer *rendu){
 int test_collision(salle_t salle, perso_t *pers, int direction){
 
 	int i = 0;
+	SDL_Rect tmp = pers->sprites[courant].rectangle;
+
+	if(direction == bas)
+		tmp.y += 3;
+	else if(direction == haut)
+		tmp.y -= 3;
+	else if(direction == droite)
+		tmp.x += 3;
+	else if(direction == gauche)
+		tmp.x -= 3;
 
 	for( ; i < salle.nb_murs; i++){
 
-		if(SDL_HasIntersection(&salle.murs[i], &pers->sprites[courant].rectangle)){
+		if(SDL_HasIntersection(&salle.murs[i], &tmp)){
 			return 1;
 		}
 	}
@@ -256,7 +266,7 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 			animations_personnage(pers->sprites, temps, *clavier, anim, footsteps);
 		}
 		else
-			pers->y -= VITESSE_PERSO;
+			pers->y -= 3;
 	}
 	else if(clavier->tab[right] == 1){ //touche droite
 
@@ -265,7 +275,7 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 			animations_personnage(pers->sprites, temps, *clavier, anim, footsteps);
 		}
 		else
-			pers->x -= VITESSE_PERSO;
+			pers->x -= 3;
 	}
 	else if(clavier->tab[left] == 1){ //touche gauche
 
@@ -274,7 +284,7 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 			animations_personnage(pers->sprites, temps, *clavier, anim, footsteps);
 		}
 		else
-			pers->x += VITESSE_PERSO;
+			pers->x += 3;
 	}
 	else if(clavier->tab[up] == 1){ //touche haut
 
@@ -283,7 +293,7 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 			animations_personnage(pers->sprites, temps, *clavier, anim, footsteps);
 		}
 		else
-			pers->y += VITESSE_PERSO;
+			pers->y += 3;
 	}
 
 	pers->sprites[courant].rectangle.x = pers->x;

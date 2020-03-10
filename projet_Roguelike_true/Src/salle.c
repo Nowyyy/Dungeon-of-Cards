@@ -301,3 +301,39 @@ void place_monstre_coffre_boss(salle_t tab[], int taille){
     }
   }
 }
+
+
+
+void creation_mini_map(int taille, int indice, mini_map_t *map){
+
+  map->taille = taille * taille;
+
+  int coorX = WIN_WIDTH * 0.80;
+  int prevX = coorX;
+  int coorY = 0, prevY = 10;
+
+  for(int i = 0; i < map->taille; i++){
+
+    map->salles_decouvertes[i] = FALSE;
+    map->map[i].w = TAILLE_RECT_MINI_MAP_W;
+    map->map[i].h = TAILLE_RECT_MINI_MAP_H;
+
+    map->map[i].x = prevX;
+    map->map[i].y = prevY;
+
+    if((i + 1) % taille == 0){//fin de ligne
+      prevY += TAILLE_RECT_MINI_MAP_H + 1;
+      prevX = coorX;
+    }
+    else {
+      prevX += TAILLE_RECT_MINI_MAP_W + 1;
+    }
+  }
+}
+
+
+
+void ajoute_salle_decouverte(mini_map_t *map, int indice){
+
+  map->salles_decouvertes[indice] = TRUE;
+}

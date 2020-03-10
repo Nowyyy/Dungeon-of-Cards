@@ -78,26 +78,60 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 *\brief Permet d'afficher une salle, le personnage et si on est dans la premiere salle, les instructions et commandes du jeu
 
 */
-void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[], ennemi_t monstre, ennemi_t boss){
+void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[], ennemi_t monstre, ennemi_t boss, mini_map_t map){
+
+	SDL_Rect rect;
+	rect = map.map[0];
+	rect.x -= 5;
+	rect.y -= 5;
+	rect.h = (map.taille / 5) * TAILLE_RECT_MINI_MAP_H + 15;
+	rect.w = (map.taille / 5) * TAILLE_RECT_MINI_MAP_W + 15;
 
 	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
 
 	SDL_RenderClear(rendu);//nettoie l'écran pour supprimer tout ce qui est dessus
 
+///////////COMMANDES ET INSTRUCTIONS
 	if(salle->depart ==TRUE && salle->decouverte == FALSE){//affichage des commandes et rêgles du jeu si on est dans la première salle
 		SDL_RenderCopy(rendu, images[commandes].img, NULL, &images[commandes].rectangle);
 		SDL_RenderCopy(rendu, images[instructions].img, NULL, &images[instructions].rectangle);
 	}
+	else{
+///////////MINI MAP
+		SDL_SetRenderDrawColor(rendu,169,169,169,255);//gris
+		SDL_RenderDrawRect(rendu, &rect); // rectangle qui sert de cadre à la mini map
 
+		for(int i = 0; i < map.taille; i++){
+
+			if(map.salles_decouvertes[i] == TRUE && i == salle->id){
+				//salle dans laquelle se situe le joueur
+				SDL_SetRenderDrawColor(rendu,255,0,0,255);//rouge
+				SDL_RenderFillRect(rendu, &map.map[i]);
+			}
+			else if(map.salles_decouvertes[i] == TRUE){
+				SDL_SetRenderDrawColor(rendu,255,255,255,255);//blanc
+				SDL_RenderFillRect(rendu, &map.map[i]);
+			}
+			else{
+				SDL_SetRenderDrawColor(rendu,0,0,0,255);
+				SDL_RenderFillRect(rendu, &map.map[i]);
+			}
+		}
+	}
+
+///////////SALLE
 	afficher_salle(salle, rendu, images);
 
+///////////PERSONNAGE
 	SDL_RenderCopy(rendu, pers.sprites[courant].img, NULL, &pers.sprites[courant].rectangle);
 
+///////////HUD
 	SDL_RenderCopy(rendu, images[pv].img, NULL, &images[pv].rectangle);
 	SDL_RenderCopy(rendu, images[etage].img, NULL, &images[etage].rectangle);
 	SDL_RenderCopy(rendu, images[heart].img, NULL, &images[heart].rectangle);
 	SDL_RenderCopy(rendu, images[trapdoor].img, NULL, &images[trapdoor].rectangle);
 
+///////////SPRITES MONSTRES
 	if(salle->ennemi_present){
 
 		monstre.sprites[courant].rectangle.x = (salle->x_ennemi1 * TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_X;
@@ -118,8 +152,7 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 				SDL_RenderCopy(rendu, monstre.sprites[courant+1].img, NULL, &monstre.sprites[courant].rectangle);
 		}
 	}
-
-	if(salle->boss){
+	else if(salle->boss){
 		SDL_RenderCopy(rendu, boss.sprites[courant].img, NULL, &boss.sprites[courant].rectangle);
 	}
 
@@ -433,7 +466,7 @@ int salles_compatibles(int salle1, int porte1, int salle2, int porte2, salle_t s
 */
 int creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer){
 
-	int i = 0, porte, nouvelle_salle, porte_nouv_salle, cpt, alea, cpt2;
+	int i = 0, porte, nouvelle_salle, porte_nouv_salle, cpt, alea, cpt2, j;
 	int salle_crees[nb_salles_a_creer], taille_tab = 0;
 
 	initialise_salles(salles, taille*taille); //initialisation de toutes les salles.
@@ -487,7 +520,10 @@ int creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer){
 		salles[nouvelle_salle].salle_existe = TRUE;
 		salles[i].boss = FALSE;
 
-		salle_crees[taille_tab++] = nouvelle_salle;
+		for(j = 0; j < taille_tab && salle_crees[j] != nouvelle_salle; j++);
+
+		if(j >= taille_tab)
+			salle_crees[taille_tab++] = nouvelle_salle;
 		nb_salles_a_creer --;
 
 	}while(nb_salles_a_creer > 0);
@@ -496,9 +532,13 @@ int creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer){
 	salles[salle_crees[0]].salle_existe = TRUE;
 	salles[salle_crees[0]].depart = TRUE;
 
+	//si le boss a été placé dans la première salle, on le déplace ailleurs aléatoirement
 	if(salles[salle_crees[0]].boss == TRUE){
 		salles[salle_crees[0]].boss = FALSE;
-		salles[salle_crees[rand()%taille_tab + 1]].boss = TRUE;
+		alea = rand()%taille_tab + 1;
+		if(alea == taille_tab)
+			alea--;
+		salles[salle_crees[alea]].boss = TRUE;
 	}
 
 	//remplissage tableau de collisions pour les murs et les portes
@@ -554,6 +594,10 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	int taille = 5, nb_salles_a_creer = 10, salle_courante, salle_pred;
 
+	mini_map_t miniMap;
+
+	creation_mini_map(taille, 0, &miniMap);
+
 	salle_t salles[taille*taille];
 
 	SDL_Texture *cmpPartie_texture;
@@ -586,7 +630,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 		modifie_texture_hud(pers, &images[pv], &images[etage], rendu);
 
-		affichage_salle_personnage(*pers, &salles[salle_courante], rendu, images, *ennemi, *boss);
+		affichage_salle_personnage(*pers, &salles[salle_courante], rendu, images, *ennemi, *boss, miniMap);
 
 		deplacement_personnage(pers, salles[salle_courante], continuer, &anim, footsteps, &clavier);
 
@@ -615,6 +659,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 		if(salle_courante != salle_pred){
 			salles[salle_courante].decouverte = TRUE;
 			salle_pred = salle_courante;
+			ajoute_salle_decouverte(&miniMap, salle_courante);
 		}
 	}
 
