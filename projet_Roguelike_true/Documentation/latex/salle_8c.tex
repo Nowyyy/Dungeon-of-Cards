@@ -16,15 +16,15 @@ void \hyperlink{salle_8c_a72924cdd696e4afd7b839337ace19e9c}{init\+\_\+salle} (in
 \begin{DoxyCompactList}\small\item\em fonction qui génère une salle en un tableau \end{DoxyCompactList}\item 
 void \hyperlink{salle_8c_a956c6af0fd478d5d77105b9b3e2d9ae8}{ajout\+\_\+porte\+\_\+salle} (int salle\mbox{[}T\+A\+I\+L\+L\+E\+\_\+\+S\+A\+L\+LE\mbox{]}\mbox{[}T\+A\+I\+L\+L\+E\+\_\+\+S\+A\+L\+LE\mbox{]}, int direction)
 \begin{DoxyCompactList}\small\item\em fonction qui ajoute une porte à un côté du carré \end{DoxyCompactList}\item 
-void \hyperlink{salle_8c_a02d63a57b719a5f2293a57004c6bdfe3}{afficher\+\_\+salle} (salle\+\_\+t $\ast$salle, S\+D\+L\+\_\+\+Renderer $\ast$rendu, image\+\_\+t texture\mbox{[}$\,$\mbox{]})
+void \hyperlink{salle_8c_a02d63a57b719a5f2293a57004c6bdfe3}{afficher\+\_\+salle} (\hyperlink{structsalle__t}{salle\+\_\+t} $\ast$salle, S\+D\+L\+\_\+\+Renderer $\ast$rendu, \hyperlink{structimage__t}{image\+\_\+t} texture\mbox{[}$\,$\mbox{]})
 \begin{DoxyCompactList}\small\item\em fonction qui génère une salle en un tableau \end{DoxyCompactList}\item 
-void \hyperlink{salle_8c_aede6ff0302858d4beacbb91652be15c3}{rempli\+\_\+tableau\+\_\+murs\+\_\+portes} (salle\+\_\+t salle\mbox{[}$\,$\mbox{]}, int indiceT)
+void \hyperlink{salle_8c_aede6ff0302858d4beacbb91652be15c3}{rempli\+\_\+tableau\+\_\+murs\+\_\+portes} (\hyperlink{structsalle__t}{salle\+\_\+t} salle\mbox{[}$\,$\mbox{]}, int indiceT)
 \begin{DoxyCompactList}\small\item\em rempli les tableaux des murs et des portes de la salle afin de pouvoir gérer les collisions plus tard \end{DoxyCompactList}\item 
 int \hyperlink{salle_8c_aa20d8212045b0c56094a82c56277951e}{inverse\+\_\+porte} (int porte)
 \begin{DoxyCompactList}\small\item\em Renvoie l\textquotesingle{}opposée de la porte passée en paramètre. \end{DoxyCompactList}\item 
-void \hyperlink{salle_8c_a86a7d9453a068f07c6edeaf1c27d1f4c}{textures\+\_\+aleatoires} (salle\+\_\+t salles\mbox{[}$\,$\mbox{]}, int taille)
+void \hyperlink{salle_8c_a86a7d9453a068f07c6edeaf1c27d1f4c}{textures\+\_\+aleatoires} (\hyperlink{structsalle__t}{salle\+\_\+t} salles\mbox{[}$\,$\mbox{]}, int taille)
 \begin{DoxyCompactList}\small\item\em Permet de placer des textures différentes afin de varier le visuel des salles. \end{DoxyCompactList}\item 
-void \hyperlink{salle_8c_acda76565005ba739730eceb9e8927986}{place\+\_\+monstre\+\_\+coffre\+\_\+boss} (salle\+\_\+t tab\mbox{[}$\,$\mbox{]}, int taille)
+void \hyperlink{salle_8c_acda76565005ba739730eceb9e8927986}{place\+\_\+monstre\+\_\+coffre\+\_\+boss} (\hyperlink{structsalle__t}{salle\+\_\+t} tab\mbox{[}$\,$\mbox{]}, int taille)
 \begin{DoxyCompactList}\small\item\em rempli les salles de monstres, de coffre ou place un boss \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -47,7 +47,7 @@ Programme qui créé une salle et l\textquotesingle{}affiche.
 \index{salle.\+c@{salle.\+c}!afficher\+\_\+salle@{afficher\+\_\+salle}}
 \index{afficher\+\_\+salle@{afficher\+\_\+salle}!salle.\+c@{salle.\+c}}
 \subsubsection{\texorpdfstring{afficher\+\_\+salle()}{afficher\_salle()}}
-{\footnotesize\ttfamily void afficher\+\_\+salle (\begin{DoxyParamCaption}\item[{salle\+\_\+t $\ast$}]{salle,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{image\+\_\+t}]{texture\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void afficher\+\_\+salle (\begin{DoxyParamCaption}\item[{\hyperlink{structsalle__t}{salle\+\_\+t} $\ast$}]{salle,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{\hyperlink{structimage__t}{image\+\_\+t}}]{texture\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
 
 
 
@@ -116,7 +116,7 @@ l\textquotesingle{}inverse de la porte passée en paramètre
 \index{salle.\+c@{salle.\+c}!place\+\_\+monstre\+\_\+coffre\+\_\+boss@{place\+\_\+monstre\+\_\+coffre\+\_\+boss}}
 \index{place\+\_\+monstre\+\_\+coffre\+\_\+boss@{place\+\_\+monstre\+\_\+coffre\+\_\+boss}!salle.\+c@{salle.\+c}}
 \subsubsection{\texorpdfstring{place\+\_\+monstre\+\_\+coffre\+\_\+boss()}{place\_monstre\_coffre\_boss()}}
-{\footnotesize\ttfamily void place\+\_\+monstre\+\_\+coffre\+\_\+boss (\begin{DoxyParamCaption}\item[{salle\+\_\+t}]{tab\mbox{[}$\,$\mbox{]},  }\item[{int}]{taille }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void place\+\_\+monstre\+\_\+coffre\+\_\+boss (\begin{DoxyParamCaption}\item[{\hyperlink{structsalle__t}{salle\+\_\+t}}]{tab\mbox{[}$\,$\mbox{]},  }\item[{int}]{taille }\end{DoxyParamCaption})}
 
 
 
@@ -133,7 +133,7 @@ rempli les salles de monstres, de coffre ou place un boss
 \index{salle.\+c@{salle.\+c}!rempli\+\_\+tableau\+\_\+murs\+\_\+portes@{rempli\+\_\+tableau\+\_\+murs\+\_\+portes}}
 \index{rempli\+\_\+tableau\+\_\+murs\+\_\+portes@{rempli\+\_\+tableau\+\_\+murs\+\_\+portes}!salle.\+c@{salle.\+c}}
 \subsubsection{\texorpdfstring{rempli\+\_\+tableau\+\_\+murs\+\_\+portes()}{rempli\_tableau\_murs\_portes()}}
-{\footnotesize\ttfamily void rempli\+\_\+tableau\+\_\+murs\+\_\+portes (\begin{DoxyParamCaption}\item[{salle\+\_\+t}]{salle\mbox{[}$\,$\mbox{]},  }\item[{int}]{indiceT }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void rempli\+\_\+tableau\+\_\+murs\+\_\+portes (\begin{DoxyParamCaption}\item[{\hyperlink{structsalle__t}{salle\+\_\+t}}]{salle\mbox{[}$\,$\mbox{]},  }\item[{int}]{indiceT }\end{DoxyParamCaption})}
 
 
 
@@ -148,7 +148,7 @@ rempli les tableaux des murs et des portes de la salle afin de pouvoir gérer le
 \index{salle.\+c@{salle.\+c}!textures\+\_\+aleatoires@{textures\+\_\+aleatoires}}
 \index{textures\+\_\+aleatoires@{textures\+\_\+aleatoires}!salle.\+c@{salle.\+c}}
 \subsubsection{\texorpdfstring{textures\+\_\+aleatoires()}{textures\_aleatoires()}}
-{\footnotesize\ttfamily void textures\+\_\+aleatoires (\begin{DoxyParamCaption}\item[{salle\+\_\+t}]{salles\mbox{[}$\,$\mbox{]},  }\item[{int}]{taille }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void textures\+\_\+aleatoires (\begin{DoxyParamCaption}\item[{\hyperlink{structsalle__t}{salle\+\_\+t}}]{salles\mbox{[}$\,$\mbox{]},  }\item[{int}]{taille }\end{DoxyParamCaption})}
 
 
 

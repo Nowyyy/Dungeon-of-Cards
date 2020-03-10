@@ -7,5 +7,7 @@ var searchData=
   ['ajout_5fdroit',['ajout_droit',['../fonctions_8c.html#aa44f89ec4da70467c269566bb0b35d2f',1,'fonctions.c']]],
   ['ajout_5fgauche',['ajout_gauche',['../fonctions_8c.html#a0342296839dd4a75d97f808fb1db9ba3',1,'fonctions.c']]],
   ['ajout_5fporte_5fsalle',['ajout_porte_salle',['../salle_8c.html#a956c6af0fd478d5d77105b9b3e2d9ae8',1,'salle.c']]],
-  ['animations_5fpersonnage',['animations_personnage',['../personnage_8c.html#a077c16328a6af89e080980aebbb2ed58',1,'personnage.c']]]
+  ['animation_5ft',['animation_t',['../structanimation__t.html',1,'']]],
+  ['animations_5fpersonnage',['animations_personnage',['../personnage_8c.html#a077c16328a6af89e080980aebbb2ed58',1,'personnage.c']]],
+  ['attaque',['attaque',['../structperso__s.html#a3dfcf516a244c40d0cf30122d6044b38',1,'perso_s::attaque()'],['../structennemi__s.html#a1b3d60dde3acf89c6ba6ae2c250109e2',1,'ennemi_s::attaque()']]]
 ];

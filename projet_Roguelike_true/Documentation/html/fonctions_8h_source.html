@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Dungeon of Cards:  Fichier source de /home/aurelien/Desktop/Projet-L2-/projet_Roguelike_true/include/fonctions.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Dungeon of Cards
+   &#160;<span id="projectnumber">1</span>
+   </div>
+   <div id="projectbrief">Ce projet à pour but de créer un jeu roguelike pour le module Projet de notre seconde année de licence</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">fonctions.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="fonctions_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<a class="code" href="structcarte__t.html">carte_t</a> * creer_carte(<span class="keywordtype">char</span> *, <a class="code" href="constantes_8h.html#a8fb27eb0b354a4f35787ef57ac90e0eb">type_carte</a>, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>);</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<a class="code" href="structennemi__t.html">ennemi_t</a> * creer_ennemi(<span class="keywordtype">char</span> *, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>, SDL_Renderer *);</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<a class="code" href="structennemi__t.html">ennemi_t</a> * generer_ennemi(<span class="keywordtype">int</span>);</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fonctions_8h.html#a62818a216fc585cb9936d3246a645eef">detruire_carte</a>(<a class="code" href="structcarte__t.html">carte_t</a> **);</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fonctions_8h.html#a185e224fb48cf782c8e17d6ec418504e">detruire_ennemi</a>(<a class="code" href="structennemi__t.html">ennemi_t</a> **);</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">int</span> <a class="code" href="fonctions_8h.html#ab526367a70a375452f82373707836334">initiative</a> (<a class="code" href="structperso__t.html">perso_t</a> *, <a class="code" href="structennemi__t.html">ennemi_t</a> *);</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fonctions_8h.html#a5ef13711cbf5793ccaf197559f095e3b">tour_ennemi</a>(<a class="code" href="structperso__t.html">perso_t</a> *, <a class="code" href="structennemi__t.html">ennemi_t</a> *);</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keywordtype">int</span> <a class="code" href="fonctions_8h.html#a2e40d6d52a32f118cafc353d51584175">tour_perso</a>(<span class="keywordtype">int</span>, <a class="code" href="structperso__t.html">perso_t</a> *, <a class="code" href="structennemi__t.html">ennemi_t</a> *, <a class="code" href="structcarte__t.html">carte_t</a> **);</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">void</span> combat(<a class="code" href="structperso__t.html">perso_t</a> *, <a class="code" href="structennemi__t.html">ennemi_t</a> *);</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fonctions_8h.html#ab80fe591c4ab95f27b317a9e6f6955e1">init_liste</a>();</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keywordtype">int</span> <a class="code" href="fonctions_8h.html#a9c70c18ad120ac199ddcd39f0824a865">liste_vide</a>();</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordtype">int</span> <a class="code" href="fonctions_8h.html#adda7a0d25a9bfeed725f12efc6c254f8">hors_liste</a>();</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fonctions_8h.html#a205229e638af73f963938189b0dd12d4">en_tete</a>();</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fonctions_8h.html#ab0ff9fb3b16656cf42a159f527244501">en_queue</a>();</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fonctions_8h.html#a7508531ae1735a204a105dedbdc06ee3">precedent</a>();</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fonctions_8h.html#ad99c86c7caff6844bb873680d5e9f26b">suivant</a>();</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fonctions_8h.html#a1a3f99fb82a6a8cfa4e0742fd61f5a27">valeur_elt</a>(<a class="code" href="structcarte__t.html">carte_t</a>*);</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fonctions_8h.html#ae6047ae64e4ee0bc8322ed495c551ff6">modif_elt</a>(<a class="code" href="structcarte__t.html">carte_t</a>);</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fonctions_8c.html#a655bcaf1ee330c2c05bf11057f983de8">oter_elt</a>();</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fonctions_8h.html#aa01b4bb9ca8f098dbf766f95a214a720">ajout_droit</a>(<a class="code" href="structcarte__t.html">carte_t</a>*);</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fonctions_8h.html#a9dff79b105b1d973bcf5726e0bd54023">ajout_gauche</a>(<a class="code" href="structcarte__t.html">carte_t</a>*);</div><div class="ttc" id="fonctions_8h_html_a205229e638af73f963938189b0dd12d4"><div class="ttname"><a href="fonctions_8h.html#a205229e638af73f963938189b0dd12d4">en_tete</a></div><div class="ttdeci">void en_tete()</div><div class="ttdoc">Fonction qui permet de se mettre au début de la liste. </div><div class="ttdef"><b>Definition:</b> fonctions.c:51</div></div>
+<div class="ttc" id="fonctions_8h_html_a7508531ae1735a204a105dedbdc06ee3"><div class="ttname"><a href="fonctions_8h.html#a7508531ae1735a204a105dedbdc06ee3">precedent</a></div><div class="ttdeci">void precedent()</div><div class="ttdoc">Fonction qui permet de reculer dans la liste. </div><div class="ttdef"><b>Definition:</b> fonctions.c:69</div></div>
+<div class="ttc" id="structperso__t_html"><div class="ttname"><a href="structperso__t.html">perso_t</a></div></div>
+<div class="ttc" id="fonctions_8h_html_a9dff79b105b1d973bcf5726e0bd54023"><div class="ttname"><a href="fonctions_8h.html#a9dff79b105b1d973bcf5726e0bd54023">ajout_gauche</a></div><div class="ttdeci">void ajout_gauche(carte_t *)</div><div class="ttdoc">Fonction qui permet d&amp;#39;ajouter un objet avant l&amp;#39;objet sur lequel l&amp;#39;utilisteur se trouve. </div><div class="ttdef"><b>Definition:</b> fonctions.c:143</div></div>
+<div class="ttc" id="fonctions_8h_html_a185e224fb48cf782c8e17d6ec418504e"><div class="ttname"><a href="fonctions_8h.html#a185e224fb48cf782c8e17d6ec418504e">detruire_ennemi</a></div><div class="ttdeci">void detruire_ennemi(ennemi_t **)</div><div class="ttdoc">Fonction qui permet de détruire un ennemi. </div><div class="ttdef"><b>Definition:</b> fonctions.c:262</div></div>
+<div class="ttc" id="fonctions_8h_html_ab526367a70a375452f82373707836334"><div class="ttname"><a href="fonctions_8h.html#ab526367a70a375452f82373707836334">initiative</a></div><div class="ttdeci">int initiative(perso_t *, ennemi_t *)</div><div class="ttdoc">Fonction qui permet savoir si c&amp;#39;est l&amp;#39;ennemi ou le personnage qui combat en premier. </div><div class="ttdef"><b>Definition:</b> fonctions.c:275</div></div>
+<div class="ttc" id="structcarte__t_html"><div class="ttname"><a href="structcarte__t.html">carte_t</a></div><div class="ttdoc">Représente une carte. </div></div>
+<div class="ttc" id="constantes_8h_html_a8fb27eb0b354a4f35787ef57ac90e0eb"><div class="ttname"><a href="constantes_8h.html#a8fb27eb0b354a4f35787ef57ac90e0eb">type_carte</a></div><div class="ttdeci">type_carte</div><div class="ttdoc">Les différents types de cartes. </div><div class="ttdef"><b>Definition:</b> constantes.h:126</div></div>
+<div class="ttc" id="fonctions_8c_html_a655bcaf1ee330c2c05bf11057f983de8"><div class="ttname"><a href="fonctions_8c.html#a655bcaf1ee330c2c05bf11057f983de8">oter_elt</a></div><div class="ttdeci">void oter_elt(carte_t t)</div><div class="ttdoc">Fonction qui permet de supprimer une valeur de la liste. </div><div class="ttdef"><b>Definition:</b> fonctions.c:107</div></div>
+<div class="ttc" id="fonctions_8h_html_ad99c86c7caff6844bb873680d5e9f26b"><div class="ttname"><a href="fonctions_8h.html#ad99c86c7caff6844bb873680d5e9f26b">suivant</a></div><div class="ttdeci">void suivant()</div><div class="ttdoc">Fonction qui permet d&amp;#39;avancer dans la liste. </div><div class="ttdef"><b>Definition:</b> fonctions.c:78</div></div>
+<div class="ttc" id="structennemi__t_html"><div class="ttname"><a href="structennemi__t.html">ennemi_t</a></div></div>
+<div class="ttc" id="fonctions_8h_html_ab80fe591c4ab95f27b317a9e6f6955e1"><div class="ttname"><a href="fonctions_8h.html#ab80fe591c4ab95f27b317a9e6f6955e1">init_liste</a></div><div class="ttdeci">void init_liste()</div><div class="ttdoc">Fonction d&amp;#39;initialiser une liste. </div><div class="ttdef"><b>Definition:</b> fonctions.c:23</div></div>
+<div class="ttc" id="fonctions_8h_html_a62818a216fc585cb9936d3246a645eef"><div class="ttname"><a href="fonctions_8h.html#a62818a216fc585cb9936d3246a645eef">detruire_carte</a></div><div class="ttdeci">void detruire_carte(carte_t **)</div><div class="ttdoc">Fonction qui permet de détruire une carte. </div><div class="ttdef"><b>Definition:</b> fonctions.c:250</div></div>
+<div class="ttc" id="fonctions_8h_html_a2e40d6d52a32f118cafc353d51584175"><div class="ttname"><a href="fonctions_8h.html#a2e40d6d52a32f118cafc353d51584175">tour_perso</a></div><div class="ttdeci">int tour_perso(int, perso_t *, ennemi_t *, carte_t **)</div><div class="ttdoc">Fonction qui permet au personnage d&amp;#39;effectuer une action. </div></div>
+<div class="ttc" id="fonctions_8h_html_ae6047ae64e4ee0bc8322ed495c551ff6"><div class="ttname"><a href="fonctions_8h.html#ae6047ae64e4ee0bc8322ed495c551ff6">modif_elt</a></div><div class="ttdeci">void modif_elt(carte_t)</div><div class="ttdoc">Fonction qui permet de modifier une valeur dans une liste. </div><div class="ttdef"><b>Definition:</b> fonctions.c:97</div></div>
+<div class="ttc" id="fonctions_8h_html_aa01b4bb9ca8f098dbf766f95a214a720"><div class="ttname"><a href="fonctions_8h.html#aa01b4bb9ca8f098dbf766f95a214a720">ajout_droit</a></div><div class="ttdeci">void ajout_droit(carte_t *)</div><div class="ttdoc">Fonction qui permet d&amp;#39;ajouter un objet après l&amp;#39;objet sur lequel l&amp;#39;utilisteur se trouve. </div><div class="ttdef"><b>Definition:</b> fonctions.c:124</div></div>
+<div class="ttc" id="fonctions_8h_html_a1a3f99fb82a6a8cfa4e0742fd61f5a27"><div class="ttname"><a href="fonctions_8h.html#a1a3f99fb82a6a8cfa4e0742fd61f5a27">valeur_elt</a></div><div class="ttdeci">void valeur_elt(carte_t *)</div><div class="ttdoc">Fonction qui permet de prendre une valeur de la liste. </div><div class="ttdef"><b>Definition:</b> fonctions.c:87</div></div>
+<div class="ttc" id="fonctions_8h_html_adda7a0d25a9bfeed725f12efc6c254f8"><div class="ttname"><a href="fonctions_8h.html#adda7a0d25a9bfeed725f12efc6c254f8">hors_liste</a></div><div class="ttdeci">int hors_liste()</div><div class="ttdoc">Fonction qui permet de vérifier si on est pas hors liste. </div><div class="ttdef"><b>Definition:</b> fonctions.c:43</div></div>
+<div class="ttc" id="fonctions_8h_html_a5ef13711cbf5793ccaf197559f095e3b"><div class="ttname"><a href="fonctions_8h.html#a5ef13711cbf5793ccaf197559f095e3b">tour_ennemi</a></div><div class="ttdeci">void tour_ennemi(perso_t *, ennemi_t *)</div><div class="ttdoc">Fonction qui permet à l&amp;#39;ennemi d&amp;#39;effectuer une action. </div><div class="ttdef"><b>Definition:</b> fonctions.c:295</div></div>
+<div class="ttc" id="fonctions_8h_html_a9c70c18ad120ac199ddcd39f0824a865"><div class="ttname"><a href="fonctions_8h.html#a9c70c18ad120ac199ddcd39f0824a865">liste_vide</a></div><div class="ttdeci">int liste_vide()</div><div class="ttdoc">Fonction qui permet de vérifier si une liste est vide. </div><div class="ttdef"><b>Definition:</b> fonctions.c:35</div></div>
+<div class="ttc" id="fonctions_8h_html_ab0ff9fb3b16656cf42a159f527244501"><div class="ttname"><a href="fonctions_8h.html#ab0ff9fb3b16656cf42a159f527244501">en_queue</a></div><div class="ttdeci">void en_queue()</div><div class="ttdoc">Fonction qui permet de se mettre en fin de la liste. </div><div class="ttdef"><b>Definition:</b> fonctions.c:60</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

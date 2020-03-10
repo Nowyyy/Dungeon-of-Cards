@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['personnage_2ec',['personnage.c',['../personnage_8c.html',1,'']]],
-  ['place_5fmonstre_5fcoffre_5fboss',['place_monstre_coffre_boss',['../salle_8c.html#acda76565005ba739730eceb9e8927986',1,'salle.c']]],
-  ['precedent',['precedent',['../fonctions_8c.html#a7508531ae1735a204a105dedbdc06ee3',1,'fonctions.c']]]
+  ['oter_5felt',['oter_elt',['../fonctions_8c.html#a655bcaf1ee330c2c05bf11057f983de8',1,'fonctions.c']]]
 ];

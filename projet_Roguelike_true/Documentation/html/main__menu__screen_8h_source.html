@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Dungeon of Cards:  Fichier source de /home/aurelien/Desktop/Projet-L2-/projet_Roguelike_true/include/main_menu_screen.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Dungeon of Cards
+   &#160;<span id="projectnumber">1</span>
+   </div>
+   <div id="projectbrief">Ce projet à pour but de créer un jeu roguelike pour le module Projet de notre seconde année de licence</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">main_menu_screen.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keywordtype">int</span> <a class="code" href="main__menu__screen_8c.html#adb49f1ff0b7f8930270a6eb2b756b136">main_menu</a>(<span class="keywordtype">int</span> *continuer, <span class="keywordtype">int</span> *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *select, Mix_Chunk *move, Mix_Music *music);</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keywordtype">void</span> <a class="code" href="main__menu__screen_8c.html#a0267389919c27005263e086ef2895aed">deplacement_rectangle_selection</a>(SDL_Rect jouer, SDL_Rect charger, SDL_Rect quitter, SDL_Rect **rect_sel, <span class="keywordtype">int</span> *etat, Mix_Chunk *select, Mix_Chunk *move);</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keywordtype">void</span> <a class="code" href="main__menu__screen_8c.html#a7122b8a834353cf81034bbb8e21cd7d3">affichage_menu</a>(SDL_Renderer *rendu, SDL_Texture *jouer_text, SDL_Texture *charger_text, SDL_Texture *quitter_text, SDL_Rect *rect_sel, SDL_Rect jouer_rect, SDL_Rect charger_rect, SDL_Rect quitter_rect,<a class="code" href="structimage__t.html">image_t</a> logo[]);</div><div class="ttc" id="structimage__t_html"><div class="ttname"><a href="structimage__t.html">image_t</a></div><div class="ttdef"><b>Definition:</b> constantes.h:173</div></div>
+<div class="ttc" id="main__menu__screen_8c_html_adb49f1ff0b7f8930270a6eb2b756b136"><div class="ttname"><a href="main__menu__screen_8c.html#adb49f1ff0b7f8930270a6eb2b756b136">main_menu</a></div><div class="ttdeci">void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *select, Mix_Chunk *move, Mix_Music *music)</div><div class="ttdoc">gère l&amp;#39;affichage à l&amp;#39;écran du menu principal, permet de choisir entre différentes options (jouer...</div><div class="ttdef"><b>Definition:</b> main_menu_screen.c:143</div></div>
+<div class="ttc" id="main__menu__screen_8c_html_a7122b8a834353cf81034bbb8e21cd7d3"><div class="ttname"><a href="main__menu__screen_8c.html#a7122b8a834353cf81034bbb8e21cd7d3">affichage_menu</a></div><div class="ttdeci">void affichage_menu(SDL_Renderer *rendu, SDL_Texture *jouer_text, SDL_Texture *charger_text, SDL_Texture *quitter_text, SDL_Rect *rect_sel, SDL_Rect jouer_rect, SDL_Rect charger_rect, SDL_Rect quitter_rect, image_t logo[])</div><div class="ttdoc">Affiche sur le rendu les différentes textures et rectangles passés en paramètre. </div><div class="ttdef"><b>Definition:</b> main_menu_screen.c:105</div></div>
+<div class="ttc" id="main__menu__screen_8c_html_a0267389919c27005263e086ef2895aed"><div class="ttname"><a href="main__menu__screen_8c.html#a0267389919c27005263e086ef2895aed">deplacement_rectangle_selection</a></div><div class="ttdeci">int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect quitter, SDL_Rect **rect_sel, int *etat, Mix_Chunk *select, Mix_Chunk *move)</div><div class="ttdoc">Permet de déplacer d&amp;#39;option en option le rectangle de sélection. </div><div class="ttdef"><b>Definition:</b> main_menu_screen.c:29</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

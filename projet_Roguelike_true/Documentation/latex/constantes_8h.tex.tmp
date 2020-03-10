@@ -1,0 +1,307 @@
+\hypertarget{constantes_8h}{}\section{Référence du fichier /home/aurelien/\+Desktop/\+Projet-\/\+L2-\//projet\+\_\+\+Roguelike\+\_\+true/include/constantes.h}
+\label{constantes_8h}\index{/home/aurelien/\+Desktop/\+Projet-\/\+L2-\//projet\+\_\+\+Roguelike\+\_\+true/include/constantes.\+h@{/home/aurelien/\+Desktop/\+Projet-\/\+L2-\//projet\+\_\+\+Roguelike\+\_\+true/include/constantes.\+h}}
+
+
+Constantes et structures du projet Roguelike.  
+
+
+{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L\+\_\+ttf.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}S\+D\+L2/\+S\+D\+L\+\_\+mixer.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de constantes.\+h\+:
+% FIG 0
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+% FIG 1
+\subsection*{Structures de données}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structanimation__t}{animation\+\_\+t}
+\begin{DoxyCompactList}\small\item\em permet de gèrer les animations du personnage \end{DoxyCompactList}\item 
+struct \hyperlink{structtouches__t}{touches\+\_\+t}
+\item 
+struct \hyperlink{structimage__t}{image\+\_\+t}
+\item 
+struct \hyperlink{structsalle__s}{salle\+\_\+s}
+\item 
+struct \hyperlink{structperso__s}{perso\+\_\+s}
+\item 
+struct \hyperlink{structennemi__s}{ennemi\+\_\+s}
+\item 
+struct \hyperlink{structcarte__s}{carte\+\_\+s}
+\item 
+struct \hyperlink{structelement}{element}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{constantes_8h_a0a33b1743038db1adbbf1045aa839b38}\label{constantes_8h_a0a33b1743038db1adbbf1045aa839b38}} 
+\#define {\bfseries W\+I\+N\+\_\+\+H\+E\+I\+G\+HT}~620
+\item 
+\mbox{\Hypertarget{constantes_8h_a2e6ef411e0ff00ad889788b6cde701b5}\label{constantes_8h_a2e6ef411e0ff00ad889788b6cde701b5}} 
+\#define {\bfseries W\+I\+N\+\_\+\+W\+I\+D\+TH}~1080
+\item 
+\mbox{\Hypertarget{constantes_8h_af326d9b4cced6fd44a9f9567dc666014}\label{constantes_8h_af326d9b4cced6fd44a9f9567dc666014}} 
+\#define {\bfseries F\+O\+N\+T\+\_\+\+P\+A\+TH}~\char`\"{}../Font/Bebas\+Neue.\+ttf\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a2f4c1d940488bfc90ef2d7775b49d211}\label{constantes_8h_a2f4c1d940488bfc90ef2d7775b49d211}} 
+\#define {\bfseries S\+O\+L1\+\_\+\+P\+A\+TH}~\char`\"{}../Images/dalle3.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a1efaafbaa4b02ae3bbaa0fe0aa18e270}\label{constantes_8h_a1efaafbaa4b02ae3bbaa0fe0aa18e270}} 
+\#define {\bfseries M\+U\+R1\+\_\+\+P\+A\+TH}~\char`\"{}../Images/mur.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a68be058ceddf9f90d374d152836987a6}\label{constantes_8h_a68be058ceddf9f90d374d152836987a6}} 
+\#define {\bfseries M\+U\+R2\+\_\+\+P\+A\+TH}~\char`\"{}../Images/mur\+\_\+feu.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_ac2c13ca16b27bb1da6a86f800d345a6f}\label{constantes_8h_ac2c13ca16b27bb1da6a86f800d345a6f}} 
+\#define {\bfseries S\+O\+L2\+\_\+\+P\+A\+TH}~\char`\"{}../Images/dalle\+\_\+cailloux.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_aaa62c9e21726ccd7208567be3d5de606}\label{constantes_8h_aaa62c9e21726ccd7208567be3d5de606}} 
+\#define {\bfseries S\+O\+L3\+\_\+\+P\+A\+TH}~\char`\"{}../Images/dalle\+\_\+eau.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a4fe4d20a0e40198e0719b3d9753ba9e6}\label{constantes_8h_a4fe4d20a0e40198e0719b3d9753ba9e6}} 
+\#define {\bfseries P\+O\+R\+T\+E\+\_\+\+P\+A\+TH}~\char`\"{}../Images/dalle3.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_abec2f5387b8475f1d70d3a2241862e63}\label{constantes_8h_abec2f5387b8475f1d70d3a2241862e63}} 
+\#define {\bfseries C\+O\+M\+M\+A\+N\+D\+E\+S\+\_\+\+P\+A\+TH}~\char`\"{}../Images/commandes.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_ad3e3195a9fb1979f570a42a742650b29}\label{constantes_8h_ad3e3195a9fb1979f570a42a742650b29}} 
+\#define {\bfseries I\+N\+S\+T\+R\+U\+C\+T\+I\+O\+N\+S\+\_\+\+P\+A\+TH}~\char`\"{}../Images/instructions.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a741e0476df1374c66bf376a4b8a99310}\label{constantes_8h_a741e0476df1374c66bf376a4b8a99310}} 
+\#define {\bfseries G\+A\+M\+E\+O\+V\+E\+R\+\_\+\+P\+A\+TH}~\char`\"{}../Images/gameover.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a6cba607ec16a14891d0fa18c90ab9ac5}\label{constantes_8h_a6cba607ec16a14891d0fa18c90ab9ac5}} 
+\#define {\bfseries D\+E\+A\+T\+H\+L\+I\+G\+H\+T\+\_\+\+P\+A\+TH}~\char`\"{}../Images/deathlight.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_ae265f40054c514e6fade35005b1f0124}\label{constantes_8h_ae265f40054c514e6fade35005b1f0124}} 
+\#define {\bfseries H\+E\+A\+R\+T\+\_\+\+P\+A\+TH}~\char`\"{}../Images/heart.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a9b3fc2d8f8a968529386273002d1c255}\label{constantes_8h_a9b3fc2d8f8a968529386273002d1c255}} 
+\#define {\bfseries T\+R\+A\+P\+D\+O\+O\+R\+\_\+\+P\+A\+TH}~\char`\"{}../Images/trapdoor2.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_aca3b4c78fd9c641f27808a71cb025b33}\label{constantes_8h_aca3b4c78fd9c641f27808a71cb025b33}} 
+\#define {\bfseries S\+P\+R\+I\+T\+E1\+\_\+\+P\+A\+TH}~\char`\"{}../Images/Animations\+\_\+personnage/idle\+\_\+droite.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a74d4c0d9f44170c136b6440ea44e9b72}\label{constantes_8h_a74d4c0d9f44170c136b6440ea44e9b72}} 
+\#define {\bfseries S\+P\+R\+I\+T\+E2\+\_\+\+P\+A\+TH}~\char`\"{}../Images/Animations\+\_\+personnage/idle\+\_\+gauche.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a1758c41010f438f5e919d4d79161c051}\label{constantes_8h_a1758c41010f438f5e919d4d79161c051}} 
+\#define {\bfseries S\+P\+R\+I\+T\+E3\+\_\+\+P\+A\+TH}~\char`\"{}../Images/Animations\+\_\+personnage/droite1.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_ada7af6ac4b7bf59474a62c14a06f37a4}\label{constantes_8h_ada7af6ac4b7bf59474a62c14a06f37a4}} 
+\#define {\bfseries S\+P\+R\+I\+T\+E4\+\_\+\+P\+A\+TH}~\char`\"{}../Images/Animations\+\_\+personnage/droite2.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a4a77eb6cebef0317b544f3f13bcc7992}\label{constantes_8h_a4a77eb6cebef0317b544f3f13bcc7992}} 
+\#define {\bfseries S\+P\+R\+I\+T\+E5\+\_\+\+P\+A\+TH}~\char`\"{}../Images/Animations\+\_\+personnage/gauche2.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a55f5d41fcf5884509839f3cfdcd8b10e}\label{constantes_8h_a55f5d41fcf5884509839f3cfdcd8b10e}} 
+\#define {\bfseries S\+P\+R\+I\+T\+E6\+\_\+\+P\+A\+TH}~\char`\"{}../Images/Animations\+\_\+personnage/gauche1.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a7c16eb8b0f7ec07151e1d50c5014f6ee}\label{constantes_8h_a7c16eb8b0f7ec07151e1d50c5014f6ee}} 
+\#define {\bfseries S\+P\+R\+I\+T\+E8\+\_\+\+P\+A\+TH}~\char`\"{}../Images/Animations\+\_\+personnage/gauche3.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_abf65796a9d4b6d1238d102af8befe35b}\label{constantes_8h_abf65796a9d4b6d1238d102af8befe35b}} 
+\#define {\bfseries S\+P\+R\+I\+T\+E9\+\_\+\+P\+A\+TH}~\char`\"{}../Images/Animations\+\_\+personnage/droite3.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_ad136535ab81efd169b2e417d232bbb3e}\label{constantes_8h_ad136535ab81efd169b2e417d232bbb3e}} 
+\#define {\bfseries S\+P\+R\+I\+T\+E7\+\_\+\+P\+A\+TH}~\char`\"{}../Images/Animations\+\_\+personnage/dead.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a79ee073006893d4a4ef26bed354c547a}\label{constantes_8h_a79ee073006893d4a4ef26bed354c547a}} 
+\#define {\bfseries S\+Q\+U\+E\+L\+E\+T\+T\+E\+\_\+\+I\+D\+L\+E\+\_\+\+P\+A\+TH}~\char`\"{}../Images/sprites\+\_\+mobs/squelette.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_ae6f955233fbef82c1f8c500a6a8bdd33}\label{constantes_8h_ae6f955233fbef82c1f8c500a6a8bdd33}} 
+\#define {\bfseries C\+Y\+C\+L\+O\+P\+E\+\_\+\+I\+D\+L\+E\+\_\+\+P\+A\+TH}~\char`\"{}../Images/sprites\+\_\+mobs/cyclope.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_ac3ae54d324565583caaa7269ef0e9b35}\label{constantes_8h_ac3ae54d324565583caaa7269ef0e9b35}} 
+\#define {\bfseries M\+I\+N\+O\+T\+A\+U\+R\+E\+\_\+\+I\+D\+L\+E\+\_\+\+P\+A\+TH}~\char`\"{}../Images/sprites\+\_\+mobs/minotaure.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a1d1a4e15b9de4b2874ae5853a0150b6b}\label{constantes_8h_a1d1a4e15b9de4b2874ae5853a0150b6b}} 
+\#define {\bfseries S\+A\+V\+E\+\_\+\+P\+E\+R\+S\+O\+\_\+\+P\+A\+TH}~\char`\"{}../Sauvegarde/personnage.\+txt\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_ace01d5d405ff0c32baf1fd84e384b06f}\label{constantes_8h_ace01d5d405ff0c32baf1fd84e384b06f}} 
+\#define {\bfseries S\+A\+V\+E\+\_\+\+C\+A\+R\+T\+E\+S\+\_\+\+P\+A\+TH}~\char`\"{}../Sauvegarde/cartes.\+txt\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_ad2b84a634ac07c3cc462af4fa0ce9ddf}\label{constantes_8h_ad2b84a634ac07c3cc462af4fa0ce9ddf}} 
+\#define {\bfseries N\+B\+\_\+\+T\+E\+X\+T\+U\+R\+ES}~14
+\item 
+\mbox{\Hypertarget{constantes_8h_aa8cecfc5c5c054d2875c03e77b7be15d}\label{constantes_8h_aa8cecfc5c5c054d2875c03e77b7be15d}} 
+\#define {\bfseries T\+R\+UE}~1
+\item 
+\mbox{\Hypertarget{constantes_8h_aa93f0eb578d23995850d61f7d61c55c1}\label{constantes_8h_aa93f0eb578d23995850d61f7d61c55c1}} 
+\#define {\bfseries F\+A\+L\+SE}~0
+\item 
+\mbox{\Hypertarget{constantes_8h_ab1e50feb98c6b01a2c8d40d0069e9e7b}\label{constantes_8h_ab1e50feb98c6b01a2c8d40d0069e9e7b}} 
+\#define {\bfseries T\+A\+I\+L\+L\+E\+\_\+\+S\+A\+L\+LE}~8
+\item 
+\mbox{\Hypertarget{constantes_8h_ae3fde7917e5f1b7492e4844fe3bf3612}\label{constantes_8h_ae3fde7917e5f1b7492e4844fe3bf3612}} 
+\#define {\bfseries T\+A\+I\+L\+L\+E\+\_\+\+I\+M\+A\+GE}~64
+\item 
+\mbox{\Hypertarget{constantes_8h_a7b29335add3a553ed85d0e3ace85629c}\label{constantes_8h_a7b29335add3a553ed85d0e3ace85629c}} 
+\#define {\bfseries T\+A\+I\+L\+LE}~20
+\item 
+\mbox{\Hypertarget{constantes_8h_a37b09c02f39d97f315bba71116fcc977}\label{constantes_8h_a37b09c02f39d97f315bba71116fcc977}} 
+\#define {\bfseries T\+A\+I\+L\+L\+E\+\_\+\+D\+E\+CK}~5
+\item 
+\mbox{\Hypertarget{constantes_8h_ada3c0678246b1bcd188a4e3dcbd05b4b}\label{constantes_8h_ada3c0678246b1bcd188a4e3dcbd05b4b}} 
+\#define {\bfseries N\+B\+\_\+\+S\+P\+R\+I\+T\+E\+S\+\_\+\+P\+E\+R\+S\+O\+N\+N\+A\+GE}~10
+\item 
+\mbox{\Hypertarget{constantes_8h_a09cfa66ff40a6bdae746531a79d04f05}\label{constantes_8h_a09cfa66ff40a6bdae746531a79d04f05}} 
+\#define {\bfseries N\+B\+\_\+\+S\+P\+R\+I\+T\+E\+S\+\_\+\+M\+O\+N\+S\+T\+RE}~2
+\item 
+\mbox{\Hypertarget{constantes_8h_abfd31ad828f87738934f8513add19935}\label{constantes_8h_abfd31ad828f87738934f8513add19935}} 
+\#define {\bfseries E\+M\+P\+L\+A\+C\+E\+M\+E\+N\+T\+\_\+\+D\+E\+P\+A\+R\+T\+\_\+\+D\+E\+S\+S\+I\+N\+\_\+\+S\+A\+L\+L\+E\+\_\+X}~256
+\item 
+\mbox{\Hypertarget{constantes_8h_aa2fadc29a86d20f5b430d7a3c1ec73e6}\label{constantes_8h_aa2fadc29a86d20f5b430d7a3c1ec73e6}} 
+\#define {\bfseries E\+M\+P\+L\+A\+C\+E\+M\+E\+N\+T\+\_\+\+D\+E\+P\+A\+R\+T\+\_\+\+D\+E\+S\+S\+I\+N\+\_\+\+S\+A\+L\+L\+E\+\_\+Y}~40
+\item 
+\mbox{\Hypertarget{constantes_8h_a55237989a0ca2fa4f3adb47e86fdd861}\label{constantes_8h_a55237989a0ca2fa4f3adb47e86fdd861}} 
+\#define {\bfseries V\+I\+T\+E\+S\+S\+E\+\_\+\+P\+E\+R\+SO}~1
+\item 
+\mbox{\Hypertarget{constantes_8h_a2be64958e706bbcbd98fea3ab8fa7b5b}\label{constantes_8h_a2be64958e706bbcbd98fea3ab8fa7b5b}} 
+\#define {\bfseries R\+E\+C\+T\+\_\+\+S\+E\+L\+E\+C\+T\+\_\+\+Y\+\_\+\+D\+I\+FF}~25
+\item 
+\mbox{\Hypertarget{constantes_8h_a5c2e90203596784c8345efc03f693cc3}\label{constantes_8h_a5c2e90203596784c8345efc03f693cc3}} 
+\#define {\bfseries R\+E\+C\+T\+\_\+\+S\+E\+L\+E\+C\+T\+\_\+\+X\+\_\+\+D\+I\+FF}~50
+\item 
+\mbox{\Hypertarget{constantes_8h_af6a199dd7b5c61c44bf027b8fb6bde1c}\label{constantes_8h_af6a199dd7b5c61c44bf027b8fb6bde1c}} 
+\#define {\bfseries N\+B\+\_\+\+T\+O\+U\+C\+H\+E\+S\+\_\+\+U\+T\+I\+L\+I\+S\+E\+ES}~5
+\item 
+\mbox{\Hypertarget{constantes_8h_a7ec16963e2757f54846bb7bf037848f8}\label{constantes_8h_a7ec16963e2757f54846bb7bf037848f8}} 
+\#define {\bfseries D\+E\+L\+A\+I\+S\+\_\+\+A\+N\+I\+M\+A\+T\+I\+O\+NS}~100
+\item 
+\mbox{\Hypertarget{constantes_8h_aa6393cf033b4ea21ceba893ee85c45bc}\label{constantes_8h_aa6393cf033b4ea21ceba893ee85c45bc}} 
+\#define {\bfseries P\+V\+\_\+\+D\+E\+P\+A\+R\+T\+\_\+\+P\+E\+R\+S\+O\+N\+N\+A\+GE}~50
+\item 
+\mbox{\Hypertarget{constantes_8h_a556fb925118313294d65b8a3e7b239eb}\label{constantes_8h_a556fb925118313294d65b8a3e7b239eb}} 
+\#define {\bfseries V\+I\+T\+E\+S\+S\+E\+\_\+\+D\+E\+P\+A\+R\+T\+\_\+\+P\+E\+R\+S\+O\+N\+N\+A\+GE}~5
+\item 
+\mbox{\Hypertarget{constantes_8h_a0db2658d4950b1336a856d25e8338865}\label{constantes_8h_a0db2658d4950b1336a856d25e8338865}} 
+\#define {\bfseries A\+T\+T\+A\+Q\+U\+E\+\_\+\+D\+E\+P\+A\+R\+T\+\_\+\+P\+E\+R\+S\+O\+N\+N\+A\+GE}~10
+\item 
+\mbox{\Hypertarget{constantes_8h_ab48ca1771b0b1be6866108aec3698f0b}\label{constantes_8h_ab48ca1771b0b1be6866108aec3698f0b}} 
+\#define {\bfseries D\+E\+F\+E\+N\+S\+E\+\_\+\+D\+E\+P\+A\+R\+T\+\_\+\+P\+E\+R\+S\+O\+N\+N\+A\+GE}~10
+\end{DoxyCompactItemize}
+\subsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{constantes_8h_a496ace1950a1d2f3aed4b9288e19c05b}\label{constantes_8h_a496ace1950a1d2f3aed4b9288e19c05b}} 
+typedef struct \hyperlink{structsalle__s}{salle\+\_\+s} {\bfseries salle\+\_\+t}
+\item 
+\mbox{\Hypertarget{constantes_8h_ab783d53c09db4b03c3a6067ef144c909}\label{constantes_8h_ab783d53c09db4b03c3a6067ef144c909}} 
+typedef struct \hyperlink{structperso__s}{perso\+\_\+s} {\bfseries perso\+\_\+t}
+\item 
+\mbox{\Hypertarget{constantes_8h_acf9629f25081ea7efee630475575453b}\label{constantes_8h_acf9629f25081ea7efee630475575453b}} 
+typedef struct \hyperlink{structennemi__s}{ennemi\+\_\+s} {\bfseries ennemi\+\_\+t}
+\item 
+\mbox{\Hypertarget{constantes_8h_ac32d6c906ea8c6ffebac589112053ae2}\label{constantes_8h_ac32d6c906ea8c6ffebac589112053ae2}} 
+typedef struct \hyperlink{structcarte__s}{carte\+\_\+s} {\bfseries carte\+\_\+t}
+\item 
+\mbox{\Hypertarget{constantes_8h_abe33e0f05080e2e3d51131a6c621ab9b}\label{constantes_8h_abe33e0f05080e2e3d51131a6c621ab9b}} 
+typedef struct \hyperlink{structelement}{element} {\bfseries element\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{constantes_8h_af6160d91d6f70f88713d6e293b1881f7}\label{constantes_8h_af6160d91d6f70f88713d6e293b1881f7}} 
+enum \hyperlink{constantes_8h_af6160d91d6f70f88713d6e293b1881f7}{t\+\_\+sprites\+\_\+perso} \{ \newline
+{\bfseries courant}, 
+{\bfseries idle\+\_\+droite}, 
+{\bfseries droite1}, 
+{\bfseries droite2}, 
+\newline
+{\bfseries droite3}, 
+{\bfseries idle\+\_\+gauche}, 
+{\bfseries gauche2}, 
+{\bfseries gauche1}, 
+\newline
+{\bfseries gauche3}, 
+{\bfseries dead}
+ \}\begin{DoxyCompactList}\small\item\em les types de sprites pour les animations du personnage \end{DoxyCompactList}
+\item 
+\mbox{\Hypertarget{constantes_8h_ad1b7e09dd2f56578f1bc88956faf8c6f}\label{constantes_8h_ad1b7e09dd2f56578f1bc88956faf8c6f}} 
+enum \hyperlink{constantes_8h_ad1b7e09dd2f56578f1bc88956faf8c6f}{t\+\_\+types\+\_\+textures} \{ \newline
+{\bfseries sol} =0, 
+{\bfseries mur}, 
+{\bfseries porte}, 
+{\bfseries sol2}, 
+\newline
+{\bfseries commandes}, 
+{\bfseries instructions}, 
+{\bfseries sol3}, 
+{\bfseries mur2}, 
+\newline
+{\bfseries gameover}, 
+{\bfseries deathlight}, 
+{\bfseries heart}, 
+{\bfseries trapdoor}, 
+\newline
+{\bfseries pv}, 
+{\bfseries etage}
+ \}\begin{DoxyCompactList}\small\item\em les types de textures sur lequel le perso peut tomber \end{DoxyCompactList}
+\item 
+\mbox{\Hypertarget{constantes_8h_a0b20f965ee5f3053aecabf44664f4aaa}\label{constantes_8h_a0b20f965ee5f3053aecabf44664f4aaa}} 
+enum {\bfseries t\+\_\+type\+\_\+ennemis} \{ {\bfseries squelette}, 
+{\bfseries minotaure}, 
+{\bfseries cyclope}
+ \}
+\item 
+\mbox{\Hypertarget{constantes_8h_a0f3684078562a23c3ea21266d10cf275}\label{constantes_8h_a0f3684078562a23c3ea21266d10cf275}} 
+enum \hyperlink{constantes_8h_a0f3684078562a23c3ea21266d10cf275}{t\+\_\+etat} \{ \newline
+{\bfseries main\+Menu} = 0, 
+{\bfseries labyrinthe}, 
+{\bfseries tour\+Par\+Tour}, 
+{\bfseries pause\+Screen}, 
+\newline
+{\bfseries charger\+\_\+partie}
+ \}\begin{DoxyCompactList}\small\item\em les états que peut prendre le jeu afin de naviguer entre les menus \end{DoxyCompactList}
+\item 
+\mbox{\Hypertarget{constantes_8h_a8fb27eb0b354a4f35787ef57ac90e0eb}\label{constantes_8h_a8fb27eb0b354a4f35787ef57ac90e0eb}} 
+enum \hyperlink{constantes_8h_a8fb27eb0b354a4f35787ef57ac90e0eb}{type\+\_\+carte} \{ {\bfseries A\+T\+T\+A\+Q\+UE} = -\/1, 
+{\bfseries D\+E\+F\+E\+N\+SE} = 1
+ \}\begin{DoxyCompactList}\small\item\em Les différents types de cartes. \end{DoxyCompactList}
+\item 
+\mbox{\Hypertarget{constantes_8h_ae8bdf1303543a5b8c77f80d7f3a24d12}\label{constantes_8h_ae8bdf1303543a5b8c77f80d7f3a24d12}} 
+enum \hyperlink{constantes_8h_ae8bdf1303543a5b8c77f80d7f3a24d12}{t\+\_\+touches\+\_\+clavier} \{ \newline
+{\bfseries up}, 
+{\bfseries down}, 
+{\bfseries right}, 
+{\bfseries left}, 
+\newline
+{\bfseries entree}
+ \}\begin{DoxyCompactList}\small\item\em Les différents types de touches utilisées. \end{DoxyCompactList}
+\item 
+\mbox{\Hypertarget{constantes_8h_aec4e3894aa763e81148b2241ff730790}\label{constantes_8h_aec4e3894aa763e81148b2241ff730790}} 
+enum \hyperlink{constantes_8h_aec4e3894aa763e81148b2241ff730790}{t\+\_\+direction} \{ {\bfseries haut}, 
+{\bfseries droite}, 
+{\bfseries bas}, 
+{\bfseries gauche}
+ \}\begin{DoxyCompactList}\small\item\em Les différents types de touches utilisées. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{constantes_8h_ac0bdec8145d8fdfd5a2673ef96bf14ca}\label{constantes_8h_ac0bdec8145d8fdfd5a2673ef96bf14ca}} 
+\hyperlink{structelement}{element\+\_\+t} $\ast$ {\bfseries drapeau}
+\item 
+\mbox{\Hypertarget{constantes_8h_aca122a400f96a8a768ff915610c60462}\label{constantes_8h_aca122a400f96a8a768ff915610c60462}} 
+\hyperlink{structelement}{element\+\_\+t} $\ast$ {\bfseries ec}
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Constantes et structures du projet Roguelike. 
+
+\begin{DoxyAuthor}{Auteur}
+\{Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas\} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/01/2020 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}

@@ -10,3 +10,100 @@ Gère toute la partie concernant le chargement de partie.
 {\ttfamily \#include \char`\"{}../include/sauvegardefonc.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../include/personnage.\+h\char`\"{}}\newline
 Graphe des dépendances par inclusion de chargement.\+c\+:
+% FIG 0
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{chargement_8c_a95d7edafad0e32ac8100306666538233}{afficher\+\_\+chagrer\+\_\+partie} (S\+D\+L\+\_\+\+Renderer $\ast$rendu, S\+D\+L\+\_\+\+Rect rect\+\_\+sel, S\+D\+L\+\_\+\+Texture $\ast$charger\+\_\+texture, S\+D\+L\+\_\+\+Rect charger\+\_\+rect, S\+D\+L\+\_\+\+Texture $\ast$retour\+\_\+texture, S\+D\+L\+\_\+\+Rect retour\+\_\+rect)
+\begin{DoxyCompactList}\small\item\em Affiche sur le rendu les différentes textures et rectangles passés en paramètre. \end{DoxyCompactList}\item 
+int \hyperlink{chargement_8c_aac5a0130812e732fa9ac635ee95e3fee}{deplacement\+\_\+rectangle\+\_\+selection\+\_\+charger} (int $\ast$etat, S\+D\+L\+\_\+\+Rect charger\+\_\+rect, S\+D\+L\+\_\+\+Rect retour\+\_\+rect, S\+D\+L\+\_\+\+Rect $\ast$$\ast$rect\+\_\+sel, Mix\+\_\+\+Chunk $\ast$select, Mix\+\_\+\+Chunk $\ast$move)
+\begin{DoxyCompactList}\small\item\em Permet de déplacer d\textquotesingle{}option en option le rectangle de sélection. \end{DoxyCompactList}\item 
+void \hyperlink{chargement_8c_a4ee774359ac7ba75d4da96d8210ce994}{menu\+\_\+charger\+\_\+partie} (int $\ast$continuer, int $\ast$etat, S\+D\+L\+\_\+\+Renderer $\ast$rendu, T\+T\+F\+\_\+\+Font $\ast$police, Mix\+\_\+\+Chunk $\ast$select, Mix\+\_\+\+Chunk $\ast$move, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$pers, \hyperlink{structcarte__t}{carte\+\_\+t} $\ast$cartes)
+\begin{DoxyCompactList}\small\item\em Permet d\textquotesingle{}afficher et de récupèrer une sauvegarde éventuelle puis de lancer le jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Gère toute la partie concernant le chargement de partie. 
+
+\begin{DoxyAuthor}{Auteur}
+\{Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas\} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+18/02/2020 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{chargement_8c_a95d7edafad0e32ac8100306666538233}\label{chargement_8c_a95d7edafad0e32ac8100306666538233}} 
+\index{chargement.\+c@{chargement.\+c}!afficher\+\_\+chagrer\+\_\+partie@{afficher\+\_\+chagrer\+\_\+partie}}
+\index{afficher\+\_\+chagrer\+\_\+partie@{afficher\+\_\+chagrer\+\_\+partie}!chargement.\+c@{chargement.\+c}}
+\subsubsection{\texorpdfstring{afficher\+\_\+chagrer\+\_\+partie()}{afficher\_chagrer\_partie()}}
+{\footnotesize\ttfamily void afficher\+\_\+chagrer\+\_\+partie (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{S\+D\+L\+\_\+\+Rect}]{rect\+\_\+sel,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{charger\+\_\+texture,  }\item[{S\+D\+L\+\_\+\+Rect}]{charger\+\_\+rect,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{retour\+\_\+texture,  }\item[{S\+D\+L\+\_\+\+Rect}]{retour\+\_\+rect }\end{DoxyParamCaption})}
+
+
+
+Affiche sur le rendu les différentes textures et rectangles passés en paramètre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{chargement_8c_aac5a0130812e732fa9ac635ee95e3fee}\label{chargement_8c_aac5a0130812e732fa9ac635ee95e3fee}} 
+\index{chargement.\+c@{chargement.\+c}!deplacement\+\_\+rectangle\+\_\+selection\+\_\+charger@{deplacement\+\_\+rectangle\+\_\+selection\+\_\+charger}}
+\index{deplacement\+\_\+rectangle\+\_\+selection\+\_\+charger@{deplacement\+\_\+rectangle\+\_\+selection\+\_\+charger}!chargement.\+c@{chargement.\+c}}
+\subsubsection{\texorpdfstring{deplacement\+\_\+rectangle\+\_\+selection\+\_\+charger()}{deplacement\_rectangle\_selection\_charger()}}
+{\footnotesize\ttfamily int deplacement\+\_\+rectangle\+\_\+selection\+\_\+charger (\begin{DoxyParamCaption}\item[{int $\ast$}]{etat,  }\item[{S\+D\+L\+\_\+\+Rect}]{charger\+\_\+rect,  }\item[{S\+D\+L\+\_\+\+Rect}]{retour\+\_\+rect,  }\item[{S\+D\+L\+\_\+\+Rect $\ast$$\ast$}]{rect\+\_\+sel,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{select,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{move }\end{DoxyParamCaption})}
+
+
+
+Permet de déplacer d\textquotesingle{}option en option le rectangle de sélection. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$etat,permet} & de changer l\textquotesingle{}affuchage selon l\textquotesingle{}écran dans lequel se trouve le jeu \\
+\hline
+{\em charger\+\_\+rect,le} & rectangle contenant le texte relatif à la sauvegarde \\
+\hline
+{\em retour\+\_\+rect,le} & rectangle contenant le texte \char`\"{}retour\char`\"{}, pour retourner au menu principal \\
+\hline
+{\em $\ast$$\ast$rect\+\_\+sel,le} & rectangle de sélection permettant de sélectionner une option \\
+\hline
+{\em $\ast$select,le} & son quand on sélectionne une option \\
+\hline
+{\em $\ast$move,le} & son quand on se déplace dans le menu\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+retourne False pour fermer la fenetre, True pour la garder ouverte 
+\end{DoxyReturn}
+\mbox{\Hypertarget{chargement_8c_a4ee774359ac7ba75d4da96d8210ce994}\label{chargement_8c_a4ee774359ac7ba75d4da96d8210ce994}} 
+\index{chargement.\+c@{chargement.\+c}!menu\+\_\+charger\+\_\+partie@{menu\+\_\+charger\+\_\+partie}}
+\index{menu\+\_\+charger\+\_\+partie@{menu\+\_\+charger\+\_\+partie}!chargement.\+c@{chargement.\+c}}
+\subsubsection{\texorpdfstring{menu\+\_\+charger\+\_\+partie()}{menu\_charger\_partie()}}
+{\footnotesize\ttfamily void menu\+\_\+charger\+\_\+partie (\begin{DoxyParamCaption}\item[{int $\ast$}]{continuer,  }\item[{int $\ast$}]{etat,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{police,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{select,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{move,  }\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{pers,  }\item[{\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$}]{cartes }\end{DoxyParamCaption})}
+
+
+
+Permet d\textquotesingle{}afficher et de récupèrer une sauvegarde éventuelle puis de lancer le jeu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$continuer,pointeur} & sur un int permettant de savoir si le joueur veut quitter le jeu \\
+\hline
+{\em $\ast$etat,pointeur} & sur un int permettant de connaitre le prochain écran auquel le joueur veut accèder \\
+\hline
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$police,la} & police d\textquotesingle{}écriture pour T\+TF \\
+\hline
+{\em $\ast$select,le} & son quand on sélectionne une option \\
+\hline
+{\em $\ast$move,le} & son quand on se déplace dans le menu \\
+\hline
+{\em $\ast$pers,la} & structure du personnage \\
+\hline
+\end{DoxyParams}

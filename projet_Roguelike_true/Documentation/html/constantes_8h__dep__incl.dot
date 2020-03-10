@@ -1,0 +1,26 @@
+digraph "/home/aurelien/Desktop/Projet-L2-/projet_Roguelike_true/include/constantes.h"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node9 [label="/home/aurelien/Desktop\l/Projet-L2-/projet_Roguelike\l_true/include/constantes.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node9 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="chargement.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$chargement_8c.html",tooltip="Gère toute la partie concernant le chargement de partie. "];
+  Node9 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="clavier.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$clavier_8c.html",tooltip="Gère toute les évènements au clavier. "];
+  Node9 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="fonctions.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$fonctions_8c.html",tooltip="fichier qui permet de référencé tous les fonctions du système de combat. "];
+  Node9 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="initialisation_sdl\l_fonctions.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$initialisation__sdl__fonctions_8c.html",tooltip="fonctions de la sdl pour son initialisation, fichier .c "];
+  Node9 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="labyrinthe.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$labyrinthe_8c.html",tooltip="contient et fait appel a toutes fonctions nécessaires pour la gestion du labyrinthe ..."];
+  Node9 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="main.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8c.html",tooltip="Le projet de deuxième année de licence, un roguelike/rpg. "];
+  Node9 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="main_menu_screen.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main__menu__screen_8c.html",tooltip="Gère toute la partie représentant le menu principal du jeu. "];
+  Node9 -> Node17 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 [label="personnage.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$personnage_8c.html",tooltip="Gère toute la partie concernant le personnage. "];
+  Node9 -> Node18 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node18 [label="salle.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$salle_8c.html",tooltip="Programme qui créé une salle et l&#39;affiche. "];
+  Node9 -> Node19 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node19 [label="sauvegardefonc.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$sauvegardefonc_8c.html",tooltip="Fichier qui référence les différentes fonctions de sauvegarde. "];
+}
