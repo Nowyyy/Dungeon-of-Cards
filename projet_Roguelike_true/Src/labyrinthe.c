@@ -57,7 +57,7 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 	images[gameover].rectangle.y = -100;
 	images[deathlight].rectangle.x = pers->x-100;
 	images[deathlight].rectangle.y = pers->y-65;
-	images[heart].rectangle.x = 0;
+	images[heart].rectangle.x = 25;
 	images[heart].rectangle.y = WIN_HEIGHT * 0.10;
 	images[trapdoor].rectangle.x = 0;
 	images[trapdoor].rectangle.y = WIN_HEIGHT * 0.02;
@@ -102,7 +102,7 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 
 		monstre.sprites[courant].rectangle.x = (salle->x_ennemi1 * TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_X;
 		monstre.sprites[courant].rectangle.y = (salle->y_ennemi1 * TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_Y;
-		
+
 		if(salle->pv1)
 			SDL_RenderCopy(rendu, monstre.sprites[courant].img, NULL, &monstre.sprites[courant].rectangle);
 		else
@@ -414,7 +414,7 @@ int salles_compatibles(int salle1, int porte1, int salle2, int porte2, salle_t s
 	else if(porte1 == haut && salles[salle1].s_h == -1 && porte2 == bas && salles[salle2].s_b == -1)
 		return TRUE;
 
-	else 
+	else
 		return FALSE;
 }
 
@@ -454,7 +454,7 @@ int creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer){
 		cpt = 0;
 		cpt2 = 0;
 
-		//on boucle tant qu'aucune salle ne répond aux critères pour faire une liaison		
+		//on boucle tant qu'aucune salle ne répond aux critères pour faire une liaison
 		do{
 			//on boucle tant qu'aucune porte possible n'est trouvée
 			do{
@@ -470,7 +470,7 @@ int creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer){
 
 			nouvelle_salle = indice_salle(i, porte, taille);
 			porte_nouv_salle = inverse_porte(porte);
-			
+
 			if(cpt >= 5){
 			//si aucune salle n'est trouvée malgré plusieurs tentatives, on rècupère la salle précédente et on tente avec elle
 				i = salle_crees[rand()%taille_tab];
@@ -503,8 +503,7 @@ int creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer){
 
 	//remplissage tableau de collisions pour les murs et les portes
 	for(i = 0; i < taille * taille -1; i++){
-		if(salles[i].salle_existe == TRUE)
-			rempli_tableau_murs_portes(salles, i);
+		rempli_tableau_murs_portes(salles, i);
 	}
 
 	return salle_crees[0];
