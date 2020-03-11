@@ -61,6 +61,8 @@
 
 #define TAILLE_IMAGE 64 //taille du coté d'une image
 
+#define TAILLE_LABY 5
+
 #define TAILLE 20 //Taille des chaînes de caractères
 #define TAILLE_DECK 5
 
@@ -207,9 +209,9 @@ typedef struct mini_map_s{
   
   int taille;
 
-  SDL_Rect map[25];
+  SDL_Rect map[TAILLE_LABY * TAILLE_LABY];
 
-  int salles_decouvertes[25];
+  int salles_decouvertes[TAILLE_LABY * TAILLE_LABY];
 }mini_map_t;
 
 

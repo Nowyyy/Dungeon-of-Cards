@@ -594,11 +594,11 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 /////////////////////////// Déclarations variables ////////////////////////////////////////////
 	image_t images[NB_TEXTURES];
 
-	int taille = 5, nb_salles_a_creer = 10, salle_courante, salle_pred;
+	int taille = TAILLE_LABY, nb_salles_a_creer = 10, salle_courante, salle_pred;
 
 	mini_map_t miniMap;
 
-	creation_mini_map(taille, 0, &miniMap);
+	creation_mini_map(taille, &miniMap);
 
 	salle_t salles[taille*taille];
 

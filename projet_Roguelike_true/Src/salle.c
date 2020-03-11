@@ -303,8 +303,15 @@ void place_monstre_coffre_boss(salle_t tab[], int taille){
 }
 
 
+/**
+*\fn void creation_mini_map(int taille, int indice, mini_map_t *map)
 
-void creation_mini_map(int taille, int indice, mini_map_t *map){
+*\param taille, la taille d'un côté du labyrinthe
+*\param *map, un pointeur sur la minimap que l'on rempli
+
+*\brief Créée et initialise la mini map avec toutes les salles considerées comme non-découvertes
+*/
+void creation_mini_map(int taille, mini_map_t *map){
 
   map->taille = taille * taille;
 
@@ -332,7 +339,14 @@ void creation_mini_map(int taille, int indice, mini_map_t *map){
 }
 
 
+/**
+*\fn void ajoute_salle_decouverte(mini_map_t *map, int indice)
 
+*\param *map, un pointeur sur la minimap que l'on modifie
+*\param indice, la salle actuelle dans le tableau de salles
+
+*\bief Ajoute la salle où se situe le joueur dans le tableau de salles découvertes 
+*/
 void ajoute_salle_decouverte(mini_map_t *map, int indice){
 
   map->salles_decouvertes[indice] = TRUE;
