@@ -9,6 +9,7 @@
 
 #include "../include/constantes.h"
 #include "../include/initialisation_sdl_fonctions.h"
+#include "../include/combat_tour_par_tour.h"
 
 // Mise en oeuvre dynamique d'une liste de cartes
 
@@ -334,7 +335,8 @@ void tour_perso(int choix,perso_t * perso,ennemi_t * ennemi)
 *\param perso Pointeur sur une structure qui permet de prendre les caractéristiques de l'ennemi qui vont être modifié par l'action du personnage
 *\*\param deck Pointeur sur un pointeur de fonction qui permet de connaître le deck du personnage
 */
-void combat(perso_t * perso, ennemi_t * ennemi)
+/*
+int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
 {
   int choix, i, vitesse;
   vitesse = perso->vitesse;
@@ -364,3 +366,4 @@ void combat(perso_t * perso, ennemi_t * ennemi)
   }
   perso->vitesse = vitesse;
 }
+*/
