@@ -9,6 +9,7 @@
 
 #include "../include/constantes.h"
 #include "../include/initialisation_sdl_fonctions.h"
+#include "../include/combat_tour_par_tour.h"
 
 // Mise en oeuvre dynamique d'une liste de cartes
 
@@ -295,11 +296,11 @@ int initiative (perso_t * perso,ennemi_t * ennemi)
 void tour_ennemi(perso_t * perso,ennemi_t * ennemi)
 {
   int i;
-  if(ennemi->pv > perso->attaque){
+  if(ennemi->pv >= perso->attaque){
         printf("Le %s attaque \n", ennemi->nom);
-        perso->pv += ennemi->attaque;
+        perso->pv -= ennemi->attaque;
       }
-  else if (ennemi->pv < perso->attaque){
+  else if (ennemi->pv <= perso->attaque){
         printf("Le %s se soigne \n", ennemi->nom);
         ennemi->pv += 5;
       }
@@ -324,8 +325,26 @@ void tour_perso(int choix,perso_t * perso,ennemi_t * ennemi)
   int i;
   for(i=0;i<choix && !hors_liste();i++,suivant());
   printf("Vous avez choisi %s\n", ec->carte->nom);
-  *(ec->carte->cible) += ec->carte->valeur * ec->carte->type;
-
+  if(ec->carte->type == ATTAQUE){
+		if(strcmp(ec->carte->nom,"épée")){
+			ennemi->pv-=ec->carte->valeur;
+		}
+		else if(strcmp(ec->carte->nom,"boule de feu")){
+			ennemi->pv-=ec->carte->valeur;
+		}
+	}
+	else if(ec->carte->type == DEFENSE){
+		if(!strcmp(ec->carte->nom,"soin")){
+			perso->pv+=ec->carte->valeur;
+		}
+		else if((!strcmp(ec->carte->nom,"potion"))&& ec->carte->consommable!=0){
+			perso->pv+=ec->carte->valeur;
+			ec->carte->consommable-=1;
+		}
+		else if(ec->carte->consommable==0){
+			printf("Vous n'avez plus de potion CHEH !! \n");
+		}
+	}
 }
 
 /**
@@ -334,7 +353,8 @@ void tour_perso(int choix,perso_t * perso,ennemi_t * ennemi)
 *\param perso Pointeur sur une structure qui permet de prendre les caractéristiques de l'ennemi qui vont être modifié par l'action du personnage
 *\*\param deck Pointeur sur un pointeur de fonction qui permet de connaître le deck du personnage
 */
-void combat(perso_t * perso, ennemi_t * ennemi)
+/*
+int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
 {
   int choix, i, vitesse;
   vitesse = perso->vitesse;
@@ -364,3 +384,4 @@ void combat(perso_t * perso, ennemi_t * ennemi)
   }
   perso->vitesse = vitesse;
 }
+*/

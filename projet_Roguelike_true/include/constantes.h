@@ -49,10 +49,18 @@
 #define CYCLOPE_IDLE_PATH "../Images/sprites_mobs/cyclope.png"
 #define MINOTAURE_IDLE_PATH "../Images/sprites_mobs/minotaure.png"
 
+#define COMBAT_PATH "../Images/combat1.png"
+#define FOND_COMBAT_PATH "../Images/combat2.png"
+
+#define CARTE1_PATH "../Images/carte1.png"
+#define CARTE2_PATH "../Images/carte2.png"
+#define CARTE3_PATH "../Images/carte3.png"
+#define CARTE4_PATH "../Images/carte4.png"
+
 #define SAVE_PERSO_PATH "../Sauvegarde/personnage.txt"
 #define SAVE_CARTES_PATH "../Sauvegarde/cartes.txt"
 
-#define NB_TEXTURES 14
+#define NB_TEXTURES 20
 
 #define TRUE 1
 #define FALSE 0
@@ -82,7 +90,7 @@
 #define DELAIS_ANIMATIONS 100
 
 #define PV_DEPART_PERSONNAGE 50
-#define VITESSE_DEPART_PERSONNAGE 5
+#define VITESSE_DEPART_PERSONNAGE 50
 #define ATTAQUE_DEPART_PERSONNAGE 10
 #define DEFENSE_DEPART_PERSONNAGE 10
 
@@ -103,7 +111,7 @@ typedef enum{courant, idle_droite, droite1, droite2, droite3, idle_gauche, gauch
 
 *\brief les types de textures sur lequel le perso peut tomber
 */
-typedef enum{sol =0, mur, porte, sol2, commandes, instructions, sol3, mur2, gameover, deathlight, heart, trapdoor, pv, etage}t_types_textures;
+typedef enum{sol =0, mur, porte, sol2, commandes, instructions, sol3, mur2, gameover, deathlight, heart, trapdoor, pv, etage,fond,fond2,carte1,carte2,carte3,carte4}t_types_textures;
 
 
 /**
@@ -206,7 +214,7 @@ typedef struct salle_s{
 *\brief Structure de la mini map
 */
 typedef struct mini_map_s{
-  
+
   int taille;
 
   SDL_Rect map[TAILLE_LABY * TAILLE_LABY];
@@ -245,7 +253,8 @@ typedef struct ennemi_s {
   int defense;/**Défense d'un ennemi*/
   char* nom;/** Nom de l'ennemi*/
   int boss;
-
+  int x;/**Placement sur l'axe des abscisses d'un personnage*/
+  int y;/**Placement sur l'axe des ordonnés d'un personnage*/
   image_t sprites[NB_SPRITES_MONSTRE];
 } ennemi_t;
 

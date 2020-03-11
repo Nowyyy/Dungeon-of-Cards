@@ -18,6 +18,7 @@
 #include "../include/fonctions.h"
 #include "../include/sauvegardefonc.h"
 #include "../include/clavier.h"
+#include "../include/combat_tour_par_tour.h"
 
 /**
 *\fn void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu)
@@ -646,16 +647,16 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 		//collision avec un ennemi
 		if(salles[salle_courante].boss && combat_declenche(salles[salle_courante], *pers, *boss) && boss->pv > 0){
-			//combat_t_p_t(pers, boss, cartes, rendu);
+			combat_t_p_t(pers, boss,rendu);
 			if(boss->pv == 0){
 				//etage suivant
 			}
 		}
-		else if(combat_declenche(salles[salle_courante], *pers, *ennemi) == 1){
-			//salles[salle_courante].pv1 = combat_t_p_t(pers, ennemi, cartes);
+		else if(combat_declenche(salles[salle_courante], *pers, *ennemi) == 1 && salles[salle_courante].pv1){
+			salles[salle_courante].pv1 = combat_t_p_t(pers, ennemi,rendu);
 		}
-		else if(combat_declenche(salles[salle_courante], *pers, *ennemi) == 2){
-			//salles[salle_courante].pv2 = combat_t_p_t(pers, ennemi, cartes);
+		else if(combat_declenche(salles[salle_courante], *pers, *ennemi) == 2 && salles[salle_courante].pv2){
+			salles[salle_courante].pv2 = combat_t_p_t(pers, ennemi,rendu);
 		}
 
 		if(salle_courante != salle_pred){
