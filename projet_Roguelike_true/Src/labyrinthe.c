@@ -360,7 +360,7 @@ int tirage_au_sort_porte_a_creer(int indice, int taille, salle_t salles[], int t
 	//on ne peut créer de liaison vers la gauche
 		return tirage_au_sort_porte_a_creer(indice, taille, salles, tentatives++);
 
-	else if(indice + 1 % taille == 0 && alea == droite)//colonnes toutes a gauche du tableau
+	else if((indice + 1) % taille == 0 && alea == droite)//colonnes toutes a gauche du tableau
 	//on ne peut créer de liaison vers la droite
 		return tirage_au_sort_porte_a_creer(indice, taille, salles, tentatives++);
 
@@ -542,7 +542,7 @@ int creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer){
 	}
 
 	//remplissage tableau de collisions pour les murs et les portes
-	for(i = 0; i < taille * taille -1; i++){
+	for(i = 0; i < taille * taille; i++){
 		rempli_tableau_murs_portes(salles, i);
 	}
 
@@ -565,6 +565,8 @@ void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Rendere
 	if(pers->pv != pers->pv_old || pers->etage != pers->etage_old){
 		pers->pv_old = pers->pv;
 		pers->etage_old = pers->etage;
+		SDL_DestroyTexture(pv->img);
+		SDL_DestroyTexture(etage->img);
 		creer_texture_depuis_char(pv, etage, *pers, rendu);
 	}
 }
