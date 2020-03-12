@@ -21,12 +21,12 @@ void change_anim_ligne(ennemi_t *ennemi, int nouvelle_anim){
 
 void animation_ennemi(ennemi_t *ennemi){
 
-	if(ennemi->last + DELAIS_ANIMATIONS_ENNEMIS <= SDL_GetTicks()){
+	if(ennemi->last + DELAIS_ANIMATIONS <= SDL_GetTicks()){
 
 		if((ennemi->anim_courante == idle_droite_ennemi || ennemi->anim_courante == idle_gauche_ennemi) 
 			&& ennemi->id_col < ennemi->nb_sprites_idle - 1){
 			
-			ennemi->sprite_courant.x += ennemi->sprite_courant.w;
+			ennemi->sprite_courant.x += ennemi->sprite_courant.w + ennemi->gap;
 			ennemi->id_col ++;
 		}
 		else{

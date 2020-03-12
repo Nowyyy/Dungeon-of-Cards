@@ -235,7 +235,7 @@ ennemi_t * creer_ennemi(char * nom, int pv, int vitesse, int attaque, int defens
     ennemi->sprite_courant.h = 80;
     ennemi->sprite_courant.w = 76;//on prend le idle comme base
     ennemi->nb_sprites_idle = 6;
-    ennemi->nb_sprites_walk = 8;
+    ennemi->gap = 88;
     ennemi->sprites.rectangle.w = ennemi->sprite_courant.w * 0.8;
     ennemi->sprites.rectangle.h = ennemi->sprite_courant.h * 0.8;
   }

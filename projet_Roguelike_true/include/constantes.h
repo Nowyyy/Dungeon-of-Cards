@@ -48,7 +48,7 @@
 #define SQUELETTE_IDLE_PATH "../Images/sprites_mobs/squelette.png"
 #define CYCLOPE_IDLE_PATH "../Images/sprites_mobs/cyclope.png"
 #define MINOTAURE_IDLE_PATH "../Images/sprites_mobs/minotaure.png"
-#define BLOB_PATH "../Images/sprites_mobs/blob_sprites.png"
+#define BLOB_PATH "../Images/sprites_mobs/blob_sprite.png"
 
 #define SAVE_PERSO_PATH "../Sauvegarde/personnage.txt"
 #define SAVE_CARTES_PATH "../Sauvegarde/cartes.txt"
@@ -202,7 +202,7 @@ typedef struct ennemi_s {
   char* nom;/** Nom de l'ennemi*/
   int boss;/** Est un boss ou non*/
   int nb_sprites_idle;
-  int nb_sprites_walk;
+  int gap;
   int w, h;
   unsigned int last;
   int anim_courante;
