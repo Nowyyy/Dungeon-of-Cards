@@ -9,6 +9,7 @@ void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * e
   SDL_SetRenderDrawColor(rendu,0,0,0,255);
   SDL_RenderClear(rendu);
   image_t images[NB_TEXTURES];
+<<<<<<< HEAD
   /*Mise en place des fonds*/
   charge_image(FOND_COMBAT_PATH,&images[fond2], rendu);
   images[fond2].rectangle.x= -50;
@@ -78,6 +79,13 @@ void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * e
   pers->sprites[idle_droite].rectangle.h *=3;
   pers->sprites[idle_droite].rectangle.x = 150;
   pers->sprites[idle_droite].rectangle.y = 250;
+=======
+  charge_image(FOND_COMBAT_PATH,&images[fond2], rendu);
+  charge_image(COMBAT_PATH,&images[fond], rendu);
+  /*Mise en place du personnage*/
+  pers->sprites[idle_droite].rectangle.x = 200;
+  pers->sprites[idle_droite].rectangle.y = 300;
+>>>>>>> thomas_work
   pers->sprites[courant] = pers->sprites[idle_droite];
   SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
   /*
@@ -106,6 +114,10 @@ int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
   init_liste();
   ajout_droit(creer_carte("soin", DEFENSE, 5, 0));
   ajout_droit(creer_carte("potion", DEFENSE, 20, 1));
+<<<<<<< HEAD
+=======
+  ajout_droit(creer_carte("épée", ATTAQUE, 10, 0));
+>>>>>>> thomas_work
   ajout_droit(creer_carte("épée", ATTAQUE,10, 0));
   ajout_droit(creer_carte("boule de feu", ATTAQUE, 20, 0));
   int choix, i, vitesse;
