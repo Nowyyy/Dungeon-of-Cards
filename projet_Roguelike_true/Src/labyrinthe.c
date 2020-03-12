@@ -642,7 +642,8 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 			Mix_HaltMusic();
 			mort(etat, pers, rendu, gameOverMusic, gameOverFrame, images, police, cmpPartie_texture);
 		}
-		pers->pv-=1;
+		//pers->pv-=1;
+		
 		salle_courante = changement_de_salle(pers, salles[salle_courante], salle_courante, change_salle);
 		SDL_Delay(5);
 
@@ -659,10 +660,9 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 			salle_pred = salle_courante;
 			ajoute_salle_decouverte(&miniMap, salle_courante);
 		}
-
-		while (SDL_PollEvent (&event));
-
 	}
+
+	while (SDL_PollEvent (&event));
 
 //////////////////////// On libère tous les emplacements mémoires utilisés par les images ////
 	for(int i = 0; i < NB_SPRITES_PERSONNAGE; i++)
