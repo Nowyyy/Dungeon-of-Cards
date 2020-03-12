@@ -249,8 +249,6 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusi
 
 	char cmpPartie[20];
 
-	Mix_HaltMusic();
-
 	//Reinitialisation de la sauvegarde et compteur de mort
 	mort_tmp = pers->cmpMort;
 
@@ -268,11 +266,11 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusi
  	rect.h = 155;
 
  	//aggrandissement progressif du rectangle
- 	while(rect.w <= WIN_WIDTH){
+ 	while(rect.w < WIN_WIDTH){
  		SDL_SetRenderDrawColor(rendu, 0, 0, 0, 255);
 		Mix_PlayChannel(0, gameOverFrame, 0);
-  		SDL_RenderFillRect(rendu, &rect);
-  		SDL_RenderPresent(rendu);
+  	SDL_RenderFillRect(rendu, &rect);
+  	SDL_RenderPresent(rendu);
 		SDL_Delay(500);
 
 		rect.x -= 135;
@@ -290,14 +288,15 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusi
 
 	//Ecran de game over
 
+	//Fond noir et logo game over
+	SDL_RenderClear(rendu);
+	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
+
+	SDL_RenderCopy(rendu, images[gameover].img, NULL, &images[gameover].rectangle);
 	//Musique
 	Mix_VolumeMusic(64);
 	Mix_PlayMusic(gameOverMusic, 1);
 
-	//Fond noir et logo game over
-	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
-	SDL_RenderClear(rendu);
-	SDL_RenderCopy(rendu, images[gameover].img, NULL, &images[gameover].rectangle);
 
 	//halo lumineux
 	SDL_RenderCopy(rendu, images[deathlight].img, NULL, &images[deathlight].rectangle);
@@ -594,6 +593,8 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 /////////////////////////// Déclarations variables ////////////////////////////////////////////
 	image_t images[NB_TEXTURES];
 
+	SDL_Event event;
+
 	int taille = TAILLE_LABY, nb_salles_a_creer = 10, salle_courante, salle_pred;
 
 	mini_map_t miniMap;
@@ -638,9 +639,10 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 		//Si le joueur meurt
 		if(pers->pv <= 0){
+			Mix_HaltMusic();
 			mort(etat, pers, rendu, gameOverMusic, gameOverFrame, images, police, cmpPartie_texture);
 		}
-
+		pers->pv-=1;
 		salle_courante = changement_de_salle(pers, salles[salle_courante], salle_courante, change_salle);
 		SDL_Delay(5);
 
@@ -663,6 +665,9 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 			salle_pred = salle_courante;
 			ajoute_salle_decouverte(&miniMap, salle_courante);
 		}
+
+		while (SDL_PollEvent (&event));
+
 	}
 
 //////////////////////// On libère tous les emplacements mémoires utilisés par les images ////
