@@ -402,14 +402,9 @@ void initialise_personnage(perso_t *pers){
 
 *\brief Vérifie la collision ou non entre un ennemi spécifique et le joueur
 */
-int collision_perso_ennemi(perso_t pers, ennemi_t ennemi, int x, int y){
+int collision_perso_ennemi(perso_t pers, ennemi_t ennemi){
 
-	if(ennemi.boss == 0){
-		ennemi.sprites[courant].rectangle.x = (x*TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_X;
-		ennemi.sprites[courant].rectangle.y = (y*TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_Y;
-	}
-
-	return SDL_HasIntersection(&pers.sprites[courant].rectangle, &ennemi.sprites[courant].rectangle);
+	return SDL_HasIntersection(&pers.sprites[courant].rectangle, &ennemi.sprites.rectangle);
 }
 
 
@@ -426,17 +421,21 @@ int collision_perso_ennemi(perso_t pers, ennemi_t ennemi, int x, int y){
 */
 int combat_declenche(salle_t salle, perso_t pers, ennemi_t ennemi){
 
-	if(salle.ennemi_present || salle.boss){
-		if(collision_perso_ennemi(pers, ennemi, salle.x_ennemi1, salle.y_ennemi1))
+	if(salle.ennemi_present){
+		if(collision_perso_ennemi(pers, *salle.ennemi))
 			return TRUE;
 
 		if(salle.nb_ennemi == 2)
-			if(collision_perso_ennemi(pers, ennemi, salle.x_ennemi2, salle.y_ennemi2))
+			if(collision_perso_ennemi(pers, *salle.ennemi2))
 				return TRUE + 1;
 
 		return FALSE;
 	}
-	else
+	else if (salle.boss){
+		if(collision_perso_ennemi(pers, ennemi))
+			return TRUE + 1;
+	}
+	else 
 		return FALSE;
 }
 

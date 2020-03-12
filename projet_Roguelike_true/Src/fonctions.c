@@ -9,7 +9,6 @@
 
 #include "../include/constantes.h"
 #include "../include/initialisation_sdl_fonctions.h"
-
 // Mise en oeuvre dynamique d'une liste de cartes
 
 
@@ -220,19 +219,36 @@ ennemi_t * creer_ennemi(char * nom, int pv, int vitesse, int attaque, int defens
   ennemi->defense = defense;
   ennemi->boss = 0;
 
+  ennemi->sprite_courant.x = 0;
+  ennemi->sprite_courant.y = 0;
+
+  ennemi->anim_courante = idle_droite_ennemi;
+  ennemi->id_col = 0;
+
   if(type == squelette){
-    charge_image(SQUELETTE_IDLE_PATH, &ennemi->sprites[courant], rendu);
+    charge_image(SQUELETTE_IDLE_PATH, &ennemi->sprites, rendu);
+  }
+  else if(type == blob){
+    charge_image(BLOB_PATH, &ennemi->sprites, rendu);
+    ennemi->w = ennemi->sprites.rectangle.w;
+    ennemi->h = ennemi->sprites.rectangle.h; 
+    ennemi->sprite_courant.h = 80;
+    ennemi->sprite_courant.w = 76;//on prend le idle comme base
+    ennemi->nb_sprites_idle = 6;
+    ennemi->nb_sprites_walk = 8;
+    ennemi->sprites.rectangle.w = ennemi->sprite_courant.w * 0.8;
+    ennemi->sprites.rectangle.h = ennemi->sprite_courant.h * 0.8;
   }
   else if(type == minotaure){
-    charge_image(MINOTAURE_IDLE_PATH, &ennemi->sprites[courant], rendu);
-    ennemi->sprites[courant].rectangle.x = WIN_WIDTH / 2 - ennemi->sprites[courant].rectangle.w;
-    ennemi->sprites[courant].rectangle.y = WIN_HEIGHT / 2 - ennemi->sprites[courant].rectangle.h;
+    charge_image(MINOTAURE_IDLE_PATH, &ennemi->sprites, rendu);
+    ennemi->sprites.rectangle.x = WIN_WIDTH / 2 - ennemi->sprites.rectangle.w;
+    ennemi->sprites.rectangle.y = WIN_HEIGHT / 2 - ennemi->sprites.rectangle.h;
     ennemi->boss = 1;
   }
   else if(type == cyclope){
-    charge_image(CYCLOPE_IDLE_PATH, &ennemi->sprites[courant], rendu);
-    ennemi->sprites[courant].rectangle.x = WIN_WIDTH / 2 - ennemi->sprites[courant].rectangle.w;
-    ennemi->sprites[courant].rectangle.y = WIN_HEIGHT / 2 - ennemi->sprites[courant].rectangle.h;
+    charge_image(CYCLOPE_IDLE_PATH, &ennemi->sprites, rendu);
+    ennemi->sprites.rectangle.x = WIN_WIDTH / 2 - ennemi->sprites.rectangle.w;
+    ennemi->sprites.rectangle.y = WIN_HEIGHT / 2 - ennemi->sprites.rectangle.h;
     ennemi->boss = 1;
   }
 
@@ -262,7 +278,7 @@ void detruire_carte(carte_t ** carte)
 void detruire_ennemi(ennemi_t ** ennemi)
 {
   free((*ennemi)->nom);
-  SDL_DestroyTexture((*ennemi)->sprites[0].img);
+  SDL_DestroyTexture((*ennemi)->sprites.img);
   free(*ennemi);
 }
 

@@ -48,6 +48,7 @@
 #define SQUELETTE_IDLE_PATH "../Images/sprites_mobs/squelette.png"
 #define CYCLOPE_IDLE_PATH "../Images/sprites_mobs/cyclope.png"
 #define MINOTAURE_IDLE_PATH "../Images/sprites_mobs/minotaure.png"
+#define BLOB_PATH "../Images/sprites_mobs/blob_sprites.png"
 
 #define SAVE_PERSO_PATH "../Sauvegarde/personnage.txt"
 #define SAVE_CARTES_PATH "../Sauvegarde/cartes.txt"
@@ -80,6 +81,7 @@
 #define NB_TOUCHES_UTILISEES 5
 
 #define DELAIS_ANIMATIONS 100
+#define DELAIS_ANIMATIONS_ENNEMIS 300
 
 #define PV_DEPART_PERSONNAGE 50
 #define VITESSE_DEPART_PERSONNAGE 5
@@ -99,6 +101,14 @@
 typedef enum{courant, idle_droite, droite1, droite2, droite3, idle_gauche, gauche2, gauche1, gauche3, dead}t_sprites_perso;
 
 /**
+*\enum t_ligne_sprites_ennemi
+
+*\brief les types de sprites pour les animations des ennemis
+*/
+
+typedef enum{idle_droite_ennemi, idle_gauche_ennemi, walk_droite, walk_gauche, ennemi_dead}t_ligne_sprites_ennemi;
+
+/**
 *\enum t_types_textures
 
 *\brief les types de textures sur lequel le perso peut tomber
@@ -111,7 +121,7 @@ typedef enum{sol =0, mur, porte, sol2, commandes, instructions, sol3, mur2, game
 
 *\brief les types d'ennemis existants
 */
-typedef enum{squelette, minotaure, cyclope}t_type_ennemis;
+typedef enum{squelette, blob, minotaure, cyclope}t_type_ennemis;
 
 
 /**
@@ -159,7 +169,6 @@ typedef struct{
 }animation_t;
 
 
-
 /**
 *\struct touchs_t
 
@@ -182,6 +191,29 @@ typedef struct{
 }image_t;
 
 /**
+*\struct ennemi_t
+*\Permet de définir un ennemi
+*/
+typedef struct ennemi_s {
+  int pv;/**Point de vie d'un ennemi*/
+  int vitesse;/**Vitesse d'un ennemi*/
+  int attaque;/**Attaque d'un ennemi*/
+  int defense;/**Défense d'un ennemi*/
+  char* nom;/** Nom de l'ennemi*/
+  int boss;/** Est un boss ou non*/
+  int nb_sprites_idle;
+  int nb_sprites_walk;
+  int w, h;
+  unsigned int last;
+  int anim_courante;
+  int id_col;
+
+  SDL_Rect sprite_courant;
+
+  image_t sprites;
+} ennemi_t;
+
+/**
 *\struct salle_t
 *\brief Représente une salle et ses liaisons aux autres salles
 */
@@ -196,7 +228,9 @@ typedef struct salle_s{
 
   int nb_murs, nb_portes, id, salle_existe;
 
-  int ennemi_present, nb_ennemi, x_ennemi1, x_ennemi2, y_ennemi1, y_ennemi2, boss, coffre, pv1, pv2, depart, decouverte;
+  int ennemi_present, nb_ennemi, boss, coffre, pv1, pv2, depart, decouverte;
+
+  ennemi_t *ennemi, *ennemi2;
 
 }salle_t;
 
@@ -233,21 +267,6 @@ typedef struct perso_s {
   int cmpMort;
 
 } perso_t;
-
-/**
-*\struct ennemi_t
-*\Permet de définir un ennemi
-*/
-typedef struct ennemi_s {
-  int pv;/**Point de vie d'un ennemi*/
-  int vitesse;/**Vitesse d'un ennemi*/
-  int attaque;/**Attaque d'un ennemi*/
-  int defense;/**Défense d'un ennemi*/
-  char* nom;/** Nom de l'ennemi*/
-  int boss;
-
-  image_t sprites[NB_SPRITES_MONSTRE];
-} ennemi_t;
 
 /**
 \struct carte_t

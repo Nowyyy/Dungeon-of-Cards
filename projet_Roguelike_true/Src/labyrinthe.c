@@ -18,6 +18,7 @@
 #include "../include/fonctions.h"
 #include "../include/sauvegardefonc.h"
 #include "../include/clavier.h"
+#include "../include/ennemi.h"
 
 /**
 *\fn void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu)
@@ -78,7 +79,7 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 *\brief Permet d'afficher une salle, le personnage et si on est dans la premiere salle, les instructions et commandes du jeu
 
 */
-void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[], ennemi_t monstre, ennemi_t boss, mini_map_t map){
+void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[], ennemi_t boss, mini_map_t map){
 
 	SDL_Rect rect;
 	rect = map.map[0];
@@ -134,26 +135,15 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 ///////////SPRITES MONSTRES
 	if(salle->ennemi_present){
 
-		monstre.sprites[courant].rectangle.x = (salle->x_ennemi1 * TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_X;
-		monstre.sprites[courant].rectangle.y = (salle->y_ennemi1 * TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_Y;
-
-		if(salle->pv1)
-			SDL_RenderCopy(rendu, monstre.sprites[courant].img, NULL, &monstre.sprites[courant].rectangle);
-		else
-			SDL_RenderCopy(rendu, monstre.sprites[courant+1].img, NULL, &monstre.sprites[courant].rectangle);
+		SDL_RenderCopy(rendu, salle->ennemi->sprites.img, &salle->ennemi->sprite_courant, &salle->ennemi->sprites.rectangle);
 
 		if(salle->nb_ennemi == 2){
-			monstre.sprites[courant].rectangle.x = (salle->x_ennemi2 * TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_X;
-			monstre.sprites[courant].rectangle.y = (salle->y_ennemi2 * TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_Y;
 
-			if(salle->pv2)
-				SDL_RenderCopy(rendu, monstre.sprites[courant].img, NULL, &monstre.sprites[courant].rectangle);
-			else
-				SDL_RenderCopy(rendu, monstre.sprites[courant+1].img, NULL, &monstre.sprites[courant].rectangle);
+			SDL_RenderCopy(rendu, salle->ennemi2->sprites.img, &salle->ennemi2->sprite_courant, &salle->ennemi2->sprites.rectangle);
 		}
 	}
 	else if(salle->boss){
-		SDL_RenderCopy(rendu, boss.sprites[courant].img, NULL, &boss.sprites[courant].rectangle);
+		SDL_RenderCopy(rendu, boss.sprites.img, NULL, &boss.sprites.rectangle);
 	}
 
 	SDL_RenderPresent(rendu);//applique les modifs précédentes
@@ -609,7 +599,6 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	touches_t clavier;
 
-	ennemi_t *ennemi = creer_ennemi("Squelette", 10, 10, 10, 10, squelette, rendu);
 	ennemi_t *boss = creer_ennemi("Minotaure", 10, 10, 10, 10, minotaure, rendu);
 
 /////////////////////////// Génération aléatoire ////////////////////////////////////////////
@@ -624,16 +613,27 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	textures_aleatoires(salles, taille*taille);
 
-	place_monstre_coffre_boss(salles, taille*taille);
+	place_monstre_coffre_boss(salles, taille*taille, blob, rendu);
+
+	for(int i = 0; i < taille * taille; i++){
+		creer_ennemi_pointeur(&salles[i].ennemi, &salles[i].ennemi2, salles[i].boss, salles[i].nb_ennemi, blob, rendu);
+	}
 
 	init_tab_clavier(clavier.tab);
 
 /////////////////////////// boucle du labyrinthe / explo / combat ///////////////////////////
 	while(*etat == labyrinthe && *continuer){
 
+		if(salles[salle_courante].nb_ennemi == 1)
+			animation_ennemi(salles[salle_courante].ennemi);
+		else if(salles[salle_courante].nb_ennemi == 2){
+			animation_ennemi(salles[salle_courante].ennemi);
+			animation_ennemi(salles[salle_courante].ennemi2);
+		}
+
 		modifie_texture_hud(pers, &images[pv], &images[etage], rendu);
 
-		affichage_salle_personnage(*pers, &salles[salle_courante], rendu, images, *ennemi, *boss, miniMap);
+		affichage_salle_personnage(*pers, &salles[salle_courante], rendu, images, *boss, miniMap);
 
 		deplacement_personnage(pers, salles[salle_courante], continuer, &anim, footsteps, &clavier);
 
@@ -647,18 +647,12 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 		SDL_Delay(5);
 
 		//collision avec un ennemi
-		if(salles[salle_courante].boss && combat_declenche(salles[salle_courante], *pers, *boss) && boss->pv > 0){
-			//combat_t_p_t(pers, boss, cartes, rendu);
-			if(boss->pv == 0){
-				//etage suivant
-			}
-		}
-		else if(combat_declenche(salles[salle_courante], *pers, *ennemi) == 1){
+		if(combat_declenche(salles[salle_courante], *pers, *boss) == 1){
 			//salles[salle_courante].pv1 = combat_t_p_t(pers, ennemi, cartes);
 		}
-		else if(combat_declenche(salles[salle_courante], *pers, *ennemi) == 2){
-			//salles[salle_courante].pv2 = combat_t_p_t(pers, ennemi, cartes);
-		}
+		else if(combat_declenche(salles[salle_courante], *pers, *boss) == 2){
+			//comba boss
+		}	
 
 		if(salle_courante != salle_pred){
 			salles[salle_courante].decouverte = TRUE;
@@ -677,6 +671,5 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	for(int i = sol; i < NB_TEXTURES; i++)
 		SDL_DestroyTexture(images[i].img);
 
-	detruire_ennemi(&ennemi);
 	detruire_ennemi(&boss);
 }

@@ -8,7 +8,7 @@
 
 #include "../include/constantes.h"
 #include "../include/labyrinthe.h"
-
+#include "../include/fonctions.h"
 /**
  *\fn void init_salle(int salle[TAILLE_SALLE][TAILLE_SALLE])
  *\brief fonction qui génère une salle en un tableau
@@ -236,7 +236,7 @@ void textures_aleatoires(salle_t salles[], int taille){
 
 *\brief rempli les salles de monstres, de coffre ou place un boss
 */
-void place_monstre_coffre_boss(salle_t tab[], int taille){
+void place_monstre_coffre_boss(salle_t tab[], int taille, int type_ennemi, SDL_Renderer * rendu){
 
   int alea;
 
@@ -249,8 +249,6 @@ void place_monstre_coffre_boss(salle_t tab[], int taille){
     }
     else if (tab[i].salle_existe && tab[i].boss == FALSE){
       alea = rand()%10;
-      tab[i].pv1 = 1;
-      tab[i].pv2 = 1;
 
       //choix pour un monbre ou un coffre dans la salle
       if(alea <= 8){
@@ -258,37 +256,11 @@ void place_monstre_coffre_boss(salle_t tab[], int taille){
 
         alea = rand()%8;
 
-        tab[i].x_ennemi1 = rand()%TAILLE_SALLE;
-        tab[i].y_ennemi1 = rand()%TAILLE_SALLE;
-
-        //on place l'ennemi dans la salle avec ses coordonnées
-        if(tab[i].x_ennemi1 == 0)
-          tab[i].x_ennemi1 += 1;
-        else if(tab[i].x_ennemi1 == TAILLE_SALLE - 1)
-          tab[i].x_ennemi1 -= 1;
-
-        if(tab[i].y_ennemi1 == 0)
-          tab[i].y_ennemi1 += 1;
-        else if(tab[i].y_ennemi1 ==  TAILLE_SALLE - 1)
-          tab[i].y_ennemi1 -= 1;
-
         if(alea <= 4){
           tab[i].nb_ennemi = 1;
         }
         //il y aura deux ennemis
         else{
-          tab[i].x_ennemi2 = rand()%TAILLE_SALLE;
-          tab[i].y_ennemi2 = rand()%TAILLE_SALLE;
-
-          if(tab[i].x_ennemi2 == 0)
-            tab[i].x_ennemi2 += 1;
-          else if(tab[i].x_ennemi2 == TAILLE_SALLE - 1)
-            tab[i].x_ennemi2 -= 1;
-
-          if(tab[i].y_ennemi2 == 0)
-            tab[i].y_ennemi2 += 1;
-          else if(tab[i].y_ennemi2 ==  TAILLE_SALLE - 1)
-            tab[i].y_ennemi2 -= 1;
 
           tab[i].nb_ennemi = 2;
         }
@@ -297,6 +269,8 @@ void place_monstre_coffre_boss(salle_t tab[], int taille){
       //pas d'ennemi dans la salle
       else{
         tab[i].coffre = 1;
+        tab[i].ennemi2 = NULL;
+        tab[i].ennemi = NULL;
       }
     }
   }
@@ -350,4 +324,49 @@ void creation_mini_map(int taille, mini_map_t *map){
 void ajoute_salle_decouverte(mini_map_t *map, int indice){
 
   map->salles_decouvertes[indice] = TRUE;
+}
+
+
+
+
+void ajoute_ennemi(ennemi_t **ennemi, int type, SDL_Renderer * rendu){
+
+  *ennemi = creer_ennemi("Blob", 50, 50, 10, 10, type, rendu);
+
+  (*ennemi)->sprites.rectangle.x = rand()%TAILLE_SALLE;
+  (*ennemi)->sprites.rectangle.y = rand()%TAILLE_SALLE;
+
+  if((*ennemi)->sprites.rectangle.x == 0)
+    (*ennemi)->sprites.rectangle.x += 1;
+  else if((*ennemi)->sprites.rectangle.x == TAILLE_SALLE - 1)
+    (*ennemi)->sprites.rectangle.x -= 1;
+
+  if((*ennemi)->sprites.rectangle.y == 0)
+    (*ennemi)->sprites.rectangle.y += 1;
+  else if((*ennemi)->sprites.rectangle.y ==  TAILLE_SALLE - 1)
+    (*ennemi)->sprites.rectangle.y -= 1;
+
+  (*ennemi)->last = SDL_GetTicks();
+
+  (*ennemi)->sprites.rectangle.x = ((*ennemi)->sprites.rectangle.x * TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_X;
+  (*ennemi)->sprites.rectangle.y = ((*ennemi)->sprites.rectangle.y * TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_Y;
+}
+
+
+
+
+
+void creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int boss, int nb_ennemi, int type, SDL_Renderer * rendu){
+
+  if(nb_ennemi == 1){
+
+    ajoute_ennemi(ennemi, type, rendu);
+    *ennemi2 = NULL;
+  }
+  else if (nb_ennemi == 2){
+    ajoute_ennemi(ennemi, type, rendu);
+    ajoute_ennemi(ennemi2, type, rendu);
+    (*ennemi2)->anim_courante = idle_gauche_ennemi;
+    (*ennemi2)->sprite_courant.y = (*ennemi2)->sprite_courant.h; 
+  }
 }
