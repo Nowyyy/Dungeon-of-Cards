@@ -28,17 +28,20 @@ void animation_ennemi(ennemi_t *ennemi){
 			
 			ennemi->sprite_courant.x += ennemi->sprite_courant.w + ennemi->gap;
 			ennemi->id_col ++;
+			printf("ici\n");
 		}
 		else{
 
 			if(ennemi->anim_courante == idle_droite_ennemi){
-
+				printf("here\n");
 				change_anim_ligne(ennemi, idle_gauche_ennemi);
+				printf("%d\n", ennemi->anim_courante);
 				ennemi->sprite_courant.y = ennemi->sprite_courant.h;
 			}
 			if(ennemi->anim_courante == idle_gauche_ennemi){
-
+				printf("couscous\n");
 				change_anim_ligne(ennemi, idle_droite_ennemi);
+				printf("%d\n", ennemi->anim_courante);
 			}
 		}
 
