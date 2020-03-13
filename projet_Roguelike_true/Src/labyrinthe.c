@@ -671,5 +671,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	for(int i = sol; i < NB_TEXTURES; i++)
 		SDL_DestroyTexture(images[i].img);
 
+	destruction_tous_ennemis(salles, taille);
+
 	detruire_ennemi(&boss);
 }

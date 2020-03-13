@@ -8,6 +8,7 @@
 */
 
 #include "../include/constantes.h"
+#include "../include/fonctions.h"
 
 void change_anim_ligne(ennemi_t *ennemi, int nouvelle_anim){
 
@@ -28,23 +29,37 @@ void animation_ennemi(ennemi_t *ennemi){
 			
 			ennemi->sprite_courant.x += ennemi->sprite_courant.w + ennemi->gap;
 			ennemi->id_col ++;
-			printf("ici\n");
 		}
 		else{
 
 			if(ennemi->anim_courante == idle_droite_ennemi){
-				printf("here\n");
+
 				change_anim_ligne(ennemi, idle_gauche_ennemi);
-				printf("%d\n", ennemi->anim_courante);
+
 				ennemi->sprite_courant.y = ennemi->sprite_courant.h;
 			}
 			if(ennemi->anim_courante == idle_gauche_ennemi){
-				printf("couscous\n");
+
 				change_anim_ligne(ennemi, idle_droite_ennemi);
-				printf("%d\n", ennemi->anim_courante);
 			}
 		}
 
 		ennemi->last = SDL_GetTicks();
+	}
+}
+
+
+
+
+void destruction_tous_ennemis(salle_t salles[], int taille){
+
+	int i;
+
+	for(i = 0; i < taille * taille; i++){
+
+		if(salles[i].ennemi_present > 0)
+			detruire_ennemi(&salles[i].ennemi);
+		if(salles[i].nb_ennemi == 2)
+			detruire_ennemi(&salles[i].ennemi2);
 	}
 }

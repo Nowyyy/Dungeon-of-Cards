@@ -358,13 +358,14 @@ void ajoute_ennemi(ennemi_t **ennemi, int type, SDL_Renderer * rendu){
 
 void creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int boss, int nb_ennemi, int type, SDL_Renderer * rendu){
 
-  if(nb_ennemi == 1){
+  if(nb_ennemi > 0){
 
     ajoute_ennemi(ennemi, type, rendu);
     *ennemi2 = NULL;
   }
-  else if (nb_ennemi == 2){
-    ajoute_ennemi(ennemi, type, rendu);
+  
+  if (nb_ennemi == 2){
+    
     ajoute_ennemi(ennemi2, type, rendu);
     (*ennemi2)->anim_courante = idle_gauche_ennemi;
     (*ennemi2)->sprite_courant.y = (*ennemi2)->sprite_courant.h; 
