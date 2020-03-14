@@ -419,7 +419,7 @@ int collision_perso_ennemi(perso_t pers, ennemi_t ennemi){
 
 *\brief Regarde si le personnage entre en combat avec un ennemi dans la salle
 */
-int combat_declenche(salle_t salle, perso_t pers, ennemi_t ennemi){
+int combat_declenche(salle_t salle, perso_t pers){
 
 	if(salle.ennemi_present){
 		if(collision_perso_ennemi(pers, *salle.ennemi))
@@ -432,7 +432,7 @@ int combat_declenche(salle_t salle, perso_t pers, ennemi_t ennemi){
 		return FALSE;
 	}
 	else if (salle.boss){
-		if(collision_perso_ennemi(pers, ennemi))
+		if(collision_perso_ennemi(pers, *salle.ennemi))
 			return TRUE + 1;
 	}
 	else 

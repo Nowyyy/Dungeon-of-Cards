@@ -45,9 +45,9 @@
 #define SPRITE9_PATH "../Images/Animations_personnage/droite3.png"
 #define SPRITE7_PATH "../Images/Animations_personnage/dead.png"
 
-#define SQUELETTE_IDLE_PATH "../Images/sprites_mobs/squelette.png"
-#define CYCLOPE_IDLE_PATH "../Images/sprites_mobs/cyclope.png"
-#define MINOTAURE_IDLE_PATH "../Images/sprites_mobs/minotaure.png"
+#define SQUELETTE_PATH "../Images/sprites_mobs/squelette_sprites.png"
+#define CYCLOPE_PATH "../Images/sprites_mobs/cyclo_sprites.png"
+#define MINOTAURE_PATH "../Images/sprites_mobs/mino_sprites.png"
 #define BLOB_PATH "../Images/sprites_mobs/blob_sprite.png"
 
 #define SAVE_PERSO_PATH "../Sauvegarde/personnage.txt"

@@ -234,7 +234,7 @@ void textures_aleatoires(salle_t salles[], int taille){
 *\param tab[], tableau contenant les salles du labyrinthe
 *\param taille, taille du tableau
 
-*\brief rempli les salles de monstres, de coffre ou place un boss
+*\brief rempli les salles de monstres, de coffre
 */
 void place_monstre_coffre_boss(salle_t tab[], int taille, int type_ennemi, SDL_Renderer * rendu){
 
@@ -328,23 +328,26 @@ void ajoute_salle_decouverte(mini_map_t *map, int indice){
 
 
 
+/**
+*\fn void ajoute_ennemi(ennemi_t **ennemi, int type, SDL_Renderer * rendu)
 
+*\param **ennemi, pointeur sur pointeur de type ennemi_t, l'ennemi que l'on va créer
+*\param type, le type d'ennemi que l'en veut créer.
+*\param *rendu, le renderer sur lequel on dessine
+
+*\brief créer un ennemi à partir d'un type donné
+*/
 void ajoute_ennemi(ennemi_t **ennemi, int type, SDL_Renderer * rendu){
 
   *ennemi = creer_ennemi("Blob", 50, 50, 10, 10, type, rendu);
 
-  (*ennemi)->sprites.rectangle.x = rand()%TAILLE_SALLE;
-  (*ennemi)->sprites.rectangle.y = rand()%TAILLE_SALLE;
+  //permet de placer l'ennemi sans qu'il soit bloqué dans une texture de porte ou de mur
+  do{
 
-  if((*ennemi)->sprites.rectangle.x == 0)
-    (*ennemi)->sprites.rectangle.x += 1;
-  else if((*ennemi)->sprites.rectangle.x == TAILLE_SALLE - 1)
-    (*ennemi)->sprites.rectangle.x -= 1;
-
-  if((*ennemi)->sprites.rectangle.y == 0)
-    (*ennemi)->sprites.rectangle.y += 1;
-  else if((*ennemi)->sprites.rectangle.y ==  TAILLE_SALLE - 1)
-    (*ennemi)->sprites.rectangle.y -= 1;
+    (*ennemi)->sprites.rectangle.x = rand()%TAILLE_SALLE;
+    (*ennemi)->sprites.rectangle.y = rand()%TAILLE_SALLE;
+  }while((*ennemi)->sprites.rectangle.x == 0 || (*ennemi)->sprites.rectangle.x == TAILLE_SALLE - 1
+   || (*ennemi)->sprites.rectangle.y == 0 || (*ennemi)->sprites.rectangle.y ==  TAILLE_SALLE - 1);
 
   (*ennemi)->last = SDL_GetTicks();
 
@@ -355,7 +358,18 @@ void ajoute_ennemi(ennemi_t **ennemi, int type, SDL_Renderer * rendu){
 
 
 
+/**
+*\fn void creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int boss, int nb_ennemi, int type, SDL_Renderer * rendu)
 
+*\param **ennemi, pointeur sur pointeur de type ennemi_t, l'ennemi que l'on va peut-être créer
+*\param **ennemi2, pointeur sur pointeur de type ennemi_t, l'ennemi que l'on va peut-être créer
+*\param type, le type d'ennemi que l'en veut créer.
+*\param *rendu, le renderer sur lequel on dessine
+*\param boss, permet de savoir si c'est un boss ou un ennemi classique que l'on doit créer
+*\param nb_ennemi, peremet de savoir combien d'ennemis sont à créer
+
+*\brief créer un/des ennemi à partir d'un type donné
+*/
 void creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int boss, int nb_ennemi, int type, SDL_Renderer * rendu){
 
   if(nb_ennemi > 0){

@@ -10,6 +10,14 @@
 #include "../include/constantes.h"
 #include "../include/fonctions.h"
 
+/**
+*\fn void change_anim_ligne(ennemi_t *ennemi, int nouvelle_anim)
+
+*\param *ennemi, l'ennemi pour lequel on change l'animation
+*\param nouvelle_anim, la nouvelle animation que doit effectuer l'ennemi
+
+*\brief Permet de donner à l'ennemi l'animation qu'il devra effectuer par la suite
+*/
 void change_anim_ligne(ennemi_t *ennemi, int nouvelle_anim){
 
 	ennemi->sprite_courant.y = 0;
@@ -19,7 +27,13 @@ void change_anim_ligne(ennemi_t *ennemi, int nouvelle_anim){
 }
 
 
+/**
+*\fn void animation_ennemi(ennemi_t *ennemi)
 
+*\param *ennemi, l'ennemi pour lequel on veut effectuer une animation
+
+*\brief Permet de passer d'animations en animations pour un ennemi
+*/
 void animation_ennemi(ennemi_t *ennemi){
 
 	if(ennemi->last + DELAIS_ANIMATIONS <= SDL_GetTicks()){
@@ -50,14 +64,21 @@ void animation_ennemi(ennemi_t *ennemi){
 
 
 
+/**
+*\fn void destruction_tous_ennemis(salle_t salles[], int taille)
 
+*\param salles[], le tableau contenant toutes les salles du labyrinthe
+*\param taille, la taille du tableau de salles
+
+*\brief Libère tous les emplacements mémoires attribués aux ennemis
+*/
 void destruction_tous_ennemis(salle_t salles[], int taille){
 
 	int i;
 
 	for(i = 0; i < taille * taille; i++){
 
-		if(salles[i].ennemi_present > 0)
+		if(salles[i].ennemi_present > 0 || salles[i].boss)
 			detruire_ennemi(&salles[i].ennemi);
 		if(salles[i].nb_ennemi == 2)
 			detruire_ennemi(&salles[i].ennemi2);

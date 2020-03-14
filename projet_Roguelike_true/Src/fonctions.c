@@ -226,7 +226,15 @@ ennemi_t * creer_ennemi(char * nom, int pv, int vitesse, int attaque, int defens
   ennemi->id_col = 0;
 
   if(type == squelette){
-    charge_image(SQUELETTE_IDLE_PATH, &ennemi->sprites, rendu);
+    charge_image(SQUELETTE_PATH, &ennemi->sprites, rendu);
+    ennemi->w = ennemi->sprites.rectangle.w;
+    ennemi->h = ennemi->sprites.rectangle.h; 
+    ennemi->sprite_courant.h = 60;
+    ennemi->sprite_courant.w = 46;//on prend le idle comme base
+    ennemi->nb_sprites_idle = 11;
+    ennemi->gap = 0;
+    ennemi->sprites.rectangle.w = ennemi->sprite_courant.w * 1.10;
+    ennemi->sprites.rectangle.h = ennemi->sprite_courant.h * 1.10;
   }
   else if(type == blob){
     charge_image(BLOB_PATH, &ennemi->sprites, rendu);
@@ -240,16 +248,32 @@ ennemi_t * creer_ennemi(char * nom, int pv, int vitesse, int attaque, int defens
     ennemi->sprites.rectangle.h = ennemi->sprite_courant.h * 0.8;
   }
   else if(type == minotaure){
-    charge_image(MINOTAURE_IDLE_PATH, &ennemi->sprites, rendu);
-    ennemi->sprites.rectangle.x = WIN_WIDTH / 2 - ennemi->sprites.rectangle.w;
-    ennemi->sprites.rectangle.y = WIN_HEIGHT / 2 - ennemi->sprites.rectangle.h;
+    charge_image(MINOTAURE_PATH, &ennemi->sprites, rendu);
+    ennemi->w = ennemi->sprites.rectangle.w;
+    ennemi->h = ennemi->sprites.rectangle.h; 
+    ennemi->sprite_courant.h = 100;
+    ennemi->sprite_courant.w = 70;//on prend le idle comme base
+    ennemi->sprites.rectangle.w = ennemi->sprite_courant.w;
+    ennemi->sprites.rectangle.h = ennemi->sprite_courant.h;
+    ennemi->nb_sprites_idle = 6;
+    ennemi->gap = 88;
     ennemi->boss = 1;
+    ennemi->sprites.rectangle.x = WIN_WIDTH / 2 - ennemi->sprites.rectangle.w / 2;
+    ennemi->sprites.rectangle.y = WIN_HEIGHT / 2 - ennemi->sprites.rectangle.h / 2;
   }
   else if(type == cyclope){
-    charge_image(CYCLOPE_IDLE_PATH, &ennemi->sprites, rendu);
-    ennemi->sprites.rectangle.x = WIN_WIDTH / 2 - ennemi->sprites.rectangle.w;
-    ennemi->sprites.rectangle.y = WIN_HEIGHT / 2 - ennemi->sprites.rectangle.h;
+    charge_image(CYCLOPE_PATH, &ennemi->sprites, rendu);
+    ennemi->w = ennemi->sprites.rectangle.w;
+    ennemi->h = ennemi->sprites.rectangle.h; 
+    ennemi->sprite_courant.h = 100;
+    ennemi->sprite_courant.w = 80;//on prend le idle comme base
+    ennemi->sprites.rectangle.w = ennemi->sprite_courant.w;
+    ennemi->sprites.rectangle.h = ennemi->sprite_courant.h;
+    ennemi->nb_sprites_idle = 6;
+    ennemi->gap = 66;
     ennemi->boss = 1;
+    ennemi->sprites.rectangle.x = WIN_WIDTH / 2 - ennemi->sprites.rectangle.w / 2;
+    ennemi->sprites.rectangle.y = WIN_HEIGHT / 2 - ennemi->sprites.rectangle.h / 2;
   }
 
   return(ennemi);
