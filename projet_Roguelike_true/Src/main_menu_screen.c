@@ -13,20 +13,19 @@
 
 
 /**
-*\fn int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect quitter, SDL_Rect **rect_sel, int *etat, Mix_Chunk *select, Mix_Chunk *move)
+*\fn int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect quitter, SDL_Rect **rect_sel, int *etat, Mix_Chunk *sounds[NB_SON])
 
 *\param jouer, le rectangle contenant le texte "Commencer partie"
 *\param charger, le rectangle contenant le texte "Charger partie"
 *\param quitter, le rectangle contenant le texte "Quitter"
 *\param *rect_sel, le rectangle de sélection permettant de sélectionner une option
-*\param *select, le son quand on sélectionne une option
-*\param *move, le son quand on se déplace dans le menu
+*\param *sounds[NB_SON], tableau contenant les sons
 
 *\brief Permet de déplacer d'option en option le rectangle de sélection
 
 *\return retourne False pour fermer la fenetre, True pour la garder  ouverte
 */
-int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect quitter, SDL_Rect **rect_sel, int *etat, Mix_Chunk *select, Mix_Chunk *move){
+int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect quitter, SDL_Rect **rect_sel, int *etat, Mix_Chunk* sounds[NB_SON]){
 
 	SDL_Event event;
 
@@ -42,11 +41,11 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 			if((*rect_sel)->y != quitter.y){//on n'est pas sur la dernière option, on peut descendre
 				if((*rect_sel)->y == jouer.y - RECT_SELECT_Y_DIFF){
 					(*rect_sel)->y = charger.y - RECT_SELECT_Y_DIFF;
-					Mix_PlayChannel(0, move, 0);
+					Mix_PlayChannel(0, sounds[move], 0);
 				}
 				else if((*rect_sel)->y == charger.y - RECT_SELECT_Y_DIFF){
 					(*rect_sel)->y = quitter.y - RECT_SELECT_Y_DIFF;
-					Mix_PlayChannel(0, move, 0);
+					Mix_PlayChannel(0, sounds[move], 0);
 				}
 			}
 		}
@@ -54,12 +53,12 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 			if((*rect_sel)->y != jouer.y){//on n'est pas sur la premiere option, on peut monter
 				if((*rect_sel)->y == charger.y - RECT_SELECT_Y_DIFF){
 					(*rect_sel)->y = jouer.y - RECT_SELECT_Y_DIFF;
-					Mix_PlayChannel(0, move, 0);
+					Mix_PlayChannel(0, sounds[move], 0);
 
 				}
 				else if((*rect_sel)->y == quitter.y - RECT_SELECT_Y_DIFF){
 					(*rect_sel)->y = charger.y - RECT_SELECT_Y_DIFF;
-					Mix_PlayChannel(0, move, 0);
+					Mix_PlayChannel(0, sounds[move], 0);
 
 				}
 			}
@@ -67,21 +66,21 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 		else if(clavier.tab[entree] == 1){//touche entrée
 			if((*rect_sel)->y == jouer.y - RECT_SELECT_Y_DIFF){
 				*etat = labyrinthe;
-				Mix_PlayChannel(1, select, 0);
+				Mix_PlayChannel(1, sounds[select], 0);
 
 			}
 			else if((*rect_sel)->y == quitter.y - RECT_SELECT_Y_DIFF){
-				Mix_PlayChannel(1, select, 0);
+				Mix_PlayChannel(1, sounds[select], 0);
 				return FALSE;
 			}
 			else if((*rect_sel)->y == charger.y - RECT_SELECT_Y_DIFF){
-				Mix_PlayChannel(1, select, 0);
+				Mix_PlayChannel(1, sounds[select], 0);
 				*etat = charger_partie;
 			}
 		}
 
 		if(event.type == SDL_QUIT){//croix de la fenetre
-			Mix_PlayChannel(1, select, 0);
+			Mix_PlayChannel(1, sounds[select], 0);
 			return FALSE;
 		}
 	}
@@ -128,19 +127,17 @@ void affichage_menu(SDL_Renderer *rendu, SDL_Texture *jouer_text, SDL_Texture *c
 
 
 /**
-*\fn void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *select, Mix_Chunk *move, Mix_Music *music)
+*\fn void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *sounds[NB_SON])
 
 *\param *continuer, permet de savoir si le joueur souhaite quitter le jeu ou non
 *\param *etat, représente l'écran dans lequel on est, actuellement me menu du jeu
 *\param *rendu, le rendu que l'on utilise pour dessiner à l'écran
 *\param *police, la police utilisée pour écrire sur l'écran
-*\param *select, le son quand on sélectionne une option
-*\param *move, le son quand on se déplace dans le menu
-*\param *music, la musique du menu principal
+*\param *sounds[NB_SON], tableau contenant les sons
 
 *\brief gère l'affichage à l'écran du menu principal, permet de choisir entre différentes options (jouer, charger, quitter)
 */
-void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *select, Mix_Chunk *move, Mix_Music *music){
+void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk* sounds[NB_SON]){
 
 	SDL_Rect jouer_text, charger_text, quitter_text;
 	SDL_Rect *rectangle_selection = malloc(sizeof(SDL_Rect));
@@ -175,7 +172,7 @@ void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police,
 
 		affichage_menu(rendu, jouer_texture, charger_texture, quitter_texture, rectangle_selection, jouer_text, charger_text, quitter_text, logo);
 
-		*continuer = deplacement_rectangle_selection(jouer_text, charger_text, quitter_text, &rectangle_selection, etat, select, move);
+		*continuer = deplacement_rectangle_selection(jouer_text, charger_text, quitter_text, &rectangle_selection, etat, sounds);
 
 	}
 

@@ -13,12 +13,12 @@
 *\param **window contiendra la fenetre du jeu
 *\param **rendu est le rendu dans la fenetre sur lequel on dessinera par la suite
 
-*\return 0 si tout c'est bien passé, 1 si une erreur est apparue 
+*\return 0 si tout c'est bien passé, 1 si une erreur est apparue
 
 *\brief Initialise et créé fenetre et rendu par leur pointeur, si une initialisation échoue, on détruit tout et on retourne 1 pour signifier une erreur
 */
 int initialisation_sdl(SDL_Window **window, SDL_Renderer **rendu){
-	
+
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 		return 1;
 
@@ -44,7 +44,7 @@ int initialisation_sdl(SDL_Window **window, SDL_Renderer **rendu){
 *\param **window contient la fenetre du jeu que l'on veut détruire
 *\param **rendu est le rendu dans la fenetre que l'on veut détruire
 
-*\return 0 si tout c'est bien passé, 1 si une erreur est apparue 
+*\return 0 si tout c'est bien passé, 1 si une erreur est apparue
 
 *\brief détruit les renderer et window passés en paramètre
 */
@@ -56,12 +56,12 @@ void quit_sdl(SDL_Renderer **rendu, SDL_Window **window){
 
 
 
-/** 
+/**
 *\fn int init_or_quit_ttf(int action)
 
 *\param action, permet de définir si l'on souhaite initialiser ttf ou le fermer
 
-*\return 0 si tout c'est bien passé, 1 si une erreur est apparue 
+*\return 0 si tout c'est bien passé, 1 si une erreur est apparue
 
 *\brief Initialise la librairie ttf
 */
@@ -81,7 +81,7 @@ int init_or_quit_ttf(int action){
 
 
 
-/** 
+/**
 *\fn extern void get_text_and_rect(SDL_Renderer *renderer, int x, int y, char *text,TTF_Font *font, SDL_Texture **texture, SDL_Rect *rect)
 
 *\param renderer, le rendu sur lequel on va dessiner le texte
@@ -144,4 +144,86 @@ int charge_image(char *path_img, image_t *struct_image, SDL_Renderer *rendu){
 	SDL_FreeSurface(image);
 
 	return 0;
+}
+/**
+*\fn void init_son(Mix_Chunk* sounds[NB_SON])
+
+*\param *sounds[NB_SON] est un tableau contenant les emplacements de chaque son
+
+*\brief initialise un tableau avec tous les sons utilisés
+
+*\return 1 si echec, 0 si réussite
+*/
+void init_son(Mix_Chunk* sounds[NB_SON]){
+	sounds[move] = Mix_LoadWAV("../Sound/menu_move.wav");
+	sounds[select] = Mix_LoadWAV("../Sound/menu_select.wav");
+	sounds[change_salle] = Mix_LoadWAV("../Sound/laby_change.wav");
+	sounds[footsteps] = Mix_LoadWAV("../Sound/footstep.wav");
+	sounds[gameOverFrame] = Mix_LoadWAV("../Sound/gameover_frame.wav");
+	sounds[death] = Mix_LoadWAV("../Sound/ennemi_death.wav");
+	sounds[collect] = Mix_LoadWAV("../Sound/collect.wav");
+	sounds[chest] = Mix_LoadWAV("../Sound/chest.wav");
+
+	Mix_VolumeChunk(sounds[move], 128);
+	Mix_VolumeChunk(sounds[select], 128);
+	Mix_VolumeChunk(sounds[change_salle], 128);
+	Mix_VolumeChunk(sounds[footsteps], 64);
+	Mix_VolumeChunk(sounds[gameOverFrame], 32);
+	Mix_VolumeChunk(sounds[chest], 128);
+}
+
+/**
+*\fn void init_music(Mix_Music* musics[NB_MUSIC])
+
+*\param *musics[NB_MUSIC] est un tableau contenant les emplacements de chaque musiques
+
+*\brief initialise un tableau avec toutes les musiques utilisées
+
+*\return 1 si echec, 0 si réussite
+*/
+void init_music(Mix_Music* musics[NB_MUSIC]){
+
+musics[menu] = Mix_LoadMUS("../Sound/menu_song.mp3");
+musics[level1] = Mix_LoadMUS("../Sound/level1.mp3");
+musics[gameOverMusic] = Mix_LoadMUS("../Sound/gameover.mp3");
+musics[fight] = Mix_LoadMUS("../Sound/music_fight.mp3");
+musics[boss] = Mix_LoadMUS("../Sound/music_boss.mp3");
+musics[level2] = Mix_LoadMUS("../Sound/level2.mp3");
+musics[level3] = Mix_LoadMUS("../Sound/level3.mp3");
+musics[level4] = Mix_LoadMUS("../Sound/level4.mp3");
+musics[level5] = Mix_LoadMUS("../Sound/level5.mp3");
+
+}
+
+/**
+*\fn free_mixer(Mix_Music* musics[NB_MUSIC], Mix_Chunk* sounds[NB_SON])
+
+*\param *musics[NB_MUSIC] est un tableau contenant les emplacements de chaque musiques
+*\param *sounds[NB_SON] est un tableau contenant les emplacements de chaque son
+
+*\brief libère tous les sons et toutes les musiques utilisées
+
+*\return 1 si echec, 0 si réussite
+*/
+void free_mixer(Mix_Music* musics[NB_MUSIC], Mix_Chunk* sounds[NB_SON]){
+	Mix_FreeChunk(sounds[select]);
+	Mix_FreeChunk(sounds[move]);
+	Mix_FreeChunk(sounds[change_salle]);
+	Mix_FreeChunk(sounds[footsteps]);
+	Mix_FreeChunk(sounds[gameOverFrame]);
+	Mix_FreeChunk(sounds[death]);
+	Mix_FreeChunk(sounds[collect]);
+	Mix_FreeChunk(sounds[chest]);
+
+	Mix_FreeMusic(musics[menu]);
+	Mix_FreeMusic(musics[level1]);
+	Mix_FreeMusic(musics[gameOverMusic]);
+	Mix_FreeMusic(musics[fight]);
+	Mix_FreeMusic(musics[boss]);
+	Mix_FreeMusic(musics[level2]);
+	Mix_FreeMusic(musics[level3]);
+	Mix_FreeMusic(musics[level4]);
+	Mix_FreeMusic(musics[level5]);
+
+	Mix_CloseAudio();
 }

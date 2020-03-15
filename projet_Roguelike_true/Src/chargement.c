@@ -51,14 +51,13 @@ void afficher_chagrer_partie(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture
 *\param charger_rect, le rectangle contenant le texte relatif à la sauvegarde
 *\param retour_rect, le rectangle contenant le texte "retour", pour retourner au menu principal
 *\param **rect_sel, le rectangle de sélection permettant de sélectionner une option
-*\param *select, le son quand on sélectionne une option
-*\param *move, le son quand on se déplace dans le menu
+*\param *sounds[NB_SON], tableau contenant les sons
 
 *\brief Permet de déplacer d'option en option le rectangle de sélection
 
 *\return retourne False pour fermer la fenetre, True pour la garder  ouverte
 */
-int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SDL_Rect retour_rect, SDL_Rect **rect_sel, Mix_Chunk *select, Mix_Chunk *move){
+int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SDL_Rect retour_rect, SDL_Rect **rect_sel, Mix_Chunk *sounds[NB_SON]){
 
 	SDL_Event event;
 
@@ -69,7 +68,7 @@ int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SD
 				if((*rect_sel)->y != retour_rect.y){//on n'est pas sur la dernière option, on peut descendre
 					if((*rect_sel)->y == charger_rect.y - RECT_SELECT_Y_DIFF){
 						(*rect_sel)->y = retour_rect.y - RECT_SELECT_Y_DIFF;
-						Mix_PlayChannel(0, move, 0);
+						Mix_PlayChannel(0, sounds[move], 0);
 					}
 				}
 			}
@@ -77,18 +76,18 @@ int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SD
 				if((*rect_sel)->y != charger_rect.y){//on n'est pas sur la premiere option, on peut monter
 					if((*rect_sel)->y == retour_rect.y - RECT_SELECT_Y_DIFF){
 						(*rect_sel)->y = charger_rect.y - RECT_SELECT_Y_DIFF;
-						Mix_PlayChannel(0, move, 0);
+						Mix_PlayChannel(0, sounds[move], 0);
 					}
 				}
 			}
 			else if(event.key.keysym.sym == SDLK_RETURN){//touche entrée
 				if((*rect_sel)->y == charger_rect.y - RECT_SELECT_Y_DIFF){
 					*etat = labyrinthe;
-					Mix_PlayChannel(1, select, 0);
+					Mix_PlayChannel(1, sounds[select], 0);
 				}
 				else if((*rect_sel)->y == retour_rect.y - RECT_SELECT_Y_DIFF){
 					*etat = mainMenu;
-					Mix_PlayChannel(1, select, 0);
+					Mix_PlayChannel(1, sounds[select], 0);
 				}
 			}
 		}
@@ -112,13 +111,12 @@ int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SD
 *\param *etat, pointeur sur un int permettant de connaitre le prochain écran auquel le joueur veut accèder
 *\param *rendu, le renderer sur lequel on dessine
 *\param *police, la police d'écriture pour TTF
-*\param *select, le son quand on sélectionne une option
-*\param *move, le son quand on se déplace dans le menu
+*\param *sounds[NB_SON], tableau contenant les sons
 *\param *pers, la structure du personnage
 
 *\brief Permet d'afficher et de récupèrer une sauvegarde éventuelle puis de lancer le jeu
 */
-void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *select, Mix_Chunk *move, perso_t *pers, carte_t *cartes){
+void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *sounds[NB_SON], perso_t *pers, carte_t *cartes){
 
 	SDL_Rect retour_rect, charger_rect;
 	SDL_Rect *rectangle_selection = malloc(sizeof(SDL_Rect));
@@ -150,8 +148,8 @@ void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Fon
 		charger_text = strcpy(charger_text, intermediaire);
 	}
 
-	
-	
+
+
 	//On créé les textures qui contiendront les textes
 	get_text_and_rect(rendu, x_charger, y_charger, charger_text, police, &charger_texture, &charger_rect);
 	get_text_and_rect(rendu, x_retour, y_retour, retour_text, police, &retour_texture, &retour_rect);
@@ -165,7 +163,7 @@ void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Fon
 
 		afficher_chagrer_partie(rendu, *rectangle_selection, charger_texture, charger_rect, retour_texture, retour_rect);
 
-		*continuer = deplacement_rectangle_selection_charger(etat, charger_rect, retour_rect, &rectangle_selection, select, move);
+		*continuer = deplacement_rectangle_selection_charger(etat, charger_rect, retour_rect, &rectangle_selection, sounds);
 	}
 
 	free(rectangle_selection);

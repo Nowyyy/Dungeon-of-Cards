@@ -36,38 +36,15 @@ int main(int argc, char* args[]){
 	carte_t *cartes;
 
 	//On initialise les samples et musiques utilisés dans le jeu
-	const char *MOVE = "../Sound/menu_move.wav";
-	const char *SELECT = "../Sound/menu_select.wav";
-	const char *CHANGE = "../Sound/laby_change.wav";
-	const char *FOOT = "../Sound/footstep.wav";
-	const char *GAMEOVERFRAME = "../Sound/gameover_frame.wav";
-	const char *DEATH = "../Sound/ennemi_death.wav";
-	const char *COLLECT = "../Sound/collect.wav";
-	const char *CHEST = "../Sound/chest.wav";
 
-	const char *MENU = "../Sound/menu_song.mp3";
-	const char *LVL1 = "../Sound/level1.mp3";
-	const char *GAMEOVER = "../Sound/gameover.mp3";
-	const char *FIGHT = "../Sound/music_fight.mp3";
-	const char *BOSS = "../Sound/music_boss.mp3";
+	Mix_Chunk *sounds[NB_SON];
+	Mix_Music *musics[NB_MUSIC];
 
-	//On charge les samples et musiques dans des variables
 	Mix_OpenAudio(44100, AUDIO_S16SYS,6, 4096);
 	Mix_AllocateChannels(16);
-	Mix_Chunk *move = Mix_LoadWAV(MOVE);
-	Mix_Chunk *select = Mix_LoadWAV(SELECT);
-	Mix_Chunk *change_salle = Mix_LoadWAV(CHANGE);
-	Mix_Chunk *footsteps = Mix_LoadWAV(FOOT);
-	Mix_Chunk *gameOverFrame = Mix_LoadWAV(GAMEOVERFRAME);
-	Mix_Chunk *death = Mix_LoadWAV(DEATH);
-	Mix_Chunk *collect = Mix_LoadWAV(COLLECT);
-	Mix_Chunk *chest = Mix_LoadWAV(CHEST);
 
-	Mix_Music *level1 = Mix_LoadMUS(LVL1);
-	Mix_Music *music = Mix_LoadMUS(MENU);
-	Mix_Music *gameOverMusic = Mix_LoadMUS(GAMEOVER);
-	Mix_Music *fight = Mix_LoadMUS(FIGHT);
-	Mix_Music *boss = Mix_LoadMUS(BOSS);
+	init_son(sounds);
+	init_music(musics);
 
 
 
@@ -105,19 +82,6 @@ int main(int argc, char* args[]){
 								printf("Mix_Init: %s\n", Mix_GetError());
 								exit(1);
 						}
-						else {
-
-							//On met le volume à fond pour couvrir par dessus la musique
-							Mix_VolumeChunk(move, 128);
-							Mix_VolumeChunk(select, 128);
-							Mix_VolumeChunk(change_salle, 128);
-							Mix_VolumeChunk(footsteps, 64);
-							Mix_VolumeChunk(gameOverFrame, 32);
-							Mix_VolumeChunk(chest, 128);
-
-							Mix_VolumeMusic(20);
-
-						}
 
 					}
 //************************* BOUCLE DE JEU ********************************************************************
@@ -126,9 +90,10 @@ int main(int argc, char* args[]){
 
 						if(etat == mainMenu){
 							if(Mix_PlayingMusic() == 0){
-								Mix_PlayMusic(music, -1);
+								Mix_VolumeMusic(30);
+								Mix_PlayMusic(musics[menu], -1);
 							}
-							main_menu(&continuer, &etat, rendu, police, select, move, music);
+							main_menu(&continuer, &etat, rendu, police, sounds);
 
 							if(etat == labyrinthe){
 								//initialise_deck_cartes(cartes);
@@ -139,14 +104,35 @@ int main(int argc, char* args[]){
 							//tout ce qui sera relatif à l'explo dans le laby
 							saveperso(&pers);
 							Mix_HaltMusic();
-							Mix_PlayMusic(level1, -1);
-							boucle_labyrinthe(&continuer, &etat, rendu, change_salle, footsteps, gameOverMusic, gameOverFrame, chest, &pers, cartes, police);
+							if(pers.etage == 1){
+								Mix_VolumeMusic(20);
+								Mix_PlayMusic(musics[level1], -1);
+							}
+							else if(pers.etage == 2){
+								Mix_VolumeMusic(80);
+								Mix_PlayMusic(musics[level2], -1);
+							}
+							else if(pers.etage == 3){
+								Mix_VolumeMusic(48);
+
+								Mix_PlayMusic(musics[level3], -1);
+							}
+							else if(pers.etage == 4){
+								Mix_VolumeMusic(80);
+
+								Mix_PlayMusic(musics[level4], -1);
+							}
+							else if(pers.etage == 5){
+								Mix_VolumeMusic(20);
+
+								Mix_PlayMusic(musics[level5], -1);
+							}
+							boucle_labyrinthe(&continuer, &etat, rendu, sounds, musics, &pers, cartes, police);
 							Mix_HaltMusic();
-							Mix_VolumeMusic(24);
 						}
 						else if(etat == charger_partie){
 							//charge les données du joueurs afin qu'il reprenne là où il s'était arrêté
-							menu_charger_partie(&continuer, &etat, rendu, police, select, move, &pers, cartes);
+							menu_charger_partie(&continuer, &etat, rendu, police, sounds, &pers, cartes);
 						}
 					}
 				}
@@ -162,21 +148,7 @@ int main(int argc, char* args[]){
 	init_or_quit_ttf(0);//quitte TTF
 
 	//On libère toutes les variables de son
-	Mix_FreeChunk(select);
-	Mix_FreeChunk(move);
-	Mix_FreeChunk(change_salle);
-	Mix_FreeChunk(footsteps);
-	Mix_FreeChunk(gameOverFrame);
-	Mix_FreeChunk(death);
-	Mix_FreeChunk(collect);
-	Mix_FreeChunk(chest);
-
-	Mix_FreeMusic(music);
-	Mix_FreeMusic(level1);
-	Mix_FreeMusic(gameOverMusic);
-	Mix_FreeMusic(fight);
-	Mix_FreeMusic(boss);
-	Mix_CloseAudio();
+	free_mixer(musics, sounds);
 
 
 	printf("Tout est fermé\n");//affiche dans la console

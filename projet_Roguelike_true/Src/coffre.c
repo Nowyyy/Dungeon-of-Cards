@@ -17,11 +17,11 @@
 
 *\param *pers, le personnage du jeu
 *\param *salle, la salle dans laquelle se trouve le personnage
-*\param *chest, bruit d'ouverture de coffre
+*\param *sounds[NB_SON], tableau contenant les sons
 
 *\brief Permet d'effectuer l'animation du coffre s'il est en contact avec le joueur
 */
-void animation_coffre(perso_t *pers, salle_t *salle, Mix_Chunk *chest){
+void animation_coffre(perso_t *pers, salle_t *salle, Mix_Chunk *sounds[NB_SON]){
 
 	if(salle->coffre_salle.ouvert == 0 && salle->coffre && SDL_HasIntersection(&pers->sprites[courant].rectangle, &salle->coffre_salle.sprite.rectangle)){
 		//on est dans une salle avec un coffre et il n'a pas été ouvert
@@ -33,7 +33,7 @@ void animation_coffre(perso_t *pers, salle_t *salle, Mix_Chunk *chest){
 			salle->coffre_salle.last = SDL_GetTicks();
 
 			if(salle->coffre_salle.son == 0){
-				Mix_PlayChannel(2, chest, 0);
+				Mix_PlayChannel(2, sounds[chest], 0);
 				salle->coffre_salle.son = 1;
 			}
 

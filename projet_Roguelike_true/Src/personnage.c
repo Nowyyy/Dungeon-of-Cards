@@ -107,17 +107,17 @@ void change_animation(animation_t *anim, image_t sprites[], int nouvelle_animati
 
 
 /**
-*\fn void animations_personnage(image_t sprites[], unsigned int timer, touches_t clavier, animation_t *anim, Mix_Chunk *footsteps)
+*\fn void animations_personnage(image_t sprites[], unsigned int timer, touches_t clavier, animation_t *anim, Mix_Chunk *sounds[NB_SON])
 
 *\param sprites[], le tableau de sprites du personnage
 *\param timer, le temps d'execution du jeu
 *\param clavier, la structure de touches du clavier
 *\param *anim, la structure qui gère les animations
-*\param *footsteps, les sons de pas du personnage
+*\param *sounds[NB_SON], tableau contenant les sons
 
 *\brief permet de changer d'animation selon le déplacement du personnage
 */
-void animations_personnage(image_t sprites[], unsigned int timer, touches_t clavier, animation_t *anim, Mix_Chunk *footsteps){
+void animations_personnage(image_t sprites[], unsigned int timer, touches_t clavier, animation_t *anim, Mix_Chunk *sounds[NB_SON]){
 
 	int i;
 
@@ -134,7 +134,7 @@ void animations_personnage(image_t sprites[], unsigned int timer, touches_t clav
 			}
 			else if (i == right && sprites[courant].img == sprites[droite2].img){
 				change_animation(anim, sprites, droite1);
-				Mix_PlayChannel(0, footsteps, 0);
+				Mix_PlayChannel(0, sounds[footsteps], 0);
 
 			}
 			else if (i == right || (i == right && sprites[courant].img == sprites[droite1].img)){
@@ -151,7 +151,7 @@ void animations_personnage(image_t sprites[], unsigned int timer, touches_t clav
 			}
 			else if (i == left || (i == left && sprites[courant].img == sprites[gauche3].img)){
 				change_animation(anim, sprites, gauche1);
-				Mix_PlayChannel(0, footsteps, 0);
+				Mix_PlayChannel(0, sounds[footsteps], 0);
 
 			}
 
@@ -164,7 +164,7 @@ void animations_personnage(image_t sprites[], unsigned int timer, touches_t clav
 					}
 					else if(sprites[courant].img == sprites[droite2].img){
 						change_animation(anim, sprites, droite1);
-						Mix_PlayChannel(0, footsteps, 0);
+						Mix_PlayChannel(0, sounds[footsteps], 0);
 
 					}
 					else{
@@ -180,7 +180,7 @@ void animations_personnage(image_t sprites[], unsigned int timer, touches_t clav
 					}
 					else{
 						change_animation(anim, sprites, gauche1);
-						Mix_PlayChannel(0, footsteps, 0);
+						Mix_PlayChannel(0, sounds[footsteps], 0);
 
 					}
 				}
@@ -194,7 +194,7 @@ void animations_personnage(image_t sprites[], unsigned int timer, touches_t clav
 					}
 					else if(sprites[courant].img == sprites[droite2].img){
 						change_animation(anim, sprites, droite1);
-						Mix_PlayChannel(0, footsteps, 0);
+						Mix_PlayChannel(0, sounds[footsteps], 0);
 
 					}
 					else{
@@ -210,7 +210,7 @@ void animations_personnage(image_t sprites[], unsigned int timer, touches_t clav
 					}
 					else{
 						change_animation(anim, sprites, gauche1);
-						Mix_PlayChannel(0, footsteps, 0);
+						Mix_PlayChannel(0, sounds[footsteps], 0);
 
 					}
 				}
@@ -233,16 +233,16 @@ void animations_personnage(image_t sprites[], unsigned int timer, touches_t clav
 
 
 /**
-*\fn void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animation_t *anim, Mix_Chunk *footsteps, touches_t *clavier)
+*\fn void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animation_t *anim, Mix_Chunk *sounds[NB_SON], touches_t *clavier)
 
 *\param pers, la structure du pêrsonnage que l'on souhaite déplacer
 *\param salle, la salle dans laquelle le personnage se déplace
 *\param *continuer, pointeur sur variable permettant de savoir si le joueur souhaite quitter le programme
-*\param *footsteps, les sons de pas du personnage
+*\param *sounds[NB_SON], tableau contenant les sons
 
 *\brief Gère les déplacement du personnage dans une salle
 */
-void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animation_t *anim, Mix_Chunk *footsteps, touches_t *clavier){
+void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animation_t *anim, Mix_Chunk *sounds[NB_SON], touches_t *clavier){
 
 	SDL_Event event;
 
@@ -255,7 +255,7 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 		if(event.type == SDL_QUIT)//croix de la fenetre
 			*continuer = FALSE;
 
-		animations_personnage(pers->sprites, temps, *clavier, anim, footsteps);
+		animations_personnage(pers->sprites, temps, *clavier, anim, sounds);
 	//permet au personnage de revenir à l'état idle quand aucune touche n'est enfoncée
 	}
 
@@ -263,7 +263,7 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 
 		if(!test_collision(salle,pers, bas)){
 			pers->y += VITESSE_PERSO;
-			animations_personnage(pers->sprites, temps, *clavier, anim, footsteps);
+			animations_personnage(pers->sprites, temps, *clavier, anim, sounds);
 		}
 		else
 			pers->y -= 3;
@@ -272,7 +272,7 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 
 		if(!test_collision(salle,pers, droite)){
 			pers->x += VITESSE_PERSO;
-			animations_personnage(pers->sprites, temps, *clavier, anim, footsteps);
+			animations_personnage(pers->sprites, temps, *clavier, anim, sounds);
 		}
 		else
 			pers->x -= 3;
@@ -281,7 +281,7 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 
 		if(!test_collision(salle,pers, gauche)){
 			pers->x -= VITESSE_PERSO;
-			animations_personnage(pers->sprites, temps, *clavier, anim, footsteps);
+			animations_personnage(pers->sprites, temps, *clavier, anim, sounds);
 		}
 		else
 			pers->x += 3;
@@ -290,7 +290,7 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 
 		if(!test_collision(salle,pers, haut)){
 			pers->y -= VITESSE_PERSO;
-			animations_personnage(pers->sprites, temps, *clavier, anim, footsteps);
+			animations_personnage(pers->sprites, temps, *clavier, anim, sounds);
 		}
 		else
 			pers->y += 3;
@@ -303,18 +303,17 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 
 
 /**
-*\fn int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *change_salle)
-
+*\fn int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *sounds[NB_SON]
 *\param *pers, la structure du personnage
 *\param *salle, la salle dans laquelle on se trouve
 *\param *continuer la variable permettant de quitter le jeu
-*\param *change_salle, le son de changement de salle
+*\param *sounds[NB_SON], tableau contenant les sons
 
 *\brief permet de téléporter le personnage dans la salle dont il passe la porter
 
 *\return la salle dans laquelle le joueur arrive
 */
-int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *change_salle){
+int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *sounds[NB_SON]){
 
 	for(int i = 0; i < salle.nb_portes; i++){
 
@@ -324,7 +323,7 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *cha
 			//porte en haut
 				pers->x = WIN_WIDTH / 2 - TAILLE_IMAGE;
 				pers->y = salle.murs[salle.nb_murs -1].y - TAILLE_IMAGE- 50;
-				Mix_PlayChannel(1, change_salle, 0);
+				Mix_PlayChannel(1, sounds[change_salle], 0);
 
 				return salle.s_h;
 			}
@@ -333,7 +332,7 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *cha
 				pers->x = WIN_WIDTH / 2 - TAILLE_IMAGE;
 
 				pers->y = salle.murs[0].y + TAILLE_IMAGE + 50;
-				Mix_PlayChannel(1, change_salle, 0);
+				Mix_PlayChannel(1, sounds[change_salle], 0);
 
 				return salle.s_b;
 			}
@@ -341,7 +340,7 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *cha
 			//porte à gauche
 				pers->x = WIN_WIDTH / 2 + 50;
 				pers->y = WIN_HEIGHT / 2 - TAILLE_IMAGE / 2;
-				Mix_PlayChannel(1, change_salle, 0);
+				Mix_PlayChannel(1, sounds[change_salle], 0);
 
 				return salle.s_g;
 			}
@@ -349,7 +348,7 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *cha
 			//porte à droite
 				pers->x = salle.murs[0].x + TAILLE_IMAGE + 50;
 				pers->y = WIN_HEIGHT / 2 - TAILLE_IMAGE / 2;
-				Mix_PlayChannel(1, change_salle, 0);
+				Mix_PlayChannel(1, sounds[change_salle], 0);
 
 				return salle.s_d;
 			}

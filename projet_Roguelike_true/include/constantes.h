@@ -97,6 +97,8 @@
 #define NB_SALLES_LEVEL_3 20
 #define NB_SALLES_LEVEL_4 25
 
+#define NB_SON 8
+#define NB_MUSIC 9
 
 /**
 *\enum t_sprites_perso
@@ -161,6 +163,21 @@ typedef enum{up, down, right, left, entree}t_touches_clavier;
 */
 typedef enum{haut, droite, bas, gauche}t_direction;
 
+
+/**
+*\enum t_sons
+
+*\brief Les différents sons utilisés
+*/
+typedef enum{move=0, select, change_salle, footsteps, gameOverFrame, death, collect, chest}t_sons;
+
+/**
+*\enum t_musique
+
+*\brief Les différentes musiques utilisées
+*/
+typedef enum{menu=0, level1, gameOverMusic, fight, boss, level2, level3, level4, level5}t_musique;
+
 /**
 *\struct animation_t
 
@@ -219,7 +236,10 @@ typedef struct ennemi_s {
   image_t sprites;
 } ennemi_t;
 
-
+/**
+*\struct coffre_t
+*\Contient les éléments nécessaires à l'initialisation d'un coffre
+*/
 typedef struct coffre_s{
 
   image_t sprite;

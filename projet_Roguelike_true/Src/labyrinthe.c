@@ -219,20 +219,20 @@ void cree_liaison(salle_t tab[], int salle1, int salle2, int porteS1){
 
 
 /**
-*\fn void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusic, Mix_Chunk *gameOverFrame, image_t images[], TTF_Font *police, SDL_Texture *cmpPartie_texture)
+*\fn void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusic, Mix_Chunk *sounds[NB_SON], image_t images[], TTF_Font *police, SDL_Texture *cmpPartie_texture)
 
 *\param *etat, variable contenant le mode de jeu actuel
 *\param *pers, contient le personnage afin de le sauvegarder
 *\param *rendu, le renderer sur lequel on dessine
-*\param gameOverMusic, musique de mort du joueur
-*\param gameOverFrame, bruit de mort du joueur
+*\param *musics[NB_MUSIC], tableau contenant les musiques
+*\param *sounds[NB_SON], tableau contenant les sons
 *\param images[], contient toutes les images du jeu sauf celles du personnage
 
 *\brief Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...
 
 */
 
-void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusic, Mix_Chunk *gameOverFrame, image_t images[], TTF_Font *police, SDL_Texture *cmpPartie_texture){
+void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MUSIC], Mix_Chunk *sounds[NB_SON], image_t images[], TTF_Font *police, SDL_Texture *cmpPartie_texture){
 	int mort_tmp;
 
 	int x_cmpPartie = WIN_WIDTH / 2-90;
@@ -262,7 +262,7 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusi
  	//aggrandissement progressif du rectangle
  	while(rect.w < WIN_WIDTH){
  		SDL_SetRenderDrawColor(rendu, 0, 0, 0, 255);
-		Mix_PlayChannel(0, gameOverFrame, 0);
+		Mix_PlayChannel(0, sounds[gameOverFrame], 0);
   	SDL_RenderFillRect(rendu, &rect);
   	SDL_RenderPresent(rendu);
 		SDL_Delay(500);
@@ -289,7 +289,7 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusi
 	SDL_RenderCopy(rendu, images[gameover].img, NULL, &images[gameover].rectangle);
 	//Musique
 	Mix_VolumeMusic(64);
-	Mix_PlayMusic(gameOverMusic, 1);
+	Mix_PlayMusic(musics[gameOverMusic], 1);
 
 
 	//halo lumineux
@@ -589,22 +589,19 @@ int nb_salles_par_etage(int etage){
 
 
 /**
-*\fn void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *change_salle, Mix_Chunk *footsteps, Mix_Music *gameOverMusic, Mix_Chunk *gameOverFrame, perso_t *pers, carte_t *cartes, TTF_Font *police)
+*\fn void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *gameOverMusic, perso_t *pers, carte_t *cartes, TTF_Font *police)
 
 *\param *continuer, pointeur sur variable permettant de savoir si le joueur souhaite quitter le programme
 *\param *etat, pointeur sur variable permettant de connaître l'écran dans lequel on est
 *\param *rendu, le renderer sur lequel on dessine
-*\param *change_salle, le son de changement de salle
-*\param *footsteps, les bruits de pas du personnage
-*\param *gameOverMusic, la musique de mort
-*\param *gameOverFrame, les bruits de mort
-*\param *chest, bruit d'ouverture de coffre
+*\param *sounds[NB_SON], tableau contenant les sons
+*\param *musics[NB_MUSIC], tableau contenant les musiques
 *\param *pers, le renderer sur lequel on dessine
 *\param cartes
 
 *\brief Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...
 */
-void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *change_salle, Mix_Chunk *footsteps, Mix_Music *gameOverMusic, Mix_Chunk *gameOverFrame, Mix_Chunk *chest, perso_t *pers, carte_t *cartes, TTF_Font *police){
+void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], perso_t *pers, carte_t *cartes, TTF_Font *police){
 
 
 /////////////////////////// Déclarations variables ////////////////////////////////////////////
@@ -664,23 +661,23 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 		}
 
 		if(salles[salle_courante].coffre){
-			animation_coffre(pers, &salles[salle_courante], chest);
+			animation_coffre(pers, &salles[salle_courante], sounds);
 		}
 
 		modifie_texture_hud(pers, &images[pv], &images[etage], rendu);
 
 		affichage_salle_personnage(*pers, &salles[salle_courante], rendu, images, miniMap);
 
-		deplacement_personnage(pers, salles[salle_courante], continuer, &anim, footsteps, &clavier);
+		deplacement_personnage(pers, salles[salle_courante], continuer, &anim, sounds, &clavier);
 
 		//Si le joueur meurt
 		if(pers->pv <= 0){
 			Mix_HaltMusic();
-			mort(etat, pers, rendu, gameOverMusic, gameOverFrame, images, police, cmpPartie_texture);
+			mort(etat, pers, rendu, musics, sounds, images, police, cmpPartie_texture);
 		}
 		//pers->pv-=1;
 
-		salle_courante = changement_de_salle(pers, salles[salle_courante], salle_courante, change_salle);
+		salle_courante = changement_de_salle(pers, salles[salle_courante], salle_courante, sounds);
 		SDL_Delay(5);
 
 		//collision avec un ennemi
