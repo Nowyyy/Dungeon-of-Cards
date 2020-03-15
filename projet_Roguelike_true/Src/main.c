@@ -113,8 +113,9 @@ int main(int argc, char* args[]){
 							Mix_VolumeChunk(change_salle, 128);
 							Mix_VolumeChunk(footsteps, 64);
 							Mix_VolumeChunk(gameOverFrame, 32);
+							Mix_VolumeChunk(chest, 128);
 
-							Mix_VolumeMusic(24);
+							Mix_VolumeMusic(20);
 
 						}
 

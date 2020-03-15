@@ -435,8 +435,8 @@ int combat_declenche(salle_t salle, perso_t pers){
 		if(collision_perso_ennemi(pers, *salle.ennemi))
 			return TRUE + 1;
 	}
-	else
-		return FALSE;
+
+	return FALSE;
 }
 
 
