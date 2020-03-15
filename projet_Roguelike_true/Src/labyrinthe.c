@@ -85,8 +85,8 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 	rect = map.map[0];
 	rect.x -= 5;
 	rect.y -= 5;
-	rect.h = (map.taille / 5) * TAILLE_RECT_MINI_MAP_H + 15;
-	rect.w = (map.taille / 5) * TAILLE_RECT_MINI_MAP_W + 15;
+	rect.h = (map.taille / TAILLE_LABY) * TAILLE_RECT_MINI_MAP_H + 15;
+	rect.w = (map.taille / TAILLE_LABY) * TAILLE_RECT_MINI_MAP_W + 15;
 
 	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
 
@@ -563,6 +563,28 @@ void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Rendere
 
 
 /**
+*\fn int nb_salles_par_etage(int etage)
+
+*\param etage, l'étage où se situe le joueur
+
+*\return le nombres de salles à créer pour cet étage
+*\brief Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...
+*/
+int nb_salles_par_etage(int etage){
+
+	switch(etage){
+
+		case 1 : return NB_SALLES_LEVEL_1;
+		case 2 : return NB_SALLES_LEVEL_2;
+		case 3 : return NB_SALLES_LEVEL_3;
+		case 4 : return NB_SALLES_LEVEL_4;
+		default : return NB_SALLES_LEVEL_1;
+	}
+}
+
+
+
+/**
 *\fn void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *change_salle, Mix_Chunk *footsteps, Mix_Music *gameOverMusic, Mix_Chunk *gameOverFrame, perso_t *pers, carte_t *cartes, TTF_Font *police)
 
 *\param *continuer, pointeur sur variable permettant de savoir si le joueur souhaite quitter le programme
@@ -585,7 +607,8 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	SDL_Event event;
 
-	int taille = TAILLE_LABY, nb_salles_a_creer = 10, salle_courante, salle_pred;
+	int taille = TAILLE_LABY, nb_salles_a_creer = nb_salles_par_etage(pers->etage), salle_courante, salle_pred;
+	int mob_commun = rand()%dernier_commun, boss = rand()%dernier_commun + 3, boss_tuer = 0;
 
 	mini_map_t miniMap;
 
@@ -615,17 +638,17 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	for(int i = 0; i < taille * taille; i++){
 		if(salles[i].boss){
-			salles[i].ennemi = creer_ennemi("Minotaure", 75, 10, 20, 20, minotaure, rendu);
+			salles[i].ennemi = creer_ennemi("Minotaure", 75, 10, 20, 20, boss, rendu);
 		}
 		else{
-			creer_ennemi_pointeur(&salles[i].ennemi, &salles[i].ennemi2, salles[i].boss, salles[i].nb_ennemi, blob, rendu);
+			creer_ennemi_pointeur(&salles[i].ennemi, &salles[i].ennemi2, salles[i].boss, salles[i].nb_ennemi, mob_commun, rendu);
 		}
 	}
 
 	init_tab_clavier(clavier.tab);
 
 /////////////////////////// boucle du labyrinthe / explo / combat ///////////////////////////
-	while(*etat == labyrinthe && *continuer){
+	while(*etat == labyrinthe && *continuer && !boss_tuer){
 
 		if((salles[salle_courante].nb_ennemi > 0 && salles[salle_courante].ennemi->pv > 0) || (salles[salle_courante].boss && salles[salle_courante].ennemi->pv > 0))
 			animation_ennemi(salles[salle_courante].ennemi);
@@ -662,6 +685,13 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 			salles[salle_courante].decouverte = TRUE;
 			salle_pred = salle_courante;
 			ajoute_salle_decouverte(&miniMap, salle_courante);
+		}
+
+		if(salles[salle_courante].boss && salles[salle_courante].ennemi->pv == 0){
+			boss_tuer = 1;
+			pers->etage += 1;
+			pers->x = WIN_WIDTH / 2 - pers->sprites[courant].rectangle.w / 2;
+			pers->y = WIN_HEIGHT / 2 - pers->sprites[courant].rectangle.h / 2;
 		}
 	}
 

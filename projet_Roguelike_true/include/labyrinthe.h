@@ -1,4 +1,5 @@
 int indice_salle(int salle_actuelle, int porte_salle_actuelle, int taille);
+int nb_salles_par_etage(int etage);
 int salles_compatibles(int salle1, int porte1, int salle2, int porte2, salle_t salles[]);
 int tirage_au_sort_porte_a_creer(int indice, int taille, salle_t salles[], int tentatives);
 int creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer);

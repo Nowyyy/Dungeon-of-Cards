@@ -289,7 +289,7 @@ void creation_mini_map(int taille, mini_map_t *map){
 
   map->taille = taille * taille;
 
-  int coorX = WIN_WIDTH * 0.80;
+  int coorX = WIN_WIDTH * 0.74;
   int prevX = coorX;
   int coorY = 0, prevY = 10;
 

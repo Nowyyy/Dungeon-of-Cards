@@ -62,7 +62,7 @@
 
 #define TAILLE_IMAGE 64 //taille du coté d'une image
 
-#define TAILLE_LABY 5
+#define TAILLE_LABY 8
 
 #define TAILLE 20 //Taille des chaînes de caractères
 #define TAILLE_DECK 5
@@ -89,6 +89,11 @@
 
 #define TAILLE_RECT_MINI_MAP_H 20
 #define TAILLE_RECT_MINI_MAP_W 30
+
+#define NB_SALLES_LEVEL_1 10
+#define NB_SALLES_LEVEL_2 15
+#define NB_SALLES_LEVEL_3 20
+#define NB_SALLES_LEVEL_4 25
 
 
 /**
@@ -120,7 +125,7 @@ typedef enum{sol =0, mur, porte, sol2, commandes, instructions, sol3, mur2, game
 
 *\brief les types d'ennemis existants
 */
-typedef enum{squelette, blob, minotaure, cyclope}t_type_ennemis;
+typedef enum{squelette, blob, dernier_commun,minotaure, cyclope}t_type_ennemis;
 
 
 /**

@@ -122,11 +122,11 @@ int main(int argc, char* args[]){
 							if(etat == labyrinthe){
 								//initialise_deck_cartes(cartes);
 								initialise_personnage(&pers);
-								saveperso(&pers);
 							}
 						}
 						else if (etat == labyrinthe){
 							//tout ce qui sera relatif à l'explo dans le laby
+							saveperso(&pers);
 							Mix_HaltMusic();
 							Mix_PlayMusic(level1, -1);
 							boucle_labyrinthe(&continuer, &etat, rendu, change_salle, footsteps, gameOverMusic, gameOverFrame, &pers, cartes, police);
