@@ -652,17 +652,11 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 				//etage suivant
 			}
 		}
-<<<<<<< HEAD
 		else if(combat_declenche(salles[salle_courante], *pers, *ennemi) == 1 && salles[salle_courante].pv1){
 			salles[salle_courante].pv1 = combat_t_p_t(pers, ennemi,rendu);
 		}
 		else if(combat_declenche(salles[salle_courante], *pers, *ennemi) == 2 && salles[salle_courante].pv2){
-=======
-		else if(combat_declenche(salles[salle_courante], *pers, *ennemi) == 1){
-			salles[salle_courante].pv1 = combat_t_p_t(pers, ennemi,rendu);
-		}
-		else if(combat_declenche(salles[salle_courante], *pers, *ennemi) == 2){
->>>>>>> thomas_work
+
 			salles[salle_courante].pv2 = combat_t_p_t(pers, ennemi,rendu);
 		}
 

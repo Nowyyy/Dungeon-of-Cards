@@ -14,7 +14,7 @@
 #include "../include/constantes.h"
 #include "../include/initialisation_sdl_fonctions.h"
 #include "../include/fonctions.h"
-
+#include "../include/main_menu_screen.h"
 /**
 *\fn void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi)
 
@@ -25,10 +25,8 @@
 *\brief Permet d'afficher toutes la partie combat
 
 */
-void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi){
+void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi,SDL_Texture defausse_texture ,SDL_Texture fuir_texture,SDL_Rect defausse_rect ,SDL_Rect fuir_rect){
   //écran noir puis nettoie l'écran
-  TTF_Font * police = NULL;
-  police=TTF_OpenFont(FONT_PATH,40);
   SDL_SetRenderDrawColor(rendu,0,0,0,255);
   SDL_RenderClear(rendu);
   image_t images[NB_TEXTURES];
@@ -76,21 +74,8 @@ void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * e
   SDL_RenderCopy(rendu, images[carte4].img, NULL, &images[carte4].rectangle);
 
   /*Texte Défausse et fuir*/
-  char * defausse=malloc(sizeof(char));
-  char * fuir=malloc(sizeof(char));
-  strcpy(defausse,"Defausse");
-  strcpy(fuir,"Fuir");
-  image_t texte;
-  image_t texte2;
-  texte.rectangle.x=875;
-  texte.rectangle.y=475;
-  get_text_and_rect(rendu,texte.rectangle.x, texte.rectangle.y, defausse,police, &texte.img, &texte.rectangle);
-  SDL_RenderCopy(rendu, texte.img, NULL, &texte.rectangle);
-
-  texte2.rectangle.x=875;
-  texte2.rectangle.y=550;
-  get_text_and_rect(rendu,texte2.rectangle.x, texte2.rectangle.y, fuir,police, &texte2.img, &texte2.rectangle);
-  SDL_RenderCopy(rendu, texte2.img, NULL, &texte2.rectangle);
+  SDL_RenderCopy(rendu, defausse_texture, NULL, &defausse_rect);
+  SDL_RenderCopy(rendu, fuir_texture, NULL, &fuir_rect);
 
   /*Mise en place du personnage*/
   int w=pers->sprites[idle_droite].rectangle.w;
@@ -125,8 +110,6 @@ void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * e
   ennemi->sprites[0].rectangle.h = he;
   ennemi->sprites[0].rectangle.x = xe-50;
   ennemi->sprites[0].rectangle.y = ye+50;
-  TTF_CloseFont(police);
-  SDL_DestroyTexture(texte.img);
 }
 /**
 *\fn void combat(perso_t * perso, ennemi_t * ennemi, SDL_Renderer *rendu)
@@ -138,16 +121,31 @@ void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * e
 */
 int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
 {
-  affichage_combat_personnage(rendu,perso,ennemi);
+  TTF_Font * police = NULL;
+  police=TTF_OpenFont(FONT_PATH,40);
+  char * defausse=malloc(sizeof(char));
+  char * fuir=malloc(sizeof(char));
+  strcpy(defausse,"Defausse");
+  strcpy(fuir,"Fuir");
+  image_t def;
+  image_t fui;
+  /*DEFAUSSE*/
+  def.rectangle.x=875;
+  def.rectangle.y=475;
+  get_text_and_rect(rendu,def.rectangle.x, def.rectangle.y, defausse,police, &def.img, &def.rectangle);
+  /*FUIR*/
+  fui.rectangle.x=875;
+  fui.rectangle.y=550;
+  get_text_and_rect(rendu,fui.rectangle.x, fui.rectangle.y, fuir,police, &fui.img, &fui.rectangle);
   init_liste();
   ajout_droit(creer_carte("soin", DEFENSE, 5, 0));
   ajout_droit(creer_carte("potion", DEFENSE, 20, 1));
   ajout_droit(creer_carte("épée", ATTAQUE,10, 0));
   ajout_droit(creer_carte("boule de feu", ATTAQUE, 20, 0));
-  int choix, i, vitesse,fuir=1;
+  int choix, i, vitesse,fuire=1;
   vitesse = perso->vitesse;
-  while((ennemi->pv > 0 && perso->pv > 0) && fuir==1 ){
-    affichage_combat_personnage(rendu,perso,ennemi);
+  while((ennemi->pv > 0 && perso->pv > 0) && fuire==1 ){
+    affichage_combat_personnage(rendu,perso,ennemi,def.img,fui.img,def.rectangle,fui.rectangle);
     printf("Vous avez %d pv et le %s a %d pv\n",perso->pv, ennemi->nom, ennemi->pv);
     printf("Vous avez %d de vitesse et le %s a %d de vitesse\n",perso->vitesse,ennemi->nom, ennemi->vitesse);
 
@@ -157,7 +155,7 @@ int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
     printf("[6] : Fuir\n");
     scanf("%d",&choix);
     if(choix == 6){
-      fuir=0;
+      fuire=0;
     }
     else if (initiative(perso, ennemi)){
       tour_perso(choix, perso, ennemi);
@@ -181,4 +179,6 @@ int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
   }
   perso->vitesse = vitesse;
   return ennemi->pv;
+  TTF_CloseFont(police);
+  SDL_DestroyTexture(def.img);
 }
