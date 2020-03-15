@@ -125,6 +125,7 @@ void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * e
   images[carte4].rectangle.h /=2;
   SDL_RenderCopy(rendu, images[carte4].img, NULL, &images[carte4].rectangle);
   /*afficher le rectangle*/
+  SDL_SetRenderDrawColor(rendu, 255,255,255,255);
   SDL_RenderDrawRect(rendu, rect_sel);
   /*Texte Défausse et fuir*/
   SDL_RenderCopy(rendu, defausse_texture, NULL, &defausse_rect);
