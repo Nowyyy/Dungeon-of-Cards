@@ -35,6 +35,8 @@
 #define HEART_PATH "../Images/heart.png"
 #define TRAPDOOR_PATH "../Images/trapdoor2.png"
 
+#define COFFRE_PATH "../Images/coffre_sprites.png"
+
 #define SPRITE1_PATH "../Images/Animations_personnage/idle_droite.png"
 #define SPRITE2_PATH "../Images/Animations_personnage/idle_gauche.png"
 #define SPRITE3_PATH "../Images/Animations_personnage/droite1.png"
@@ -217,6 +219,22 @@ typedef struct ennemi_s {
   image_t sprites;
 } ennemi_t;
 
+
+typedef struct coffre_s{
+  
+  image_t sprite;
+
+  int nb_sprites, courant, gap;
+
+  unsigned int last;
+
+  int ouvert;
+
+  SDL_Rect sprite_courant;
+
+  //INSERT HERE CONTENU POTENTIEL
+}coffre_t;
+
 /**
 *\struct salle_t
 *\brief Représente une salle et ses liaisons aux autres salles
@@ -229,6 +247,8 @@ typedef struct salle_s{
 
   SDL_Rect murs[TAILLE_SALLE*TAILLE_SALLE];
   SDL_Rect portes[TAILLE_SALLE];
+
+  coffre_t coffre_salle;
 
   int nb_murs, nb_portes, id, salle_existe;
 

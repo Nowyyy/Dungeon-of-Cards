@@ -19,6 +19,7 @@
 #include "../include/sauvegardefonc.h"
 #include "../include/clavier.h"
 #include "../include/ennemi.h"
+#include "../include/coffre.h"
 
 /**
 *\fn void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu)
@@ -144,6 +145,9 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 	}
 	else if(salle->boss){
 		SDL_RenderCopy(rendu, salle->ennemi->sprites.img, &salle->ennemi->sprite_courant, &salle->ennemi->sprites.rectangle);
+	}
+	else if(salle->coffre){
+		SDL_RenderCopy(rendu, salle->coffre_salle.sprite.img, &salle->coffre_salle.sprite_courant, &salle->coffre_salle.sprite.rectangle);
 	}
 
 	SDL_RenderPresent(rendu);//applique les modifs précédentes
@@ -642,6 +646,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 		}
 		else{
 			creer_ennemi_pointeur(&salles[i].ennemi, &salles[i].ennemi2, salles[i].boss, salles[i].nb_ennemi, mob_commun, rendu);
+			creer_coffre(&salles[i].coffre_salle, rendu, salles[i].coffre);
 		}
 	}
 
@@ -655,6 +660,10 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 		if(salles[salle_courante].nb_ennemi == 2 && salles[salle_courante].ennemi2->pv > 0){
 			animation_ennemi(salles[salle_courante].ennemi2);
+		}
+
+		if(salles[salle_courante].coffre){
+			animation_coffre(pers, &salles[salle_courante]);
 		}
 
 		modifie_texture_hud(pers, &images[pv], &images[etage], rendu);
@@ -705,4 +714,5 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 		SDL_DestroyTexture(images[i].img);
 
 	destruction_tous_ennemis(salles, taille);
+	destruction_des_coffres(salles, taille);
 }
