@@ -221,7 +221,7 @@ typedef struct ennemi_s {
 
 
 typedef struct coffre_s{
-  
+
   image_t sprite;
 
   int nb_sprites, courant, gap;
@@ -231,6 +231,8 @@ typedef struct coffre_s{
   int ouvert;
 
   SDL_Rect sprite_courant;
+
+  int son;
 
   //INSERT HERE CONTENU POTENTIEL
 }coffre_t;
@@ -264,7 +266,7 @@ typedef struct salle_s{
 *\brief Structure de la mini map
 */
 typedef struct mini_map_s{
-  
+
   int taille;
 
   SDL_Rect map[TAILLE_LABY * TAILLE_LABY];

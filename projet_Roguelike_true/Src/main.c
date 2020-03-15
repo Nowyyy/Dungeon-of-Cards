@@ -41,23 +41,33 @@ int main(int argc, char* args[]){
 	const char *CHANGE = "../Sound/laby_change.wav";
 	const char *FOOT = "../Sound/footstep.wav";
 	const char *GAMEOVERFRAME = "../Sound/gameover_frame.wav";
+	const char *DEATH = "../Sound/ennemi_death.wav";
+	const char *COLLECT = "../Sound/collect.wav";
+	const char *CHEST = "../Sound/chest.wav";
 
 	const char *MENU = "../Sound/menu_song.mp3";
 	const char *LVL1 = "../Sound/level1.mp3";
 	const char *GAMEOVER = "../Sound/gameover.mp3";
+	const char *FIGHT = "../Sound/music_fight.mp3";
+	const char *BOSS = "../Sound/music_boss.mp3";
 
 	//On charge les samples et musiques dans des variables
 	Mix_OpenAudio(44100, AUDIO_S16SYS,6, 4096);
-	Mix_AllocateChannels(6);
+	Mix_AllocateChannels(16);
 	Mix_Chunk *move = Mix_LoadWAV(MOVE);
 	Mix_Chunk *select = Mix_LoadWAV(SELECT);
 	Mix_Chunk *change_salle = Mix_LoadWAV(CHANGE);
 	Mix_Chunk *footsteps = Mix_LoadWAV(FOOT);
 	Mix_Chunk *gameOverFrame = Mix_LoadWAV(GAMEOVERFRAME);
+	Mix_Chunk *death = Mix_LoadWAV(DEATH);
+	Mix_Chunk *collect = Mix_LoadWAV(COLLECT);
+	Mix_Chunk *chest = Mix_LoadWAV(CHEST);
 
 	Mix_Music *level1 = Mix_LoadMUS(LVL1);
 	Mix_Music *music = Mix_LoadMUS(MENU);
 	Mix_Music *gameOverMusic = Mix_LoadMUS(GAMEOVER);
+	Mix_Music *fight = Mix_LoadMUS(FIGHT);
+	Mix_Music *boss = Mix_LoadMUS(BOSS);
 
 
 
@@ -129,7 +139,7 @@ int main(int argc, char* args[]){
 							saveperso(&pers);
 							Mix_HaltMusic();
 							Mix_PlayMusic(level1, -1);
-							boucle_labyrinthe(&continuer, &etat, rendu, change_salle, footsteps, gameOverMusic, gameOverFrame, &pers, cartes, police);
+							boucle_labyrinthe(&continuer, &etat, rendu, change_salle, footsteps, gameOverMusic, gameOverFrame, chest, &pers, cartes, police);
 							Mix_HaltMusic();
 							Mix_VolumeMusic(24);
 						}
@@ -156,10 +166,15 @@ int main(int argc, char* args[]){
 	Mix_FreeChunk(change_salle);
 	Mix_FreeChunk(footsteps);
 	Mix_FreeChunk(gameOverFrame);
+	Mix_FreeChunk(death);
+	Mix_FreeChunk(collect);
+	Mix_FreeChunk(chest);
 
 	Mix_FreeMusic(music);
 	Mix_FreeMusic(level1);
 	Mix_FreeMusic(gameOverMusic);
+	Mix_FreeMusic(fight);
+	Mix_FreeMusic(boss);
 	Mix_CloseAudio();
 
 

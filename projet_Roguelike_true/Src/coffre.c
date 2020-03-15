@@ -20,7 +20,7 @@
 
 *\brief Permet d'effectuer l'animation du coffre s'il est en contact avec le joueur
 */
-void animation_coffre(perso_t *pers, salle_t *salle){
+void animation_coffre(perso_t *pers, salle_t *salle, Mix_Chunk *chest){
 
 	if(salle->coffre_salle.ouvert == 0 && salle->coffre && SDL_HasIntersection(&pers->sprites[courant].rectangle, &salle->coffre_salle.sprite.rectangle)){
 		//on est dans une salle avec un coffre et il n'a pas été ouvert
@@ -30,11 +30,20 @@ void animation_coffre(perso_t *pers, salle_t *salle){
 			salle->coffre_salle.sprite_courant.x += salle->coffre_salle.sprite_courant.w + salle->coffre_salle.gap;
 			salle->coffre_salle.courant ++;
 			salle->coffre_salle.last = SDL_GetTicks();
+
+			if(salle->coffre_salle.son == 0){
+				Mix_PlayChannel(2, chest, 0);
+				salle->coffre_salle.son = 1;
+			}
+
+
 		}
 		else if (salle->coffre_salle.courant == salle->coffre_salle.nb_sprites -1){
-			salle->coffre_salle.ouvert = 1;	
+			salle->coffre_salle.ouvert = 1;
 		}
+
 	}
+
 }
 
 
@@ -49,6 +58,7 @@ void creer_coffre(coffre_t *coffre, SDL_Renderer *rendu, int coffre_existe){
 		coffre->nb_sprites = 5;
 		coffre->courant = 0;
 		coffre->gap = 68;
+		coffre->son = 0;
 
 		coffre->last = SDL_GetTicks();
 

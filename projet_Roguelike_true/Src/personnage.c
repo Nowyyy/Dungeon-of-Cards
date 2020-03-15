@@ -324,7 +324,7 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *cha
 			//porte en haut
 				pers->x = WIN_WIDTH / 2 - TAILLE_IMAGE;
 				pers->y = salle.murs[salle.nb_murs -1].y - TAILLE_IMAGE- 50;
-				Mix_PlayChannel(0, change_salle, 0);
+				Mix_PlayChannel(1, change_salle, 0);
 
 				return salle.s_h;
 			}
@@ -333,7 +333,7 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *cha
 				pers->x = WIN_WIDTH / 2 - TAILLE_IMAGE;
 
 				pers->y = salle.murs[0].y + TAILLE_IMAGE + 50;
-				Mix_PlayChannel(0, change_salle, 0);
+				Mix_PlayChannel(1, change_salle, 0);
 
 				return salle.s_b;
 			}
@@ -341,7 +341,7 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *cha
 			//porte à gauche
 				pers->x = WIN_WIDTH / 2 + 50;
 				pers->y = WIN_HEIGHT / 2 - TAILLE_IMAGE / 2;
-				Mix_PlayChannel(0, change_salle, 0);
+				Mix_PlayChannel(1, change_salle, 0);
 
 				return salle.s_g;
 			}
@@ -349,7 +349,7 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *cha
 			//porte à droite
 				pers->x = salle.murs[0].x + TAILLE_IMAGE + 50;
 				pers->y = WIN_HEIGHT / 2 - TAILLE_IMAGE / 2;
-				Mix_PlayChannel(0, change_salle, 0);
+				Mix_PlayChannel(1, change_salle, 0);
 
 				return salle.s_d;
 			}
@@ -435,7 +435,7 @@ int combat_declenche(salle_t salle, perso_t pers){
 		if(collision_perso_ennemi(pers, *salle.ennemi))
 			return TRUE + 1;
 	}
-	else 
+	else
 		return FALSE;
 }
 

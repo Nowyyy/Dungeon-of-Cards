@@ -603,7 +603,7 @@ int nb_salles_par_etage(int etage){
 
 *\brief Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...
 */
-void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *change_salle, Mix_Chunk *footsteps, Mix_Music *gameOverMusic, Mix_Chunk *gameOverFrame, perso_t *pers, carte_t *cartes, TTF_Font *police){
+void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *change_salle, Mix_Chunk *footsteps, Mix_Music *gameOverMusic, Mix_Chunk *gameOverFrame, Mix_Chunk *chest, perso_t *pers, carte_t *cartes, TTF_Font *police){
 
 
 /////////////////////////// Déclarations variables ////////////////////////////////////////////
@@ -663,7 +663,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 		}
 
 		if(salles[salle_courante].coffre){
-			animation_coffre(pers, &salles[salle_courante]);
+			animation_coffre(pers, &salles[salle_courante], chest);
 		}
 
 		modifie_texture_hud(pers, &images[pv], &images[etage], rendu);
@@ -678,7 +678,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 			mort(etat, pers, rendu, gameOverMusic, gameOverFrame, images, police, cmpPartie_texture);
 		}
 		//pers->pv-=1;
-		
+
 		salle_courante = changement_de_salle(pers, salles[salle_courante], salle_courante, change_salle);
 		SDL_Delay(5);
 
@@ -688,7 +688,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 		}
 		else if(combat_declenche(salles[salle_courante], *pers) == 2){
 			//comba boss
-		}	
+		}
 
 		if(salle_courante != salle_pred){
 			salles[salle_courante].decouverte = TRUE;
