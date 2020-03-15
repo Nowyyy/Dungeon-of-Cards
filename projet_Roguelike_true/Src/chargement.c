@@ -83,11 +83,11 @@ int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SD
 			else if(event.key.keysym.sym == SDLK_RETURN){//touche entrée
 				if((*rect_sel)->y == charger_rect.y - RECT_SELECT_Y_DIFF){
 					*etat = labyrinthe;
-					Mix_PlayChannel(1, sounds[select], 0);
+					Mix_PlayChannel(1, sounds[selection], 0);
 				}
 				else if((*rect_sel)->y == retour_rect.y - RECT_SELECT_Y_DIFF){
 					*etat = mainMenu;
-					Mix_PlayChannel(1, sounds[select], 0);
+					Mix_PlayChannel(1, sounds[selection], 0);
 				}
 			}
 		}

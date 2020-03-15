@@ -169,7 +169,7 @@ typedef enum{haut, droite, bas, gauche}t_direction;
 
 *\brief Les différents sons utilisés
 */
-typedef enum{move=0, select, change_salle, footsteps, gameOverFrame, death, collect, chest}t_sons;
+typedef enum{move=0, selection, change_salle, footsteps, gameOverFrame, death, collect, chest}t_sons;
 
 /**
 *\enum t_musique

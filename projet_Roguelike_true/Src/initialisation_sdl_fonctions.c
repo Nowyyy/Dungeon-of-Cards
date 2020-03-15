@@ -156,7 +156,7 @@ int charge_image(char *path_img, image_t *struct_image, SDL_Renderer *rendu){
 */
 void init_son(Mix_Chunk* sounds[NB_SON]){
 	sounds[move] = Mix_LoadWAV("../Sound/menu_move.wav");
-	sounds[select] = Mix_LoadWAV("../Sound/menu_select.wav");
+	sounds[selection] = Mix_LoadWAV("../Sound/menu_select.wav");
 	sounds[change_salle] = Mix_LoadWAV("../Sound/laby_change.wav");
 	sounds[footsteps] = Mix_LoadWAV("../Sound/footstep.wav");
 	sounds[gameOverFrame] = Mix_LoadWAV("../Sound/gameover_frame.wav");
@@ -165,7 +165,7 @@ void init_son(Mix_Chunk* sounds[NB_SON]){
 	sounds[chest] = Mix_LoadWAV("../Sound/chest.wav");
 
 	Mix_VolumeChunk(sounds[move], 128);
-	Mix_VolumeChunk(sounds[select], 128);
+	Mix_VolumeChunk(sounds[selection], 128);
 	Mix_VolumeChunk(sounds[change_salle], 128);
 	Mix_VolumeChunk(sounds[footsteps], 64);
 	Mix_VolumeChunk(sounds[gameOverFrame], 32);
@@ -206,7 +206,7 @@ musics[level5] = Mix_LoadMUS("../Sound/level5.mp3");
 *\return 1 si echec, 0 si réussite
 */
 void free_mixer(Mix_Music* musics[NB_MUSIC], Mix_Chunk* sounds[NB_SON]){
-	Mix_FreeChunk(sounds[select]);
+	Mix_FreeChunk(sounds[selection]);
 	Mix_FreeChunk(sounds[move]);
 	Mix_FreeChunk(sounds[change_salle]);
 	Mix_FreeChunk(sounds[footsteps]);

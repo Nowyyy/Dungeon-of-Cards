@@ -66,21 +66,21 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 		else if(clavier.tab[entree] == 1){//touche entrée
 			if((*rect_sel)->y == jouer.y - RECT_SELECT_Y_DIFF){
 				*etat = labyrinthe;
-				Mix_PlayChannel(1, sounds[select], 0);
+				Mix_PlayChannel(1, sounds[selection], 0);
 
 			}
 			else if((*rect_sel)->y == quitter.y - RECT_SELECT_Y_DIFF){
-				Mix_PlayChannel(1, sounds[select], 0);
+				Mix_PlayChannel(1, sounds[selection], 0);
 				return FALSE;
 			}
 			else if((*rect_sel)->y == charger.y - RECT_SELECT_Y_DIFF){
-				Mix_PlayChannel(1, sounds[select], 0);
+				Mix_PlayChannel(1, sounds[selection], 0);
 				*etat = charger_partie;
 			}
 		}
 
 		if(event.type == SDL_QUIT){//croix de la fenetre
-			Mix_PlayChannel(1, sounds[select], 0);
+			Mix_PlayChannel(1, sounds[selection], 0);
 			return FALSE;
 		}
 	}
