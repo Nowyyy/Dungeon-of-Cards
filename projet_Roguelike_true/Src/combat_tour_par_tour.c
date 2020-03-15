@@ -1,7 +1,30 @@
+/**
+
+*\file combat_tour_par_tour.c
+
+*\author {Tudoret Aurélien, Jourry Axel, Marin Timothée, Malabry Thomas}
+
+*\date 14/03/2020
+
+*\version 0.1
+
+*\brief contient et fait appel a toutes fonctions nécessaires pour le combat
+*/
+
 #include "../include/constantes.h"
 #include "../include/initialisation_sdl_fonctions.h"
 #include "../include/fonctions.h"
 
+/**
+*\fn void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi)
+
+*\param *ennemi, la structure contenant tous les ennemis
+*\param pers, la structure contenant le personnage
+*\param *rendu, le renderer sur lequel on dessine
+
+*\brief Permet d'afficher toutes la partie combat
+
+*/
 void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi){
   //écran noir puis nettoie l'écran
   TTF_Font * police = NULL;
@@ -9,7 +32,6 @@ void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * e
   SDL_SetRenderDrawColor(rendu,0,0,0,255);
   SDL_RenderClear(rendu);
   image_t images[NB_TEXTURES];
-<<<<<<< HEAD
   /*Mise en place des fonds*/
   charge_image(FOND_COMBAT_PATH,&images[fond2], rendu);
   images[fond2].rectangle.x= -50;
@@ -79,34 +101,40 @@ void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * e
   pers->sprites[idle_droite].rectangle.h *=3;
   pers->sprites[idle_droite].rectangle.x = 150;
   pers->sprites[idle_droite].rectangle.y = 250;
-=======
-  charge_image(FOND_COMBAT_PATH,&images[fond2], rendu);
-  charge_image(COMBAT_PATH,&images[fond], rendu);
-  /*Mise en place du personnage*/
-  pers->sprites[idle_droite].rectangle.x = 200;
-  pers->sprites[idle_droite].rectangle.y = 300;
->>>>>>> thomas_work
   pers->sprites[courant] = pers->sprites[idle_droite];
   SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
-  /*
-  ennemi->sprites[idle_gauche].rectangle.x = 600;
-  ennemi->sprites[idle_gauche].rectangle.y = 300;
-  ennemi->sprites[courant] = ennemi->sprites[idle_gauche];
-  SDL_RenderCopy(rendu, ennemi->sprites[courant].img, NULL, &ennemi->sprites[0].rectangle);
-  */
+
+  /*Afficher l'ennemi*/
+  int xe=ennemi->sprites[0].rectangle.x;
+  int ye=ennemi->sprites[0].rectangle.y;
+  int he=ennemi->sprites[0].rectangle.h;
+  int we=ennemi->sprites[0].rectangle.w;
+  ennemi->sprites[0].rectangle.x = 750;
+  ennemi->sprites[0].rectangle.y = 240;
+  ennemi->sprites[0].rectangle.w *= 3;
+  ennemi->sprites[0].rectangle.h *= 3;
+  ennemi->sprites[0] = ennemi->sprites[0];
+  SDL_RenderCopy(rendu, ennemi->sprites[0].img, NULL, &ennemi->sprites[0].rectangle);
+
   SDL_RenderPresent(rendu);
   pers->sprites[idle_droite].rectangle.w = w;
   pers->sprites[idle_droite].rectangle.h = h;
-  pers->sprites[idle_droite].rectangle.x = x;
-  pers->sprites[idle_droite].rectangle.y = y;
+  pers->sprites[idle_droite].rectangle.x = x+10;
+  pers->sprites[idle_droite].rectangle.y = y+10;
+  ennemi->sprites[0].rectangle.w = we;
+  ennemi->sprites[0].rectangle.h = he;
+  ennemi->sprites[0].rectangle.x = xe-50;
+  ennemi->sprites[0].rectangle.y = ye+50;
   TTF_CloseFont(police);
   SDL_DestroyTexture(texte.img);
 }
 /**
-*\fn void combat(perso_t * perso, ennemi_t * ennemi, carte_t ** deck)
-*\param perso Pointeur sur une structure qui permet de prendre les caractéristiques du personnage qui vont être modifié par l'action du personnage
-*\param perso Pointeur sur une structure qui permet de prendre les caractéristiques de l'ennemi qui vont être modifié par l'action du personnage
-*\*\param deck Pointeur sur un pointeur de fonction qui permet de connaître le deck du personnage
+*\fn void combat(perso_t * perso, ennemi_t * ennemi, SDL_Renderer *rendu)
+*\param *perso Pointeur sur une structure qui permet de prendre les caractéristiques du personnage qui vont être modifié par l'action du personnage
+*\param *ennemi Pointeur sur une structure qui permet de prendre les caractéristiques de l'ennemi qui vont être modifié par l'action du personnage
+*\param *rendu, le renderer sur lequel on dessine
+
+*\brief Fonction qui permet de gérer les choix de l'utilisateur via la SDL sur le combat
 */
 int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
 {
@@ -114,15 +142,11 @@ int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
   init_liste();
   ajout_droit(creer_carte("soin", DEFENSE, 5, 0));
   ajout_droit(creer_carte("potion", DEFENSE, 20, 1));
-<<<<<<< HEAD
-=======
-  ajout_droit(creer_carte("épée", ATTAQUE, 10, 0));
->>>>>>> thomas_work
   ajout_droit(creer_carte("épée", ATTAQUE,10, 0));
   ajout_droit(creer_carte("boule de feu", ATTAQUE, 20, 0));
-  int choix, i, vitesse;
+  int choix, i, vitesse,fuir=1;
   vitesse = perso->vitesse;
-  while(ennemi->pv > 0 && perso->pv > 0){
+  while((ennemi->pv > 0 && perso->pv > 0) && fuir==1 ){
     affichage_combat_personnage(rendu,perso,ennemi);
     printf("Vous avez %d pv et le %s a %d pv\n",perso->pv, ennemi->nom, ennemi->pv);
     printf("Vous avez %d de vitesse et le %s a %d de vitesse\n",perso->vitesse,ennemi->nom, ennemi->vitesse);
@@ -130,8 +154,12 @@ int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
     for(i=0, en_tete() ; i<4 ; i++, suivant()){
       printf("[%d] : %s\n", i+1, ec->carte->nom);
     }
+    printf("[6] : Fuir\n");
     scanf("%d",&choix);
-    if (initiative(perso, ennemi)){
+    if(choix == 6){
+      fuir=0;
+    }
+    else if (initiative(perso, ennemi)){
       tour_perso(choix, perso, ennemi);
       if(ennemi->pv)
         tour_ennemi(perso, ennemi);
@@ -145,8 +173,11 @@ int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
   if(!ennemi->pv){
     printf("Vous avez vaincu le %s\n", ennemi->nom);
   }
-  else{
+  else if (!perso->pv){
     printf("Vous avez été vaincu par le %s\n", ennemi->nom);
+  }
+  else {
+    printf("Vous avez fuit le combat\n");
   }
   perso->vitesse = vitesse;
   return ennemi->pv;

@@ -52,7 +52,6 @@
 #define COMBAT_PATH "../Images/combat1.png"
 #define FOND_COMBAT_PATH "../Images/combat2.png"
 
-<<<<<<< HEAD
 #define CARTE1_PATH "../Images/carte1.png"
 #define CARTE2_PATH "../Images/carte2.png"
 #define CARTE3_PATH "../Images/carte3.png"
@@ -62,12 +61,10 @@
 #define SAVE_CARTES_PATH "../Sauvegarde/cartes.txt"
 
 #define NB_TEXTURES 20
-=======
 #define SAVE_PERSO_PATH "../Sauvegarde/personnage.txt"
 #define SAVE_CARTES_PATH "../Sauvegarde/cartes.txt"
 
-#define NB_TEXTURES 16
->>>>>>> thomas_work
+#define NB_TEXTURES 20
 
 #define TRUE 1
 #define FALSE 0
@@ -118,11 +115,7 @@ typedef enum{courant, idle_droite, droite1, droite2, droite3, idle_gauche, gauch
 
 *\brief les types de textures sur lequel le perso peut tomber
 */
-<<<<<<< HEAD
 typedef enum{sol =0, mur, porte, sol2, commandes, instructions, sol3, mur2, gameover, deathlight, heart, trapdoor, pv, etage,fond,fond2,carte1,carte2,carte3,carte4}t_types_textures;
-=======
-typedef enum{sol =0, mur, porte, sol2, commandes, instructions, sol3, mur2, gameover, deathlight, heart, trapdoor, pv, etage,fond,fond2}t_types_textures;
->>>>>>> thomas_work
 
 
 /**
