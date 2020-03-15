@@ -598,6 +598,7 @@ int nb_salles_par_etage(int etage){
 *\param *footsteps, les bruits de pas du personnage
 *\param *gameOverMusic, la musique de mort
 *\param *gameOverFrame, les bruits de mort
+*\param *chest, bruit d'ouverture de coffre
 *\param *pers, le renderer sur lequel on dessine
 *\param cartes
 

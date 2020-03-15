@@ -17,6 +17,7 @@
 
 *\param *pers, le personnage du jeu
 *\param *salle, la salle dans laquelle se trouve le personnage
+*\param *chest, bruit d'ouverture de coffre
 
 *\brief Permet d'effectuer l'animation du coffre s'il est en contact avec le joueur
 */
