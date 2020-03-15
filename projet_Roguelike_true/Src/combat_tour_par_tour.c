@@ -14,7 +14,7 @@
 #include "../include/constantes.h"
 #include "../include/initialisation_sdl_fonctions.h"
 #include "../include/fonctions.h"
-#include "../include/main_menu_screen.h"
+#include "../include/clavier.h"
 /**
 *\fn void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi)
 
@@ -25,7 +25,7 @@
 *\brief Permet d'afficher toutes la partie combat
 
 */
-void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi,SDL_Texture defausse_texture ,SDL_Texture fuir_texture,SDL_Rect defausse_rect ,SDL_Rect fuir_rect){
+void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi,SDL_Texture *defausse_texture ,SDL_Texture *fuir_texture,SDL_Rect defausse_rect ,SDL_Rect fuir_rect){
   //écran noir puis nettoie l'écran
   SDL_SetRenderDrawColor(rendu,0,0,0,255);
   SDL_RenderClear(rendu);
@@ -111,6 +111,69 @@ void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * e
   ennemi->sprites[0].rectangle.x = xe-50;
   ennemi->sprites[0].rectangle.y = ye+50;
 }
+
+
+
+int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, SDL_Rect **rect_sel){
+
+	SDL_Event event;
+
+	touches_t clavier;
+
+	init_tab_clavier(clavier.tab);
+
+	while(SDL_PollEvent(&event)){ //On attend un évènement au clavier
+
+		event_clavier(&clavier, event);
+
+		if(clavier.tab[down] == 1){
+			if((*rect_sel)->y != fuir.y){//on n'est pas sur la dernière option, on peut descendre
+				if((*rect_sel)->y == defausse.y - RECT_SELECT_Y_DIFF){
+					(*rect_sel)->y = fuir.y - RECT_SELECT_Y_DIFF;
+					/*Mix_PlayChannel(0, move, 0);*/
+				}
+			}
+		}
+		else if(clavier.tab[up] == 1){
+			if((*rect_sel)->y != defausse.y){//on n'est pas sur la premiere option, on peut monter
+				if((*rect_sel)->y == fuir.y - RECT_SELECT_Y_DIFF){
+					(*rect_sel)->y = defausse.y - RECT_SELECT_Y_DIFF;
+					/*Mix_PlayChannel(0, move, 0);*/
+
+				}
+			}
+		}
+		else if(clavier.tab[entree] == 1){//touche entrée
+			if((*rect_sel)->y == defausse.y - RECT_SELECT_Y_DIFF){
+				return 9;
+				/*Mix_PlayChannel(1, select, 0);*/
+
+			}
+			else if((*rect_sel)->y == fuir.y - RECT_SELECT_Y_DIFF){
+				/*Mix_PlayChannel(1, select, 0);*/
+				return 10;
+			}
+		}
+
+	}
+	return TRUE;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
 *\fn void combat(perso_t * perso, ennemi_t * ennemi, SDL_Renderer *rendu)
 *\param *perso Pointeur sur une structure qui permet de prendre les caractéristiques du personnage qui vont être modifié par l'action du personnage
@@ -121,6 +184,8 @@ void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * e
 */
 int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
 {
+
+  SDL_Rect *rectangle_selection = malloc(sizeof(SDL_Rect));
   TTF_Font * police = NULL;
   police=TTF_OpenFont(FONT_PATH,40);
   char * defausse=malloc(sizeof(char));
@@ -137,25 +202,35 @@ int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
   fui.rectangle.x=875;
   fui.rectangle.y=550;
   get_text_and_rect(rendu,fui.rectangle.x, fui.rectangle.y, fuir,police, &fui.img, &fui.rectangle);
+  rectangle_selection->x = (def.rectangle).x - RECT_SELECT_X_DIFF;
+	rectangle_selection->y = (def.rectangle).y - RECT_SELECT_Y_DIFF;
+	rectangle_selection->w = (def.rectangle).w +100;
+	rectangle_selection->h = (def.rectangle).h +50;
+
   init_liste();
   ajout_droit(creer_carte("soin", DEFENSE, 5, 0));
   ajout_droit(creer_carte("potion", DEFENSE, 20, 1));
   ajout_droit(creer_carte("épée", ATTAQUE,10, 0));
   ajout_droit(creer_carte("boule de feu", ATTAQUE, 20, 0));
-  int choix, i, vitesse,fuire=1;
+  int choix=0, i, vitesse,fuire=1;
   vitesse = perso->vitesse;
   while((ennemi->pv > 0 && perso->pv > 0) && fuire==1 ){
     affichage_combat_personnage(rendu,perso,ennemi,def.img,fui.img,def.rectangle,fui.rectangle);
+    choix=deplacement_rectangle_selection_combat(def.rectangle,fui.rectangle,&rectangle_selection);
     printf("Vous avez %d pv et le %s a %d pv\n",perso->pv, ennemi->nom, ennemi->pv);
     printf("Vous avez %d de vitesse et le %s a %d de vitesse\n",perso->vitesse,ennemi->nom, ennemi->vitesse);
 
     for(i=0, en_tete() ; i<4 ; i++, suivant()){
       printf("[%d] : %s\n", i+1, ec->carte->nom);
     }
-    printf("[6] : Fuir\n");
-    scanf("%d",&choix);
-    if(choix == 6){
+    if (choix!=0){
+      scanf("%d",&choix);
+    }
+    if(choix == 10){
       fuire=0;
+    }
+    else if (choix == 9){
+      printf("Vous avez défaussé une carte \n");
     }
     else if (initiative(perso, ennemi)){
       tour_perso(choix, perso, ennemi);
