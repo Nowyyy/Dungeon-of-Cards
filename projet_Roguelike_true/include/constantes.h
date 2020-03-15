@@ -272,7 +272,7 @@ typedef struct salle_s{
 
   coffre_t coffre_salle;
 
-  int nb_murs, nb_portes, id, salle_existe;
+  int nb_murs, nb_portes, id, salle_existe, prems;
 
   int ennemi_present, nb_ennemi, boss, coffre, pv1, pv2, depart, decouverte;
 

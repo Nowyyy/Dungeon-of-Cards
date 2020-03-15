@@ -94,7 +94,7 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 	SDL_RenderClear(rendu);//nettoie l'écran pour supprimer tout ce qui est dessus
 
 ///////////COMMANDES ET INSTRUCTIONS
-	if(salle->depart ==TRUE && salle->decouverte == FALSE){//affichage des commandes et rêgles du jeu si on est dans la première salle
+	if(salle->depart ==TRUE && salle->prems == 0){//affichage des commandes et rêgles du jeu si on est dans la première salle
 		SDL_RenderCopy(rendu, images[commandes].img, NULL, &images[commandes].rectangle);
 		SDL_RenderCopy(rendu, images[instructions].img, NULL, &images[instructions].rectangle);
 	}
@@ -648,6 +648,8 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 		}
 	}
 
+	ajoute_salle_decouverte(&miniMap, salle_courante);
+
 	init_tab_clavier(clavier.tab);
 
 /////////////////////////// boucle du labyrinthe / explo / combat ///////////////////////////
@@ -690,6 +692,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 		if(salle_courante != salle_pred){
 			salles[salle_courante].decouverte = TRUE;
+			salles[salle_pred].prems = 1;
 			salle_pred = salle_courante;
 			ajoute_salle_decouverte(&miniMap, salle_courante);
 		}
