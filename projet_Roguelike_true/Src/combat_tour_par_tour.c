@@ -18,11 +18,9 @@
 
 
 
-int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, SDL_Rect **rect_sel){
+int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, SDL_Rect **rect_sel,touches_t clavier){
 
 	SDL_Event event;
-
-	touches_t clavier;
 
 	init_tab_clavier(clavier.tab);
 
@@ -180,7 +178,7 @@ void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * e
 */
 int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
 {
-
+  touches_t clavier;
   SDL_Rect *rectangle_selection = malloc(sizeof(SDL_Rect));
   TTF_Font * police = NULL;
   police=TTF_OpenFont(FONT_PATH,40);
@@ -212,7 +210,7 @@ int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
   vitesse = perso->vitesse;
   while((ennemi->pv > 0 && perso->pv > 0) && fuire==1 ){
     affichage_combat_personnage(rendu,perso,ennemi,def.img,fui.img,def.rectangle,fui.rectangle,rectangle_selection);
-    choix=deplacement_rectangle_selection_combat(def.rectangle,fui.rectangle,&rectangle_selection);
+    choix=deplacement_rectangle_selection_combat(def.rectangle,fui.rectangle,&rectangle_selection,clavier);
     printf("Vous avez %d pv et le %s a %d pv\n",perso->pv, ennemi->nom, ennemi->pv);
     printf("Vous avez %d de vitesse et le %s a %d de vitesse\n",perso->vitesse,ennemi->nom, ennemi->vitesse);
 
