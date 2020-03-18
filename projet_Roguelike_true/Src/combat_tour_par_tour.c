@@ -18,45 +18,43 @@
 
 
 
-int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, SDL_Rect **rect_sel,touches_t clavier){
+int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, SDL_Rect **rect_sel){
 
 	SDL_Event event;
+  int choix=0;
 
-	init_tab_clavier(clavier.tab);
-
-	while(SDL_PollEvent(&event)){ //On attend un évènement au clavier
-
-		event_clavier(&clavier, event);
-
-		if(clavier.tab[down] == 1){
-			if((*rect_sel)->y != fuir.y){//on n'est pas sur la dernière option, on peut descendre
+	while(SDL_PollEvent(&event) && choix==0){ //On attend un évènement au clavier
+		if(event.type == SDL_KEYDOWN){	//touche enfoncée
+			if(event.key.keysym.sym == SDLK_DOWN){
+				if((*rect_sel)->y != fuir.y){//on n'est pas sur la dernière option, on peut descendre
+					if((*rect_sel)->y == defausse.y - RECT_SELECT_Y_DIFF){
+						(*rect_sel)->y = fuir.y - RECT_SELECT_Y_DIFF;
+						/*Mix_PlayChannel(0, move, 0);*/
+					}
+				}
+			}
+			else if(event.key.keysym.sym == SDLK_UP){
+				if((*rect_sel)->y != defausse.y){//on n'est pas sur la premiere option, on peut monter
+					if((*rect_sel)->y == fuir.y - RECT_SELECT_Y_DIFF){
+						(*rect_sel)->y = defausse.y - RECT_SELECT_Y_DIFF;
+						/*Mix_PlayChannel(0, move, 0);*/
+					}
+				}
+			}
+			else if(event.key.keysym.sym == SDLK_RETURN){//touche entrée
 				if((*rect_sel)->y == defausse.y - RECT_SELECT_Y_DIFF){
-					(*rect_sel)->y = fuir.y - RECT_SELECT_Y_DIFF;
-					/*Mix_PlayChannel(0, move, 0);*/
+					return 9;
+					/*Mix_PlayChannel(1, select, 0);*/
+				}
+				else if((*rect_sel)->y == fuir.y - RECT_SELECT_Y_DIFF){
+					return 10;
+					/*Mix_PlayChannel(1, select, 0);*/
 				}
 			}
 		}
-		else if(clavier.tab[up] == 1){
-			if((*rect_sel)->y != defausse.y){//on n'est pas sur la premiere option, on peut monter
-				if((*rect_sel)->y == fuir.y - RECT_SELECT_Y_DIFF){
-					(*rect_sel)->y = defausse.y - RECT_SELECT_Y_DIFF;
-					/*Mix_PlayChannel(0, move, 0);*/
 
-				}
-			}
-		}
-		else if(clavier.tab[entree] == 1){//touche entrée
-			if((*rect_sel)->y == defausse.y - RECT_SELECT_Y_DIFF){
-				return 9;
-				/*Mix_PlayChannel(1, select, 0);*/
-
-			}
-			else if((*rect_sel)->y == fuir.y - RECT_SELECT_Y_DIFF){
-				/*Mix_PlayChannel(1, select, 0);*/
-				return 10;
-			}
-		}
-
+		if(event.type == SDL_QUIT)//croix de la fenetre
+			return FALSE;
 	}
 	return TRUE;
 }
@@ -178,7 +176,6 @@ void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * e
 */
 int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
 {
-  touches_t clavier;
   SDL_Rect *rectangle_selection = malloc(sizeof(SDL_Rect));
   TTF_Font * police = NULL;
   police=TTF_OpenFont(FONT_PATH,40);
@@ -210,7 +207,7 @@ int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
   vitesse = perso->vitesse;
   while((ennemi->pv > 0 && perso->pv > 0) && fuire==1 ){
     affichage_combat_personnage(rendu,perso,ennemi,def.img,fui.img,def.rectangle,fui.rectangle,rectangle_selection);
-    choix=deplacement_rectangle_selection_combat(def.rectangle,fui.rectangle,&rectangle_selection,clavier);
+    choix=deplacement_rectangle_selection_combat(def.rectangle,fui.rectangle,&rectangle_selection);
     printf("Vous avez %d pv et le %s a %d pv\n",perso->pv, ennemi->nom, ennemi->pv);
     printf("Vous avez %d de vitesse et le %s a %d de vitesse\n",perso->vitesse,ennemi->nom, ennemi->vitesse);
 
@@ -218,7 +215,9 @@ int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
       printf("[%d] : %s\n", i+1, ec->carte->nom);
     }
     if (choix!=0){
-      scanf("%d",&choix);
+
+			printf("%d \n",choix);
+			scanf("%d",&choix);
     }
     if(choix == 10){
       fuire=0;
