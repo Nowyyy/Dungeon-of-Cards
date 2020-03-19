@@ -69,7 +69,7 @@ void tour_ennemi(perso_t *, ennemi_t *);
 *\param perso Pointeur sur une structure qui permet de prendre les caractéristiques de l'ennemi qui vont être modifié par l'action du personnage
 *\param deck Pointeur sur un pointeur de fonction qui permet de connaître le deck du personnage
 */
-int tour_perso(int, perso_t *, ennemi_t *, carte_t **);
+int tour_perso(int choix, perso_t *, ennemi_t *);
 
 /**
 *\fn void combat(perso_t *, ennemi_t *, carte_t **)

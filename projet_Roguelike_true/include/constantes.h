@@ -131,7 +131,7 @@ typedef enum{idle_droite_ennemi, idle_gauche_ennemi, walk_droite, walk_gauche, e
 
 *\brief les types de textures sur lequel le perso peut tomber
 */
-typedef enum{sol =0, mur, porte, sol2, commandes, instructions, sol3, mur2, gameover, deathlight, heart, trapdoor, pv, etage}t_types_textures;
+typedef enum{sol =0, mur, porte, sol2, commandes, instructions, sol3, mur2, gameover, deathlight, heart, trapdoor, pv, etage,fond,fond2,carte1,carte2,carte3,carte4}t_types_textures;
 
 
 /**
