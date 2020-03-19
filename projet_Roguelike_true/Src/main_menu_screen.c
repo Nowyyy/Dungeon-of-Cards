@@ -10,6 +10,7 @@
 #include "../include/constantes.h"
 #include "../include/initialisation_sdl_fonctions.h"
 #include "../include/clavier.h"
+#include "../include/sauvegardefonc.h"
 
 
 /**
@@ -65,7 +66,10 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 		}
 		else if(clavier.tab[entree] == 1){//touche entrée
 			if((*rect_sel)->y == jouer.y - RECT_SELECT_Y_DIFF){
-				*etat = labyrinthe;
+				if(!save_existe()){
+					*etat = labyrinthe;
+				}
+				*etat = confirmer_nouveau;
 				Mix_PlayChannel(1, sounds[selection], 0);
 
 			}
@@ -86,6 +90,8 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 	}
 	return TRUE;
 }
+
+
 
 /**
 *\fn void affichage_menu(SDL_Renderer *rendu, SDL_Texture *jouer_text, SDL_Texture *charger_text, SDL_Texture *quitter_text, SDL_Rect *rect_sel, SDL_Rect jouer_rect, SDL_Rect charger_rect, SDL_Rect quitter_rect, image_t logo[])

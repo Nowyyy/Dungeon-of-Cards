@@ -14,6 +14,7 @@
 #include "../include/labyrinthe.h"
 #include "../include/chargement.h"
 #include "../include/sauvegardefonc.h"
+#include "../include/confirmer_nouveau.h"
 
 
 
@@ -133,6 +134,9 @@ int main(int argc, char* args[]){
 						else if(etat == charger_partie){
 							//charge les données du joueurs afin qu'il reprenne là où il s'était arrêté
 							menu_charger_partie(&continuer, &etat, rendu, police, sounds, &pers, cartes);
+						}
+						else if(etat == confirmer_nouveau){
+							menu_confirmation(&continuer, &etat, rendu, police, sounds, &pers);
 						}
 					}
 				}

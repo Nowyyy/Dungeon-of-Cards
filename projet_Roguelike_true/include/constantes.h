@@ -138,7 +138,7 @@ typedef enum{squelette, blob, dernier_commun,minotaure, cyclope}t_type_ennemis;
 *\brief les états que peut prendre le jeu afin de naviguer entre les menus
 */
 
-typedef enum{mainMenu = 0, labyrinthe, tourParTour, pauseScreen, charger_partie}t_etat;
+typedef enum{mainMenu = 0, labyrinthe, tourParTour, pauseScreen, charger_partie, confirmer_nouveau}t_etat;
 
 /**
 *\enum type_carte
