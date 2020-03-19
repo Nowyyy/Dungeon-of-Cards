@@ -296,7 +296,7 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 			pers->y += 3;
 	}
 	else if(clavier->tab[escape] == 1){ //Touche echap
-		SDL_Delay(50);
+		SDL_Delay(100);
 		*continuer=FALSE;
 		init_tab_clavier(clavier->tab);
 	}
