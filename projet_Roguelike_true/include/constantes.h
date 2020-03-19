@@ -51,6 +51,8 @@
 #define CYCLOPE_PATH "../Images/sprites_mobs/cyclo_sprites.png"
 #define MINOTAURE_PATH "../Images/sprites_mobs/mino_sprites.png"
 #define BLOB_PATH "../Images/sprites_mobs/blob_sprite.png"
+#define IMP_PATH "../Images/sprites_mobs/imp_sprites.png"
+#define WIZARD_PATH "../Images/sprites_mobs/wizard_sprite2.png"
 
 #define SAVE_PERSO_PATH "../Sauvegarde/personnage.txt"
 #define SAVE_CARTES_PATH "../Sauvegarde/cartes.txt"
@@ -129,7 +131,7 @@ typedef enum{sol =0, mur, porte, sol2, commandes, instructions, sol3, mur2, game
 
 *\brief les types d'ennemis existants
 */
-typedef enum{squelette, blob, dernier_commun,minotaure, cyclope}t_type_ennemis;
+typedef enum{squelette, blob, imp, minotaure, cyclope, wizard}t_type_ennemis;
 
 
 /**

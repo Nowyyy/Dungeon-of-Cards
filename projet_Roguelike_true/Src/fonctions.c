@@ -247,6 +247,17 @@ ennemi_t * creer_ennemi(char * nom, int pv, int vitesse, int attaque, int defens
     ennemi->sprites.rectangle.w = ennemi->sprite_courant.w * 0.8;
     ennemi->sprites.rectangle.h = ennemi->sprite_courant.h * 0.8;
   }
+  else if(type == imp){
+    charge_image(IMP_PATH, &ennemi->sprites, rendu);
+    ennemi->w = ennemi->sprites.rectangle.w;
+    ennemi->h = ennemi->sprites.rectangle.h; 
+    ennemi->sprite_courant.h = 30;
+    ennemi->sprite_courant.w = 35;//on prend le idle comme base
+    ennemi->nb_sprites_idle = 7;
+    ennemi->gap = 25;
+    ennemi->sprites.rectangle.w = ennemi->sprite_courant.w * 1.5;
+    ennemi->sprites.rectangle.h = ennemi->sprite_courant.h * 1.5;
+  }
   else if(type == minotaure){
     charge_image(MINOTAURE_PATH, &ennemi->sprites, rendu);
     ennemi->w = ennemi->sprites.rectangle.w;
@@ -271,6 +282,19 @@ ennemi_t * creer_ennemi(char * nom, int pv, int vitesse, int attaque, int defens
     ennemi->sprites.rectangle.h = ennemi->sprite_courant.h;
     ennemi->nb_sprites_idle = 6;
     ennemi->gap = 66;
+    ennemi->boss = 1;
+    ennemi->sprites.rectangle.x = WIN_WIDTH / 2 - ennemi->sprites.rectangle.w / 2;
+    ennemi->sprites.rectangle.y = WIN_HEIGHT / 2 - ennemi->sprites.rectangle.h / 2;
+  }else if(type == wizard){
+    charge_image(WIZARD_PATH, &ennemi->sprites, rendu);
+    ennemi->w = ennemi->sprites.rectangle.w;
+    ennemi->h = ennemi->sprites.rectangle.h; 
+    ennemi->sprite_courant.h = 46;
+    ennemi->sprite_courant.w =26;//on prend le idle comme base
+    ennemi->sprites.rectangle.w = ennemi->sprite_courant.w * 1.8;
+    ennemi->sprites.rectangle.h = ennemi->sprite_courant.h * 1.8;
+    ennemi->nb_sprites_idle = 10;
+    ennemi->gap = 35;
     ennemi->boss = 1;
     ennemi->sprites.rectangle.x = WIN_WIDTH / 2 - ennemi->sprites.rectangle.w / 2;
     ennemi->sprites.rectangle.y = WIN_HEIGHT / 2 - ennemi->sprites.rectangle.h / 2;
