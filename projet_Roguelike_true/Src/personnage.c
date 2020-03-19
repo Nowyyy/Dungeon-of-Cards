@@ -295,6 +295,11 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 		else
 			pers->y += 3;
 	}
+	else if(clavier->tab[escape] == 1){ //Touche echap
+		SDL_Delay(50);
+		*continuer=FALSE;
+		init_tab_clavier(clavier->tab);
+	}
 
 	pers->sprites[courant].rectangle.x = pers->x;
 	pers->sprites[courant].rectangle.y = pers->y;

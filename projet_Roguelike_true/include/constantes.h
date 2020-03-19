@@ -80,7 +80,7 @@
 #define RECT_SELECT_Y_DIFF 25
 #define RECT_SELECT_X_DIFF 50
 
-#define NB_TOUCHES_UTILISEES 5
+#define NB_TOUCHES_UTILISEES 6
 
 #define DELAIS_ANIMATIONS 100
 
@@ -154,7 +154,7 @@ typedef enum {ATTAQUE = -1, DEFENSE = 1} type_carte ;
 
 *\brief Les différents types de touches utilisées
 */
-typedef enum{up, down, right, left, entree}t_touches_clavier;
+typedef enum{up, down, right, left, entree, escape}t_touches_clavier;
 
 /**
 *\enum t_direction

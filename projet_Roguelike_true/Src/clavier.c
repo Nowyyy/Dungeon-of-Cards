@@ -54,6 +54,9 @@ void event_clavier(touches_t *clavier, SDL_Event event){
 		else if(event.key.keysym.sym == SDLK_RIGHT){
 			clavier->tab[right] = TRUE;
 		}
+		else if(event.key.keysym.sym == SDLK_ESCAPE){
+			clavier->tab[escape] = TRUE;
+		}
 	}
 
 	if(event.type == SDL_KEYUP){
@@ -72,6 +75,9 @@ void event_clavier(touches_t *clavier, SDL_Event event){
 		}
 		else if(event.key.keysym.sym == SDLK_RIGHT){
 			clavier->tab[right] = FALSE;
+		}
+		else if(event.key.keysym.sym == SDLK_ESCAPE){
+			clavier->tab[escape] = FALSE;
 		}
 	}
 }
