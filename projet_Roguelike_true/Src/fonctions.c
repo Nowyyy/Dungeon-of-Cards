@@ -321,7 +321,7 @@ void tour_ennemi(perso_t * perso,ennemi_t * ennemi)
 void tour_perso(int choix,perso_t * perso,ennemi_t * ennemi)
 {
   en_tete();
-  choix--;
+	choix--;
   int i;
   for(i=0;i<choix && !hors_liste();i++,suivant());
   printf("Vous avez choisi %s\n", ec->carte->nom);
