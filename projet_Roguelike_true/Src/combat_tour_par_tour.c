@@ -253,7 +253,7 @@ void donne_valeur_rect_images(image_t images[]){
 
 void free_image(image_t images[]){
 
-	for(int i = fond2; i< carte4; i++){
+	for(int i = fond; i<= carte4; i++){
 		SDL_DestroyTexture(images[i].img);
 	}
 }
@@ -279,29 +279,37 @@ int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
 /*Decalaration des différentes variable*/
   SDL_Rect *rectangle_selection = malloc(sizeof(SDL_Rect));
 
+  image_t def;
+  image_t fui;
+
   int choix=0, i, vitesse,fuire=1;
   
   TTF_Font * police = NULL;
+
   police=TTF_OpenFont(FONT_PATH,40);
+
   char * defausse=malloc(sizeof(char));
   char * fuir=malloc(sizeof(char));
+
   strcpy(defausse,"Defausse");
   strcpy(fuir,"Fuir");
-  image_t def;
-  image_t fui;
+  
   /*Mise en place du texte defausse*/
   def.rectangle.x=875;
   def.rectangle.y=475;
   get_text_and_rect(rendu,def.rectangle.x, def.rectangle.y, defausse,police, &def.img, &def.rectangle);
+
   /*Mise en place du texte fuir*/
   fui.rectangle.x=875;
   fui.rectangle.y=550;
   get_text_and_rect(rendu,fui.rectangle.x, fui.rectangle.y, fuir,police, &fui.img, &fui.rectangle);
+
 	/*Mise en place du rectangle de selection*/
   rectangle_selection->x = (def.rectangle).x - RECT_SELECT_X_DIFF;
 	rectangle_selection->y = (def.rectangle).y - RECT_SELECT_Y_DIFF;
 	rectangle_selection->w = (def.rectangle).w +100;
 	rectangle_selection->h = (def.rectangle).h +30;
+
   /*Ajout des cartes en dur pour le moment*/
   init_liste();
   ajout_droit(creer_carte("soin", DEFENSE, 5, 0));
@@ -313,6 +321,7 @@ int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
   vitesse = perso->vitesse;
 	printf("Vous avez %d pv et le %s a %d pv\n",perso->pv, ennemi->nom, ennemi->pv);
 	printf("Vous avez %d de vitesse et le %s a %d de vitesse\n",perso->vitesse,ennemi->nom, ennemi->vitesse);
+
   while((ennemi->pv > 0 && perso->pv > 0) && fuire==1 ){
 		/*Affichage de la salle et du rectangle de selection*/
     affichage_combat_personnage(rendu,perso,ennemi,def.img,fui.img,def.rectangle,fui.rectangle,rectangle_selection,images);
@@ -396,10 +405,10 @@ int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
 		}
 	 }
   /*Fin du combat*/
-  if(!ennemi->pv){
+  if(ennemi->pv <= 0){
     printf("Vous avez vaincu le %s\n", ennemi->nom);
   }
-  else if (!perso->pv){
+  else if (perso->pv <= 0){
     printf("Vous avez été vaincu par le %s\n", ennemi->nom);
   }
   else if (choix==10) {

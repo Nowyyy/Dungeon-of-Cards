@@ -197,13 +197,46 @@ perso_t * creer_perso()
   perso->y = 0;
   return(perso);
 }
+
+
+/**
+*\fn void init_ennemi_valeurs(ennemi_t *ennemi, char * nom, int w, int h, int nb_sprites, int gap, float w2, float h2, char * path, SDL_Renderer * rendu)
+
+*\param *ennemi, l'ennemi pour lequel on remplit sa structure
+*\param *nom, le nom du monstre
+*\param w, la taille d'un sprite en largeur
+*\param h, la taille d'un sprite en hauteur
+*\param nb_sprites, le nombre de sprites par lignes
+*\param gap, l'espace entre deux sprites sur l'image globale
+*\param w2, la taille en largeur que l'on veut pour le sprite
+*\param h2, la taille en hauteur que l'on veut pour le sprite
+*\param *path, le chemin vers l'image de l'ennemi
+*\param *rendu, le renderer sur lequel on dessine
+
+*\brief donne aux ennemis les valeurs qui les caractèristiques pour leurs sprites
+*/
+void init_ennemi_valeurs(ennemi_t *ennemi, char * nom, int w, int h, int nb_sprites, int gap, float w2, float h2, char * path, SDL_Renderer * rendu){
+
+  charge_image(path, &ennemi->sprites, rendu);
+  ennemi->w = ennemi->sprites.rectangle.w;
+  ennemi->h = ennemi->sprites.rectangle.h; 
+  ennemi->sprite_courant.h = h;
+  ennemi->sprite_courant.w = w;//on prend le idle comme base
+  ennemi->nb_sprites_idle = nb_sprites;
+  ennemi->gap = gap;
+  ennemi->sprites.rectangle.w = ennemi->sprite_courant.w * w2;
+  ennemi->sprites.rectangle.h = ennemi->sprite_courant.h * h2;
+
+  strcpy(ennemi->nom, nom);
+}
+
 /**
 *\fn ennemi_t * creer_ennemi(char * nom)
 *\brief permet de créer un ennemi selon plusieurs caractéristiques
 *\param nom pour le nom d'un ennemi
 *\return un pointeur sur une variable structure ennemi_t
 */
-ennemi_t * creer_ennemi(char * nom, int pv, int vitesse, int attaque, int defense, int type, SDL_Renderer *rendu)
+ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type, SDL_Renderer *rendu)
 {
   ennemi_t * ennemi = NULL ;
   static unsigned long int cpt = 0 ;
@@ -211,7 +244,6 @@ ennemi_t * creer_ennemi(char * nom, int pv, int vitesse, int attaque, int defens
   ennemi = malloc(sizeof(ennemi_t));
 
   ennemi->nom = malloc(sizeof(char)*TAILLE);
-  strcpy(ennemi->nom , nom);
 
   ennemi->pv = pv;
   ennemi->vitesse = vitesse;
@@ -226,75 +258,31 @@ ennemi_t * creer_ennemi(char * nom, int pv, int vitesse, int attaque, int defens
   ennemi->id_col = 0;
 
   if(type == squelette){
-    charge_image(SQUELETTE_PATH, &ennemi->sprites, rendu);
-    ennemi->w = ennemi->sprites.rectangle.w;
-    ennemi->h = ennemi->sprites.rectangle.h; 
-    ennemi->sprite_courant.h = 60;
-    ennemi->sprite_courant.w = 46;//on prend le idle comme base
-    ennemi->nb_sprites_idle = 11;
-    ennemi->gap = 0;
-    ennemi->sprites.rectangle.w = ennemi->sprite_courant.w * 1.10;
-    ennemi->sprites.rectangle.h = ennemi->sprite_courant.h * 1.10;
+
+    init_ennemi_valeurs(ennemi, "Squelette", 46, 60, 11, 0, 1.10, 1.10, SQUELETTE_PATH, rendu);
   }
   else if(type == blob){
-    charge_image(BLOB_PATH, &ennemi->sprites, rendu);
-    ennemi->w = ennemi->sprites.rectangle.w;
-    ennemi->h = ennemi->sprites.rectangle.h; 
-    ennemi->sprite_courant.h = 80;
-    ennemi->sprite_courant.w = 76;//on prend le idle comme base
-    ennemi->nb_sprites_idle = 6;
-    ennemi->gap = 88;
-    ennemi->sprites.rectangle.w = ennemi->sprite_courant.w * 0.8;
-    ennemi->sprites.rectangle.h = ennemi->sprite_courant.h * 0.8;
+
+    init_ennemi_valeurs(ennemi, "Blob", 76, 80, 6, 88, 0.8, 0.8, BLOB_PATH, rendu);
   }
   else if(type == imp){
-    charge_image(IMP_PATH, &ennemi->sprites, rendu);
-    ennemi->w = ennemi->sprites.rectangle.w;
-    ennemi->h = ennemi->sprites.rectangle.h; 
-    ennemi->sprite_courant.h = 30;
-    ennemi->sprite_courant.w = 35;//on prend le idle comme base
-    ennemi->nb_sprites_idle = 7;
-    ennemi->gap = 25;
-    ennemi->sprites.rectangle.w = ennemi->sprite_courant.w * 1.5;
-    ennemi->sprites.rectangle.h = ennemi->sprite_courant.h * 1.5;
+
+    init_ennemi_valeurs(ennemi, "Imp", 35, 30, 7, 25, 1.5, 1.5, IMP_PATH, rendu);    
   }
   else if(type == minotaure){
-    charge_image(MINOTAURE_PATH, &ennemi->sprites, rendu);
-    ennemi->w = ennemi->sprites.rectangle.w;
-    ennemi->h = ennemi->sprites.rectangle.h; 
-    ennemi->sprite_courant.h = 100;
-    ennemi->sprite_courant.w = 70;//on prend le idle comme base
-    ennemi->sprites.rectangle.w = ennemi->sprite_courant.w;
-    ennemi->sprites.rectangle.h = ennemi->sprite_courant.h;
-    ennemi->nb_sprites_idle = 6;
-    ennemi->gap = 88;
-    ennemi->boss = 1;
-    ennemi->sprites.rectangle.x = WIN_WIDTH / 2 - ennemi->sprites.rectangle.w / 2;
-    ennemi->sprites.rectangle.y = WIN_HEIGHT / 2 - ennemi->sprites.rectangle.h / 2;
+
+    init_ennemi_valeurs(ennemi, "Minotaure", 70, 100, 6, 88, 1, 1, MINOTAURE_PATH, rendu);  
   }
   else if(type == cyclope){
-    charge_image(CYCLOPE_PATH, &ennemi->sprites, rendu);
-    ennemi->w = ennemi->sprites.rectangle.w;
-    ennemi->h = ennemi->sprites.rectangle.h; 
-    ennemi->sprite_courant.h = 100;
-    ennemi->sprite_courant.w = 80;//on prend le idle comme base
-    ennemi->sprites.rectangle.w = ennemi->sprite_courant.w;
-    ennemi->sprites.rectangle.h = ennemi->sprite_courant.h;
-    ennemi->nb_sprites_idle = 6;
-    ennemi->gap = 66;
-    ennemi->boss = 1;
-    ennemi->sprites.rectangle.x = WIN_WIDTH / 2 - ennemi->sprites.rectangle.w / 2;
-    ennemi->sprites.rectangle.y = WIN_HEIGHT / 2 - ennemi->sprites.rectangle.h / 2;
-  }else if(type == wizard){
-    charge_image(WIZARD_PATH, &ennemi->sprites, rendu);
-    ennemi->w = ennemi->sprites.rectangle.w;
-    ennemi->h = ennemi->sprites.rectangle.h; 
-    ennemi->sprite_courant.h = 46;
-    ennemi->sprite_courant.w =26;//on prend le idle comme base
-    ennemi->sprites.rectangle.w = ennemi->sprite_courant.w * 1.8;
-    ennemi->sprites.rectangle.h = ennemi->sprite_courant.h * 1.8;
-    ennemi->nb_sprites_idle = 10;
-    ennemi->gap = 35;
+    
+    init_ennemi_valeurs(ennemi, "Cyclope", 80, 100, 6, 66, 1, 1, CYCLOPE_PATH, rendu);
+  }
+  else if(type == wizard){
+
+    init_ennemi_valeurs(ennemi, "Sorcier", 26, 46, 10, 35, 1.8, 1.8, WIZARD_PATH, rendu);
+  }
+
+  if(type == minotaure || type == wizard || type == cyclope){
     ennemi->boss = 1;
     ennemi->sprites.rectangle.x = WIN_WIDTH / 2 - ennemi->sprites.rectangle.w / 2;
     ennemi->sprites.rectangle.y = WIN_HEIGHT / 2 - ennemi->sprites.rectangle.h / 2;
@@ -315,6 +303,7 @@ void detruire_carte(carte_t ** carte)
 {
   free((*carte)->nom);
   free(*carte);
+  *carte = NULL;
 }
 
 
@@ -328,6 +317,7 @@ void detruire_ennemi(ennemi_t ** ennemi)
   free((*ennemi)->nom);
   SDL_DestroyTexture((*ennemi)->sprites.img);
   free(*ennemi);
+  *ennemi = NULL;
 }
 
 /**

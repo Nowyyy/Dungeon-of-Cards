@@ -17,6 +17,7 @@
 */
 carte_t * creer_carte(char *, type_carte, int, int);
 
+void init_ennemi_valeurs(ennemi_t *ennemi, char * nom, int w, int h, int nb_sprites, int gap, float w2, float h2, char * path, SDL_Renderer * rendu);
 
 
 /**
@@ -25,7 +26,7 @@ carte_t * creer_carte(char *, type_carte, int, int);
 *\param nom pour le nom d'un ennemi
 *\return un pointeur sur une variable structure ennemi_t
 */
-ennemi_t * creer_ennemi(char *, int, int, int, int, int, SDL_Renderer *);
+ennemi_t * creer_ennemi( int, int, int, int, int, SDL_Renderer *);
 
 ennemi_t * generer_ennemi(int);
 
