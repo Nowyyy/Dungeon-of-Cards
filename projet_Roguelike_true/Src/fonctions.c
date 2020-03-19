@@ -361,7 +361,7 @@ void tour_ennemi(perso_t * perso,ennemi_t * ennemi)
   int i;
   if(ennemi->pv > perso->attaque){
         printf("Le %s attaque \n", ennemi->nom);
-        perso->pv += ennemi->attaque;
+        perso->pv -= ennemi->attaque;
       }
   else if (ennemi->pv < perso->attaque){
         printf("Le %s se soigne \n", ennemi->nom);
@@ -388,7 +388,26 @@ void tour_perso(int choix,perso_t * perso,ennemi_t * ennemi)
   int i;
   for(i=0;i<choix && !hors_liste();i++,suivant());
   printf("Vous avez choisi %s\n", ec->carte->nom);
-  *(ec->carte->cible) += ec->carte->valeur * ec->carte->type;
+  if(ec->carte->type == ATTAQUE){
+        if(strcmp(ec->carte->nom,"épée")){
+            ennemi->pv-=ec->carte->valeur;
+        }
+        else if(strcmp(ec->carte->nom,"boule de feu")){
+            ennemi->pv-=ec->carte->valeur;
+        }
+    }
+    else if(ec->carte->type == DEFENSE){
+        if(!strcmp(ec->carte->nom,"soin")){
+            perso->pv+=ec->carte->valeur;
+        }
+        else if((!strcmp(ec->carte->nom,"potion"))&& ec->carte->consommable!=0){
+            perso->pv+=ec->carte->valeur;
+            ec->carte->consommable-=1;
+        }
+        else if(ec->carte->consommable==0){
+            printf("Vous n'avez plus de potion CHEH !! \n");
+        }
+    }
 
 }
 

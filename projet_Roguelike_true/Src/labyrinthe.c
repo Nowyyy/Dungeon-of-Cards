@@ -20,6 +20,7 @@
 #include "../include/clavier.h"
 #include "../include/ennemi.h"
 #include "../include/coffre.h"
+#include "../include/combat_tour_par_tour.h"
 
 /**
 *\fn void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu)
@@ -684,10 +685,16 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 		//collision avec un ennemi
 		if(combat_declenche(salles[salle_courante], *pers) == 1){
-			//salles[salle_courante].pv1 = combat_t_p_t(pers, ennemi, cartes);
+			combat_t_p_t(pers, salles[salle_courante].ennemi, rendu);
+			init_tab_clavier(clavier.tab);
 		}
 		else if(combat_declenche(salles[salle_courante], *pers) == 2){
-			//comba boss
+			combat_t_p_t(pers, salles[salle_courante].ennemi2, rendu);
+			init_tab_clavier(clavier.tab);
+		}
+		else if(combat_declenche(salles[salle_courante], *pers) == 3){
+			combat_t_p_t(pers, salles[salle_courante].ennemi, rendu);
+			init_tab_clavier(clavier.tab);
 		}
 
 		if(salle_courante != salle_pred){
