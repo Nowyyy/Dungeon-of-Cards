@@ -136,6 +136,7 @@ int main(int argc, char* args[]){
 							menu_charger_partie(&continuer, &etat, rendu, police, sounds, &pers, cartes);
 						}
 						else if(etat == confirmer_nouveau){
+							//Affiche un menu pour confirmer l'écrasement de la sauvegarde
 							menu_confirmation(&continuer, &etat, rendu, police, sounds, &pers);
 						}
 					}

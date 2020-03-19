@@ -45,7 +45,7 @@ void afficher_chagrer_partie(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture
 
 
 /**
-*\fn int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SDL_Rect retour_rect, SDL_Rect **rect_sel, Mix_Chunk *select, Mix_Chunk *move)
+*\fn int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SDL_Rect retour_rect, SDL_Rect **rect_sel, Mix_Chunk *sounds[NB_SON])
 
 *\param *etat, permet de changer l'affuchage selon l'écran dans lequel se trouve le jeu
 *\param charger_rect, le rectangle contenant le texte relatif à la sauvegarde
@@ -113,6 +113,7 @@ int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SD
 *\param *police, la police d'écriture pour TTF
 *\param *sounds[NB_SON], tableau contenant les sons
 *\param *pers, la structure du personnage
+*\param *cartes, la structure des cartes du joueur
 
 *\brief Permet d'afficher et de récupèrer une sauvegarde éventuelle puis de lancer le jeu
 */

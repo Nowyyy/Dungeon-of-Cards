@@ -66,9 +66,11 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 		}
 		else if(clavier.tab[entree] == 1){//touche entrée
 			if((*rect_sel)->y == jouer.y - RECT_SELECT_Y_DIFF){
+				//Si il n'y a pas de sauvegarde on lance une nouvelle partie
 				if(!save_existe()){
 					*etat = labyrinthe;
 				}
+				//Sinon on emmène le joueur sur un menu de confirmation
 				*etat = confirmer_nouveau;
 				Mix_PlayChannel(1, sounds[selection], 0);
 
