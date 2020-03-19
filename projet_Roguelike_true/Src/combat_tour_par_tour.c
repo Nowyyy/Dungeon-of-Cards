@@ -17,7 +17,20 @@
 #include "../include/clavier.h"
 
 
+/**
+*\fn int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir,SDL_Rect carte1,SDL_Rect carte2,SDL_Rect carte3,SDL_Rect carte4, SDL_Rect **rect_sel)
 
+*\param defausse, Correspond aux coordonnées du texte défausse
+*\param fuir, Correspond aux coordonnées du texte fuir
+*\param carte1, Correspond aux coordonnées de la carte 1
+*\param carte2, Correspond aux coordonnées de la carte 2
+*\param carte3, Correspond aux coordonnées de la carte 3
+*\param carte4, Correspond aux coordonnées de la carte 4
+*\param **rect_sel Correspond aux coordonnées du rectangle de sélection
+
+*\brief Permet de déplacer le rectangle de selection
+
+*/
 int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir,SDL_Rect carte1,SDL_Rect carte2,SDL_Rect carte3,SDL_Rect carte4, SDL_Rect **rect_sel){
 
 	SDL_Event event;
@@ -116,11 +129,17 @@ int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir,SDL_
 
 
 /**
-*\fn void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi)
+*\fnvoid affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi,SDL_Texture *defausse_texture ,SDL_Texture *fuir_texture,SDL_Rect defausse_rect ,SDL_Rect fuir_rect,SDL_Rect *rect_sel,image_t images[NB_TEXTURES])
 
+*\param *rendu, le renderer sur lequel on dessine
 *\param *ennemi, la structure contenant tous les ennemis
 *\param pers, la structure contenant le personnage
-*\param *rendu, le renderer sur lequel on dessine
+*\param *defausse_texture, Les textures du texte defausse
+*\param *fuir_texture, Les textures du texte fuir
+*\param defausse_rect, les coordonnées du texte defausse
+*\param fuir_rect, les coordonnées du texte fuir
+*\param *rect_sel, Les coordonnées et taille du rectangle de selection
+*\param images[NB_TEXTURES], Un tableau contenant les cartes
 
 *\brief Permet d'afficher toutes la partie combat
 
@@ -174,10 +193,11 @@ void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * e
   SDL_RenderCopy(rendu, ennemi->sprites[0].img, NULL, &ennemi->sprites[0].rectangle);
 
   SDL_RenderPresent(rendu);
+	/*Reinitialise les coordonnées du perso et des ennemis*/
   pers->sprites[idle_droite].rectangle.w = w;
   pers->sprites[idle_droite].rectangle.h = h;
-  pers->sprites[idle_droite].rectangle.x = x+10;
-  pers->sprites[idle_droite].rectangle.y = y+10;
+  pers->sprites[idle_droite].rectangle.x = x+40;
+  pers->sprites[idle_droite].rectangle.y = y+40;
   ennemi->sprites[0].rectangle.w = we;
   ennemi->sprites[0].rectangle.h = he;
   ennemi->sprites[0].rectangle.x = xe-50;
@@ -198,6 +218,7 @@ void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * e
 */
 int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
 {
+	/*Déclaration et configuration des cartes*/
 	image_t images[NB_TEXTURES];
 	charge_image(FOND_COMBAT_PATH,&images[fond2], rendu);
 	images[fond2].rectangle.x= -50;
@@ -234,7 +255,7 @@ int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
   images[carte4].rectangle.y= 450;
   images[carte4].rectangle.w /=2;
   images[carte4].rectangle.h /=2;
-
+/*Decalaration des différentes variable*/
 	SDL_Rect *rectangle_selection = malloc(sizeof(SDL_Rect));
   TTF_Font * police = NULL;
   police=TTF_OpenFont(FONT_PATH,40);
@@ -244,29 +265,32 @@ int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
   strcpy(fuir,"Fuir");
   image_t def;
   image_t fui;
-  /*DEFAUSSE*/
+  /*Mise en place du texte defausse*/
   def.rectangle.x=875;
   def.rectangle.y=475;
   get_text_and_rect(rendu,def.rectangle.x, def.rectangle.y, defausse,police, &def.img, &def.rectangle);
-  /*FUIR*/
+  /*Mise en place du texte fuir*/
   fui.rectangle.x=875;
   fui.rectangle.y=550;
   get_text_and_rect(rendu,fui.rectangle.x, fui.rectangle.y, fuir,police, &fui.img, &fui.rectangle);
+	/*Mise en place du rectangle de selection*/
   rectangle_selection->x = (def.rectangle).x - RECT_SELECT_X_DIFF;
 	rectangle_selection->y = (def.rectangle).y - RECT_SELECT_Y_DIFF;
 	rectangle_selection->w = (def.rectangle).w +100;
 	rectangle_selection->h = (def.rectangle).h +30;
-
+  /*Ajout des cartes en dur pour le moment*/
   init_liste();
   ajout_droit(creer_carte("soin", DEFENSE, 5, 0));
   ajout_droit(creer_carte("potion", DEFENSE, 20, 1));
   ajout_droit(creer_carte("épée", ATTAQUE,10, 0));
   ajout_droit(creer_carte("boule de feu", ATTAQUE, 20, 0));
+	/*Déclaration et début du combat*/
   int choix=0, i, vitesse,fuire=1;
   vitesse = perso->vitesse;
 	printf("Vous avez %d pv et le %s a %d pv\n",perso->pv, ennemi->nom, ennemi->pv);
 	printf("Vous avez %d de vitesse et le %s a %d de vitesse\n",perso->vitesse,ennemi->nom, ennemi->vitesse);
   while((ennemi->pv > 0 && perso->pv > 0) && fuire==1 ){
+		/*Affichage de la salle et du rectangle de selection*/
     affichage_combat_personnage(rendu,perso,ennemi,def.img,fui.img,def.rectangle,fui.rectangle,rectangle_selection,images);
     choix=deplacement_rectangle_selection_combat(def.rectangle,fui.rectangle,images[carte1].rectangle,images[carte2].rectangle,images[carte3].rectangle,images[carte4].rectangle,&rectangle_selection);
     if (choix!=0 && choix !=1){
@@ -278,6 +302,7 @@ int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
 
 			printf("%d \n",choix);
     }
+		/*Action du personnage selon son choix*/
     if(choix == 10){
       fuire=0;
     }
@@ -346,7 +371,7 @@ int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
     	printf("Vous avez %d de vitesse et le %s a %d de vitesse\n",perso->vitesse,ennemi->nom, ennemi->vitesse);
 		}
 	 }
-
+  /*Fin du combat*/
   if(!ennemi->pv){
     printf("Vous avez vaincu le %s\n", ennemi->nom);
   }
