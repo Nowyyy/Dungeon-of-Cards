@@ -54,10 +54,18 @@
 #define IMP_PATH "../Images/sprites_mobs/imp_sprites.png"
 #define WIZARD_PATH "../Images/sprites_mobs/wizard_sprite2.png"
 
+#define COMBAT_PATH "../Images/combat1.png"
+#define FOND_COMBAT_PATH "../Images/combat2.png"
+
+#define CARTE1_PATH "../Images/carte1.png"
+#define CARTE2_PATH "../Images/carte2.png"
+#define CARTE3_PATH "../Images/carte3.png"
+#define CARTE4_PATH "../Images/carte4.png"
+
 #define SAVE_PERSO_PATH "../Sauvegarde/personnage.txt"
 #define SAVE_CARTES_PATH "../Sauvegarde/cartes.txt"
 
-#define NB_TEXTURES 14
+#define NB_TEXTURES 20
 
 #define TRUE 1
 #define FALSE 0
