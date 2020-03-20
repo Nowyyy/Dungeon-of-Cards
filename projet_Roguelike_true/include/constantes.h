@@ -57,10 +57,10 @@
 #define COMBAT_PATH "../Images/combat1.png"
 #define FOND_COMBAT_PATH "../Images/combat2.png"
 
-#define CARTE1_PATH "../Images/carte1.png"
-#define CARTE2_PATH "../Images/carte2.png"
-#define CARTE3_PATH "../Images/carte3.png"
-#define CARTE4_PATH "../Images/carte4.png"
+#define CARTE_EPEE_I_PATH "../Images/Cartes/epee_1.png"
+#define CARTE_POTION_I_PATH "../Images/Cartes/potion_1.png"
+#define CARTE_POING_PATH "../Images/Cartes/poing.png"
+#define CARTE_PIERRE_PATH "../Images/Cartes/pierre.png"
 
 #define SAVE_PERSO_PATH "../Sauvegarde/personnage.txt"
 #define SAVE_CARTES_PATH "../Sauvegarde/cartes.txt"

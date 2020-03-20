@@ -91,7 +91,7 @@ int main(int argc, char* args[]){
 
 						if(etat == mainMenu){
 							if(Mix_PlayingMusic() == 0){
-								Mix_VolumeMusic(30);
+								Mix_VolumeMusic(15);
 								Mix_PlayMusic(musics[menu], -1);
 							}
 							main_menu(&continuer, &etat, rendu, police, sounds);

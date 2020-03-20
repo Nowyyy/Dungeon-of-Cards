@@ -210,10 +210,10 @@ void charge_textures_combat(image_t images[], SDL_Renderer *rendu){
 
 	charge_image(FOND_COMBAT_PATH,&images[fond2], rendu);
 	charge_image(COMBAT_PATH,&images[fond], rendu);
-	charge_image(CARTE1_PATH,&images[carte1], rendu);
-	charge_image(CARTE2_PATH,&images[carte2], rendu);
-	charge_image(CARTE3_PATH,&images[carte3], rendu);
-	charge_image(CARTE4_PATH,&images[carte4], rendu);
+	charge_image(CARTE_PIERRE_PATH,&images[carte1], rendu);
+	charge_image(CARTE_POTION_I_PATH,&images[carte2], rendu);
+	charge_image(CARTE_EPEE_I_PATH,&images[carte3], rendu);
+	charge_image(CARTE_POING_PATH,&images[carte4], rendu);
 }
 
 
@@ -230,23 +230,15 @@ void donne_valeur_rect_images(image_t images[]){
 	
   	images[carte1].rectangle.x=50;
   	images[carte1].rectangle.y= 450;
-  	images[carte1].rectangle.w /=8;
-  	images[carte1].rectangle.h /=8;
 
 	images[carte2].rectangle.x=250;
   	images[carte2].rectangle.y= 450;
-  	images[carte2].rectangle.w /=2;
-  	images[carte2].rectangle.h /=2;
 
  	images[carte3].rectangle.x=450;
   	images[carte3].rectangle.y= 450;
-  	images[carte3].rectangle.w /=2;
-  	images[carte3].rectangle.h /=2;
 	
   	images[carte4].rectangle.x=650;
   	images[carte4].rectangle.y= 450;
-  	images[carte4].rectangle.w /=2;
-  	images[carte4].rectangle.h /=2;
 }
 
 
