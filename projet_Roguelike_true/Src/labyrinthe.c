@@ -588,6 +588,14 @@ int nb_salles_par_etage(int etage){
 	}
 }
 
+/**
+*\fn void trappe_niveau(SDL_Renderer *rendu, image_t images[])
+
+*\param *rendu, le renderer sur lequel on dessine
+*\param images[], tableau contenant textures
+
+*\brief Permet de faire apparaitre la trappe de changement de niveau
+*/
 void trappe_niveau(SDL_Renderer *rendu, image_t images[]){
 	images[trapdoor2].rectangle.x = 610;
 	images[trapdoor2].rectangle.y = 110;
