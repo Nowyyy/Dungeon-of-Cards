@@ -15,7 +15,11 @@
 #include "../include/chargement.h"
 #include "../include/sauvegardefonc.h"
 #include "../include/confirmer_nouveau.h"
+<<<<<<< Updated upstream
 #include "../include/fonctions.h"
+=======
+#include "../include/animation.h"
+>>>>>>> Stashed changes
 
 
 
@@ -106,6 +110,7 @@ int main(int argc, char* args[]){
 							//tout ce qui sera relatif à l'explo dans le laby
 							saveperso(&pers);
 							Mix_HaltMusic();
+							animation_niveau(&pers, rendu);
 							if(pers.etage == 1){
 								Mix_VolumeMusic(20);
 								Mix_PlayMusic(musics[level1], -1);

@@ -639,7 +639,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	for(int i = 0; i < taille * taille; i++){
 		if(salles[i].boss){
-			salles[i].ennemi = creer_ennemi(75, 10, 10, 10, boss, rendu);
+			salles[i].ennemi = creer_ennemi(0, 10, 10, 10, boss, rendu);
 		}
 		else{
 			creer_ennemi_pointeur(&salles[i].ennemi, &salles[i].ennemi2, salles[i].boss, salles[i].nb_ennemi, mob_commun, rendu);
