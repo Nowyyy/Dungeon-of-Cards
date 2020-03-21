@@ -10,3 +10,4 @@ void cree_liaison(salle_t tab[], int salle1, int salle2, int porteS1);
 void initialise_salles(salle_t tab[], int taille);
 void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Renderer *rendu);
 void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MUSIC], Mix_Chunk *sounds[NB_SON], image_t images[], TTF_Font *police, SDL_Texture *cmpPartie_texture);
+void trappe_niveau(SDL_Renderer *rendu, image_t images[]);

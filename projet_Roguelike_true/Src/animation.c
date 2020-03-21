@@ -9,6 +9,7 @@
 
 #include "../include/constantes.h"
 #include "../include/initialisation_sdl_fonctions.h"
+#include <time.h>
 
 /**
 *\fn void animation_niveau()
@@ -19,12 +20,14 @@
 void animation_niveau(perso_t *perso, SDL_Renderer *rendu){
 
   //initialisation des variables
+  srand(time(NULL));
   image_t texte_etage, texte_charg, p1, p2, p3;
   char etage[15], charg[15]="chargement", cp1[10]=".", cp2[10]=".", cp3[10]=".";
   TTF_Font *police = NULL;
   int x_etage = 480, y_etage = 250, x_charg = 450, y_charg = 350;
   int p1_x = 2000, p1_y = 350, p2_x = 2000, p2_y = 350, p3_x = 2000, p3_y = 350;
-  int cmp = 0, cmp2=1;
+  int char_alea = rand()%(9-4)+4;
+  int cmp = 0, cmp2=0;
   police = TTF_OpenFont(FONT_PATH, 30);
   SDL_Rect rect;
  	rect.w = 1080;
@@ -53,7 +56,7 @@ void animation_niveau(perso_t *perso, SDL_Renderer *rendu){
   SDL_RenderPresent(rendu);
 
   //Faire clignoter les points
-  while(cmp != 11){
+  while(cmp != char_alea){
     if(cmp2==0){
       p1.rectangle.x = 2000;
 

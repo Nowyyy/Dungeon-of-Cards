@@ -46,6 +46,7 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 	charge_image(DEATHLIGHT_PATH, &images[deathlight], rendu);
 	charge_image(HEART_PATH, &images[heart], rendu);
 	charge_image(TRAPDOOR_PATH, &images[trapdoor], rendu);
+	charge_image(TRAPDOOR_PATH, &images[trapdoor2], rendu);
 
 	creer_texture_depuis_char(&images[pv], &images[etage], *pers, rendu);
 
@@ -64,6 +65,8 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 	images[heart].rectangle.y = WIN_HEIGHT * 0.10;
 	images[trapdoor].rectangle.x = 0;
 	images[trapdoor].rectangle.y = WIN_HEIGHT * 0.02;
+	images[trapdoor2].rectangle.x = 1200;
+	images[trapdoor2].rectangle.y = 1200;
 
 	//on place le personnage dans la premiere salle, au centre
 	pers->sprites[courant].rectangle.x = pers->x;
@@ -136,6 +139,7 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 
 ///////////SPRITES MONSTRES
 	if(salle->ennemi_present || salle->boss){
+		SDL_RenderCopy(rendu, images[trapdoor2].img, NULL, &images[trapdoor2].rectangle);
 
 		SDL_RenderCopy(rendu, salle->ennemi->sprites.img, &salle->ennemi->sprite_courant, &salle->ennemi->sprites.rectangle);
 
@@ -584,6 +588,14 @@ int nb_salles_par_etage(int etage){
 	}
 }
 
+void trappe_niveau(SDL_Renderer *rendu, image_t images[]){
+	images[trapdoor2].rectangle.x = 610;
+	images[trapdoor2].rectangle.y = 110;
+
+	SDL_RenderCopy(rendu, images[trapdoor2].img, NULL, &images[trapdoor2].rectangle);
+	SDL_RenderPresent(rendu);
+}
+
 
 
 /**
@@ -608,7 +620,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	SDL_Event event;
 
 	int taille = TAILLE_LABY, nb_salles_a_creer = nb_salles_par_etage(pers->etage), salle_courante, salle_pred, salle_0;
-	int mob_commun = rand()%minotaure, boss = rand()%minotaure + 3, boss_tuer = 0;
+	int mob_commun = rand()%minotaure, boss = rand()%minotaure + 3, boss_tuer = 0, trappe=0;
 
 	mini_map_t miniMap;
 
@@ -710,11 +722,22 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 			ajoute_salle_decouverte(&miniMap, salle_courante);
 		}
 
-		if(salles[salle_courante].boss && salles[salle_courante].ennemi->pv <= 0){
-			boss_tuer = 1;
-			pers->etage += 1;
+		//On fait apparaitre la trappe quand le boss meurt
+		if(salles[salle_courante].boss && salles[salle_courante].ennemi->pv <= 0 && trappe==0){
+			trappe = 1;
+			trappe_niveau(rendu, images);
 			pers->x = WIN_WIDTH / 2 - pers->sprites[courant].rectangle.w / 2;
 			pers->y = WIN_HEIGHT / 2 - pers->sprites[courant].rectangle.h / 2;
+		}
+
+		//Si on passe sur la trappe on accède au niveau suivant
+		if(salles[salle_courante].boss && trappe==1){
+			if(pers->x > 585 && pers->y < 145){
+				boss_tuer = 1;
+				pers->etage+=1;
+				pers->x = WIN_WIDTH / 2 - pers->sprites[courant].rectangle.w / 2;
+				pers->y = WIN_HEIGHT / 2 - pers->sprites[courant].rectangle.h / 2;
+			}
 		}
 	}
 
@@ -724,7 +747,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	for(int i = 0; i < NB_SPRITES_PERSONNAGE; i++)
 		SDL_DestroyTexture(pers->sprites[i].img);
 
-	for(int i = sol; i < fond; i++)
+	for(int i = sol; i < NB_TEXTURES; i++)
 		SDL_DestroyTexture(images[i].img);
 
 	destruction_tous_ennemis(salles, taille);
