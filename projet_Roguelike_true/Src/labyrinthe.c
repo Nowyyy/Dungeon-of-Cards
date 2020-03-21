@@ -672,7 +672,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	init_tab_clavier(clavier.tab);
 
 /////////////////////////// boucle du labyrinthe / explo / combat ///////////////////////////
-	while(*etat == labyrinthe && *continuer && !boss_tuer){
+	while(*etat == labyrinthe && *continuer && boss_tuer==0){
 
 		if((salles[salle_courante].nb_ennemi > 0 && salles[salle_courante].ennemi->pv > 0) || (salles[salle_courante].boss && salles[salle_courante].ennemi->pv > 0))
 			animation_ennemi(salles[salle_courante].ennemi);
