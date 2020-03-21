@@ -13,7 +13,7 @@ void animation_niveau(perso_t *perso, SDL_Renderer *rendu){
   image_t texte_etage, texte_charg, p1, p2, p3;
   char etage[15], charg[15]="chargement", cp1[10]=".", cp2[10]=".", cp3[10]=".";
   TTF_Font *police = NULL;
-  int x_etage = 495, y_etage = 250, x_charg = 450, y_charg = 350;
+  int x_etage = 480, y_etage = 250, x_charg = 450, y_charg = 350;
   int p1_x = 2000, p1_y = 350, p2_x = 2000, p2_y = 350, p3_x = 2000, p3_y = 350;
   int cmp = 0, cmp2=1;
   police = TTF_OpenFont(FONT_PATH, 30);
@@ -78,26 +78,6 @@ void animation_niveau(perso_t *perso, SDL_Renderer *rendu){
     cmp++;
     cmp2++;
     SDL_Delay(500);
-  }
-
-  //Déplacement texte etage
-  while(texte_etage.rectangle.x > 86 || texte_etage.rectangle.y > 62){
-    SDL_Delay(100);
-
-    if(texte_etage.rectangle.x>86){
-      texte_etage.rectangle.x-=11;
-    }
-    if(texte_etage.rectangle.y>20){
-      texte_etage.rectangle.y-=6;
-    }
-    //get_text_and_rect(rendu, x_etage, y_etage, etage, police, &texte_etage.img, &texte_etage.rectangle);
-    SDL_RenderCopy(rendu, texte_etage.img, NULL, &texte_etage.rectangle);
-    SDL_RenderCopy(rendu, texte_charg.img, NULL, &texte_charg.rectangle);
-    SDL_RenderCopy(rendu, p1.img, NULL, &p1.rectangle);
-    SDL_RenderCopy(rendu, p2.img, NULL, &p2.rectangle);
-    SDL_RenderCopy(rendu, p3.img, NULL, &p3.rectangle);
-    SDL_RenderPresent(rendu);
-    SDL_RenderClear(rendu);
   }
 
 	TTF_CloseFont(police); //on libère la police
