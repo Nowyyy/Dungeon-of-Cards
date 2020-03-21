@@ -64,11 +64,14 @@
 
 #define SAVE_PERSO_PATH "../Sauvegarde/personnage.txt"
 #define SAVE_CARTES_PATH "../Sauvegarde/cartes.txt"
+#define SAVE_CARTES_CATALOGUE_PATH "../Sauvegarde/cartes_catalogue"
 
 #define NB_TEXTURES 20
 
 #define TRUE 1
 #define FALSE 0
+#define QUIT_SDL 100
+#define PAS_QUIT_SDL 101
 
 #define TAILLE_SALLE 8 //Taille de la matrice d'un salle
 
@@ -81,6 +84,9 @@
 
 #define NB_SPRITES_PERSONNAGE 10
 #define NB_SPRITES_MONSTRE 2
+
+#define NB_CARTES_COMBAT 4
+#define NB_CARTES 4
 
 #define EMPLACEMENT_DEPART_DESSIN_SALLE_X 256
 #define EMPLACEMENT_DEPART_DESSIN_SALLE_Y 40
@@ -95,9 +101,6 @@
 #define DELAIS_ANIMATIONS 100
 
 #define PV_DEPART_PERSONNAGE 50
-#define VITESSE_DEPART_PERSONNAGE 5
-#define ATTAQUE_DEPART_PERSONNAGE 10
-#define DEFENSE_DEPART_PERSONNAGE 10
 
 #define TAILLE_RECT_MINI_MAP_H 20
 #define TAILLE_RECT_MINI_MAP_W 30
@@ -312,12 +315,10 @@ typedef struct mini_map_s{
 typedef struct perso_s {
   int pv;/**Point de vie d'un personnage*/
   int pv_old;
-  int vitesse;/**Vitesse d'un personnage*/
-  int attaque;/**Attaque d'un personnage*/
-  int defense;/**Défense d'un personnage*/
   int x;/**Placement sur l'axe des abscisses d'un personnage*/
   int y;/**Placement sur l'axe des ordonnés d'un personnage*/
   int etage;
+  int fuite;
   int etage_old;
   image_t sprites[NB_SPRITES_PERSONNAGE];
   int cmpMort;
@@ -335,6 +336,7 @@ typedef struct carte_s {
   int * cible;/** Cible d'une carte */
   int valeur;/** Valeur d'une carte */
   int consommable;/** 1 si la carte est à usage unique*/
+  char path[50];
 } carte_t ;
 
 // Definition du type d'un element de liste

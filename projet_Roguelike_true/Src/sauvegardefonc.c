@@ -46,7 +46,7 @@ void savecarte (carte_t* carte2){
   if (fichier != NULL)
    {
       while(!hors_liste()){
-        valeur_elt(carte2);
+        valeur_elt(&carte2);
         fprintf(fichier,"%d %d %d %s\n",carte2->type,carte2->valeur,carte2->consommable,carte2->nom);
         suivant();
       }
@@ -64,21 +64,25 @@ void savecarte (carte_t* carte2){
 *\brief Fonction qui permet de lire une carte
 *\param carte2 Permet de lire les cartes d'un deck
 */
-void readcarte(carte_t* carte2){
+void readcarte(char *path_file){
 
   FILE *fichier=NULL;
-   fichier=fopen(SAVE_CARTES_PATH,"r");
-   en_tete();
+  fichier=fopen(path_file,"r");
 
-   fscanf(fichier,"%d %d %d %[^\n]",&carte2->type,&carte2->valeur,&carte2->consommable,carte2->nom);
+  char nom[20], path[100];/** Nom d'une carte */
+  type_carte type;/** Type d'une carte */
+  int valeur, consommable;
 
-   if (fichier != NULL)
+  init_liste();
+
+  fscanf(fichier,"%d%d%d%s%s",&type,&valeur,&consommable,path,nom);
+
+  if (fichier != NULL)
     {
         while(!feof(fichier)){
 
-          printf("%d %d %d %s\n",carte2->type,carte2->valeur,carte2->consommable,carte2->nom);
-          ajout_droit(creer_carte(carte2->nom,carte2->type,carte2->valeur,carte2->consommable));
-          fscanf(fichier,"%d %d %d %[^\n]",&carte2->type,&carte2->valeur,&carte2->consommable,carte2->nom);
+          ajout_droit(creer_carte(nom,type,valeur,consommable,path));
+          fscanf(fichier,"%d%d%d%s%s",&type,&valeur,&consommable,path,nom);
         }
     }
     else
@@ -108,7 +112,7 @@ void saveperso (perso_t *perso){
 
   if (fichier != NULL)
    {
-       fprintf(fichier,"%d %d %d %d %d %d %d %d\n",perso->pv,perso->vitesse,perso->attaque,perso->defense,perso->x,perso->y, perso->etage, perso->cmpMort);
+       fprintf(fichier,"%d %d %d %d %d\n",perso->pv,perso->x,perso->y, perso->etage, perso->cmpMort);
    }
    else
    {
@@ -138,7 +142,7 @@ void readperso(perso_t*perso){
 
   if (fichier != NULL)
    {
-       fscanf(fichier,"%d %d %d %d %d %d %d %d\n",&perso->pv,&perso->vitesse,&perso->attaque,&perso->defense,&perso->x,&perso->y,&perso->etage, &perso->cmpMort);
+       fscanf(fichier,"%d %d %d %d %d\n",&perso->pv,&perso->x,&perso->y,&perso->etage, &perso->cmpMort);
    }
    else
    {

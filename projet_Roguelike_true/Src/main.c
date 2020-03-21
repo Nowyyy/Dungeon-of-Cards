@@ -15,6 +15,7 @@
 #include "../include/chargement.h"
 #include "../include/sauvegardefonc.h"
 #include "../include/confirmer_nouveau.h"
+#include "../include/fonctions.h"
 
 
 
@@ -34,7 +35,7 @@ int main(int argc, char* args[]){
 	int flags = MIX_INIT_MP3;
 
 	perso_t pers;
-	carte_t *cartes;
+	carte_t *cartes = NULL;
 
 	//On initialise les samples et musiques utilisés dans le jeu
 
@@ -97,8 +98,8 @@ int main(int argc, char* args[]){
 							main_menu(&continuer, &etat, rendu, police, sounds);
 
 							if(etat == labyrinthe){
-								//initialise_deck_cartes(cartes);
 								initialise_personnage(&pers);
+								readcarte(SAVE_CARTES_CATALOGUE_PATH);
 							}
 						}
 						else if (etat == labyrinthe){
@@ -128,16 +129,20 @@ int main(int argc, char* args[]){
 
 								Mix_PlayMusic(musics[level5], -1);
 							}
-							boucle_labyrinthe(&continuer, &etat, rendu, sounds, musics, &pers, cartes, police);
+							boucle_labyrinthe(&continuer, &etat, rendu, sounds, musics, &pers, police);
 							Mix_HaltMusic();
 						}
 						else if(etat == charger_partie){
 							//charge les données du joueurs afin qu'il reprenne là où il s'était arrêté
-							menu_charger_partie(&continuer, &etat, rendu, police, sounds, &pers, cartes);
+							menu_charger_partie(&continuer, &etat, rendu, police, sounds, &pers);
 						}
 						else if(etat == confirmer_nouveau){
 							//Affiche un menu pour confirmer l'écrasement de la sauvegarde
 							menu_confirmation(&continuer, &etat, rendu, police, sounds, &pers);
+							if(etat == labyrinthe){
+								initialise_personnage(&pers);
+								readcarte(SAVE_CARTES_CATALOGUE_PATH);
+							}
 						}
 					}
 				}
@@ -154,6 +159,9 @@ int main(int argc, char* args[]){
 
 	//On libère toutes les variables de son
 	free_mixer(musics, sounds);
+
+	while(!liste_vide())
+		oter_elt();
 
 
 	printf("Tout est fermé\n");//affiche dans la console

@@ -599,7 +599,7 @@ int nb_salles_par_etage(int etage){
 
 *\brief Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...
 */
-void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], perso_t *pers, carte_t *cartes, TTF_Font *police){
+void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], perso_t *pers, TTF_Font *police){
 
 
 /////////////////////////// Déclarations variables ////////////////////////////////////////////
@@ -607,7 +607,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	SDL_Event event;
 
-	int taille = TAILLE_LABY, nb_salles_a_creer = nb_salles_par_etage(pers->etage), salle_courante, salle_pred;
+	int taille = TAILLE_LABY, nb_salles_a_creer = nb_salles_par_etage(pers->etage), salle_courante, salle_pred, salle_0;
 	int mob_commun = rand()%minotaure, boss = rand()%minotaure + 3, boss_tuer = 0;
 
 	mini_map_t miniMap;
@@ -626,6 +626,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	salle_courante = creation_labyrinthe(salles, taille, nb_salles_a_creer);
 	salle_pred = salle_courante;
+	salle_0 = salle_courante;
 /////////////////////////// Textures et initialisations///////////////////////////////////////
 
 	init_animations(&anim);
@@ -695,6 +696,11 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 			init_tab_clavier(clavier.tab);
 			combat_t_p_t(pers, salles[salle_courante].ennemi, rendu);
 			init_tab_clavier(clavier.tab);
+		}
+
+		if(pers->fuite){
+			pers->fuite = 0;
+			salle_courante = salle_0;
 		}
 
 		if(salle_courante != salle_pred){

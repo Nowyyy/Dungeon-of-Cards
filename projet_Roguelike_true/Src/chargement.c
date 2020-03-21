@@ -117,7 +117,7 @@ int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SD
 
 *\brief Permet d'afficher et de récupèrer une sauvegarde éventuelle puis de lancer le jeu
 */
-void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *sounds[NB_SON], perso_t *pers, carte_t *cartes){
+void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *sounds[NB_SON], perso_t *pers){
 
 	SDL_Rect retour_rect, charger_rect;
 	SDL_Rect *rectangle_selection = malloc(sizeof(SDL_Rect));
@@ -138,11 +138,11 @@ void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Fon
 		initialise_personnage(pers);
 		x_charger = WIN_WIDTH * 0.30;
 		y_charger = WIN_HEIGHT * 0.50;
-		//initialise_deck_cartes(cartes);
+		readcarte(SAVE_CARTES_CATALOGUE_PATH);
 	}
 	else{
 		readperso(pers);
-		//readcarte(cartes);
+		readcarte(SAVE_CARTES_PATH);
 		x_charger = WIN_WIDTH * 0.33;
 		y_charger = WIN_HEIGHT * 0.50;
 		sprintf(intermediaire,"Etage %d, Points de vie %d", pers->etage, pers->pv);
