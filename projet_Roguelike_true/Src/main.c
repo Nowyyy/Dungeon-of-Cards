@@ -162,8 +162,12 @@ int main(int argc, char* args[]){
 	//On libère toutes les variables de son
 	free_mixer(musics, sounds);
 
-	while(!liste_vide())
+	en_tete();
+
+	while(!liste_vide()){
 		oter_elt();
+		suivant();
+	}
 
 
 	printf("Tout est fermé\n");//affiche dans la console

@@ -682,23 +682,23 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 		SDL_Delay(5);
 
 		//collision avec un ennemi
-		if(combat_declenche(salles[salle_courante], *pers) == 1){
+		if(combat_declenche(salles[salle_courante], *pers) == 1 && salles[salle_courante].ennemi->pv > 0){
 			init_tab_clavier(clavier.tab);
-			combat_t_p_t(pers, salles[salle_courante].ennemi, rendu);
-			init_tab_clavier(clavier.tab);
-		}
-		else if(combat_declenche(salles[salle_courante], *pers) == 2){
-			init_tab_clavier(clavier.tab);
-			combat_t_p_t(pers, salles[salle_courante].ennemi2, rendu);
+			combat_t_p_t(pers, salles[salle_courante].ennemi, rendu, images);
 			init_tab_clavier(clavier.tab);
 		}
-		else if(combat_declenche(salles[salle_courante], *pers) == 3){
+		else if(combat_declenche(salles[salle_courante], *pers) == 2 && salles[salle_courante].ennemi2->pv > 0){
 			init_tab_clavier(clavier.tab);
-			combat_t_p_t(pers, salles[salle_courante].ennemi, rendu);
+			combat_t_p_t(pers, salles[salle_courante].ennemi2, rendu, images);
+			init_tab_clavier(clavier.tab);
+		}
+		else if(combat_declenche(salles[salle_courante], *pers) == 3 && salles[salle_courante].ennemi->pv > 0){
+			init_tab_clavier(clavier.tab);
+			combat_t_p_t(pers, salles[salle_courante].ennemi, rendu, images);
 			init_tab_clavier(clavier.tab);
 		}
 
-		if(pers->fuite){
+		if(pers->fuite){//le joueur à fuit le combat, on le renvoie dans la première salle du niveau
 			pers->fuite = 0;
 			salle_courante = salle_0;
 		}

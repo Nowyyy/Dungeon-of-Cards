@@ -306,7 +306,13 @@ void detruire_ennemi(ennemi_t ** ennemi)
 }
 
 
+/**
+*\fn void tire_carte_deck(carte_t *cartes[])
 
+*\param *cartes[], tableau de pointeurs sur carte_t, contiendra les cartes utilisées pendant le combat
+
+*\brief tire des cartes au hasard dans le deck du joueur afin qu'il puisse les utiliser au combat
+*/
 void tire_carte_deck(carte_t *cartes[]){
 
   int nb = NB_CARTES_COMBAT;

@@ -31,59 +31,62 @@
 *\brief Permet de déplacer le rectangle de selection
 
 */
-int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir,SDL_Rect carte1,SDL_Rect carte2,SDL_Rect carte3,SDL_Rect carte4, SDL_Rect **rect_sel){
+int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, image_t images[NB_TEXTURES], SDL_Rect **rect_sel){
 
 	SDL_Event event;
  	int choix=0;
 
 	while(SDL_PollEvent(&event) && choix==0){ //On attend un évènement au clavier
+
 		if(event.type == SDL_KEYDOWN){	//touche enfoncée
+
 			if(event.key.keysym.sym == SDLK_RIGHT){
 				if((*rect_sel)->y != fuir.y){//on n'est pas sur la dernière option, on peut descendre
 					if((*rect_sel)->y == defausse.y - RECT_SELECT_Y_DIFF){
 						(*rect_sel)->y = fuir.y - RECT_SELECT_Y_DIFF;
 						/*Mix_PlayChannel(0, move, 0);*/
 					}
-					else if((*rect_sel)->x == carte4.x - RECT_SELECT_X_DIFF){
+					else if((*rect_sel)->x == images[carte4].rectangle.x - RECT_SELECT_X_DIFF){
 						(*rect_sel)->y = defausse.y - RECT_SELECT_Y_DIFF;
 						(*rect_sel)->x = defausse.x - RECT_SELECT_X_DIFF;
 						/*Mix_PlayChannel(0, move, 0);*/
 					}
-					else if((*rect_sel)->x == carte3.x - RECT_SELECT_X_DIFF){
-						(*rect_sel)->x = carte4.x - RECT_SELECT_X_DIFF;
+					else if((*rect_sel)->x == images[carte3].rectangle.x - RECT_SELECT_X_DIFF){
+						(*rect_sel)->x = images[carte4].rectangle.x - RECT_SELECT_X_DIFF;
 						/*Mix_PlayChannel(0, move, 0);*/
 					}
-					else if((*rect_sel)->x == carte2.x - RECT_SELECT_X_DIFF){
-						(*rect_sel)->x = carte3.x - RECT_SELECT_X_DIFF;
+					else if((*rect_sel)->x == images[carte2].rectangle.x - RECT_SELECT_X_DIFF){
+						(*rect_sel)->x = images[carte3].rectangle.x - RECT_SELECT_X_DIFF;
 						/*Mix_PlayChannel(0, move, 0);*/
 					}
-					else if((*rect_sel)->x == carte1.x - RECT_SELECT_X_DIFF){
-						(*rect_sel)->x = carte2.x - RECT_SELECT_X_DIFF;
+					else if((*rect_sel)->x == images[carte1].rectangle.x - RECT_SELECT_X_DIFF){
+						(*rect_sel)->x = images[carte2].rectangle.x - RECT_SELECT_X_DIFF;
 						/*Mix_PlayChannel(0, move, 0);*/
 					}
 				}
 			}
 			else if(event.key.keysym.sym == SDLK_LEFT){
+
 				if((*rect_sel)->y != defausse.y){//on n'est pas sur la premiere option, on peut monter
 					if((*rect_sel)->y == fuir.y - RECT_SELECT_Y_DIFF){
 						(*rect_sel)->y = defausse.y - RECT_SELECT_Y_DIFF;
 						/*Mix_PlayChannel(0, move, 0);*/
 					}
 					else if((*rect_sel)->y == defausse.y - RECT_SELECT_Y_DIFF){
-						(*rect_sel)->x = carte4.x - RECT_SELECT_X_DIFF;
-						(*rect_sel)->y = carte4.y - RECT_SELECT_Y_DIFF;
+						(*rect_sel)->x = images[carte4].rectangle.x - RECT_SELECT_X_DIFF;
+						(*rect_sel)->y = images[carte4].rectangle.y - RECT_SELECT_Y_DIFF;
 						/*Mix_PlayChannel(0, move, 0);*/
 					}
-					else if((*rect_sel)->x == carte4.x - RECT_SELECT_X_DIFF){
-						(*rect_sel)->x = carte3.x - RECT_SELECT_X_DIFF;
+					else if((*rect_sel)->x == images[carte4].rectangle.x - RECT_SELECT_X_DIFF){
+						(*rect_sel)->x = images[carte3].rectangle.x - RECT_SELECT_X_DIFF;
 						/*Mix_PlayChannel(0, move, 0);*/
 					}
-					else if((*rect_sel)->x == carte3.x - RECT_SELECT_X_DIFF){
-						(*rect_sel)->x = carte2.x - RECT_SELECT_X_DIFF;
+					else if((*rect_sel)->x == images[carte3].rectangle.x - RECT_SELECT_X_DIFF){
+						(*rect_sel)->x = images[carte2].rectangle.x - RECT_SELECT_X_DIFF;
 						/*Mix_PlayChannel(0, move, 0);*/
 					}
-					else if((*rect_sel)->x == carte2.x - RECT_SELECT_X_DIFF){
-						(*rect_sel)->x = carte1.x - RECT_SELECT_X_DIFF;
+					else if((*rect_sel)->x == images[carte2].rectangle.x - RECT_SELECT_X_DIFF){
+						(*rect_sel)->x = images[carte1].rectangle.x - RECT_SELECT_X_DIFF;
 						/*Mix_PlayChannel(0, move, 0);*/
 					}
 				}
@@ -98,20 +101,20 @@ int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir,SDL_
 					/*Mix_PlayChannel(1, select, 0);*/
 				}
 				/*SOIN*/
-				else if((*rect_sel)->x == carte1.x - RECT_SELECT_X_DIFF){
+				else if((*rect_sel)->x == images[carte1].rectangle.x - RECT_SELECT_X_DIFF){
 					return 0;
 					/*Mix_PlayChannel(1, select, 0);*/
 				}
-				else if((*rect_sel)->x == carte2.x - RECT_SELECT_X_DIFF){
+				else if((*rect_sel)->x == images[carte2].rectangle.x - RECT_SELECT_X_DIFF){
 					return 1;
 					/*Mix_PlayChannel(1, select, 0);*/
 				}
-				else if((*rect_sel)->x == carte3.x - RECT_SELECT_X_DIFF){
+				else if((*rect_sel)->x == images[carte3].rectangle.x - RECT_SELECT_X_DIFF){
 					return 2;
 					/*Mix_PlayChannel(1, select, 0);*/
 				}
 				/*BOUE*/
-				else if((*rect_sel)->x == carte4.x - RECT_SELECT_X_DIFF){
+				else if((*rect_sel)->x == images[carte4].rectangle.x - RECT_SELECT_X_DIFF){
 					return 3;
 					/*Mix_PlayChannel(1, select, 0);*/
 				}
@@ -144,7 +147,7 @@ int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir,SDL_
 *\brief Permet d'afficher toutes la partie combat
 
 */
-void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi,SDL_Texture *defausse_texture ,SDL_Texture *fuir_texture,SDL_Rect defausse_rect ,SDL_Rect fuir_rect,SDL_Rect *rect_sel,image_t images[NB_TEXTURES]){
+void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi, image_t def, image_t fuir, SDL_Rect *rect_sel,image_t images[NB_TEXTURES]){
   //écran noir puis nettoie l'écran
   SDL_SetRenderDrawColor(rendu,0,0,0,255);
   SDL_RenderClear(rendu);
@@ -165,8 +168,8 @@ void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * e
   SDL_SetRenderDrawColor(rendu, 255,255,255,255);
   SDL_RenderDrawRect(rendu, rect_sel);
   /*Texte Défausse et fuir*/
-  SDL_RenderCopy(rendu, defausse_texture, NULL, &defausse_rect);
-  SDL_RenderCopy(rendu, fuir_texture, NULL, &fuir_rect);
+  SDL_RenderCopy(rendu, def.img, NULL, &def.rectangle);
+  SDL_RenderCopy(rendu, fuir.img, NULL, &fuir.rectangle);
 
   /*Mise en place du personnage*/
   int w=pers->sprites[idle_droite].rectangle.w;
@@ -190,8 +193,8 @@ void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * e
   ennemi->sprite_courant.y = ennemi->sprite_courant.h;
   ennemi->sprites.rectangle.x = 750;
   ennemi->sprites.rectangle.y = 240;
-  ennemi->sprites.rectangle.w *= 3;
-  ennemi->sprites.rectangle.h *= 3;
+  ennemi->sprites.rectangle.w *= 1.5;
+  ennemi->sprites.rectangle.h *= 1.5;
   ennemi->sprites = ennemi->sprites;
   SDL_RenderCopy(rendu, ennemi->sprites.img, &ennemi->sprite_courant, &ennemi->sprites.rectangle);
 
@@ -209,6 +212,15 @@ void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * e
 
 
 
+/**
+*\fn void charge_textures_combat(image_t images[], SDL_Renderer *rendu, carte_t *cartes[])
+
+*\param images[], le tableau contenant les images
+*\param *rendu, le renderer sur lequel on dessine
+*\param *cartes[], tableau de pointeur sur des cartes, contient les cartes utilisées pendant le combat
+
+*\brief Charge dans le tableau images les visuels pour les fonds et les cartes afin de pouvoir les afficher
+*/
 void charge_textures_combat(image_t images[], SDL_Renderer *rendu, carte_t *cartes[]){
 
 	charge_image(FOND_COMBAT_PATH,&images[fond2], rendu);
@@ -220,6 +232,13 @@ void charge_textures_combat(image_t images[], SDL_Renderer *rendu, carte_t *cart
 }
 
 
+/**
+*\fn void donne_valeur_rect_images(image_t images[])
+
+*\param images[], le tableau contenant les images
+
+*\brief Donne les coordonnées et ajuste les tailles des images des cartes et des fonds pour l'écran de combat
+*/
 void donne_valeur_rect_images(image_t images[]){
 
 	images[fond2].rectangle.x= -50;
@@ -245,7 +264,13 @@ void donne_valeur_rect_images(image_t images[]){
 }
 
 
+/**
+*\fn void free_image(image_t images[])
 
+*\param images[], le tableau contenant les images
+
+*\brief Supprime les images des cartes et des fonds utilisées pour le combat
+*/
 void free_image(image_t images[]){
 
 	for(int i = fond; i<= carte4; i++){
@@ -254,6 +279,18 @@ void free_image(image_t images[]){
 }
 
 
+/**
+*\fn void creer_texte_combat(char *txt, image_t *image, int x, int y, SDL_Renderer *rendu, TTF_Font *font)
+
+*\param *txt, le texte que l'on souhaite afficher à l'écran,
+*\param *image, la structure qui contiendra le texte
+*\param x, la position en x où sera placée l'image
+*\param y, la position en y où sera placée l'image
+*\param *rendu, le renderer sur lequel on dessine
+*\param *font, la police utilisée pour écrire le texte
+
+*\brief Permet de donner à une structure image, un texte et les positions où l'afficher à l'écran
+*/
 void creer_texte_combat(char *txt, image_t *image, int x, int y, SDL_Renderer *rendu, TTF_Font *font){
 
 	image->rectangle.x = x;
@@ -263,7 +300,15 @@ void creer_texte_combat(char *txt, image_t *image, int x, int y, SDL_Renderer *r
 }
 
 
+/**
+*\fn void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t carte)
 
+*\param *pers, la structure du personnage
+*\param *ennemi, l'ennemi que le joueur affronte
+*\param carte, la carte que le joueur joue
+
+*\brief permet d'effectuer l'action sélectionnée par le joueur
+*/
 void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t carte){
 
 	if(carte.type == ATTAQUE){
@@ -279,7 +324,14 @@ void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t carte){
 }
 
 
+/**
+*\fn void tour_ennemi(perso_t *pers, ennemi_t *ennemi)
 
+*\param *pers, la structure du personnage
+*\param *ennemi, l'ennemi que le joueur affronte
+
+*\brief permet de faire jouer l'ennemi, actions effectuées selon la situation
+*/
 void tour_ennemi(perso_t *pers, ennemi_t *ennemi){
 
 	pers->pv -= ennemi->attaque;
@@ -293,10 +345,9 @@ void tour_ennemi(perso_t *pers, ennemi_t *ennemi){
 
 *\brief Fonction qui permet de gérer les choix de l'utilisateur via la SDL sur le combat
 */
-void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
+void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_t images[NB_TEXTURES])
 {
 ////////////////Déclaration variables
-	image_t images[NB_TEXTURES];
 
 	carte_t *cartes[NB_CARTES_COMBAT];
 
@@ -332,8 +383,8 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
   	while((ennemi->pv > 0 && perso->pv > 0) && fuite==1 ){
 
   		//affichage de l'écran et déplacement de rectangle de sélection
-  		affichage_combat_personnage(rendu, perso, ennemi, def.img, fui.img, def.rectangle, fui.rectangle, rectangle_selection, images);
-  		choix = deplacement_rectangle_selection_combat(def.rectangle, fui.rectangle, images[carte1].rectangle, images[carte2].rectangle, images[carte3].rectangle, images[carte4].rectangle, &rectangle_selection);
+  		affichage_combat_personnage(rendu, perso, ennemi, def, fui, rectangle_selection, images);
+  		choix = deplacement_rectangle_selection_combat(def.rectangle, fui.rectangle, images, &rectangle_selection);
 
 
   		if(choix == -1){//le joueur fuit le combat
@@ -361,6 +412,7 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
   	TTF_CloseFont(police);
   	SDL_DestroyTexture(def.img);
   	SDL_DestroyTexture(fui.img);
+  	free(rectangle_selection);
 
   	free_image(images);
 }
