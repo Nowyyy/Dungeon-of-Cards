@@ -5,4 +5,4 @@ void donne_valeur_rect_images(image_t images[]);
 void free_image(image_t images[]);
 void tour_ennemi(perso_t *pers, ennemi_t *ennemi);
 void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t carte);
-int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu);
+void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu);

@@ -230,7 +230,7 @@ void donne_valeur_rect_images(image_t images[]){
  	images[fond].rectangle.x=0;
 	images[fond].rectangle.y= 450;
   	images[fond].rectangle.w *= 4;
-	
+
   	images[carte1].rectangle.x=50;
   	images[carte1].rectangle.y= 450;
 
@@ -239,7 +239,7 @@ void donne_valeur_rect_images(image_t images[]){
 
  	images[carte3].rectangle.x=450;
   	images[carte3].rectangle.y= 450;
-	
+
   	images[carte4].rectangle.x=650;
   	images[carte4].rectangle.y= 450;
 }
@@ -293,7 +293,7 @@ void tour_ennemi(perso_t *pers, ennemi_t *ennemi){
 
 *\brief Fonction qui permet de gérer les choix de l'utilisateur via la SDL sur le combat
 */
-int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
+void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
 {
 ////////////////Déclaration variables
 	image_t images[NB_TEXTURES];
@@ -306,7 +306,7 @@ int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
   	image_t fui;
 
   	int choix=0, i,fuite=1, alea = rand()%2;
-  
+
   	TTF_Font * police = NULL;
 
   	police=TTF_OpenFont(FONT_PATH,40);
@@ -334,7 +334,7 @@ int combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu)
   		//affichage de l'écran et déplacement de rectangle de sélection
   		affichage_combat_personnage(rendu, perso, ennemi, def.img, fui.img, def.rectangle, fui.rectangle, rectangle_selection, images);
   		choix = deplacement_rectangle_selection_combat(def.rectangle, fui.rectangle, images[carte1].rectangle, images[carte2].rectangle, images[carte3].rectangle, images[carte4].rectangle, &rectangle_selection);
-		
+
 
   		if(choix == -1){//le joueur fuit le combat
   			perso->fuite = 1;

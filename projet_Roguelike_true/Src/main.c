@@ -15,11 +15,8 @@
 #include "../include/chargement.h"
 #include "../include/sauvegardefonc.h"
 #include "../include/confirmer_nouveau.h"
-<<<<<<< Updated upstream
 #include "../include/fonctions.h"
-=======
 #include "../include/animation.h"
->>>>>>> Stashed changes
 
 
 
