@@ -23,9 +23,12 @@
 int main(int argc, char* args[]){
 
 //************************* DECLARATION VARIABLES************************************************************
+	malloc_cpt = 0;
 
 	SDL_Window *window;
 	SDL_Renderer *rendu;
+	malloc_cpt++;
+	malloc_cpt++;
 
 	srand(time(NULL));
 
@@ -37,14 +40,14 @@ int main(int argc, char* args[]){
 
 	init_liste();
 
-
 	perso_t pers;
-	carte_t *cartes = NULL;
 
 	//On initialise les samples et musiques utilisés dans le jeu
 
 	Mix_Chunk *sounds[NB_SON];
+	malloc_cpt++;
 	Mix_Music *musics[NB_MUSIC];
+	malloc_cpt++;
 
 	Mix_OpenAudio(44100, AUDIO_S16SYS,6, 4096);
 	Mix_AllocateChannels(16);
@@ -61,16 +64,20 @@ int main(int argc, char* args[]){
 	}
 	else{
 
-		if(init_or_quit_ttf(1))//initialise TTF (permet s d'écrire sur l'écran)
+		if(init_or_quit_ttf(1)){//initialise TTF (permet s d'écrire sur l'écran)
 			printf("Erreur init TTF\n");
+			malloc_cpt++;
+		}
 		else{
 
 			if((IMG_Init(IMG_INIT_PNG)&IMG_INIT_PNG) != IMG_INIT_PNG){
 				printf("Erreur init sdl_image\n");
+				malloc_cpt++;
 			}
 			else{
 
 				police = TTF_OpenFont(FONT_PATH, 50);//charge la police pour écrire a l'ecran
+				malloc_cpt++;
 
 				if(!police)
 					printf("Erreur police\n");
@@ -155,13 +162,18 @@ int main(int argc, char* args[]){
 	}
 //************************* FERMETURES ***********************************************************************
 	IMG_Quit();
+	malloc_cpt--;
 	TTF_CloseFont(police); //on libère la police
+	malloc_cpt--;
 	quit_sdl(&rendu, &window);
+	malloc_cpt-=2;
 	SDL_Quit();
 	init_or_quit_ttf(0);//quitte TTF
+	malloc_cpt--;
 
 	//On libère toutes les variables de son
 	free_mixer(musics, sounds);
+	malloc_cpt -= 2;
 
 	en_tete();
 
@@ -169,9 +181,12 @@ int main(int argc, char* args[]){
 		oter_elt();
 		suivant();
 	}
+	free(drapeau);
+	malloc_cpt--;
 
 
 	printf("Tout est fermé\n");//affiche dans la console
+	printf("%d ptrs restants\n", malloc_cpt);
 
 	return 0;
 }

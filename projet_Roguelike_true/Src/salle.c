@@ -342,6 +342,7 @@ void ajoute_salle_decouverte(mini_map_t *map, int indice){
 void ajoute_ennemi(ennemi_t **ennemi, int type, SDL_Renderer * rendu){
 
   *ennemi = creer_ennemi(50, 50, 10, 10, type, rendu);
+  malloc_cpt++;
 
   //permet de placer l'ennemi sans qu'il soit bloqué dans une texture de porte ou de mur
   do{

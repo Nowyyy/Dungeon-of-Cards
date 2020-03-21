@@ -25,15 +25,23 @@
 void charge_sprites_personnage(image_t sprites[], SDL_Renderer *rendu){
 
 	charge_image(SPRITE1_PATH, &sprites[idle_droite], rendu);
+	malloc_cpt++;
 	charge_image(SPRITE2_PATH, &sprites[idle_gauche], rendu);
+	malloc_cpt++;
 	charge_image(SPRITE3_PATH, &sprites[droite1], rendu);
+	malloc_cpt++;
 	charge_image(SPRITE4_PATH, &sprites[droite2], rendu);
+	malloc_cpt++;
 	charge_image(SPRITE5_PATH, &sprites[gauche2], rendu);
+	malloc_cpt++;
 	charge_image(SPRITE6_PATH, &sprites[gauche1], rendu);
+	malloc_cpt++;
 	charge_image(SPRITE7_PATH, &sprites[dead], rendu);
+	malloc_cpt++;
 	charge_image(SPRITE8_PATH, &sprites[gauche3], rendu);
+	malloc_cpt++;
 	charge_image(SPRITE9_PATH, &sprites[droite3], rendu);
-
+malloc_cpt++;
 	sprites[courant] = sprites[idle_droite];
 }
 
@@ -462,12 +470,16 @@ void creer_texture_depuis_char(image_t *texte_pv, image_t *texte_etage, perso_t 
 	int x_pv = WIN_WIDTH *0.08, x_etage = WIN_WIDTH *0.08, y_pv = WIN_HEIGHT * 0.10, y_etage = WIN_HEIGHT * 0.02;
 
 	police = TTF_OpenFont(FONT_PATH, 30);
+	malloc_cpt++;
 
 	sprintf(pv, "%d / %d", perso.pv, PV_DEPART_PERSONNAGE);
 	sprintf(etage, "Etage %d", perso.etage);
 
 	get_text_and_rect(rendu, x_etage, y_etage, etage, police, &texte_etage->img, &texte_etage->rectangle);
 	get_text_and_rect(rendu, x_pv, y_pv, pv, police, &texte_pv->img, &texte_pv->rectangle);
+	malloc_cpt++;
+	malloc_cpt++;
 
 	TTF_CloseFont(police); //on libère la police
+	malloc_cpt--;
 }

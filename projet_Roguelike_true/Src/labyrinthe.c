@@ -35,18 +35,31 @@
 void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu){
 
 	charge_image(SOL1_PATH,&images[sol], rendu);
+	malloc_cpt++;
 	charge_image(MUR1_PATH,&images[mur], rendu);
+	malloc_cpt++;
 	charge_image(MUR2_PATH,&images[mur2], rendu);
+	malloc_cpt++;
 	charge_image(PORTE_PATH,&images[porte], rendu);
+	malloc_cpt++;
 	charge_image(SOL2_PATH,&images[sol2], rendu);
+	malloc_cpt++;
 	charge_image(SOL3_PATH,&images[sol3], rendu);
+	malloc_cpt++;
 	charge_image(COMMANDES_PATH, &images[commandes], rendu);
+	malloc_cpt++;
 	charge_image(INSTRUCTIONS_PATH, &images[instructions], rendu);
+	malloc_cpt++;
 	charge_image(GAMEOVER_PATH, &images[gameover], rendu);
+	malloc_cpt++;
 	charge_image(DEATHLIGHT_PATH, &images[deathlight], rendu);
+	malloc_cpt++;
 	charge_image(HEART_PATH, &images[heart], rendu);
+	malloc_cpt++;
 	charge_image(TRAPDOOR_PATH, &images[trapdoor], rendu);
+	malloc_cpt++;
 	charge_image(TRAPDOOR_PATH, &images[trapdoor2], rendu);
+	malloc_cpt++;
 
 	creer_texture_depuis_char(&images[pv], &images[etage], *pers, rendu);
 
@@ -305,6 +318,7 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
 
 
 	get_text_and_rect(rendu, x_cmpPartie, y_cmpPartie, cmpPartie, police, &cmpPartie_texture, &cmpPartie_text);
+	malloc_cpt++;
 	SDL_RenderCopy(rendu, cmpPartie_texture, NULL, &cmpPartie_text);
 
 	SDL_RenderPresent(rendu);
@@ -315,6 +329,7 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
  	*etat = mainMenu;
 
  	SDL_DestroyTexture(cmpPartie_texture);
+ 	malloc_cpt--;
 }
 
 
@@ -561,7 +576,9 @@ void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Rendere
 		pers->pv_old = pers->pv;
 		pers->etage_old = pers->etage;
 		SDL_DestroyTexture(pv->img);
+		malloc_cpt--;
 		SDL_DestroyTexture(etage->img);
+		malloc_cpt--;
 		creer_texture_depuis_char(pv, etage, *pers, rendu);
 	}
 }
@@ -752,11 +769,15 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	while (SDL_PollEvent (&event));
 
 //////////////////////// On libère tous les emplacements mémoires utilisés par les images ////
-	for(int i = 0; i < NB_SPRITES_PERSONNAGE; i++)
+	for(int i = 0; i < NB_SPRITES_PERSONNAGE; i++){
+		malloc_cpt--;
 		SDL_DestroyTexture(pers->sprites[i].img);
+	}
 
-	for(int i = sol; i < fond; i++)
+	for(int i = sol; i < fond; i++){
+		malloc_cpt--;
 		SDL_DestroyTexture(images[i].img);
+	}
 
 	destruction_tous_ennemis(salles, taille);
 	destruction_des_coffres(salles, taille);

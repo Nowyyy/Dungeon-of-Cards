@@ -31,6 +31,7 @@ int initialisation_sdl(SDL_Window **window, SDL_Renderer **rendu){
 
 	if(rendu == NULL){
 		SDL_DestroyWindow(*window);
+		malloc_cpt--;
 		return 1;
 	}
 

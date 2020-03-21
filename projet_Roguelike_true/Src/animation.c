@@ -29,6 +29,7 @@ void animation_niveau(perso_t *perso, SDL_Renderer *rendu){
   int char_alea = rand()%(9-4)+4;
   int cmp = 0, cmp2=0;
   police = TTF_OpenFont(FONT_PATH, 30);
+  malloc_cpt++;
   SDL_Rect rect;
  	rect.w = 1080;
  	rect.h = 620;
@@ -39,6 +40,7 @@ void animation_niveau(perso_t *perso, SDL_Renderer *rendu){
   get_text_and_rect(rendu, p1_x, p1_y, cp1, police, &p1.img, &p1.rectangle);
   get_text_and_rect(rendu, p2_x, p2_y, cp2, police, &p2.img, &p2.rectangle);
   get_text_and_rect(rendu, p3_x, p3_y, cp3, police, &p3.img, &p3.rectangle);
+  malloc_cpt+=5;
 
 
   //Animation
@@ -93,11 +95,13 @@ void animation_niveau(perso_t *perso, SDL_Renderer *rendu){
   }
 
 	TTF_CloseFont(police); //on libère la police
+  malloc_cpt--;
   SDL_DestroyTexture(texte_etage.img);
   SDL_DestroyTexture(texte_charg.img);
   SDL_DestroyTexture(p1.img);
   SDL_DestroyTexture(p2.img);
   SDL_DestroyTexture(p3.img);
+  malloc_cpt-=5;
 
 
 }

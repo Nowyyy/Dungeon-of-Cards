@@ -367,3 +367,6 @@ typedef struct hud_combat_s{
 // Declaration des listes (drapeau et element courant)
 element_t* drapeau;
 element_t* ec;
+
+
+int malloc_cpt;

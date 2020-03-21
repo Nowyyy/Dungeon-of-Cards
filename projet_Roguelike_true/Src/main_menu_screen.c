@@ -150,10 +150,13 @@ void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police,
 	SDL_Rect jouer_text, charger_text, quitter_text;
 	SDL_Rect *rectangle_selection = malloc(sizeof(SDL_Rect));
 	SDL_Texture *jouer_texture, *charger_texture, *quitter_texture;
+	malloc_cpt+=4;
 
 	//initialisation du logo du jeu
 	image_t logo[1];
 	charge_image("../Images/logo.png", &logo[0], rendu);
+	malloc_cpt++;
+
 	logo[0].rectangle.x = 140;
 	logo[0].rectangle.y = 60;
 
@@ -192,5 +195,5 @@ void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police,
 	SDL_DestroyTexture(charger_texture);
 	SDL_DestroyTexture(quitter_texture);
 	SDL_DestroyTexture(logo[0].img);
-
+	malloc_cpt-=5;
 }

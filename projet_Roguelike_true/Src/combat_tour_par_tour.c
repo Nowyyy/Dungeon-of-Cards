@@ -41,14 +41,13 @@ int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, ima
 		if(event.type == SDL_KEYDOWN){	//touche enfoncée
 
 			if(event.key.keysym.sym == SDLK_RIGHT){
-				if((*rect_sel)->y != fuir.y){//on n'est pas sur la dernière option, on peut descendre
-					if((*rect_sel)->y == defausse.y - RECT_SELECT_Y_DIFF){
-						(*rect_sel)->y = fuir.y - RECT_SELECT_Y_DIFF;
-						/*Mix_PlayChannel(0, move, 0);*/
-					}
-					else if((*rect_sel)->x == images[carte4].rectangle.x - RECT_SELECT_X_DIFF){
+				if((*rect_sel)->x < defausse.x){//on n'est pas sur la dernière option, on peut descendre
+					
+					if((*rect_sel)->x == images[carte4].rectangle.x - RECT_SELECT_X_DIFF){
 						(*rect_sel)->y = defausse.y - RECT_SELECT_Y_DIFF;
 						(*rect_sel)->x = defausse.x - RECT_SELECT_X_DIFF;
+						(*rect_sel)->w = defausse.w + RECT_SELECT_X_DIFF * 2;
+						(*rect_sel)->h = defausse.h + RECT_SELECT_Y_DIFF * 2;
 						/*Mix_PlayChannel(0, move, 0);*/
 					}
 					else if((*rect_sel)->x == images[carte3].rectangle.x - RECT_SELECT_X_DIFF){
@@ -67,14 +66,20 @@ int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, ima
 			}
 			else if(event.key.keysym.sym == SDLK_LEFT){
 
-				if((*rect_sel)->y != defausse.y){//on n'est pas sur la premiere option, on peut monter
-					if((*rect_sel)->y == fuir.y - RECT_SELECT_Y_DIFF){
-						(*rect_sel)->y = defausse.y - RECT_SELECT_Y_DIFF;
-						/*Mix_PlayChannel(0, move, 0);*/
-					}
-					else if((*rect_sel)->y == defausse.y - RECT_SELECT_Y_DIFF){
+				if((*rect_sel)->x > images[carte1].rectangle.x){//on n'est pas sur la premiere option, on peut aller a gauche
+					
+					if((*rect_sel)->y == defausse.y - RECT_SELECT_Y_DIFF){
 						(*rect_sel)->x = images[carte4].rectangle.x - RECT_SELECT_X_DIFF;
 						(*rect_sel)->y = images[carte4].rectangle.y - RECT_SELECT_Y_DIFF;
+						(*rect_sel)->h = images[carte4].rectangle.h + RECT_SELECT_Y_DIFF * 2;
+						(*rect_sel)->w = images[carte4].rectangle.w + RECT_SELECT_X_DIFF * 2;
+						/*Mix_PlayChannel(0, move, 0);*/
+					}
+					else if((*rect_sel)->x == fuir.x - RECT_SELECT_X_DIFF){
+						(*rect_sel)->x = images[carte4].rectangle.x - RECT_SELECT_X_DIFF;
+						(*rect_sel)->y = images[carte4].rectangle.y - RECT_SELECT_Y_DIFF;
+						(*rect_sel)->h = images[carte4].rectangle.h + RECT_SELECT_Y_DIFF * 2;
+						(*rect_sel)->w = images[carte4].rectangle.w + RECT_SELECT_X_DIFF * 2;
 						/*Mix_PlayChannel(0, move, 0);*/
 					}
 					else if((*rect_sel)->x == images[carte4].rectangle.x - RECT_SELECT_X_DIFF){
@@ -89,6 +94,18 @@ int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, ima
 						(*rect_sel)->x = images[carte1].rectangle.x - RECT_SELECT_X_DIFF;
 						/*Mix_PlayChannel(0, move, 0);*/
 					}
+				}
+			}
+			else if(event.key.keysym.sym == SDLK_UP){//touche haut
+				if((*rect_sel)->y == fuir.y - RECT_SELECT_Y_DIFF){
+						(*rect_sel)->y = defausse.y - RECT_SELECT_Y_DIFF;
+						/*Mix_PlayChannel(0, move, 0);*/
+				}
+			}
+			else if(event.key.keysym.sym == SDLK_DOWN){//touche bas
+				if((*rect_sel)->y == defausse.y - RECT_SELECT_Y_DIFF){
+						(*rect_sel)->y = fuir.y - RECT_SELECT_Y_DIFF;
+						/*Mix_PlayChannel(0, move, 0);*/
 				}
 			}
 			else if(event.key.keysym.sym == SDLK_RETURN){//touche entrée
@@ -238,11 +255,17 @@ hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action){
 void charge_textures_combat(image_t images[], SDL_Renderer *rendu, carte_t *cartes[]){
 
 	charge_image(FOND_COMBAT_PATH,&images[fond2], rendu);
+	malloc_cpt++;
 	charge_image(COMBAT_PATH,&images[fond], rendu);
+	malloc_cpt++;
 	charge_image(cartes[0]->path,&images[carte1], rendu);
+	malloc_cpt++;
 	charge_image(cartes[1]->path,&images[carte2], rendu);
+	malloc_cpt++;
 	charge_image(cartes[2]->path,&images[carte3], rendu);
+	malloc_cpt++;
 	charge_image(cartes[3]->path,&images[carte4], rendu);
+	malloc_cpt++;
 }
 
 
@@ -289,6 +312,7 @@ void free_image(image_t images[]){
 
 	for(int i = fond; i<= carte4; i++){
 		SDL_DestroyTexture(images[i].img);
+		malloc_cpt--;
 	}
 }
 
@@ -349,6 +373,7 @@ void creer_texte_combat(char *txt, image_t *image, int x, int y, SDL_Renderer *r
 	image->rectangle.y = y;
 
 	get_text_and_rect(rendu,image->rectangle.x, image->rectangle.y, txt, font, &image->img, &image->rectangle);
+	malloc_cpt++;
 }
 
 
@@ -384,6 +409,7 @@ void create_hud(hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, ennemi_t ennem
 	}
 	else{
 		SDL_DestroyTexture(hud_pers->pv.img);
+		malloc_cpt-=4;
 		SDL_DestroyTexture(hud_pers->nom.img);
 		SDL_DestroyTexture(hud_ennemi->nom.img);
 		SDL_DestroyTexture(hud_ennemi->pv.img);
@@ -430,8 +456,10 @@ void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hu
 
 	char joueur[50];
 
-	if(action->existe)
+	if(action->existe){
+		malloc_cpt--;
 		SDL_DestroyTexture(action->texte.img);
+	}
 
 	if(tour){
 
@@ -482,6 +510,7 @@ void detruire_action_temp(hud_combat_t *action){
 	if(action->existe){
 		action->existe = 0;
 		SDL_DestroyTexture(action->texte.img);
+		malloc_cpt--;
 	}
 }
 
@@ -499,7 +528,10 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
 
 	carte_t *cartes[NB_CARTES_COMBAT];
 
+	SDL_Event event;
+
 	SDL_Rect *rectangle_selection = malloc(sizeof(SDL_Rect));
+	malloc_cpt++;
 
   	image_t def, fui;
 
@@ -510,6 +542,7 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
   	TTF_Font * police = NULL;
 
   	police=TTF_OpenFont(FONT_PATH,40);
+  	malloc_cpt++;
 
 //////////////Intialisation, chargement, allocation
 
@@ -559,10 +592,9 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
   				tour_joueur(perso, ennemi, *cartes[choix]);
   				actualisation_apres_tour(perso, ennemi, *cartes[choix], &action, &hud_pers, &hud_ennemi, rendu, police, alea);
   				affichage_combat_personnage(rendu, perso, ennemi, def, fui, rectangle_selection, images, hud_ennemi, hud_pers, action);
-  				SDL_Delay(wait);
+  				SDL_Delay(wait* 2);
 
   				if(ennemi->pv > 0){
-  					SDL_Delay(wait);
 	  				tour_ennemi(perso, ennemi);
 	  				actualisation_apres_tour(perso, ennemi, *cartes[choix], &action, &hud_pers, &hud_ennemi, rendu, police, alea-1);
 	  				affichage_combat_personnage(rendu, perso, ennemi, def, fui, rectangle_selection, images, hud_ennemi, hud_pers, action);
@@ -574,10 +606,9 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
   				tour_ennemi(perso, ennemi);
   				actualisation_apres_tour(perso, ennemi, *cartes[choix], &action, &hud_pers, &hud_ennemi, rendu, police, alea);
   				affichage_combat_personnage(rendu, perso, ennemi, def, fui, rectangle_selection, images, hud_ennemi, hud_pers, action);
-  				SDL_Delay(wait);
+  				SDL_Delay(wait* 2);
 
   				if(perso->pv > 0){
-  					SDL_Delay(wait);
 	  				tour_joueur(perso, ennemi, *cartes[choix]);
 	  				actualisation_apres_tour(perso, ennemi, *cartes[choix], &action, &hud_pers, &hud_ennemi, rendu, police, alea + 1);
 	  				affichage_combat_personnage(rendu, perso, ennemi, def, fui, rectangle_selection, images, hud_ennemi, hud_pers, action);
@@ -586,6 +617,7 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
   			}
   		}
   		detruire_action_temp(&action);
+  		while(SDL_PollEvent(&event));
 	}
 
   	TTF_CloseFont(police);
@@ -598,4 +630,6 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
   	free(rectangle_selection);
 
   	free_image(images);
+
+  	malloc_cpt-=9;
 }
