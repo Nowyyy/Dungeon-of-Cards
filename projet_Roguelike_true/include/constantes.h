@@ -91,6 +91,16 @@
 #define EMPLACEMENT_DEPART_DESSIN_SALLE_X 256
 #define EMPLACEMENT_DEPART_DESSIN_SALLE_Y 40
 
+#define EMPLACEMENT_HUD_ENNEMI_X (WIN_WIDTH * 0.85)
+#define EMPLACEMENT_HUD_ENNEMI_Y 0
+#define HUD_ENNEMI_W 200
+#define HUD_ENNEMI_H 150
+
+#define EMPLACEMENT_HUD_PERS_X 0
+#define EMPLACEMENT_HUD_PERS_Y 0
+#define HUD_PERS_W 200
+#define HUD_PERS_H 150
+
 #define VITESSE_PERSO 1
 
 #define RECT_SELECT_Y_DIFF 25
@@ -231,7 +241,7 @@ typedef struct{
 *\Permet de définir un ennemi
 */
 typedef struct ennemi_s {
-  int pv;/**Point de vie d'un ennemi*/
+  int pv, pv_max, pv_old;/**Point de vie d'un ennemi*/
   int vitesse;/**Vitesse d'un ennemi*/
   int attaque;/**Attaque d'un ennemi*/
   int defense;/**Défense d'un ennemi*/
@@ -345,6 +355,14 @@ typedef struct element {
   struct element* pred;
   struct element* succ;
 } element_t;
+
+
+typedef struct hud_combat_s{
+  
+  image_t pv, nom, texte;
+  SDL_Rect emplacement;
+  int existe;
+}hud_combat_t;
 
 // Declaration des listes (drapeau et element courant)
 element_t* drapeau;

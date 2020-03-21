@@ -147,7 +147,8 @@ int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, ima
 *\brief Permet d'afficher toutes la partie combat
 
 */
-void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi, image_t def, image_t fuir, SDL_Rect *rect_sel,image_t images[NB_TEXTURES]){
+void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi, image_t def, image_t fuir, SDL_Rect *rect_sel,image_t images[NB_TEXTURES],
+hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action){
   //écran noir puis nettoie l'écran
   SDL_SetRenderDrawColor(rendu,0,0,0,255);
   SDL_RenderClear(rendu);
@@ -155,6 +156,19 @@ void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * e
   SDL_RenderCopy(rendu, images[fond2].img, NULL, &images[fond2].rectangle);
 
   SDL_RenderCopy(rendu, images[fond].img, NULL, &images[fond].rectangle);
+
+  SDL_RenderFillRect(rendu, &pers_hud.emplacement);
+  SDL_RenderCopy(rendu, pers_hud.pv.img, NULL, &pers_hud.pv.rectangle);
+  SDL_RenderCopy(rendu, pers_hud.nom.img, NULL, &pers_hud.nom.rectangle);
+
+  SDL_RenderFillRect(rendu, &ennemi_hud.emplacement);
+  SDL_RenderCopy(rendu, ennemi_hud.pv.img, NULL, &ennemi_hud.pv.rectangle);
+  SDL_RenderCopy(rendu, ennemi_hud.nom.img, NULL, &ennemi_hud.nom.rectangle);
+
+  if(action.existe){
+  	SDL_RenderFillRect(rendu, &action.emplacement);
+ 	SDL_RenderCopy(rendu, action.texte.img, NULL, &action.texte.rectangle);
+  }
 
   /*Mise en place des cartes */
   SDL_RenderCopy(rendu, images[carte1].img, NULL, &images[carte1].rectangle);
@@ -280,27 +294,6 @@ void free_image(image_t images[]){
 
 
 /**
-*\fn void creer_texte_combat(char *txt, image_t *image, int x, int y, SDL_Renderer *rendu, TTF_Font *font)
-
-*\param *txt, le texte que l'on souhaite afficher à l'écran,
-*\param *image, la structure qui contiendra le texte
-*\param x, la position en x où sera placée l'image
-*\param y, la position en y où sera placée l'image
-*\param *rendu, le renderer sur lequel on dessine
-*\param *font, la police utilisée pour écrire le texte
-
-*\brief Permet de donner à une structure image, un texte et les positions où l'afficher à l'écran
-*/
-void creer_texte_combat(char *txt, image_t *image, int x, int y, SDL_Renderer *rendu, TTF_Font *font){
-
-	image->rectangle.x = x;
-	image->rectangle.y = y;
-
-	get_text_and_rect(rendu,image->rectangle.x, image->rectangle.y, txt, font, &image->img, &image->rectangle);
-}
-
-
-/**
 *\fn void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t carte)
 
 *\param *pers, la structure du personnage
@@ -337,6 +330,161 @@ void tour_ennemi(perso_t *pers, ennemi_t *ennemi){
 	pers->pv -= ennemi->attaque;
 }
 
+
+/**
+*\fn void creer_texte_combat(char *txt, image_t *image, int x, int y, SDL_Renderer *rendu, TTF_Font *font)
+
+*\param *txt, le texte que l'on souhaite afficher à l'écran,
+*\param *image, la structure qui contiendra le texte
+*\param x, la position en x où sera placée l'image
+*\param y, la position en y où sera placée l'image
+*\param *rendu, le renderer sur lequel on dessine
+*\param *font, la police utilisée pour écrire le texte
+
+*\brief Permet de donner à une structure image, un texte et les positions où l'afficher à l'écran
+*/
+void creer_texte_combat(char *txt, image_t *image, int x, int y, SDL_Renderer *rendu, TTF_Font *font){
+
+	image->rectangle.x = x;
+	image->rectangle.y = y;
+
+	get_text_and_rect(rendu,image->rectangle.x, image->rectangle.y, txt, font, &image->img, &image->rectangle);
+}
+
+
+/**
+*\fn void create_hud(hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, ennemi_t ennemi, perso_t pers, SDL_Renderer *rendu, TTF_Font *font)
+
+*\param
+*\param *rendu, le renderer sur lequel on dessine
+*\param *font, la police utilisée pour écrire le texte
+
+*\brief Créer un HUD pour le perso et l'ennemi s'il n'existe pas, sinon détruit les textures précédentes pour mettre à jour
+*/
+void create_hud(hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, ennemi_t ennemi, perso_t pers, SDL_Renderer *rendu, TTF_Font *font){
+
+	char pv_pers[20], pv_ennemi[20], nom_pers[] = "Joueur";
+
+	sprintf(pv_pers, "PV  %d / %d", pers.pv, PV_DEPART_PERSONNAGE);
+	sprintf(pv_ennemi, "PV  %d / %d", ennemi.pv, ennemi.pv_max);
+
+	if(hud_ennemi->existe == 0 || hud_pers->existe == 0){
+
+		hud_ennemi->emplacement.x = EMPLACEMENT_HUD_ENNEMI_X;
+		hud_ennemi->emplacement.y = EMPLACEMENT_HUD_ENNEMI_Y;
+		hud_ennemi->emplacement.w = HUD_ENNEMI_W;
+		hud_ennemi->emplacement.h = HUD_ENNEMI_H;
+		hud_ennemi->existe = 1;
+
+		hud_pers->emplacement.x = EMPLACEMENT_HUD_PERS_X;
+		hud_pers->emplacement.y = EMPLACEMENT_HUD_PERS_Y;
+		hud_pers->emplacement.w = HUD_PERS_W;
+		hud_pers->emplacement.h = HUD_PERS_H;
+		hud_pers->existe = 1;
+	}
+	else{
+		SDL_DestroyTexture(hud_pers->pv.img);
+		SDL_DestroyTexture(hud_pers->nom.img);
+		SDL_DestroyTexture(hud_ennemi->nom.img);
+		SDL_DestroyTexture(hud_ennemi->pv.img);
+	}
+
+	creer_texte_combat(nom_pers, &hud_pers->nom, EMPLACEMENT_HUD_PERS_X + HUD_PERS_W *0.2, EMPLACEMENT_HUD_PERS_Y + HUD_PERS_H *0.1, rendu, font);
+	creer_texte_combat(pv_pers, &hud_pers->pv, hud_pers->nom.rectangle.x, hud_pers->nom.rectangle.h + hud_pers->nom.rectangle.y + 5, rendu, font);
+	creer_texte_combat(ennemi.nom, &hud_ennemi->nom, EMPLACEMENT_HUD_ENNEMI_X + HUD_ENNEMI_W * 0.15, EMPLACEMENT_HUD_ENNEMI_Y + HUD_ENNEMI_H * 0.1, rendu, font);
+	creer_texte_combat(pv_ennemi, &hud_ennemi->pv, hud_ennemi->nom.rectangle.x, hud_ennemi->nom.rectangle.h + hud_ennemi->nom.rectangle.y + 5, rendu, font);
+}
+
+/**
+*\fn void init_hud_action(hud_combat_t *action)
+
+*\param *action, le hud qui affichera l'action effectuée par le joueur ou l'ennemi
+
+*\brief initialise certaines valeurs du hud action
+*/
+void init_hud_action(hud_combat_t *action){
+
+	action->existe = 0;
+
+	action->emplacement.x = WIN_WIDTH / 2;
+	action->emplacement.y = 20;
+}
+
+
+
+/**
+*\fn void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hud_combat_t *action, hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, SDL_Renderer *rendu, TTF_Font *font, int  tour)
+
+*\param *action, le hud qui affichera l'action effectuée par le joueur ou l'ennemi
+*\param *pers, la structure du personnage
+*\param *ennemi, la structure de l'ennemi
+*\param carte, la carte utilisée par le joueur lors de ce tour
+*\param *hud_pers, le hud du personnage
+*\param *hud_ennemi, le hud de l'ennemi
+*\param *rendu, le renderer sur lequel on dessine
+*\param *font, la police utilisée pour écrire le texte
+
+*\brief Actualise les huds des perso et ennemi, prépare le texte a affichant indiquant l'action effectuée
+*/
+void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hud_combat_t *action, hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, SDL_Renderer *rendu, TTF_Font *font, int  tour){
+
+	char joueur[50];
+
+	if(action->existe)
+		SDL_DestroyTexture(action->texte.img);
+
+	if(tour){
+
+		create_hud(hud_pers, hud_ennemi, *ennemi, *pers, rendu, font); //actualisation des pdv dans le hud
+
+		if(carte.type == ATTAQUE)
+			sprintf(joueur, "Vous utilisez %s, %s perd %d points de vie", carte.nom, ennemi->nom, carte.valeur);
+		else
+			sprintf(joueur, "Vous utilisez %s, Vous recuperez %d points de vie", carte.nom, carte.valeur);
+
+		action->existe = 1;
+
+		creer_texte_combat(joueur, &action->texte, action->emplacement.x, action->emplacement.y, rendu, font);
+	}
+	else{
+
+		create_hud(hud_pers, hud_ennemi, *ennemi, *pers, rendu, font); //actualisation des pdv dans le hud
+
+		if(ennemi->pv != ennemi->pv_old)
+			sprintf(joueur, "%s se soigne de %d points de vie", ennemi->nom, ennemi->defense);
+		else
+			sprintf(joueur, "%s attaque ! Vous perdez %d points de vie", ennemi->nom, ennemi->attaque);
+
+		action->existe = 1;
+
+		creer_texte_combat(joueur, &action->texte, action->emplacement.x, action->emplacement.y, rendu, font);
+	}
+
+	action->emplacement.x = WIN_WIDTH / 2 - action->texte.rectangle.w /2;
+	action->emplacement.w = action->texte.rectangle.w + 40;
+	action->emplacement.h = action->texte.rectangle.h + 40;
+	action->texte.rectangle.x = action->emplacement.x + 20;
+	action->texte.rectangle.y = action->emplacement.y + 20; 
+
+	ennemi->pv_old = ennemi->pv;
+}
+
+
+/**
+*\fn void detruire_action_temp(hud_combat_t *action)
+
+*\param *action, la zone de texte détaillant les coups échangés entre le joueur et l'ennemi
+
+*\brief permet de détruire l'image présente dans le champs texte de action
+*/
+void detruire_action_temp(hud_combat_t *action){
+
+	if(action->existe){
+		action->existe = 0;
+		SDL_DestroyTexture(action->texte.img);
+	}
+}
+
 /**
 *\fn void combat(perso_t * perso, ennemi_t * ennemi, SDL_Renderer *rendu)
 *\param *perso Pointeur sur une structure qui permet de prendre les caractéristiques du personnage qui vont être modifié par l'action du personnage
@@ -353,17 +501,25 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
 
 	SDL_Rect *rectangle_selection = malloc(sizeof(SDL_Rect));
 
-  	image_t def;
-  	image_t fui;
+  	image_t def, fui;
 
-  	int choix=0, i,fuite=1, alea = rand()%2;
+  	hud_combat_t hud_pers, hud_ennemi, action;
+
+  	int choix=0, i,fuite=1, alea = rand()%2, wait = 600, pv_ennemi = ennemi->pv;
 
   	TTF_Font * police = NULL;
 
   	police=TTF_OpenFont(FONT_PATH,40);
 
 //////////////Intialisation, chargement, allocation
+
+  	hud_ennemi.existe = 0;
+  	hud_pers.existe = 0;
+
 	tire_carte_deck(cartes);
+	init_hud_action(&action);
+
+	create_hud(&hud_pers, &hud_ennemi, *ennemi, *perso, rendu, police);
 
 	charge_textures_combat(images, rendu, cartes);
 
@@ -383,12 +539,13 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
   	while((ennemi->pv > 0 && perso->pv > 0) && fuite==1 ){
 
   		//affichage de l'écran et déplacement de rectangle de sélection
-  		affichage_combat_personnage(rendu, perso, ennemi, def, fui, rectangle_selection, images);
+  		affichage_combat_personnage(rendu, perso, ennemi, def, fui, rectangle_selection, images, hud_ennemi, hud_pers, action);
   		choix = deplacement_rectangle_selection_combat(def.rectangle, fui.rectangle, images, &rectangle_selection);
 
 
   		if(choix == -1){//le joueur fuit le combat
   			perso->fuite = 1;
+  			ennemi->pv = pv_ennemi;
   			fuite = 0;
   		}
   		else if(choix == -2){//défausse de carte(s)
@@ -399,14 +556,35 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
   			if(alea){//le joueur commence
 
   				tour_joueur(perso, ennemi, *cartes[choix]);
-  				tour_ennemi(perso, ennemi);
+  				actualisation_apres_tour(perso, ennemi, *cartes[choix], &action, &hud_pers, &hud_ennemi, rendu, police, alea);
+  				affichage_combat_personnage(rendu, perso, ennemi, def, fui, rectangle_selection, images, hud_ennemi, hud_pers, action);
+  				SDL_Delay(wait);
+
+  				if(ennemi->pv > 0){
+  					SDL_Delay(wait);
+	  				tour_ennemi(perso, ennemi);
+	  				actualisation_apres_tour(perso, ennemi, *cartes[choix], &action, &hud_pers, &hud_ennemi, rendu, police, alea);
+	  				affichage_combat_personnage(rendu, perso, ennemi, def, fui, rectangle_selection, images, hud_ennemi, hud_pers, action);
+	  				SDL_Delay(wait);
+	  			}
   			}
   			else{//l'ennemi commence
 
   				tour_ennemi(perso, ennemi);
-  				tour_joueur(perso, ennemi, *cartes[choix]);
+  				actualisation_apres_tour(perso, ennemi, *cartes[choix], &action, &hud_pers, &hud_ennemi, rendu, police, alea);
+  				affichage_combat_personnage(rendu, perso, ennemi, def, fui, rectangle_selection, images, hud_ennemi, hud_pers, action);
+  				SDL_Delay(wait);
+
+  				if(perso->pv > 0){
+  					SDL_Delay(wait);
+	  				tour_joueur(perso, ennemi, *cartes[choix]);
+	  				actualisation_apres_tour(perso, ennemi, *cartes[choix], &action, &hud_pers, &hud_ennemi, rendu, police, alea);
+	  				affichage_combat_personnage(rendu, perso, ennemi, def, fui, rectangle_selection, images, hud_ennemi, hud_pers, action);
+	  				SDL_Delay(wait);
+	  			}
   			}
   		}
+  		detruire_action_temp(&action);
 	}
 
   	TTF_CloseFont(police);

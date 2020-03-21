@@ -231,6 +231,8 @@ ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type,
   ennemi->nom = malloc(sizeof(char)*TAILLE);
 
   ennemi->pv = pv;
+  ennemi->pv_old = pv;
+  ennemi->pv_max = pv;
   ennemi->vitesse = vitesse;
   ennemi->attaque = attaque;
   ennemi->defense = defense;
