@@ -517,6 +517,7 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
   	hud_pers.existe = 0;
 
 	tire_carte_deck(cartes);
+	
 	init_hud_action(&action);
 
 	create_hud(&hud_pers, &hud_ennemi, *ennemi, *perso, rendu, police);
@@ -590,6 +591,10 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
   	TTF_CloseFont(police);
   	SDL_DestroyTexture(def.img);
   	SDL_DestroyTexture(fui.img);
+  	SDL_DestroyTexture(hud_pers.pv.img);
+  	SDL_DestroyTexture(hud_pers.nom.img);
+  	SDL_DestroyTexture(hud_ennemi.pv.img);
+  	SDL_DestroyTexture(hud_ennemi.nom.img);
   	free(rectangle_selection);
 
   	free_image(images);
