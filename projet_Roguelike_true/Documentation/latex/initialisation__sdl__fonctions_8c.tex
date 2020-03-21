@@ -1,5 +1,5 @@
-\hypertarget{initialisation__sdl__fonctions_8c}{}\section{Référence du fichier initialisation\+\_\+sdl\+\_\+fonctions.\+c}
-\label{initialisation__sdl__fonctions_8c}\index{initialisation\+\_\+sdl\+\_\+fonctions.\+c@{initialisation\+\_\+sdl\+\_\+fonctions.\+c}}
+\hypertarget{initialisation__sdl__fonctions_8c}{}\doxysection{Référence du fichier initialisation\+\_\+sdl\+\_\+fonctions.\+c}
+\label{initialisation__sdl__fonctions_8c}\index{initialisation\_sdl\_fonctions.c@{initialisation\_sdl\_fonctions.c}}
 
 
 fonctions de la sdl pour son initialisation, fichier .c  
@@ -8,22 +8,28 @@ fonctions de la sdl pour son initialisation, fichier .c
 {\ttfamily \#include \char`\"{}../include/constantes.\+h\char`\"{}}\newline
 Graphe des dépendances par inclusion de initialisation\+\_\+sdl\+\_\+fonctions.\+c\+:
 % FIG 0
-\subsection*{Fonctions}
+\doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{initialisation__sdl__fonctions_8c_a946b8c3da4a73e2b04c6e897425e7450}{initialisation\+\_\+sdl} (S\+D\+L\+\_\+\+Window $\ast$$\ast$window, S\+D\+L\+\_\+\+Renderer $\ast$$\ast$rendu)
+int \mbox{\hyperlink{initialisation__sdl__fonctions_8c_a946b8c3da4a73e2b04c6e897425e7450}{initialisation\+\_\+sdl}} (S\+D\+L\+\_\+\+Window $\ast$$\ast$window, S\+D\+L\+\_\+\+Renderer $\ast$$\ast$rendu)
 \begin{DoxyCompactList}\small\item\em Initialise et créé fenetre et rendu par leur pointeur, si une initialisation échoue, on détruit tout et on retourne 1 pour signifier une erreur. \end{DoxyCompactList}\item 
-void \hyperlink{initialisation__sdl__fonctions_8c_a4f2a701369fda6b4fed1b4da436cbb1d}{quit\+\_\+sdl} (S\+D\+L\+\_\+\+Renderer $\ast$$\ast$rendu, S\+D\+L\+\_\+\+Window $\ast$$\ast$window)
+void \mbox{\hyperlink{initialisation__sdl__fonctions_8c_a4f2a701369fda6b4fed1b4da436cbb1d}{quit\+\_\+sdl}} (S\+D\+L\+\_\+\+Renderer $\ast$$\ast$rendu, S\+D\+L\+\_\+\+Window $\ast$$\ast$window)
 \begin{DoxyCompactList}\small\item\em détruit les renderer et window passés en paramètre \end{DoxyCompactList}\item 
-int \hyperlink{initialisation__sdl__fonctions_8c_acdf700da33c3cfb9c437a634e37bc206}{init\+\_\+or\+\_\+quit\+\_\+ttf} (int action)
+int \mbox{\hyperlink{initialisation__sdl__fonctions_8c_acdf700da33c3cfb9c437a634e37bc206}{init\+\_\+or\+\_\+quit\+\_\+ttf}} (int action)
 \begin{DoxyCompactList}\small\item\em Initialise la librairie ttf. \end{DoxyCompactList}\item 
-void \hyperlink{initialisation__sdl__fonctions_8c_a9b2ba8c51c599a13e6d6a61e493f4bc3}{get\+\_\+text\+\_\+and\+\_\+rect} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, int x, int y, char $\ast$text, T\+T\+F\+\_\+\+Font $\ast$font, S\+D\+L\+\_\+\+Texture $\ast$$\ast$texture, S\+D\+L\+\_\+\+Rect $\ast$rect)
+void \mbox{\hyperlink{initialisation__sdl__fonctions_8c_a9b2ba8c51c599a13e6d6a61e493f4bc3}{get\+\_\+text\+\_\+and\+\_\+rect}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, int x, int y, char $\ast$text, T\+T\+F\+\_\+\+Font $\ast$font, S\+D\+L\+\_\+\+Texture $\ast$$\ast$texture, S\+D\+L\+\_\+\+Rect $\ast$rect)
 \begin{DoxyCompactList}\small\item\em Modifie une texture et un rect afin d\textquotesingle{}afficher le texte aux coordonnées données sur le renderer avec la police. \end{DoxyCompactList}\item 
-int \hyperlink{initialisation__sdl__fonctions_8c_a627009429f149fc9407b6cba0f1a399a}{charge\+\_\+image} (char $\ast$path\+\_\+img, \hyperlink{structimage__t}{image\+\_\+t} $\ast$struct\+\_\+image, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
-\begin{DoxyCompactList}\small\item\em charge une image dans une structure pouvant la contenir \end{DoxyCompactList}\end{DoxyCompactItemize}
+int \mbox{\hyperlink{initialisation__sdl__fonctions_8c_a627009429f149fc9407b6cba0f1a399a}{charge\+\_\+image}} (char $\ast$path\+\_\+img, \mbox{\hyperlink{structimage__t}{image\+\_\+t}} $\ast$struct\+\_\+image, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
+\begin{DoxyCompactList}\small\item\em charge une image dans une structure pouvant la contenir \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{initialisation__sdl__fonctions_8c_a198607388f1aee44d76b4106b47b3e16}{init\+\_\+son}} (Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]})
+\begin{DoxyCompactList}\small\item\em initialise un tableau avec tous les sons utilisés \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{initialisation__sdl__fonctions_8c_a5b70b85603c549ae9fb7934a79398e12}{init\+\_\+music}} (Mix\+\_\+\+Music $\ast$musics\mbox{[}N\+B\+\_\+\+M\+U\+S\+IC\mbox{]})
+\begin{DoxyCompactList}\small\item\em initialise un tableau avec toutes les musiques utilisées \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{initialisation__sdl__fonctions_8c_a686a4a822c8a073f7d0d5582f18d5eb3}{free\+\_\+mixer}} (Mix\+\_\+\+Music $\ast$musics\mbox{[}N\+B\+\_\+\+M\+U\+S\+IC\mbox{]}, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]})
+\begin{DoxyCompactList}\small\item\em libère tous les sons et toutes les musiques utilisées \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\subsection{Description détaillée}
+\doxysubsection{Description détaillée}
 fonctions de la sdl pour son initialisation, fichier .c 
 
 \begin{DoxyAuthor}{Auteur}
@@ -37,12 +43,12 @@ fonctions de la sdl pour son initialisation, fichier .c
 \end{DoxyVersion}
 
 
-\subsection{Documentation des fonctions}
+\doxysubsection{Documentation des fonctions}
 \mbox{\Hypertarget{initialisation__sdl__fonctions_8c_a627009429f149fc9407b6cba0f1a399a}\label{initialisation__sdl__fonctions_8c_a627009429f149fc9407b6cba0f1a399a}} 
-\index{initialisation\+\_\+sdl\+\_\+fonctions.\+c@{initialisation\+\_\+sdl\+\_\+fonctions.\+c}!charge\+\_\+image@{charge\+\_\+image}}
-\index{charge\+\_\+image@{charge\+\_\+image}!initialisation\+\_\+sdl\+\_\+fonctions.\+c@{initialisation\+\_\+sdl\+\_\+fonctions.\+c}}
-\subsubsection{\texorpdfstring{charge\+\_\+image()}{charge\_image()}}
-{\footnotesize\ttfamily int charge\+\_\+image (\begin{DoxyParamCaption}\item[{char $\ast$}]{path\+\_\+img,  }\item[{\hyperlink{structimage__t}{image\+\_\+t} $\ast$}]{struct\+\_\+image,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu }\end{DoxyParamCaption})}
+\index{initialisation\_sdl\_fonctions.c@{initialisation\_sdl\_fonctions.c}!charge\_image@{charge\_image}}
+\index{charge\_image@{charge\_image}!initialisation\_sdl\_fonctions.c@{initialisation\_sdl\_fonctions.c}}
+\doxysubsubsection{\texorpdfstring{charge\_image()}{charge\_image()}}
+{\footnotesize\ttfamily int charge\+\_\+image (\begin{DoxyParamCaption}\item[{char $\ast$}]{path\+\_\+img,  }\item[{\mbox{\hyperlink{structimage__t}{image\+\_\+t}} $\ast$}]{struct\+\_\+image,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu }\end{DoxyParamCaption})}
 
 
 
@@ -60,10 +66,30 @@ charge une image dans une structure pouvant la contenir
 \begin{DoxyReturn}{Renvoie}
 1 si echec, 0 si réussite 
 \end{DoxyReturn}
+\mbox{\Hypertarget{initialisation__sdl__fonctions_8c_a686a4a822c8a073f7d0d5582f18d5eb3}\label{initialisation__sdl__fonctions_8c_a686a4a822c8a073f7d0d5582f18d5eb3}} 
+\index{initialisation\_sdl\_fonctions.c@{initialisation\_sdl\_fonctions.c}!free\_mixer@{free\_mixer}}
+\index{free\_mixer@{free\_mixer}!initialisation\_sdl\_fonctions.c@{initialisation\_sdl\_fonctions.c}}
+\doxysubsubsection{\texorpdfstring{free\_mixer()}{free\_mixer()}}
+{\footnotesize\ttfamily free\+\_\+mixer (\begin{DoxyParamCaption}\item[{Mix\+\_\+\+Music $\ast$}]{musics\mbox{[}\+N\+B\+\_\+\+M\+U\+S\+I\+C\mbox{]},  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+libère tous les sons et toutes les musiques utilisées 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$musics\mbox{[}\+N\+B\+\_\+\+M\+U\+S\+I\+C\mbox{]}} & est un tableau contenant les emplacements de chaque musiques \\
+\hline
+{\em $\ast$sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]}} & est un tableau contenant les emplacements de chaque son\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+1 si echec, 0 si réussite 
+\end{DoxyReturn}
 \mbox{\Hypertarget{initialisation__sdl__fonctions_8c_a9b2ba8c51c599a13e6d6a61e493f4bc3}\label{initialisation__sdl__fonctions_8c_a9b2ba8c51c599a13e6d6a61e493f4bc3}} 
-\index{initialisation\+\_\+sdl\+\_\+fonctions.\+c@{initialisation\+\_\+sdl\+\_\+fonctions.\+c}!get\+\_\+text\+\_\+and\+\_\+rect@{get\+\_\+text\+\_\+and\+\_\+rect}}
-\index{get\+\_\+text\+\_\+and\+\_\+rect@{get\+\_\+text\+\_\+and\+\_\+rect}!initialisation\+\_\+sdl\+\_\+fonctions.\+c@{initialisation\+\_\+sdl\+\_\+fonctions.\+c}}
-\subsubsection{\texorpdfstring{get\+\_\+text\+\_\+and\+\_\+rect()}{get\_text\_and\_rect()}}
+\index{initialisation\_sdl\_fonctions.c@{initialisation\_sdl\_fonctions.c}!get\_text\_and\_rect@{get\_text\_and\_rect}}
+\index{get\_text\_and\_rect@{get\_text\_and\_rect}!initialisation\_sdl\_fonctions.c@{initialisation\_sdl\_fonctions.c}}
+\doxysubsubsection{\texorpdfstring{get\_text\_and\_rect()}{get\_text\_and\_rect()}}
 {\footnotesize\ttfamily void get\+\_\+text\+\_\+and\+\_\+rect (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{char $\ast$}]{text,  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{font,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$$\ast$}]{texture,  }\item[{S\+D\+L\+\_\+\+Rect $\ast$}]{rect }\end{DoxyParamCaption})}
 
 
@@ -87,10 +113,28 @@ Modifie une texture et un rect afin d\textquotesingle{}afficher le texte aux coo
 {\em $\ast$rect,le} & rectangle qui contiendra la texture \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{initialisation__sdl__fonctions_8c_a5b70b85603c549ae9fb7934a79398e12}\label{initialisation__sdl__fonctions_8c_a5b70b85603c549ae9fb7934a79398e12}} 
+\index{initialisation\_sdl\_fonctions.c@{initialisation\_sdl\_fonctions.c}!init\_music@{init\_music}}
+\index{init\_music@{init\_music}!initialisation\_sdl\_fonctions.c@{initialisation\_sdl\_fonctions.c}}
+\doxysubsubsection{\texorpdfstring{init\_music()}{init\_music()}}
+{\footnotesize\ttfamily void init\+\_\+music (\begin{DoxyParamCaption}\item[{Mix\+\_\+\+Music $\ast$}]{musics\mbox{[}\+N\+B\+\_\+\+M\+U\+S\+I\+C\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+initialise un tableau avec toutes les musiques utilisées 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$musics\mbox{[}\+N\+B\+\_\+\+M\+U\+S\+I\+C\mbox{]}} & est un tableau contenant les emplacements de chaque musiques\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+1 si echec, 0 si réussite 
+\end{DoxyReturn}
 \mbox{\Hypertarget{initialisation__sdl__fonctions_8c_acdf700da33c3cfb9c437a634e37bc206}\label{initialisation__sdl__fonctions_8c_acdf700da33c3cfb9c437a634e37bc206}} 
-\index{initialisation\+\_\+sdl\+\_\+fonctions.\+c@{initialisation\+\_\+sdl\+\_\+fonctions.\+c}!init\+\_\+or\+\_\+quit\+\_\+ttf@{init\+\_\+or\+\_\+quit\+\_\+ttf}}
-\index{init\+\_\+or\+\_\+quit\+\_\+ttf@{init\+\_\+or\+\_\+quit\+\_\+ttf}!initialisation\+\_\+sdl\+\_\+fonctions.\+c@{initialisation\+\_\+sdl\+\_\+fonctions.\+c}}
-\subsubsection{\texorpdfstring{init\+\_\+or\+\_\+quit\+\_\+ttf()}{init\_or\_quit\_ttf()}}
+\index{initialisation\_sdl\_fonctions.c@{initialisation\_sdl\_fonctions.c}!init\_or\_quit\_ttf@{init\_or\_quit\_ttf}}
+\index{init\_or\_quit\_ttf@{init\_or\_quit\_ttf}!initialisation\_sdl\_fonctions.c@{initialisation\_sdl\_fonctions.c}}
+\doxysubsubsection{\texorpdfstring{init\_or\_quit\_ttf()}{init\_or\_quit\_ttf()}}
 {\footnotesize\ttfamily int init\+\_\+or\+\_\+quit\+\_\+ttf (\begin{DoxyParamCaption}\item[{int}]{action }\end{DoxyParamCaption})}
 
 
@@ -105,10 +149,28 @@ Initialise la librairie ttf.
 \begin{DoxyReturn}{Renvoie}
 0 si tout c\textquotesingle{}est bien passé, 1 si une erreur est apparue 
 \end{DoxyReturn}
+\mbox{\Hypertarget{initialisation__sdl__fonctions_8c_a198607388f1aee44d76b4106b47b3e16}\label{initialisation__sdl__fonctions_8c_a198607388f1aee44d76b4106b47b3e16}} 
+\index{initialisation\_sdl\_fonctions.c@{initialisation\_sdl\_fonctions.c}!init\_son@{init\_son}}
+\index{init\_son@{init\_son}!initialisation\_sdl\_fonctions.c@{initialisation\_sdl\_fonctions.c}}
+\doxysubsubsection{\texorpdfstring{init\_son()}{init\_son()}}
+{\footnotesize\ttfamily void init\+\_\+son (\begin{DoxyParamCaption}\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+initialise un tableau avec tous les sons utilisés 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]}} & est un tableau contenant les emplacements de chaque son\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+1 si echec, 0 si réussite 
+\end{DoxyReturn}
 \mbox{\Hypertarget{initialisation__sdl__fonctions_8c_a946b8c3da4a73e2b04c6e897425e7450}\label{initialisation__sdl__fonctions_8c_a946b8c3da4a73e2b04c6e897425e7450}} 
-\index{initialisation\+\_\+sdl\+\_\+fonctions.\+c@{initialisation\+\_\+sdl\+\_\+fonctions.\+c}!initialisation\+\_\+sdl@{initialisation\+\_\+sdl}}
-\index{initialisation\+\_\+sdl@{initialisation\+\_\+sdl}!initialisation\+\_\+sdl\+\_\+fonctions.\+c@{initialisation\+\_\+sdl\+\_\+fonctions.\+c}}
-\subsubsection{\texorpdfstring{initialisation\+\_\+sdl()}{initialisation\_sdl()}}
+\index{initialisation\_sdl\_fonctions.c@{initialisation\_sdl\_fonctions.c}!initialisation\_sdl@{initialisation\_sdl}}
+\index{initialisation\_sdl@{initialisation\_sdl}!initialisation\_sdl\_fonctions.c@{initialisation\_sdl\_fonctions.c}}
+\doxysubsubsection{\texorpdfstring{initialisation\_sdl()}{initialisation\_sdl()}}
 {\footnotesize\ttfamily int initialisation\+\_\+sdl (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Window $\ast$$\ast$}]{window,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$$\ast$}]{rendu }\end{DoxyParamCaption})}
 
 
@@ -126,9 +188,9 @@ Initialise et créé fenetre et rendu par leur pointeur, si une initialisation �
 0 si tout c\textquotesingle{}est bien passé, 1 si une erreur est apparue 
 \end{DoxyReturn}
 \mbox{\Hypertarget{initialisation__sdl__fonctions_8c_a4f2a701369fda6b4fed1b4da436cbb1d}\label{initialisation__sdl__fonctions_8c_a4f2a701369fda6b4fed1b4da436cbb1d}} 
-\index{initialisation\+\_\+sdl\+\_\+fonctions.\+c@{initialisation\+\_\+sdl\+\_\+fonctions.\+c}!quit\+\_\+sdl@{quit\+\_\+sdl}}
-\index{quit\+\_\+sdl@{quit\+\_\+sdl}!initialisation\+\_\+sdl\+\_\+fonctions.\+c@{initialisation\+\_\+sdl\+\_\+fonctions.\+c}}
-\subsubsection{\texorpdfstring{quit\+\_\+sdl()}{quit\_sdl()}}
+\index{initialisation\_sdl\_fonctions.c@{initialisation\_sdl\_fonctions.c}!quit\_sdl@{quit\_sdl}}
+\index{quit\_sdl@{quit\_sdl}!initialisation\_sdl\_fonctions.c@{initialisation\_sdl\_fonctions.c}}
+\doxysubsubsection{\texorpdfstring{quit\_sdl()}{quit\_sdl()}}
 {\footnotesize\ttfamily void quit\+\_\+sdl (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$$\ast$}]{rendu,  }\item[{S\+D\+L\+\_\+\+Window $\ast$$\ast$}]{window }\end{DoxyParamCaption})}
 
 

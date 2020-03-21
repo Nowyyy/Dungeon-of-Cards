@@ -1,14 +1,12 @@
 var searchData=
 [
-  ['change_5fanimation',['change_animation',['../personnage_8c.html#aec71a35c8d05712c6c14e86bc93ba2a3',1,'personnage.c']]],
-  ['changement_5fde_5fsalle',['changement_de_salle',['../personnage_8c.html#a74f1cab9f9b642e407f86883189090d6',1,'personnage.c']]],
-  ['charge_5fimage',['charge_image',['../initialisation__sdl__fonctions_8c.html#a627009429f149fc9407b6cba0f1a399a',1,'initialisation_sdl_fonctions.c']]],
-  ['charge_5fsprites_5fpersonnage',['charge_sprites_personnage',['../personnage_8c.html#a268829dc6c85b9473a074eb2f9c122d4',1,'personnage.c']]],
-  ['charge_5ftoutes_5ftextures',['charge_toutes_textures',['../labyrinthe_8c.html#ae7ba54121ba01810050ad04afa756ea9',1,'labyrinthe.c']]],
-  ['collision_5fperso_5fennemi',['collision_perso_ennemi',['../personnage_8c.html#a164a6183e890b64230e0d534fb32734c',1,'personnage.c']]],
-  ['combat_5fdeclenche',['combat_declenche',['../personnage_8c.html#a0d1b81f2e14ad354088835416a58d147',1,'personnage.c']]],
-  ['creation_5flabyrinthe',['creation_labyrinthe',['../labyrinthe_8c.html#a1df93f8f3ffacdca34d1ead8bb681166',1,'labyrinthe.c']]],
-  ['cree_5fliaison',['cree_liaison',['../labyrinthe_8c.html#a8dae688c154d2ac7dbe22ed996476d18',1,'labyrinthe.c']]],
-  ['creer_5fperso',['creer_perso',['../fonctions_8c.html#a12e5098148c887c498e3497547cecc88',1,'fonctions.c']]],
-  ['creer_5ftexture_5fdepuis_5fchar',['creer_texture_depuis_char',['../personnage_8c.html#afc28a0bae05f1bc308a30f9598766d07',1,'personnage.c']]]
+  ['deplacement_5fpersonnage_178',['deplacement_personnage',['../personnage_8c.html#a8da23f9fc6a81530cd5d830fccce26b9',1,'personnage.c']]],
+  ['deplacement_5frectangle_5fselection_179',['deplacement_rectangle_selection',['../main__menu__screen_8c.html#aa27ad023865c066558f910c2db9a5ab8',1,'main_menu_screen.c']]],
+  ['deplacement_5frectangle_5fselection_5fcharger_180',['deplacement_rectangle_selection_charger',['../chargement_8c.html#ad752c9683550f17b3b9f8829a1c7926e',1,'chargement.c']]],
+  ['deplacement_5frectangle_5fselection_5fcombat_181',['deplacement_rectangle_selection_combat',['../combat__tour__par__tour_8c.html#a99443aeb8d987c2c9b48bbd31c7e63c2',1,'combat_tour_par_tour.c']]],
+  ['deplacement_5frectangle_5fselection_5fconfirmer_182',['deplacement_rectangle_selection_confirmer',['../confirmer__nouveau_8c.html#aa9f04d0ccd6580d12c953f02bcaa7124',1,'confirmer_nouveau.c']]],
+  ['destruction_5fdes_5fcoffres_183',['destruction_des_coffres',['../coffre_8c.html#a1b5e8a53671fe295003e0491b1543385',1,'coffre.c']]],
+  ['destruction_5ftous_5fennemis_184',['destruction_tous_ennemis',['../ennemi_8c.html#a76ea213e4e409f1a3759a6c9494fd55a',1,'ennemi.c']]],
+  ['detruire_5fcarte_185',['detruire_carte',['../fonctions_8c.html#a46537a1af57b2735c29b55ed06765950',1,'fonctions.c']]],
+  ['detruire_5fennemi_186',['detruire_ennemi',['../fonctions_8c.html#a10827fcceed76a61d146d8d52cce0df3',1,'fonctions.c']]]
 ];

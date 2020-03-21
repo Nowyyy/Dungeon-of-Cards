@@ -1,0 +1,118 @@
+\hypertarget{combat__tour__par__tour_8c}{}\doxysection{Référence du fichier combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}
+\label{combat__tour__par__tour_8c}\index{combat\_tour\_par\_tour.c@{combat\_tour\_par\_tour.c}}
+
+
+contient et fait appel a toutes fonctions nécessaires pour le combat  
+
+
+{\ttfamily \#include \char`\"{}../include/constantes.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/initialisation\+\_\+sdl\+\_\+fonctions.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/fonctions.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/clavier.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de combat\+\_\+tour\+\_\+par\+\_\+tour.\+c\+:
+% FIG 0
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{combat__tour__par__tour_8c_a99443aeb8d987c2c9b48bbd31c7e63c2}{deplacement\+\_\+rectangle\+\_\+selection\+\_\+combat}} (S\+D\+L\+\_\+\+Rect defausse, S\+D\+L\+\_\+\+Rect fuir, S\+D\+L\+\_\+\+Rect carte1, S\+D\+L\+\_\+\+Rect carte2, S\+D\+L\+\_\+\+Rect carte3, S\+D\+L\+\_\+\+Rect carte4, S\+D\+L\+\_\+\+Rect $\ast$$\ast$rect\+\_\+sel)
+\begin{DoxyCompactList}\small\item\em Permet de déplacer le rectangle de selection. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{combat__tour__par__tour_8c_a4b8158133c08bba87fd10ba6b445a68e}{affichage\+\_\+combat\+\_\+personnage}} (S\+D\+L\+\_\+\+Renderer $\ast$rendu, \mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$pers, \mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$ennemi, S\+D\+L\+\_\+\+Texture $\ast$defausse\+\_\+texture, S\+D\+L\+\_\+\+Texture $\ast$fuir\+\_\+texture, S\+D\+L\+\_\+\+Rect defausse\+\_\+rect, S\+D\+L\+\_\+\+Rect fuir\+\_\+rect, S\+D\+L\+\_\+\+Rect $\ast$rect\+\_\+sel, \mbox{\hyperlink{structimage__t}{image\+\_\+t}} images\mbox{[}N\+B\+\_\+\+T\+E\+X\+T\+U\+R\+ES\mbox{]})
+\begin{DoxyCompactList}\small\item\em Permet d\textquotesingle{}afficher toutes la partie combat. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{combat__tour__par__tour_8c_aa61c28d0a5af43fb2b409548b001d62e}\label{combat__tour__par__tour_8c_aa61c28d0a5af43fb2b409548b001d62e}} 
+void {\bfseries charge\+\_\+textures\+\_\+combat} (\mbox{\hyperlink{structimage__t}{image\+\_\+t}} images\mbox{[}$\,$\mbox{]}, S\+D\+L\+\_\+\+Renderer $\ast$rendu, \mbox{\hyperlink{structcarte__t}{carte\+\_\+t}} $\ast$cartes\mbox{[}$\,$\mbox{]})
+\item 
+\mbox{\Hypertarget{combat__tour__par__tour_8c_a20d180791680d2c8edfbbc4d56a708bd}\label{combat__tour__par__tour_8c_a20d180791680d2c8edfbbc4d56a708bd}} 
+void {\bfseries donne\+\_\+valeur\+\_\+rect\+\_\+images} (\mbox{\hyperlink{structimage__t}{image\+\_\+t}} images\mbox{[}$\,$\mbox{]})
+\item 
+\mbox{\Hypertarget{combat__tour__par__tour_8c_a880669b069085432fe3848eb8d85b0df}\label{combat__tour__par__tour_8c_a880669b069085432fe3848eb8d85b0df}} 
+void {\bfseries free\+\_\+image} (\mbox{\hyperlink{structimage__t}{image\+\_\+t}} images\mbox{[}$\,$\mbox{]})
+\item 
+\mbox{\Hypertarget{combat__tour__par__tour_8c_a005211a67eb4421845f3d86cb8bf8bb8}\label{combat__tour__par__tour_8c_a005211a67eb4421845f3d86cb8bf8bb8}} 
+void {\bfseries creer\+\_\+texte\+\_\+combat} (char $\ast$txt, \mbox{\hyperlink{structimage__t}{image\+\_\+t}} $\ast$image, int x, int y, S\+D\+L\+\_\+\+Renderer $\ast$rendu, T\+T\+F\+\_\+\+Font $\ast$font)
+\item 
+\mbox{\Hypertarget{combat__tour__par__tour_8c_aae44f778a6e5050f764ddfa1bc4ac4be}\label{combat__tour__par__tour_8c_aae44f778a6e5050f764ddfa1bc4ac4be}} 
+void {\bfseries tour\+\_\+joueur} (\mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$pers, \mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$ennemi, \mbox{\hyperlink{structcarte__t}{carte\+\_\+t}} carte)
+\item 
+\mbox{\Hypertarget{combat__tour__par__tour_8c_a5b2a9e77933a80bd503dc6a3dbbaa353}\label{combat__tour__par__tour_8c_a5b2a9e77933a80bd503dc6a3dbbaa353}} 
+void {\bfseries tour\+\_\+ennemi} (\mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$pers, \mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$ennemi)
+\item 
+\mbox{\Hypertarget{combat__tour__par__tour_8c_a803a9d0b96bbeb7d10d015ac68beb723}\label{combat__tour__par__tour_8c_a803a9d0b96bbeb7d10d015ac68beb723}} 
+void {\bfseries combat\+\_\+t\+\_\+p\+\_\+t} (\mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$perso, \mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$ennemi, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+contient et fait appel a toutes fonctions nécessaires pour le combat 
+
+\begin{DoxyAuthor}{Auteur}
+\{Tudoret Aurélien, Jourry Axel, Marin Timothée, Malabry Thomas\}
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+14/03/2020
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{combat__tour__par__tour_8c_a4b8158133c08bba87fd10ba6b445a68e}\label{combat__tour__par__tour_8c_a4b8158133c08bba87fd10ba6b445a68e}} 
+\index{combat\_tour\_par\_tour.c@{combat\_tour\_par\_tour.c}!affichage\_combat\_personnage@{affichage\_combat\_personnage}}
+\index{affichage\_combat\_personnage@{affichage\_combat\_personnage}!combat\_tour\_par\_tour.c@{combat\_tour\_par\_tour.c}}
+\doxysubsubsection{\texorpdfstring{affichage\_combat\_personnage()}{affichage\_combat\_personnage()}}
+{\footnotesize\ttfamily void affichage\+\_\+combat\+\_\+personnage (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{\mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$}]{pers,  }\item[{\mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$}]{ennemi,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{defausse\+\_\+texture,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{fuir\+\_\+texture,  }\item[{S\+D\+L\+\_\+\+Rect}]{defausse\+\_\+rect,  }\item[{S\+D\+L\+\_\+\+Rect}]{fuir\+\_\+rect,  }\item[{S\+D\+L\+\_\+\+Rect $\ast$}]{rect\+\_\+sel,  }\item[{\mbox{\hyperlink{structimage__t}{image\+\_\+t}}}]{images\mbox{[}\+N\+B\+\_\+\+T\+E\+X\+T\+U\+R\+E\+S\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Permet d\textquotesingle{}afficher toutes la partie combat. 
+
+\textbackslash{}fnvoid \mbox{\hyperlink{combat__tour__par__tour_8c_a4b8158133c08bba87fd10ba6b445a68e}{affichage\+\_\+combat\+\_\+personnage(\+S\+D\+L\+\_\+\+Renderer $\ast$rendu,perso\+\_\+t $\ast$pers, ennemi\+\_\+t $\ast$ ennemi,\+S\+D\+L\+\_\+\+Texture $\ast$defausse\+\_\+texture ,\+S\+D\+L\+\_\+\+Texture $\ast$fuir\+\_\+texture,\+S\+D\+L\+\_\+\+Rect defausse\+\_\+rect ,\+S\+D\+L\+\_\+\+Rect fuir\+\_\+rect,\+S\+D\+L\+\_\+\+Rect $\ast$rect\+\_\+sel,image\+\_\+t images\mbox{[}\+N\+B\+\_\+\+T\+E\+X\+T\+U\+R\+E\+S\mbox{]})}}
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$ennemi,la} & structure contenant tous les ennemis \\
+\hline
+{\em pers,la} & structure contenant le personnage \\
+\hline
+{\em $\ast$defausse\+\_\+texture,Les} & textures du texte defausse \\
+\hline
+{\em $\ast$fuir\+\_\+texture,Les} & textures du texte fuir \\
+\hline
+{\em defausse\+\_\+rect,les} & coordonnées du texte defausse \\
+\hline
+{\em fuir\+\_\+rect,les} & coordonnées du texte fuir \\
+\hline
+{\em $\ast$rect\+\_\+sel,Les} & coordonnées et taille du rectangle de selection \\
+\hline
+{\em images\mbox{[}\+N\+B\+\_\+\+T\+E\+X\+T\+U\+R\+E\+S\mbox{]},Un} & tableau contenant les cartes \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat__tour__par__tour_8c_a99443aeb8d987c2c9b48bbd31c7e63c2}\label{combat__tour__par__tour_8c_a99443aeb8d987c2c9b48bbd31c7e63c2}} 
+\index{combat\_tour\_par\_tour.c@{combat\_tour\_par\_tour.c}!deplacement\_rectangle\_selection\_combat@{deplacement\_rectangle\_selection\_combat}}
+\index{deplacement\_rectangle\_selection\_combat@{deplacement\_rectangle\_selection\_combat}!combat\_tour\_par\_tour.c@{combat\_tour\_par\_tour.c}}
+\doxysubsubsection{\texorpdfstring{deplacement\_rectangle\_selection\_combat()}{deplacement\_rectangle\_selection\_combat()}}
+{\footnotesize\ttfamily int deplacement\+\_\+rectangle\+\_\+selection\+\_\+combat (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Rect}]{defausse,  }\item[{S\+D\+L\+\_\+\+Rect}]{fuir,  }\item[{S\+D\+L\+\_\+\+Rect}]{carte1,  }\item[{S\+D\+L\+\_\+\+Rect}]{carte2,  }\item[{S\+D\+L\+\_\+\+Rect}]{carte3,  }\item[{S\+D\+L\+\_\+\+Rect}]{carte4,  }\item[{S\+D\+L\+\_\+\+Rect $\ast$$\ast$}]{rect\+\_\+sel }\end{DoxyParamCaption})}
+
+
+
+Permet de déplacer le rectangle de selection. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em defausse,Correspond} & aux coordonnées du texte défausse \\
+\hline
+{\em fuir,Correspond} & aux coordonnées du texte fuir \\
+\hline
+{\em carte1,Correspond} & aux coordonnées de la carte 1 \\
+\hline
+{\em carte2,Correspond} & aux coordonnées de la carte 2 \\
+\hline
+{\em carte3,Correspond} & aux coordonnées de la carte 3 \\
+\hline
+{\em carte4,Correspond} & aux coordonnées de la carte 4 \\
+\hline
+{\em $\ast$$\ast$rect\+\_\+sel} & Correspond aux coordonnées du rectangle de sélection \\
+\hline
+\end{DoxyParams}

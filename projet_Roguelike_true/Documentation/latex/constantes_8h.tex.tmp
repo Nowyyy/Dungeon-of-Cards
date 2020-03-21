@@ -1,5 +1,5 @@
-\hypertarget{constantes_8h}{}\section{Référence du fichier /home/aurelien/\+Desktop/\+Projet-\/\+L2-\//projet\+\_\+\+Roguelike\+\_\+true/include/constantes.h}
-\label{constantes_8h}\index{/home/aurelien/\+Desktop/\+Projet-\/\+L2-\//projet\+\_\+\+Roguelike\+\_\+true/include/constantes.\+h@{/home/aurelien/\+Desktop/\+Projet-\/\+L2-\//projet\+\_\+\+Roguelike\+\_\+true/include/constantes.\+h}}
+\hypertarget{constantes_8h}{}\doxysection{Référence du fichier /\+Users/axel/\+Documents/\+Save git/\+Projet-\/\+L2-\//projet\+\_\+\+Roguelike\+\_\+true/include/constantes.h}
+\label{constantes_8h}\index{/Users/axel/Documents/Save git/Projet-\/L2-\//projet\_Roguelike\_true/include/constantes.h@{/Users/axel/Documents/Save git/Projet-\/L2-\//projet\_Roguelike\_true/include/constantes.h}}
 
 
 Constantes et structures du projet Roguelike.  
@@ -17,26 +17,30 @@ Graphe des dépendances par inclusion de constantes.\+h\+:
 % FIG 0
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
 % FIG 1
-\subsection*{Structures de données}
+\doxysubsection*{Structures de données}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{structanimation__t}{animation\+\_\+t}
+struct \mbox{\hyperlink{structanimation__t}{animation\+\_\+t}}
 \begin{DoxyCompactList}\small\item\em permet de gèrer les animations du personnage \end{DoxyCompactList}\item 
-struct \hyperlink{structtouches__t}{touches\+\_\+t}
+struct \mbox{\hyperlink{structtouches__t}{touches\+\_\+t}}
 \item 
-struct \hyperlink{structimage__t}{image\+\_\+t}
+struct \mbox{\hyperlink{structimage__t}{image\+\_\+t}}
 \item 
-struct \hyperlink{structsalle__s}{salle\+\_\+s}
+struct \mbox{\hyperlink{structennemi__s}{ennemi\+\_\+s}}
 \item 
-struct \hyperlink{structperso__s}{perso\+\_\+s}
+struct \mbox{\hyperlink{structcoffre__s}{coffre\+\_\+s}}
 \item 
-struct \hyperlink{structennemi__s}{ennemi\+\_\+s}
+struct \mbox{\hyperlink{structsalle__s}{salle\+\_\+s}}
 \item 
-struct \hyperlink{structcarte__s}{carte\+\_\+s}
+struct \mbox{\hyperlink{structmini__map__s}{mini\+\_\+map\+\_\+s}}
 \item 
-struct \hyperlink{structelement}{element}
+struct \mbox{\hyperlink{structperso__s}{perso\+\_\+s}}
+\item 
+struct \mbox{\hyperlink{structcarte__s}{carte\+\_\+s}}
+\item 
+struct \mbox{\hyperlink{structelement}{element}}
 \end{DoxyCompactItemize}
-\subsection*{Macros}
+\doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{constantes_8h_a0a33b1743038db1adbbf1045aa839b38}\label{constantes_8h_a0a33b1743038db1adbbf1045aa839b38}} 
@@ -84,6 +88,9 @@ struct \hyperlink{structelement}{element}
 \mbox{\Hypertarget{constantes_8h_a9b3fc2d8f8a968529386273002d1c255}\label{constantes_8h_a9b3fc2d8f8a968529386273002d1c255}} 
 \#define {\bfseries T\+R\+A\+P\+D\+O\+O\+R\+\_\+\+P\+A\+TH}~\char`\"{}../Images/trapdoor2.\+png\char`\"{}
 \item 
+\mbox{\Hypertarget{constantes_8h_aa985864eea2cbbbe79264ba586f0aeb4}\label{constantes_8h_aa985864eea2cbbbe79264ba586f0aeb4}} 
+\#define {\bfseries C\+O\+F\+F\+R\+E\+\_\+\+P\+A\+TH}~\char`\"{}../Images/coffre\+\_\+sprites.\+png\char`\"{}
+\item 
 \mbox{\Hypertarget{constantes_8h_aca3b4c78fd9c641f27808a71cb025b33}\label{constantes_8h_aca3b4c78fd9c641f27808a71cb025b33}} 
 \#define {\bfseries S\+P\+R\+I\+T\+E1\+\_\+\+P\+A\+TH}~\char`\"{}../Images/Animations\+\_\+personnage/idle\+\_\+droite.\+png\char`\"{}
 \item 
@@ -111,14 +118,41 @@ struct \hyperlink{structelement}{element}
 \mbox{\Hypertarget{constantes_8h_ad136535ab81efd169b2e417d232bbb3e}\label{constantes_8h_ad136535ab81efd169b2e417d232bbb3e}} 
 \#define {\bfseries S\+P\+R\+I\+T\+E7\+\_\+\+P\+A\+TH}~\char`\"{}../Images/Animations\+\_\+personnage/dead.\+png\char`\"{}
 \item 
-\mbox{\Hypertarget{constantes_8h_a79ee073006893d4a4ef26bed354c547a}\label{constantes_8h_a79ee073006893d4a4ef26bed354c547a}} 
-\#define {\bfseries S\+Q\+U\+E\+L\+E\+T\+T\+E\+\_\+\+I\+D\+L\+E\+\_\+\+P\+A\+TH}~\char`\"{}../Images/sprites\+\_\+mobs/squelette.\+png\char`\"{}
+\mbox{\Hypertarget{constantes_8h_a8faa82931839fc11c7d0e758c9c1d504}\label{constantes_8h_a8faa82931839fc11c7d0e758c9c1d504}} 
+\#define {\bfseries S\+Q\+U\+E\+L\+E\+T\+T\+E\+\_\+\+P\+A\+TH}~\char`\"{}../Images/sprites\+\_\+mobs/squelette\+\_\+sprites.\+png\char`\"{}
 \item 
-\mbox{\Hypertarget{constantes_8h_ae6f955233fbef82c1f8c500a6a8bdd33}\label{constantes_8h_ae6f955233fbef82c1f8c500a6a8bdd33}} 
-\#define {\bfseries C\+Y\+C\+L\+O\+P\+E\+\_\+\+I\+D\+L\+E\+\_\+\+P\+A\+TH}~\char`\"{}../Images/sprites\+\_\+mobs/cyclope.\+png\char`\"{}
+\mbox{\Hypertarget{constantes_8h_a7e7408678a21cc1c9631c8b687e86eff}\label{constantes_8h_a7e7408678a21cc1c9631c8b687e86eff}} 
+\#define {\bfseries C\+Y\+C\+L\+O\+P\+E\+\_\+\+P\+A\+TH}~\char`\"{}../Images/sprites\+\_\+mobs/cyclo\+\_\+sprites.\+png\char`\"{}
 \item 
-\mbox{\Hypertarget{constantes_8h_ac3ae54d324565583caaa7269ef0e9b35}\label{constantes_8h_ac3ae54d324565583caaa7269ef0e9b35}} 
-\#define {\bfseries M\+I\+N\+O\+T\+A\+U\+R\+E\+\_\+\+I\+D\+L\+E\+\_\+\+P\+A\+TH}~\char`\"{}../Images/sprites\+\_\+mobs/minotaure.\+png\char`\"{}
+\mbox{\Hypertarget{constantes_8h_ae7e2a886d977c34d9cd5c43920f68484}\label{constantes_8h_ae7e2a886d977c34d9cd5c43920f68484}} 
+\#define {\bfseries M\+I\+N\+O\+T\+A\+U\+R\+E\+\_\+\+P\+A\+TH}~\char`\"{}../Images/sprites\+\_\+mobs/mino\+\_\+sprites.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_abb7f3a7a0e135b97bb38a1f4f581fdb2}\label{constantes_8h_abb7f3a7a0e135b97bb38a1f4f581fdb2}} 
+\#define {\bfseries B\+L\+O\+B\+\_\+\+P\+A\+TH}~\char`\"{}../Images/sprites\+\_\+mobs/blob\+\_\+sprite.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_aa24dd8da76955cbeed520d41356d8182}\label{constantes_8h_aa24dd8da76955cbeed520d41356d8182}} 
+\#define {\bfseries I\+M\+P\+\_\+\+P\+A\+TH}~\char`\"{}../Images/sprites\+\_\+mobs/imp\+\_\+sprites.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_ac9b0de23dc441a636838e73a99547f1d}\label{constantes_8h_ac9b0de23dc441a636838e73a99547f1d}} 
+\#define {\bfseries W\+I\+Z\+A\+R\+D\+\_\+\+P\+A\+TH}~\char`\"{}../Images/sprites\+\_\+mobs/wizard\+\_\+sprite2.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a3f2b4b33190d99cd0a98e789f5b6b698}\label{constantes_8h_a3f2b4b33190d99cd0a98e789f5b6b698}} 
+\#define {\bfseries C\+O\+M\+B\+A\+T\+\_\+\+P\+A\+TH}~\char`\"{}../Images/combat1.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a79406d46b9070a492efee2d151184661}\label{constantes_8h_a79406d46b9070a492efee2d151184661}} 
+\#define {\bfseries F\+O\+N\+D\+\_\+\+C\+O\+M\+B\+A\+T\+\_\+\+P\+A\+TH}~\char`\"{}../Images/combat2.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_ac978dba56fe7e98e6e992d142b6e34bc}\label{constantes_8h_ac978dba56fe7e98e6e992d142b6e34bc}} 
+\#define {\bfseries C\+A\+R\+T\+E\+\_\+\+E\+P\+E\+E\+\_\+\+I\+\_\+\+P\+A\+TH}~\char`\"{}../Images/Cartes/epee\+\_\+1.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a0735919a0f97202ed22a68fb859cc833}\label{constantes_8h_a0735919a0f97202ed22a68fb859cc833}} 
+\#define {\bfseries C\+A\+R\+T\+E\+\_\+\+P\+O\+T\+I\+O\+N\+\_\+\+I\+\_\+\+P\+A\+TH}~\char`\"{}../Images/Cartes/potion\+\_\+1.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a96c89540885f403c632f7a782baf532d}\label{constantes_8h_a96c89540885f403c632f7a782baf532d}} 
+\#define {\bfseries C\+A\+R\+T\+E\+\_\+\+P\+O\+I\+N\+G\+\_\+\+P\+A\+TH}~\char`\"{}../Images/Cartes/poing.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a7b2cf68e8f91493217f9b94634a317d7}\label{constantes_8h_a7b2cf68e8f91493217f9b94634a317d7}} 
+\#define {\bfseries C\+A\+R\+T\+E\+\_\+\+P\+I\+E\+R\+R\+E\+\_\+\+P\+A\+TH}~\char`\"{}../Images/Cartes/pierre.\+png\char`\"{}
 \item 
 \mbox{\Hypertarget{constantes_8h_a1d1a4e15b9de4b2874ae5853a0150b6b}\label{constantes_8h_a1d1a4e15b9de4b2874ae5853a0150b6b}} 
 \#define {\bfseries S\+A\+V\+E\+\_\+\+P\+E\+R\+S\+O\+\_\+\+P\+A\+TH}~\char`\"{}../Sauvegarde/personnage.\+txt\char`\"{}
@@ -126,8 +160,11 @@ struct \hyperlink{structelement}{element}
 \mbox{\Hypertarget{constantes_8h_ace01d5d405ff0c32baf1fd84e384b06f}\label{constantes_8h_ace01d5d405ff0c32baf1fd84e384b06f}} 
 \#define {\bfseries S\+A\+V\+E\+\_\+\+C\+A\+R\+T\+E\+S\+\_\+\+P\+A\+TH}~\char`\"{}../Sauvegarde/cartes.\+txt\char`\"{}
 \item 
+\mbox{\Hypertarget{constantes_8h_a89fcbdaabd19c7791aadf2cd2595651f}\label{constantes_8h_a89fcbdaabd19c7791aadf2cd2595651f}} 
+\#define {\bfseries S\+A\+V\+E\+\_\+\+C\+A\+R\+T\+E\+S\+\_\+\+C\+A\+T\+A\+L\+O\+G\+U\+E\+\_\+\+P\+A\+TH}~\char`\"{}../Sauvegarde/cartes\+\_\+catalogue\char`\"{}
+\item 
 \mbox{\Hypertarget{constantes_8h_ad2b84a634ac07c3cc462af4fa0ce9ddf}\label{constantes_8h_ad2b84a634ac07c3cc462af4fa0ce9ddf}} 
-\#define {\bfseries N\+B\+\_\+\+T\+E\+X\+T\+U\+R\+ES}~14
+\#define {\bfseries N\+B\+\_\+\+T\+E\+X\+T\+U\+R\+ES}~20
 \item 
 \mbox{\Hypertarget{constantes_8h_aa8cecfc5c5c054d2875c03e77b7be15d}\label{constantes_8h_aa8cecfc5c5c054d2875c03e77b7be15d}} 
 \#define {\bfseries T\+R\+UE}~1
@@ -135,11 +172,20 @@ struct \hyperlink{structelement}{element}
 \mbox{\Hypertarget{constantes_8h_aa93f0eb578d23995850d61f7d61c55c1}\label{constantes_8h_aa93f0eb578d23995850d61f7d61c55c1}} 
 \#define {\bfseries F\+A\+L\+SE}~0
 \item 
+\mbox{\Hypertarget{constantes_8h_accdc14340cb8dc0434520cae1ab073c6}\label{constantes_8h_accdc14340cb8dc0434520cae1ab073c6}} 
+\#define {\bfseries Q\+U\+I\+T\+\_\+\+S\+DL}~100
+\item 
+\mbox{\Hypertarget{constantes_8h_aab4e9825fd0e4ea7ba975f86a480793b}\label{constantes_8h_aab4e9825fd0e4ea7ba975f86a480793b}} 
+\#define {\bfseries P\+A\+S\+\_\+\+Q\+U\+I\+T\+\_\+\+S\+DL}~101
+\item 
 \mbox{\Hypertarget{constantes_8h_ab1e50feb98c6b01a2c8d40d0069e9e7b}\label{constantes_8h_ab1e50feb98c6b01a2c8d40d0069e9e7b}} 
 \#define {\bfseries T\+A\+I\+L\+L\+E\+\_\+\+S\+A\+L\+LE}~8
 \item 
 \mbox{\Hypertarget{constantes_8h_ae3fde7917e5f1b7492e4844fe3bf3612}\label{constantes_8h_ae3fde7917e5f1b7492e4844fe3bf3612}} 
 \#define {\bfseries T\+A\+I\+L\+L\+E\+\_\+\+I\+M\+A\+GE}~64
+\item 
+\mbox{\Hypertarget{constantes_8h_a1487b1e6db74d999f4fb778c7c9ddad4}\label{constantes_8h_a1487b1e6db74d999f4fb778c7c9ddad4}} 
+\#define {\bfseries T\+A\+I\+L\+L\+E\+\_\+\+L\+A\+BY}~8
 \item 
 \mbox{\Hypertarget{constantes_8h_a7b29335add3a553ed85d0e3ace85629c}\label{constantes_8h_a7b29335add3a553ed85d0e3ace85629c}} 
 \#define {\bfseries T\+A\+I\+L\+LE}~20
@@ -152,6 +198,12 @@ struct \hyperlink{structelement}{element}
 \item 
 \mbox{\Hypertarget{constantes_8h_a09cfa66ff40a6bdae746531a79d04f05}\label{constantes_8h_a09cfa66ff40a6bdae746531a79d04f05}} 
 \#define {\bfseries N\+B\+\_\+\+S\+P\+R\+I\+T\+E\+S\+\_\+\+M\+O\+N\+S\+T\+RE}~2
+\item 
+\mbox{\Hypertarget{constantes_8h_ab8438d55f7d36cd43c8ceb5244305199}\label{constantes_8h_ab8438d55f7d36cd43c8ceb5244305199}} 
+\#define {\bfseries N\+B\+\_\+\+C\+A\+R\+T\+E\+S\+\_\+\+C\+O\+M\+B\+AT}~4
+\item 
+\mbox{\Hypertarget{constantes_8h_a022803913146916c632a8d0782cb7dbc}\label{constantes_8h_a022803913146916c632a8d0782cb7dbc}} 
+\#define {\bfseries N\+B\+\_\+\+C\+A\+R\+T\+ES}~4
 \item 
 \mbox{\Hypertarget{constantes_8h_abfd31ad828f87738934f8513add19935}\label{constantes_8h_abfd31ad828f87738934f8513add19935}} 
 \#define {\bfseries E\+M\+P\+L\+A\+C\+E\+M\+E\+N\+T\+\_\+\+D\+E\+P\+A\+R\+T\+\_\+\+D\+E\+S\+S\+I\+N\+\_\+\+S\+A\+L\+L\+E\+\_\+X}~256
@@ -169,7 +221,7 @@ struct \hyperlink{structelement}{element}
 \#define {\bfseries R\+E\+C\+T\+\_\+\+S\+E\+L\+E\+C\+T\+\_\+\+X\+\_\+\+D\+I\+FF}~50
 \item 
 \mbox{\Hypertarget{constantes_8h_af6a199dd7b5c61c44bf027b8fb6bde1c}\label{constantes_8h_af6a199dd7b5c61c44bf027b8fb6bde1c}} 
-\#define {\bfseries N\+B\+\_\+\+T\+O\+U\+C\+H\+E\+S\+\_\+\+U\+T\+I\+L\+I\+S\+E\+ES}~5
+\#define {\bfseries N\+B\+\_\+\+T\+O\+U\+C\+H\+E\+S\+\_\+\+U\+T\+I\+L\+I\+S\+E\+ES}~6
 \item 
 \mbox{\Hypertarget{constantes_8h_a7ec16963e2757f54846bb7bf037848f8}\label{constantes_8h_a7ec16963e2757f54846bb7bf037848f8}} 
 \#define {\bfseries D\+E\+L\+A\+I\+S\+\_\+\+A\+N\+I\+M\+A\+T\+I\+O\+NS}~100
@@ -177,38 +229,59 @@ struct \hyperlink{structelement}{element}
 \mbox{\Hypertarget{constantes_8h_aa6393cf033b4ea21ceba893ee85c45bc}\label{constantes_8h_aa6393cf033b4ea21ceba893ee85c45bc}} 
 \#define {\bfseries P\+V\+\_\+\+D\+E\+P\+A\+R\+T\+\_\+\+P\+E\+R\+S\+O\+N\+N\+A\+GE}~50
 \item 
-\mbox{\Hypertarget{constantes_8h_a556fb925118313294d65b8a3e7b239eb}\label{constantes_8h_a556fb925118313294d65b8a3e7b239eb}} 
-\#define {\bfseries V\+I\+T\+E\+S\+S\+E\+\_\+\+D\+E\+P\+A\+R\+T\+\_\+\+P\+E\+R\+S\+O\+N\+N\+A\+GE}~5
+\mbox{\Hypertarget{constantes_8h_aab34177f261790cdf9a9fc7f74b68a07}\label{constantes_8h_aab34177f261790cdf9a9fc7f74b68a07}} 
+\#define {\bfseries T\+A\+I\+L\+L\+E\+\_\+\+R\+E\+C\+T\+\_\+\+M\+I\+N\+I\+\_\+\+M\+A\+P\+\_\+H}~20
 \item 
-\mbox{\Hypertarget{constantes_8h_a0db2658d4950b1336a856d25e8338865}\label{constantes_8h_a0db2658d4950b1336a856d25e8338865}} 
-\#define {\bfseries A\+T\+T\+A\+Q\+U\+E\+\_\+\+D\+E\+P\+A\+R\+T\+\_\+\+P\+E\+R\+S\+O\+N\+N\+A\+GE}~10
+\mbox{\Hypertarget{constantes_8h_ab8f8b5f4697ce298874a4a3b02de7752}\label{constantes_8h_ab8f8b5f4697ce298874a4a3b02de7752}} 
+\#define {\bfseries T\+A\+I\+L\+L\+E\+\_\+\+R\+E\+C\+T\+\_\+\+M\+I\+N\+I\+\_\+\+M\+A\+P\+\_\+W}~30
 \item 
-\mbox{\Hypertarget{constantes_8h_ab48ca1771b0b1be6866108aec3698f0b}\label{constantes_8h_ab48ca1771b0b1be6866108aec3698f0b}} 
-\#define {\bfseries D\+E\+F\+E\+N\+S\+E\+\_\+\+D\+E\+P\+A\+R\+T\+\_\+\+P\+E\+R\+S\+O\+N\+N\+A\+GE}~10
+\mbox{\Hypertarget{constantes_8h_a79d71404a93da146189a0efa844cb832}\label{constantes_8h_a79d71404a93da146189a0efa844cb832}} 
+\#define {\bfseries N\+B\+\_\+\+S\+A\+L\+L\+E\+S\+\_\+\+L\+E\+V\+E\+L\+\_\+1}~10
+\item 
+\mbox{\Hypertarget{constantes_8h_a1e0c015e1048085427d53e9a720474b0}\label{constantes_8h_a1e0c015e1048085427d53e9a720474b0}} 
+\#define {\bfseries N\+B\+\_\+\+S\+A\+L\+L\+E\+S\+\_\+\+L\+E\+V\+E\+L\+\_\+2}~15
+\item 
+\mbox{\Hypertarget{constantes_8h_a1c7fb5723ea5ff22402c85d9b9577deb}\label{constantes_8h_a1c7fb5723ea5ff22402c85d9b9577deb}} 
+\#define {\bfseries N\+B\+\_\+\+S\+A\+L\+L\+E\+S\+\_\+\+L\+E\+V\+E\+L\+\_\+3}~20
+\item 
+\mbox{\Hypertarget{constantes_8h_a1825a33a1a6389aab452dc83efb44421}\label{constantes_8h_a1825a33a1a6389aab452dc83efb44421}} 
+\#define {\bfseries N\+B\+\_\+\+S\+A\+L\+L\+E\+S\+\_\+\+L\+E\+V\+E\+L\+\_\+4}~25
+\item 
+\mbox{\Hypertarget{constantes_8h_abe1d940f1e0d405a5c86d9055988e892}\label{constantes_8h_abe1d940f1e0d405a5c86d9055988e892}} 
+\#define {\bfseries N\+B\+\_\+\+S\+ON}~8
+\item 
+\mbox{\Hypertarget{constantes_8h_ab4a38b78204943ea59b2d550cc7bc498}\label{constantes_8h_ab4a38b78204943ea59b2d550cc7bc498}} 
+\#define {\bfseries N\+B\+\_\+\+M\+U\+S\+IC}~9
 \end{DoxyCompactItemize}
-\subsection*{Définitions de type}
+\doxysubsection*{Définitions de type}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{constantes_8h_a0cf65619da24094c8bcb8a3825b76edd}\label{constantes_8h_a0cf65619da24094c8bcb8a3825b76edd}} 
+typedef struct \mbox{\hyperlink{structennemi__s}{ennemi\+\_\+s}} {\bfseries ennemi\+\_\+t}
+\item 
+\mbox{\Hypertarget{constantes_8h_a9beb93eb87565ac7a9445dd7dd124d7c}\label{constantes_8h_a9beb93eb87565ac7a9445dd7dd124d7c}} 
+typedef struct \mbox{\hyperlink{structcoffre__s}{coffre\+\_\+s}} {\bfseries coffre\+\_\+t}
+\item 
 \mbox{\Hypertarget{constantes_8h_a496ace1950a1d2f3aed4b9288e19c05b}\label{constantes_8h_a496ace1950a1d2f3aed4b9288e19c05b}} 
-typedef struct \hyperlink{structsalle__s}{salle\+\_\+s} {\bfseries salle\+\_\+t}
+typedef struct \mbox{\hyperlink{structsalle__s}{salle\+\_\+s}} {\bfseries salle\+\_\+t}
 \item 
-\mbox{\Hypertarget{constantes_8h_ab783d53c09db4b03c3a6067ef144c909}\label{constantes_8h_ab783d53c09db4b03c3a6067ef144c909}} 
-typedef struct \hyperlink{structperso__s}{perso\+\_\+s} {\bfseries perso\+\_\+t}
+\mbox{\Hypertarget{constantes_8h_a2b032077f5a80b551177a0d80131153f}\label{constantes_8h_a2b032077f5a80b551177a0d80131153f}} 
+typedef struct \mbox{\hyperlink{structmini__map__s}{mini\+\_\+map\+\_\+s}} {\bfseries mini\+\_\+map\+\_\+t}
 \item 
-\mbox{\Hypertarget{constantes_8h_acf9629f25081ea7efee630475575453b}\label{constantes_8h_acf9629f25081ea7efee630475575453b}} 
-typedef struct \hyperlink{structennemi__s}{ennemi\+\_\+s} {\bfseries ennemi\+\_\+t}
+\mbox{\Hypertarget{constantes_8h_a550089442e996a6b42d393992dbc5436}\label{constantes_8h_a550089442e996a6b42d393992dbc5436}} 
+typedef struct \mbox{\hyperlink{structperso__s}{perso\+\_\+s}} {\bfseries perso\+\_\+t}
 \item 
-\mbox{\Hypertarget{constantes_8h_ac32d6c906ea8c6ffebac589112053ae2}\label{constantes_8h_ac32d6c906ea8c6ffebac589112053ae2}} 
-typedef struct \hyperlink{structcarte__s}{carte\+\_\+s} {\bfseries carte\+\_\+t}
+\mbox{\Hypertarget{constantes_8h_a5b6991914ef584dcb9c32046c51857b1}\label{constantes_8h_a5b6991914ef584dcb9c32046c51857b1}} 
+typedef struct \mbox{\hyperlink{structcarte__s}{carte\+\_\+s}} {\bfseries carte\+\_\+t}
 \item 
-\mbox{\Hypertarget{constantes_8h_abe33e0f05080e2e3d51131a6c621ab9b}\label{constantes_8h_abe33e0f05080e2e3d51131a6c621ab9b}} 
-typedef struct \hyperlink{structelement}{element} {\bfseries element\+\_\+t}
+\mbox{\Hypertarget{constantes_8h_a3578cc557f82ebb906d8224ce230ef38}\label{constantes_8h_a3578cc557f82ebb906d8224ce230ef38}} 
+typedef struct \mbox{\hyperlink{structelement}{element}} {\bfseries element\+\_\+t}
 \end{DoxyCompactItemize}
-\subsection*{Énumérations}
+\doxysubsection*{Énumérations}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{constantes_8h_af6160d91d6f70f88713d6e293b1881f7}\label{constantes_8h_af6160d91d6f70f88713d6e293b1881f7}} 
-enum \hyperlink{constantes_8h_af6160d91d6f70f88713d6e293b1881f7}{t\+\_\+sprites\+\_\+perso} \{ \newline
+enum \mbox{\hyperlink{constantes_8h_af6160d91d6f70f88713d6e293b1881f7}{t\+\_\+sprites\+\_\+perso}} \{ \newline
 {\bfseries courant}, 
 {\bfseries idle\+\_\+droite}, 
 {\bfseries droite1}, 
@@ -221,10 +294,20 @@ enum \hyperlink{constantes_8h_af6160d91d6f70f88713d6e293b1881f7}{t\+\_\+sprites\
 \newline
 {\bfseries gauche3}, 
 {\bfseries dead}
- \}\begin{DoxyCompactList}\small\item\em les types de sprites pour les animations du personnage \end{DoxyCompactList}
-\item 
+ \}
+\begin{DoxyCompactList}\small\item\em les types de sprites pour les animations du personnage \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{constantes_8h_a220de005cda6dc4c575de300f1e3799e}\label{constantes_8h_a220de005cda6dc4c575de300f1e3799e}} 
+enum \mbox{\hyperlink{constantes_8h_a220de005cda6dc4c575de300f1e3799e}{t\+\_\+ligne\+\_\+sprites\+\_\+ennemi}} \{ \newline
+{\bfseries idle\+\_\+droite\+\_\+ennemi}, 
+{\bfseries idle\+\_\+gauche\+\_\+ennemi}, 
+{\bfseries walk\+\_\+droite}, 
+{\bfseries walk\+\_\+gauche}, 
+\newline
+{\bfseries ennemi\+\_\+dead}
+ \}
+\begin{DoxyCompactList}\small\item\em les types de sprites pour les animations des ennemis \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{constantes_8h_ad1b7e09dd2f56578f1bc88956faf8c6f}\label{constantes_8h_ad1b7e09dd2f56578f1bc88956faf8c6f}} 
-enum \hyperlink{constantes_8h_ad1b7e09dd2f56578f1bc88956faf8c6f}{t\+\_\+types\+\_\+textures} \{ \newline
+enum \mbox{\hyperlink{constantes_8h_ad1b7e09dd2f56578f1bc88956faf8c6f}{t\+\_\+types\+\_\+textures}} \{ \newline
 {\bfseries sol} =0, 
 {\bfseries mur}, 
 {\bfseries porte}, 
@@ -241,59 +324,101 @@ enum \hyperlink{constantes_8h_ad1b7e09dd2f56578f1bc88956faf8c6f}{t\+\_\+types\+\
 {\bfseries trapdoor}, 
 \newline
 {\bfseries pv}, 
-{\bfseries etage}
- \}\begin{DoxyCompactList}\small\item\em les types de textures sur lequel le perso peut tomber \end{DoxyCompactList}
-\item 
+{\bfseries etage}, 
+{\bfseries fond}, 
+{\bfseries fond2}, 
+\newline
+{\bfseries carte1}, 
+{\bfseries carte2}, 
+{\bfseries carte3}, 
+{\bfseries carte4}
+ \}
+\begin{DoxyCompactList}\small\item\em les types de textures sur lequel le perso peut tomber \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{constantes_8h_a0b20f965ee5f3053aecabf44664f4aaa}\label{constantes_8h_a0b20f965ee5f3053aecabf44664f4aaa}} 
-enum {\bfseries t\+\_\+type\+\_\+ennemis} \{ {\bfseries squelette}, 
+enum {\bfseries t\+\_\+type\+\_\+ennemis} \{ \newline
+{\bfseries squelette}, 
+{\bfseries blob}, 
+{\bfseries imp}, 
 {\bfseries minotaure}, 
-{\bfseries cyclope}
+\newline
+{\bfseries cyclope}, 
+{\bfseries wizard}
  \}
 \item 
 \mbox{\Hypertarget{constantes_8h_a0f3684078562a23c3ea21266d10cf275}\label{constantes_8h_a0f3684078562a23c3ea21266d10cf275}} 
-enum \hyperlink{constantes_8h_a0f3684078562a23c3ea21266d10cf275}{t\+\_\+etat} \{ \newline
+enum \mbox{\hyperlink{constantes_8h_a0f3684078562a23c3ea21266d10cf275}{t\+\_\+etat}} \{ \newline
 {\bfseries main\+Menu} = 0, 
 {\bfseries labyrinthe}, 
 {\bfseries tour\+Par\+Tour}, 
 {\bfseries pause\+Screen}, 
 \newline
-{\bfseries charger\+\_\+partie}
- \}\begin{DoxyCompactList}\small\item\em les états que peut prendre le jeu afin de naviguer entre les menus \end{DoxyCompactList}
-\item 
+{\bfseries charger\+\_\+partie}, 
+{\bfseries confirmer\+\_\+nouveau}
+ \}
+\begin{DoxyCompactList}\small\item\em les états que peut prendre le jeu afin de naviguer entre les menus \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{constantes_8h_a8fb27eb0b354a4f35787ef57ac90e0eb}\label{constantes_8h_a8fb27eb0b354a4f35787ef57ac90e0eb}} 
-enum \hyperlink{constantes_8h_a8fb27eb0b354a4f35787ef57ac90e0eb}{type\+\_\+carte} \{ {\bfseries A\+T\+T\+A\+Q\+UE} = -\/1, 
+enum \mbox{\hyperlink{constantes_8h_a8fb27eb0b354a4f35787ef57ac90e0eb}{type\+\_\+carte}} \{ {\bfseries A\+T\+T\+A\+Q\+UE} = -\/1, 
 {\bfseries D\+E\+F\+E\+N\+SE} = 1
- \}\begin{DoxyCompactList}\small\item\em Les différents types de cartes. \end{DoxyCompactList}
-\item 
+ \}
+\begin{DoxyCompactList}\small\item\em Les différents types de cartes. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{constantes_8h_ae8bdf1303543a5b8c77f80d7f3a24d12}\label{constantes_8h_ae8bdf1303543a5b8c77f80d7f3a24d12}} 
-enum \hyperlink{constantes_8h_ae8bdf1303543a5b8c77f80d7f3a24d12}{t\+\_\+touches\+\_\+clavier} \{ \newline
+enum \mbox{\hyperlink{constantes_8h_ae8bdf1303543a5b8c77f80d7f3a24d12}{t\+\_\+touches\+\_\+clavier}} \{ \newline
 {\bfseries up}, 
 {\bfseries down}, 
 {\bfseries right}, 
 {\bfseries left}, 
 \newline
-{\bfseries entree}
- \}\begin{DoxyCompactList}\small\item\em Les différents types de touches utilisées. \end{DoxyCompactList}
-\item 
+{\bfseries entree}, 
+{\bfseries escape}
+ \}
+\begin{DoxyCompactList}\small\item\em Les différents types de touches utilisées. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{constantes_8h_aec4e3894aa763e81148b2241ff730790}\label{constantes_8h_aec4e3894aa763e81148b2241ff730790}} 
-enum \hyperlink{constantes_8h_aec4e3894aa763e81148b2241ff730790}{t\+\_\+direction} \{ {\bfseries haut}, 
+enum \mbox{\hyperlink{constantes_8h_aec4e3894aa763e81148b2241ff730790}{t\+\_\+direction}} \{ {\bfseries haut}, 
 {\bfseries droite}, 
 {\bfseries bas}, 
 {\bfseries gauche}
- \}\begin{DoxyCompactList}\small\item\em Les différents types de touches utilisées. \end{DoxyCompactList}
-\end{DoxyCompactItemize}
-\subsection*{Variables}
+ \}
+\begin{DoxyCompactList}\small\item\em Les différents types de touches utilisées. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{constantes_8h_a71de36288def8c30844cb07167daaed4}\label{constantes_8h_a71de36288def8c30844cb07167daaed4}} 
+enum \mbox{\hyperlink{constantes_8h_a71de36288def8c30844cb07167daaed4}{t\+\_\+sons}} \{ \newline
+{\bfseries move} =0, 
+{\bfseries selection}, 
+{\bfseries change\+\_\+salle}, 
+{\bfseries footsteps}, 
+\newline
+{\bfseries game\+Over\+Frame}, 
+{\bfseries death}, 
+{\bfseries collect}, 
+{\bfseries chest}
+ \}
+\begin{DoxyCompactList}\small\item\em Les différents sons utilisés. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{constantes_8h_ac6321ad6cd66ef7d4328555d72f161af}\label{constantes_8h_ac6321ad6cd66ef7d4328555d72f161af}} 
+enum \mbox{\hyperlink{constantes_8h_ac6321ad6cd66ef7d4328555d72f161af}{t\+\_\+musique}} \{ \newline
+{\bfseries menu} =0, 
+{\bfseries level1}, 
+{\bfseries game\+Over\+Music}, 
+{\bfseries fight}, 
+\newline
+{\bfseries boss}, 
+{\bfseries level2}, 
+{\bfseries level3}, 
+{\bfseries level4}, 
+\newline
+{\bfseries level5}
+ \}
+\begin{DoxyCompactList}\small\item\em Les différentes musiques utilisées. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{constantes_8h_ac0bdec8145d8fdfd5a2673ef96bf14ca}\label{constantes_8h_ac0bdec8145d8fdfd5a2673ef96bf14ca}} 
-\hyperlink{structelement}{element\+\_\+t} $\ast$ {\bfseries drapeau}
+\mbox{\hyperlink{structelement}{element\+\_\+t}} $\ast$ {\bfseries drapeau}
 \item 
 \mbox{\Hypertarget{constantes_8h_aca122a400f96a8a768ff915610c60462}\label{constantes_8h_aca122a400f96a8a768ff915610c60462}} 
-\hyperlink{structelement}{element\+\_\+t} $\ast$ {\bfseries ec}
+\mbox{\hyperlink{structelement}{element\+\_\+t}} $\ast$ {\bfseries ec}
 \end{DoxyCompactItemize}
 
 
-\subsection{Description détaillée}
+\doxysubsection{Description détaillée}
 Constantes et structures du projet Roguelike. 
 
 \begin{DoxyAuthor}{Auteur}

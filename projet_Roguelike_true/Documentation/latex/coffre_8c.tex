@@ -1,0 +1,56 @@
+\hypertarget{coffre_8c}{}\doxysection{Référence du fichier coffre.\+c}
+\label{coffre_8c}\index{coffre.c@{coffre.c}}
+
+
+permet de gérer animation et drop d\textquotesingle{}objets des coffres  
+
+
+{\ttfamily \#include \char`\"{}../include/constantes.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/initialisation\+\_\+sdl\+\_\+fonctions.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de coffre.\+c\+:
+% FIG 0
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{coffre_8c_ad52c2bd6ddbc235b9be0c84622e3305e}\label{coffre_8c_ad52c2bd6ddbc235b9be0c84622e3305e}} 
+void {\bfseries animation\+\_\+coffre} (\mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$pers, \mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} $\ast$salle, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]})
+\item 
+\mbox{\Hypertarget{coffre_8c_a022618e8a6479bd20c53be88df9b4dc9}\label{coffre_8c_a022618e8a6479bd20c53be88df9b4dc9}} 
+void {\bfseries creer\+\_\+coffre} (\mbox{\hyperlink{structcoffre__t}{coffre\+\_\+t}} $\ast$coffre, S\+D\+L\+\_\+\+Renderer $\ast$rendu, int coffre\+\_\+existe)
+\item 
+void \mbox{\hyperlink{coffre_8c_a1b5e8a53671fe295003e0491b1543385}{destruction\+\_\+des\+\_\+coffres}} (\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} salles\mbox{[}$\,$\mbox{]}, int taille)
+\begin{DoxyCompactList}\small\item\em Libère tous les emplacements mémoires attribués aux coffres. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+permet de gérer animation et drop d\textquotesingle{}objets des coffres 
+
+\begin{DoxyAuthor}{Auteur}
+Tudoret Aurélien 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+14/03/2020 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{coffre_8c_a1b5e8a53671fe295003e0491b1543385}\label{coffre_8c_a1b5e8a53671fe295003e0491b1543385}} 
+\index{coffre.c@{coffre.c}!destruction\_des\_coffres@{destruction\_des\_coffres}}
+\index{destruction\_des\_coffres@{destruction\_des\_coffres}!coffre.c@{coffre.c}}
+\doxysubsubsection{\texorpdfstring{destruction\_des\_coffres()}{destruction\_des\_coffres()}}
+{\footnotesize\ttfamily void destruction\+\_\+des\+\_\+coffres (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}}}]{salles\mbox{[}$\,$\mbox{]},  }\item[{int}]{taille }\end{DoxyParamCaption})}
+
+
+
+Libère tous les emplacements mémoires attribués aux coffres. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em salles\mbox{[}$\,$\mbox{]},le} & tableau contenant toutes les salles du labyrinthe \\
+\hline
+{\em taille,la} & taille du tableau de salles \\
+\hline
+\end{DoxyParams}

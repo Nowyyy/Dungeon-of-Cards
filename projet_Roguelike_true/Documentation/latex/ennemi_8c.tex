@@ -1,0 +1,86 @@
+\hypertarget{ennemi_8c}{}\doxysection{Référence du fichier ennemi.\+c}
+\label{ennemi_8c}\index{ennemi.c@{ennemi.c}}
+
+
+Permet de gérer les déplacements et animations des ennemis dans le labyrinthe et en combat.  
+
+
+{\ttfamily \#include \char`\"{}../include/constantes.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/fonctions.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de ennemi.\+c\+:
+% FIG 0
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ennemi_8c_aacdfb5a8e66f1825f19077308a8d6e2b}{change\+\_\+anim\+\_\+ligne}} (\mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$ennemi, int nouvelle\+\_\+anim)
+\begin{DoxyCompactList}\small\item\em Permet de donner à l\textquotesingle{}ennemi l\textquotesingle{}animation qu\textquotesingle{}il devra effectuer par la suite. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ennemi_8c_ad3d491b17b4bc77d5f7fef8b4b3d8f70}{animation\+\_\+ennemi}} (\mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$ennemi)
+\begin{DoxyCompactList}\small\item\em Permet de passer d\textquotesingle{}animations en animations pour un ennemi. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ennemi_8c_a76ea213e4e409f1a3759a6c9494fd55a}{destruction\+\_\+tous\+\_\+ennemis}} (\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} salles\mbox{[}$\,$\mbox{]}, int taille)
+\begin{DoxyCompactList}\small\item\em Libère tous les emplacements mémoires attribués aux ennemis. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Permet de gérer les déplacements et animations des ennemis dans le labyrinthe et en combat. 
+
+\begin{DoxyAuthor}{Auteur}
+Tudoret Aurélien 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0. 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+12/03/2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{ennemi_8c_ad3d491b17b4bc77d5f7fef8b4b3d8f70}\label{ennemi_8c_ad3d491b17b4bc77d5f7fef8b4b3d8f70}} 
+\index{ennemi.c@{ennemi.c}!animation\_ennemi@{animation\_ennemi}}
+\index{animation\_ennemi@{animation\_ennemi}!ennemi.c@{ennemi.c}}
+\doxysubsubsection{\texorpdfstring{animation\_ennemi()}{animation\_ennemi()}}
+{\footnotesize\ttfamily void animation\+\_\+ennemi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$}]{ennemi }\end{DoxyParamCaption})}
+
+
+
+Permet de passer d\textquotesingle{}animations en animations pour un ennemi. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$ennemi,l\textquotesingle{}ennemi} & pour lequel on veut effectuer une animation \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ennemi_8c_aacdfb5a8e66f1825f19077308a8d6e2b}\label{ennemi_8c_aacdfb5a8e66f1825f19077308a8d6e2b}} 
+\index{ennemi.c@{ennemi.c}!change\_anim\_ligne@{change\_anim\_ligne}}
+\index{change\_anim\_ligne@{change\_anim\_ligne}!ennemi.c@{ennemi.c}}
+\doxysubsubsection{\texorpdfstring{change\_anim\_ligne()}{change\_anim\_ligne()}}
+{\footnotesize\ttfamily void change\+\_\+anim\+\_\+ligne (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$}]{ennemi,  }\item[{int}]{nouvelle\+\_\+anim }\end{DoxyParamCaption})}
+
+
+
+Permet de donner à l\textquotesingle{}ennemi l\textquotesingle{}animation qu\textquotesingle{}il devra effectuer par la suite. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$ennemi,l\textquotesingle{}ennemi} & pour lequel on change l\textquotesingle{}animation \\
+\hline
+{\em nouvelle\+\_\+anim,la} & nouvelle animation que doit effectuer l\textquotesingle{}ennemi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ennemi_8c_a76ea213e4e409f1a3759a6c9494fd55a}\label{ennemi_8c_a76ea213e4e409f1a3759a6c9494fd55a}} 
+\index{ennemi.c@{ennemi.c}!destruction\_tous\_ennemis@{destruction\_tous\_ennemis}}
+\index{destruction\_tous\_ennemis@{destruction\_tous\_ennemis}!ennemi.c@{ennemi.c}}
+\doxysubsubsection{\texorpdfstring{destruction\_tous\_ennemis()}{destruction\_tous\_ennemis()}}
+{\footnotesize\ttfamily void destruction\+\_\+tous\+\_\+ennemis (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}}}]{salles\mbox{[}$\,$\mbox{]},  }\item[{int}]{taille }\end{DoxyParamCaption})}
+
+
+
+Libère tous les emplacements mémoires attribués aux ennemis. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em salles\mbox{[}$\,$\mbox{]},le} & tableau contenant toutes les salles du labyrinthe \\
+\hline
+{\em taille,la} & taille du tableau de salles \\
+\hline
+\end{DoxyParams}

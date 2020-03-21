@@ -1,6 +1,10 @@
-\hypertarget{structsalle__s}{}\section{Référence de la structure salle\+\_\+s}
-\label{structsalle__s}\index{salle\+\_\+s@{salle\+\_\+s}}
-\subsection*{Champs de données}
+\hypertarget{structsalle__s}{}\doxysection{Référence de la structure salle\+\_\+s}
+\label{structsalle__s}\index{salle\_s@{salle\_s}}
+
+
+Graphe de collaboration de salle\+\_\+s\+:
+% FIG 0
+\doxysubsection*{Champs de données}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{structsalle__s_a3c48c122acb80d4684fd041173ee4195}\label{structsalle__s_a3c48c122acb80d4684fd041173ee4195}} 
@@ -24,6 +28,9 @@ S\+D\+L\+\_\+\+Rect {\bfseries murs} \mbox{[}T\+A\+I\+L\+L\+E\+\_\+\+S\+A\+L\+LE
 \mbox{\Hypertarget{structsalle__s_a00230727a6aa662cce254a0341c567f8}\label{structsalle__s_a00230727a6aa662cce254a0341c567f8}} 
 S\+D\+L\+\_\+\+Rect {\bfseries portes} \mbox{[}T\+A\+I\+L\+L\+E\+\_\+\+S\+A\+L\+LE\mbox{]}
 \item 
+\mbox{\Hypertarget{structsalle__s_a5fb521a3b003d43cefc74422e3ab63b9}\label{structsalle__s_a5fb521a3b003d43cefc74422e3ab63b9}} 
+\mbox{\hyperlink{structcoffre__t}{coffre\+\_\+t}} {\bfseries coffre\+\_\+salle}
+\item 
 \mbox{\Hypertarget{structsalle__s_a542dee312ccd6acb9fa9419f78a070c4}\label{structsalle__s_a542dee312ccd6acb9fa9419f78a070c4}} 
 int {\bfseries nb\+\_\+murs}
 \item 
@@ -36,23 +43,14 @@ int {\bfseries id}
 \mbox{\Hypertarget{structsalle__s_ad82fc1e9e39f7a39b7fc26ea2d01bed3}\label{structsalle__s_ad82fc1e9e39f7a39b7fc26ea2d01bed3}} 
 int {\bfseries salle\+\_\+existe}
 \item 
+\mbox{\Hypertarget{structsalle__s_a28ed75fdfae4793b20549225e6f0ad35}\label{structsalle__s_a28ed75fdfae4793b20549225e6f0ad35}} 
+int {\bfseries prems}
+\item 
 \mbox{\Hypertarget{structsalle__s_a5b8d8ce1581c10a220e9fb3daeff85fe}\label{structsalle__s_a5b8d8ce1581c10a220e9fb3daeff85fe}} 
 int {\bfseries ennemi\+\_\+present}
 \item 
 \mbox{\Hypertarget{structsalle__s_aa9b7b9a0e427a86cd11b7d7db6b7ba90}\label{structsalle__s_aa9b7b9a0e427a86cd11b7d7db6b7ba90}} 
 int {\bfseries nb\+\_\+ennemi}
-\item 
-\mbox{\Hypertarget{structsalle__s_a40c4f1a128a605b65ec7309af8cba314}\label{structsalle__s_a40c4f1a128a605b65ec7309af8cba314}} 
-int {\bfseries x\+\_\+ennemi1}
-\item 
-\mbox{\Hypertarget{structsalle__s_a752545ccd49321820dd57393375c7d0a}\label{structsalle__s_a752545ccd49321820dd57393375c7d0a}} 
-int {\bfseries x\+\_\+ennemi2}
-\item 
-\mbox{\Hypertarget{structsalle__s_a8929052f0ac9a049dade307c2eb3d442}\label{structsalle__s_a8929052f0ac9a049dade307c2eb3d442}} 
-int {\bfseries y\+\_\+ennemi1}
-\item 
-\mbox{\Hypertarget{structsalle__s_acf5b6152ebaf74ac6a5cc2e6ad48de05}\label{structsalle__s_acf5b6152ebaf74ac6a5cc2e6ad48de05}} 
-int {\bfseries y\+\_\+ennemi2}
 \item 
 \mbox{\Hypertarget{structsalle__s_ad17193c93b46d17d67cd46b4e6cec7b4}\label{structsalle__s_ad17193c93b46d17d67cd46b4e6cec7b4}} 
 int {\bfseries boss}
@@ -71,9 +69,15 @@ int {\bfseries depart}
 \item 
 \mbox{\Hypertarget{structsalle__s_a31564b120c85a392581dea2042ab7fa8}\label{structsalle__s_a31564b120c85a392581dea2042ab7fa8}} 
 int {\bfseries decouverte}
+\item 
+\mbox{\Hypertarget{structsalle__s_a0afc9a6b09a8602a7efa1b6bab4f887f}\label{structsalle__s_a0afc9a6b09a8602a7efa1b6bab4f887f}} 
+\mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$ {\bfseries ennemi}
+\item 
+\mbox{\Hypertarget{structsalle__s_ab6da3a748e02d0b4ed29c3fcd0fb3604}\label{structsalle__s_ab6da3a748e02d0b4ed29c3fcd0fb3604}} 
+\mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$ {\bfseries ennemi2}
 \end{DoxyCompactItemize}
 
 
 La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
 \item 
-/home/aurelien/\+Desktop/\+Projet-\/\+L2-\//projet\+\_\+\+Roguelike\+\_\+true/include/\hyperlink{constantes_8h}{constantes.\+h}\end{DoxyCompactItemize}
+/\+Users/axel/\+Documents/\+Save git/\+Projet-\/\+L2-\//projet\+\_\+\+Roguelike\+\_\+true/include/\mbox{\hyperlink{constantes_8h}{constantes.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,121 @@
+\hypertarget{confirmer__nouveau_8c}{}\doxysection{Référence du fichier confirmer\+\_\+nouveau.\+c}
+\label{confirmer__nouveau_8c}\index{confirmer\_nouveau.c@{confirmer\_nouveau.c}}
+
+
+Gère l\textquotesingle{}écrasement de la sauvegarde en cas de nouvelle partie.  
+
+
+{\ttfamily \#include \char`\"{}../include/constantes.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/initialisation\+\_\+sdl\+\_\+fonctions.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/personnage.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/sauvegardefonc.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de confirmer\+\_\+nouveau.\+c\+:
+% FIG 0
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{confirmer__nouveau_8c_aac3428dc046869e22c723411e47f7a41}{afficher\+\_\+confirmation}} (S\+D\+L\+\_\+\+Renderer $\ast$rendu, S\+D\+L\+\_\+\+Rect rect\+\_\+sel, S\+D\+L\+\_\+\+Texture $\ast$confirmer\+\_\+texture, S\+D\+L\+\_\+\+Rect confirmer\+\_\+rect, S\+D\+L\+\_\+\+Texture $\ast$retour\+\_\+texture, S\+D\+L\+\_\+\+Rect retour\+\_\+rect, S\+D\+L\+\_\+\+Texture $\ast$message\+\_\+texture, S\+D\+L\+\_\+\+Rect message\+\_\+rect)
+\begin{DoxyCompactList}\small\item\em Affiche sur le rendu les différentes textures et rectangles passés en paramètre. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{confirmer__nouveau_8c_aa9f04d0ccd6580d12c953f02bcaa7124}{deplacement\+\_\+rectangle\+\_\+selection\+\_\+confirmer}} (int $\ast$etat, S\+D\+L\+\_\+\+Rect confirmer\+\_\+rect, S\+D\+L\+\_\+\+Rect retour\+\_\+rect, S\+D\+L\+\_\+\+Rect $\ast$$\ast$rect\+\_\+sel, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]}, \mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$pers)
+\begin{DoxyCompactList}\small\item\em Permet de déplacer d\textquotesingle{}option en option le rectangle de sélection. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{confirmer__nouveau_8c_afdf380a848ff1a77948677df6bef8714}{menu\+\_\+confirmation}} (int $\ast$continuer, int $\ast$etat, S\+D\+L\+\_\+\+Renderer $\ast$rendu, T\+T\+F\+\_\+\+Font $\ast$police, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]}, \mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$pers)
+\begin{DoxyCompactList}\small\item\em Permet d\textquotesingle{}afficher un menu confirmant l\textquotesingle{}écrasement de la sauvegarde et de l\textquotesingle{}écraser ou non en fonction du choix du joueur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Gère l\textquotesingle{}écrasement de la sauvegarde en cas de nouvelle partie. 
+
+\begin{DoxyAuthor}{Auteur}
+\{Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas\} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+18/02/2020 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{confirmer__nouveau_8c_aac3428dc046869e22c723411e47f7a41}\label{confirmer__nouveau_8c_aac3428dc046869e22c723411e47f7a41}} 
+\index{confirmer\_nouveau.c@{confirmer\_nouveau.c}!afficher\_confirmation@{afficher\_confirmation}}
+\index{afficher\_confirmation@{afficher\_confirmation}!confirmer\_nouveau.c@{confirmer\_nouveau.c}}
+\doxysubsubsection{\texorpdfstring{afficher\_confirmation()}{afficher\_confirmation()}}
+{\footnotesize\ttfamily void afficher\+\_\+confirmation (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{S\+D\+L\+\_\+\+Rect}]{rect\+\_\+sel,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{charger\+\_\+texture,  }\item[{S\+D\+L\+\_\+\+Rect}]{confirmer\+\_\+rect,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{retour\+\_\+texture,  }\item[{S\+D\+L\+\_\+\+Rect}]{retour\+\_\+rect,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{message\+\_\+texture,  }\item[{S\+D\+L\+\_\+\+Rect}]{message\+\_\+rect }\end{DoxyParamCaption})}
+
+
+
+Affiche sur le rendu les différentes textures et rectangles passés en paramètre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em rect\+\_\+sel,le} & rectangle de sélection du menu \\
+\hline
+{\em $\ast$confirmer\+\_\+texture} & la texture pour le texte \char`\"{}\+Charger partie\char`\"{} \\
+\hline
+{\em $\ast$retour\+\_\+texture} & la texture pour le texte \char`\"{}\+Quitter\char`\"{} \\
+\hline
+{\em confirmer\+\_\+rect} & le rectangle pour confirmer l\textquotesingle{}écrasement de la partie \\
+\hline
+{\em retour\+\_\+rect} & le rectangle pour le texte \char`\"{}retour\char`\"{} \\
+\hline
+{\em $\ast$message\+\_\+texture} & la texture pour le texte du message \\
+\hline
+{\em message\+\_\+rect} & le rectangke pour le texte du message \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{confirmer__nouveau_8c_aa9f04d0ccd6580d12c953f02bcaa7124}\label{confirmer__nouveau_8c_aa9f04d0ccd6580d12c953f02bcaa7124}} 
+\index{confirmer\_nouveau.c@{confirmer\_nouveau.c}!deplacement\_rectangle\_selection\_confirmer@{deplacement\_rectangle\_selection\_confirmer}}
+\index{deplacement\_rectangle\_selection\_confirmer@{deplacement\_rectangle\_selection\_confirmer}!confirmer\_nouveau.c@{confirmer\_nouveau.c}}
+\doxysubsubsection{\texorpdfstring{deplacement\_rectangle\_selection\_confirmer()}{deplacement\_rectangle\_selection\_confirmer()}}
+{\footnotesize\ttfamily int deplacement\+\_\+rectangle\+\_\+selection\+\_\+confirmer (\begin{DoxyParamCaption}\item[{int $\ast$}]{etat,  }\item[{S\+D\+L\+\_\+\+Rect}]{confirmer\+\_\+rect,  }\item[{S\+D\+L\+\_\+\+Rect}]{retour\+\_\+rect,  }\item[{S\+D\+L\+\_\+\+Rect $\ast$$\ast$}]{rect\+\_\+sel,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},  }\item[{\mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$}]{pers }\end{DoxyParamCaption})}
+
+
+
+Permet de déplacer d\textquotesingle{}option en option le rectangle de sélection. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$etat,permet} & de changer l\textquotesingle{}affuchage selon l\textquotesingle{}écran dans lequel se trouve le jeu \\
+\hline
+{\em confirmer\+\_\+rect,le} & rectangle contenant le texte de confirmation d\textquotesingle{}ecrasement de partie \\
+\hline
+{\em retour\+\_\+rect,le} & rectangle contenant le texte \char`\"{}retour\char`\"{}, pour retourner au menu principal \\
+\hline
+{\em $\ast$$\ast$rect\+\_\+sel,le} & rectangle de sélection permettant de sélectionner une option \\
+\hline
+{\em $\ast$sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},tableau} & contenant les sons \\
+\hline
+{\em $\ast$pers,la} & structure du personnage\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+retourne False pour fermer la fenetre, True pour la garder ouverte 
+\end{DoxyReturn}
+\mbox{\Hypertarget{confirmer__nouveau_8c_afdf380a848ff1a77948677df6bef8714}\label{confirmer__nouveau_8c_afdf380a848ff1a77948677df6bef8714}} 
+\index{confirmer\_nouveau.c@{confirmer\_nouveau.c}!menu\_confirmation@{menu\_confirmation}}
+\index{menu\_confirmation@{menu\_confirmation}!confirmer\_nouveau.c@{confirmer\_nouveau.c}}
+\doxysubsubsection{\texorpdfstring{menu\_confirmation()}{menu\_confirmation()}}
+{\footnotesize\ttfamily void menu\+\_\+confirmation (\begin{DoxyParamCaption}\item[{int $\ast$}]{continuer,  }\item[{int $\ast$}]{etat,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{police,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},  }\item[{\mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$}]{pers }\end{DoxyParamCaption})}
+
+
+
+Permet d\textquotesingle{}afficher un menu confirmant l\textquotesingle{}écrasement de la sauvegarde et de l\textquotesingle{}écraser ou non en fonction du choix du joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$continuer,pointeur} & sur un int permettant de savoir si le joueur veut quitter le jeu \\
+\hline
+{\em $\ast$etat,pointeur} & sur un int permettant de connaitre le prochain écran auquel le joueur veut accèder \\
+\hline
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$police,la} & police d\textquotesingle{}écriture pour T\+TF \\
+\hline
+{\em $\ast$sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},tableau} & contenant les sons \\
+\hline
+{\em $\ast$pers,la} & structure du personnage \\
+\hline
+\end{DoxyParams}

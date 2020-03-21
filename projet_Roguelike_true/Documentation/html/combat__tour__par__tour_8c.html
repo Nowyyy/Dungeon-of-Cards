@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Dungeon of Cards: Référence du fichier combat_tour_par_tour.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Dungeon of Cards
+   &#160;<span id="projectnumber">1</span>
+   </div>
+   <div id="projectbrief">Ce projet à pour but de créer un jeu roguelike pour le module Projet de notre seconde année de licence</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier combat_tour_par_tour.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>contient et fait appel a toutes fonctions nécessaires pour le combat  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="constantes_8h_source.html">../include/constantes.h</a>&quot;</code><br />
+<code>#include &quot;../include/initialisation_sdl_fonctions.h&quot;</code><br />
+<code>#include &quot;../include/fonctions.h&quot;</code><br />
+<code>#include &quot;../include/clavier.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de combat_tour_par_tour.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="combat__tour__par__tour_8c__incl.png" border="0" usemap="#combat__tour__par__tour_8c" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a99443aeb8d987c2c9b48bbd31c7e63c2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat__tour__par__tour_8c.html#a99443aeb8d987c2c9b48bbd31c7e63c2">deplacement_rectangle_selection_combat</a> (SDL_Rect defausse, SDL_Rect fuir, SDL_Rect carte1, SDL_Rect carte2, SDL_Rect carte3, SDL_Rect carte4, SDL_Rect **rect_sel)</td></tr>
+<tr class="memdesc:a99443aeb8d987c2c9b48bbd31c7e63c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de déplacer le rectangle de selection.  <a href="combat__tour__par__tour_8c.html#a99443aeb8d987c2c9b48bbd31c7e63c2">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a99443aeb8d987c2c9b48bbd31c7e63c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b8158133c08bba87fd10ba6b445a68e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat__tour__par__tour_8c.html#a4b8158133c08bba87fd10ba6b445a68e">affichage_combat_personnage</a> (SDL_Renderer *rendu, <a class="el" href="structperso__t.html">perso_t</a> *pers, <a class="el" href="structennemi__t.html">ennemi_t</a> *ennemi, SDL_Texture *defausse_texture, SDL_Texture *fuir_texture, SDL_Rect defausse_rect, SDL_Rect fuir_rect, SDL_Rect *rect_sel, <a class="el" href="structimage__t.html">image_t</a> images[NB_TEXTURES])</td></tr>
+<tr class="memdesc:a4b8158133c08bba87fd10ba6b445a68e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet d'afficher toutes la partie combat.  <a href="combat__tour__par__tour_8c.html#a4b8158133c08bba87fd10ba6b445a68e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4b8158133c08bba87fd10ba6b445a68e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa61c28d0a5af43fb2b409548b001d62e"><td class="memItemLeft" align="right" valign="top"><a id="aa61c28d0a5af43fb2b409548b001d62e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>charge_textures_combat</b> (<a class="el" href="structimage__t.html">image_t</a> images[], SDL_Renderer *rendu, <a class="el" href="structcarte__t.html">carte_t</a> *cartes[])</td></tr>
+<tr class="separator:aa61c28d0a5af43fb2b409548b001d62e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20d180791680d2c8edfbbc4d56a708bd"><td class="memItemLeft" align="right" valign="top"><a id="a20d180791680d2c8edfbbc4d56a708bd"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>donne_valeur_rect_images</b> (<a class="el" href="structimage__t.html">image_t</a> images[])</td></tr>
+<tr class="separator:a20d180791680d2c8edfbbc4d56a708bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a880669b069085432fe3848eb8d85b0df"><td class="memItemLeft" align="right" valign="top"><a id="a880669b069085432fe3848eb8d85b0df"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>free_image</b> (<a class="el" href="structimage__t.html">image_t</a> images[])</td></tr>
+<tr class="separator:a880669b069085432fe3848eb8d85b0df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a005211a67eb4421845f3d86cb8bf8bb8"><td class="memItemLeft" align="right" valign="top"><a id="a005211a67eb4421845f3d86cb8bf8bb8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>creer_texte_combat</b> (char *txt, <a class="el" href="structimage__t.html">image_t</a> *image, int x, int y, SDL_Renderer *rendu, TTF_Font *font)</td></tr>
+<tr class="separator:a005211a67eb4421845f3d86cb8bf8bb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae44f778a6e5050f764ddfa1bc4ac4be"><td class="memItemLeft" align="right" valign="top"><a id="aae44f778a6e5050f764ddfa1bc4ac4be"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>tour_joueur</b> (<a class="el" href="structperso__t.html">perso_t</a> *pers, <a class="el" href="structennemi__t.html">ennemi_t</a> *ennemi, <a class="el" href="structcarte__t.html">carte_t</a> carte)</td></tr>
+<tr class="separator:aae44f778a6e5050f764ddfa1bc4ac4be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b2a9e77933a80bd503dc6a3dbbaa353"><td class="memItemLeft" align="right" valign="top"><a id="a5b2a9e77933a80bd503dc6a3dbbaa353"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>tour_ennemi</b> (<a class="el" href="structperso__t.html">perso_t</a> *pers, <a class="el" href="structennemi__t.html">ennemi_t</a> *ennemi)</td></tr>
+<tr class="separator:a5b2a9e77933a80bd503dc6a3dbbaa353"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a803a9d0b96bbeb7d10d015ac68beb723"><td class="memItemLeft" align="right" valign="top"><a id="a803a9d0b96bbeb7d10d015ac68beb723"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>combat_t_p_t</b> (<a class="el" href="structperso__t.html">perso_t</a> *perso, <a class="el" href="structennemi__t.html">ennemi_t</a> *ennemi, SDL_Renderer *rendu)</td></tr>
+<tr class="separator:a803a9d0b96bbeb7d10d015ac68beb723"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>contient et fait appel a toutes fonctions nécessaires pour le combat </p>
+<dl class="section author"><dt>Auteur</dt><dd>{Tudoret Aurélien, Jourry Axel, Marin Timothée, Malabry Thomas}</dd></dl>
+<dl class="section date"><dt>Date</dt><dd>14/03/2020</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a4b8158133c08bba87fd10ba6b445a68e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b8158133c08bba87fd10ba6b445a68e">&#9670;&nbsp;</a></span>affichage_combat_personnage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichage_combat_personnage </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>pers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structennemi__t.html">ennemi_t</a> *&#160;</td>
+          <td class="paramname"><em>ennemi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>defausse_texture</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>fuir_texture</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>defausse_rect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>fuir_rect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect *&#160;</td>
+          <td class="paramname"><em>rect_sel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structimage__t.html">image_t</a>&#160;</td>
+          <td class="paramname"><em>images</em>[NB_TEXTURES]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet d'afficher toutes la partie combat. </p>
+<p>\fnvoid <a class="el" href="combat__tour__par__tour_8c.html#a4b8158133c08bba87fd10ba6b445a68e" title="Permet d&#39;afficher toutes la partie combat.">affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi,SDL_Texture *defausse_texture ,SDL_Texture *fuir_texture,SDL_Rect defausse_rect ,SDL_Rect fuir_rect,SDL_Rect *rect_sel,image_t images[NB_TEXTURES])</a></p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">*ennemi,la</td><td>structure contenant tous les ennemis </td></tr>
+    <tr><td class="paramname">pers,la</td><td>structure contenant le personnage </td></tr>
+    <tr><td class="paramname">*defausse_texture,Les</td><td>textures du texte defausse </td></tr>
+    <tr><td class="paramname">*fuir_texture,Les</td><td>textures du texte fuir </td></tr>
+    <tr><td class="paramname">defausse_rect,les</td><td>coordonnées du texte defausse </td></tr>
+    <tr><td class="paramname">fuir_rect,les</td><td>coordonnées du texte fuir </td></tr>
+    <tr><td class="paramname">*rect_sel,Les</td><td>coordonnées et taille du rectangle de selection </td></tr>
+    <tr><td class="paramname">images[NB_TEXTURES],Un</td><td>tableau contenant les cartes </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a99443aeb8d987c2c9b48bbd31c7e63c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99443aeb8d987c2c9b48bbd31c7e63c2">&#9670;&nbsp;</a></span>deplacement_rectangle_selection_combat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int deplacement_rectangle_selection_combat </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>defausse</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>fuir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>carte1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>carte2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>carte3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>carte4</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect **&#160;</td>
+          <td class="paramname"><em>rect_sel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet de déplacer le rectangle de selection. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">defausse,Correspond</td><td>aux coordonnées du texte défausse </td></tr>
+    <tr><td class="paramname">fuir,Correspond</td><td>aux coordonnées du texte fuir </td></tr>
+    <tr><td class="paramname">carte1,Correspond</td><td>aux coordonnées de la carte 1 </td></tr>
+    <tr><td class="paramname">carte2,Correspond</td><td>aux coordonnées de la carte 2 </td></tr>
+    <tr><td class="paramname">carte3,Correspond</td><td>aux coordonnées de la carte 3 </td></tr>
+    <tr><td class="paramname">carte4,Correspond</td><td>aux coordonnées de la carte 4 </td></tr>
+    <tr><td class="paramname">**rect_sel</td><td>Correspond aux coordonnées du rectangle de sélection </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

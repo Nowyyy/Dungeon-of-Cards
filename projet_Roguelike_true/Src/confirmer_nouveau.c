@@ -1,3 +1,12 @@
+/**
+*\file confirmer_nouveau.c
+*\author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
+*\date 18/02/2020
+*\version 0.1
+
+*\brief Gère l'écrasement de la sauvegarde en cas de nouvelle partie
+*/
+
 #include "../include/constantes.h"
 #include "../include/initialisation_sdl_fonctions.h"
 #include "../include/personnage.h"

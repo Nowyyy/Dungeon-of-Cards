@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Dungeon of Cards: Référence du fichier confirmer_nouveau.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Dungeon of Cards
+   &#160;<span id="projectnumber">1</span>
+   </div>
+   <div id="projectbrief">Ce projet à pour but de créer un jeu roguelike pour le module Projet de notre seconde année de licence</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier confirmer_nouveau.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gère l'écrasement de la sauvegarde en cas de nouvelle partie.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="constantes_8h_source.html">../include/constantes.h</a>&quot;</code><br />
+<code>#include &quot;../include/initialisation_sdl_fonctions.h&quot;</code><br />
+<code>#include &quot;../include/personnage.h&quot;</code><br />
+<code>#include &quot;../include/sauvegardefonc.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de confirmer_nouveau.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="confirmer__nouveau_8c__incl.png" border="0" usemap="#confirmer__nouveau_8c" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:aac3428dc046869e22c723411e47f7a41"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="confirmer__nouveau_8c.html#aac3428dc046869e22c723411e47f7a41">afficher_confirmation</a> (SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture *confirmer_texture, SDL_Rect confirmer_rect, SDL_Texture *retour_texture, SDL_Rect retour_rect, SDL_Texture *message_texture, SDL_Rect message_rect)</td></tr>
+<tr class="memdesc:aac3428dc046869e22c723411e47f7a41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche sur le rendu les différentes textures et rectangles passés en paramètre.  <a href="confirmer__nouveau_8c.html#aac3428dc046869e22c723411e47f7a41">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aac3428dc046869e22c723411e47f7a41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9f04d0ccd6580d12c953f02bcaa7124"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="confirmer__nouveau_8c.html#aa9f04d0ccd6580d12c953f02bcaa7124">deplacement_rectangle_selection_confirmer</a> (int *etat, SDL_Rect confirmer_rect, SDL_Rect retour_rect, SDL_Rect **rect_sel, Mix_Chunk *sounds[NB_SON], <a class="el" href="structperso__t.html">perso_t</a> *pers)</td></tr>
+<tr class="memdesc:aa9f04d0ccd6580d12c953f02bcaa7124"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de déplacer d'option en option le rectangle de sélection.  <a href="confirmer__nouveau_8c.html#aa9f04d0ccd6580d12c953f02bcaa7124">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa9f04d0ccd6580d12c953f02bcaa7124"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdf380a848ff1a77948677df6bef8714"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="confirmer__nouveau_8c.html#afdf380a848ff1a77948677df6bef8714">menu_confirmation</a> (int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *sounds[NB_SON], <a class="el" href="structperso__t.html">perso_t</a> *pers)</td></tr>
+<tr class="memdesc:afdf380a848ff1a77948677df6bef8714"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet d'afficher un menu confirmant l'écrasement de la sauvegarde et de l'écraser ou non en fonction du choix du joueur.  <a href="confirmer__nouveau_8c.html#afdf380a848ff1a77948677df6bef8714">Plus de détails...</a><br /></td></tr>
+<tr class="separator:afdf380a848ff1a77948677df6bef8714"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Gère l'écrasement de la sauvegarde en cas de nouvelle partie. </p>
+<dl class="section author"><dt>Auteur</dt><dd>{Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas} </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>18/02/2020 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="aac3428dc046869e22c723411e47f7a41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac3428dc046869e22c723411e47f7a41">&#9670;&nbsp;</a></span>afficher_confirmation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void afficher_confirmation </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>rect_sel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>charger_texture</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>confirmer_rect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>retour_texture</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>retour_rect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>message_texture</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>message_rect</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche sur le rendu les différentes textures et rectangles passés en paramètre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">rect_sel,le</td><td>rectangle de sélection du menu </td></tr>
+    <tr><td class="paramname">*confirmer_texture</td><td>la texture pour le texte "Charger partie" </td></tr>
+    <tr><td class="paramname">*retour_texture</td><td>la texture pour le texte "Quitter" </td></tr>
+    <tr><td class="paramname">confirmer_rect</td><td>le rectangle pour confirmer l'écrasement de la partie </td></tr>
+    <tr><td class="paramname">retour_rect</td><td>le rectangle pour le texte "retour" </td></tr>
+    <tr><td class="paramname">*message_texture</td><td>la texture pour le texte du message </td></tr>
+    <tr><td class="paramname">message_rect</td><td>le rectangke pour le texte du message </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa9f04d0ccd6580d12c953f02bcaa7124"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9f04d0ccd6580d12c953f02bcaa7124">&#9670;&nbsp;</a></span>deplacement_rectangle_selection_confirmer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int deplacement_rectangle_selection_confirmer </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>etat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>confirmer_rect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>retour_rect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect **&#160;</td>
+          <td class="paramname"><em>rect_sel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>sounds</em>[NB_SON], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>pers</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet de déplacer d'option en option le rectangle de sélection. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*etat,permet</td><td>de changer l'affuchage selon l'écran dans lequel se trouve le jeu </td></tr>
+    <tr><td class="paramname">confirmer_rect,le</td><td>rectangle contenant le texte de confirmation d'ecrasement de partie </td></tr>
+    <tr><td class="paramname">retour_rect,le</td><td>rectangle contenant le texte "retour", pour retourner au menu principal </td></tr>
+    <tr><td class="paramname">**rect_sel,le</td><td>rectangle de sélection permettant de sélectionner une option </td></tr>
+    <tr><td class="paramname">*sounds[NB_SON],tableau</td><td>contenant les sons </td></tr>
+    <tr><td class="paramname">*pers,la</td><td>structure du personnage</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>retourne False pour fermer la fenetre, True pour la garder ouverte </dd></dl>
+
+</div>
+</div>
+<a id="afdf380a848ff1a77948677df6bef8714"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdf380a848ff1a77948677df6bef8714">&#9670;&nbsp;</a></span>menu_confirmation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void menu_confirmation </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>continuer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>etat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>police</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>sounds</em>[NB_SON], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>pers</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet d'afficher un menu confirmant l'écrasement de la sauvegarde et de l'écraser ou non en fonction du choix du joueur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*continuer,pointeur</td><td>sur un int permettant de savoir si le joueur veut quitter le jeu </td></tr>
+    <tr><td class="paramname">*etat,pointeur</td><td>sur un int permettant de connaitre le prochain écran auquel le joueur veut accèder </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">*police,la</td><td>police d'écriture pour TTF </td></tr>
+    <tr><td class="paramname">*sounds[NB_SON],tableau</td><td>contenant les sons </td></tr>
+    <tr><td class="paramname">*pers,la</td><td>structure du personnage </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

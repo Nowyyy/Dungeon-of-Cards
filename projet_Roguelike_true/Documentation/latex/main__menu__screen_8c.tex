@@ -1,5 +1,5 @@
-\hypertarget{main__menu__screen_8c}{}\section{Référence du fichier main\+\_\+menu\+\_\+screen.\+c}
-\label{main__menu__screen_8c}\index{main\+\_\+menu\+\_\+screen.\+c@{main\+\_\+menu\+\_\+screen.\+c}}
+\hypertarget{main__menu__screen_8c}{}\doxysection{Référence du fichier main\+\_\+menu\+\_\+screen.\+c}
+\label{main__menu__screen_8c}\index{main\_menu\_screen.c@{main\_menu\_screen.c}}
 
 
 Gère toute la partie représentant le menu principal du jeu.  
@@ -8,20 +8,21 @@ Gère toute la partie représentant le menu principal du jeu.
 {\ttfamily \#include \char`\"{}../include/constantes.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../include/initialisation\+\_\+sdl\+\_\+fonctions.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../include/clavier.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/sauvegardefonc.\+h\char`\"{}}\newline
 Graphe des dépendances par inclusion de main\+\_\+menu\+\_\+screen.\+c\+:
 % FIG 0
-\subsection*{Fonctions}
+\doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{main__menu__screen_8c_a0267389919c27005263e086ef2895aed}{deplacement\+\_\+rectangle\+\_\+selection} (S\+D\+L\+\_\+\+Rect jouer, S\+D\+L\+\_\+\+Rect charger, S\+D\+L\+\_\+\+Rect quitter, S\+D\+L\+\_\+\+Rect $\ast$$\ast$rect\+\_\+sel, int $\ast$etat, Mix\+\_\+\+Chunk $\ast$select, Mix\+\_\+\+Chunk $\ast$move)
+int \mbox{\hyperlink{main__menu__screen_8c_aa27ad023865c066558f910c2db9a5ab8}{deplacement\+\_\+rectangle\+\_\+selection}} (S\+D\+L\+\_\+\+Rect jouer, S\+D\+L\+\_\+\+Rect charger, S\+D\+L\+\_\+\+Rect quitter, S\+D\+L\+\_\+\+Rect $\ast$$\ast$rect\+\_\+sel, int $\ast$etat, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]})
 \begin{DoxyCompactList}\small\item\em Permet de déplacer d\textquotesingle{}option en option le rectangle de sélection. \end{DoxyCompactList}\item 
-void \hyperlink{main__menu__screen_8c_a7122b8a834353cf81034bbb8e21cd7d3}{affichage\+\_\+menu} (S\+D\+L\+\_\+\+Renderer $\ast$rendu, S\+D\+L\+\_\+\+Texture $\ast$jouer\+\_\+text, S\+D\+L\+\_\+\+Texture $\ast$charger\+\_\+text, S\+D\+L\+\_\+\+Texture $\ast$quitter\+\_\+text, S\+D\+L\+\_\+\+Rect $\ast$rect\+\_\+sel, S\+D\+L\+\_\+\+Rect jouer\+\_\+rect, S\+D\+L\+\_\+\+Rect charger\+\_\+rect, S\+D\+L\+\_\+\+Rect quitter\+\_\+rect, \hyperlink{structimage__t}{image\+\_\+t} logo\mbox{[}$\,$\mbox{]})
+void \mbox{\hyperlink{main__menu__screen_8c_a7122b8a834353cf81034bbb8e21cd7d3}{affichage\+\_\+menu}} (S\+D\+L\+\_\+\+Renderer $\ast$rendu, S\+D\+L\+\_\+\+Texture $\ast$jouer\+\_\+text, S\+D\+L\+\_\+\+Texture $\ast$charger\+\_\+text, S\+D\+L\+\_\+\+Texture $\ast$quitter\+\_\+text, S\+D\+L\+\_\+\+Rect $\ast$rect\+\_\+sel, S\+D\+L\+\_\+\+Rect jouer\+\_\+rect, S\+D\+L\+\_\+\+Rect charger\+\_\+rect, S\+D\+L\+\_\+\+Rect quitter\+\_\+rect, \mbox{\hyperlink{structimage__t}{image\+\_\+t}} logo\mbox{[}$\,$\mbox{]})
 \begin{DoxyCompactList}\small\item\em Affiche sur le rendu les différentes textures et rectangles passés en paramètre. \end{DoxyCompactList}\item 
-void \hyperlink{main__menu__screen_8c_adb49f1ff0b7f8930270a6eb2b756b136}{main\+\_\+menu} (int $\ast$continuer, int $\ast$etat, S\+D\+L\+\_\+\+Renderer $\ast$rendu, T\+T\+F\+\_\+\+Font $\ast$police, Mix\+\_\+\+Chunk $\ast$select, Mix\+\_\+\+Chunk $\ast$move, Mix\+\_\+\+Music $\ast$music)
+void \mbox{\hyperlink{main__menu__screen_8c_a3c3f2046e69bf1b33cf6a6b17acd82c6}{main\+\_\+menu}} (int $\ast$continuer, int $\ast$etat, S\+D\+L\+\_\+\+Renderer $\ast$rendu, T\+T\+F\+\_\+\+Font $\ast$police, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]})
 \begin{DoxyCompactList}\small\item\em gère l\textquotesingle{}affichage à l\textquotesingle{}écran du menu principal, permet de choisir entre différentes options (jouer, charger, quitter) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\subsection{Description détaillée}
+\doxysubsection{Description détaillée}
 Gère toute la partie représentant le menu principal du jeu. 
 
 \begin{DoxyAuthor}{Auteur}
@@ -35,12 +36,12 @@ Gère toute la partie représentant le menu principal du jeu.
 \end{DoxyVersion}
 
 
-\subsection{Documentation des fonctions}
+\doxysubsection{Documentation des fonctions}
 \mbox{\Hypertarget{main__menu__screen_8c_a7122b8a834353cf81034bbb8e21cd7d3}\label{main__menu__screen_8c_a7122b8a834353cf81034bbb8e21cd7d3}} 
-\index{main\+\_\+menu\+\_\+screen.\+c@{main\+\_\+menu\+\_\+screen.\+c}!affichage\+\_\+menu@{affichage\+\_\+menu}}
-\index{affichage\+\_\+menu@{affichage\+\_\+menu}!main\+\_\+menu\+\_\+screen.\+c@{main\+\_\+menu\+\_\+screen.\+c}}
-\subsubsection{\texorpdfstring{affichage\+\_\+menu()}{affichage\_menu()}}
-{\footnotesize\ttfamily void affichage\+\_\+menu (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{jouer\+\_\+text,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{charger\+\_\+text,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{quitter\+\_\+text,  }\item[{S\+D\+L\+\_\+\+Rect $\ast$}]{rect\+\_\+sel,  }\item[{S\+D\+L\+\_\+\+Rect}]{jouer\+\_\+rect,  }\item[{S\+D\+L\+\_\+\+Rect}]{charger\+\_\+rect,  }\item[{S\+D\+L\+\_\+\+Rect}]{quitter\+\_\+rect,  }\item[{\hyperlink{structimage__t}{image\+\_\+t}}]{logo\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+\index{main\_menu\_screen.c@{main\_menu\_screen.c}!affichage\_menu@{affichage\_menu}}
+\index{affichage\_menu@{affichage\_menu}!main\_menu\_screen.c@{main\_menu\_screen.c}}
+\doxysubsubsection{\texorpdfstring{affichage\_menu()}{affichage\_menu()}}
+{\footnotesize\ttfamily void affichage\+\_\+menu (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{jouer\+\_\+text,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{charger\+\_\+text,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{quitter\+\_\+text,  }\item[{S\+D\+L\+\_\+\+Rect $\ast$}]{rect\+\_\+sel,  }\item[{S\+D\+L\+\_\+\+Rect}]{jouer\+\_\+rect,  }\item[{S\+D\+L\+\_\+\+Rect}]{charger\+\_\+rect,  }\item[{S\+D\+L\+\_\+\+Rect}]{quitter\+\_\+rect,  }\item[{\mbox{\hyperlink{structimage__t}{image\+\_\+t}}}]{logo\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
 
 
 
@@ -65,11 +66,11 @@ Affiche sur le rendu les différentes textures et rectangles passés en paramèt
 {\em rect\+\_\+sel} & le rectangle de sélection \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{main__menu__screen_8c_a0267389919c27005263e086ef2895aed}\label{main__menu__screen_8c_a0267389919c27005263e086ef2895aed}} 
-\index{main\+\_\+menu\+\_\+screen.\+c@{main\+\_\+menu\+\_\+screen.\+c}!deplacement\+\_\+rectangle\+\_\+selection@{deplacement\+\_\+rectangle\+\_\+selection}}
-\index{deplacement\+\_\+rectangle\+\_\+selection@{deplacement\+\_\+rectangle\+\_\+selection}!main\+\_\+menu\+\_\+screen.\+c@{main\+\_\+menu\+\_\+screen.\+c}}
-\subsubsection{\texorpdfstring{deplacement\+\_\+rectangle\+\_\+selection()}{deplacement\_rectangle\_selection()}}
-{\footnotesize\ttfamily int deplacement\+\_\+rectangle\+\_\+selection (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Rect}]{jouer,  }\item[{S\+D\+L\+\_\+\+Rect}]{charger,  }\item[{S\+D\+L\+\_\+\+Rect}]{quitter,  }\item[{S\+D\+L\+\_\+\+Rect $\ast$$\ast$}]{rect\+\_\+sel,  }\item[{int $\ast$}]{etat,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{select,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{move }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{main__menu__screen_8c_aa27ad023865c066558f910c2db9a5ab8}\label{main__menu__screen_8c_aa27ad023865c066558f910c2db9a5ab8}} 
+\index{main\_menu\_screen.c@{main\_menu\_screen.c}!deplacement\_rectangle\_selection@{deplacement\_rectangle\_selection}}
+\index{deplacement\_rectangle\_selection@{deplacement\_rectangle\_selection}!main\_menu\_screen.c@{main\_menu\_screen.c}}
+\doxysubsubsection{\texorpdfstring{deplacement\_rectangle\_selection()}{deplacement\_rectangle\_selection()}}
+{\footnotesize\ttfamily int deplacement\+\_\+rectangle\+\_\+selection (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Rect}]{jouer,  }\item[{S\+D\+L\+\_\+\+Rect}]{charger,  }\item[{S\+D\+L\+\_\+\+Rect}]{quitter,  }\item[{S\+D\+L\+\_\+\+Rect $\ast$$\ast$}]{rect\+\_\+sel,  }\item[{int $\ast$}]{etat,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]} }\end{DoxyParamCaption})}
 
 
 
@@ -85,19 +86,17 @@ Permet de déplacer d\textquotesingle{}option en option le rectangle de sélecti
 \hline
 {\em $\ast$rect\+\_\+sel,le} & rectangle de sélection permettant de sélectionner une option \\
 \hline
-{\em $\ast$select,le} & son quand on sélectionne une option \\
-\hline
-{\em $\ast$move,le} & son quand on se déplace dans le menu\\
+{\em $\ast$sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},tableau} & contenant les sons\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
 retourne False pour fermer la fenetre, True pour la garder ouverte 
 \end{DoxyReturn}
-\mbox{\Hypertarget{main__menu__screen_8c_adb49f1ff0b7f8930270a6eb2b756b136}\label{main__menu__screen_8c_adb49f1ff0b7f8930270a6eb2b756b136}} 
-\index{main\+\_\+menu\+\_\+screen.\+c@{main\+\_\+menu\+\_\+screen.\+c}!main\+\_\+menu@{main\+\_\+menu}}
-\index{main\+\_\+menu@{main\+\_\+menu}!main\+\_\+menu\+\_\+screen.\+c@{main\+\_\+menu\+\_\+screen.\+c}}
-\subsubsection{\texorpdfstring{main\+\_\+menu()}{main\_menu()}}
-{\footnotesize\ttfamily void main\+\_\+menu (\begin{DoxyParamCaption}\item[{int $\ast$}]{continuer,  }\item[{int $\ast$}]{etat,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{police,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{select,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{move,  }\item[{Mix\+\_\+\+Music $\ast$}]{music }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{main__menu__screen_8c_a3c3f2046e69bf1b33cf6a6b17acd82c6}\label{main__menu__screen_8c_a3c3f2046e69bf1b33cf6a6b17acd82c6}} 
+\index{main\_menu\_screen.c@{main\_menu\_screen.c}!main\_menu@{main\_menu}}
+\index{main\_menu@{main\_menu}!main\_menu\_screen.c@{main\_menu\_screen.c}}
+\doxysubsubsection{\texorpdfstring{main\_menu()}{main\_menu()}}
+{\footnotesize\ttfamily void main\+\_\+menu (\begin{DoxyParamCaption}\item[{int $\ast$}]{continuer,  }\item[{int $\ast$}]{etat,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{police,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]} }\end{DoxyParamCaption})}
 
 
 
@@ -113,10 +112,6 @@ gère l\textquotesingle{}affichage à l\textquotesingle{}écran du menu principa
 \hline
 {\em $\ast$police,la} & police utilisée pour écrire sur l\textquotesingle{}écran \\
 \hline
-{\em $\ast$select,le} & son quand on sélectionne une option \\
-\hline
-{\em $\ast$move,le} & son quand on se déplace dans le menu \\
-\hline
-{\em $\ast$music,la} & musique du menu principal \\
+{\em $\ast$sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},tableau} & contenant les sons \\
 \hline
 \end{DoxyParams}
