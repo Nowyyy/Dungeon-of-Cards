@@ -35,6 +35,9 @@ int main(int argc, char* args[]){
 	int result = 0;
 	int flags = MIX_INIT_MP3;
 
+	init_liste();
+
+
 	perso_t pers;
 	carte_t *cartes = NULL;
 
@@ -88,7 +91,6 @@ int main(int argc, char* args[]){
 
 					}
 //************************* BOUCLE DE JEU ********************************************************************
-
 					while(continuer){
 
 						if(etat == mainMenu){
@@ -151,7 +153,6 @@ int main(int argc, char* args[]){
 			}
 		}
 	}
-
 //************************* FERMETURES ***********************************************************************
 	IMG_Quit();
 	TTF_CloseFont(police); //on libère la police

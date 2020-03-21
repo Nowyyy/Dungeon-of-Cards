@@ -73,7 +73,6 @@ void readcarte(char *path_file){
   type_carte type;/** Type d'une carte */
   int valeur, consommable;
 
-  init_liste();
 
   fscanf(fichier,"%d%d%d%s%s",&type,&valeur,&consommable,path,nom);
 
