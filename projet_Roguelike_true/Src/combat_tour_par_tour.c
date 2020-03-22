@@ -304,10 +304,8 @@ void donne_valeur_rect_images(image_t images[]){
 */
 void free_image(image_t images[]){
 
-	for(int i = fond; i<= carte4; i++){
+	for(int i = fond; i<= carte4; i++)
 		SDL_DestroyTexture(images[i].img);
-		malloc_cpt--;
-	}
 }
 
 
@@ -402,7 +400,6 @@ void create_hud(hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, ennemi_t ennem
 	}
 	else{
 		SDL_DestroyTexture(hud_pers->pv.img);
-		malloc_cpt-=4;
 		SDL_DestroyTexture(hud_pers->nom.img);
 		SDL_DestroyTexture(hud_ennemi->nom.img);
 		SDL_DestroyTexture(hud_ennemi->pv.img);
@@ -449,10 +446,8 @@ void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hu
 
 	char joueur[50];
 
-	if(action->existe){
-		malloc_cpt--;
+	if(action->existe)
 		SDL_DestroyTexture(action->texte.img);
-	}
 
 	if(tour){
 
@@ -503,7 +498,6 @@ void detruire_action_temp(hud_combat_t *action){
 	if(action->existe){
 		action->existe = 0;
 		SDL_DestroyTexture(action->texte.img);
-		malloc_cpt--;
 	}
 }
 
@@ -524,7 +518,6 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
 	SDL_Event event;
 
 	SDL_Rect *rectangle_selection = malloc(sizeof(SDL_Rect));
-	malloc_cpt++;
 
   	image_t def, fui;
 
@@ -535,7 +528,6 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
   	TTF_Font * police = NULL;
 
   	police=TTF_OpenFont(FONT_PATH,40);
-  	malloc_cpt++;
 
 //////////////Intialisation, chargement, allocation
 
@@ -614,22 +606,16 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
 	}
 
   	TTF_CloseFont(police);
-  	malloc_cpt--;
+
   	SDL_DestroyTexture(def.img);
-  	malloc_cpt--;
   	SDL_DestroyTexture(fui.img);
-  	malloc_cpt--;
   	SDL_DestroyTexture(hud_pers.pv.img);
-  	malloc_cpt--;
   	SDL_DestroyTexture(hud_pers.nom.img);
-  	malloc_cpt--;
   	SDL_DestroyTexture(hud_ennemi.pv.img);
-  	malloc_cpt--;
   	SDL_DestroyTexture(hud_ennemi.nom.img);
-  	malloc_cpt--;
-  	free(rectangle_selection);
-  	malloc_cpt--;
+
   	detruire_action_temp(&action);
 
   	free_image(images);
+  	free(rectangle_selection);
 }

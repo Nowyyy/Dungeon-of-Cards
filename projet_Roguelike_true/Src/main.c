@@ -23,8 +23,6 @@
 int main(int argc, char* args[]){
 
 //************************* DECLARATION VARIABLES************************************************************
-	malloc_cpt = 0;
-
 	SDL_Window *window;
 	SDL_Renderer *rendu;
 
@@ -69,10 +67,8 @@ int main(int argc, char* args[]){
 				printf("Erreur init sdl_image\n");
 			}
 			else{
-				malloc_cpt++;
 
 				police = TTF_OpenFont(FONT_PATH, 50);//charge la police pour écrire a l'ecran
-				malloc_cpt++;
 
 				if(!police)
 					printf("Erreur police\n");
@@ -91,7 +87,6 @@ int main(int argc, char* args[]){
 								printf("Mix_Init: %s\n", Mix_GetError());
 								exit(1);
 						}
-						malloc_cpt++;
 
 					}
 //************************* BOUCLE DE JEU ********************************************************************
@@ -159,13 +154,10 @@ int main(int argc, char* args[]){
 	}
 //************************* FERMETURES ***********************************************************************
 	IMG_Quit();
-	malloc_cpt--;
 	TTF_CloseFont(police); //on libère la police
-	malloc_cpt--;
 
 	quit_sdl(&rendu, &window);
 	SDL_Quit();
-	malloc_cpt--;
 
 	init_or_quit_ttf(0);//quitte TTF
 
@@ -179,11 +171,8 @@ int main(int argc, char* args[]){
 		suivant();
 	}
 	free(drapeau);
-	malloc_cpt--;
-
 
 	printf("Tout est fermé\n");//affiche dans la console
-	printf("%d ptrs restants\n", malloc_cpt);
 
 	return 0;
 }

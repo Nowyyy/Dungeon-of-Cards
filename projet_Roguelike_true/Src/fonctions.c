@@ -21,7 +21,6 @@ void detruire_carte(carte_t ** carte)
   free((*carte)->nom);
   free(*carte);
   *carte = NULL;
-  malloc_cpt-=2;
 }
 
 
@@ -41,7 +40,6 @@ void detruire_carte(carte_t ** carte)
 */
 void init_liste(){
 	drapeau = malloc(sizeof(element_t));
-  malloc_cpt++;
 	drapeau->pred = drapeau;
 	drapeau->succ = drapeau;
 	ec = drapeau;
@@ -138,7 +136,6 @@ void oter_elt(){
 		ec = ec->pred;
     detruire_carte(&temp->carte);
 		free(temp);
-    malloc_cpt--;
 		}
 }
 
@@ -152,7 +149,6 @@ void ajout_droit(carte_t * t){
 
 	if (liste_vide() || !hors_liste()){
 		nouv = malloc(sizeof(element_t));
-    malloc_cpt++;
 		nouv->carte = t;
 		nouv->pred = ec;
 		nouv->succ = ec->succ;
@@ -172,7 +168,6 @@ void ajout_gauche(carte_t * t){
 
 	if (liste_vide() || !hors_liste()){
 		nouv = malloc(sizeof(element_t));
-    malloc_cpt++;
 		nouv->carte = t;
 		nouv->succ = ec;
 		nouv->pred = ec->pred;
@@ -197,12 +192,12 @@ carte_t * creer_carte(char * nom, type_carte type, int valeur, int consommable, 
   static unsigned long int cpt = 0 ;
   
   carte = malloc(sizeof(carte_t));
-  malloc_cpt++;
 
   carte->nom = malloc(sizeof(char)*TAILLE);
-  malloc_cpt++;
+
   strcpy(carte->path, path);
   strcpy(carte->nom , nom);
+
   carte->valeur = valeur;
   carte->type = type;
   carte->consommable = consommable;
@@ -253,10 +248,8 @@ ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type,
   static unsigned long int cpt = 0 ;
 
   ennemi = malloc(sizeof(ennemi_t));
-  malloc_cpt++;
 
   ennemi->nom = malloc(sizeof(char)*TAILLE);
-  malloc_cpt++;
 
   ennemi->pv = pv;
   ennemi->pv_old = pv;
@@ -317,7 +310,6 @@ void detruire_ennemi(ennemi_t ** ennemi)
   SDL_DestroyTexture((*ennemi)->sprites.img);
   free(*ennemi);
   *ennemi = NULL;
-  malloc_cpt-=3;
 }
 
 

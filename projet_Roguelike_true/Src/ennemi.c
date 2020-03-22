@@ -78,13 +78,9 @@ void destruction_tous_ennemis(salle_t salles[], int taille){
 
 	for(i = 0; i < taille * taille; i++){
 
-		if(salles[i].ennemi_present > 0 || salles[i].boss){
-			malloc_cpt--;
+		if(salles[i].ennemi_present > 0 || salles[i].boss)
 			detruire_ennemi(&salles[i].ennemi);
-		}
-		if(salles[i].nb_ennemi == 2){
-			malloc_cpt--;
+		if(salles[i].nb_ennemi == 2)
 			detruire_ennemi(&salles[i].ennemi2);
-		}
 	}
 }

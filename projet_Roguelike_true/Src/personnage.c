@@ -458,7 +458,6 @@ void creer_texture_depuis_char(image_t *texte_pv, image_t *texte_etage, perso_t 
 	int x_pv = WIN_WIDTH *0.08, x_etage = WIN_WIDTH *0.08, y_pv = WIN_HEIGHT * 0.10, y_etage = WIN_HEIGHT * 0.02;
 
 	police = TTF_OpenFont(FONT_PATH, 30);
-	malloc_cpt++;
 
 	sprintf(pv, "%d / %d", perso.pv, PV_DEPART_PERSONNAGE);
 	sprintf(etage, "Etage %d", perso.etage);
@@ -467,5 +466,4 @@ void creer_texture_depuis_char(image_t *texte_pv, image_t *texte_etage, perso_t 
 	get_text_and_rect(rendu, x_pv, y_pv, pv, police, &texte_pv->img, &texte_pv->rectangle);
 
 	TTF_CloseFont(police); //on libère la police
-	malloc_cpt--;
 }

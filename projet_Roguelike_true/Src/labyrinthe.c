@@ -267,8 +267,8 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
  	while(rect.w < WIN_WIDTH){
  		SDL_SetRenderDrawColor(rendu, 0, 0, 0, 255);
 		Mix_PlayChannel(0, sounds[gameOverFrame], 0);
-  	SDL_RenderFillRect(rendu, &rect);
-  	SDL_RenderPresent(rendu);
+  		SDL_RenderFillRect(rendu, &rect);
+  		SDL_RenderPresent(rendu);
 		SDL_Delay(500);
 
 		rect.x -= 135;
@@ -318,7 +318,6 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
  	*etat = mainMenu;
 
  	SDL_DestroyTexture(cmpPartie_texture);
- 	malloc_cpt--;
 }
 
 
@@ -565,9 +564,7 @@ void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Rendere
 		pers->pv_old = pers->pv;
 		pers->etage_old = pers->etage;
 		SDL_DestroyTexture(pv->img);
-		malloc_cpt--;
 		SDL_DestroyTexture(etage->img);
-		malloc_cpt--;
 		creer_texture_depuis_char(pv, etage, *pers, rendu);
 	}
 }
@@ -738,15 +735,11 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	while (SDL_PollEvent (&event));
 
 //////////////////////// On libère tous les emplacements mémoires utilisés par les images ////
-	for(int i = 0; i < NB_SPRITES_PERSONNAGE; i++){
-		malloc_cpt--;
+	for(int i = 0; i < NB_SPRITES_PERSONNAGE; i++)
 		SDL_DestroyTexture(pers->sprites[i].img);
-	}
 
-	for(int i = sol; i < fond; i++){
-		malloc_cpt--;
+	for(int i = sol; i < fond; i++)
 		SDL_DestroyTexture(images[i].img);
-	}
 
 	destruction_tous_ennemis(salles, taille);
 	destruction_des_coffres(salles, taille);

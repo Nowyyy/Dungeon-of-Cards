@@ -121,12 +121,10 @@ void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Fon
 
 	SDL_Rect retour_rect, charger_rect;
 	SDL_Rect *rectangle_selection = malloc(sizeof(SDL_Rect));
-	malloc_cpt++;
 
 	SDL_Texture *retour_texture, *charger_texture;
 
 	char retour_text[] = "Retourner au menu principal", *charger_text = malloc(sizeof(char)* 500);
-	malloc_cpt++;
 	char intermediaire[50];
 
 	int x_retour, x_charger, y_retour, y_charger;
@@ -170,11 +168,7 @@ void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Fon
 	}
 
 	free(rectangle_selection);
-	malloc_cpt--;
 	free(charger_text);
-	malloc_cpt--;
 	SDL_DestroyTexture(retour_texture);
 	SDL_DestroyTexture(charger_texture);
-	malloc_cpt--;
-	malloc_cpt--;
 }

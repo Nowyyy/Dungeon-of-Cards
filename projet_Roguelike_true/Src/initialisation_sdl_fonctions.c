@@ -21,20 +21,16 @@ int initialisation_sdl(SDL_Window **window, SDL_Renderer **rendu){
 
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 		return 1;
-	malloc_cpt++;
 
 	*window = SDL_CreateWindow("Dungeon Of Cards", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_SHOWN);
-	malloc_cpt++;
 
 	if(window == NULL)
 		return 1;
 
 	*rendu = SDL_CreateRenderer(*window, -1, SDL_RENDERER_ACCELERATED);
-	malloc_cpt++;
 
 	if(rendu == NULL){
 		SDL_DestroyWindow(*window);
-		malloc_cpt--;
 		return 1;
 	}
 
@@ -53,8 +49,7 @@ int initialisation_sdl(SDL_Window **window, SDL_Renderer **rendu){
 *\brief détruit les renderer et window passés en paramètre
 */
 void quit_sdl(SDL_Renderer **rendu, SDL_Window **window){
-	malloc_cpt--;
-	malloc_cpt--;
+
 	SDL_DestroyRenderer(*rendu);
 	SDL_DestroyWindow(*window);
 }
@@ -76,14 +71,11 @@ int init_or_quit_ttf(int action){
 	if(action){
 		if(TTF_Init() != 0)
 			return 1;
-		else{
-			malloc_cpt++;
+		else
 			return 0;
-		}
 	}
 	else{
 		TTF_Quit();
-		malloc_cpt--;
 		return 0;
 	}
 }
@@ -112,15 +104,13 @@ extern void get_text_and_rect(SDL_Renderer *renderer, int x, int y, char *text,T
     SDL_Color textColor = {255, 255, 255, 0};
 
     surface = TTF_RenderText_Solid(font, text, textColor);
-    malloc_cpt++;
-    malloc_cpt++;
+
     *texture = SDL_CreateTextureFromSurface(renderer, surface);
 
     text_width = surface->w;
     text_height = surface->h;
 
     SDL_FreeSurface(surface);
-    malloc_cpt--;
 
     rect->x = x;
     rect->y = y;
@@ -143,7 +133,6 @@ extern void get_text_and_rect(SDL_Renderer *renderer, int x, int y, char *text,T
 int charge_image(char *path_img, image_t *struct_image, SDL_Renderer *rendu){
 
 	SDL_Surface *image = IMG_Load(path_img);
-	malloc_cpt++;
 
 	if(!image){
 		printf("Erreur chargement image %s\n", SDL_GetError());
@@ -151,13 +140,11 @@ int charge_image(char *path_img, image_t *struct_image, SDL_Renderer *rendu){
 	}
 
 	struct_image->img = SDL_CreateTextureFromSurface(rendu, image);
-	malloc_cpt++;
 
 	struct_image->rectangle.w = image->w;
 	struct_image->rectangle.h = image->h;
 
 	SDL_FreeSurface(image);
-	malloc_cpt--;
 
 	return 0;
 }
@@ -171,7 +158,7 @@ int charge_image(char *path_img, image_t *struct_image, SDL_Renderer *rendu){
 *\return 1 si echec, 0 si réussite
 */
 void init_son(Mix_Chunk* sounds[NB_SON]){
-	malloc_cpt++;
+
 	sounds[move] = Mix_LoadWAV("../Sound/menu_move.wav");
 	sounds[selection] = Mix_LoadWAV("../Sound/menu_select.wav");
 	sounds[change_salle] = Mix_LoadWAV("../Sound/laby_change.wav");
@@ -199,7 +186,7 @@ void init_son(Mix_Chunk* sounds[NB_SON]){
 *\return 1 si echec, 0 si réussite
 */
 void init_music(Mix_Music* musics[NB_MUSIC]){
-malloc_cpt++;
+
 musics[menu] = Mix_LoadMUS("../Sound/menu_song.mp3");
 musics[level1] = Mix_LoadMUS("../Sound/level1.mp3");
 musics[gameOverMusic] = Mix_LoadMUS("../Sound/gameover.mp3");
@@ -241,8 +228,6 @@ void free_mixer(Mix_Music* musics[NB_MUSIC], Mix_Chunk* sounds[NB_SON]){
 	Mix_FreeMusic(musics[level3]);
 	Mix_FreeMusic(musics[level4]);
 	Mix_FreeMusic(musics[level5]);
-
-	malloc_cpt-=3;
 
 	Mix_CloseAudio();
 }

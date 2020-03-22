@@ -117,7 +117,6 @@ void menu_confirmation(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font 
 
 	SDL_Rect retour_rect, confirmer_rect, message_rect;
 	SDL_Rect *rectangle_selection = malloc(sizeof(SDL_Rect));
-	malloc_cpt++;
 
 	SDL_Texture *retour_texture, *confirmer_texture, *message_texture;
 
@@ -155,5 +154,4 @@ void menu_confirmation(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font 
 	SDL_DestroyTexture(retour_texture);
 	SDL_DestroyTexture(confirmer_texture);
   SDL_DestroyTexture(message_texture);
-  malloc_cpt-=4;
 }

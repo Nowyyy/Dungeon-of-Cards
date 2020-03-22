@@ -254,6 +254,7 @@ void place_monstre_coffre_boss(salle_t tab[], int taille, int type_ennemi, SDL_R
 
       //choix pour un monbre ou un coffre dans la salle
       if(alea <= 8){
+        tab[i].coffre = 0;
         tab[i].ennemi_present = 1;
 
         alea = rand()%8;
