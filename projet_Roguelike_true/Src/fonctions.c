@@ -9,6 +9,26 @@
 
 #include "../include/constantes.h"
 #include "../include/initialisation_sdl_fonctions.h"
+
+
+/**
+*\fn void detruire_carte(carte_t ** carte)
+*\brief Fonction qui permet de détruire une carte
+*\param carte Un pointeur de pointeur de carte qui permet de détruire le pointeur qui pointe sur la structure carte
+*/
+void detruire_carte(carte_t ** carte)
+{
+  free((*carte)->nom);
+  free(*carte);
+  *carte = NULL;
+  malloc_cpt-=2;
+}
+
+
+
+
+
+
 // Mise en oeuvre dynamique d'une liste de cartes
 
 
@@ -116,6 +136,7 @@ void oter_elt(){
 		(ec->pred)->succ = ec->succ;
 		temp = ec;
 		ec = ec->pred;
+    detruire_carte(&temp->carte);
 		free(temp);
     malloc_cpt--;
 		}
@@ -131,6 +152,7 @@ void ajout_droit(carte_t * t){
 
 	if (liste_vide() || !hors_liste()){
 		nouv = malloc(sizeof(element_t));
+    malloc_cpt++;
 		nouv->carte = t;
 		nouv->pred = ec;
 		nouv->succ = ec->succ;
@@ -182,7 +204,6 @@ carte_t * creer_carte(char * nom, type_carte type, int valeur, int consommable, 
   strcpy(carte->path, path);
   strcpy(carte->nom , nom);
   carte->valeur = valeur;
-  carte->cible = NULL;
   carte->type = type;
   carte->consommable = consommable;
   return(carte);
@@ -208,7 +229,6 @@ carte_t * creer_carte(char * nom, type_carte type, int valeur, int consommable, 
 void init_ennemi_valeurs(ennemi_t *ennemi, char * nom, int w, int h, int nb_sprites, int gap, float w2, float h2, char * path, SDL_Renderer * rendu){
 
   charge_image(path, &ennemi->sprites, rendu);
-  malloc_cpt++;
   ennemi->w = ennemi->sprites.rectangle.w;
   ennemi->h = ennemi->sprites.rectangle.h; 
   ennemi->sprite_courant.h = h;
@@ -285,23 +305,6 @@ ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type,
 
   return(ennemi);
 }
-/*
-ennemi_t * generer_ennemi(int niveau){
-  return ennemis_niveau1[0];
-}*/
-/**
-*\fn void detruire_carte(carte_t ** carte)
-*\brief Fonction qui permet de détruire une carte
-*\param carte Un pointeur de pointeur de carte qui permet de détruire le pointeur qui pointe sur la structure carte
-*/
-void detruire_carte(carte_t ** carte)
-{
-  free((*carte)->nom);
-  free(*carte);
-  *carte = NULL;
-  malloc_cpt-=2;
-}
-
 
 /**
 *\fn void detruire_ennemi(ennemi_t ** ennemi)

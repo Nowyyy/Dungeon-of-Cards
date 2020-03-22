@@ -144,7 +144,7 @@ void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Fon
 	}
 	else{
 		readperso(pers);
-		readcarte(SAVE_CARTES_PATH);
+		readcarte(SAVE_CARTES_CATALOGUE_PATH);
 		x_charger = WIN_WIDTH * 0.33;
 		y_charger = WIN_HEIGHT * 0.50;
 		sprintf(intermediaire,"Etage %d, Points de vie %d", pers->etage, pers->pv);
@@ -156,7 +156,6 @@ void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Fon
 	//On créé les textures qui contiendront les textes
 	get_text_and_rect(rendu, x_charger, y_charger, charger_text, police, &charger_texture, &charger_rect);
 	get_text_and_rect(rendu, x_retour, y_retour, retour_text, police, &retour_texture, &retour_rect);
-	malloc_cpt+=2;
 
 	rectangle_selection->x = x_retour - RECT_SELECT_X_DIFF;
 	rectangle_selection->y = y_retour - RECT_SELECT_Y_DIFF;

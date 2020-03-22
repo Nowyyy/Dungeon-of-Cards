@@ -40,8 +40,6 @@ void animation_niveau(perso_t *perso, SDL_Renderer *rendu){
   get_text_and_rect(rendu, p1_x, p1_y, cp1, police, &p1.img, &p1.rectangle);
   get_text_and_rect(rendu, p2_x, p2_y, cp2, police, &p2.img, &p2.rectangle);
   get_text_and_rect(rendu, p3_x, p3_y, cp3, police, &p3.img, &p3.rectangle);
-  malloc_cpt+=5;
-
 
   //Animation
   SDL_SetRenderDrawColor(rendu, 0, 0, 0, 255);

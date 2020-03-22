@@ -78,7 +78,6 @@ void readcarte(char *path_file){
   type_carte type;/** Type d'une carte */
   int valeur, consommable;
 
-
   fscanf(fichier,"%d%d%d%s%s",&type,&valeur,&consommable,path,nom);
 
   if (fichier != NULL)
@@ -86,7 +85,6 @@ void readcarte(char *path_file){
         while(!feof(fichier)){
 
           ajout_droit(creer_carte(nom,type,valeur,consommable,path));
-          malloc_cpt++;
           fscanf(fichier,"%d%d%d%s%s",&type,&valeur,&consommable,path,nom);
         }
     }

@@ -83,7 +83,7 @@ void destruction_tous_ennemis(salle_t salles[], int taille){
 			detruire_ennemi(&salles[i].ennemi);
 		}
 		if(salles[i].nb_ennemi == 2){
-			malloc_cpt;
+			malloc_cpt--;
 			detruire_ennemi(&salles[i].ennemi2);
 		}
 	}

@@ -27,8 +27,6 @@ int main(int argc, char* args[]){
 
 	SDL_Window *window;
 	SDL_Renderer *rendu;
-	malloc_cpt++;
-	malloc_cpt++;
 
 	srand(time(NULL));
 
@@ -45,9 +43,7 @@ int main(int argc, char* args[]){
 	//On initialise les samples et musiques utilisés dans le jeu
 
 	Mix_Chunk *sounds[NB_SON];
-	malloc_cpt++;
 	Mix_Music *musics[NB_MUSIC];
-	malloc_cpt++;
 
 	Mix_OpenAudio(44100, AUDIO_S16SYS,6, 4096);
 	Mix_AllocateChannels(16);
@@ -66,15 +62,14 @@ int main(int argc, char* args[]){
 
 		if(init_or_quit_ttf(1)){//initialise TTF (permet s d'écrire sur l'écran)
 			printf("Erreur init TTF\n");
-			malloc_cpt++;
 		}
 		else{
 
 			if((IMG_Init(IMG_INIT_PNG)&IMG_INIT_PNG) != IMG_INIT_PNG){
 				printf("Erreur init sdl_image\n");
-				malloc_cpt++;
 			}
 			else{
+				malloc_cpt++;
 
 				police = TTF_OpenFont(FONT_PATH, 50);//charge la police pour écrire a l'ecran
 				malloc_cpt++;
@@ -86,15 +81,17 @@ int main(int argc, char* args[]){
 					if (SDL_Init(SDL_INIT_AUDIO) < 0) {
 			        printf("Failed to init SDL\n");
 			        exit(1);
-			    }
+			    	}
 					else{
 
 
 						if (flags != (result = Mix_Init(flags))) {
+							
 								printf("Could not initialize mixer (result: %d).\n", result);
 								printf("Mix_Init: %s\n", Mix_GetError());
 								exit(1);
 						}
+						malloc_cpt++;
 
 					}
 //************************* BOUCLE DE JEU ********************************************************************
@@ -165,15 +162,15 @@ int main(int argc, char* args[]){
 	malloc_cpt--;
 	TTF_CloseFont(police); //on libère la police
 	malloc_cpt--;
+
 	quit_sdl(&rendu, &window);
-	malloc_cpt-=2;
 	SDL_Quit();
-	init_or_quit_ttf(0);//quitte TTF
 	malloc_cpt--;
+
+	init_or_quit_ttf(0);//quitte TTF
 
 	//On libère toutes les variables de son
 	free_mixer(musics, sounds);
-	malloc_cpt -= 2;
 
 	en_tete();
 

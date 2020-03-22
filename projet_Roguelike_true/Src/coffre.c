@@ -54,7 +54,6 @@ void creer_coffre(coffre_t *coffre, SDL_Renderer *rendu, int coffre_existe){
 	if(coffre_existe){
 
 		charge_image(COFFRE_PATH, &coffre->sprite, rendu);
-		malloc_cpt++;
 
 		coffre->ouvert = 0;
 		coffre->nb_sprites = 5;

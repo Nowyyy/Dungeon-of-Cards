@@ -83,7 +83,6 @@
 #define TAILLE_DECK 5
 
 #define NB_SPRITES_PERSONNAGE 10
-#define NB_SPRITES_MONSTRE 2
 
 #define NB_CARTES_COMBAT 4
 #define NB_CARTES 4
@@ -343,7 +342,6 @@ typedef struct perso_s {
 typedef struct carte_s {
   char * nom ;/** Nom d'une carte */
   type_carte type;/** Type d'une carte */
-  int * cible;/** Cible d'une carte */
   int valeur;/** Valeur d'une carte */
   int consommable;/** 1 si la carte est à usage unique*/
   char path[50];

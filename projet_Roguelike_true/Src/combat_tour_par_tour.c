@@ -255,17 +255,11 @@ hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action){
 void charge_textures_combat(image_t images[], SDL_Renderer *rendu, carte_t *cartes[]){
 
 	charge_image(FOND_COMBAT_PATH,&images[fond2], rendu);
-	malloc_cpt++;
 	charge_image(COMBAT_PATH,&images[fond], rendu);
-	malloc_cpt++;
 	charge_image(cartes[0]->path,&images[carte1], rendu);
-	malloc_cpt++;
 	charge_image(cartes[1]->path,&images[carte2], rendu);
-	malloc_cpt++;
 	charge_image(cartes[2]->path,&images[carte3], rendu);
-	malloc_cpt++;
 	charge_image(cartes[3]->path,&images[carte4], rendu);
-	malloc_cpt++;
 }
 
 
@@ -373,7 +367,6 @@ void creer_texte_combat(char *txt, image_t *image, int x, int y, SDL_Renderer *r
 	image->rectangle.y = y;
 
 	get_text_and_rect(rendu,image->rectangle.x, image->rectangle.y, txt, font, &image->img, &image->rectangle);
-	malloc_cpt++;
 }
 
 
@@ -621,15 +614,22 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
 	}
 
   	TTF_CloseFont(police);
+  	malloc_cpt--;
   	SDL_DestroyTexture(def.img);
+  	malloc_cpt--;
   	SDL_DestroyTexture(fui.img);
+  	malloc_cpt--;
   	SDL_DestroyTexture(hud_pers.pv.img);
+  	malloc_cpt--;
   	SDL_DestroyTexture(hud_pers.nom.img);
+  	malloc_cpt--;
   	SDL_DestroyTexture(hud_ennemi.pv.img);
+  	malloc_cpt--;
   	SDL_DestroyTexture(hud_ennemi.nom.img);
+  	malloc_cpt--;
   	free(rectangle_selection);
+  	malloc_cpt--;
+  	detruire_action_temp(&action);
 
   	free_image(images);
-
-  	malloc_cpt-=9;
 }

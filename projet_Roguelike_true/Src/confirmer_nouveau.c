@@ -120,7 +120,6 @@ void menu_confirmation(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font 
 	malloc_cpt++;
 
 	SDL_Texture *retour_texture, *confirmer_texture, *message_texture;
-	malloc_cpt+=3;
 
 	char retour_text[] = "Retourner au menu principal", confirmer_text[] = "Ecraser la partie", message_text[] = "Sauvegarde existante. Ecraser partie ?" ;
 

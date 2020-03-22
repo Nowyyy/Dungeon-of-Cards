@@ -35,31 +35,18 @@
 void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu){
 
 	charge_image(SOL1_PATH,&images[sol], rendu);
-	malloc_cpt++;
 	charge_image(MUR1_PATH,&images[mur], rendu);
-	malloc_cpt++;
 	charge_image(MUR2_PATH,&images[mur2], rendu);
-	malloc_cpt++;
 	charge_image(PORTE_PATH,&images[porte], rendu);
-	malloc_cpt++;
 	charge_image(SOL2_PATH,&images[sol2], rendu);
-	malloc_cpt++;
 	charge_image(SOL3_PATH,&images[sol3], rendu);
-	malloc_cpt++;
 	charge_image(COMMANDES_PATH, &images[commandes], rendu);
-	malloc_cpt++;
 	charge_image(INSTRUCTIONS_PATH, &images[instructions], rendu);
-	malloc_cpt++;
 	charge_image(GAMEOVER_PATH, &images[gameover], rendu);
-	malloc_cpt++;
 	charge_image(DEATHLIGHT_PATH, &images[deathlight], rendu);
-	malloc_cpt++;
 	charge_image(HEART_PATH, &images[heart], rendu);
-	malloc_cpt++;
 	charge_image(TRAPDOOR_PATH, &images[trapdoor], rendu);
-	malloc_cpt++;
 	charge_image(TRAPDOOR_PATH, &images[trapdoor2], rendu);
-	malloc_cpt++;
 
 	creer_texture_depuis_char(&images[pv], &images[etage], *pers, rendu);
 
@@ -78,8 +65,8 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 	images[heart].rectangle.y = WIN_HEIGHT * 0.10;
 	images[trapdoor].rectangle.x = 0;
 	images[trapdoor].rectangle.y = WIN_HEIGHT * 0.02;
-	images[trapdoor2].rectangle.x = 1200;
-	images[trapdoor2].rectangle.y = 1200;
+	images[trapdoor2].rectangle.x = 610;
+	images[trapdoor2].rectangle.y = 110;
 
 	//on place le personnage dans la premiere salle, au centre
 	pers->sprites[courant].rectangle.x = pers->x;
@@ -152,7 +139,9 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 
 ///////////SPRITES MONSTRES
 	if(salle->ennemi_present || salle->boss){
-		SDL_RenderCopy(rendu, images[trapdoor2].img, NULL, &images[trapdoor2].rectangle);
+		if(salle->ennemi->pv <= 0 && salle->boss){
+			SDL_RenderCopy(rendu, images[trapdoor2].img, NULL, &images[trapdoor2].rectangle);
+		}
 
 		SDL_RenderCopy(rendu, salle->ennemi->sprites.img, &salle->ennemi->sprite_courant, &salle->ennemi->sprites.rectangle);
 
@@ -318,7 +307,7 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
 
 
 	get_text_and_rect(rendu, x_cmpPartie, y_cmpPartie, cmpPartie, police, &cmpPartie_texture, &cmpPartie_text);
-	malloc_cpt++;
+
 	SDL_RenderCopy(rendu, cmpPartie_texture, NULL, &cmpPartie_text);
 
 	SDL_RenderPresent(rendu);
@@ -605,22 +594,6 @@ int nb_salles_par_etage(int etage){
 	}
 }
 
-/**
-*\fn void trappe_niveau(SDL_Renderer *rendu, image_t images[])
-
-*\param *rendu, le renderer sur lequel on dessine
-*\param images[], tableau contenant textures
-
-*\brief Permet de faire apparaitre la trappe de changement de niveau
-*/
-void trappe_niveau(SDL_Renderer *rendu, image_t images[]){
-	images[trapdoor2].rectangle.x = 610;
-	images[trapdoor2].rectangle.y = 110;
-
-	SDL_RenderCopy(rendu, images[trapdoor2].img, NULL, &images[trapdoor2].rectangle);
-	SDL_RenderPresent(rendu);
-}
-
 
 
 /**
@@ -708,60 +681,56 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 		deplacement_personnage(pers, salles[salle_courante], continuer, &anim, sounds, &clavier);
 
-		//Si le joueur meurt
-		if(pers->pv <= 0){
-			Mix_HaltMusic();
-			mort(etat, pers, rendu, musics, sounds, images, police, cmpPartie_texture);
-		}
-		//pers->pv-=1;
+		if(*continuer == TRUE){
 
-		salle_courante = changement_de_salle(pers, salles[salle_courante], salle_courante, sounds);
-		SDL_Delay(5);
+			salle_courante = changement_de_salle(pers, salles[salle_courante], salle_courante, sounds);
+			SDL_Delay(5);
 
-		//collision avec un ennemi
-		if(combat_declenche(salles[salle_courante], *pers) == 1 && salles[salle_courante].ennemi->pv > 0){
-			init_tab_clavier(clavier.tab);
-			combat_t_p_t(pers, salles[salle_courante].ennemi, rendu, images);
-			init_tab_clavier(clavier.tab);
-		}
-		else if(combat_declenche(salles[salle_courante], *pers) == 2 && salles[salle_courante].ennemi2->pv > 0){
-			init_tab_clavier(clavier.tab);
-			combat_t_p_t(pers, salles[salle_courante].ennemi2, rendu, images);
-			init_tab_clavier(clavier.tab);
-		}
-		else if(combat_declenche(salles[salle_courante], *pers) == 3 && salles[salle_courante].ennemi->pv > 0){
-			init_tab_clavier(clavier.tab);
-			combat_t_p_t(pers, salles[salle_courante].ennemi, rendu, images);
-			init_tab_clavier(clavier.tab);
-		}
+			//collision avec un ennemi
+			if(combat_declenche(salles[salle_courante], *pers) == 1 && salles[salle_courante].ennemi->pv > 0 && *etat == labyrinthe){
+				init_tab_clavier(clavier.tab);
+				combat_t_p_t(pers, salles[salle_courante].ennemi, rendu, images);
+				init_tab_clavier(clavier.tab);
+			}
+			else if(combat_declenche(salles[salle_courante], *pers) == 2 && salles[salle_courante].ennemi2->pv > 0 && *etat == labyrinthe){
+				init_tab_clavier(clavier.tab);
+				combat_t_p_t(pers, salles[salle_courante].ennemi2, rendu, images);
+				init_tab_clavier(clavier.tab);
+			}
 
-		if(pers->fuite){//le joueur à fuit le combat, on le renvoie dans la première salle du niveau
-			pers->fuite = 0;
-			salle_courante = salle_0;
-		}
+			//Si le joueur meurt
+			if(pers->pv <= 0){
+				Mix_HaltMusic();
+				mort(etat, pers, rendu, musics, sounds, images, police, cmpPartie_texture);
+			}
 
-		if(salle_courante != salle_pred){
-			salles[salle_courante].decouverte = TRUE;
-			salles[salle_pred].prems = 1;
-			salle_pred = salle_courante;
-			ajoute_salle_decouverte(&miniMap, salle_courante);
-		}
+			if(pers->fuite){//le joueur à fuit le combat, on le renvoie dans la première salle du niveau
+				pers->fuite = 0;
+				salle_courante = salle_0;
+			}
 
-		//On fait apparaitre la trappe quand le boss meurt
-		if(salles[salle_courante].boss && salles[salle_courante].ennemi->pv <= 0 && trappe==0){
-			trappe = 1;
-			trappe_niveau(rendu, images);
-			pers->x = WIN_WIDTH / 2 - pers->sprites[courant].rectangle.w / 2;
-			pers->y = WIN_HEIGHT / 2 - pers->sprites[courant].rectangle.h / 2;
-		}
+			if(salle_courante != salle_pred){
+				salles[salle_courante].decouverte = TRUE;
+				salles[salle_pred].prems = 1;
+				salle_pred = salle_courante;
+				ajoute_salle_decouverte(&miniMap, salle_courante);
+			}
 
-		//Si on passe sur la trappe on accède au niveau suivant
-		if(salles[salle_courante].boss && trappe==1){
-			if(pers->x > 585 && pers->y < 145){
-				boss_tuer = 1;
-				pers->etage+=1;
+			//On fait apparaitre la trappe quand le boss meurt
+			if(salles[salle_courante].boss && salles[salle_courante].ennemi->pv <= 0 && trappe==0){
+				trappe = 1;
 				pers->x = WIN_WIDTH / 2 - pers->sprites[courant].rectangle.w / 2;
 				pers->y = WIN_HEIGHT / 2 - pers->sprites[courant].rectangle.h / 2;
+			}
+
+			//Si on passe sur la trappe on accède au niveau suivant
+			if(salles[salle_courante].boss && trappe==1){
+				if(pers->x > 585 && pers->y < 145){
+					boss_tuer = 1;
+					pers->etage+=1;
+					pers->x = WIN_WIDTH / 2 - pers->sprites[courant].rectangle.w / 2;
+					pers->y = WIN_HEIGHT / 2 - pers->sprites[courant].rectangle.h / 2;
+				}
 			}
 		}
 	}

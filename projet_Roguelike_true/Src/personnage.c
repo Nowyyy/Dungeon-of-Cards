@@ -25,23 +25,15 @@
 void charge_sprites_personnage(image_t sprites[], SDL_Renderer *rendu){
 
 	charge_image(SPRITE1_PATH, &sprites[idle_droite], rendu);
-	malloc_cpt++;
 	charge_image(SPRITE2_PATH, &sprites[idle_gauche], rendu);
-	malloc_cpt++;
 	charge_image(SPRITE3_PATH, &sprites[droite1], rendu);
-	malloc_cpt++;
 	charge_image(SPRITE4_PATH, &sprites[droite2], rendu);
-	malloc_cpt++;
 	charge_image(SPRITE5_PATH, &sprites[gauche2], rendu);
-	malloc_cpt++;
 	charge_image(SPRITE6_PATH, &sprites[gauche1], rendu);
-	malloc_cpt++;
 	charge_image(SPRITE7_PATH, &sprites[dead], rendu);
-	malloc_cpt++;
 	charge_image(SPRITE8_PATH, &sprites[gauche3], rendu);
-	malloc_cpt++;
 	charge_image(SPRITE9_PATH, &sprites[droite3], rendu);
-malloc_cpt++;
+
 	sprites[courant] = sprites[idle_droite];
 }
 
@@ -432,7 +424,7 @@ int collision_perso_ennemi(perso_t pers, ennemi_t ennemi){
 */
 int combat_declenche(salle_t salle, perso_t pers){
 
-	if(salle.ennemi_present){
+	if(salle.ennemi_present || salle.boss){
 		if(collision_perso_ennemi(pers, *salle.ennemi))
 			return TRUE;
 
@@ -441,10 +433,6 @@ int combat_declenche(salle_t salle, perso_t pers){
 				return TRUE + 1;
 
 		return FALSE;
-	}
-	else if (salle.boss){
-		if(collision_perso_ennemi(pers, *salle.ennemi))
-			return TRUE + 2;
 	}
 
 	return FALSE;
@@ -477,8 +465,6 @@ void creer_texture_depuis_char(image_t *texte_pv, image_t *texte_etage, perso_t 
 
 	get_text_and_rect(rendu, x_etage, y_etage, etage, police, &texte_etage->img, &texte_etage->rectangle);
 	get_text_and_rect(rendu, x_pv, y_pv, pv, police, &texte_pv->img, &texte_pv->rectangle);
-	malloc_cpt++;
-	malloc_cpt++;
 
 	TTF_CloseFont(police); //on libère la police
 	malloc_cpt--;
