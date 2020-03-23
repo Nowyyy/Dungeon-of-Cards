@@ -273,6 +273,10 @@ ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type,
 
     init_ennemi_valeurs(ennemi, "Blob", 76, 80, 6, 88, 0.8, 0.8, BLOB_PATH, rendu);
   }
+  else if(type == volant){
+
+    init_ennemi_valeurs(ennemi, "Volant", 76, 58, 4, 85, 0.8, 0.8, VOLANT_PATH, rendu);
+  }
   else if(type == imp){
 
     init_ennemi_valeurs(ennemi, "Imp", 35, 30, 7, 25, 1.5, 1.5, IMP_PATH, rendu);    
@@ -287,10 +291,14 @@ ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type,
   }
   else if(type == wizard){
 
-    init_ennemi_valeurs(ennemi, "Sorcier", 26, 46, 10, 35, 1.8, 1.8, WIZARD_PATH, rendu);
+    init_ennemi_valeurs(ennemi, "Mage", 26, 46, 10, 35, 1.8, 1.8, WIZARD_PATH, rendu);
+  }
+  else if(type == sorcerer){
+
+    init_ennemi_valeurs(ennemi, "Sorcier", 60, 84, 10, 35, 1.5, 1.5, SORCERER_PATH, rendu);
   }
 
-  if(type == minotaure || type == wizard || type == cyclope){
+  if(type == minotaure || type == wizard || type == cyclope || type == sorcerer){
     ennemi->boss = 1;
     ennemi->sprites.rectangle.x = WIN_WIDTH / 2 - ennemi->sprites.rectangle.w / 2;
     ennemi->sprites.rectangle.y = WIN_HEIGHT / 2 - ennemi->sprites.rectangle.h / 2;

@@ -49,9 +49,11 @@
 
 #define SQUELETTE_PATH "../Images/sprites_mobs/squelette_sprites.png"
 #define CYCLOPE_PATH "../Images/sprites_mobs/cyclo_sprites.png"
+#define VOLANT_PATH "../Images/sprites_mobs/volant_sprites.png"
 #define MINOTAURE_PATH "../Images/sprites_mobs/mino_sprites.png"
 #define BLOB_PATH "../Images/sprites_mobs/blob_sprite.png"
 #define IMP_PATH "../Images/sprites_mobs/imp_sprites.png"
+#define SORCERER_PATH "../Images/sprites_mobs/sorcerer_sprites.png"
 #define WIZARD_PATH "../Images/sprites_mobs/wizard_sprite2.png"
 
 #define COMBAT_PATH "../Images/combat1.png"
@@ -151,7 +153,7 @@ typedef enum{sol =0, mur, porte, sol2, commandes, instructions, sol3, mur2, game
 
 *\brief les types d'ennemis existants
 */
-typedef enum{squelette, blob, imp, minotaure, cyclope, wizard}t_type_ennemis;
+typedef enum{squelette, blob, imp, volant, minotaure, cyclope, wizard, sorcerer}t_type_ennemis;
 
 
 /**
