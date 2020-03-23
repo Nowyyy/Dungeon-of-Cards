@@ -7,7 +7,7 @@ SDL = `sdl2-config --cflags --libs`
 
 ## preprocessing, compiling, assembling, linking
 $@ : $^
-	gcc -g $^ $(SDL) $(LIBS) $@
+	gcc -g -Wall $^ $(SDL) $(LIBS) $@
 
 %o : %c
 	gcc $*c -c

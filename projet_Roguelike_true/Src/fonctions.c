@@ -295,7 +295,7 @@ ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type,
   }
   else if(type == sorcerer){
 
-    init_ennemi_valeurs(ennemi, "Sorcier", 60, 84, 10, 35, 1.5, 1.5, SORCERER_PATH, rendu);
+    init_ennemi_valeurs(ennemi, "Sorcier", 40, 84, 7, 58, 1.5, 1.5, SORCERER_PATH, rendu);
   }
 
   if(type == minotaure || type == wizard || type == cyclope || type == sorcerer){

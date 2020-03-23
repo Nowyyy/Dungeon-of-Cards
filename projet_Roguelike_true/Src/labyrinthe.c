@@ -615,7 +615,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	SDL_Event event;
 
 	int taille = TAILLE_LABY, nb_salles_a_creer = nb_salles_par_etage(pers->etage), salle_courante, salle_pred, salle_0;
-	int mob_commun = rand()%minotaure, boss = rand()%minotaure + 4, boss_tuer = 0, trappe=0;
+	int mob_commun = rand()%minotaure, boss = sorcerer/*rand()%minotaure + 4*/, boss_tuer = 0, trappe=0;
 
 	mini_map_t miniMap;
 
