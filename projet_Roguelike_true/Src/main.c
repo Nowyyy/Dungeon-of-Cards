@@ -82,7 +82,7 @@ int main(int argc, char* args[]){
 
 
 						if (flags != (result = Mix_Init(flags))) {
-							
+
 								printf("Could not initialize mixer (result: %d).\n", result);
 								printf("Mix_Init: %s\n", Mix_GetError());
 								exit(1);
@@ -109,29 +109,7 @@ int main(int argc, char* args[]){
 							saveperso(&pers);
 							Mix_HaltMusic();
 							animation_niveau(&pers, rendu);
-							if(pers.etage == 1){
-								Mix_VolumeMusic(20);
-								Mix_PlayMusic(musics[level1], -1);
-							}
-							else if(pers.etage == 2){
-								Mix_VolumeMusic(80);
-								Mix_PlayMusic(musics[level2], -1);
-							}
-							else if(pers.etage == 3){
-								Mix_VolumeMusic(48);
-
-								Mix_PlayMusic(musics[level3], -1);
-							}
-							else if(pers.etage == 4){
-								Mix_VolumeMusic(80);
-
-								Mix_PlayMusic(musics[level4], -1);
-							}
-							else if(pers.etage == 5){
-								Mix_VolumeMusic(20);
-
-								Mix_PlayMusic(musics[level5], -1);
-							}
+						  choix_musique(musics, &pers);
 							boucle_labyrinthe(&continuer, &etat, rendu, sounds, musics, &pers, police);
 							Mix_HaltMusic();
 						}

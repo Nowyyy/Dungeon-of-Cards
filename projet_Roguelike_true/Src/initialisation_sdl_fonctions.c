@@ -231,3 +231,39 @@ void free_mixer(Mix_Music* musics[NB_MUSIC], Mix_Chunk* sounds[NB_SON]){
 
 	Mix_CloseAudio();
 }
+
+/**
+*\fn choix_musique(Mix_Music* musics[NB_MUSIC], perso_t *pers)
+
+*\param *musics[NB_MUSIC] est un tableau contenant les emplacements de chaque musiques
+*\param *pers est un tableau contenant les emplacements de chaque son
+
+*\brief libère tous les sons et toutes les musiques utilisées
+
+*\return 1 si echec, 0 si réussite
+*/
+void choix_musique(Mix_Music* musics[NB_MUSIC], perso_t *pers){
+	if(pers->etage == 1){
+		Mix_VolumeMusic(20);
+		Mix_PlayMusic(musics[level1], -1);
+	}
+	else if(pers->etage == 2){
+		Mix_VolumeMusic(80);
+		Mix_PlayMusic(musics[level2], -1);
+	}
+	else if(pers->etage == 3){
+		Mix_VolumeMusic(48);
+
+		Mix_PlayMusic(musics[level3], -1);
+	}
+	else if(pers->etage == 4){
+		Mix_VolumeMusic(80);
+
+		Mix_PlayMusic(musics[level4], -1);
+	}
+	else if(pers->etage == 5){
+		Mix_VolumeMusic(20);
+
+		Mix_PlayMusic(musics[level5], -1);
+	}
+}

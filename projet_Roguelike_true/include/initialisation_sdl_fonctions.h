@@ -9,3 +9,4 @@ int charge_image(char *path_img, image_t *struct_image, SDL_Renderer *rendu);
 void init_son(Mix_Chunk* sounds[NB_SON]);
 void init_music(Mix_Music* musics[NB_MUSIC]);
 void free_mixer(Mix_Music* musics[NB_MUSIC], Mix_Chunk* sounds[NB_SON]);
+void choix_musique(Mix_Music* musics[NB_MUSIC], perso_t *pers);
