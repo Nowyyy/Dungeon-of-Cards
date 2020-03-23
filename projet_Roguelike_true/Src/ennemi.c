@@ -36,7 +36,7 @@ void change_anim_ligne(ennemi_t *ennemi, int nouvelle_anim){
 */
 void animation_ennemi(ennemi_t *ennemi){
 
-	if(ennemi->last + DELAIS_ANIMATIONS <= SDL_GetTicks()){
+	if(ennemi->last + DELAIS_ANIMATIONS*1.25  <= SDL_GetTicks()){
 
 		if((ennemi->anim_courante == idle_droite_ennemi || ennemi->anim_courante == idle_gauche_ennemi) 
 			&& ennemi->id_col < ennemi->nb_sprites_idle - 1){
@@ -52,7 +52,7 @@ void animation_ennemi(ennemi_t *ennemi){
 
 				ennemi->sprite_courant.y = ennemi->sprite_courant.h;
 			}
-			if(ennemi->anim_courante == idle_gauche_ennemi){
+			else if(ennemi->anim_courante == idle_gauche_ennemi){
 
 				change_anim_ligne(ennemi, idle_droite_ennemi);
 			}

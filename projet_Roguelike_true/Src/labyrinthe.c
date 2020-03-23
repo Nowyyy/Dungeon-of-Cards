@@ -34,12 +34,22 @@
 */
 void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu){
 
-	charge_image(SOL1_PATH,&images[sol], rendu);
-	charge_image(MUR1_PATH,&images[mur], rendu);
-	charge_image(MUR2_PATH,&images[mur2], rendu);
-	charge_image(PORTE_PATH,&images[porte], rendu);
-	charge_image(SOL2_PATH,&images[sol2], rendu);
-	charge_image(SOL3_PATH,&images[sol3], rendu);
+	if(pers->etage == 1){
+		charge_image(SOL1_PATH,&images[sol], rendu);
+		charge_image(MUR1_PATH,&images[mur], rendu);
+		charge_image(MUR2_PATH,&images[mur2], rendu);
+		charge_image(PORTE_PATH,&images[porte], rendu);
+		charge_image(SOL2_PATH,&images[sol2], rendu);
+		charge_image(SOL3_PATH,&images[sol3], rendu);
+	}
+	else{
+		charge_image(SOL1_2_PATH,&images[sol], rendu);
+		charge_image(MUR1_2_PATH,&images[mur], rendu);
+		charge_image(MUR2_2_PATH,&images[mur2], rendu);
+		charge_image(PORTE_2_PATH,&images[porte], rendu);
+		charge_image(SOL2_2_PATH,&images[sol2], rendu);
+		charge_image(SOL3_2_PATH,&images[sol3], rendu);
+	}
 	charge_image(COMMANDES_PATH, &images[commandes], rendu);
 	charge_image(INSTRUCTIONS_PATH, &images[instructions], rendu);
 	charge_image(GAMEOVER_PATH, &images[gameover], rendu);
@@ -98,7 +108,7 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 	SDL_RenderClear(rendu);//nettoie l'écran pour supprimer tout ce qui est dessus
 
 ///////////COMMANDES ET INSTRUCTIONS
-	if(salle->depart ==TRUE && salle->prems == 0){//affichage des commandes et rêgles du jeu si on est dans la première salle
+	if(salle->depart ==TRUE && salle->prems == 0 && pers.etage == 1){//affichage des commandes et rêgles du jeu si on est dans la première salle
 		SDL_RenderCopy(rendu, images[commandes].img, NULL, &images[commandes].rectangle);
 		SDL_RenderCopy(rendu, images[instructions].img, NULL, &images[instructions].rectangle);
 	}
