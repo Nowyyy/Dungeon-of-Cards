@@ -177,7 +177,7 @@ hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action){
 
   SDL_RenderCopy(rendu, images[fond].img, NULL, &images[fond].rectangle);
 
-  images[heart].rectangle.x = WIN_WIDTH * 0.11;
+  images[heart].rectangle.x = WIN_WIDTH * 0.10;
   images[heart].rectangle.y = WIN_HEIGHT * 0.02;
 
   SDL_RenderCopy(rendu, pers_hud.pv.img, NULL, &pers_hud.pv.rectangle);
@@ -466,10 +466,6 @@ void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hu
 			sprintf(joueur, "Vous utilisez %s, %s perd %d points de vie", carte.nom, ennemi->nom, carte.valeur);
 		else
 			sprintf(joueur, "Vous utilisez %s, Vous recuperez %d points de vie", carte.nom, carte.valeur);
-
-		action->existe = 1;
-
-		creer_texte_combat(joueur, &action->texte, 0, 0, rendu, font);
 	}
 	else{
 
@@ -479,11 +475,11 @@ void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hu
 			sprintf(joueur, "%s se soigne de %d points de vie", ennemi->nom, ennemi->defense);
 		else
 			sprintf(joueur, "%s attaque ! Vous perdez %d points de vie", ennemi->nom, ennemi->attaque);
-
-		action->existe = 1;
-
-		creer_texte_combat(joueur, &action->texte, 0, 0, rendu, font);
 	}
+
+	action->existe = 1;
+
+	creer_texte_combat(joueur, &action->texte, 0, 0, rendu, font);
 
 	x = WIN_WIDTH / 2 - action->texte.rectangle.w /2;
 	y = WIN_HEIGHT * 0.15;

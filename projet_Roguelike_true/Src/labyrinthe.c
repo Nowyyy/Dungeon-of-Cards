@@ -152,10 +152,10 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 		if(salle->ennemi->pv <= 0 && salle->boss){
 			SDL_RenderCopy(rendu, images[trapdoor2].img, NULL, &images[trapdoor2].rectangle);
 		}
+		if(salle->ennemi->pv > 0)
+			SDL_RenderCopy(rendu, salle->ennemi->sprites.img, &salle->ennemi->sprite_courant, &salle->ennemi->sprites.rectangle);
 
-		SDL_RenderCopy(rendu, salle->ennemi->sprites.img, &salle->ennemi->sprite_courant, &salle->ennemi->sprites.rectangle);
-
-		if(salle->nb_ennemi == 2){
+		if(salle->nb_ennemi == 2 && salle->ennemi2->pv > 0){
 
 			SDL_RenderCopy(rendu, salle->ennemi2->sprites.img, &salle->ennemi2->sprite_courant, &salle->ennemi2->sprites.rectangle);
 		}
