@@ -64,6 +64,7 @@
 
 #define COMBAT_PATH "../Images/combat1.png"
 #define FOND_COMBAT_PATH "../Images/combat2.png"
+#define GUI_COMBAT_PATH "../Images/GUI_bar.png"
 
 #define CARTE_EPEE_I_PATH "../Images/Cartes/epee_1.png"
 #define CARTE_POTION_I_PATH "../Images/Cartes/potion_1.png"
@@ -97,16 +98,6 @@
 
 #define EMPLACEMENT_DEPART_DESSIN_SALLE_X 256
 #define EMPLACEMENT_DEPART_DESSIN_SALLE_Y 40
-
-#define EMPLACEMENT_HUD_ENNEMI_X (WIN_WIDTH * 0.85)
-#define EMPLACEMENT_HUD_ENNEMI_Y 0
-#define HUD_ENNEMI_W 200
-#define HUD_ENNEMI_H 150
-
-#define EMPLACEMENT_HUD_PERS_X 0
-#define EMPLACEMENT_HUD_PERS_Y 0
-#define HUD_PERS_W 200
-#define HUD_PERS_H 150
 
 #define VITESSE_PERSO 1
 
@@ -151,7 +142,7 @@ typedef enum{idle_droite_ennemi, idle_gauche_ennemi, walk_droite, walk_gauche, e
 
 *\brief les types de textures sur lequel le perso peut tomber
 */
-typedef enum{sol =0, mur, porte, sol2, commandes, instructions, sol3, mur2, gameover, deathlight, heart, trapdoor, trapdoor2, pv, etage,fond,fond2,carte1,carte2,carte3,carte4}t_types_textures;
+typedef enum{sol =0, mur, porte, sol2, commandes, instructions, sol3, mur2, gameover, deathlight, heart, trapdoor, trapdoor2, pv, etage,fond,fond2,gui_bar,carte1,carte2,carte3,carte4}t_types_textures;
 
 
 /**
@@ -366,10 +357,14 @@ typedef struct element {
 typedef struct hud_combat_s{
   
   image_t pv, nom, texte;
-  SDL_Rect emplacement;
+  
   int existe;
 }hud_combat_t;
 
 // Declaration des listes (drapeau et element courant)
 element_t* drapeau;
+element_t* drapeau_collec;
+element_t* drapeau_deck;
 element_t* ec;
+element_t* ec_collec;
+element_t* ec_deck;

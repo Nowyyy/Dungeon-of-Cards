@@ -166,6 +166,9 @@ int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, ima
 */
 void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi, image_t def, image_t fuir, SDL_Rect *rect_sel,image_t images[NB_TEXTURES],
 hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action){
+
+	int heart_x = images[heart].rectangle.x, heart_y = images[heart].rectangle.y, w5 = images[gui_bar].rectangle.w;
+	images[gui_bar].rectangle.w = action.texte.rectangle.w *1.25;
   //écran noir puis nettoie l'écran
   SDL_SetRenderDrawColor(rendu,0,0,0,255);
   SDL_RenderClear(rendu);
@@ -174,16 +177,22 @@ hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action){
 
   SDL_RenderCopy(rendu, images[fond].img, NULL, &images[fond].rectangle);
 
-  SDL_RenderFillRect(rendu, &pers_hud.emplacement);
+  images[heart].rectangle.x = WIN_WIDTH * 0.11;
+  images[heart].rectangle.y = WIN_HEIGHT * 0.02;
+
   SDL_RenderCopy(rendu, pers_hud.pv.img, NULL, &pers_hud.pv.rectangle);
   SDL_RenderCopy(rendu, pers_hud.nom.img, NULL, &pers_hud.nom.rectangle);
+  SDL_RenderCopy(rendu, images[heart].img, NULL, &images[heart].rectangle);
 
-  SDL_RenderFillRect(rendu, &ennemi_hud.emplacement);
+  images[heart].rectangle.x = WIN_WIDTH * 0.81;
+  images[heart].rectangle.y = WIN_HEIGHT * 0.02;
+
   SDL_RenderCopy(rendu, ennemi_hud.pv.img, NULL, &ennemi_hud.pv.rectangle);
   SDL_RenderCopy(rendu, ennemi_hud.nom.img, NULL, &ennemi_hud.nom.rectangle);
+  SDL_RenderCopy(rendu, images[heart].img, NULL, &images[heart].rectangle);
 
   if(action.existe){
-  	SDL_RenderFillRect(rendu, &action.emplacement);
+  	SDL_RenderCopy(rendu, images[gui_bar].img, NULL, &images[gui_bar].rectangle);
  	SDL_RenderCopy(rendu, action.texte.img, NULL, &action.texte.rectangle);
   }
 
@@ -239,6 +248,10 @@ hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action){
   ennemi->sprites.rectangle.h = he;
   ennemi->sprites.rectangle.x = xe;
   ennemi->sprites.rectangle.y = ye;
+
+  images[heart].rectangle.x = heart_x;
+  images[heart].rectangle.y =  heart_y;
+  images[gui_bar].rectangle.w = w5;
 }
 
 
@@ -256,6 +269,7 @@ void charge_textures_combat(image_t images[], SDL_Renderer *rendu, carte_t *cart
 
 	charge_image(FOND_COMBAT_PATH,&images[fond2], rendu);
 	charge_image(COMBAT_PATH,&images[fond], rendu);
+	charge_image(GUI_COMBAT_PATH,&images[gui_bar], rendu);
 	charge_image(cartes[0]->path,&images[carte1], rendu);
 	charge_image(cartes[1]->path,&images[carte2], rendu);
 	charge_image(cartes[2]->path,&images[carte3], rendu);
@@ -279,7 +293,14 @@ void donne_valeur_rect_images(image_t images[]){
 
  	images[fond].rectangle.x=0;
 	images[fond].rectangle.y= 450;
+<<<<<<< HEAD
   images[fond].rectangle.w *= 1;
+=======
+  	images[fond].rectangle.w *= 4;
+
+  	images[gui_bar].rectangle.x = WIN_WIDTH / 2 - images[gui_bar].rectangle.w / 2;
+  	images[gui_bar].rectangle.y = WIN_HEIGHT * 0.15;
+>>>>>>> master
 
   	images[carte1].rectangle.x=50;
   	images[carte1].rectangle.y= 450;
@@ -386,16 +407,8 @@ void create_hud(hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, ennemi_t ennem
 
 	if(hud_ennemi->existe == 0 || hud_pers->existe == 0){
 
-		hud_ennemi->emplacement.x = EMPLACEMENT_HUD_ENNEMI_X;
-		hud_ennemi->emplacement.y = EMPLACEMENT_HUD_ENNEMI_Y;
-		hud_ennemi->emplacement.w = HUD_ENNEMI_W;
-		hud_ennemi->emplacement.h = HUD_ENNEMI_H;
 		hud_ennemi->existe = 1;
 
-		hud_pers->emplacement.x = EMPLACEMENT_HUD_PERS_X;
-		hud_pers->emplacement.y = EMPLACEMENT_HUD_PERS_Y;
-		hud_pers->emplacement.w = HUD_PERS_W;
-		hud_pers->emplacement.h = HUD_PERS_H;
 		hud_pers->existe = 1;
 	}
 	else{
@@ -405,10 +418,11 @@ void create_hud(hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, ennemi_t ennem
 		SDL_DestroyTexture(hud_ennemi->pv.img);
 	}
 
-	creer_texte_combat(nom_pers, &hud_pers->nom, EMPLACEMENT_HUD_PERS_X + HUD_PERS_W *0.2, EMPLACEMENT_HUD_PERS_Y + HUD_PERS_H *0.1, rendu, font);
-	creer_texte_combat(pv_pers, &hud_pers->pv, hud_pers->nom.rectangle.x, hud_pers->nom.rectangle.h + hud_pers->nom.rectangle.y + 5, rendu, font);
-	creer_texte_combat(ennemi.nom, &hud_ennemi->nom, EMPLACEMENT_HUD_ENNEMI_X + HUD_ENNEMI_W * 0.15, EMPLACEMENT_HUD_ENNEMI_Y + HUD_ENNEMI_H * 0.1, rendu, font);
-	creer_texte_combat(pv_ennemi, &hud_ennemi->pv, hud_ennemi->nom.rectangle.x, hud_ennemi->nom.rectangle.h + hud_ennemi->nom.rectangle.y + 5, rendu, font);
+	creer_texte_combat(nom_pers, &hud_pers->nom, WIN_WIDTH * 0.02, WIN_HEIGHT *0.02, rendu, font);
+	creer_texte_combat(pv_pers, &hud_pers->pv, hud_pers->nom.rectangle.x + hud_pers->nom.rectangle.w + 50, WIN_HEIGHT *0.02, rendu, font);
+
+	creer_texte_combat(ennemi.nom, &hud_ennemi->nom, WIN_WIDTH * 0.65, WIN_HEIGHT *0.02, rendu, font);
+	creer_texte_combat(pv_ennemi, &hud_ennemi->pv, WIN_WIDTH * 0.85, WIN_HEIGHT *0.02, rendu, font);
 }
 
 /**
@@ -421,9 +435,6 @@ void create_hud(hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, ennemi_t ennem
 void init_hud_action(hud_combat_t *action){
 
 	action->existe = 0;
-
-	action->emplacement.x = WIN_WIDTH / 2;
-	action->emplacement.y = 20;
 }
 
 
@@ -445,6 +456,7 @@ void init_hud_action(hud_combat_t *action){
 void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hud_combat_t *action, hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, SDL_Renderer *rendu, TTF_Font *font, int  tour){
 
 	char joueur[50];
+	int x, y;
 
 	if(action->existe)
 		SDL_DestroyTexture(action->texte.img);
@@ -460,7 +472,7 @@ void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hu
 
 		action->existe = 1;
 
-		creer_texte_combat(joueur, &action->texte, action->emplacement.x, action->emplacement.y, rendu, font);
+		creer_texte_combat(joueur, &action->texte, 0, 0, rendu, font);
 	}
 	else{
 
@@ -473,14 +485,13 @@ void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hu
 
 		action->existe = 1;
 
-		creer_texte_combat(joueur, &action->texte, action->emplacement.x, action->emplacement.y, rendu, font);
+		creer_texte_combat(joueur, &action->texte, 0, 0, rendu, font);
 	}
 
-	action->emplacement.x = WIN_WIDTH / 2 - action->texte.rectangle.w /2;
-	action->emplacement.w = action->texte.rectangle.w + 40;
-	action->emplacement.h = action->texte.rectangle.h + 40;
-	action->texte.rectangle.x = action->emplacement.x + 20;
-	action->texte.rectangle.y = action->emplacement.y + 20;
+	x = WIN_WIDTH / 2 - action->texte.rectangle.w /2;
+	y = WIN_HEIGHT * 0.15;
+	action->texte.rectangle.x = x + 20;
+	action->texte.rectangle.y = y + 20;
 
 	ennemi->pv_old = ennemi->pv;
 }
@@ -527,7 +538,7 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
 
   	TTF_Font * police = NULL;
 
-  	police=TTF_OpenFont(FONT_PATH,40);
+  	police=TTF_OpenFont(FONT_PATH, 35);
 
 //////////////Intialisation, chargement, allocation
 
