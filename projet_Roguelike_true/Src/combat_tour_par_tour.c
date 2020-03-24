@@ -293,14 +293,11 @@ void donne_valeur_rect_images(image_t images[]){
 
  	images[fond].rectangle.x=0;
 	images[fond].rectangle.y= 450;
-<<<<<<< HEAD
   images[fond].rectangle.w *= 1;
-=======
   	images[fond].rectangle.w *= 4;
 
   	images[gui_bar].rectangle.x = WIN_WIDTH / 2 - images[gui_bar].rectangle.w / 2;
   	images[gui_bar].rectangle.y = WIN_HEIGHT * 0.15;
->>>>>>> master
 
   	images[carte1].rectangle.x=50;
   	images[carte1].rectangle.y= 450;
@@ -455,7 +452,7 @@ void init_hud_action(hud_combat_t *action){
 */
 void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hud_combat_t *action, hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, SDL_Renderer *rendu, TTF_Font *font, int  tour){
 
-	char joueur[50];
+	char joueur[80];
 	int x, y;
 
 	if(action->existe)
