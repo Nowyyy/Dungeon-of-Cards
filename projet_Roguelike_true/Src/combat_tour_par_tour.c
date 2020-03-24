@@ -42,7 +42,7 @@ int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, ima
 
 			if(event.key.keysym.sym == SDLK_RIGHT){
 				if((*rect_sel)->x < defausse.x){//on n'est pas sur la dernière option, on peut descendre
-					
+
 					if((*rect_sel)->x == images[carte4].rectangle.x - RECT_SELECT_X_DIFF){
 						(*rect_sel)->y = defausse.y - RECT_SELECT_Y_DIFF;
 						(*rect_sel)->x = defausse.x - RECT_SELECT_X_DIFF;
@@ -67,7 +67,7 @@ int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, ima
 			else if(event.key.keysym.sym == SDLK_LEFT){
 
 				if((*rect_sel)->x > images[carte1].rectangle.x){//on n'est pas sur la premiere option, on peut aller a gauche
-					
+
 					if((*rect_sel)->y == defausse.y - RECT_SELECT_Y_DIFF){
 						(*rect_sel)->x = images[carte4].rectangle.x - RECT_SELECT_X_DIFF;
 						(*rect_sel)->y = images[carte4].rectangle.y - RECT_SELECT_Y_DIFF;
@@ -210,7 +210,7 @@ hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action){
   pers->sprites[idle_droite].rectangle.w *= 1.5;
   pers->sprites[idle_droite].rectangle.h *= 1.5;
   pers->sprites[idle_droite].rectangle.x = 150;
-  pers->sprites[idle_droite].rectangle.y = 250;
+  pers->sprites[idle_droite].rectangle.y = 342;
   pers->sprites[courant] = pers->sprites[idle_droite];
   SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
 
@@ -219,13 +219,13 @@ hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action){
   int ye=ennemi->sprites.rectangle.y;
   int he=ennemi->sprites.rectangle.h;
   int we=ennemi->sprites.rectangle.w;
-
+  int hauteur=405;
   ennemi->sprite_courant.x = 0;
   ennemi->sprite_courant.y = ennemi->sprite_courant.h;
   ennemi->sprites.rectangle.x = 750;
-  ennemi->sprites.rectangle.y = 240;
   ennemi->sprites.rectangle.w *= 1.5;
   ennemi->sprites.rectangle.h *= 1.5;
+	ennemi->sprites.rectangle.y = hauteur-(ennemi->sprites.rectangle.h);
   ennemi->sprites = ennemi->sprites;
   SDL_RenderCopy(rendu, ennemi->sprites.img, &ennemi->sprite_courant, &ennemi->sprites.rectangle);
 
@@ -272,14 +272,14 @@ void charge_textures_combat(image_t images[], SDL_Renderer *rendu, carte_t *cart
 */
 void donne_valeur_rect_images(image_t images[]){
 
-	images[fond2].rectangle.x= -50;
-	images[fond2].rectangle.y= -415;
-	images[fond2].rectangle.w *= 2;
-	images[fond2].rectangle.h *= 2;
+	images[fond2].rectangle.x= 0;
+	images[fond2].rectangle.y= 70;
+	images[fond2].rectangle.w *= 1;
+	images[fond2].rectangle.h *= 1;
 
  	images[fond].rectangle.x=0;
 	images[fond].rectangle.y= 450;
-  	images[fond].rectangle.w *= 4;
+  images[fond].rectangle.w *= 4;
 
   	images[carte1].rectangle.x=50;
   	images[carte1].rectangle.y= 450;
@@ -480,7 +480,7 @@ void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hu
 	action->emplacement.w = action->texte.rectangle.w + 40;
 	action->emplacement.h = action->texte.rectangle.h + 40;
 	action->texte.rectangle.x = action->emplacement.x + 20;
-	action->texte.rectangle.y = action->emplacement.y + 20; 
+	action->texte.rectangle.y = action->emplacement.y + 20;
 
 	ennemi->pv_old = ennemi->pv;
 }
@@ -535,7 +535,7 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
   	hud_pers.existe = 0;
 
 	tire_carte_deck(cartes);
-	
+
 	init_hud_action(&action);
 
 	create_hud(&hud_pers, &hud_ennemi, *ennemi, *perso, rendu, police);
