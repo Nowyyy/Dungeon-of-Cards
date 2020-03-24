@@ -98,10 +98,10 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 
 	SDL_Rect rect;
 	rect = map.map[0];
-	rect.x -= 5;
-	rect.y -= 5;
-	rect.h = (map.taille / TAILLE_LABY) * TAILLE_RECT_MINI_MAP_H + 15;
-	rect.w = (map.taille / TAILLE_LABY) * TAILLE_RECT_MINI_MAP_W + 15;
+	rect.x = 794;
+	rect.y = 5;
+	rect.h = 175;
+	rect.w = 255;
 
 	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
 
@@ -117,7 +117,7 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 		SDL_SetRenderDrawColor(rendu,169,169,169,255);//gris
 		SDL_RenderDrawRect(rendu, &rect); // rectangle qui sert de cadre à la mini map
 
-		for(int i = 0; i < map.taille; i++){
+		for(int i = 0; i < 64; i++){
 
 			if(map.salles_decouvertes[i] == TRUE && i == salle->id){
 				//salle dans laquelle se situe le joueur
