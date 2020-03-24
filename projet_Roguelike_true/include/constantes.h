@@ -372,4 +372,8 @@ typedef struct hud_combat_s{
 
 // Declaration des listes (drapeau et element courant)
 element_t* drapeau;
+element_t* drapeau_collec;
+element_t* drapeau_deck;
 element_t* ec;
+element_t* ec_collec;
+element_t* ec_deck;
