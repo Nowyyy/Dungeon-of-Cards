@@ -279,7 +279,7 @@ void donne_valeur_rect_images(image_t images[]){
 
  	images[fond].rectangle.x=0;
 	images[fond].rectangle.y= 450;
-  images[fond].rectangle.w *= 4;
+  images[fond].rectangle.w *= 1;
 
   	images[carte1].rectangle.x=50;
   	images[carte1].rectangle.y= 450;
