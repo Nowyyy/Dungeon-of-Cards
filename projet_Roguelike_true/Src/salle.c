@@ -245,8 +245,11 @@ void place_monstre_coffre_boss(salle_t tab[], int taille, int type_ennemi, SDL_R
     //choix de monstres ou coffre dans les autres salles que celle du début et celle du boss
     if(tab[i].depart == TRUE){
       tab[i].ennemi_present = 0;
+      tab[i].nb_ennemi = 0;
       tab[i].coffre = 0;
       tab[i].prems = 0;
+      tab[i].ennemi2 = NULL;
+      tab[i].ennemi = NULL;
 
     }
     else if (tab[i].salle_existe && tab[i].boss == FALSE){
@@ -272,6 +275,8 @@ void place_monstre_coffre_boss(salle_t tab[], int taille, int type_ennemi, SDL_R
       //pas d'ennemi dans la salle
       else{
         tab[i].coffre = 1;
+        tab[i].nb_ennemi = 0;
+        tab[i].ennemi_present = 0;
         tab[i].ennemi2 = NULL;
         tab[i].ennemi = NULL;
       }

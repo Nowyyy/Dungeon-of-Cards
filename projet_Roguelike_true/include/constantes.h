@@ -76,6 +76,8 @@
 #define CARTE_POISON_PATH "../Images/Cartes/poison.png"
 #define CARTE_BARRIERE_PATH "../Images/Cartes/barriere.png"
 
+#define CARTE_NO_CARTE_PATH "../Images/Cartes/no_carte.png"
+
 #define SAVE_PERSO_PATH "../Sauvegarde/personnage.txt"
 #define SAVE_CARTES_DECK_PATH "../Sauvegarde/cartes_deck.txt"
 #define SAVE_CARTES_COLLEC_PATH "../Sauvegarde/cartes_collec.txt"
@@ -89,9 +91,6 @@
 
 #define DECK 1
 #define COLLEC 0
-
-#define QUIT_SDL 100
-#define PAS_QUIT_SDL 101
 
 #define TAILLE_SALLE 8 //Taille de la matrice d'un salle
 
@@ -180,7 +179,7 @@ typedef enum{mainMenu = 0, labyrinthe, tourParTour, pauseScreen, charger_partie,
 *\brief Les différents types de cartes
 */
 
-typedef enum {ATTAQUE = -1, DEFENSE = 1} type_carte ;
+typedef enum {ATTAQUE = -1, DEFENSE = 1, NO_CARTE = 0} type_carte ;
 
 
 /**

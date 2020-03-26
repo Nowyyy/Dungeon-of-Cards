@@ -52,7 +52,7 @@ void savecarte (char *path, int liste){
    {
       while(!hors_liste()){
         valeur_elt(&carte2);
-        fprintf(fichier,"%d %d %d %s\n",carte2->type,carte2->valeur,carte2->consommable,carte2->nom);
+        fprintf(fichier,"%d %d %d %s %s\n",carte2->type,carte2->valeur,carte2->consommable,carte2->path,carte2->nom);
         suivant();
       }
    }
@@ -79,7 +79,7 @@ void readcarte(char *path_file, int liste){
   type_carte type;/** Type d'une carte */
   int valeur, consommable;
 
-  fscanf(fichier,"%d%d%d%s%s",&type,&valeur,&consommable,path,nom);
+  fscanf(fichier,"%d%d%d%s%[^\n]",&type,&valeur,&consommable,path,nom);
 
   if (fichier != NULL)
     {
@@ -87,7 +87,7 @@ void readcarte(char *path_file, int liste){
         while(!feof(fichier)){
 
           ajout_droit(creer_carte(nom,type,valeur,consommable,path));
-          fscanf(fichier,"%d%d%d%s%s",&type,&valeur,&consommable,path,nom);
+          fscanf(fichier,"%d%d%d%s%[^\n]",&type,&valeur,&consommable,path,nom);
         }
     }
     else

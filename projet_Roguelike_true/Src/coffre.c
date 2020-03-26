@@ -93,11 +93,7 @@ void destruction_des_coffres(salle_t salles[], int taille){
 	for(i = 0; i < taille * taille; i++){
 
 		if(salles[i].coffre)
-			if(salles[i].coffre_salle.sprite.img != NULL){
-				SDL_DestroyTexture(salles[i].coffre_salle.sprite.img);
-				salles[i].coffre_salle.sprite.img = NULL;
-			}
-
+			libere_texture(&salles[i].coffre_salle.sprite.img);
 	}
 }
 
@@ -130,6 +126,8 @@ void loot_de_carte(loot_carte_t *loot, SDL_Renderer *rendu, coffre_t coffre, int
 		loot->existe = 1;
 
 		loot->carte = generer_carte(etage);
+
+		printf("%s\n", loot->carte->nom);
 
 		ajout_carte_deck(loot->carte);
 		ajout_carte_collec(loot->carte);
