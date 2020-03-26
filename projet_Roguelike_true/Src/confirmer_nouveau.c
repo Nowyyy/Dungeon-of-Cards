@@ -150,12 +150,24 @@ void menu_confirmation(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font 
 		*continuer = deplacement_rectangle_selection_confirmer(etat, confirmer_rect, retour_rect, &rectangle_selection, sounds, pers);
 	}
 
-	free(rectangle_selection);
-	rectangle_selection=NULL;
-	SDL_DestroyTexture(retour_texture);
-	retour_texture = NULL;
-	SDL_DestroyTexture(confirmer_texture);
-	confirmer_texture=NULL;
-  SDL_DestroyTexture(message_texture);
-	message_texture=NULL;
+	if(rectangle_selection != NULL){
+		free(rectangle_selection);
+		rectangle_selection=NULL;
+	}
+
+	if(retour_texture != NULL){
+		SDL_DestroyTexture(retour_texture);
+		retour_texture = NULL;
+	}
+
+	if(confirmer_texture != NULL){
+		SDL_DestroyTexture(confirmer_texture);
+		confirmer_texture=NULL;
+	}
+
+	if(message_texture != NULL){
+		SDL_DestroyTexture(message_texture);
+		message_texture=NULL;
+	}
+
 }

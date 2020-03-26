@@ -23,10 +23,15 @@ char rares[][TAILLE] = {{"boule de feu"},{"poison"},{"guérison"}};
 */
 void detruire_carte(carte_t ** carte)
 {
-  free((*carte)->nom);
-  (*carte)->nom = NULL;
-  free(*carte);
-  *carte = NULL;
+  if((*carte)->nom != NULL){
+    free((*carte)->nom);
+    (*carte)->nom = NULL;
+  }
+
+  if(*carte != NULL){
+    free(*carte);
+    *carte = NULL;
+  }
 }
 
 
@@ -218,9 +223,11 @@ void oter_elt(){
 		temp = ec;
 		ec = ec->pred;
     detruire_carte(&temp->carte);
-		free(temp);
-    temp=NULL;
-		}
+    if(temp != NULL){
+      free(temp);
+      temp=NULL;
+    }
+	}
 }
 
 /**
@@ -496,12 +503,20 @@ void afficher_liste(){
 */
 void detruire_ennemi(ennemi_t ** ennemi)
 {
-  free((*ennemi)->nom);
-  (*ennemi)->nom=NULL;
-  SDL_DestroyTexture((*ennemi)->sprites.img);
-  (*ennemi)->sprites.img=NULL;
-  free(*ennemi);
-  *ennemi = NULL;
+  if((*ennemi)->nom != NULL){
+    free((*ennemi)->nom);
+    (*ennemi)->nom=NULL;
+  }
+
+  if((*ennemi)->sprites.img != NULL){
+    SDL_DestroyTexture((*ennemi)->sprites.img);
+    (*ennemi)->sprites.img=NULL;
+  }
+
+  if(*ennemi != NULL){
+    free(*ennemi);
+    *ennemi = NULL;
+  }
 }
 
 
@@ -528,7 +543,7 @@ void tire_carte_deck(carte_t *cartes[]){
 
     if(hors_liste())
       suivant();
-    
+
     valeur_elt(&cartes[nb - 1]);
     nb--;
   }

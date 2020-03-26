@@ -93,8 +93,11 @@ void destruction_des_coffres(salle_t salles[], int taille){
 	for(i = 0; i < taille * taille; i++){
 
 		if(salles[i].coffre)
-			SDL_DestroyTexture(salles[i].coffre_salle.sprite.img);
-			salles[i].coffre_salle.sprite.img = NULL;
+			if(salles[i].coffre_salle.sprite.img != NULL){
+				SDL_DestroyTexture(salles[i].coffre_salle.sprite.img);
+				salles[i].coffre_salle.sprite.img = NULL;
+			}
+
 	}
 }
 

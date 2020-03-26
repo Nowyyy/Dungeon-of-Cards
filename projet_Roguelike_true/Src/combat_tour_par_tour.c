@@ -323,8 +323,11 @@ void donne_valeur_rect_images(image_t images[]){
 void free_image(image_t images[]){
 
 	for(int i = fond; i<= carte4; i++){
-		SDL_DestroyTexture(images[i].img);
-		images[i].img=NULL;
+		if(images[i].img != NULL){
+			SDL_DestroyTexture(images[i].img);
+			images[i].img=NULL;
+		}
+
 	}
 }
 
@@ -411,14 +414,25 @@ void create_hud(hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, ennemi_t ennem
 		hud_pers->existe = 1;
 	}
 	else{
-		SDL_DestroyTexture(hud_pers->pv.img);
-		hud_pers->pv.img=NULL;
-		SDL_DestroyTexture(hud_pers->nom.img);
-		hud_pers->nom.img=NULL;
-		SDL_DestroyTexture(hud_ennemi->nom.img);
-		hud_ennemi->nom.img=NULL;
-		SDL_DestroyTexture(hud_ennemi->pv.img);
-		hud_ennemi->pv.img=NULL;
+		if(hud_pers->pv.img != NULL){
+			SDL_DestroyTexture(hud_pers->pv.img);
+			hud_pers->pv.img=NULL;
+		}
+
+		if(hud_pers->nom.img != NULL){
+			SDL_DestroyTexture(hud_pers->nom.img);
+			hud_pers->nom.img=NULL;
+		}
+
+		if(hud_ennemi->nom.img != NULL){
+			SDL_DestroyTexture(hud_ennemi->nom.img);
+			hud_ennemi->nom.img=NULL;
+		}
+
+		if(hud_ennemi->pv.img != NULL){
+			SDL_DestroyTexture(hud_ennemi->pv.img);
+			hud_ennemi->pv.img=NULL;
+		}
 	}
 
 	creer_texte_combat(nom_pers, &hud_pers->nom, WIN_WIDTH * 0.02, WIN_HEIGHT *0.02, rendu, font);
@@ -462,8 +476,11 @@ void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hu
 	int x, y;
 
 	if(action->existe)
-		SDL_DestroyTexture(action->texte.img);
-		action->texte.img=NULL;
+		if(action->texte.img != NULL){
+			SDL_DestroyTexture(action->texte.img);
+			action->texte.img=NULL;
+		}
+
 
 	if(tour){
 
@@ -508,8 +525,11 @@ void detruire_action_temp(hud_combat_t *action){
 
 	if(action->existe){
 		action->existe = 0;
-		SDL_DestroyTexture(action->texte.img);
-		action->texte.img=NULL;
+		if(action->texte.img != NULL){
+			SDL_DestroyTexture(action->texte.img);
+			action->texte.img=NULL;
+		}
+
 	}
 }
 
@@ -619,23 +639,47 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
 
   	TTF_CloseFont(police);
 
-  	SDL_DestroyTexture(def.img);
-		def.img=NULL;
-  	SDL_DestroyTexture(fui.img);
-		fui.img=NULL;
-  	SDL_DestroyTexture(hud_pers.pv.img);
-		hud_pers.pv.img=NULL;
-  	SDL_DestroyTexture(hud_pers.nom.img);
-		hud_pers.nom.img=NULL;
-  	SDL_DestroyTexture(hud_ennemi.pv.img);
-		hud_ennemi.pv.img=NULL;
-  	SDL_DestroyTexture(hud_ennemi.nom.img);
-		hud_ennemi.nom.img=NULL;
+		if(def.img != NULL){
+			SDL_DestroyTexture(def.img);
+			def.img=NULL;
+		}
+
+		if(fui.img != NULL){
+			SDL_DestroyTexture(fui.img);
+			fui.img=NULL;
+		}
+
+		if(hud_pers.pv.img!=NULL){
+			SDL_DestroyTexture(hud_pers.pv.img);
+			hud_pers.pv.img=NULL;
+		}
+
+		if(hud_pers.nom.img != NULL){
+			SDL_DestroyTexture(hud_pers.nom.img);
+			hud_pers.nom.img=NULL;
+		}
+
+		if(hud_ennemi.pv.img != NULL){
+			SDL_DestroyTexture(hud_ennemi.pv.img);
+			hud_ennemi.pv.img=NULL;
+		}
+
+		if(hud_ennemi.nom.img != NULL){
+			SDL_DestroyTexture(hud_ennemi.nom.img);
+			hud_ennemi.nom.img=NULL;
+		}
+
 
   	detruire_action_temp(&action);
 
-  	free_image(images);
-		images=NULL;
-  	free(rectangle_selection);
-		rectangle_selection=NULL;
+		if(images != NULL){
+			free_image(images);
+			images=NULL;
+		}
+
+		if(rectangle_selection != NULL){
+			free(rectangle_selection);
+			rectangle_selection=NULL;
+		}
+
 }

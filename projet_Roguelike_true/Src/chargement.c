@@ -170,12 +170,22 @@ void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Fon
 		*continuer = deplacement_rectangle_selection_charger(etat, charger_rect, retour_rect, &rectangle_selection, sounds);
 	}
 
-	free(rectangle_selection);
-	rectangle_selection=NULL;
-	free(charger_text);
-	charger_text=NULL;
-	SDL_DestroyTexture(retour_texture);
-	retour_texture=NULL;
-	SDL_DestroyTexture(charger_texture);
-	charger_texture=NULL;
+	if(rectangle_selection != NULL){
+		free(rectangle_selection);
+		rectangle_selection=NULL;
+	}
+
+	if(charger_text != NULL){
+		free(charger_text);
+		charger_text=NULL;
+	}
+
+	if(retour_texture != NULL){
+		SDL_DestroyTexture(retour_texture);
+		retour_texture=NULL;
+	}
+	if(charger_texture != NULL){
+		SDL_DestroyTexture(charger_texture);
+		charger_texture=NULL;
+	}
 }

@@ -125,8 +125,10 @@ void saveperso (perso_t *perso){
        printf("Impossible d'ouvrir le fichier sauvegarde.txt");
    }
    fclose(fichier);
-   free(nom_fichier);
-   nom_fichier=NULL;
+   if(nom_fichier != NULL){
+     free(nom_fichier);
+     nom_fichier=NULL;
+   }
 }
 
 
@@ -156,6 +158,8 @@ void readperso(perso_t*perso){
        printf("Impossible d'ouvrir le fichier sauvegarde.txt");
    }
    fclose(fichier);
-   free(nom_fichier);
-   nom_fichier=NULL;
+   if(nom_fichier != NULL){
+     free(nom_fichier);
+     nom_fichier=NULL;
+   }
 }

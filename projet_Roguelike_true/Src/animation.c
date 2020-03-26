@@ -93,14 +93,28 @@ void animation_niveau(perso_t *perso, SDL_Renderer *rendu){
 
 	TTF_CloseFont(police); //on libère la police
 
-  SDL_DestroyTexture(texte_etage.img);
-  texte_etage.img=NULL;
-  SDL_DestroyTexture(texte_charg.img);
-  texte_charg.img=NULL;
-  SDL_DestroyTexture(p1.img);
-  p1.img=NULL;
-  SDL_DestroyTexture(p2.img);
-  p2.img=NULL;
-  SDL_DestroyTexture(p3.img);
-  p3.img=NULL;
+  if(texte_etage.img != NULL){
+    SDL_DestroyTexture(texte_etage.img);
+    texte_etage.img=NULL;
+  }
+
+  if(texte_charg.img!=NULL){
+    SDL_DestroyTexture(texte_charg.img);
+    texte_charg.img=NULL;
+  }
+
+  if(p1.img!=NULL){
+    SDL_DestroyTexture(p1.img);
+    p1.img=NULL;
+  }
+
+  if(p2.img!=NULL){
+    SDL_DestroyTexture(p2.img);
+    p2.img=NULL;
+  }
+
+  if(p3.img!=NULL){
+    SDL_DestroyTexture(p3.img);
+    p3.img=NULL;
+  }
 }

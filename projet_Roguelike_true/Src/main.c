@@ -142,8 +142,11 @@ int main(int argc, char* args[]){
 		oter_elt();
 		suivant();
 	}
-	free(drapeau);
-	drapeau = NULL;
+	if(drapeau != NULL){
+		free(drapeau);
+		drapeau = NULL;
+	}
+
 	choix_liste(COLLEC);
 
 	en_tete();
@@ -152,8 +155,11 @@ int main(int argc, char* args[]){
 		oter_elt();
 		suivant();
 	}
-	free(drapeau);
-	drapeau = NULL;
+
+	if(drapeau != NULL){
+		free(drapeau);
+		drapeau = NULL;
+	}
 
 	printf("Tout est fermé\n");//affiche dans la console
 

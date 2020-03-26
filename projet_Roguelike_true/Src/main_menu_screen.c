@@ -187,15 +187,29 @@ void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police,
 
 	//On arrête et libère la musique quand on quitte le menu principal
 
-	free(rectangle_selection);
-	rectangle_selection=NULL;
+	if(rectangle_selection != NULL){
+		free(rectangle_selection);
+		rectangle_selection=NULL;
+	}
 
-	SDL_DestroyTexture(jouer_texture);
-	jouer_texture = NULL;
-	SDL_DestroyTexture(charger_texture);
-	charger_texture=NULL;
-	SDL_DestroyTexture(quitter_texture);
-	quitter_texture=NULL;
-	SDL_DestroyTexture(logo[0].img);
-	logo[0].img=NULL;
+
+	if(jouer_texture != NULL){
+		SDL_DestroyTexture(jouer_texture);
+		jouer_texture = NULL;
+	}
+	if(charger_texture != NULL){
+		SDL_DestroyTexture(charger_texture);
+		charger_texture=NULL;
+	}
+
+	if(quitter_texture != NULL){
+		SDL_DestroyTexture(quitter_texture);
+		quitter_texture=NULL;
+	}
+
+	if(logo[0].img!=NULL){
+		SDL_DestroyTexture(logo[0].img);
+		logo[0].img=NULL;
+	}
+
 }

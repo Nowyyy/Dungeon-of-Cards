@@ -329,8 +329,10 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
 
  	*etat = mainMenu;
 
- 	SDL_DestroyTexture(cmpPartie_texture);
-	cmpPartie_texture=NULL;
+	if(cmpPartie_texture!=NULL){
+		SDL_DestroyTexture(cmpPartie_texture);
+		cmpPartie_texture=NULL;
+	}
 }
 
 
@@ -576,10 +578,16 @@ void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Rendere
 	if(pers->pv != pers->pv_old || pers->etage != pers->etage_old){
 		pers->pv_old = pers->pv;
 		pers->etage_old = pers->etage;
-		SDL_DestroyTexture(pv->img);
-		pv->img=NULL;
-		SDL_DestroyTexture(etage->img);
-		etage->img=NULL;
+		if(pv->img != NULL){
+			SDL_DestroyTexture(pv->img);
+			pv->img=NULL;
+		}
+
+		if(etage->img != NULL){
+			SDL_DestroyTexture(etage->img);
+			etage->img=NULL;
+		}
+
 		creer_texture_depuis_char(pv, etage, *pers, rendu);
 	}
 }
@@ -756,18 +764,25 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 //////////////////////// On libère tous les emplacements mémoires utilisés par les images ////
 	for(int i = 0; i < NB_SPRITES_PERSONNAGE; i++){
-		SDL_DestroyTexture(pers->sprites[i].img);
-		pers->sprites[i].img=NULL;
+		if(pers->sprites[i].img != NULL){
+			SDL_DestroyTexture(pers->sprites[i].img);
+			pers->sprites[i].img=NULL;
+		}
 	}
 
 	for(int i = sol; i < fond; i++){
-		SDL_DestroyTexture(images[i].img);
-		images[i].img=NULL;
+		if(images[i].img != NULL){
+			SDL_DestroyTexture(images[i].img);
+			images[i].img=NULL;
+		}
+
 	}
-	
+
 	if(loot.existe){
-		SDL_DestroyTexture(loot.texte.img);
-		loot.texte.img=NULL;
+		if(loot.texte.img != NULL){
+			SDL_DestroyTexture(loot.texte.img);
+			loot.texte.img=NULL;
+		}
 	}
 
 	destruction_tous_ennemis(salles, taille);
