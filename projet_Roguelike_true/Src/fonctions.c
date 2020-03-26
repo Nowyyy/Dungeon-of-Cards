@@ -69,7 +69,7 @@ void init_liste(){
 	drapeau_collec->pred = drapeau_collec;
 	drapeau_collec->succ = drapeau_collec;
 	ec_collec = drapeau_collec;
-  choix_liste(DECK);
+  	choix_liste(DECK);
 }
 
 
