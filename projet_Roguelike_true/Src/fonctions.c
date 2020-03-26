@@ -51,13 +51,14 @@ void choix_liste(int choix){
 *\fn void init_liste()
 *\brief Fonction d'initialiser une liste
 */
+/*V1
 void init_liste(){
 	drapeau = malloc(sizeof(element_t));
 	drapeau->pred = drapeau;
 	drapeau->succ = drapeau;
 	ec = drapeau;
 }
-/* V2
+*/
 void init_liste(){
 	drapeau_deck = malloc(sizeof(element_t));
 	drapeau_deck->pred = drapeau_deck;
@@ -68,8 +69,9 @@ void init_liste(){
 	drapeau_collec->pred = drapeau_collec;
 	drapeau_collec->succ = drapeau_collec;
 	ec_collec = drapeau_collec;
+  choix_liste(DECK);
 }
-*/
+
 
 /**
 *\fn int liste_vide()
@@ -216,7 +218,7 @@ carte_t * creer_carte(char * nom, type_carte type, int valeur, int consommable, 
 {
   carte_t * carte = NULL ;
   static unsigned long int cpt = 0 ;
-  
+
   carte = malloc(sizeof(carte_t));
 
   carte->nom = malloc(sizeof(char)*TAILLE);
@@ -251,7 +253,7 @@ void init_ennemi_valeurs(ennemi_t *ennemi, char * nom, int w, int h, int nb_spri
 
   charge_image(path, &ennemi->sprites, rendu);
   ennemi->w = ennemi->sprites.rectangle.w;
-  ennemi->h = ennemi->sprites.rectangle.h; 
+  ennemi->h = ennemi->sprites.rectangle.h;
   ennemi->sprite_courant.h = h;
   ennemi->sprite_courant.w = w;//on prend le idle comme base
   ennemi->nb_sprites_idle = nb_sprites;
@@ -305,14 +307,14 @@ ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type,
   }
   else if(type == imp){
 
-    init_ennemi_valeurs(ennemi, "Imp", 35, 30, 7, 25, 1.5, 1.5, IMP_PATH, rendu);    
+    init_ennemi_valeurs(ennemi, "Imp", 35, 30, 7, 25, 1.5, 1.5, IMP_PATH, rendu);
   }
   else if(type == minotaure){
 
-    init_ennemi_valeurs(ennemi, "Minotaure", 70, 100, 6, 88, 1, 1, MINOTAURE_PATH, rendu);  
+    init_ennemi_valeurs(ennemi, "Minotaure", 70, 100, 6, 88, 1, 1, MINOTAURE_PATH, rendu);
   }
   else if(type == cyclope){
-    
+
     init_ennemi_valeurs(ennemi, "Cyclope", 80, 100, 6, 66, 1, 1, CYCLOPE_PATH, rendu);
   }
   else if(type == wizard){
