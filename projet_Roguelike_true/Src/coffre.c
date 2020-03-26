@@ -128,11 +128,11 @@ void loot_de_carte(loot_carte_t *loot, SDL_Renderer *rendu, coffre_t coffre, int
 		loot->carte = generer_carte(etage);
 
 		ajout_carte_deck(loot->carte);
-		ajout_carte_collet(loot->carte);
+		ajout_carte_collec(loot->carte);
 
 		loot->delai = DUREE_AFFICHAGE_CARTE_LOOT;
 
-		loot->debut = SDL_GetTicks();		
+		loot->debut = SDL_GetTicks();
 
 		creer_texte_coffre("Vous avez trouve :", &loot->texte, 0, 0, rendu);
 	}

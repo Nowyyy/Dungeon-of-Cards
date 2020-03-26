@@ -6,9 +6,6 @@
 *\date 13/02/2020
 */
 
-void ajout_carte_collec(carte_t *tampon);
-
-void ajout_carte_deck(carte_t *tampon);
 /**
 *\fn carte_t * creer_carte(char *, type_carte, int *, int)
 *\brief permet de créer une carte selon différentes caractéristiques donnés
@@ -23,7 +20,7 @@ void init_ennemi_valeurs(ennemi_t *ennemi, char * nom, int w, int h, int nb_spri
 
 
 void ajout_carte_deck(carte_t *tampon);
-void ajout_carte_collet(carte_t *tampon);
+void ajout_carte_collec(carte_t *tampon);
 
 /**
 *\fn ennemi_t * creer_ennemi(char *)

@@ -36,7 +36,7 @@ void detruire_carte(carte_t ** carte)
 
 *\brief ajoute une carte à la collection du joueur s'il ne la possède pas déjà
 */
-void ajout_carte_collet(carte_t *tampon){
+void ajout_carte_collec(carte_t *tampon){
 
   choix_liste(COLLEC);
 
@@ -245,21 +245,6 @@ void ajout_gauche(carte_t * t){
 	}
 }
 
-void ajout_carte_collec(carte_t *tampon){
-  choix_liste(COLLEC);
-
-  for(en_tete();!hors_liste() && strcmp(tampon->nom, ec->carte->nom);suivant());
-  if(hors_liste()){
-    en_queue();
-    ajout_droit(tampon);
-  }
-}
-
-void ajout_carte_deck(carte_t *tampon){
-  choix_liste(DECK);
-
-  ajout_droit(tampon);
-}
 /**
 *\fn carte_t * creer_carte(char * nom, type_carte type, int * cible, int valeur)
 *\brief permet de créer une carte selon différentes caractéristiques donnés
