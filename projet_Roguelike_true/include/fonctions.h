@@ -37,6 +37,8 @@ ennemi_t * generer_ennemi(int);
 */
 void detruire_carte(carte_t **);
 
+carte_t * generer_carte(int);
+
 /**
 *\fn void detruire_ennemi(ennemi_t **)
 *\brief Fonction qui permet de détruire un ennemi
@@ -45,6 +47,7 @@ void detruire_carte(carte_t **);
 void detruire_ennemi(ennemi_t **);
 
 void init_liste();
+void choix_liste(int);
 int liste_vide();
 int hors_liste();
 void en_tete();
