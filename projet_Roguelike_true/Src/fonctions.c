@@ -10,6 +10,10 @@
 #include "../include/constantes.h"
 #include "../include/initialisation_sdl_fonctions.h"
 
+// Tables de cartes préfaites
+char communes[][TAILLE] = {{"soin"},{"poing"},{"caillou"}};
+char peu_communes[][TAILLE] = {{"potion"},{"barrière"},{"épée"}};
+char rares[][TAILLE] = {{"boule de feu"},{"poison"},{"guérison"}};
 
 /**
 *\fn void detruire_carte(carte_t ** carte)
