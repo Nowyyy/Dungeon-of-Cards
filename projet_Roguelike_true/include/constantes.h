@@ -72,14 +72,15 @@
 #define CARTE_POTION_I_PATH "../Images/Cartes/potion_1.png"
 #define CARTE_POING_PATH "../Images/Cartes/poing.png"
 #define CARTE_PIERRE_PATH "../Images/Cartes/pierre.png"
-
 #define CARTE_B_DE_FEU_PATH "../Images/Cartes/boule_de_feu.png"
 #define CARTE_POISON_PATH "../Images/Cartes/poison.png"
 #define CARTE_BARRIERE_PATH "../Images/Cartes/barriere.png"
 
 #define SAVE_PERSO_PATH "../Sauvegarde/personnage.txt"
-#define SAVE_CARTES_PATH "../Sauvegarde/cartes.txt"
+#define SAVE_CARTES_DECK_PATH "../Sauvegarde/cartes_deck.txt"
+#define SAVE_CARTES_COLLEC_PATH "../Sauvegarde/cartes_collec.txt"
 #define SAVE_CARTES_CATALOGUE_PATH "../Sauvegarde/cartes_catalogue"
+#define SAVE_CARTES_NEW_GAME_PATH "../Sauvegarde/cartes_nouvelle_partie.txt"
 
 #define NB_TEXTURES 21
 

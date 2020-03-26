@@ -23,7 +23,7 @@ int save_existe(){
 
   FILE *f;
 
-  f = fopen(SAVE_PERSO_PATH, "r");
+  f = fopen(SAVE_CARTES_COLLEC_PATH, "r");
 
   if(!f)
     return 0;
@@ -38,11 +38,14 @@ int save_existe(){
 *\brief Fonction qui permet de sauvegarde toutes les données d'une carte
 *\param carte2 Permet de sauvegarder les cartes d'un deck
 */
-void savecarte (carte_t* carte2){
+void savecarte (char *path, int liste){
 
   FILE *fichier=NULL;
 
-  fichier=fopen(SAVE_CARTES_PATH,"w");
+  carte_t* carte2;
+
+  fichier=fopen(path,"w");
+  choix_liste(liste);
   en_tete();
 
   if (fichier != NULL)
@@ -66,7 +69,7 @@ void savecarte (carte_t* carte2){
 *\brief Fonction qui permet de lire une carte
 *\param carte2 Permet de lire les cartes d'un deck
 */
-void readcarte(char *path_file){
+void readcarte(char *path_file, int liste){
 
   FILE *fichier=NULL;
 
@@ -80,6 +83,7 @@ void readcarte(char *path_file){
 
   if (fichier != NULL)
     {
+        choix_liste(liste);
         while(!feof(fichier)){
 
           ajout_droit(creer_carte(nom,type,valeur,consommable,path));

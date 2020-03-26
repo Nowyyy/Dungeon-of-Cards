@@ -138,11 +138,14 @@ void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Fon
 		initialise_personnage(pers);
 		x_charger = WIN_WIDTH * 0.30;
 		y_charger = WIN_HEIGHT * 0.50;
-		readcarte(SAVE_CARTES_CATALOGUE_PATH);
+		remove(SAVE_CARTES_DECK_PATH);
+		readcarte(SAVE_CARTES_NEW_GAME_PATH, DECK);
+		readcarte(SAVE_CARTES_NEW_GAME_PATH, COLLEC);
 	}
 	else{
 		readperso(pers);
-		readcarte(SAVE_CARTES_CATALOGUE_PATH);
+		readcarte(SAVE_CARTES_DECK_PATH, DECK);
+		readcarte(SAVE_CARTES_COLLEC_PATH, COLLEC);
 		x_charger = WIN_WIDTH * 0.33;
 		y_charger = WIN_HEIGHT * 0.50;
 		sprintf(intermediaire,"Etage %d, Points de vie %d", pers->etage, pers->pv);
