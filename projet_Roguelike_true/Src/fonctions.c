@@ -32,7 +32,16 @@ void detruire_carte(carte_t ** carte)
 
 
 // Primitives de manipulation de la liste
-
+void choix_liste(int choix){
+	if(choix){
+		drapeau = drapeau_deck;
+		ec = ec_deck;
+	}
+	else{
+		drapeau = drapeau_collec;
+		ec = ec_collec;
+	}
+}
 
 /**
 *\fn void init_liste()
@@ -44,6 +53,19 @@ void init_liste(){
 	drapeau->succ = drapeau;
 	ec = drapeau;
 }
+/* V2
+void init_liste(){
+	drapeau_deck = malloc(sizeof(element_t));
+	drapeau_deck->pred = drapeau_deck;
+	drapeau_deck->succ = drapeau_deck;
+	ec_deck = drapeau_deck;
+
+	drapeau_collec = malloc(sizeof(element_t));
+	drapeau_collec->pred = drapeau_collec;
+	drapeau_collec->succ = drapeau_collec;
+	ec_collec = drapeau_collec;
+}
+*/
 
 /**
 *\fn int liste_vide()
@@ -307,6 +329,94 @@ ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type,
   return(ennemi);
 }
 
+
+carte_t * generer_carte(int niveau){
+	int r, i, puissance;
+	char puissances[3][4] = {{" I"},{" II"},{" X"}};
+	char nom[TAILLE];
+	switch (niveau) {
+		case 1:
+			puissance = 0;
+			break;
+		case 2:
+			puissance = rand()%2;
+			break;
+		case 3:
+			puissance = rand()%3;
+			break;
+		case 4:
+			puissance = (rand()%2) + 1;
+			break;
+		case 5:
+			puissance = 2;
+			break;
+	}
+	//printf("puissance : %d\n", puissance);
+	r = rand()%15;
+	//printf("%s\n", puissances[puissance]);
+  if (r < 10){
+		i = rand()%3;
+    switch (i) {
+      case 0:
+				strcpy(nom, communes[i]);
+				strncat(nom, puissances[puissance], 3);
+        return(creer_carte(nom, DEFENSE, 0, -1, ""));
+        break;
+      case 1:
+				strcpy(nom, communes[i]);
+				strncat(nom, puissances[puissance], 3);
+        return(creer_carte(nom,ATTAQUE,0,-1, ""));
+        break;
+      case 2:
+				strcpy(nom, communes[i]);
+				strncat(nom, puissances[puissance], 3);
+        return(creer_carte(nom,ATTAQUE,0,10, ""));
+        break;
+    }
+  }
+  else if (r > 9 && r < 14){
+    //printf("Peu commune\n");
+		i = rand()%3;
+    switch (i) {
+      case 0:
+				strcpy(nom, peu_communes[i]);
+				strncat(nom, puissances[puissance], 3);
+        return(creer_carte(nom,DEFENSE,0,3, ""));
+        break;
+      case 1:
+				strcpy(nom, peu_communes[i]);
+				strncat(nom, puissances[puissance], 3);
+        return(creer_carte(nom,DEFENSE,0,-1, ""));
+        break;
+      case 2:
+				strcpy(nom, peu_communes[i]);
+				strncat(nom, puissances[puissance], 3);
+        return(creer_carte(nom,ATTAQUE,0,-1, ""));
+        break;
+    }
+  }
+  else if (r == 14){
+    //printf("Rare\n");
+		i = rand()%3;
+    switch (i) {
+      case 0:
+				strcpy(nom, rares[i]);
+				strncat(nom, puissances[puissance], 3);
+        return(creer_carte(nom,ATTAQUE,0,-1, ""));
+        break;
+      case 1:
+				strcpy(nom, rares[i]);
+				strncat(nom, puissances[puissance], 3);
+        return(creer_carte(nom,ATTAQUE,0,2, ""));
+        break;
+      case 2:
+				strcpy(nom, rares[i]);
+				strncat(nom, puissances[puissance], 3);
+        return(creer_carte(nom,DEFENSE,0,2, ""));
+        break;
+    }
+  }
+}
 /**
 *\fn void detruire_ennemi(ennemi_t ** ennemi)
 *\brief Fonction qui permet de détruire un ennemi
