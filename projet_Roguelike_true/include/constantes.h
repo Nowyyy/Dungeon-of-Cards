@@ -79,6 +79,10 @@
 
 #define TRUE 1
 #define FALSE 0
+
+#define DECK 1
+#define COLLEC 0
+
 #define QUIT_SDL 100
 #define PAS_QUIT_SDL 101
 
@@ -355,9 +359,9 @@ typedef struct element {
 
 
 typedef struct hud_combat_s{
-  
+
   image_t pv, nom, texte;
-  
+
   int existe;
 }hud_combat_t;
 
