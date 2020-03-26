@@ -1,6 +1,6 @@
 /**
 *\file fonctions.c
-*\brief fichier qui permet de référencé tous les fonctions du système de combat.
+*\brief Fichier référençant toutes les fonctions du système de combat.
 *\author {Malabry Thomas Aurélien Tudoret Jourry Axel Marin Timothée}
 *\version 1.0
 *\date 13/02/2020
@@ -19,7 +19,7 @@ char rares[][TAILLE] = {{"boule de feu"},{"poison"},{"guérison"}};
 /**
 *\fn void detruire_carte(carte_t ** carte)
 *\brief Fonction qui permet de détruire une carte
-*\param carte Un pointeur de pointeur de carte qui permet de détruire le pointeur qui pointe sur la structure carte
+*\param carte Un pointeur de pointeur de carte. On détruit libère la zone mémoire située à l'adresse pointée.
 */
 void detruire_carte(carte_t ** carte)
 {
@@ -30,24 +30,24 @@ void detruire_carte(carte_t ** carte)
 
 
 /**
-*\fn void ajout_carte_collec(carte_t *tampon)
+*\fn void ajout_carte_collec(carte_t *carte)
 
-*\param *tampon, la carte pour laquelle on cherche à savoir si elle existe dans la collection du joueur
+*\param carte, la carte pour laquelle on cherche à savoir si elle existe dans la collection du joueur
 
 *\brief ajoute une carte à la collection du joueur s'il ne la possède pas déjà
 */
-void ajout_carte_collec(carte_t *tampon){
+void ajout_carte_collec(carte_t *carte){
 
   choix_liste(COLLEC);
 
   carte_t *tmp;
 
-  for(en_tete();!hors_liste() && strcmp(tampon->nom, ec->carte->nom);suivant()){
+  for(en_tete();!hors_liste() && strcmp(carte->nom, ec->carte->nom);suivant()){
 
   }
   if(hors_liste()){
     tmp = malloc(sizeof(carte_t));
-    memcpy(tmp, tampon, sizeof(carte_t));
+    memcpy(tmp, carte, sizeof(carte_t));
     en_queue();
     ajout_droit(tmp);
   }
@@ -58,9 +58,9 @@ void ajout_carte_collec(carte_t *tampon){
 /**
 *\fn void ajout_carte_deck(carte_t *tampon)
 
-*\param *tampon, la carte pour laquelle on cherche à savoir si elle existe dans la collection du joueur
+*\param carte, la carte à ajouter
 
-*\brief ajoute une carte à la collection du joueur s'il ne la possède pas déjà
+*\brief ajoute une carte au deck du joueur
 */
 void ajout_carte_deck(carte_t *tampon){
 
@@ -76,6 +76,11 @@ void ajout_carte_deck(carte_t *tampon){
 
 
 // Primitives de manipulation de la liste
+/**
+*\fn void choix_liste()
+*\param choix 0 = COLLECTION et 1 = DECK. Les valeurs sont définies dans constantes.h
+*\brief Selection entre le deck et la collection
+*/
 void choix_liste(int choix){
 	if(choix){
 		drapeau = drapeau_deck;
@@ -89,15 +94,7 @@ void choix_liste(int choix){
 
 /**
 *\fn void init_liste()
-*\brief Fonction d'initialiser une liste
-*/
-/*V1
-void init_liste(){
-	drapeau = malloc(sizeof(element_t));
-	drapeau->pred = drapeau;
-	drapeau->succ = drapeau;
-	ec = drapeau;
-}
+*\brief Fonction initialisant les listes. Par défaut, la liste deck est ensuite sélectionner
 */
 void init_liste(){
 	drapeau_deck = malloc(sizeof(element_t));
@@ -109,7 +106,7 @@ void init_liste(){
 	drapeau_collec->pred = drapeau_collec;
 	drapeau_collec->succ = drapeau_collec;
 	ec_collec = drapeau_collec;
-  	choix_liste(DECK);
+  choix_liste(DECK);
 }
 
 
@@ -247,7 +244,7 @@ void ajout_gauche(carte_t * t){
 
 /**
 *\fn carte_t * creer_carte(char * nom, type_carte type, int * cible, int valeur)
-*\brief permet de créer une carte selon différentes caractéristiques donnés
+*\brief permet de créer une carte selon différentes caractéristiques données
 *\param nom pour le nom de la carte
 *\param type pour le type de la carte
 *\param cible pour la cible de la carte
@@ -276,18 +273,18 @@ carte_t * creer_carte(char * nom, type_carte type, int valeur, int consommable, 
 /**
 *\fn void init_ennemi_valeurs(ennemi_t *ennemi, char * nom, int w, int h, int nb_sprites, int gap, float w2, float h2, char * path, SDL_Renderer * rendu)
 
-*\param *ennemi, l'ennemi pour lequel on remplit sa structure
-*\param *nom, le nom du monstre
-*\param w, la taille d'un sprite en largeur
-*\param h, la taille d'un sprite en hauteur
+*\param ennemi, l'ennemi dont on rempli la structure
+*\param nom, le nom du monstre
+*\param w, la taille du sprite en largeur
+*\param h, la taille du sprite en hauteur
 *\param nb_sprites, le nombre de sprites par lignes
 *\param gap, l'espace entre deux sprites sur l'image globale
 *\param w2, la taille en largeur que l'on veut pour le sprite
 *\param h2, la taille en hauteur que l'on veut pour le sprite
-*\param *path, le chemin vers l'image de l'ennemi
-*\param *rendu, le renderer sur lequel on dessine
+*\param path, le chemin vers l'image de l'ennemi
+*\param rendu, le renderer sur lequel on dessine
 
-*\brief donne aux ennemis les valeurs qui les caractèristiques pour leurs sprites
+*\brief donne à un ennemi les valeurs correspondant à ses sprites
 */
 void init_ennemi_valeurs(ennemi_t *ennemi, char * nom, int w, int h, int nb_sprites, int gap, float w2, float h2, char * path, SDL_Renderer * rendu){
 
@@ -475,7 +472,7 @@ void afficher_liste(){
 /**
 *\fn void detruire_ennemi(ennemi_t ** ennemi)
 *\brief Fonction qui permet de détruire un ennemi
-*\param perso Un pointeur de pointeur de ennemi qui permet de détruire le pointeur qui pointe sur la structure ennemi
+*\param perso Un pointeur de pointeur d'ennemi qui permet de détruire le pointeur qui pointe sur la structure ennemi
 */
 void detruire_ennemi(ennemi_t ** ennemi)
 {
