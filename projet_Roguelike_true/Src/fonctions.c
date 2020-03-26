@@ -43,12 +43,12 @@ void ajout_carte_collec(carte_t *carte){
   carte_t *tmp;
 
   if(!liste_vide()){
-    for(en_tete();!hors_liste() && strcmp(tampon->nom, ec->carte->nom);suivant()){
+    for(en_tete();!hors_liste() && strcmp(carte->nom, ec->carte->nom);suivant()){
 
     }
     if(hors_liste()){
       tmp = malloc(sizeof(carte_t));
-      memcpy(tmp, tampon, sizeof(carte_t));
+      memcpy(tmp, carte, sizeof(carte_t));
       en_queue();
       ajout_droit(tmp);
     }
@@ -122,10 +122,7 @@ void init_liste(){
 	drapeau_collec->pred = drapeau_collec;
 	drapeau_collec->succ = drapeau_collec;
 	ec_collec = drapeau_collec;
-<<<<<<< HEAD
-  
-=======
->>>>>>> master
+
   choix_liste(DECK);
 }
 
@@ -480,6 +477,7 @@ carte_t * generer_carte(int niveau){
     }
   }
 }
+
 void afficher_liste(){
   en_tete();
   if(liste_vide())
