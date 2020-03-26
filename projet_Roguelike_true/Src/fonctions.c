@@ -401,7 +401,7 @@ carte_t * generer_carte(int niveau){
         break;
     }
   }
-  else if (r == 14){
+  else{
     //printf("Rare\n");
 		i = rand()%3;
     switch (i) {
