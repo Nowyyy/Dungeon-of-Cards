@@ -30,7 +30,7 @@ void detruire_carte(carte_t ** carte)
 
 
 /**
-*\fn void ajout_carte_collet(carte_t *tampon)
+*\fn void ajout_carte_collec(carte_t *tampon)
 
 *\param *tampon, la carte pour laquelle on cherche à savoir si elle existe dans la collection du joueur
 
