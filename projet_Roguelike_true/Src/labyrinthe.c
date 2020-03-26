@@ -622,6 +622,8 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 /////////////////////////// Déclarations variables ////////////////////////////////////////////
 	image_t images[NB_TEXTURES];
 
+	loot_carte_t loot;
+
 	SDL_Event event;
 
 	int taille = TAILLE_LABY, nb_salles_a_creer = nb_salles_par_etage(pers->etage), salle_courante, salle_pred, salle_0;
@@ -644,6 +646,8 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	salle_courante = creation_labyrinthe(salles, taille, nb_salles_a_creer);
 	salle_pred = salle_courante;
 	salle_0 = salle_courante;
+
+	loot.existe = 0;
 /////////////////////////// Textures et initialisations///////////////////////////////////////
 
 	init_animations(&anim);
@@ -680,6 +684,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 		if(salles[salle_courante].coffre){
 			animation_coffre(pers, &salles[salle_courante], sounds);
+			loot_de_carte(&loot, rendu, salles[salle_courante].coffre_salle, pers->etage);
 		}
 
 		modifie_texture_hud(pers, &images[pv], &images[etage], rendu);

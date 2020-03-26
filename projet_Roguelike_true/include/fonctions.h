@@ -20,6 +20,9 @@ carte_t * creer_carte(char *, type_carte, int, int, char *);
 void init_ennemi_valeurs(ennemi_t *ennemi, char * nom, int w, int h, int nb_sprites, int gap, float w2, float h2, char * path, SDL_Renderer * rendu);
 
 
+void ajout_carte_deck(carte_t *tampon);
+void ajout_carte_collet(carte_t *tampon);
+
 /**
 *\fn ennemi_t * creer_ennemi(char *)
 *\brief permet de créer un ennemi selon plusieurs caractéristiques
