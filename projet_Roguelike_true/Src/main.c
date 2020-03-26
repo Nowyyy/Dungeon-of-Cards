@@ -89,18 +89,15 @@ int main(int argc, char* args[]){
 								Mix_PlayMusic(musics[menu], -1);
 							}
 							main_menu(&continuer, &etat, rendu, police, sounds);
-
-							if(etat == labyrinthe){
-								initialise_personnage(&pers);
-								readcarte(SAVE_CARTES_CATALOGUE_PATH);
-							}
 						}
 						else if (etat == labyrinthe){
 							//tout ce qui sera relatif à l'explo dans le laby
 							saveperso(&pers);
 							Mix_HaltMusic();
 							animation_niveau(&pers, rendu);
-						  choix_musique(musics, &pers);
+						  	choix_musique(musics, &pers);
+						  	savecarte(SAVE_CARTES_DECK_PATH, DECK);
+						  	savecarte(SAVE_CARTES_COLLEC_PATH, COLLEC);
 							boucle_labyrinthe(&continuer, &etat, rendu, sounds, musics, &pers, police);
 							Mix_HaltMusic();
 						}
@@ -113,7 +110,10 @@ int main(int argc, char* args[]){
 							menu_confirmation(&continuer, &etat, rendu, police, sounds, &pers);
 							if(etat == labyrinthe){
 								initialise_personnage(&pers);
-								readcarte(SAVE_CARTES_CATALOGUE_PATH);
+								remove(SAVE_CARTES_DECK_PATH);
+								remove(SAVE_CARTES_COLLEC_PATH);
+								readcarte(SAVE_CARTES_NEW_GAME_PATH, DECK);
+								readcarte(SAVE_CARTES_NEW_GAME_PATH, COLLEC);
 							}
 						}
 					}

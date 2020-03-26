@@ -265,6 +265,8 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
 	pers->cmpMort = mort_tmp+1;
 
   	saveperso(pers);
+  	savecarte(SAVE_CARTES_COLLEC_PATH, COLLEC);
+  	remove(SAVE_CARTES_DECK_PATH);
 
 	//Apparition du rectangle de mort
 

@@ -34,7 +34,7 @@ void detruire_carte(carte_t ** carte)
 
 *\param *tampon, la carte pour laquelle on cherche à savoir si elle existe dans la collection du joueur
 
-*\brief ajoute une carte à la collection du joueur s'il ne la possède pas déjà
+*\brief ajoute une carte à la collection du joueur s'il ne la possède pas déjà, ou s'il n'en possède aucune
 */
 void ajout_carte_collec(carte_t *tampon){
 
@@ -42,10 +42,19 @@ void ajout_carte_collec(carte_t *tampon){
 
   carte_t *tmp;
 
-  for(en_tete();!hors_liste() && strcmp(tampon->nom, ec->carte->nom);suivant()){
 
+  if(!liste_vide()){
+    for(en_tete();!hors_liste() && strcmp(tampon->nom, ec->carte->nom);suivant()){
+
+    }
+    if(hors_liste()){
+      tmp = malloc(sizeof(carte_t));
+      memcpy(tmp, tampon, sizeof(carte_t));
+      en_queue();
+      ajout_droit(tmp);
+    }
   }
-  if(hors_liste()){
+  else{
     tmp = malloc(sizeof(carte_t));
     memcpy(tmp, tampon, sizeof(carte_t));
     en_queue();
@@ -66,7 +75,15 @@ void ajout_carte_deck(carte_t *tampon){
 
   choix_liste(DECK);
 
-  ajout_droit(tampon);
+  if(!liste_vide){
+
+    en_tete();
+
+    ajout_droit(tampon);
+  }
+  else{
+    ajout_droit(tampon);
+  }
 }
 
 
@@ -109,7 +126,8 @@ void init_liste(){
 	drapeau_collec->pred = drapeau_collec;
 	drapeau_collec->succ = drapeau_collec;
 	ec_collec = drapeau_collec;
-  	choix_liste(DECK);
+  
+  choix_liste(DECK);
 }
 
 
@@ -488,6 +506,7 @@ void tire_carte_deck(carte_t *cartes[]){
 
   int nb = NB_CARTES_COMBAT;
   int alea;
+  choix_liste(DECK);
   en_tete();
 
   while(nb != 0){
@@ -496,8 +515,10 @@ void tire_carte_deck(carte_t *cartes[]){
 
     for(int i = 0; i < alea; i++)
       suivant();
+
     if(hors_liste())
       suivant();
+    
     valeur_elt(&cartes[nb - 1]);
     nb--;
   }

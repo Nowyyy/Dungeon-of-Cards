@@ -1,0 +1,4 @@
+-1 5 0 Poing
+-1 5 1 Pierre
+1 10 -1 Soin
+-1 0 10 pierre I
