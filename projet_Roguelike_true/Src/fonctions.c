@@ -9,6 +9,7 @@
 
 #include "../include/constantes.h"
 #include "../include/initialisation_sdl_fonctions.h"
+#include "../include/fonctions.h"
 
 // Tables de cartes préfaites
 char communes[][TAILLE] = {{"soin"},{"poing"},{"caillou"}};
@@ -28,6 +29,45 @@ void detruire_carte(carte_t ** carte)
 }
 
 
+/**
+*\fn void ajout_carte_collet(carte_t *tampon)
+
+*\param *tampon, la carte pour laquelle on cherche à savoir si elle existe dans la collection du joueur
+
+*\brief ajoute une carte à la collection du joueur s'il ne la possède pas déjà
+*/
+void ajout_carte_collet(carte_t *tampon){
+
+  choix_liste(COLLEC);
+
+  carte_t *tmp;
+
+  for(en_tete();!hors_liste() && strcmp(tampon->nom, ec->carte->nom);suivant()){
+
+  }
+  if(hors_liste()){
+    tmp = malloc(sizeof(carte_t));
+    memcpy(tmp, tampon, sizeof(carte_t));
+    en_queue();
+    ajout_droit(tmp);
+  }
+}
+
+
+
+/**
+*\fn void ajout_carte_deck(carte_t *tampon)
+
+*\param *tampon, la carte pour laquelle on cherche à savoir si elle existe dans la collection du joueur
+
+*\brief ajoute une carte à la collection du joueur s'il ne la possède pas déjà
+*/
+void ajout_carte_deck(carte_t *tampon){
+
+  choix_liste(DECK);
+
+  ajout_droit(tampon);
+}
 
 
 

@@ -10,6 +10,7 @@
 
 #include "../include/constantes.h"
 #include "../include/initialisation_sdl_fonctions.h"
+#include "../include/fonctions.h"
 
 
 /**
@@ -93,5 +94,46 @@ void destruction_des_coffres(salle_t salles[], int taille){
 
 		if(salles[i].coffre)
 			SDL_DestroyTexture(salles[i].coffre_salle.sprite.img);
+	}
+}
+
+
+/**
+*\fn
+
+
+*/
+void creer_texte_coffre(char *txt, image_t *image, int x, int y, SDL_Renderer *rendu){
+
+	TTF_Font *font;
+
+	font = TTF_OpenFont(FONT_PATH, 30);
+
+	image->rectangle.x = x;
+	image->rectangle.y = y;
+
+	get_text_and_rect(rendu,image->rectangle.x, image->rectangle.y, txt, font, &image->img, &image->rectangle);
+
+	TTF_CloseFont(font);
+}
+
+
+
+void loot_de_carte(loot_carte_t *loot, SDL_Renderer *rendu, coffre_t coffre, int etage){
+
+	if(coffre.ouvert && loot->existe == 0){
+
+		loot->existe = 1;
+
+		loot->carte = generer_carte(etage);
+
+		ajout_carte_deck(loot->carte);
+		ajout_carte_collet(loot->carte);
+
+		loot->delai = DUREE_AFFICHAGE_CARTE_LOOT;
+
+		loot->debut = SDL_GetTicks();		
+
+		creer_texte_coffre("Vous avez trouve :", &loot->texte, 0, 0, rendu);
 	}
 }

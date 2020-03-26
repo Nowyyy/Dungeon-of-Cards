@@ -95,6 +95,8 @@
 #define TAILLE 20 //Taille des chaînes de caractères
 #define TAILLE_DECK 5
 
+#define DUREE_AFFICHAGE_CARTE_LOOT 1000
+
 #define NB_SPRITES_PERSONNAGE 10
 
 #define NB_CARTES_COMBAT 4
@@ -364,6 +366,19 @@ typedef struct hud_combat_s{
 
   int existe;
 }hud_combat_t;
+
+
+typedef struct loot_carte_s{
+  
+  carte_t *carte;
+
+  unsigned int debut;
+
+  int delai, existe;
+
+  image_t texte;
+
+}loot_carte_t;
 
 // Declaration des listes (drapeau et element courant)
 element_t* drapeau;
