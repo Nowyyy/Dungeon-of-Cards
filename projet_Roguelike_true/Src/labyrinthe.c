@@ -713,14 +713,20 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 			//collision avec un ennemi
 			if(combat_declenche(salles[salle_courante], *pers) == 1 && salles[salle_courante].ennemi->pv > 0 && *etat == labyrinthe){
+				Mix_HaltMusic();
 				init_tab_clavier(clavier.tab);
-				combat_t_p_t(pers, salles[salle_courante].ennemi, rendu, images);
+				combat_t_p_t(pers, salles[salle_courante].ennemi, rendu, images, sounds, musics);
 				init_tab_clavier(clavier.tab);
+				choix_musique(musics, pers);
+
 			}
 			else if(combat_declenche(salles[salle_courante], *pers) == 2 && salles[salle_courante].ennemi2->pv > 0 && *etat == labyrinthe){
+				Mix_HaltMusic();
 				init_tab_clavier(clavier.tab);
-				combat_t_p_t(pers, salles[salle_courante].ennemi2, rendu, images);
+				combat_t_p_t(pers, salles[salle_courante].ennemi2, rendu, images, sounds, musics);
 				init_tab_clavier(clavier.tab);
+				choix_musique(musics, pers);
+
 			}
 
 			//Si le joueur meurt

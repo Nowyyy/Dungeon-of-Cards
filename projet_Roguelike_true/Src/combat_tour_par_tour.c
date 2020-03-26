@@ -31,7 +31,7 @@
 *\brief Permet de déplacer le rectangle de selection
 
 */
-int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, image_t images[NB_TEXTURES], SDL_Rect **rect_sel){
+int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, image_t images[NB_TEXTURES], SDL_Rect **rect_sel, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC]){
 
 	SDL_Event event;
  	int choix=0;
@@ -48,19 +48,19 @@ int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, ima
 						(*rect_sel)->x = defausse.x - RECT_SELECT_X_DIFF;
 						(*rect_sel)->w = defausse.w + RECT_SELECT_X_DIFF * 2;
 						(*rect_sel)->h = defausse.h + RECT_SELECT_Y_DIFF * 2;
-						/*Mix_PlayChannel(0, move, 0);*/
+						Mix_PlayChannel(0, sounds[move], 0);
 					}
 					else if((*rect_sel)->x == images[carte3].rectangle.x - RECT_SELECT_X_DIFF){
 						(*rect_sel)->x = images[carte4].rectangle.x - RECT_SELECT_X_DIFF;
-						/*Mix_PlayChannel(0, move, 0);*/
+						Mix_PlayChannel(0, sounds[move], 0);
 					}
 					else if((*rect_sel)->x == images[carte2].rectangle.x - RECT_SELECT_X_DIFF){
 						(*rect_sel)->x = images[carte3].rectangle.x - RECT_SELECT_X_DIFF;
-						/*Mix_PlayChannel(0, move, 0);*/
+						Mix_PlayChannel(0, sounds[move], 0);
 					}
 					else if((*rect_sel)->x == images[carte1].rectangle.x - RECT_SELECT_X_DIFF){
 						(*rect_sel)->x = images[carte2].rectangle.x - RECT_SELECT_X_DIFF;
-						/*Mix_PlayChannel(0, move, 0);*/
+						Mix_PlayChannel(0, sounds[move], 0);
 					}
 				}
 			}
@@ -73,67 +73,67 @@ int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, ima
 						(*rect_sel)->y = images[carte4].rectangle.y - RECT_SELECT_Y_DIFF;
 						(*rect_sel)->h = images[carte4].rectangle.h + RECT_SELECT_Y_DIFF * 2;
 						(*rect_sel)->w = images[carte4].rectangle.w + RECT_SELECT_X_DIFF * 2;
-						/*Mix_PlayChannel(0, move, 0);*/
+						Mix_PlayChannel(0, sounds[move], 0);
 					}
 					else if((*rect_sel)->x == fuir.x - RECT_SELECT_X_DIFF){
 						(*rect_sel)->x = images[carte4].rectangle.x - RECT_SELECT_X_DIFF;
 						(*rect_sel)->y = images[carte4].rectangle.y - RECT_SELECT_Y_DIFF;
 						(*rect_sel)->h = images[carte4].rectangle.h + RECT_SELECT_Y_DIFF * 2;
 						(*rect_sel)->w = images[carte4].rectangle.w + RECT_SELECT_X_DIFF * 2;
-						/*Mix_PlayChannel(0, move, 0);*/
+						Mix_PlayChannel(0, sounds[move], 0);
 					}
 					else if((*rect_sel)->x == images[carte4].rectangle.x - RECT_SELECT_X_DIFF){
 						(*rect_sel)->x = images[carte3].rectangle.x - RECT_SELECT_X_DIFF;
-						/*Mix_PlayChannel(0, move, 0);*/
+						Mix_PlayChannel(0, sounds[move], 0);
 					}
 					else if((*rect_sel)->x == images[carte3].rectangle.x - RECT_SELECT_X_DIFF){
 						(*rect_sel)->x = images[carte2].rectangle.x - RECT_SELECT_X_DIFF;
-						/*Mix_PlayChannel(0, move, 0);*/
+						Mix_PlayChannel(0, sounds[move], 0);
 					}
 					else if((*rect_sel)->x == images[carte2].rectangle.x - RECT_SELECT_X_DIFF){
 						(*rect_sel)->x = images[carte1].rectangle.x - RECT_SELECT_X_DIFF;
-						/*Mix_PlayChannel(0, move, 0);*/
+						Mix_PlayChannel(0, sounds[move], 0);
 					}
 				}
 			}
 			else if(event.key.keysym.sym == SDLK_UP){//touche haut
 				if((*rect_sel)->y == fuir.y - RECT_SELECT_Y_DIFF){
 						(*rect_sel)->y = defausse.y - RECT_SELECT_Y_DIFF;
-						/*Mix_PlayChannel(0, move, 0);*/
+						Mix_PlayChannel(0, sounds[move], 0);
 				}
 			}
 			else if(event.key.keysym.sym == SDLK_DOWN){//touche bas
 				if((*rect_sel)->y == defausse.y - RECT_SELECT_Y_DIFF){
 						(*rect_sel)->y = fuir.y - RECT_SELECT_Y_DIFF;
-						/*Mix_PlayChannel(0, move, 0);*/
+						Mix_PlayChannel(0, sounds[move], 0);
 				}
 			}
 			else if(event.key.keysym.sym == SDLK_RETURN){//touche entrée
 				if((*rect_sel)->y == defausse.y - RECT_SELECT_Y_DIFF){
+					Mix_PlayChannel(0, sounds[selection], 0);
 					return -2;
-					/*Mix_PlayChannel(1, select, 0);*/
 				}
 				else if((*rect_sel)->y == fuir.y - RECT_SELECT_Y_DIFF){
+					Mix_PlayChannel(0, sounds[selection], 0);
 					return -1;
-					/*Mix_PlayChannel(1, select, 0);*/
 				}
 				/*SOIN*/
 				else if((*rect_sel)->x == images[carte1].rectangle.x - RECT_SELECT_X_DIFF){
+					Mix_PlayChannel(0, sounds[selection], 0);
 					return 0;
-					/*Mix_PlayChannel(1, select, 0);*/
 				}
 				else if((*rect_sel)->x == images[carte2].rectangle.x - RECT_SELECT_X_DIFF){
+					Mix_PlayChannel(0, sounds[selection], 0);
 					return 1;
-					/*Mix_PlayChannel(1, select, 0);*/
 				}
 				else if((*rect_sel)->x == images[carte3].rectangle.x - RECT_SELECT_X_DIFF){
+					Mix_PlayChannel(0, sounds[selection], 0);
 					return 2;
-					/*Mix_PlayChannel(1, select, 0);*/
 				}
 				/*BOUE*/
 				else if((*rect_sel)->x == images[carte4].rectangle.x - RECT_SELECT_X_DIFF){
+					Mix_PlayChannel(0, sounds[selection], 0);
 					return 3;
-					/*Mix_PlayChannel(1, select, 0);*/
 				}
 			}
 		}
@@ -541,7 +541,7 @@ void detruire_action_temp(hud_combat_t *action){
 
 *\brief Fonction qui permet de gérer les choix de l'utilisateur via la SDL sur le combat
 */
-void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_t images[NB_TEXTURES])
+void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_t images[NB_TEXTURES], Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC])
 {
 ////////////////Déclaration variables
 
@@ -587,11 +587,14 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
 
 ////////////////boucle combat
 
+	Mix_VolumeMusic(80);
+	Mix_PlayMusic(musics[fight], -1);
+
   	while((ennemi->pv > 0 && perso->pv > 0) && fuite==1 ){
 
   		//affichage de l'écran et déplacement de rectangle de sélection
   		affichage_combat_personnage(rendu, perso, ennemi, def, fui, rectangle_selection, images, hud_ennemi, hud_pers, action);
-  		choix = deplacement_rectangle_selection_combat(def.rectangle, fui.rectangle, images, &rectangle_selection);
+  		choix = deplacement_rectangle_selection_combat(def.rectangle, fui.rectangle, images, &rectangle_selection, sounds, musics);
 
 
   		if(choix == -1){//le joueur fuit le combat
@@ -636,7 +639,7 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
   		detruire_action_temp(&action);
   		while(SDL_PollEvent(&event));
 	}
-
+		Mix_HaltMusic();
   	TTF_CloseFont(police);
 
 		if(def.img != NULL){
