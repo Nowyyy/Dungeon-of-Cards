@@ -19,8 +19,8 @@ carte_t * creer_carte(char *, type_carte, int, int, char *);
 void init_ennemi_valeurs(ennemi_t *ennemi, char * nom, int w, int h, int nb_sprites, int gap, float w2, float h2, char * path, SDL_Renderer * rendu);
 
 
-void ajout_carte_deck(carte_t *tampon);
-void ajout_carte_collec(carte_t *tampon);
+void ajout_carte_deck(carte_t *carte);
+void ajout_carte_collec(carte_t *carte);
 
 /**
 *\fn ennemi_t * creer_ennemi(char *)
@@ -61,5 +61,5 @@ void modif_elt(carte_t);
 void oter_elt();
 void ajout_droit(carte_t*);
 void ajout_gauche(carte_t*);
-
+void afficher_liste();
 void tire_carte_deck(carte_t *cartes[]);
