@@ -42,11 +42,6 @@ void ajout_carte_collec(carte_t *carte){
 
   carte_t *tmp;
 
-<<<<<<< HEAD
-=======
-  for(en_tete();!hors_liste() && strcmp(carte->nom, ec->carte->nom);suivant()){
->>>>>>> master
-
   if(!liste_vide()){
     for(en_tete();!hors_liste() && strcmp(tampon->nom, ec->carte->nom);suivant()){
 
