@@ -24,6 +24,7 @@ char rares[][TAILLE] = {{"boule de feu"},{"poison"},{"guérison"}};
 void detruire_carte(carte_t ** carte)
 {
   free((*carte)->nom);
+  (*carte)->nom = NULL;
   free(*carte);
   *carte = NULL;
 }
@@ -204,6 +205,7 @@ void oter_elt(){
 		ec = ec->pred;
     detruire_carte(&temp->carte);
 		free(temp);
+    temp=NULL;
 		}
 }
 
@@ -471,7 +473,9 @@ carte_t * generer_carte(int niveau){
 void detruire_ennemi(ennemi_t ** ennemi)
 {
   free((*ennemi)->nom);
+  (*ennemi)->nom=NULL;
   SDL_DestroyTexture((*ennemi)->sprites.img);
+  (*ennemi)->sprites.img=NULL;
   free(*ennemi);
   *ennemi = NULL;
 }

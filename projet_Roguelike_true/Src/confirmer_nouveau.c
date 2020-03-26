@@ -151,7 +151,11 @@ void menu_confirmation(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font 
 	}
 
 	free(rectangle_selection);
+	rectangle_selection=NULL;
 	SDL_DestroyTexture(retour_texture);
+	retour_texture = NULL;
 	SDL_DestroyTexture(confirmer_texture);
+	confirmer_texture=NULL;
   SDL_DestroyTexture(message_texture);
+	message_texture=NULL;
 }

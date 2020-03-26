@@ -122,6 +122,7 @@ void saveperso (perso_t *perso){
    }
    fclose(fichier);
    free(nom_fichier);
+   nom_fichier=NULL;
 }
 
 
@@ -152,4 +153,5 @@ void readperso(perso_t*perso){
    }
    fclose(fichier);
    free(nom_fichier);
+   nom_fichier=NULL;
 }

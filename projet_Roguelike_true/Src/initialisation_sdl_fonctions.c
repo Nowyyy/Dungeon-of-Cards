@@ -31,6 +31,7 @@ int initialisation_sdl(SDL_Window **window, SDL_Renderer **rendu){
 
 	if(rendu == NULL){
 		SDL_DestroyWindow(*window);
+		*window=NULL;
 		return 1;
 	}
 
@@ -51,7 +52,9 @@ int initialisation_sdl(SDL_Window **window, SDL_Renderer **rendu){
 void quit_sdl(SDL_Renderer **rendu, SDL_Window **window){
 
 	SDL_DestroyRenderer(*rendu);
+	*rendu=NULL;
 	SDL_DestroyWindow(*window);
+	*window=NULL;
 }
 
 
@@ -111,6 +114,7 @@ extern void get_text_and_rect(SDL_Renderer *renderer, int x, int y, char *text,T
     text_height = surface->h;
 
     SDL_FreeSurface(surface);
+		surface=NULL;
 
     rect->x = x;
     rect->y = y;
@@ -145,6 +149,7 @@ int charge_image(char *path_img, image_t *struct_image, SDL_Renderer *rendu){
 	struct_image->rectangle.h = image->h;
 
 	SDL_FreeSurface(image);
+	image=NULL;
 
 	return 0;
 }
@@ -210,24 +215,15 @@ musics[level5] = Mix_LoadMUS("../Sound/level5.mp3");
 *\return 1 si echec, 0 si réussite
 */
 void free_mixer(Mix_Music* musics[NB_MUSIC], Mix_Chunk* sounds[NB_SON]){
-	Mix_FreeChunk(sounds[selection]);
-	Mix_FreeChunk(sounds[move]);
-	Mix_FreeChunk(sounds[change_salle]);
-	Mix_FreeChunk(sounds[footsteps]);
-	Mix_FreeChunk(sounds[gameOverFrame]);
-	Mix_FreeChunk(sounds[death]);
-	Mix_FreeChunk(sounds[collect]);
-	Mix_FreeChunk(sounds[chest]);
+	for(int i=menu; i<NB_SON-1; i++){
+		Mix_FreeChunk(sounds[i]);
+		sounds[i]=NULL;
+	}
 
-	Mix_FreeMusic(musics[menu]);
-	Mix_FreeMusic(musics[level1]);
-	Mix_FreeMusic(musics[gameOverMusic]);
-	Mix_FreeMusic(musics[fight]);
-	Mix_FreeMusic(musics[boss]);
-	Mix_FreeMusic(musics[level2]);
-	Mix_FreeMusic(musics[level3]);
-	Mix_FreeMusic(musics[level4]);
-	Mix_FreeMusic(musics[level5]);
+	for(int i=move; i<NB_MUSIC-1; i++){
+		Mix_FreeMusic(musics[i]);
+		musics[i]=NULL;
+	}
 
 	Mix_CloseAudio();
 }
