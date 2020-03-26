@@ -12,7 +12,7 @@
 #include "../include/fonctions.h"
 
 // Tables de cartes préfaites
-char communes[][TAILLE] = {{"soin"},{"poing"},{"caillou"}};
+char communes[][TAILLE] = {{"soin"},{"poing"},{"pierre"}};
 char peu_communes[][TAILLE] = {{"potion"},{"barrière"},{"épée"}};
 char rares[][TAILLE] = {{"boule de feu"},{"poison"},{"guérison"}};
 
@@ -406,17 +406,17 @@ carte_t * generer_carte(int niveau){
       case 0:
 				strcpy(nom, communes[i]);
 				strncat(nom, puissances[puissance], 3);
-        return(creer_carte(nom, DEFENSE, 0, -1, ""));
+        return(creer_carte(nom, DEFENSE, 0, -1, CARTE_SOIN_PATH));
         break;
       case 1:
 				strcpy(nom, communes[i]);
 				strncat(nom, puissances[puissance], 3);
-        return(creer_carte(nom,ATTAQUE,0,-1, ""));
+        return(creer_carte(nom,ATTAQUE,0,-1, CARTE_POING_PATH));
         break;
       case 2:
 				strcpy(nom, communes[i]);
 				strncat(nom, puissances[puissance], 3);
-        return(creer_carte(nom,ATTAQUE,0,10, ""));
+        return(creer_carte(nom,ATTAQUE,0,10, CARTE_PIERRE_PATH));
         break;
     }
   }
@@ -427,17 +427,17 @@ carte_t * generer_carte(int niveau){
       case 0:
 				strcpy(nom, peu_communes[i]);
 				strncat(nom, puissances[puissance], 3);
-        return(creer_carte(nom,DEFENSE,0,3, ""));
+        return(creer_carte(nom,DEFENSE,0,3, CARTE_POTION_I_PATH));
         break;
       case 1:
 				strcpy(nom, peu_communes[i]);
 				strncat(nom, puissances[puissance], 3);
-        return(creer_carte(nom,DEFENSE,0,-1, ""));
+        return(creer_carte(nom,DEFENSE,0,-1, CARTE_BARRIERE_PATH));
         break;
       case 2:
 				strcpy(nom, peu_communes[i]);
 				strncat(nom, puissances[puissance], 3);
-        return(creer_carte(nom,ATTAQUE,0,-1, ""));
+        return(creer_carte(nom,ATTAQUE,0,-1, CARTE_EPEE_I_PATH));
         break;
     }
   }
@@ -448,17 +448,17 @@ carte_t * generer_carte(int niveau){
       case 0:
 				strcpy(nom, rares[i]);
 				strncat(nom, puissances[puissance], 3);
-        return(creer_carte(nom,ATTAQUE,0,-1, ""));
+        return(creer_carte(nom,ATTAQUE,0,-1, CARTE_B_DE_FEU_PATH));
         break;
       case 1:
 				strcpy(nom, rares[i]);
 				strncat(nom, puissances[puissance], 3);
-        return(creer_carte(nom,ATTAQUE,0,2, ""));
+        return(creer_carte(nom,ATTAQUE,0,2, CARTE_POISON_PATH));
         break;
       case 2:
 				strcpy(nom, rares[i]);
 				strncat(nom, puissances[puissance], 3);
-        return(creer_carte(nom,DEFENSE,0,2, ""));
+        return(creer_carte(nom,DEFENSE,0,2, CARTE_GUERISON_PATH));
         break;
     }
   }

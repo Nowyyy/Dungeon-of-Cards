@@ -756,6 +756,10 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	for(int i = sol; i < fond; i++)
 		SDL_DestroyTexture(images[i].img);
 
+	if(loot.existe){
+		SDL_DestroyTexture(loot.texte.img);
+	}
+
 	destruction_tous_ennemis(salles, taille);
 	destruction_des_coffres(salles, taille);
 }

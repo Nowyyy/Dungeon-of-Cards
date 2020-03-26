@@ -66,10 +66,16 @@
 #define FOND_COMBAT_PATH "../Images/combat2.png"
 #define GUI_COMBAT_PATH "../Images/GUI_bar.png"
 
+#define CARTE_GUERISON_PATH "../Images/Cartes/guerison.png"
+#define CARTE_SOIN_PATH "../Images/Cartes/soin.png"
 #define CARTE_EPEE_I_PATH "../Images/Cartes/epee_1.png"
 #define CARTE_POTION_I_PATH "../Images/Cartes/potion_1.png"
 #define CARTE_POING_PATH "../Images/Cartes/poing.png"
 #define CARTE_PIERRE_PATH "../Images/Cartes/pierre.png"
+
+#define CARTE_B_DE_FEU_PATH "../Images/Cartes/boule_de_feu.png"
+#define CARTE_POISON_PATH "../Images/Cartes/poison.png"
+#define CARTE_BARRIERE_PATH "../Images/Cartes/barriere.png"
 
 #define SAVE_PERSO_PATH "../Sauvegarde/personnage.txt"
 #define SAVE_CARTES_PATH "../Sauvegarde/cartes.txt"

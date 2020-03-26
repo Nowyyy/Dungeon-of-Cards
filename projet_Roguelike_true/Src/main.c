@@ -133,6 +133,19 @@ int main(int argc, char* args[]){
 	//On libère toutes les variables de son
 	free_mixer(musics, sounds);
 
+
+	choix_liste(DECK);
+
+	en_tete();
+
+	while(!liste_vide()){
+		oter_elt();
+		suivant();
+	}
+	free(drapeau);
+
+	choix_liste(COLLEC);
+
 	en_tete();
 
 	while(!liste_vide()){
