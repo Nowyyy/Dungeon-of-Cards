@@ -463,6 +463,15 @@ carte_t * generer_carte(int niveau){
     }
   }
 }
+void afficher_liste(){
+  en_tete();
+  if(liste_vide())
+    printf("\nListe vide.\n\n");
+  for(en_tete();!hors_liste();suivant())
+    printf("Nom : %s, puissance : %d\n", ec->carte->nom, ec->carte->valeur);
+  en_queue();
+  printf("\n");
+}
 /**
 *\fn void detruire_ennemi(ennemi_t ** ennemi)
 *\brief Fonction qui permet de détruire un ennemi

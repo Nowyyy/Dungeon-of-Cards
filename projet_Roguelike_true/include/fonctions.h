@@ -61,5 +61,5 @@ void modif_elt(carte_t);
 void oter_elt();
 void ajout_droit(carte_t*);
 void ajout_gauche(carte_t*);
-
+void afficher_liste();
 void tire_carte_deck(carte_t *cartes[]);
