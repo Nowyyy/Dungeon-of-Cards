@@ -56,22 +56,13 @@ void ajout_carte_collec(carte_t *carte){
     }
     if(hors_liste()){
       //carte non possèdée
-      tmp = malloc(sizeof(carte_t));
-      tmp->nom = malloc(sizeof(char)* TAILLE);
-      memcpy(tmp, carte, sizeof(carte_t));
+      tmp = creer_carte(carte->nom, carte->type,  carte->valeur, carte->consommable, carte->path);
       en_queue();
       ajout_droit(tmp);
-      printf("%s\n", tmp->nom);
-    }
-    else{
-      printf("pas ajouté\n");
     }
   }
   else{
-      tmp = malloc(sizeof(carte_t));
-      tmp->nom = malloc(sizeof(char)* TAILLE);
-      memcpy(tmp, carte, sizeof(carte_t));
-      printf("%s\n", tmp->nom);
+      tmp = creer_carte(carte->nom, carte->type,  carte->valeur, carte->consommable, carte->path);
       ajout_droit(tmp);
   }
 }
@@ -90,7 +81,7 @@ void ajout_carte_deck(carte_t *tampon){
   choix_liste(DECK);
   carte_t *tmp;
 
-  if(!liste_vide){
+  if(!liste_vide()){
 
     for(en_tete();!hors_liste() && strcmp(tampon->nom, ec->carte->nom);suivant()){
   
@@ -103,26 +94,14 @@ void ajout_carte_deck(carte_t *tampon){
     else if(hors_liste()){
       //carte non présente dans le deck
       en_queue();
-      tmp = malloc(sizeof(carte_t));
-      tmp->nom = malloc(sizeof(char)* TAILLE);
-      memcpy(tmp, tampon, sizeof(carte_t));
+      tmp = creer_carte(tampon->nom, tampon->type,  tampon->valeur, tampon->consommable, tampon->path);
       ajout_droit(tmp);
-      printf("ajoutée deck\n");
-      printf("%s\n", tmp->nom);
-    }
-    else{
-      printf("pas ajouté deck\n");
     }
   }
   else{
     //liste de cartes vide
-    tmp = malloc(sizeof(carte_t));
-    tmp->nom = malloc(sizeof(char)* strlen(tampon->nom));
-    memcpy(tmp, tampon, sizeof(carte_t));
-    memcpy(tmp->nom, tampon->nom, sizeof(char)* TAILLE);
+    tmp = creer_carte(tampon->nom, tampon->type,  tampon->valeur, tampon->consommable, tampon->path);
     ajout_droit(tmp);
-    printf("ajoutée deck\n");
-    printf("%s\n", tmp->nom);
   }
 }
 
@@ -141,7 +120,7 @@ void ajout_carte_deck(carte_t *tampon){
 void choix_liste(int choix){
 	if(choix){
 		drapeau = drapeau_deck;
-		ec = ec_deck;
+		ec = drapeau_deck;
 	}
 	else{
 		drapeau = drapeau_collec;
