@@ -9,6 +9,8 @@
 
 #include "../include/constantes.h"
 #include "../include/initialisation_sdl_fonctions.h"
+#include "../include/personnage.h"
+#include "../include/sauvegardefonc.h"
 #include <time.h>
 
 /**
@@ -117,4 +119,320 @@ void animation_niveau(perso_t *perso, SDL_Renderer *rendu){
     SDL_DestroyTexture(p3.img);
     p3.img=NULL;
   }
+}
+
+
+/**
+*\fn void anim1(SDL_Renderer *rendu)
+*\param *rendu, le renderer sur lequel on dessine
+*\param *musics[NB_MUSIC], tableau contenant les musiques
+
+*\brief Affiche l'animation 1 de début de combat
+*/
+void anim1(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON]){
+	SDL_Rect rect;
+	int sens = 0;
+
+	rect.x = 200;
+ 	rect.y = 0;
+ 	rect.w = 270;
+ 	rect.h = 155;
+  Mix_PlayChannel(0, sounds[enterFight], 0);
+	while(rect.x < WIN_WIDTH-540 && rect.y < WIN_HEIGHT){
+
+    //De gauche à droite
+		if(sens == 0){
+			rect.x += 20;
+			if(rect.x >= WIN_WIDTH-540){
+				rect.y += 155;
+				sens = 1;
+			}
+		}
+
+    //De droite à gauche
+		if(sens == 1){
+			rect.x -= 20;
+			if(rect.x <= 200){
+				rect.y += 155;
+				sens = 0;
+			}
+		}
+
+		SDL_RenderFillRect(rendu, &rect);
+		SDL_RenderPresent(rendu);
+		SDL_Delay(20);
+
+	}
+	SDL_Delay(200);
+
+}
+
+
+/**
+*\fn void anim2(SDL_Renderer *rendu)
+*\param *rendu, le renderer sur lequel on dessine
+*\param *musics[NB_MUSIC], tableau contenant les musiques
+
+*\brief Affiche l'animation 2 de début de combat
+*/
+void anim2(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON]){
+
+  //Initialisation des valeurs
+	SDL_Rect rect;
+	int sens = 0;
+	int tour = 0;
+
+	rect.x = 200;
+	rect.y = 0;
+	rect.w = 270;
+	rect.h = 155;
+
+	int xmax = WIN_WIDTH-560;
+	int ymax = WIN_HEIGHT-200;
+	int xmin = 200;
+	int ymin = 0;
+
+  Mix_PlayChannel(0, sounds[enterFight], 0);
+
+	while(tour < 6){
+    //De gauche à droite
+		if(sens == 0){
+			rect.x += 20;
+			if(rect.x >= xmax ){
+				tour++;
+				sens = 1;
+			}
+		}
+
+    //De haut en bas
+		if(sens == 1){
+			rect.y += 20;
+			if(rect.y >= ymax){
+				tour++;
+				sens = 2;
+			}
+		}
+
+    //De droite à gauche
+		if(sens == 2){
+			rect.x -= 20;
+			if(rect.x <= xmin){
+				ymin+=130;
+				xmin+=200;
+				tour++;
+				sens = 3;
+			}
+		}
+
+    //De bas en haut
+		if(sens == 3){
+			rect.y -= 20;
+			if(rect.y <= ymin){
+				xmax-=250;
+				ymax-=125;
+				tour++;
+
+				sens = 0;
+			}
+		}
+
+		SDL_RenderFillRect(rendu, &rect);
+		SDL_RenderPresent(rendu);
+		SDL_Delay(20);
+	}
+
+	SDL_Delay(200);
+
+}
+
+
+/**
+*\fn void anim3(SDL_Renderer *rendu)
+*\param *rendu, le renderer sur lequel on dessine
+*\param *musics[NB_MUSIC], tableau contenant les musiques
+
+*\brief Affiche l'animation 3 de début de combat
+*/
+void anim3(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON]){
+
+  //Initialisation des variables
+	SDL_Rect rect1, rect2;
+	int sens = 0;
+
+	rect2.x = WIN_WIDTH-560;
+ 	rect2.y = WIN_HEIGHT;
+ 	rect2.w = 270;
+ 	rect2.h = 155;
+
+	rect1.x = 200;
+ 	rect1.y = 0;
+ 	rect1.w = 270;
+ 	rect1.h = 155;
+
+  Mix_PlayChannel(0, sounds[enterFight], 0);
+
+	while(sens<2){
+    //rect1 descend et rect2 monte
+		if(sens == 0){
+			if(rect1.y < WIN_HEIGHT){
+				rect1.y +=20;
+			}
+			if(rect2.y > 0){
+				rect2.y -=20;
+			}
+
+      //Décallage des rectangles et inversement du sens
+			if(rect1.y >= WIN_HEIGHT && rect2.y <=0){
+				rect1.x+=270;
+				rect2.x-=270;
+				sens+=1;
+			}
+		}
+
+    //rect1 monte et rect2 descend
+		if(sens == 1){
+			if(rect1.y > 0){
+				rect1.y -=20;
+			}
+			if(rect2.y < WIN_HEIGHT){
+				rect2.y +=20;
+			}
+      //Sortie de boucle
+			if(rect1.y <= 0 && rect2.y >=WIN_HEIGHT){
+				sens+=1;
+			}
+		}
+		SDL_RenderFillRect(rendu, &rect1);
+		SDL_RenderFillRect(rendu, &rect2);
+		SDL_RenderPresent(rendu);
+		SDL_Delay(35);
+	}
+	SDL_Delay(100);
+
+}
+
+/**
+*\fn void anim_combat(SDL_Renderer *rendu)
+*\param *rendu, le renderer sur lequel on dessine
+*\param *musics[NB_MUSIC], tableau contenant les musiques
+
+*\brief Permet de choisir quelle animation de début de combat exécuter
+*/
+void anim_combat(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON]){
+	srand(time(NULL));
+	int choix = rand()%3;
+
+	if(choix==0){
+		anim1(rendu, sounds);
+	}
+	else if(choix==1){
+		anim2(rendu, sounds);
+	}
+	else{
+		anim3(rendu, sounds);
+	}
+
+}
+
+/**
+*\fn void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusic, Mix_Chunk *sounds[NB_SON], image_t images[], TTF_Font *police, SDL_Texture *cmpPartie_texture)
+
+*\param *etat, variable contenant le mode de jeu actuel
+*\param *pers, contient le personnage afin de le sauvegarder
+*\param *rendu, le renderer sur lequel on dessine
+*\param *musics[NB_MUSIC], tableau contenant les musiques
+*\param *sounds[NB_SON], tableau contenant les sons
+*\param images[], contient toutes les images du jeu sauf celles du personnage
+
+*\brief Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...
+
+*/
+
+void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MUSIC], Mix_Chunk *sounds[NB_SON], image_t images[], TTF_Font *police, SDL_Texture *cmpPartie_texture){
+	int mort_tmp;
+
+	int x_cmpPartie = WIN_WIDTH / 2-90;
+	int y_cmpPartie = WIN_HEIGHT * 0.8;
+
+	//textes
+	SDL_Rect cmpPartie_text, rect;
+
+	char cmpPartie[20];
+
+	//Reinitialisation de la sauvegarde et compteur de mort
+	mort_tmp = pers->cmpMort;
+
+	initialise_personnage(pers);
+
+	pers->cmpMort = mort_tmp+1;
+
+  	saveperso(pers);
+  	savecarte(SAVE_CARTES_COLLEC_PATH, COLLEC);
+  	remove(SAVE_CARTES_DECK_PATH);
+
+	//Apparition du rectangle de mort
+
+ 	rect.x = 405;
+ 	rect.y = 231;
+ 	rect.w = 270;
+ 	rect.h = 155;
+
+ 	//aggrandissement progressif du rectangle
+ 	while(rect.w < WIN_WIDTH){
+ 		SDL_SetRenderDrawColor(rendu, 0, 0, 0, 255);
+		Mix_PlayChannel(0, sounds[gameOverFrame], 0);
+  		SDL_RenderFillRect(rendu, &rect);
+  		SDL_RenderPresent(rendu);
+		SDL_Delay(500);
+
+		rect.x -= 135;
+		rect.y -= 77;
+		rect.w += 270;
+		rect.h += 155;
+ 	}
+
+	if(pers->cmpMort ==1){
+		sprintf(cmpPartie, "%dere mort", pers->cmpMort);
+	}
+	else{
+		sprintf(cmpPartie, "%d morts", pers->cmpMort);
+	}
+
+	//Ecran de game over
+
+	//Fond noir et logo game over
+	SDL_RenderClear(rendu);
+	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
+
+	SDL_RenderCopy(rendu, images[gameover].img, NULL, &images[gameover].rectangle);
+	//Musique
+	Mix_VolumeMusic(64);
+	Mix_PlayMusic(musics[gameOverMusic], 1);
+
+
+	//halo lumineux
+	SDL_RenderCopy(rendu, images[deathlight].img, NULL, &images[deathlight].rectangle);
+
+	//Sprite perso mort
+	pers->sprites[dead].rectangle.x = pers->x-50;
+	pers->sprites[dead].rectangle.y = pers->y;
+	pers->sprites[courant] = pers->sprites[dead];
+	SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
+
+
+	get_text_and_rect(rendu, x_cmpPartie, y_cmpPartie, cmpPartie, police, &cmpPartie_texture, &cmpPartie_text);
+
+	SDL_RenderCopy(rendu, cmpPartie_texture, NULL, &cmpPartie_text);
+
+	SDL_RenderPresent(rendu);
+
+	//Des que la musique s'arrête, on revient au menu principal
+ 	while(Mix_PlayingMusic() == 1);
+
+ 	*etat = mainMenu;
+
+	if(cmpPartie_texture!=NULL){
+		SDL_DestroyTexture(cmpPartie_texture);
+		cmpPartie_texture=NULL;
+	}
 }

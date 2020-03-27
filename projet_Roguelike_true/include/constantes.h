@@ -131,7 +131,7 @@
 #define NB_SALLES_LEVEL_3 20
 #define NB_SALLES_LEVEL_4 25
 
-#define NB_SON 8
+#define NB_SON 9
 #define NB_MUSIC 9
 
 /**
@@ -203,7 +203,7 @@ typedef enum{haut, droite, bas, gauche}t_direction;
 
 *\brief Les différents sons utilisés
 */
-typedef enum{move=0, selection, change_salle, footsteps, gameOverFrame, death, collect, chest}t_sons;
+typedef enum{move=0, selection, change_salle, footsteps, gameOverFrame, death, collect, chest, enterFight}t_sons;
 
 /**
 *\enum t_musique
@@ -376,7 +376,7 @@ typedef struct hud_combat_s{
 
 
 typedef struct loot_carte_s{
-  
+
   carte_t *carte;
 
   unsigned int debut;

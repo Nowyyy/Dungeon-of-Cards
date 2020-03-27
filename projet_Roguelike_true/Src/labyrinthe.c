@@ -21,6 +21,7 @@
 #include "../include/ennemi.h"
 #include "../include/coffre.h"
 #include "../include/combat_tour_par_tour.h"
+#include "../include/animation.h"
 
 /**
 *\fn void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu)
@@ -228,110 +229,6 @@ void cree_liaison(salle_t tab[], int salle1, int salle2, int porteS1){
 		case 3 : tab[salle1].s_g = salle2;
 				 tab[salle2].s_d = salle1;
 				 break;
-	}
-}
-
-
-/**
-*\fn void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *gameOverMusic, Mix_Chunk *sounds[NB_SON], image_t images[], TTF_Font *police, SDL_Texture *cmpPartie_texture)
-
-*\param *etat, variable contenant le mode de jeu actuel
-*\param *pers, contient le personnage afin de le sauvegarder
-*\param *rendu, le renderer sur lequel on dessine
-*\param *musics[NB_MUSIC], tableau contenant les musiques
-*\param *sounds[NB_SON], tableau contenant les sons
-*\param images[], contient toutes les images du jeu sauf celles du personnage
-
-*\brief Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...
-
-*/
-
-void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MUSIC], Mix_Chunk *sounds[NB_SON], image_t images[], TTF_Font *police, SDL_Texture *cmpPartie_texture){
-	int mort_tmp;
-
-	int x_cmpPartie = WIN_WIDTH / 2-90;
-	int y_cmpPartie = WIN_HEIGHT * 0.8;
-
-	//textes
-	SDL_Rect cmpPartie_text, rect;
-
-	char cmpPartie[20];
-
-	//Reinitialisation de la sauvegarde et compteur de mort
-	mort_tmp = pers->cmpMort;
-
-	initialise_personnage(pers);
-
-	pers->cmpMort = mort_tmp+1;
-
-  	saveperso(pers);
-  	savecarte(SAVE_CARTES_COLLEC_PATH, COLLEC);
-  	remove(SAVE_CARTES_DECK_PATH);
-
-	//Apparition du rectangle de mort
-
- 	rect.x = 405;
- 	rect.y = 231;
- 	rect.w = 270;
- 	rect.h = 155;
-
- 	//aggrandissement progressif du rectangle
- 	while(rect.w < WIN_WIDTH){
- 		SDL_SetRenderDrawColor(rendu, 0, 0, 0, 255);
-		Mix_PlayChannel(0, sounds[gameOverFrame], 0);
-  		SDL_RenderFillRect(rendu, &rect);
-  		SDL_RenderPresent(rendu);
-		SDL_Delay(500);
-
-		rect.x -= 135;
-		rect.y -= 77;
-		rect.w += 270;
-		rect.h += 155;
- 	}
-
-	if(pers->cmpMort ==1){
-		sprintf(cmpPartie, "%dere mort", pers->cmpMort);
-	}
-	else{
-		sprintf(cmpPartie, "%d morts", pers->cmpMort);
-	}
-
-	//Ecran de game over
-
-	//Fond noir et logo game over
-	SDL_RenderClear(rendu);
-	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
-
-	SDL_RenderCopy(rendu, images[gameover].img, NULL, &images[gameover].rectangle);
-	//Musique
-	Mix_VolumeMusic(64);
-	Mix_PlayMusic(musics[gameOverMusic], 1);
-
-
-	//halo lumineux
-	SDL_RenderCopy(rendu, images[deathlight].img, NULL, &images[deathlight].rectangle);
-
-	//Sprite perso mort
-	pers->sprites[dead].rectangle.x = pers->x-50;
-	pers->sprites[dead].rectangle.y = pers->y;
-	pers->sprites[courant] = pers->sprites[dead];
-	SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
-
-
-	get_text_and_rect(rendu, x_cmpPartie, y_cmpPartie, cmpPartie, police, &cmpPartie_texture, &cmpPartie_text);
-
-	SDL_RenderCopy(rendu, cmpPartie_texture, NULL, &cmpPartie_text);
-
-	SDL_RenderPresent(rendu);
-
-	//Des que la musique s'arrête, on revient au menu principal
- 	while(Mix_PlayingMusic() == 1);
-
- 	*etat = mainMenu;
-
-	if(cmpPartie_texture!=NULL){
-		SDL_DestroyTexture(cmpPartie_texture);
-		cmpPartie_texture=NULL;
 	}
 }
 
@@ -640,7 +537,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	SDL_Event event;
 
 	int taille = TAILLE_LABY, nb_salles_a_creer = nb_salles_par_etage(pers->etage), salle_courante, salle_pred, salle_0;
-	int mob_commun = rand()%minotaure, boss = rand()%minotaure + 4, boss_tuer = 0, trappe=0;
+	int mob_commun = rand()%minotaure, boss = rand()%minotaure + 4, boss_tuer = 0, trappe=0, etat_combat = 0;
 
 	mini_map_t miniMap;
 
@@ -708,31 +605,40 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 		if(*continuer == TRUE){
 
+			//Si le joueur meurt
+			if(pers->pv <= 0) {
+				SDL_RenderClear(rendu);
+				salle_courante = salle_0;
+				affichage_salle_personnage(*pers, &salles[salle_courante], rendu, images, miniMap);
+				Mix_HaltMusic();
+				mort(etat, pers, rendu, musics, sounds, images, police, cmpPartie_texture);
+			}
+
 			salle_courante = changement_de_salle(pers, salles[salle_courante], salle_courante, sounds);
 			SDL_Delay(5);
 
 			//collision avec un ennemi
 			if(combat_declenche(salles[salle_courante], *pers) == 1 && salles[salle_courante].ennemi->pv > 0 && *etat == labyrinthe){
+				etat_combat = 1;
 				Mix_HaltMusic();
+				anim_combat(rendu, sounds);
 				init_tab_clavier(clavier.tab);
 				combat_t_p_t(pers, salles[salle_courante].ennemi, rendu, images, sounds, musics);
 				init_tab_clavier(clavier.tab);
 				choix_musique(musics, pers);
+				etat_combat = 0;
 
 			}
 			else if(combat_declenche(salles[salle_courante], *pers) == 2 && salles[salle_courante].ennemi2->pv > 0 && *etat == labyrinthe){
+				etat_combat = 1;
 				Mix_HaltMusic();
+				anim_combat(rendu, sounds);
 				init_tab_clavier(clavier.tab);
 				combat_t_p_t(pers, salles[salle_courante].ennemi2, rendu, images, sounds, musics);
 				init_tab_clavier(clavier.tab);
 				choix_musique(musics, pers);
+				etat_combat = 0;
 
-			}
-
-			//Si le joueur meurt
-			if(pers->pv <= 0){
-				Mix_HaltMusic();
-				mort(etat, pers, rendu, musics, sounds, images, police, cmpPartie_texture);
 			}
 
 			if(pers->fuite){//le joueur à fuit le combat, on le renvoie dans la première salle du niveau
