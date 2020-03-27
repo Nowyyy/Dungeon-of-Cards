@@ -613,7 +613,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 			if(pers->pv <= 0) {
 				SDL_RenderClear(rendu);
 				salle_courante = salle_0;
-				affichage_salle_personnage(*pers, &salles[salle_courante], rendu, images, miniMap);
+				affichage_salle_personnage(*pers, &salles[salle_courante], rendu, images, miniMap,*loot);
 				Mix_HaltMusic();
 				mort(etat, pers, rendu, musics, sounds, images, police, cmpPartie_texture);
 			}

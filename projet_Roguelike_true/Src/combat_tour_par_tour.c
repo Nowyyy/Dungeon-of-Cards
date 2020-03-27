@@ -290,8 +290,9 @@ void donne_valeur_rect_images(image_t images[]){
 
  	images[fond].rectangle.x=0;
 	images[fond].rectangle.y= 450;
-  	images[fond].rectangle.w *= 1;
-  	images[fond].rectangle.w *= 4;
+  images[fond].rectangle.w *= 1;
+  images[fond].rectangle.w *= 1;
+  images[fond].rectangle.w *= 4;
 
   	images[gui_bar].rectangle.x = WIN_WIDTH / 2 - images[gui_bar].rectangle.w / 2;
   	images[gui_bar].rectangle.y = WIN_HEIGHT * 0.15;
@@ -538,7 +539,7 @@ void range_carte_deck(carte_t *cartes[]){
 
 void consommable_epuise(carte_t *cartes[], int indice, image_t images[], SDL_Renderer *rendu){
 
-	int x = images[carte1 + indice].rectangle.x, y = images[carte1 + indice].rectangle.y; 
+	int x = images[carte1 + indice].rectangle.x, y = images[carte1 + indice].rectangle.y;
 
 	if(cartes[indice]->type != NO_CARTE){
 
