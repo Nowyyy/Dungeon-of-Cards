@@ -71,7 +71,8 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 					*etat = labyrinthe;
 				}
 				//Sinon on emmène le joueur sur un menu de confirmation
-				*etat = confirmer_nouveau;
+				else
+					*etat = confirmer_nouveau;
 				Mix_PlayChannel(1, sounds[selection], 0);
 
 			}

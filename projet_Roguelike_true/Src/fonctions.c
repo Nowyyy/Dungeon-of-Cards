@@ -13,8 +13,8 @@
 
 // Tables de cartes préfaites
 char communes[][TAILLE] = {{"soin"},{"poing"},{"pierre"}};
-char peu_communes[][TAILLE] = {{"potion"},{"barrière"},{"épée"}};
-char rares[][TAILLE] = {{"boule de feu"},{"poison"},{"guérison"}};
+char peu_communes[][TAILLE] = {{"potion"},{"barriere"},{"epee"}};
+char rares[][TAILLE] = {{"boule de feu"},{"poison"},{"guerison"}};
 
 /**
 *\fn void detruire_carte(carte_t ** carte)
@@ -23,14 +23,16 @@ char rares[][TAILLE] = {{"boule de feu"},{"poison"},{"guérison"}};
 */
 void detruire_carte(carte_t ** carte)
 {
-  if((*carte)->nom != NULL){
-    free((*carte)->nom);
-    (*carte)->nom = NULL;
-  }
-
   if(*carte != NULL){
-    free(*carte);
-    *carte = NULL;
+    if((*carte)->nom != NULL){
+      free((*carte)->nom);
+      (*carte)->nom = NULL;
+    }
+
+    if(*carte != NULL){
+      free(*carte);
+      *carte = NULL;
+    } 
   }
 }
 
@@ -49,21 +51,19 @@ void ajout_carte_collec(carte_t *carte){
   carte_t *tmp;
 
   if(!liste_vide()){
-    for(en_tete();!hors_liste() && strcmp(carte->nom, ec->carte->nom);suivant()){
+    for(en_tete();!hors_liste() && strcmp(carte->path, ec->carte->path);suivant()){
 
     }
     if(hors_liste()){
-      tmp = malloc(sizeof(carte_t));
-      memcpy(tmp, carte, sizeof(carte_t));
+      //carte non possèdée
+      tmp = creer_carte(carte->nom, carte->type,  carte->valeur, carte->consommable, carte->path);
       en_queue();
       ajout_droit(tmp);
     }
   }
   else{
-    tmp = malloc(sizeof(carte_t));
-    memcpy(tmp, carte, sizeof(carte_t));
-    en_queue();
-    ajout_droit(tmp);
+      tmp = creer_carte(carte->nom, carte->type,  carte->valeur, carte->consommable, carte->path);
+      ajout_droit(tmp);
   }
 }
 
@@ -79,15 +79,29 @@ void ajout_carte_collec(carte_t *carte){
 void ajout_carte_deck(carte_t *tampon){
 
   choix_liste(DECK);
+  carte_t *tmp;
 
-  if(!liste_vide){
+  if(!liste_vide()){
 
-    en_tete();
+    for(en_tete();!hors_liste() && strcmp(tampon->nom, ec->carte->nom);suivant()){
+  
+    }
 
-    ajout_droit(tampon);
+    if(!hors_liste() && ec->carte->consommable > 0){
+      //carte possédée et a usage limité, on up le nb d'usages restants
+      ec->carte->consommable += tampon->consommable;
+    }
+    else if(hors_liste()){
+      //carte non présente dans le deck
+      en_queue();
+      tmp = creer_carte(tampon->nom, tampon->type,  tampon->valeur, tampon->consommable, tampon->path);
+      ajout_droit(tmp);
+    }
   }
   else{
-    ajout_droit(tampon);
+    //liste de cartes vide
+    tmp = creer_carte(tampon->nom, tampon->type,  tampon->valeur, tampon->consommable, tampon->path);
+    ajout_droit(tmp);
   }
 }
 
@@ -106,7 +120,7 @@ void ajout_carte_deck(carte_t *tampon){
 void choix_liste(int choix){
 	if(choix){
 		drapeau = drapeau_deck;
-		ec = ec_deck;
+		ec = drapeau_deck;
 	}
 	else{
 		drapeau = drapeau_collec;
@@ -229,6 +243,7 @@ void oter_elt(){
     }
 	}
 }
+
 
 /**
 *\fn void ajout_droit(carte_t * t)
@@ -398,7 +413,13 @@ ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type,
   return(ennemi);
 }
 
+/**
 
+
+DOCUMENTATION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+*/
 carte_t * generer_carte(int niveau){
 	int r, i, puissance;
 	char puissances[3][4] = {{" I"},{" II"},{" X"}};
@@ -488,7 +509,7 @@ carte_t * generer_carte(int niveau){
 }
 
 void afficher_liste(){
-  en_tete();
+
   if(liste_vide())
     printf("\nListe vide.\n\n");
   for(en_tete();!hors_liste();suivant())
@@ -508,10 +529,7 @@ void detruire_ennemi(ennemi_t ** ennemi)
     (*ennemi)->nom=NULL;
   }
 
-  if((*ennemi)->sprites.img != NULL){
-    SDL_DestroyTexture((*ennemi)->sprites.img);
-    (*ennemi)->sprites.img=NULL;
-  }
+  libere_texture(&(*ennemi)->sprites.img);
 
   if(*ennemi != NULL){
     free(*ennemi);
@@ -521,30 +539,41 @@ void detruire_ennemi(ennemi_t ** ennemi)
 
 
 /**
-*\fn void tire_carte_deck(carte_t *cartes[])
+*\fn void tire_carte_deck(carte_t *cartes[], int indice)
 
 *\param *cartes[], tableau de pointeurs sur carte_t, contiendra les cartes utilisées pendant le combat
+*\param indice, l'indice du tableau que l'on souhaite remplir
 
 *\brief tire des cartes au hasard dans le deck du joueur afin qu'il puisse les utiliser au combat
 */
-void tire_carte_deck(carte_t *cartes[]){
+void tire_carte_deck(carte_t *cartes[], int indice){
 
-  int nb = NB_CARTES_COMBAT;
-  int alea;
+  int alea = rand()%TAILLE_DECK + 1;
+
+  carte_t *tmp;
+
   choix_liste(DECK);
-  en_tete();
 
-  while(nb != 0){
+  if(liste_vide()){
 
-    alea = rand()%NB_CARTES;
+    cartes[indice] = creer_carte("No carte", NO_CARTE, 0, 0, CARTE_NO_CARTE_PATH);
+  }
+  else{
 
-    for(int i = 0; i < alea; i++)
+    en_tete();
+
+    while(alea > 0){
       suivant();
 
-    if(hors_liste())
-      suivant();
+      if(hors_liste())
+        suivant();
+      alea--;
+    }
 
-    valeur_elt(&cartes[nb - 1]);
-    nb--;
+    valeur_elt(&tmp);
+
+    cartes[indice] = creer_carte(tmp->nom, tmp->type, tmp->valeur, tmp->consommable, tmp->path);
+
+    oter_elt();
   }
 }

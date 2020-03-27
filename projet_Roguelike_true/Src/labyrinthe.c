@@ -95,7 +95,7 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 *\brief Permet d'afficher une salle, le personnage et si on est dans la premiere salle, les instructions et commandes du jeu
 
 */
-void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[], mini_map_t map){
+void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[], mini_map_t map, loot_carte_t loot){
 
 	SDL_Rect rect;
 	rect = map.map[0];
@@ -135,6 +135,8 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 			}
 		}
 	}
+
+	afficher_loot(loot, rendu);
 
 ///////////SALLE
 	afficher_salle(salle, rendu, images);
@@ -532,7 +534,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 /////////////////////////// Déclarations variables ////////////////////////////////////////////
 	image_t images[NB_TEXTURES];
 
-	loot_carte_t loot;
+	loot_carte_t *loot = malloc(sizeof(loot_carte_t));
 
 	SDL_Event event;
 
@@ -557,7 +559,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	salle_pred = salle_courante;
 	salle_0 = salle_courante;
 
-	loot.existe = 0;
+	loot->existe = 0;
 /////////////////////////// Textures et initialisations///////////////////////////////////////
 
 	init_animations(&anim);
@@ -568,9 +570,11 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	place_monstre_coffre_boss(salles, taille*taille, blob, rendu);
 
+	controle_placement(salles, taille*taille);
+
 	for(int i = 0; i < taille * taille; i++){
 		if(salles[i].boss){
-			salles[i].ennemi = creer_ennemi(75, 10, 10, 10, boss, rendu);
+			salles[i].ennemi = creer_ennemi(0, 10, 10, 10, boss, rendu);
 		}
 		else{
 			creer_ennemi_pointeur(&salles[i].ennemi, &salles[i].ennemi2, salles[i].boss, salles[i].nb_ennemi, mob_commun, rendu);
@@ -594,12 +598,12 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 		if(salles[salle_courante].coffre){
 			animation_coffre(pers, &salles[salle_courante], sounds);
-			loot_de_carte(&loot, rendu, salles[salle_courante].coffre_salle, pers->etage);
+			loot_de_carte(loot, rendu, &salles[salle_courante].coffre_salle, pers->etage);
 		}
 
 		modifie_texture_hud(pers, &images[pv], &images[etage], rendu);
 
-		affichage_salle_personnage(*pers, &salles[salle_courante], rendu, images, miniMap);
+		affichage_salle_personnage(*pers, &salles[salle_courante], rendu, images, miniMap, *loot);
 
 		deplacement_personnage(pers, salles[salle_courante], continuer, &anim, sounds, &clavier);
 
@@ -669,34 +673,30 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 					pers->y = WIN_HEIGHT / 2 - pers->sprites[courant].rectangle.h / 2;
 				}
 			}
+
+			loot_affichage_fini(loot);
 		}
 	}
+
+	printf("pas crash changement etage\n");
 
 	while (SDL_PollEvent (&event));
 
+	printf("pas crash changement etage poll event ok\n");
+
 //////////////////////// On libère tous les emplacements mémoires utilisés par les images ////
-	for(int i = 0; i < NB_SPRITES_PERSONNAGE; i++){
-		if(pers->sprites[i].img != NULL){
-			SDL_DestroyTexture(pers->sprites[i].img);
-			pers->sprites[i].img=NULL;
-		}
-	}
+	for(int i = 0; i < NB_SPRITES_PERSONNAGE; i++)
+		libere_texture(&pers->sprites[i].img);
 
-	for(int i = sol; i < fond; i++){
-		if(images[i].img != NULL){
-			SDL_DestroyTexture(images[i].img);
-			images[i].img=NULL;
-		}
+	for(int i = sol; i < fond; i++)
+		libere_texture(&images[i].img);
 
-	}
+	detruire_loot(&loot);
 
-	if(loot.existe){
-		if(loot.texte.img != NULL){
-			SDL_DestroyTexture(loot.texte.img);
-			loot.texte.img=NULL;
-		}
-	}
+	printf("pas crash changement etage free textures ok\n");
 
 	destruction_tous_ennemis(salles, taille);
 	destruction_des_coffres(salles, taille);
+
+	printf("pas crash changement etage dextructions ennemis et coffres ok\n\n");
 }

@@ -1,9 +1,9 @@
--1 10 0 ../Images/Cartes/epee_1.png Epee
--1 5 0 ../Images/Cartes/poing.png Poing
--1 5 1 ../Images/Cartes/pierre.png Pierre
-1 20 1 ../Images/Cartes/potion_1.png Potion
-1 10 -1 ../Images/Cartes/soin.png Soin
--1 30 -1 ../Images/Cartes/poison.png Poison
--1 20 -1 ../Images/Cartes/boule_de_feu.png B_de_feu
-1 10 -1 ../Images/Cartes/barriere.png Barriere
-1 10 -1 ../Images/Cartes/guerison.png Guerison
+-1 10 -1 ../Images/Cartes/epee_1.png Epee II
+-1 5 -1 ../Images/Cartes/poing.png Poing I
+-1 5 1 ../Images/Cartes/pierre.png Pierre I
+1 20 1 ../Images/Cartes/potion_1.png Potion II
+1 10 -1 ../Images/Cartes/soin.png Soin I
+-1 30 -1 ../Images/Cartes/poison.png Poison X
+-1 20 -1 ../Images/Cartes/boule_de_feu.png Boule de feu X
+1 10 -1 ../Images/Cartes/barriere.png Barriere II
+1 10 -1 ../Images/Cartes/guerison.png Guerison X

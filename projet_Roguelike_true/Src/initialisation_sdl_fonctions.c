@@ -283,3 +283,21 @@ void choix_musique(Mix_Music* musics[NB_MUSIC], perso_t *pers){
 		Mix_PlayMusic(musics[level5], -1);
 	}
 }
+
+
+/**
+*\fn void libere_texture(SDL_Texture **texture)
+
+*\param **texture, la texture a libérer
+
+*\brief Libère les SDL_Textures si elle ne le sont pas déjà
+*/
+void libere_texture(SDL_Texture **texture){
+
+	if(*texture != NULL){
+		SDL_DestroyTexture(*texture);
+		*texture = NULL;
+	}
+	else
+		printf("fail libere texture\n");
+}

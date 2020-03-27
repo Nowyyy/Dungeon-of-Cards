@@ -49,7 +49,15 @@ void animation_coffre(perso_t *pers, salle_t *salle, Mix_Chunk *sounds[NB_SON]){
 }
 
 
+/**
+*\fn void creer_coffre(coffre_t *coffre, SDL_Renderer *rendu, int coffre_existe)
 
+*\param *coffre, le coffre pour lequel on assigne une image et une animation
+*\param *rendu, le renderer sur lequel on dessine
+*\param coffre_existe, variable de contrôle permettant de savoir s'il l'on doit créer un coffre
+
+*\brief Créer un coffre dans les salles dédiées
+*/
 void creer_coffre(coffre_t *coffre, SDL_Renderer *rendu, int coffre_existe){
 
 	if(coffre_existe){
@@ -61,6 +69,7 @@ void creer_coffre(coffre_t *coffre, SDL_Renderer *rendu, int coffre_existe){
 		coffre->courant = 0;
 		coffre->gap = 68;
 		coffre->son = 0;
+		coffre->vide = 0;
 
 		coffre->last = SDL_GetTicks();
 
@@ -93,19 +102,21 @@ void destruction_des_coffres(salle_t salles[], int taille){
 	for(i = 0; i < taille * taille; i++){
 
 		if(salles[i].coffre)
-			if(salles[i].coffre_salle.sprite.img != NULL){
-				SDL_DestroyTexture(salles[i].coffre_salle.sprite.img);
-				salles[i].coffre_salle.sprite.img = NULL;
-			}
-
+			libere_texture(&salles[i].coffre_salle.sprite.img);
 	}
 }
 
 
 /**
-*\fn
+*\fn void creer_texte_coffre(char *txt, image_t *image, int x, int y, SDL_Renderer *rendu)
 
+*\param *txt, le texte que l'on va afficher
+*\param *image, la structure qui contiendra le texte
+*\param x, la position x à l'écran du texte
+*\param y, la position y à l'écran du texte
+*\param *rendu, le renderer sur lequel on dessinee
 
+*\brief Créer le texte qui servira a afficher le contenu du coffre
 */
 void creer_texte_coffre(char *txt, image_t *image, int x, int y, SDL_Renderer *rendu){
 
@@ -123,9 +134,21 @@ void creer_texte_coffre(char *txt, image_t *image, int x, int y, SDL_Renderer *r
 
 
 
-void loot_de_carte(loot_carte_t *loot, SDL_Renderer *rendu, coffre_t coffre, int etage){
+/**
+*\fn void loot_de_carte(loot_carte_t *loot, SDL_Renderer *rendu, coffre_t coffre, int etage)
 
-	if(coffre.ouvert && loot->existe == 0){
+*\param *loot, la structure contenant la carte obtenue par le joueur
+*\param *rendu, le renderer sur lequel on dessinee
+*\param *coffre, le coffre que l'on contrôle (ouvert ou non)
+*\param etage, l'étage où se situe le joueur
+
+*\brief initialise la structure de loot, generer une carte qui est envoyée dans les listes
+*/
+void loot_de_carte(loot_carte_t *loot, SDL_Renderer *rendu, coffre_t *coffre, int etage){
+
+	if(coffre->ouvert && loot->existe == 0 && coffre->vide == 0){
+
+		coffre->vide = 1;
 
 		loot->existe = 1;
 
@@ -134,10 +157,75 @@ void loot_de_carte(loot_carte_t *loot, SDL_Renderer *rendu, coffre_t coffre, int
 		ajout_carte_deck(loot->carte);
 		ajout_carte_collec(loot->carte);
 
+		charge_image(loot->carte->path, &loot->image, rendu);
+
+		loot->image.rectangle.x = WIN_WIDTH * 0.05;
+		loot->image.rectangle.y = WIN_HEIGHT * 0.45;
+
 		loot->delai = DUREE_AFFICHAGE_CARTE_LOOT;
 
 		loot->debut = SDL_GetTicks();
 
-		creer_texte_coffre("Vous avez trouve :", &loot->texte, 0, 0, rendu);
+		creer_texte_coffre("Vous avez trouve :", &loot->texte, WIN_WIDTH * 0.03, WIN_HEIGHT *0.40, rendu);
+	}
+}
+
+
+
+/**
+*\fn void detruire_loot(loot_carte_t **loot)
+
+*\param **loot, la structure contenant la carte obtenue par le joueur
+*\param *rendu, le renderer sur lequel on dessinee
+
+*\brief Détruit toutes les allocations dynamiques effectuées pour cette structure
+*/
+void afficher_loot(loot_carte_t loot, SDL_Renderer *rendu){
+
+	if(loot.existe){
+
+		SDL_RenderCopy(rendu, loot.texte.img, NULL, &loot.texte.rectangle);
+		SDL_RenderCopy(rendu, loot.image.img, NULL, &loot.image.rectangle);
+	}
+}
+
+
+/**
+*\fn void detruire_loot(loot_carte_t **loot)
+
+*\param **loot, la structure contenant la carte obtenue par le joueur
+
+*\brief Détruit toutes les allocations dynamiques effectuées pour cette structure
+*/
+void detruire_loot(loot_carte_t **loot){
+
+	if((*loot)->existe){
+		detruire_carte(&(*loot)->carte);
+		libere_texture(&(*loot)->texte.img);
+		libere_texture(&(*loot)->image.img);
+	}
+	free(*loot);
+
+	*loot = NULL;
+}
+
+
+/**
+*\fn void loot_affichage_fini(loot_carte_t *loot)
+
+*\param *loot, la structure contenant la carte obtenue par le joueur
+
+*\brief Contrôle si la durée d'affichage du loot est dépassée ou non, si oui elle détruit les éléments dans la structure
+*/
+void loot_affichage_fini(loot_carte_t *loot){
+
+	if(loot->existe){
+		if(loot->delai + loot->debut <= SDL_GetTicks()){
+			detruire_carte(&loot->carte);
+			libere_texture(&loot->texte.img);	
+			libere_texture(&loot->image.img);	
+
+			loot->existe = 0;
+		}
 	}
 }

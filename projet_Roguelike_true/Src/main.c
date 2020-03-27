@@ -89,6 +89,14 @@ int main(int argc, char* args[]){
 								Mix_PlayMusic(musics[menu], -1);
 							}
 							main_menu(&continuer, &etat, rendu, police, sounds);
+
+							if(etat == labyrinthe){
+								initialise_personnage(&pers);
+								remove(SAVE_CARTES_DECK_PATH);
+								remove(SAVE_CARTES_COLLEC_PATH);
+								readcarte(SAVE_CARTES_NEW_GAME_PATH, DECK);
+								readcarte(SAVE_CARTES_NEW_GAME_PATH, COLLEC);
+							}
 						}
 						else if (etat == labyrinthe){
 							//tout ce qui sera relatif à l'explo dans le laby
@@ -122,17 +130,21 @@ int main(int argc, char* args[]){
 		}
 	}
 //************************* FERMETURES ***********************************************************************
+	printf("On va tout fermer\n");
 	IMG_Quit();
 	TTF_CloseFont(police); //on libère la police
 
-	quit_sdl(&rendu, &window);
-	SDL_Quit();
-
 	init_or_quit_ttf(0);//quitte TTF
+
+	printf("IMG et ttf OK\n");
 
 	//On libère toutes les variables de son
 	free_mixer(musics, sounds);
 
+	printf("Mixer ok\n");
+
+	quit_sdl(&rendu, &window);
+	SDL_Quit();
 
 	choix_liste(DECK);
 
@@ -146,6 +158,7 @@ int main(int argc, char* args[]){
 		free(drapeau);
 		drapeau = NULL;
 	}
+	printf("deck vide\n");
 
 	choix_liste(COLLEC);
 

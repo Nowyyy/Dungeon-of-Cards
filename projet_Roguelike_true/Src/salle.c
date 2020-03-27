@@ -245,8 +245,11 @@ void place_monstre_coffre_boss(salle_t tab[], int taille, int type_ennemi, SDL_R
     //choix de monstres ou coffre dans les autres salles que celle du début et celle du boss
     if(tab[i].depart == TRUE){
       tab[i].ennemi_present = 0;
+      tab[i].nb_ennemi = 0;
       tab[i].coffre = 0;
       tab[i].prems = 0;
+      tab[i].ennemi2 = NULL;
+      tab[i].ennemi = NULL;
 
     }
     else if (tab[i].salle_existe && tab[i].boss == FALSE){
@@ -272,6 +275,8 @@ void place_monstre_coffre_boss(salle_t tab[], int taille, int type_ennemi, SDL_R
       //pas d'ennemi dans la salle
       else{
         tab[i].coffre = 1;
+        tab[i].nb_ennemi = 0;
+        tab[i].ennemi_present = 0;
         tab[i].ennemi2 = NULL;
         tab[i].ennemi = NULL;
       }
@@ -386,5 +391,39 @@ void creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int boss, int 
     ajoute_ennemi(ennemi2, type, rendu);
     (*ennemi2)->anim_courante = idle_gauche_ennemi;
     (*ennemi2)->sprite_courant.y = (*ennemi2)->sprite_courant.h; 
+  }
+}
+
+
+/**
+*\fn void controle_placement(salle_t salles[], int taille)
+
+*\param salles[], le tableau contenant les salles du laby
+*\param taille, la taille du tableau
+
+*\brief contrôle que les salles ont les bons attributs en fonctions de leurs spécificitées
+*/
+void controle_placement(salle_t salles[], int taille){
+
+  int i;
+
+  for(i = 0; i< taille; i++){
+
+    if(salles[i].depart == TRUE){
+
+      salles[i].coffre = 0;
+      salles[i].nb_ennemi = 0;
+      salles[i].ennemi_present = 0;
+      salles[i].boss = 0;
+      salles[i].ennemi2 = NULL;
+      salles[i].ennemi = NULL;
+    }
+    else if(salles[i].boss){
+
+      salles[i].ennemi2 = NULL;
+      salles[i].coffre = 0;
+      salles[i].nb_ennemi = 0;
+      salles[i].ennemi_present = 0; 
+    }
   }
 }

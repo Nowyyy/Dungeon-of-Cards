@@ -34,9 +34,9 @@
 int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, image_t images[NB_TEXTURES], SDL_Rect **rect_sel, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC]){
 
 	SDL_Event event;
- 	int choix=0;
+ 	int choix= NB_CARTES_COMBAT +1;
 
-	while(SDL_PollEvent(&event) && choix==0){ //On attend un évènement au clavier
+	while(SDL_PollEvent(&event) && choix== NB_CARTES_COMBAT +1){ //On attend un évènement au clavier
 
 		if(event.type == SDL_KEYDOWN){	//touche enfoncée
 
@@ -137,11 +137,8 @@ int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, ima
 				}
 			}
 		}
-
-		if(event.type == SDL_QUIT)//croix de la fenetre
-			return QUIT_SDL;
 	}
-	return PAS_QUIT_SDL;
+	return NB_CARTES;
 }
 
 
@@ -293,7 +290,7 @@ void donne_valeur_rect_images(image_t images[]){
 
  	images[fond].rectangle.x=0;
 	images[fond].rectangle.y= 450;
-  images[fond].rectangle.w *= 1;
+  	images[fond].rectangle.w *= 1;
   	images[fond].rectangle.w *= 4;
 
   	images[gui_bar].rectangle.x = WIN_WIDTH / 2 - images[gui_bar].rectangle.w / 2;
@@ -322,13 +319,8 @@ void donne_valeur_rect_images(image_t images[]){
 */
 void free_image(image_t images[]){
 
-	for(int i = fond; i<= carte4; i++){
-		if(images[i].img != NULL){
-			SDL_DestroyTexture(images[i].img);
-			images[i].img=NULL;
-		}
-
-	}
+	for(int i = fond; i<= carte4; i++)
+		libere_texture(&images[i].img);
 }
 
 
@@ -341,15 +333,22 @@ void free_image(image_t images[]){
 
 *\brief permet d'effectuer l'action sélectionnée par le joueur
 */
-void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t carte){
+void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t *carte){
 
-	if(carte.type == ATTAQUE){
-		ennemi->pv -= carte.valeur;
+	if(carte->type == ATTAQUE){
+		if(carte->consommable > 0){
+			carte->consommable -= 1;
+		}
+		ennemi->pv -= carte->valeur;
 	}
 	else{
 
-		if(pers->pv + carte.valeur <= PV_DEPART_PERSONNAGE)
-			pers->pv += carte.valeur;
+		if(carte->consommable > 0){
+			carte->consommable -= 1;
+		}
+
+		if(pers->pv + carte->valeur <= PV_DEPART_PERSONNAGE)
+			pers->pv += carte->valeur;
 		else
 			pers->pv = PV_DEPART_PERSONNAGE;
 	}
@@ -414,25 +413,10 @@ void create_hud(hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, ennemi_t ennem
 		hud_pers->existe = 1;
 	}
 	else{
-		if(hud_pers->pv.img != NULL){
-			SDL_DestroyTexture(hud_pers->pv.img);
-			hud_pers->pv.img=NULL;
-		}
-
-		if(hud_pers->nom.img != NULL){
-			SDL_DestroyTexture(hud_pers->nom.img);
-			hud_pers->nom.img=NULL;
-		}
-
-		if(hud_ennemi->nom.img != NULL){
-			SDL_DestroyTexture(hud_ennemi->nom.img);
-			hud_ennemi->nom.img=NULL;
-		}
-
-		if(hud_ennemi->pv.img != NULL){
-			SDL_DestroyTexture(hud_ennemi->pv.img);
-			hud_ennemi->pv.img=NULL;
-		}
+		libere_texture(&hud_pers->pv.img);
+		libere_texture(&hud_pers->nom.img);
+		libere_texture(&hud_ennemi->nom.img);
+		libere_texture(&hud_ennemi->pv.img);
 	}
 
 	creer_texte_combat(nom_pers, &hud_pers->nom, WIN_WIDTH * 0.02, WIN_HEIGHT *0.02, rendu, font);
@@ -476,11 +460,7 @@ void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hu
 	int x, y;
 
 	if(action->existe)
-		if(action->texte.img != NULL){
-			SDL_DestroyTexture(action->texte.img);
-			action->texte.img=NULL;
-		}
-
+		libere_texture(&action->texte.img);
 
 	if(tour){
 
@@ -525,11 +505,54 @@ void detruire_action_temp(hud_combat_t *action){
 
 	if(action->existe){
 		action->existe = 0;
-		if(action->texte.img != NULL){
-			SDL_DestroyTexture(action->texte.img);
-			action->texte.img=NULL;
-		}
+		libere_texture(&action->texte.img);
+	}
+}
 
+
+/**
+*\fn void range_carte_deck(carte_t *cartes[])
+
+\param *cartes[], tableau de pointeurs sur cartes, contient les cartes utilisées pendant le combat
+
+*\brief Range les cartes encore valide dans le deck, détruit les cartes barrées
+*/
+void range_carte_deck(carte_t *cartes[]){
+
+	choix_liste(DECK);
+
+	en_queue();
+
+	for(int i = 0; i < NB_CARTES_COMBAT; i++){
+
+		if(cartes[i]->type != NO_CARTE){
+
+			ajout_droit(cartes[i]);
+		}
+		else{ // fake carte (carte barrée)
+			detruire_carte(&cartes[i]);
+		}
+	}
+}
+
+
+void consommable_epuise(carte_t *cartes[], int indice, image_t images[], SDL_Renderer *rendu){
+
+	int x = images[carte1 + indice].rectangle.x, y = images[carte1 + indice].rectangle.y; 
+
+	if(cartes[indice]->type != NO_CARTE){
+
+		if(cartes[indice]->consommable == 0){
+
+			detruire_carte(&cartes[indice]);
+
+			tire_carte_deck(cartes, indice);
+
+			charge_image(cartes[indice]->path,&images[carte1 + indice], rendu);
+
+			images[carte1 + indice].rectangle.y = y;
+			images[carte1 + indice].rectangle.x = x;
+		}
 	}
 }
 
@@ -566,7 +589,8 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
   	hud_ennemi.existe = 0;
   	hud_pers.existe = 0;
 
-	tire_carte_deck(cartes);
+  	for(int j = 0; j < NB_CARTES_COMBAT; j++)
+		tire_carte_deck(cartes, j);
 
 	init_hud_action(&action);
 
@@ -605,11 +629,11 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
   		else if(choix == -2){//défausse de carte(s)
 
   		}
-  		else if(choix < NB_CARTES_COMBAT){//le joueur a selectionné une carte
+  		else if(choix < NB_CARTES_COMBAT && cartes[choix]->type != NO_CARTE){//le joueur a selectionné une carte
 
   			if(alea){//le joueur commence
 
-  				tour_joueur(perso, ennemi, *cartes[choix]);
+  				tour_joueur(perso, ennemi, cartes[choix]);
   				actualisation_apres_tour(perso, ennemi, *cartes[choix], &action, &hud_pers, &hud_ennemi, rendu, police, alea);
   				affichage_combat_personnage(rendu, perso, ennemi, def, fui, rectangle_selection, images, hud_ennemi, hud_pers, action);
   				SDL_Delay(wait* 2);
@@ -629,60 +653,36 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
   				SDL_Delay(wait* 2);
 
   				if(perso->pv > 0){
-	  				tour_joueur(perso, ennemi, *cartes[choix]);
+	  				tour_joueur(perso, ennemi, cartes[choix]);
 	  				actualisation_apres_tour(perso, ennemi, *cartes[choix], &action, &hud_pers, &hud_ennemi, rendu, police, alea + 1);
 	  				affichage_combat_personnage(rendu, perso, ennemi, def, fui, rectangle_selection, images, hud_ennemi, hud_pers, action);
 	  				SDL_Delay(wait);
 	  			}
   			}
+  			consommable_epuise(cartes, choix, images, rendu);
   		}
   		detruire_action_temp(&action);
   		while(SDL_PollEvent(&event));
 	}
-		Mix_HaltMusic();
+	Mix_HaltMusic();
   	TTF_CloseFont(police);
 
-		if(def.img != NULL){
-			SDL_DestroyTexture(def.img);
-			def.img=NULL;
-		}
 
-		if(fui.img != NULL){
-			SDL_DestroyTexture(fui.img);
-			fui.img=NULL;
-		}
+  	range_carte_deck(cartes);
 
-		if(hud_pers.pv.img!=NULL){
-			SDL_DestroyTexture(hud_pers.pv.img);
-			hud_pers.pv.img=NULL;
-		}
-
-		if(hud_pers.nom.img != NULL){
-			SDL_DestroyTexture(hud_pers.nom.img);
-			hud_pers.nom.img=NULL;
-		}
-
-		if(hud_ennemi.pv.img != NULL){
-			SDL_DestroyTexture(hud_ennemi.pv.img);
-			hud_ennemi.pv.img=NULL;
-		}
-
-		if(hud_ennemi.nom.img != NULL){
-			SDL_DestroyTexture(hud_ennemi.nom.img);
-			hud_ennemi.nom.img=NULL;
-		}
-
+  	libere_texture(&def.img);
+	libere_texture(&fui.img);
+	libere_texture(&hud_ennemi.pv.img);
+	libere_texture(&hud_ennemi.nom.img);
+	libere_texture(&hud_pers.pv.img);
+	libere_texture(&hud_pers.nom.img);
 
   	detruire_action_temp(&action);
 
-		if(images != NULL){
-			free_image(images);
-			images=NULL;
-		}
+	free_image(images);
 
-		if(rectangle_selection != NULL){
-			free(rectangle_selection);
-			rectangle_selection=NULL;
-		}
-
+	if(rectangle_selection != NULL){
+		free(rectangle_selection);
+		rectangle_selection=NULL;
+	}
 }
