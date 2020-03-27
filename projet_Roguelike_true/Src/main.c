@@ -107,7 +107,6 @@ int main(int argc, char* args[]){
 						  	savecarte(SAVE_CARTES_DECK_PATH, DECK);
 						  	savecarte(SAVE_CARTES_COLLEC_PATH, COLLEC);
 							boucle_labyrinthe(&continuer, &etat, rendu, sounds, musics, &pers, police);
-							Mix_HaltMusic();
 						}
 						else if(etat == charger_partie){
 							//charge les données du joueurs afin qu'il reprenne là où il s'était arrêté

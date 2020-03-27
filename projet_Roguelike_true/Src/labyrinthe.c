@@ -545,7 +545,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	place_monstre_coffre_boss(salles, taille*taille, blob, rendu);
 
-	controle_placement(salles, taille*taille);
+	//controle_placement(salles, taille*taille);
 
 	for(int i = 0; i < taille * taille; i++){
 		if(salles[i].boss){
@@ -652,6 +652,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 			loot_affichage_fini(loot);
 		}
 	}
+	Mix_HaltMusic();
 
 	printf("pas crash changement etage\n");
 
@@ -671,6 +672,8 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	printf("pas crash changement etage free textures ok\n");
 
 	destruction_tous_ennemis(salles, taille);
+
+	printf("pas crash dtruire ennemi\n");
 	destruction_des_coffres(salles, taille);
 
 	printf("pas crash changement etage dextructions ennemis et coffres ok\n\n");
