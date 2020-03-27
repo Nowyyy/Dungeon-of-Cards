@@ -665,6 +665,9 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
   		detruire_action_temp(&action);
   		while(SDL_PollEvent(&event));
 	}
+	if(ennemi->pv<=0){
+		perso->pv=50;
+	}
 	Mix_HaltMusic();
   	TTF_CloseFont(police);
 
