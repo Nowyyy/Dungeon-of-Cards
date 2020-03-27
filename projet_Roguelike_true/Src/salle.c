@@ -393,3 +393,37 @@ void creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int boss, int 
     (*ennemi2)->sprite_courant.y = (*ennemi2)->sprite_courant.h; 
   }
 }
+
+
+/**
+*\fn void controle_placement(salle_t salles[], int taille)
+
+*\param salles[], le tableau contenant les salles du laby
+*\param taille, la taille du tableau
+
+*\brief contrôle que les salles ont les bons attributs en fonctions de leurs spécificitées
+*/
+void controle_placement(salle_t salles[], int taille){
+
+  int i;
+
+  for(i = 0; i< taille; i++){
+
+    if(salles[i].depart == TRUE){
+
+      salles[i].coffre = 0;
+      salles[i].nb_ennemi = 0;
+      salles[i].ennemi_present = 0;
+      salles[i].boss = 0;
+      salles[i].ennemi2 = NULL;
+      salles[i].ennemi = NULL;
+    }
+    else if(salles[i].boss){
+
+      salles[i].ennemi2 = NULL;
+      salles[i].coffre = 0;
+      salles[i].nb_ennemi = 0;
+      salles[i].ennemi_present = 0; 
+    }
+  }
+}

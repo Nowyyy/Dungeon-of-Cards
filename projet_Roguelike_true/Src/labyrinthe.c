@@ -94,7 +94,7 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 *\brief Permet d'afficher une salle, le personnage et si on est dans la premiere salle, les instructions et commandes du jeu
 
 */
-void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[], mini_map_t map){
+void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[], mini_map_t map, loot_carte_t loot){
 
 	SDL_Rect rect;
 	rect = map.map[0];
@@ -134,6 +134,8 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 			}
 		}
 	}
+
+	afficher_loot(loot, rendu);
 
 ///////////SALLE
 	afficher_salle(salle, rendu, images);
@@ -671,6 +673,8 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	place_monstre_coffre_boss(salles, taille*taille, blob, rendu);
 
+	controle_placement(salles, taille*taille);
+
 	for(int i = 0; i < taille * taille; i++){
 		if(salles[i].boss){
 			salles[i].ennemi = creer_ennemi(0, 10, 10, 10, boss, rendu);
@@ -697,12 +701,12 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 		if(salles[salle_courante].coffre){
 			animation_coffre(pers, &salles[salle_courante], sounds);
-			loot_de_carte(loot, rendu, salles[salle_courante].coffre_salle, pers->etage);
+			loot_de_carte(loot, rendu, &salles[salle_courante].coffre_salle, pers->etage);
 		}
 
 		modifie_texture_hud(pers, &images[pv], &images[etage], rendu);
 
-		affichage_salle_personnage(*pers, &salles[salle_courante], rendu, images, miniMap);
+		affichage_salle_personnage(*pers, &salles[salle_courante], rendu, images, miniMap, *loot);
 
 		deplacement_personnage(pers, salles[salle_courante], continuer, &anim, sounds, &clavier);
 
@@ -726,7 +730,6 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 				combat_t_p_t(pers, salles[salle_courante].ennemi2, rendu, images, sounds, musics);
 				init_tab_clavier(clavier.tab);
 				choix_musique(musics, pers);
-
 			}
 
 			//Si le joueur meurt
@@ -763,6 +766,8 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 					pers->y = WIN_HEIGHT / 2 - pers->sprites[courant].rectangle.h / 2;
 				}
 			}
+
+			loot_affichage_fini(loot);
 		}
 	}
 
@@ -779,19 +784,12 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	for(int i = sol; i < fond; i++)
 		libere_texture(&images[i].img);
 
-	if(loot->existe){
-		detruire_carte(&loot->carte);
-		libere_texture(&loot->texte.img);
-	}
+	detruire_loot(&loot);
 
 	printf("pas crash changement etage free textures ok\n");
-
-	free(loot);
-
-	printf("pas crash changement etage free loot ok\n");
 
 	destruction_tous_ennemis(salles, taille);
 	destruction_des_coffres(salles, taille);
 
-	printf("pas crash changement etage dextructions ennemis et coffres ok\n");
+	printf("pas crash changement etage dextructions ennemis et coffres ok\n\n");
 }

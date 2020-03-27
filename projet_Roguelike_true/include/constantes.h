@@ -101,7 +101,7 @@
 #define TAILLE 20 //Taille des chaînes de caractères
 #define TAILLE_DECK 5
 
-#define DUREE_AFFICHAGE_CARTE_LOOT 1000
+#define DUREE_AFFICHAGE_CARTE_LOOT 5000
 
 #define NB_SPRITES_PERSONNAGE 10
 
@@ -281,7 +281,7 @@ typedef struct coffre_s{
 
   unsigned int last;
 
-  int ouvert;
+  int ouvert, vide;
 
   SDL_Rect sprite_courant;
 
@@ -377,6 +377,8 @@ typedef struct hud_combat_s{
 typedef struct loot_carte_s{
   
   carte_t *carte;
+
+  image_t image;
 
   unsigned int debut;
 

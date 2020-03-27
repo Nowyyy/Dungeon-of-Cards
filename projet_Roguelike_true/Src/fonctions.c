@@ -13,8 +13,8 @@
 
 // Tables de cartes préfaites
 char communes[][TAILLE] = {{"soin"},{"poing"},{"pierre"}};
-char peu_communes[][TAILLE] = {{"potion"},{"barrière"},{"épée"}};
-char rares[][TAILLE] = {{"boule de feu"},{"poison"},{"guérison"}};
+char peu_communes[][TAILLE] = {{"potion"},{"barriere"},{"epee"}};
+char rares[][TAILLE] = {{"boule de feu"},{"poison"},{"guerison"}};
 
 /**
 *\fn void detruire_carte(carte_t ** carte)
@@ -55,17 +55,24 @@ void ajout_carte_collec(carte_t *carte){
 
     }
     if(hors_liste()){
+      //carte non possèdée
       tmp = malloc(sizeof(carte_t));
+      tmp->nom = malloc(sizeof(char)* TAILLE);
       memcpy(tmp, carte, sizeof(carte_t));
       en_queue();
       ajout_droit(tmp);
+      printf("%s\n", tmp->nom);
+    }
+    else{
+      printf("pas ajouté\n");
     }
   }
   else{
-    tmp = malloc(sizeof(carte_t));
-    memcpy(tmp, carte, sizeof(carte_t));
-    en_queue();
-    ajout_droit(tmp);
+      tmp = malloc(sizeof(carte_t));
+      tmp->nom = malloc(sizeof(char)* TAILLE);
+      memcpy(tmp, carte, sizeof(carte_t));
+      printf("%s\n", tmp->nom);
+      ajout_droit(tmp);
   }
 }
 
@@ -86,23 +93,36 @@ void ajout_carte_deck(carte_t *tampon){
   if(!liste_vide){
 
     for(en_tete();!hors_liste() && strcmp(tampon->nom, ec->carte->nom);suivant()){
-
+  
     }
 
     if(!hors_liste() && ec->carte->consommable > 0){
-      ec->carte->consommable += 1;
+      //carte possédée et a usage limité, on up le nb d'usages restants
+      ec->carte->consommable += tampon->consommable;
     }
     else if(hors_liste()){
+      //carte non présente dans le deck
       en_queue();
       tmp = malloc(sizeof(carte_t));
+      tmp->nom = malloc(sizeof(char)* TAILLE);
       memcpy(tmp, tampon, sizeof(carte_t));
       ajout_droit(tmp);
+      printf("ajoutée deck\n");
+      printf("%s\n", tmp->nom);
+    }
+    else{
+      printf("pas ajouté deck\n");
     }
   }
   else{
+    //liste de cartes vide
     tmp = malloc(sizeof(carte_t));
+    tmp->nom = malloc(sizeof(char)* strlen(tampon->nom));
     memcpy(tmp, tampon, sizeof(carte_t));
+    memcpy(tmp->nom, tampon->nom, sizeof(char)* TAILLE);
     ajout_droit(tmp);
+    printf("ajoutée deck\n");
+    printf("%s\n", tmp->nom);
   }
 }
 
