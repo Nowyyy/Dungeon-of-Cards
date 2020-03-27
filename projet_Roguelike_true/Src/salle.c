@@ -427,3 +427,45 @@ void controle_placement(salle_t salles[], int taille){
     }
   }
 }
+
+
+
+
+/**
+*\fn void affiche_mini_map(mini_map_t map, salle_t salle, SDL_Renderer *rendu)
+
+*\param map, la structure contenant la minimap
+*\param salle, la salle dans laquelle se situe le joueur
+*\param *rendu, le renderer sur lequel on dessine
+
+*\brief effectue l'affichage à l'écran de la minimap
+*/
+void affiche_mini_map(mini_map_t map, salle_t salle, SDL_Renderer *rendu){
+
+  SDL_Rect rect;
+  rect = map.map[0];
+  rect.x = 794;
+  rect.y = 5;
+  rect.h = 175;
+  rect.w = 255;
+
+  SDL_SetRenderDrawColor(rendu,169,169,169,255);//gris
+  SDL_RenderDrawRect(rendu, &rect); // rectangle qui sert de cadre à la mini map
+
+  for(int i = 0; i < 64; i++){
+
+    if(map.salles_decouvertes[i] == TRUE && i == salle.id){
+      //salle dans laquelle se situe le joueur
+      SDL_SetRenderDrawColor(rendu,255,0,0,255);//rouge
+      SDL_RenderFillRect(rendu, &map.map[i]);
+    }
+    else if(map.salles_decouvertes[i] == TRUE){
+      SDL_SetRenderDrawColor(rendu,255,255,255,255);//blanc
+      SDL_RenderFillRect(rendu, &map.map[i]);
+    }
+    else{
+      SDL_SetRenderDrawColor(rendu,0,0,0,255);
+      SDL_RenderFillRect(rendu, &map.map[i]);
+    }
+  }
+}

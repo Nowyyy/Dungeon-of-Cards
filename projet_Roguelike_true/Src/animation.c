@@ -157,7 +157,7 @@ void anim1(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON]){
 				sens = 0;
 			}
 		}
-
+		SDL_SetRenderDrawColor(rendu, 0, 0, 0, 255);
 		SDL_RenderFillRect(rendu, &rect);
 		SDL_RenderPresent(rendu);
 		SDL_Delay(20);
@@ -235,7 +235,7 @@ void anim2(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON]){
 				sens = 0;
 			}
 		}
-
+		SDL_SetRenderDrawColor(rendu, 0, 0, 0, 255);
 		SDL_RenderFillRect(rendu, &rect);
 		SDL_RenderPresent(rendu);
 		SDL_Delay(20);
@@ -302,6 +302,7 @@ void anim3(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON]){
 				sens+=1;
 			}
 		}
+		SDL_SetRenderDrawColor(rendu, 0, 0, 0, 255);
 		SDL_RenderFillRect(rendu, &rect1);
 		SDL_RenderFillRect(rendu, &rect2);
 		SDL_RenderPresent(rendu);

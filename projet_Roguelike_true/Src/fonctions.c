@@ -426,16 +426,16 @@ carte_t * generer_carte(int niveau){
 	char nom[TAILLE];
 	switch (niveau) {
 		case 1:
-			puissance = 0;
+			puissance = rand()%2 + 1;
 			break;
 		case 2:
-			puissance = rand()%2;
+			puissance = rand()%3 + 1;
 			break;
 		case 3:
-			puissance = rand()%3;
+			puissance = rand()%4 + 1;
 			break;
 		case 4:
-			puissance = (rand()%2) + 1;
+			puissance = (rand()%5) + 1;
 			break;
 		case 5:
 			puissance = 2;

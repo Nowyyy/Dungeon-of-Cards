@@ -97,13 +97,6 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 */
 void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[], mini_map_t map, loot_carte_t loot){
 
-	SDL_Rect rect;
-	rect = map.map[0];
-	rect.x = 794;
-	rect.y = 5;
-	rect.h = 175;
-	rect.w = 255;
-
 	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
 
 	SDL_RenderClear(rendu);//nettoie l'écran pour supprimer tout ce qui est dessus
@@ -115,25 +108,7 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 	}
 	else{
 ///////////MINI MAP
-		SDL_SetRenderDrawColor(rendu,169,169,169,255);//gris
-		SDL_RenderDrawRect(rendu, &rect); // rectangle qui sert de cadre à la mini map
-
-		for(int i = 0; i < 64; i++){
-
-			if(map.salles_decouvertes[i] == TRUE && i == salle->id){
-				//salle dans laquelle se situe le joueur
-				SDL_SetRenderDrawColor(rendu,255,0,0,255);//rouge
-				SDL_RenderFillRect(rendu, &map.map[i]);
-			}
-			else if(map.salles_decouvertes[i] == TRUE){
-				SDL_SetRenderDrawColor(rendu,255,255,255,255);//blanc
-				SDL_RenderFillRect(rendu, &map.map[i]);
-			}
-			else{
-				SDL_SetRenderDrawColor(rendu,0,0,0,255);
-				SDL_RenderFillRect(rendu, &map.map[i]);
-			}
-		}
+		affiche_mini_map(map, *salle, rendu);
 	}
 
 	afficher_loot(loot, rendu);
