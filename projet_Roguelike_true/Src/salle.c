@@ -354,18 +354,30 @@ void ajoute_ennemi(ennemi_t **ennemi, int type, SDL_Renderer * rendu){
 
   *ennemi = creer_ennemi(50, 50, 10, 10, type, rendu);
 
-  //permet de placer l'ennemi sans qu'il soit bloqué dans une texture de porte ou de mur
-  do{
-
-    (*ennemi)->sprites.rectangle.x = rand()%TAILLE_SALLE;
-    (*ennemi)->sprites.rectangle.y = rand()%TAILLE_SALLE;
-  }while((*ennemi)->sprites.rectangle.x == 0 || (*ennemi)->sprites.rectangle.x == TAILLE_SALLE - 1
-   || (*ennemi)->sprites.rectangle.y == 0 || (*ennemi)->sprites.rectangle.y ==  TAILLE_SALLE - 1);
-
   (*ennemi)->last = SDL_GetTicks();
+}
 
-  (*ennemi)->sprites.rectangle.x = ((*ennemi)->sprites.rectangle.x * TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_X;
-  (*ennemi)->sprites.rectangle.y = ((*ennemi)->sprites.rectangle.y * TAILLE_IMAGE) + EMPLACEMENT_DEPART_DESSIN_SALLE_Y;
+
+/**
+*\fn void placer_monstre(ennemi_t *ennemi)
+
+*\param *ennemi, l'ennemi à modifier
+
+*\brief place l'ennemi de façon à ne pas bloquer les portes
+*/
+void placer_monstre(ennemi_t *ennemi){
+
+
+  int x = 0, y = 0, milieu = TAILLE_SALLE /2, milieu1 = TAILLE_SALLE / 2 -1;
+
+  do{
+    x = rand()%TAILLE_SALLE;
+    y = rand()%TAILLE_SALLE; 
+
+  }while(x == 0 || y == 0 || y == TAILLE_SALLE - 1 || x == TAILLE_SALLE -1 || y == milieu1 || y == milieu || x == milieu || x == milieu1);
+
+  ennemi->sprites.rectangle.y = y * TAILLE_IMAGE + EMPLACEMENT_DEPART_DESSIN_SALLE_Y;
+  ennemi->sprites.rectangle.x = x * TAILLE_IMAGE + EMPLACEMENT_DEPART_DESSIN_SALLE_X;
 }
 
 
@@ -378,22 +390,27 @@ void ajoute_ennemi(ennemi_t **ennemi, int type, SDL_Renderer * rendu){
 *\param **ennemi2, pointeur sur pointeur de type ennemi_t, l'ennemi que l'on va peut-être créer
 *\param type, le type d'ennemi que l'en veut créer.
 *\param *rendu, le renderer sur lequel on dessine
-*\param boss, permet de savoir si c'est un boss ou un ennemi classique que l'on doit créer
 *\param nb_ennemi, peremet de savoir combien d'ennemis sont à créer
 
 *\brief créer un/des ennemi à partir d'un type donné
 */
-void creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int boss, int nb_ennemi, int type, SDL_Renderer * rendu){
+void creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int nb_ennemi, int type, SDL_Renderer * rendu){
 
   if(nb_ennemi > 0){
 
     ajoute_ennemi(ennemi, type, rendu);
+    placer_monstre(*ennemi);
     *ennemi2 = NULL;
   }
   
   if (nb_ennemi == 2){
     
     ajoute_ennemi(ennemi2, type, rendu);
+
+    do{
+      placer_monstre(*ennemi2);
+
+    }while(SDL_HasIntersection(&(*ennemi)->sprites.rectangle, &(*ennemi2)->sprites.rectangle));
     (*ennemi2)->anim_courante = idle_gauche_ennemi;
     (*ennemi2)->sprite_courant.y = (*ennemi2)->sprite_courant.h; 
   }

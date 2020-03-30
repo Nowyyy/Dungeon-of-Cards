@@ -239,8 +239,8 @@ hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action){
 	/*Reinitialise les coordonnées du perso et des ennemis*/
   pers->sprites[idle_droite].rectangle.w = w;
   pers->sprites[idle_droite].rectangle.h = h;
-  pers->sprites[idle_droite].rectangle.x = x;
-  pers->sprites[idle_droite].rectangle.y = y;
+  pers->sprites[idle_droite].rectangle.x = pers->x;
+  pers->sprites[idle_droite].rectangle.y = pers->y;
   ennemi->sprites.rectangle.w = we;
   ennemi->sprites.rectangle.h = he;
   ennemi->sprites.rectangle.x = xe;
@@ -691,4 +691,8 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Ch
 		free(rectangle_selection);
 		rectangle_selection=NULL;
 	}
+
+	perso->sprites[courant] = perso->sprites[idle_gauche];
+	perso->sprites[courant].rectangle.x = perso->x;
+	perso->sprites[courant].rectangle.y = perso->y;
 }

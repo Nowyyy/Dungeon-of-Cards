@@ -491,9 +491,8 @@ int nb_salles_par_etage(int etage){
 
 /**
 
-*\fn
+*\fn void vers_ecran_combat(SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], touches_t *clavier, perso_t *pers, ennemi_t *ennemi,  Mix_Music *musics[NB_MUSIC])
 
-*\param *etat_combat
 *\param *rendu, le renderer sur lequel on dessine 
 *\param *sounds[NB_SON], tableau contenant les sons
 *\param *musics[NB_MUSIC], tableau contenant les musiques
@@ -503,15 +502,14 @@ int nb_salles_par_etage(int etage){
 
 *\brief permet d'effectuer l'animation d'entrée en combat, l'arrêt des sons, la réinitialisation du tableau des touches et envoie le joueur vers le combat au tour par tour
 */
-void vers_ecran_combat(int *etat_combat, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], touches_t *clavier, perso_t *pers, ennemi_t *ennemi,  Mix_Music *musics[NB_MUSIC]){
-	*etat_combat = 1;
+void vers_ecran_combat(SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], touches_t *clavier, perso_t *pers, ennemi_t *ennemi,  Mix_Music *musics[NB_MUSIC]){
+
 	Mix_HaltMusic();
 	anim_combat(rendu, sounds);
 	init_tab_clavier(clavier->tab);
 	combat_t_p_t(pers, ennemi, rendu, sounds, musics);
 	init_tab_clavier(clavier->tab);
 	choix_musique(musics, pers);
-	*etat_combat = 0;
 }
 
 
@@ -575,7 +573,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 			salles[i].ennemi = creer_ennemi(0, 10, 10, 10, boss, rendu);
 		}
 		else{
-			creer_ennemi_pointeur(&salles[i].ennemi, &salles[i].ennemi2, salles[i].boss, salles[i].nb_ennemi, mob_commun, rendu);
+			creer_ennemi_pointeur(&salles[i].ennemi, &salles[i].ennemi2, salles[i].nb_ennemi, mob_commun, rendu);
 			creer_coffre(&salles[i].coffre_salle, rendu, &salles[i]);
 		}
 	}
@@ -621,11 +619,11 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 			//collision avec un ennemi déclenchement animation combat et combat
 			if(combat_declenche(salles[salle_courante], *pers) == 1 && salles[salle_courante].ennemi->pv > 0 && *etat == labyrinthe){
 
-				vers_ecran_combat(&etat_combat, rendu, sounds, &clavier, pers, salles[salle_courante].ennemi, musics);
+				vers_ecran_combat(rendu, sounds, &clavier, pers, salles[salle_courante].ennemi, musics);
 			}
 			else if(combat_declenche(salles[salle_courante], *pers) == 2 && salles[salle_courante].ennemi2->pv > 0 && *etat == labyrinthe){
 
-				vers_ecran_combat(&etat_combat, rendu, sounds, &clavier, pers, salles[salle_courante].ennemi2, musics);
+				vers_ecran_combat(rendu, sounds, &clavier, pers, salles[salle_courante].ennemi2, musics);
 			}
 
 			if(pers->fuite){//le joueur à fuit le combat, on le renvoie dans la première salle du niveau
@@ -654,16 +652,12 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 				}
 			}
 
-			loot_affichage_fini(loot);
+			loot_affichage_fini(loot);//on fait disparaître la pop up de loot, si elle existe et que son timer est fini
 		}
 	}
 	Mix_HaltMusic();
 
-	printf("pas crash fin while\n");
-
 	while (SDL_PollEvent (&event));
-
-	printf("pas crash  poll event ok\n");
 
 //////////////////////// On libère tous les emplacements mémoires utilisés par les images ////
 	for(int i = 0; i < NB_SPRITES_PERSONNAGE; i++)
@@ -674,12 +668,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	detruire_loot(&loot);
 
-	printf("pas crash free textures ok\n");
-
 	destruction_tous_ennemis(salles, taille);
 
-	printf("pas crash detruire ennemi\n");
 	destruction_des_coffres(salles, taille);
-
-	printf("pas crash dectruction coffres ok\n\n");
 }
