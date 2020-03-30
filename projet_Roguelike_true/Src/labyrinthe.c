@@ -489,6 +489,32 @@ int nb_salles_par_etage(int etage){
 }
 
 
+/**
+
+*\fn
+
+*\param *etat_combat
+*\param *rendu, le renderer sur lequel on dessine 
+*\param *sounds[NB_SON], tableau contenant les sons
+*\param *musics[NB_MUSIC], tableau contenant les musiques
+*\param *pers, la structure du personnage
+*\param *clavier, structure représentant les touchs du clavier enfoncées par le joueur
+*\param *ennemi, l'ennemi contre lequel le joueur va combattre
+
+*\brief permet d'effectuer l'animation d'entrée en combat, l'arrêt des sons, la réinitialisation du tableau des touches et envoie le joueur vers le combat au tour par tour
+*/
+void vers_ecran_combat(int *etat_combat, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], touches_t *clavier, perso_t *pers, ennemi_t *ennemi,  Mix_Music *musics[NB_MUSIC]){
+	*etat_combat = 1;
+	Mix_HaltMusic();
+	anim_combat(rendu, sounds);
+	init_tab_clavier(clavier->tab);
+	combat_t_p_t(pers, ennemi, rendu, sounds, musics);
+	init_tab_clavier(clavier->tab);
+	choix_musique(musics, pers);
+	*etat_combat = 0;
+}
+
+
 
 /**
 *\fn void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *gameOverMusic, perso_t *pers, carte_t *cartes, TTF_Font *police)
@@ -498,8 +524,7 @@ int nb_salles_par_etage(int etage){
 *\param *rendu, le renderer sur lequel on dessine
 *\param *sounds[NB_SON], tableau contenant les sons
 *\param *musics[NB_MUSIC], tableau contenant les musiques
-*\param *pers, le renderer sur lequel on dessine
-*\param cartes
+*\param *pers, la structure du personnage
 
 *\brief Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...
 */
@@ -531,7 +556,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 /////////////////////////// Génération aléatoire ////////////////////////////////////////////
 
 	salle_courante = creation_labyrinthe(salles, taille, nb_salles_a_creer);
-	salle_pred = salle_courante;
+
 	salle_0 = salle_courante;
 
 	loot->existe = 0;
@@ -555,7 +580,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 		}
 	}
 
-	ajoute_salle_decouverte(&miniMap, salle_courante);
+	ajoute_salle_decouverte(&miniMap, salles, salle_courante, &salle_pred);
 
 	init_tab_clavier(clavier.tab);
 
@@ -586,7 +611,6 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 			if(pers->pv <= 0) {
 				SDL_RenderClear(rendu);
 				salle_courante = salle_0;
-				affichage_salle_personnage(*pers, &salles[salle_courante], rendu, images, miniMap,*loot);
 				Mix_HaltMusic();
 				mort(etat, pers, rendu, musics, sounds, images, police, cmpPartie_texture);
 			}
@@ -594,28 +618,14 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 			salle_courante = changement_de_salle(pers, salles[salle_courante], salle_courante, sounds);
 			SDL_Delay(5);
 
-			//collision avec un ennemi
+			//collision avec un ennemi déclenchement animation combat et combat
 			if(combat_declenche(salles[salle_courante], *pers) == 1 && salles[salle_courante].ennemi->pv > 0 && *etat == labyrinthe){
-				etat_combat = 1;
-				Mix_HaltMusic();
-				anim_combat(rendu, sounds);
-				init_tab_clavier(clavier.tab);
-				combat_t_p_t(pers, salles[salle_courante].ennemi, rendu, sounds, musics);
-				init_tab_clavier(clavier.tab);
-				choix_musique(musics, pers);
-				etat_combat = 0;
 
+				vers_ecran_combat(&etat_combat, rendu, sounds, &clavier, pers, salles[salle_courante].ennemi, musics);
 			}
 			else if(combat_declenche(salles[salle_courante], *pers) == 2 && salles[salle_courante].ennemi2->pv > 0 && *etat == labyrinthe){
-				etat_combat = 1;
-				Mix_HaltMusic();
-				anim_combat(rendu, sounds);
-				init_tab_clavier(clavier.tab);
-				combat_t_p_t(pers, salles[salle_courante].ennemi2, rendu, sounds, musics);
-				init_tab_clavier(clavier.tab);
-				choix_musique(musics, pers);
-				etat_combat = 0;
 
+				vers_ecran_combat(&etat_combat, rendu, sounds, &clavier, pers, salles[salle_courante].ennemi2, musics);
 			}
 
 			if(pers->fuite){//le joueur à fuit le combat, on le renvoie dans la première salle du niveau
@@ -624,10 +634,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 			}
 
 			if(salle_courante != salle_pred){
-				salles[salle_courante].decouverte = TRUE;
-				salles[salle_pred].prems = 1;
-				salle_pred = salle_courante;
-				ajoute_salle_decouverte(&miniMap, salle_courante);
+				ajoute_salle_decouverte(&miniMap, salles, salle_courante, &salle_pred);
 			}
 
 			//On fait apparaitre la trappe quand le boss meurt

@@ -9,3 +9,4 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 void cree_liaison(salle_t tab[], int salle1, int salle2, int porteS1);
 void initialise_salles(salle_t tab[], int taille);
 void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Renderer *rendu);
+void vers_ecran_combat(int *etat_combat, SDL_Renderer *rendu,Mix_Chunk *sounds[NB_SON], touches_t *clavier, perso_t *pers, ennemi_t *ennemi2,  Mix_Music *musics[NB_MUSIC]);

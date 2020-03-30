@@ -325,12 +325,17 @@ void creation_mini_map(int taille, mini_map_t *map){
 *\fn void ajoute_salle_decouverte(mini_map_t *map, int indice)
 
 *\param *map, un pointeur sur la minimap que l'on modifie
+*\param salles[], le tableau des salles du labyrinthe
 *\param indice, la salle actuelle dans le tableau de salles
+*\param *salle_pred, pointeur sur un entier stockant l'indice de la salle précédente
 
 *\bief Ajoute la salle où se situe le joueur dans le tableau de salles découvertes 
 */
-void ajoute_salle_decouverte(mini_map_t *map, int indice){
+void ajoute_salle_decouverte(mini_map_t *map, salle_t salles[], int indice, int *salle_pred){
 
+  salles[indice].decouverte = TRUE;
+  salles[indice].prems = 1;
+  *salle_pred = indice;
   map->salles_decouvertes[indice] = TRUE;
 }
 

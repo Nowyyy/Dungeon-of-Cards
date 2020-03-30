@@ -6,7 +6,7 @@ int inverse_porte(int porte);
 void textures_aleatoires(salle_t salles[], int taille);
 void place_monstre_coffre_boss(salle_t salles[], int taille, int type_ennemi, SDL_Renderer * rendu);
 void creation_mini_map(int taille, mini_map_t *map);
-void ajoute_salle_decouverte(mini_map_t *map, int indice);
+void ajoute_salle_decouverte(mini_map_t *map, salle_t salles[], int indice, int *salle_pred);
 void ajoute_ennemi(ennemi_t **ennemi, int type, SDL_Renderer *rendu);
 void creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int boss, int nb_ennemi, int type, SDL_Renderer *rendu);
 void affiche_mini_map(mini_map_t map, salle_t salle, SDL_Renderer *rendu);
