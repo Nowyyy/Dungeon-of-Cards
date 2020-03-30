@@ -9,5 +9,4 @@ void creation_mini_map(int taille, mini_map_t *map);
 void ajoute_salle_decouverte(mini_map_t *map, int indice);
 void ajoute_ennemi(ennemi_t **ennemi, int type, SDL_Renderer *rendu);
 void creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int boss, int nb_ennemi, int type, SDL_Renderer *rendu);
-void controle_placement(salle_t salles[], int taille);
 void affiche_mini_map(mini_map_t map, salle_t salle, SDL_Renderer *rendu);

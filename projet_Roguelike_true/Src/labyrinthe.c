@@ -507,7 +507,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 
 /////////////////////////// Déclarations variables ////////////////////////////////////////////
-	image_t images[NB_TEXTURES];
+	image_t images[NB_TEXTURES_LABY];
 
 	loot_carte_t *loot = malloc(sizeof(loot_carte_t));
 
@@ -545,15 +545,13 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	place_monstre_coffre_boss(salles, taille*taille, blob, rendu);
 
-	//controle_placement(salles, taille*taille);
-
 	for(int i = 0; i < taille * taille; i++){
 		if(salles[i].boss){
 			salles[i].ennemi = creer_ennemi(0, 10, 10, 10, boss, rendu);
 		}
 		else{
 			creer_ennemi_pointeur(&salles[i].ennemi, &salles[i].ennemi2, salles[i].boss, salles[i].nb_ennemi, mob_commun, rendu);
-			creer_coffre(&salles[i].coffre_salle, rendu, salles[i].coffre);
+			creer_coffre(&salles[i].coffre_salle, rendu, &salles[i]);
 		}
 	}
 
@@ -602,7 +600,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 				Mix_HaltMusic();
 				anim_combat(rendu, sounds);
 				init_tab_clavier(clavier.tab);
-				combat_t_p_t(pers, salles[salle_courante].ennemi, rendu, images, sounds, musics);
+				combat_t_p_t(pers, salles[salle_courante].ennemi, rendu, sounds, musics);
 				init_tab_clavier(clavier.tab);
 				choix_musique(musics, pers);
 				etat_combat = 0;
@@ -613,7 +611,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 				Mix_HaltMusic();
 				anim_combat(rendu, sounds);
 				init_tab_clavier(clavier.tab);
-				combat_t_p_t(pers, salles[salle_courante].ennemi2, rendu, images, sounds, musics);
+				combat_t_p_t(pers, salles[salle_courante].ennemi2, rendu, sounds, musics);
 				init_tab_clavier(clavier.tab);
 				choix_musique(musics, pers);
 				etat_combat = 0;
@@ -654,27 +652,27 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	}
 	Mix_HaltMusic();
 
-	printf("pas crash changement etage\n");
+	printf("pas crash fin while\n");
 
 	while (SDL_PollEvent (&event));
 
-	printf("pas crash changement etage poll event ok\n");
+	printf("pas crash  poll event ok\n");
 
 //////////////////////// On libère tous les emplacements mémoires utilisés par les images ////
 	for(int i = 0; i < NB_SPRITES_PERSONNAGE; i++)
 		libere_texture(&pers->sprites[i].img);
 
-	for(int i = sol; i < fond; i++)
+	for(int i = sol; i < NB_TEXTURES_LABY; i++)
 		libere_texture(&images[i].img);
 
 	detruire_loot(&loot);
 
-	printf("pas crash changement etage free textures ok\n");
+	printf("pas crash free textures ok\n");
 
 	destruction_tous_ennemis(salles, taille);
 
-	printf("pas crash dtruire ennemi\n");
+	printf("pas crash detruire ennemi\n");
 	destruction_des_coffres(salles, taille);
 
-	printf("pas crash changement etage dextructions ennemis et coffres ok\n\n");
+	printf("pas crash dectruction coffres ok\n\n");
 }

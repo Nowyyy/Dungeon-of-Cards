@@ -1,5 +1,5 @@
-void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi, image_t def, image_t fuir, SDL_Rect *rect_sel,image_t images[NB_TEXTURES], hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action);
-int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, image_t images[NB_TEXTURES], SDL_Rect **rect_sel, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC]);
+void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi, image_t def, image_t fuir, SDL_Rect *rect_sel,image_t images[NB_TEXTURES_LABY], hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action);
+int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, image_t images[NB_TEXTURES_LABY], SDL_Rect **rect_sel, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC]);
 void charge_textures_combat(image_t images[], SDL_Renderer *rendu, carte_t *cartes[]);
 void donne_valeur_rect_images(image_t images[]);
 void free_image(image_t images[]);
@@ -11,4 +11,4 @@ void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hu
 void detruire_action_temp(hud_combat_t *action);
 void range_carte_deck(carte_t *cartes[]);
 void consommable_epuise(carte_t *cartes[], int indice,  image_t images[], SDL_Renderer *rendu);
-void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_t images[NB_TEXTURES], Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC]);
+void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC]);

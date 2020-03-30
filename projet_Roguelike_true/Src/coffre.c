@@ -54,13 +54,13 @@ void animation_coffre(perso_t *pers, salle_t *salle, Mix_Chunk *sounds[NB_SON]){
 
 *\param *coffre, le coffre pour lequel on assigne une image et une animation
 *\param *rendu, le renderer sur lequel on dessine
-*\param coffre_existe, variable de contrôle permettant de savoir s'il l'on doit créer un coffre
+*\param *salle, la salle courante, permet de vérifier les valeurs
 
 *\brief Créer un coffre dans les salles dédiées
 */
-void creer_coffre(coffre_t *coffre, SDL_Renderer *rendu, int coffre_existe){
+void creer_coffre(coffre_t *coffre, SDL_Renderer *rendu, salle_t *salle){
 
-	if(coffre_existe){
+	if(salle->coffre && !salle->boss && !salle->depart && !salle->ennemi_present){
 
 		charge_image(COFFRE_PATH, &coffre->sprite, rendu);
 
@@ -83,6 +83,9 @@ void creer_coffre(coffre_t *coffre, SDL_Renderer *rendu, int coffre_existe){
 		coffre->sprite.rectangle.x = WIN_WIDTH / 2 - coffre->sprite.rectangle.w / 2;
 		coffre->sprite.rectangle.y = WIN_HEIGHT / 2 - coffre->sprite.rectangle.h / 2;
 	}
+	else{
+		coffre->sprite.img = NULL;
+	}
 }
 
 
@@ -101,7 +104,7 @@ void destruction_des_coffres(salle_t salles[], int taille){
 
 	for(i = 0; i < taille * taille; i++){
 
-		if(salles[i].coffre)
+		if(salles[i].coffre && !salles[i].boss && !salles[i].depart && !salles[i].ennemi_present)
 			libere_texture(&salles[i].coffre_salle.sprite.img);
 	}
 }
@@ -201,8 +204,11 @@ void detruire_loot(loot_carte_t **loot){
 
 	if((*loot)->existe){
 		detruire_carte(&(*loot)->carte);
+		(*loot)->carte = NULL;
 		libere_texture(&(*loot)->texte.img);
+		(*loot)->texte.img = NULL;
 		libere_texture(&(*loot)->image.img);
+		(*loot)->image.img = NULL;
 	}
 	free(*loot);
 
@@ -223,7 +229,10 @@ void loot_affichage_fini(loot_carte_t *loot){
 		if(loot->delai + loot->debut <= SDL_GetTicks()){
 			detruire_carte(&loot->carte);
 			libere_texture(&loot->texte.img);	
-			libere_texture(&loot->image.img);	
+			libere_texture(&loot->image.img);
+			loot->image.img = NULL;	
+			loot->texte.img = NULL;	
+			loot->carte = NULL;	
 
 			loot->existe = 0;
 		}

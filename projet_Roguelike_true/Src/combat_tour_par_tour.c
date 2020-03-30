@@ -31,7 +31,7 @@
 *\brief Permet de déplacer le rectangle de selection
 
 */
-int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, image_t images[NB_TEXTURES], SDL_Rect **rect_sel, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC]){
+int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, image_t images[NB_TEXTURES_LABY], SDL_Rect **rect_sel, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC]){
 
 	SDL_Event event;
  	int choix= NB_CARTES_COMBAT +1;
@@ -161,10 +161,10 @@ int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, ima
 *\brief Permet d'afficher toutes la partie combat
 
 */
-void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi, image_t def, image_t fuir, SDL_Rect *rect_sel,image_t images[NB_TEXTURES],
+void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi, image_t def, image_t fuir, SDL_Rect *rect_sel,image_t images[NB_TEXTURES_COMBAT],
 hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action){
 
-	int heart_x = images[heart].rectangle.x, heart_y = images[heart].rectangle.y, w5 = images[gui_bar].rectangle.w;
+	int w5 = images[gui_bar].rectangle.w;
 	images[gui_bar].rectangle.w = action.texte.rectangle.w *1.25;
   //écran noir puis nettoie l'écran
   SDL_SetRenderDrawColor(rendu,0,0,0,255);
@@ -174,19 +174,19 @@ hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action){
 
   SDL_RenderCopy(rendu, images[fond].img, NULL, &images[fond].rectangle);
 
-  images[heart].rectangle.x = WIN_WIDTH * 0.10;
-  images[heart].rectangle.y = WIN_HEIGHT * 0.02;
+  images[coeur].rectangle.x = WIN_WIDTH * 0.10;
+  images[coeur].rectangle.y = WIN_HEIGHT * 0.02;
 
   SDL_RenderCopy(rendu, pers_hud.pv.img, NULL, &pers_hud.pv.rectangle);
   SDL_RenderCopy(rendu, pers_hud.nom.img, NULL, &pers_hud.nom.rectangle);
-  SDL_RenderCopy(rendu, images[heart].img, NULL, &images[heart].rectangle);
+  SDL_RenderCopy(rendu, images[coeur].img, NULL, &images[coeur].rectangle);
 
-  images[heart].rectangle.x = WIN_WIDTH * 0.81;
-  images[heart].rectangle.y = WIN_HEIGHT * 0.02;
+  images[coeur].rectangle.x = WIN_WIDTH * 0.81;
+  images[coeur].rectangle.y = WIN_HEIGHT * 0.02;
 
   SDL_RenderCopy(rendu, ennemi_hud.pv.img, NULL, &ennemi_hud.pv.rectangle);
   SDL_RenderCopy(rendu, ennemi_hud.nom.img, NULL, &ennemi_hud.nom.rectangle);
-  SDL_RenderCopy(rendu, images[heart].img, NULL, &images[heart].rectangle);
+  SDL_RenderCopy(rendu, images[coeur].img, NULL, &images[coeur].rectangle);
 
   if(action.existe){
   	SDL_RenderCopy(rendu, images[gui_bar].img, NULL, &images[gui_bar].rectangle);
@@ -246,8 +246,6 @@ hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action){
   ennemi->sprites.rectangle.x = xe;
   ennemi->sprites.rectangle.y = ye;
 
-  images[heart].rectangle.x = heart_x;
-  images[heart].rectangle.y =  heart_y;
   images[gui_bar].rectangle.w = w5;
 }
 
@@ -271,6 +269,7 @@ void charge_textures_combat(image_t images[], SDL_Renderer *rendu, carte_t *cart
 	charge_image(cartes[1]->path,&images[carte2], rendu);
 	charge_image(cartes[2]->path,&images[carte3], rendu);
 	charge_image(cartes[3]->path,&images[carte4], rendu);
+	charge_image(HEART_PATH,&images[coeur], rendu);
 }
 
 
@@ -290,9 +289,9 @@ void donne_valeur_rect_images(image_t images[]){
 
  	images[fond].rectangle.x=0;
 	images[fond].rectangle.y= 450;
-  images[fond].rectangle.w *= 1;
-  images[fond].rectangle.w *= 1;
-  images[fond].rectangle.w *= 4;
+  	images[fond].rectangle.w *= 1;
+  	images[fond].rectangle.w *= 1;
+  	images[fond].rectangle.w *= 4;
 
   	images[gui_bar].rectangle.x = WIN_WIDTH / 2 - images[gui_bar].rectangle.w / 2;
   	images[gui_bar].rectangle.y = WIN_HEIGHT * 0.15;
@@ -320,7 +319,7 @@ void donne_valeur_rect_images(image_t images[]){
 */
 void free_image(image_t images[]){
 
-	for(int i = fond; i<= carte4; i++)
+	for(int i = 0; i< NB_TEXTURES_COMBAT; i++)
 		libere_texture(&images[i].img);
 }
 
@@ -565,11 +564,13 @@ void consommable_epuise(carte_t *cartes[], int indice, image_t images[], SDL_Ren
 
 *\brief Fonction qui permet de gérer les choix de l'utilisateur via la SDL sur le combat
 */
-void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_t images[NB_TEXTURES], Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC])
+void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC])
 {
 ////////////////Déclaration variables
 
 	carte_t *cartes[NB_CARTES_COMBAT];
+
+	image_t images[NB_TEXTURES_COMBAT];
 
 	SDL_Event event;
 
@@ -593,11 +594,11 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
   	for(int j = 0; j < NB_CARTES_COMBAT; j++)
 		tire_carte_deck(cartes, j);
 
+	charge_textures_combat(images, rendu, cartes);
+
 	init_hud_action(&action);
 
 	create_hud(&hud_pers, &hud_ennemi, *ennemi, *perso, rendu, police);
-
-	charge_textures_combat(images, rendu, cartes);
 
 	donne_valeur_rect_images(images);
 
@@ -619,6 +620,7 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, image_
 
   		//affichage de l'écran et déplacement de rectangle de sélection
   		affichage_combat_personnage(rendu, perso, ennemi, def, fui, rectangle_selection, images, hud_ennemi, hud_pers, action);
+
   		choix = deplacement_rectangle_selection_combat(def.rectangle, fui.rectangle, images, &rectangle_selection, sounds, musics);
 
 
