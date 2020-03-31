@@ -340,6 +340,9 @@ void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t *carte){
 			carte->consommable -= 1;
 		}
 		ennemi->pv -= carte->valeur;
+		if(ennemi->pv < 0){
+			ennemi->pv = 0;
+		}
 	}
 	else{
 
