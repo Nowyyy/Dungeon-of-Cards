@@ -10,3 +10,4 @@ void cree_liaison(salle_t tab[], int salle1, int salle2, int porteS1);
 void initialise_salles(salle_t tab[], int taille);
 void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Renderer *rendu);
 void vers_ecran_combat(SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], touches_t *clavier, perso_t *pers, ennemi_t *ennemi,  Mix_Music *musics[NB_MUSIC]);
+void check_ennemi(int* ennemi_max,int compte_ennemi,salle_t salles[],int salle_courante,perso_t *pers);
