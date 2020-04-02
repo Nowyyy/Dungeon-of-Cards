@@ -450,21 +450,23 @@ int combat_declenche(salle_t salle, perso_t pers){
 
 *\brief Crée des images à partir de texte issu des données du personnage, range ces images dans les structures correspondantes
 */
-void creer_texture_depuis_char(image_t *texte_pv, image_t *texte_etage, perso_t perso, SDL_Renderer *rendu){
+void creer_texture_depuis_char(image_t *texte_pv, image_t *texte_etage, perso_t perso, SDL_Renderer *rendu,image_t *texte_counter,int *compte_ennemi,int *ennemi_max){
 
-	char pv[15], etage[15];
+	char pv[15], etage[15],counter[15];
 
 	TTF_Font *police = NULL;
 
 	int x_pv = WIN_WIDTH *0.08, x_etage = WIN_WIDTH *0.08, y_pv = WIN_HEIGHT * 0.10, y_etage = WIN_HEIGHT * 0.02;
-
+  int x_counter=WIN_WIDTH *0.08,y_counter=WIN_HEIGHT * 0.19;
 	police = TTF_OpenFont(FONT_PATH, 30);
 
 	sprintf(pv, "%d / %d", perso.pv, perso.pv_max);
 	sprintf(etage, "Etage %d", perso.etage);
+	sprintf(counter,"%d / %d",*(compte_ennemi),*(ennemi_max));
 
 	get_text_and_rect(rendu, x_etage, y_etage, etage, police, &texte_etage->img, &texte_etage->rectangle);
 	get_text_and_rect(rendu, x_pv, y_pv, pv, police, &texte_pv->img, &texte_pv->rectangle);
+	get_text_and_rect(rendu, x_counter, y_counter, counter, police, &texte_counter->img, &texte_counter->rectangle);
 
 	TTF_CloseFont(police); //on libère la police
 }

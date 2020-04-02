@@ -40,6 +40,7 @@
 #define DEATHLIGHT_PATH "../Images/deathlight.png"
 #define HEART_PATH "../Images/heart.png"
 #define TRAPDOOR_PATH "../Images/trapdoor2.png"
+#define MOBCOUNTER_PATH "../Images/mob_counter.png"
 
 #define COFFRE_PATH "../Images/coffre_sprites.png"
 
@@ -84,7 +85,7 @@
 #define SAVE_CARTES_CATALOGUE_PATH "../Sauvegarde/cartes_catalogue"
 #define SAVE_CARTES_NEW_GAME_PATH "../Sauvegarde/cartes_nouvelle_partie.txt"
 
-#define NB_TEXTURES_LABY 15
+#define NB_TEXTURES_LABY 17
 #define NB_TEXTURES_COMBAT 8
 
 #define TRUE 1
@@ -159,7 +160,7 @@ typedef enum{idle_droite_ennemi, idle_gauche_ennemi, walk_droite, walk_gauche, e
 
 *\brief les types de textures sur lequel le perso peut tomber
 */
-typedef enum{sol =0, mur, porte, sol2, commandes, instructions, sol3, mur2, gameover, deathlight, heart, trapdoor, trapdoor2, pv, etage}t_types_textures;
+typedef enum{sol =0, mur, porte, sol2, commandes, instructions, sol3, mur2, gameover, deathlight, heart, trapdoor, trapdoor2, pv, etage,mobcounter,countertxt}t_types_textures;
 
 /**
 *\enum t_textures_combat

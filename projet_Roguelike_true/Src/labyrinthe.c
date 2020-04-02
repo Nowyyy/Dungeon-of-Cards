@@ -33,7 +33,7 @@
 *\brief Permet de charger toutes les images et de les ranger dans les structures correspondantes
 
 */
-void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu){
+void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu,int *compte_ennemi,int *ennemi_max){
 
 	if(pers->etage == 1){
 		charge_image(SOL1_PATH,&images[sol], rendu);
@@ -58,8 +58,9 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 	charge_image(HEART_PATH, &images[heart], rendu);
 	charge_image(TRAPDOOR_PATH, &images[trapdoor], rendu);
 	charge_image(TRAPDOOR_PATH, &images[trapdoor2], rendu);
+	charge_image(MOBCOUNTER_PATH,&images[mobcounter], rendu);
 
-	creer_texture_depuis_char(&images[pv], &images[etage], *pers, rendu);
+	creer_texture_depuis_char(&images[pv], &images[etage], *pers, rendu,&images[countertxt],compte_ennemi,ennemi_max);
 
 	charge_sprites_personnage(pers->sprites, rendu);
 
@@ -78,6 +79,8 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 	images[trapdoor].rectangle.y = WIN_HEIGHT * 0.02;
 	images[trapdoor2].rectangle.x = 610;
 	images[trapdoor2].rectangle.y = 110;
+	images[mobcounter].rectangle.x = 25;
+	images[mobcounter].rectangle.y = WIN_HEIGHT * 0.17;
 
 	//on place le personnage dans la premiere salle, au centre
 	pers->sprites[courant].rectangle.x = pers->x;
@@ -124,7 +127,8 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 	SDL_RenderCopy(rendu, images[etage].img, NULL, &images[etage].rectangle);
 	SDL_RenderCopy(rendu, images[heart].img, NULL, &images[heart].rectangle);
 	SDL_RenderCopy(rendu, images[trapdoor].img, NULL, &images[trapdoor].rectangle);
-
+	SDL_RenderCopy(rendu, images[mobcounter].img, NULL, &images[mobcounter].rectangle);
+  SDL_RenderCopy(rendu, images[countertxt].img, NULL, &images[countertxt].rectangle);
 ///////////SPRITES MONSTRES
 	if(salle->ennemi_present || salle->boss){
 		if(salle->ennemi->pv <= 0 && salle->boss){
@@ -447,11 +451,12 @@ int creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer){
 
 *\brief Permet de mettre à jour le HUD selon que les PDV ou l'étage soit différents
 */
-void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Renderer *rendu){
+void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Renderer *rendu,image_t *counter,int *compte_ennemi,int *ennemi_max,int *compt_ennold){
 
-	if(pers->pv != pers->pv_old || pers->etage != pers->etage_old){
+	if(pers->pv != pers->pv_old || pers->etage != pers->etage_old || *(compt_ennold)!=*(compte_ennemi)){
 		pers->pv_old = pers->pv;
 		pers->etage_old = pers->etage;
+		*(compt_ennold)=*(compte_ennemi);
 		if(pv->img != NULL){
 			SDL_DestroyTexture(pv->img);
 			pv->img=NULL;
@@ -461,8 +466,11 @@ void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Rendere
 			SDL_DestroyTexture(etage->img);
 			etage->img=NULL;
 		}
-
-		creer_texture_depuis_char(pv, etage, *pers, rendu);
+		if(counter->img != NULL){
+			SDL_DestroyTexture(counter->img);
+			counter->img=NULL;
+		}
+		creer_texture_depuis_char(pv, etage, *pers, rendu,counter,compte_ennemi,ennemi_max);
 	}
 }
 
@@ -493,7 +501,7 @@ int nb_salles_par_etage(int etage){
 
 *\fn void vers_ecran_combat(SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], touches_t *clavier, perso_t *pers, ennemi_t *ennemi,  Mix_Music *musics[NB_MUSIC])
 
-*\param *rendu, le renderer sur lequel on dessine 
+*\param *rendu, le renderer sur lequel on dessine
 *\param *sounds[NB_SON], tableau contenant les sons
 *\param *musics[NB_MUSIC], tableau contenant les musiques
 *\param *pers, la structure du personnage
@@ -513,19 +521,20 @@ void vers_ecran_combat(SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], touches_t
 }
 
 /*Fonction check*/
-void check_ennemi(int* ennemi_max,int compte_ennemi,salle_t salles[],int salle_courante,perso_t *pers){
-	if(compte_ennemi<*(ennemi_max)){
+void check_ennemi(int* ennemi_max,int* compte_ennemi,salle_t salles[],int salle_courante,perso_t *pers){
+	if(*(compte_ennemi)<*(ennemi_max)){
 		if(salles[salle_courante].ennemi_present){
 			if(salles[salle_courante].nb_ennemi >0 && (salles[salle_courante].ennemi->pv)<=0){
-				compte_ennemi++;
+				*(compte_ennemi)+=1;
 			}
 			if(salles[salle_courante].nb_ennemi ==2 && (salles[salle_courante].ennemi->pv)<=0){
-				compte_ennemi++;
+				*(compte_ennemi)+=1;
 			}
 		}
 	}
-	if(compte_ennemi==*(ennemi_max)){
+	if(*(compte_ennemi)==*(ennemi_max)){
 		pers->pv_max+=10;
+		pers->pv+=10;
 	}
 }
 
@@ -552,11 +561,14 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	SDL_Event event;
 
-	int taille = TAILLE_LABY, nb_salles_a_creer = nb_salles_par_etage(pers->etage), salle_courante, salle_pred, salle_0,compte_ennemi=0;
+	int taille = TAILLE_LABY, nb_salles_a_creer = nb_salles_par_etage(pers->etage), salle_courante, salle_pred, salle_0;
 	int mob_commun = rand()%minotaure, boss = rand()%minotaure + 4, boss_tuer = 0, trappe=0, etat_combat = 0;
+	int* compte_ennemi=malloc(sizeof(int));
+	*(compte_ennemi)=0;
 	int * ennemi_max=malloc(sizeof(int));
-	*ennemi_max=0;
-	
+	*(ennemi_max)=0;
+	int * compt_ennold=malloc(sizeof(int));
+	*(compt_ennold)=0;
 	mini_map_t miniMap;
 
 	creation_mini_map(taille, &miniMap);
@@ -580,7 +592,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	init_animations(&anim);
 
-	charge_toutes_textures(images, pers, rendu);
+	charge_toutes_textures(images, pers, rendu,compte_ennemi,ennemi_max);
 
 	textures_aleatoires(salles, taille*taille);
 
@@ -615,7 +627,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 			loot_de_carte(loot, rendu, &salles[salle_courante].coffre_salle, pers->etage);
 		}
 
-		modifie_texture_hud(pers, &images[pv], &images[etage], rendu);
+		modifie_texture_hud(pers, &images[pv], &images[etage], rendu,&images[countertxt],compte_ennemi,ennemi_max,compt_ennold);
 
 		affichage_salle_personnage(*pers, &salles[salle_courante], rendu, images, miniMap, *loot);
 
@@ -669,8 +681,8 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 					pers->etage+=1;
 					pers->x = WIN_WIDTH / 2 - pers->sprites[courant].rectangle.w / 2;
 					pers->y = WIN_HEIGHT / 2 - pers->sprites[courant].rectangle.h / 2;
-					*(ennemi_max)=0;
-					compte_ennemi=0;
+					*(ennemi_max)=-1;
+					*(compte_ennemi)=0;
 				}
 			}
 
@@ -689,6 +701,8 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 		libere_texture(&images[i].img);
 
 	detruire_loot(&loot);
+	free(compte_ennemi);
+	free(ennemi_max);
 
 	destruction_tous_ennemis(salles, taille);
 

@@ -383,10 +383,10 @@ void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t *carte){
 			carte->consommable -= 1;
 		}
 
-		if(pers->pv + carte->valeur <= PV_DEPART_PERSONNAGE)
+		if(pers->pv + carte->valeur <= pers->pv_max)
 			pers->pv += carte->valeur;
 		else
-			pers->pv = PV_DEPART_PERSONNAGE;
+			pers->pv = pers->pv_max;
 	}
 }
 
@@ -656,7 +656,7 @@ void range_carte_tire_nouvelles(carte_t *cartes[NB_CARTES_COMBAT], int cartes_se
 
 *\brief permet d'effectuer toutes actions liées à la défausse de carte avec un affichage spécifique
 */
-void defausse(SDL_Renderer *rendu, perso_t *perso, ennemi_t *ennemi, SDL_Rect *rectangle_selection, image_t images[], hud_combat_t hud_ennemi, 
+void defausse(SDL_Renderer *rendu, perso_t *perso, ennemi_t *ennemi, SDL_Rect *rectangle_selection, image_t images[], hud_combat_t hud_ennemi,
 hud_combat_t hud_pers, hud_combat_t action, TTF_Font *police, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], carte_t *cartes[NB_CARTES_COMBAT]){
 
 
