@@ -512,6 +512,22 @@ void vers_ecran_combat(SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], touches_t
 	choix_musique(musics, pers);
 }
 
+/*Fonction check*/
+void check_ennemi(int* ennemi_max,int compte_ennemi,salle_t salles[],int salle_courante,perso_t *pers){
+	if(compte_ennemi<*(ennemi_max)){
+		if(salles[salle_courante].ennemi_present){
+			if(salles[salle_courante].nb_ennemi >0 && (salles[salle_courante].ennemi->pv)<=0){
+				compte_ennemi++;
+			}
+			if(salles[salle_courante].nb_ennemi ==2 && (salles[salle_courante].ennemi->pv)<=0){
+				compte_ennemi++;
+			}
+		}
+	}
+	if(compte_ennemi==*(ennemi_max)){
+		pers->pv_max+=10;
+	}
+}
 
 
 /**
@@ -536,9 +552,11 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	SDL_Event event;
 
-	int taille = TAILLE_LABY, nb_salles_a_creer = nb_salles_par_etage(pers->etage), salle_courante, salle_pred, salle_0;
+	int taille = TAILLE_LABY, nb_salles_a_creer = nb_salles_par_etage(pers->etage), salle_courante, salle_pred, salle_0,compte_ennemi=0;
 	int mob_commun = rand()%minotaure, boss = rand()%minotaure + 4, boss_tuer = 0, trappe=0, etat_combat = 0;
-
+	int * ennemi_max=malloc(sizeof(int));
+	*ennemi_max=0;
+	
 	mini_map_t miniMap;
 
 	creation_mini_map(taille, &miniMap);
@@ -566,7 +584,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	textures_aleatoires(salles, taille*taille);
 
-	place_monstre_coffre_boss(salles, taille*taille, blob, rendu);
+	place_monstre_coffre_boss(salles, taille*taille, blob, rendu,ennemi_max);
 
 	for(int i = 0; i < taille * taille; i++){
 		if(salles[i].boss){
@@ -620,10 +638,12 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 			if(combat_declenche(salles[salle_courante], *pers) == 1 && salles[salle_courante].ennemi->pv > 0 && *etat == labyrinthe){
 
 				vers_ecran_combat(rendu, sounds, &clavier, pers, salles[salle_courante].ennemi, musics);
+				check_ennemi(ennemi_max,compte_ennemi,salles,salle_courante,pers);
 			}
 			else if(combat_declenche(salles[salle_courante], *pers) == 2 && salles[salle_courante].ennemi2->pv > 0 && *etat == labyrinthe){
 
 				vers_ecran_combat(rendu, sounds, &clavier, pers, salles[salle_courante].ennemi2, musics);
+				check_ennemi(ennemi_max,compte_ennemi,salles,salle_courante,pers);
 			}
 
 			if(pers->fuite){//le joueur à fuit le combat, on le renvoie dans la première salle du niveau
@@ -649,6 +669,8 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 					pers->etage+=1;
 					pers->x = WIN_WIDTH / 2 - pers->sprites[courant].rectangle.w / 2;
 					pers->y = WIN_HEIGHT / 2 - pers->sprites[courant].rectangle.h / 2;
+					*(ennemi_max)=0;
+					compte_ennemi=0;
 				}
 			}
 
