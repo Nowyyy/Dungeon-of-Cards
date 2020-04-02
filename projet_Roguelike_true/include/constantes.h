@@ -112,6 +112,10 @@
 #define EMPLACEMENT_DEPART_DESSIN_SALLE_X 256
 #define EMPLACEMENT_DEPART_DESSIN_SALLE_Y 40
 
+#define EMPLACEMENT_DEFAUSSE_Y 475
+#define EMPLACEMENT_DEFAUSSE_X 875
+#define EMPLACEMENT_FUITE_Y 550
+
 #define VITESSE_PERSO 1
 
 #define RECT_SELECT_Y_DIFF 25
@@ -378,7 +382,7 @@ typedef struct hud_combat_s{
 
   image_t pv, nom, texte;
 
-  int existe;
+  int existe, defausse, cartes[NB_CARTES_COMBAT];
 }hud_combat_t;
 
 

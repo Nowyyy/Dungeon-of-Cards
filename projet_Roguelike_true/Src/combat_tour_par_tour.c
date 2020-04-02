@@ -117,7 +117,6 @@ int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, ima
 					Mix_PlayChannel(0, sounds[selection], 0);
 					return -1;
 				}
-				/*SOIN*/
 				else if((*rect_sel)->x == images[carte1].rectangle.x - RECT_SELECT_X_DIFF){
 					Mix_PlayChannel(0, sounds[selection], 0);
 					return 0;
@@ -130,7 +129,6 @@ int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, ima
 					Mix_PlayChannel(0, sounds[selection], 0);
 					return 2;
 				}
-				/*BOUE*/
 				else if((*rect_sel)->x == images[carte4].rectangle.x - RECT_SELECT_X_DIFF){
 					Mix_PlayChannel(0, sounds[selection], 0);
 					return 3;
@@ -164,8 +162,17 @@ int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, ima
 void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi, image_t def, image_t fuir, SDL_Rect *rect_sel,image_t images[NB_TEXTURES_COMBAT],
 hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action){
 
-	int w5 = images[gui_bar].rectangle.w;
-	images[gui_bar].rectangle.w = action.texte.rectangle.w *1.25;
+	int w5 = images[gui_bar].rectangle.w, h5 = images[gui_bar].rectangle.h;
+
+	images[gui_bar].rectangle = action.texte.rectangle;
+
+	images[gui_bar].rectangle.x -= 40;
+	images[gui_bar].rectangle.y -= 10;
+	images[gui_bar].rectangle.w += 80;
+	images[gui_bar].rectangle.h += 20;
+
+	SDL_Rect carte_selec;
+
   //écran noir puis nettoie l'écran
   SDL_SetRenderDrawColor(rendu,0,0,0,255);
   SDL_RenderClear(rendu);
@@ -191,6 +198,34 @@ hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action){
   if(action.existe){
   	SDL_RenderCopy(rendu, images[gui_bar].img, NULL, &images[gui_bar].rectangle);
  	SDL_RenderCopy(rendu, action.texte.img, NULL, &action.texte.rectangle);
+  }
+
+  if(action.defausse){
+  	//on est dans l'écran de défausse, on affiche les cartes sélectionnées par le joueur s'il y en a
+
+  	SDL_SetRenderDrawColor(rendu,240,220,130,255);//jaune
+
+  	if(action.cartes[0]){
+  		carte_selec = images[carte1].rectangle;
+  		SDL_RenderDrawRect(rendu, &carte_selec);
+  	}
+
+  	if(action.cartes[1]){
+  		carte_selec = images[carte2].rectangle;
+  		SDL_RenderDrawRect(rendu, &carte_selec);
+  	}
+
+  	if(action.cartes[2]){
+  		carte_selec = images[carte3].rectangle;
+  		SDL_RenderDrawRect(rendu, &carte_selec);
+  	}
+
+  	if(action.cartes[3]){
+  		carte_selec = images[carte4].rectangle;
+  		SDL_RenderDrawRect(rendu, &carte_selec);
+  	}
+
+  	SDL_SetRenderDrawColor(rendu,0,0,0,255);
   }
 
   /*Mise en place des cartes */
@@ -247,6 +282,7 @@ hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action){
   ennemi->sprites.rectangle.y = ye;
 
   images[gui_bar].rectangle.w = w5;
+  images[gui_bar].rectangle.h = h5;
 }
 
 
@@ -292,9 +328,6 @@ void donne_valeur_rect_images(image_t images[]){
   	images[fond].rectangle.w *= 1;
   	images[fond].rectangle.w *= 1;
   	images[fond].rectangle.w *= 4;
-
-  	images[gui_bar].rectangle.x = WIN_WIDTH / 2 - images[gui_bar].rectangle.w / 2;
-  	images[gui_bar].rectangle.y = WIN_HEIGHT * 0.15;
 
   	images[carte1].rectangle.x=50;
   	images[carte1].rectangle.y= 450;
@@ -439,6 +472,11 @@ void create_hud(hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, ennemi_t ennem
 void init_hud_action(hud_combat_t *action){
 
 	action->existe = 0;
+	action->defausse = 0;
+	action->cartes[0] = 0;
+	action->cartes[1] = 0;
+	action->cartes[2] = 0;
+	action->cartes[3] = 0;
 }
 
 
@@ -509,6 +547,11 @@ void detruire_action_temp(hud_combat_t *action){
 	if(action->existe){
 		action->existe = 0;
 		libere_texture(&action->texte.img);
+		action->defausse = 0;
+		action->cartes[0] = 0;
+		action->cartes[1] = 0;
+		action->cartes[2] = 0;
+		action->cartes[3] = 0;
 	}
 }
 
@@ -559,6 +602,118 @@ void consommable_epuise(carte_t *cartes[], int indice, image_t images[], SDL_Ren
 	}
 }
 
+
+
+/**
+*\fn void range_carte_tire_nouvelles(carte_t *cartes[NB_CARTES_COMBAT], int cartes_selectionnees[], image_t images[], SDL_Renderer *rendu)
+
+*\param *rendu, le renderer sur lequel on dessine
+*\param images[], contient toutes les images nécessaires à l'affichage de l'écran de combat
+*\param *cartes[], la tableau des cartes du joueur
+*\param cartes_selectionnees[], tableau permettant de connaître les cartes que le joueur veut défausser
+
+*\brief effectue la défausse, les cartes que le joueur ne veut pas sont renvoyées dans le deck, de nouvelles sont tirées à la place
+*/
+void range_carte_tire_nouvelles(carte_t *cartes[NB_CARTES_COMBAT], int cartes_selectionnees[], image_t images[], SDL_Renderer *rendu){
+
+
+	choix_liste(DECK);
+
+	en_queue();
+
+	printf("In it\n");
+
+	for(int i = 0; i < NB_CARTES_COMBAT; i++){
+
+		if(cartes[i]->type != NO_CARTE && cartes_selectionnees[i]){
+
+			ajout_carte_deck(cartes[i]);
+			detruire_carte(&cartes[i]);
+
+			tire_carte_deck(cartes, i);
+			charge_image(cartes[i]->path,&images[carte1 + i], rendu);
+		}
+	}
+}
+
+
+
+/**
+*\fn void defausse(SDL_Renderer *rendu, perso_t *perso, ennemi_t *ennemi, SDL_Rect *rectangle_selection, image_t images[], hud_combat_t hud_ennemi, hud_combat_t hud_pers, hud_combat_t action, TTF_Font *police, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC])
+
+*\param *rendu, le renderer sur lequel on dessine
+*\param *perso, la structure contenant le personnage
+*\param *ennemi, la structure de l'ennemi que le joueur affronte actuellement
+*\param *rectangle_selection, le rectangle de sélection que le joueur contrôle pour sélectionner des actions
+*\param images[], contient toutes les images nécessaires à l'affichage de l'écran de combat
+*\param hud_ennemi, l'ATH de l'ennemi, comprenant l'affichage de son nom et de ses hp
+*\param hud_pers, l'ATH du joueur, comprenant l'affichage de son nom et de ses hp
+*\param action, l'ATH permettant d'afficher du texte indicatif au joueur -> fourre tout
+*\param *police, la police utilisée pour écrire du texte sur l'écran de jeu
+*\param *sounds[], tableau des sons brefs pour les interactions
+*\param *musics[], tableau des muisques d'ambience
+*\param cartes[], la tableau des cartes du joueur
+
+*\brief permet d'effectuer toutes actions liées à la défausse de carte avec un affichage spécifique
+*/
+void defausse(SDL_Renderer *rendu, perso_t *perso, ennemi_t *ennemi, SDL_Rect *rectangle_selection, image_t images[], hud_combat_t hud_ennemi, 
+hud_combat_t hud_pers, hud_combat_t action, TTF_Font *police, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], carte_t *cartes[NB_CARTES_COMBAT]){
+
+
+	image_t confirmer, annuler;
+
+	detruire_action_temp(&action);
+
+	int cartes_selectionnees[NB_CARTES_COMBAT] = {0, 0, 0, 0}, conf = 0, annul = 0, choix;
+
+	get_text_and_rect(rendu, EMPLACEMENT_DEFAUSSE_X, EMPLACEMENT_DEFAUSSE_Y, "Confirmer", police, &confirmer.img, &confirmer.rectangle);
+	get_text_and_rect(rendu, EMPLACEMENT_DEFAUSSE_X, EMPLACEMENT_FUITE_Y, "annuler", police, &annuler.img, &annuler.rectangle);
+
+	action.existe = 1;
+	action.defausse = 1;
+	get_text_and_rect(rendu, EMPLACEMENT_DEFAUSSE_X, EMPLACEMENT_FUITE_Y, "Selectionner les cartes a defausser", police, &action.texte.img, &action.texte.rectangle);
+
+	action.texte.rectangle.x = WIN_WIDTH / 2 - action.texte.rectangle.w /2 + 20;
+	action.texte.rectangle.y = WIN_HEIGHT * 0.15 + 20;
+
+	while(!conf && !annul){
+
+		affichage_combat_personnage(rendu, perso, ennemi, confirmer, annuler, rectangle_selection, images, hud_ennemi, hud_pers, action);
+
+  		choix = deplacement_rectangle_selection_combat(confirmer.rectangle, annuler.rectangle, images, &rectangle_selection, sounds, musics);
+
+  		if(choix == -1){
+  			annul = 1;
+  		}
+  		else if(choix == -2){
+  			conf = 1;
+  		}
+  		else if (choix < NB_CARTES_COMBAT){
+
+  			if(cartes_selectionnees[choix] == 0){
+  				action.cartes[choix] = 1;
+  				cartes_selectionnees[choix] = 1;
+  			}
+  			else{
+  				action.cartes[choix] = 0;
+  				cartes_selectionnees[choix] = 0;
+  			}
+
+  		}
+	}
+
+	if(conf && (cartes_selectionnees[0] == 1 || cartes_selectionnees[1] == 1 || cartes_selectionnees[3] == 1 || cartes_selectionnees[2] == 1)){
+		//le joueur a confirmer vouloir changer des cartes et au moins une est sélectionnée
+		printf("Entrez\n");
+		range_carte_tire_nouvelles(cartes, cartes_selectionnees, images, rendu);
+		printf("Sortie\n");
+	}
+
+	libere_texture(&annuler.img);
+	libere_texture(&confirmer.img);
+	detruire_action_temp(&action);
+}
+
 /**
 *\fn void combat(perso_t * perso, ennemi_t * ennemi, SDL_Renderer *rendu)
 *\param *perso Pointeur sur une structure qui permet de prendre les caractéristiques du personnage qui vont être modifié par l'action du personnage
@@ -605,8 +760,8 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Ch
 
 	donne_valeur_rect_images(images);
 
-	creer_texte_combat("Defausse", &def, 875, 475, rendu, police);
-	creer_texte_combat("Fuir", &fui, 875, 550, rendu, police);
+	creer_texte_combat("Defausse", &def, EMPLACEMENT_DEFAUSSE_X, EMPLACEMENT_DEFAUSSE_Y, rendu, police);
+	creer_texte_combat("Fuir", &fui, EMPLACEMENT_DEFAUSSE_X, EMPLACEMENT_FUITE_Y, rendu, police);
 
 	/*Mise en place du rectangle de selection*/
   	rectangle_selection->x = (def.rectangle).x - RECT_SELECT_X_DIFF;
@@ -633,6 +788,8 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Ch
   			fuite = 0;
   		}
   		else if(choix == -2){//défausse de carte(s)
+
+  			defausse(rendu, perso, ennemi, rectangle_selection, images, hud_ennemi, hud_pers, action, police, sounds, musics, cartes);
 
   		}
   		else if(choix < NB_CARTES_COMBAT && cartes[choix]->type != NO_CARTE){//le joueur a selectionné une carte
