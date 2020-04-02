@@ -378,6 +378,7 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *sou
 void initialise_personnage(perso_t *pers){
 
 	pers->pv = PV_DEPART_PERSONNAGE;
+	pers->pv_max = PV_DEPART_PERSONNAGE;
 	pers->pv_old = PV_DEPART_PERSONNAGE;
 
 	pers->x = WIN_WIDTH / 2;
@@ -459,7 +460,7 @@ void creer_texture_depuis_char(image_t *texte_pv, image_t *texte_etage, perso_t 
 
 	police = TTF_OpenFont(FONT_PATH, 30);
 
-	sprintf(pv, "%d / %d", perso.pv, PV_DEPART_PERSONNAGE);
+	sprintf(pv, "%d / %d", perso.pv, perso.pv_max);
 	sprintf(etage, "Etage %d", perso.etage);
 
 	get_text_and_rect(rendu, x_etage, y_etage, etage, police, &texte_etage->img, &texte_etage->rectangle);
