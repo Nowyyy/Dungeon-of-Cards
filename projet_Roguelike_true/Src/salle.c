@@ -236,7 +236,7 @@ void textures_aleatoires(salle_t salles[], int taille){
 
 *\brief rempli les salles de monstres, de coffre
 */
-void place_monstre_coffre_boss(salle_t tab[], int taille, int type_ennemi, SDL_Renderer * rendu){
+void place_monstre_coffre_boss(salle_t tab[], int taille, int type_ennemi, SDL_Renderer * rendu,int* ennemi_max){
 
   int alea;
 
@@ -264,11 +264,13 @@ void place_monstre_coffre_boss(salle_t tab[], int taille, int type_ennemi, SDL_R
 
         if(alea <= 4){
           tab[i].nb_ennemi = 1;
+          *(ennemi_max)+=1;
         }
         //il y aura deux ennemis
         else{
 
           tab[i].nb_ennemi = 2;
+          *(ennemi_max)+=2;
         }
         tab[i].coffre = 0;
       }
