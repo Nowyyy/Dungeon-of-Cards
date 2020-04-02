@@ -354,6 +354,7 @@ typedef struct perso_s {
   int etage_old;
   image_t sprites[NB_SPRITES_PERSONNAGE];
   int cmpMort;
+  int pv_max;
 
 } perso_t;
 
