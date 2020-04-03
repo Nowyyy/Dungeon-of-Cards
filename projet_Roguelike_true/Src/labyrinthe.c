@@ -569,7 +569,6 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	int * ennemi_max=malloc(sizeof(int));
 	*(ennemi_max)=0;
-
 	int * compt_ennold=malloc(sizeof(int));
 	*(compt_ennold)=0;
 	mini_map_t miniMap;
@@ -683,7 +682,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 					pers->etage+=1;
 					pers->x = WIN_WIDTH / 2 - pers->sprites[courant].rectangle.w / 2;
 					pers->y = WIN_HEIGHT / 2 - pers->sprites[courant].rectangle.h / 2;
-					*(ennemi_max)=-1;
+					*(ennemi_max)=0;
 					*(compte_ennemi)=0;
 				}
 			}
