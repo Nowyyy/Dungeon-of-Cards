@@ -163,11 +163,11 @@ int valeur_carte(char nom[TAILLE]){
     min = 20;
     max = 23;
   }
-  else if(!strncmp(nom, rares[2], 4)){
+  else if(!strncmp(nom, rares[1], 4)){
     min = 25;
     max = 35;
   }
-  else if(!strncmp(nom, rares[3], 4)){
+  else if(!strncmp(nom, rares[2], 4)){
     min = 25;
     max = 35;
   }
