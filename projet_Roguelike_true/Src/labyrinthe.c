@@ -591,12 +591,11 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 /////////////////////////// Textures et initialisations///////////////////////////////////////
 
 	init_animations(&anim);
-
+  place_monstre_coffre_boss(salles, taille*taille, blob, rendu,ennemi_max);
 	charge_toutes_textures(images, pers, rendu,compte_ennemi,ennemi_max);
 
 	textures_aleatoires(salles, taille*taille);
 
-	place_monstre_coffre_boss(salles, taille*taille, blob, rendu,ennemi_max);
 
 	for(int i = 0; i < taille * taille; i++){
 		if(salles[i].boss){
