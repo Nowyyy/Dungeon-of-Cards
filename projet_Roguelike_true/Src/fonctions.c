@@ -94,13 +94,13 @@ void ajout_carte_deck(carte_t *tampon){
     else if(hors_liste()){
       //carte non présente dans le deck
       en_queue();
-      tmp = creer_carte(tampon->nom, tampon->type,  tampon->valeur, tampon->consommable, tampon->path);
+      tmp = creer_carte(tampon->nom, tampon->type,  valeur_carte(tampon->nom), tampon->consommable, tampon->path);
       ajout_droit(tmp);
     }
   }
   else{
     //liste de cartes vide
-    tmp = creer_carte(tampon->nom, tampon->type,  tampon->valeur, tampon->consommable, tampon->path);
+    tmp = creer_carte(tampon->nom, tampon->type,  valeur_carte(tampon->nom), tampon->consommable, tampon->path);
     ajout_droit(tmp);
   }
 }
