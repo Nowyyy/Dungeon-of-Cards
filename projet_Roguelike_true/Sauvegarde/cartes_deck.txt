@@ -1,3 +1,5 @@
--1 50 -1 ../Images/Cartes/poing.png  Poing I
 -1 14 3 ../Images/Cartes/pierre.png  Pierre I
+-1 1 -1 ../Images/Cartes/epee_1.png epee II
 1 15 -1 ../Images/Cartes/soin.png   soin I
+-1 50 -1 ../Images/Cartes/poing.png  Poing I
+-1 2 -1 ../Images/Cartes/poing.png poing X
