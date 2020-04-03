@@ -41,24 +41,24 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 		if(clavier.tab[down] == 1){
 			if((*rect_sel)->y != quitter.y){//on n'est pas sur la dernière option, on peut descendre
 				if((*rect_sel)->y == jouer.y - RECT_SELECT_Y_DIFF){
-					(*rect_sel)->y = charger.y - RECT_SELECT_Y_DIFF;
+					(*rect_sel)->y = quitter.y - RECT_SELECT_Y_DIFF;
 					Mix_PlayChannel(0, sounds[move], 0);
 				}
 				else if((*rect_sel)->y == charger.y - RECT_SELECT_Y_DIFF){
-					(*rect_sel)->y = quitter.y - RECT_SELECT_Y_DIFF;
+					(*rect_sel)->y = jouer.y - RECT_SELECT_Y_DIFF;
 					Mix_PlayChannel(0, sounds[move], 0);
 				}
 			}
 		}
 		else if(clavier.tab[up] == 1){
-			if((*rect_sel)->y != jouer.y){//on n'est pas sur la premiere option, on peut monter
-				if((*rect_sel)->y == charger.y - RECT_SELECT_Y_DIFF){
-					(*rect_sel)->y = jouer.y - RECT_SELECT_Y_DIFF;
+			if((*rect_sel)->y != charger.y){//on n'est pas sur la premiere option, on peut monter
+				if((*rect_sel)->y == jouer.y - RECT_SELECT_Y_DIFF){
+					(*rect_sel)->y = charger.y - RECT_SELECT_Y_DIFF;
 					Mix_PlayChannel(0, sounds[move], 0);
 
 				}
 				else if((*rect_sel)->y == quitter.y - RECT_SELECT_Y_DIFF){
-					(*rect_sel)->y = charger.y - RECT_SELECT_Y_DIFF;
+					(*rect_sel)->y = jouer.y - RECT_SELECT_Y_DIFF;
 					Mix_PlayChannel(0, sounds[move], 0);
 
 				}
@@ -159,8 +159,8 @@ void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police,
 	logo[0].rectangle.x = 140;
 	logo[0].rectangle.y = 60;
 
-	int x_jouer = WIN_WIDTH / 2-175, x_charger = WIN_WIDTH / 2- 180, x_quitter = WIN_WIDTH / 2 - 150;
-	int y_jouer = WIN_HEIGHT * 0.4, y_charger = WIN_HEIGHT * 0.6, y_quitter = WIN_HEIGHT * 0.8;
+	int x_jouer = WIN_WIDTH / 2-130, x_charger = WIN_WIDTH / 2- 140, x_quitter = WIN_WIDTH / 2 - 115;
+	int y_jouer = WIN_HEIGHT * 0.6, y_charger = WIN_HEIGHT * 0.4, y_quitter = WIN_HEIGHT * 0.8;
 
 	char jouer[] = "Nouvelle partie", charger[] = "Continuer partie", quitter[] = "Quitter le jeu";
 

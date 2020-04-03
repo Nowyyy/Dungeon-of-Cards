@@ -129,7 +129,7 @@ void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Fon
 
 	int x_retour, x_charger, y_retour, y_charger;
 
-	x_retour = WIN_WIDTH * 0.30;
+	x_retour = WIN_WIDTH * 0.30-30;
 	y_retour = WIN_HEIGHT * 0.75;
 
 	if(!save_existe()){
@@ -146,7 +146,7 @@ void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Fon
 		readperso(pers);
 		readcarte(SAVE_CARTES_DECK_PATH, DECK);
 		readcarte(SAVE_CARTES_COLLEC_PATH, COLLEC);
-		x_charger = WIN_WIDTH * 0.33;
+		x_charger = WIN_WIDTH * 0.33-15;
 		y_charger = WIN_HEIGHT * 0.50;
 		sprintf(intermediaire,"Etage %d, Points de vie %d", pers->etage, pers->pv);
 		charger_text = strcpy(charger_text, intermediaire);

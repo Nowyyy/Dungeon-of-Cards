@@ -127,7 +127,7 @@ void menu_confirmation(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font 
 	x_retour = WIN_WIDTH * 0.28;
 	y_retour = WIN_HEIGHT * 0.75;
 
-	x_confirmer = WIN_WIDTH * 0.37;
+	x_confirmer = WIN_WIDTH * 0.37-10;
 	y_confirmer = WIN_HEIGHT * 0.50;
 
   x_message = WIN_WIDTH * 0.20;
