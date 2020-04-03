@@ -621,8 +621,6 @@ void range_carte_tire_nouvelles(carte_t *cartes[NB_CARTES_COMBAT], int cartes_se
 
 	en_queue();
 
-	printf("In it\n");
-
 	for(int i = 0; i < NB_CARTES_COMBAT; i++){
 
 		if(cartes[i]->type != NO_CARTE && cartes_selectionnees[i]){
@@ -704,9 +702,7 @@ hud_combat_t hud_pers, hud_combat_t action, TTF_Font *police, Mix_Chunk *sounds[
 
 	if(conf && (cartes_selectionnees[0] == 1 || cartes_selectionnees[1] == 1 || cartes_selectionnees[3] == 1 || cartes_selectionnees[2] == 1)){
 		//le joueur a confirmer vouloir changer des cartes et au moins une est sélectionnée
-		printf("Entrez\n");
 		range_carte_tire_nouvelles(cartes, cartes_selectionnees, images, rendu);
-		printf("Sortie\n");
 	}
 
 	libere_texture(&annuler.img);
