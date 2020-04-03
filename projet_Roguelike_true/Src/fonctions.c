@@ -485,27 +485,27 @@ ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type,
 }
 
 /**
-*\fn carte_t* generer_carte(int niveau)
+*\fn carte_t* generer_carte(int etage)
 *\brief permet de créer une carte au hasard, plus ou moins forte selon l'étage
-*\param niveau l'étage actuel qui détermine le niveau de la carte
+*\param etage l'étage actuel qui détermine le niveau de la carte
 *\return un carte_t*
 */
-carte_t * generer_carte(int niveau){
+carte_t * generer_carte(int etage){
 	int r, i, puissance;
 	char puissances[3][4] = {{" I"},{" II"},{" X"}};
 	char nom[TAILLE];
-	switch (niveau) {
-		case 1:
-			puissance = rand()%2 + 1;
+	switch (etage) {
+    case 1:
+			puissance = 0;
 			break;
 		case 2:
-			puissance = rand()%3 + 1;
+			puissance = rand()%2;
 			break;
 		case 3:
-			puissance = rand()%4 + 1;
+			puissance = rand()%3;
 			break;
 		case 4:
-			puissance = (rand()%5) + 1;
+			puissance = rand()%2 + 1;
 			break;
 		case 5:
 			puissance = 2;
@@ -520,17 +520,17 @@ carte_t * generer_carte(int niveau){
       case 0:
 				strcpy(nom, communes[i]);
 				strncat(nom, puissances[puissance], 3);
-        return(creer_carte(nom, DEFENSE, puissance, -1, CARTE_SOIN_PATH));
+        return(creer_carte(nom, DEFENSE, 0, -1, CARTE_SOIN_PATH));
         break;
       case 1:
 				strcpy(nom, communes[i]);
 				strncat(nom, puissances[puissance], 3);
-        return(creer_carte(nom,ATTAQUE,puissance,-1, CARTE_POING_PATH));
+        return(creer_carte(nom,ATTAQUE,0,-1, CARTE_POING_PATH));
         break;
       case 2:
 				strcpy(nom, communes[i]);
 				strncat(nom, puissances[puissance], 3);
-        return(creer_carte(nom,ATTAQUE,puissance,5, CARTE_PIERRE_PATH));
+        return(creer_carte(nom,ATTAQUE,0,5, CARTE_PIERRE_PATH));
         break;
     }
   }
@@ -541,17 +541,17 @@ carte_t * generer_carte(int niveau){
       case 0:
 				strcpy(nom, peu_communes[i]);
 				strncat(nom, puissances[puissance], 3);
-        return(creer_carte(nom,DEFENSE,puissance,3, CARTE_POTION_I_PATH));
+        return(creer_carte(nom,DEFENSE,0,3, CARTE_POTION_I_PATH));
         break;
       case 1:
 				strcpy(nom, peu_communes[i]);
 				strncat(nom, puissances[puissance], 3);
-        return(creer_carte(nom,DEFENSE,puissance,-1, CARTE_BARRIERE_PATH));
+        return(creer_carte(nom,DEFENSE,0,-1, CARTE_BARRIERE_PATH));
         break;
       case 2:
 				strcpy(nom, peu_communes[i]);
 				strncat(nom, puissances[puissance], 3);
-        return(creer_carte(nom,ATTAQUE,puissance,-1, CARTE_EPEE_I_PATH));
+        return(creer_carte(nom,ATTAQUE,0,-1, CARTE_EPEE_I_PATH));
         break;
     }
   }
@@ -562,17 +562,17 @@ carte_t * generer_carte(int niveau){
       case 0:
 				strcpy(nom, rares[i]);
 				strncat(nom, puissances[puissance], 3);
-        return(creer_carte(nom,ATTAQUE,puissance,-1, CARTE_B_DE_FEU_PATH));
+        return(creer_carte(nom,ATTAQUE,0,-1, CARTE_B_DE_FEU_PATH));
         break;
       case 1:
 				strcpy(nom, rares[i]);
 				strncat(nom, puissances[puissance], 3);
-        return(creer_carte(nom,ATTAQUE,puissance,2, CARTE_POISON_PATH));
+        return(creer_carte(nom,ATTAQUE,0,2, CARTE_POISON_PATH));
         break;
       case 2:
 				strcpy(nom, rares[i]);
 				strncat(nom, puissances[puissance], 3);
-        return(creer_carte(nom,DEFENSE,0,puissance, CARTE_GUERISON_PATH));
+        return(creer_carte(nom,DEFENSE,0,1, CARTE_GUERISON_PATH));
         break;
     }
   }
