@@ -457,7 +457,8 @@ void creer_texture_depuis_char(image_t *texte_pv, image_t *texte_etage, perso_t 
 	TTF_Font *police = NULL;
 
 	int x_pv = WIN_WIDTH *0.08, x_etage = WIN_WIDTH *0.08, y_pv = WIN_HEIGHT * 0.10, y_etage = WIN_HEIGHT * 0.02;
-  int x_counter=WIN_WIDTH *0.08,y_counter=WIN_HEIGHT * 0.19;
+  	int x_counter=WIN_WIDTH *0.08,y_counter=WIN_HEIGHT * 0.19;
+  	
 	police = TTF_OpenFont(FONT_PATH, 30);
 
 	sprintf(pv, "%d / %d", perso.pv, perso.pv_max);

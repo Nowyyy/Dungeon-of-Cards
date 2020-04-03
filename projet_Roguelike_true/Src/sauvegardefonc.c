@@ -117,7 +117,7 @@ void saveperso (perso_t *perso){
 
   if (fichier != NULL)
    {
-       fprintf(fichier,"%d %d %d %d %d\n",perso->pv,perso->x,perso->y, perso->etage, perso->cmpMort);
+       fprintf(fichier,"%d %d %d %d %d %d\n",perso->pv,perso->x,perso->y, perso->etage, perso->cmpMort, perso->pv_max);
    }
    else
    {
@@ -150,7 +150,7 @@ void readperso(perso_t*perso){
 
   if (fichier != NULL)
    {
-       fscanf(fichier,"%d %d %d %d %d\n",&perso->pv,&perso->x,&perso->y,&perso->etage, &perso->cmpMort);
+       fscanf(fichier,"%d %d %d %d %d %d\n",&perso->pv,&perso->x,&perso->y,&perso->etage, &perso->cmpMort, &perso->pv_max);
    }
    else
    {

@@ -178,6 +178,7 @@ void initialise_salles(salle_t tab[], int taille){
 		tab[i].ennemi_present = FALSE;
 		tab[i].nb_ennemi = 0;
 		tab[i].depart = FALSE;
+		tab[i].prems = FALSE;
 		tab[i].decouverte = FALSE;
 		tab[i].salle_existe = FALSE;
 	}
