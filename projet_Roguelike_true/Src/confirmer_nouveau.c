@@ -133,10 +133,14 @@ void menu_confirmation(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font 
   x_message = WIN_WIDTH * 0.20;
   y_message = WIN_HEIGHT * 0.15;
 
+	SDL_Color color_text={134, 134, 134};
+
+
+
 	//On créé les textures qui contiendront les textes
 	get_text_and_rect(rendu, x_confirmer, y_confirmer, confirmer_text, police, &confirmer_texture, &confirmer_rect);
 	get_text_and_rect(rendu, x_retour, y_retour, retour_text, police, &retour_texture, &retour_rect);
-  get_text_and_rect(rendu, x_message, y_message, message_text, police, &message_texture, &message_rect);
+  get_text_and_rect_color(rendu, x_message, y_message, message_text, police, &message_texture, &message_rect, color_text);
 
 	rectangle_selection->x = x_retour - RECT_SELECT_X_DIFF;
 	rectangle_selection->y = y_retour - RECT_SELECT_Y_DIFF;

@@ -90,6 +90,44 @@ int init_or_quit_ttf(int action){
 	}
 }
 
+/**
+*\fn extern void get_text_and_rect(SDL_Renderer *renderer, int x, int y, char *text,TTF_Font *font, SDL_Texture **texture, SDL_Rect *rect)
+
+*\param renderer, le rendu sur lequel on va dessiner le texte
+*\param x, la position x a laquelle sera le texte
+*\param y, la position y a laquelle sera le texte
+*\param *text, le texte que l'on souhaite dessiner à l'écran
+*\param *font, la police utilisée pour écrire
+*\param **texture, la texture qui contiendra le texte
+*\param *rect, le rectangle qui contiendra la texture
+*\param textColor, la couleur du texte
+
+*\brief Modifie une texture et un rect afin d'afficher le texte aux coordonnées données sur le renderer avec la police
+*/
+extern void get_text_and_rect_color(SDL_Renderer *renderer, int x, int y, char *text,TTF_Font *font, SDL_Texture **texture, SDL_Rect *rect, SDL_Color textColor){
+
+    int text_width;
+    int text_height;
+    SDL_Surface *surface;
+
+    surface = TTF_RenderText_Solid(font, text, textColor);
+
+    *texture = SDL_CreateTextureFromSurface(renderer, surface);
+
+    text_width = surface->w;
+    text_height = surface->h;
+
+		if(surface != NULL){
+			SDL_FreeSurface(surface);
+			surface=NULL;
+		}
+
+
+    rect->x = x;
+    rect->y = y;
+    rect->w = text_width;
+    rect->h = text_height;
+}
 
 
 

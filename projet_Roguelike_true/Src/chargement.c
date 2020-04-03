@@ -14,7 +14,7 @@
 
 
 /**
-*\fn void afficher_chagrer_partie(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture *charger_texture, SDL_Rect charger_rect, SDL_Texture *retour_texture, SDL_Rect retour_rect)
+*\fn void afficher_charger_partie(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture *charger_texture, SDL_Rect charger_rect, SDL_Texture *retour_texture, SDL_Rect retour_rect)
 
 *\param*rendu, le renderer sur lequel on dessine
 *\param rect_sel, le rectangle de sélection du menu
@@ -22,10 +22,12 @@
 *\param *retour_texture la texture pour le texte "Quitter"
 *\param charger_rect le rectangle pour charger une sauvegarde
 *\param retour_rect le rectangle pour le texte "retour"
+*\param message_rect le rectangle pour le texte "charger une partie ?"
+*\param message_texture la texture pour le texte "charger une partie ?"
 
 *\brief Affiche sur le rendu les différentes textures et rectangles passés en paramètre
 */
-void afficher_chagrer_partie(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture *charger_texture, SDL_Rect charger_rect, SDL_Texture *retour_texture, SDL_Rect retour_rect){
+void afficher_charger_partie(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture *charger_texture, SDL_Rect charger_rect, SDL_Texture *retour_texture, SDL_Rect retour_rect, SDL_Texture *message_texture, SDL_Rect message_rect){
 
 
 	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
@@ -38,6 +40,8 @@ void afficher_chagrer_partie(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture
 
 	SDL_RenderCopy(rendu, charger_texture, NULL, &charger_rect);
 	SDL_RenderCopy(rendu, retour_texture, NULL, &retour_rect);
+	SDL_RenderCopy(rendu, message_texture, NULL, &message_rect);
+
 
 	SDL_RenderPresent(rendu);//applique les modifs précédentes
 }
@@ -119,18 +123,23 @@ int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SD
 */
 void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *sounds[NB_SON], perso_t *pers){
 
-	SDL_Rect retour_rect, charger_rect;
+	SDL_Rect retour_rect, charger_rect, message_rect;
 	SDL_Rect *rectangle_selection = malloc(sizeof(SDL_Rect));
 
-	SDL_Texture *retour_texture, *charger_texture;
+	SDL_Texture *retour_texture, *charger_texture, *message_texture;
 
-	char retour_text[] = "Retourner au menu principal", *charger_text = malloc(sizeof(char)* 500);
+	char retour_text[] = "Retourner au menu principal", *charger_text = malloc(sizeof(char)* 500), message_text[] = "Charger la partie ?";
 	char intermediaire[50];
 
-	int x_retour, x_charger, y_retour, y_charger;
+	int x_retour, x_charger, y_retour, y_charger, x_message, y_message;
 
 	x_retour = WIN_WIDTH * 0.30-30;
 	y_retour = WIN_HEIGHT * 0.75;
+
+	x_message = WIN_WIDTH * 0.35;
+  y_message = WIN_HEIGHT * 0.15;
+
+	SDL_Color color_text={134, 134, 134};
 
 	if(!save_existe()){
 
@@ -157,6 +166,8 @@ void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Fon
 	//On créé les textures qui contiendront les textes
 	get_text_and_rect(rendu, x_charger, y_charger, charger_text, police, &charger_texture, &charger_rect);
 	get_text_and_rect(rendu, x_retour, y_retour, retour_text, police, &retour_texture, &retour_rect);
+	get_text_and_rect_color(rendu, x_message, y_message, message_text, police, &message_texture, &message_rect, color_text);
+
 
 	rectangle_selection->x = x_retour - RECT_SELECT_X_DIFF;
 	rectangle_selection->y = y_retour - RECT_SELECT_Y_DIFF;
@@ -165,7 +176,7 @@ void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Fon
 
 	while(*continuer && *etat == charger_partie){
 
-		afficher_chagrer_partie(rendu, *rectangle_selection, charger_texture, charger_rect, retour_texture, retour_rect);
+		afficher_charger_partie(rendu, *rectangle_selection, charger_texture, charger_rect, retour_texture, retour_rect, message_texture, message_rect);
 
 		*continuer = deplacement_rectangle_selection_charger(etat, charger_rect, retour_rect, &rectangle_selection, sounds);
 	}
@@ -187,5 +198,10 @@ void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Fon
 	if(charger_texture != NULL){
 		SDL_DestroyTexture(charger_texture);
 		charger_texture=NULL;
+	}
+
+	if(message_texture != NULL){
+		SDL_DestroyTexture(message_texture);
+		message_texture=NULL;
 	}
 }
