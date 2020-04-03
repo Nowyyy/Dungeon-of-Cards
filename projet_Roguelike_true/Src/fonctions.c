@@ -485,11 +485,10 @@ ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type,
 }
 
 /**
-
-
-DOCUMENTATION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
+*\fn carte_t* generer_carte(int niveau)
+*\brief permet de créer une carte au hasard, plus ou moins forte selon l'étage
+*\param niveau l'étage actuel qui détermine le niveau de la carte
+*\return un carte_t*
 */
 carte_t * generer_carte(int niveau){
 	int r, i, puissance;
