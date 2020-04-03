@@ -32,7 +32,7 @@ void detruire_carte(carte_t ** carte)
     if(*carte != NULL){
       free(*carte);
       *carte = NULL;
-    } 
+    }
   }
 }
 
@@ -84,7 +84,7 @@ void ajout_carte_deck(carte_t *tampon){
   if(!liste_vide()){
 
     for(en_tete();!hors_liste() && strcmp(tampon->nom, ec->carte->nom);suivant()){
-  
+
     }
 
     if(!hors_liste() && ec->carte->consommable > 0){
@@ -94,18 +94,89 @@ void ajout_carte_deck(carte_t *tampon){
     else if(hors_liste()){
       //carte non présente dans le deck
       en_queue();
-      tmp = creer_carte(tampon->nom, tampon->type,  tampon->valeur, tampon->consommable, tampon->path);
+      tmp = creer_carte(tampon->nom, tampon->type,  valeur_carte(tampon->nom), tampon->consommable, tampon->path);
       ajout_droit(tmp);
     }
   }
   else{
     //liste de cartes vide
-    tmp = creer_carte(tampon->nom, tampon->type,  tampon->valeur, tampon->consommable, tampon->path);
+    tmp = creer_carte(tampon->nom, tampon->type,  valeur_carte(tampon->nom), tampon->consommable, tampon->path);
     ajout_droit(tmp);
   }
 }
 
+int randRange(int min, int max, int niveau){
+    int tmp;
+    switch (niveau) {
+      case 1:
+        break;
+      case 3:
+        tmp = min;
+        min = max;
+        max = tmp + min;
+      case 2:
+        tmp = min;
+        min = max;
+        max = tmp + min;
+        break;
+    }
+    //printf("Min : %d Max : %d\n", min, max);
+    int i;
+    int num = (rand() %(min - max + 1)) + min;
+    return num;
+}
 
+int valeur_carte(char nom[TAILLE]){
+  int niveau = 1, min, max;
+  if(nom[strlen(nom)-1] == 'I' && nom[strlen(nom)-2] == 'I'){
+    niveau = 2;
+  }
+  else if(nom[strlen(nom)-1] == 'X'){
+    niveau = 3;
+  }
+
+  if(!strncmp(nom, communes[0], 4)){
+    min = 5;
+    max = 10;
+  }
+  else if(!strncmp(nom, communes[1], 4)){
+    min = 5;
+    max = 7;
+  }
+  else if(!strncmp(nom, communes[2], 4)){
+    min = 7;
+    max = 10;
+  }
+  else if(!strncmp(nom, peu_communes[0], 4)){
+    min = 10;
+    max = 15;
+  }
+  else if(!strncmp(nom, peu_communes[1], 4)){
+    min = 6;
+    max = 11;
+  }
+  else if(!strncmp(nom, peu_communes[2], 4)){
+    min = 12;
+    max = 17;
+  }
+  else if(!strncmp(nom, rares[0], 4)){
+    min = 20;
+    max = 23;
+  }
+  else if(!strncmp(nom, rares[2], 4)){
+    min = 25;
+    max = 35;
+  }
+  else if(!strncmp(nom, rares[3], 4)){
+    min = 25;
+    max = 35;
+  }
+  else {
+    return -1;
+  }
+  return randRange(min,max,niveau);
+
+}
 
 
 // Mise en oeuvre dynamique d'une liste de cartes
