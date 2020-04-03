@@ -105,6 +105,16 @@ void ajout_carte_deck(carte_t *tampon){
   }
 }
 
+
+/**
+*\fn int randRange(int min, int max, int niveau)
+
+*\param int min Borne inférieure de l'intervalle
+*\param int max Borne supérieure de l'intervalle
+
+*\brief Génère une valeur aléatoire parmi un intervalle. L'intervalle est modifié en fonction du niveau de la carte.
+*\return la valeur sous forme d'un int
+*/
 int randRange(int min, int max, int niveau){
     int tmp;
     switch (niveau) {
@@ -125,6 +135,15 @@ int randRange(int min, int max, int niveau){
     int num = (rand() %(min - max + 1)) + min;
     return num;
 }
+
+/**
+*\fn int valeur_carte(char nom[TAILLE])
+
+*\param nom, le nom de la carte dont on veut générer une valeur
+
+*\brief Génère une valeur aléatoire parmi un intervalle défini pour chaque carte grâce à la fonction randRange()
+*\return la valeur sous forme d'un int
+*/
 
 int valeur_carte(char nom[TAILLE]){
   int niveau = 1, min, max;
