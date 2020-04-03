@@ -41,6 +41,10 @@ void detruire_carte(carte_t **);
 
 carte_t * generer_carte(int);
 
+int randRange(int min, int max, int niveau);
+
+int valeur_carte(char nom[TAILLE]);
+
 /**
 *\fn void detruire_ennemi(ennemi_t **)
 *\brief Fonction qui permet de détruire un ennemi
