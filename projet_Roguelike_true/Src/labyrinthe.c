@@ -569,7 +569,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	int * ennemi_max=malloc(sizeof(int));
 	*(ennemi_max)=0;
-	
+
 	int * compt_ennold=malloc(sizeof(int));
 	*(compt_ennold)=0;
 	mini_map_t miniMap;
@@ -602,7 +602,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	for(int i = 0; i < taille * taille; i++){
 		if(salles[i].boss){
-			salles[i].ennemi = creer_ennemi(0, 10, 10, 10, boss, rendu);
+			salles[i].ennemi = creer_ennemi(50, 10, 10, 10, boss, rendu);
 		}
 		else{
 			creer_ennemi_pointeur(&salles[i].ennemi, &salles[i].ennemi2, salles[i].nb_ennemi, mob_commun, rendu);
