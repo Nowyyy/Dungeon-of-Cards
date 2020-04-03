@@ -457,13 +457,14 @@ void creer_texture_depuis_char(image_t *texte_pv, image_t *texte_etage, perso_t 
 	TTF_Font *police = NULL;
 
 	int x_pv = WIN_WIDTH *0.08, x_etage = WIN_WIDTH *0.08, y_pv = WIN_HEIGHT * 0.10, y_etage = WIN_HEIGHT * 0.02;
-  	int x_counter=WIN_WIDTH *0.08,y_counter=WIN_HEIGHT * 0.19;
-  	
+  int x_counter=WIN_WIDTH *0.08,y_counter=WIN_HEIGHT * 0.19;
+	int max=*(ennemi_max)*0.7;
+
 	police = TTF_OpenFont(FONT_PATH, 30);
 
 	sprintf(pv, "%d / %d", perso.pv, perso.pv_max);
 	sprintf(etage, "Etage %d", perso.etage);
-	sprintf(counter,"%d / %d",*(compte_ennemi),*(ennemi_max));
+	sprintf(counter,"%d / %d",*(compte_ennemi),max);
 
 	get_text_and_rect(rendu, x_etage, y_etage, etage, police, &texte_etage->img, &texte_etage->rectangle);
 	get_text_and_rect(rendu, x_pv, y_pv, pv, police, &texte_pv->img, &texte_pv->rectangle);
