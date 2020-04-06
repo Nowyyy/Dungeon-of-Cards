@@ -354,7 +354,7 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
 
   SDL_Texture *cmpPartie_texture;
 
-	int x_cmpPartie = WIN_WIDTH / 2-90;
+	int x_cmpPartie = WIN_WIDTH / 2-60;
 	int y_cmpPartie = WIN_HEIGHT * 0.8;
 
 	//textes
@@ -407,6 +407,8 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
 	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
 
 
+
+
 	SDL_RenderCopy(rendu, images[gameover].img, NULL, &images[gameover].rectangle);
 	//Musique
 	Mix_VolumeMusic(64);
@@ -414,6 +416,8 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
 
 
 	//halo lumineux
+  //images[deathlight].rectangle.x=0;
+  //images[deathlight].rectangle.y=0;
 	SDL_RenderCopy(rendu, images[deathlight].img, NULL, &images[deathlight].rectangle);
 
 	//Sprite perso mort

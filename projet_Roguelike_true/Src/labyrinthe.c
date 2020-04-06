@@ -62,8 +62,6 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 
 	charge_image(COMMANDES_PATH, &images[commandes], rendu);
 	charge_image(INSTRUCTIONS_PATH, &images[instructions], rendu);
-	charge_image(GAMEOVER_PATH, &images[gameover], rendu);
-	charge_image(DEATHLIGHT_PATH, &images[deathlight], rendu);
 	charge_image(HEART_PATH, &images[heart], rendu);
 	charge_image(TRAPDOOR_PATH, &images[trapdoor], rendu);
 	charge_image(TRAPDOOR_PATH, &images[trapdoor2], rendu);
@@ -78,10 +76,6 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 	images[commandes].rectangle.y = WIN_HEIGHT/4;
 	images[instructions].rectangle.x = 800;
 	images[instructions].rectangle.y = WIN_HEIGHT/30;
-	images[gameover].rectangle.x = 135;
-	images[gameover].rectangle.y = -100;
-	images[deathlight].rectangle.x = pers->x-100;
-	images[deathlight].rectangle.y = pers->y-65;
 	images[heart].rectangle.x = 25;
 	images[heart].rectangle.y = WIN_HEIGHT * 0.10;
 	images[trapdoor].rectangle.x = 0;

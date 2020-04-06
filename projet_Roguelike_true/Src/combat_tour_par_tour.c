@@ -307,6 +307,8 @@ void charge_textures_combat(image_t images[], SDL_Renderer *rendu, carte_t *cart
 	charge_image(cartes[2]->path,&images[carte3], rendu);
 	charge_image(cartes[3]->path,&images[carte4], rendu);
 	charge_image(HEART_PATH,&images[coeur], rendu);
+	charge_image(GAMEOVER_PATH, &images[gameover], rendu);
+	charge_image(DEATHLIGHT_PATH, &images[deathlight], rendu);
 }
 
 
@@ -317,7 +319,7 @@ void charge_textures_combat(image_t images[], SDL_Renderer *rendu, carte_t *cart
 
 *\brief Donne les coordonnées et ajuste les tailles des images des cartes et des fonds pour l'écran de combat
 */
-void donne_valeur_rect_images(image_t images[]){
+void donne_valeur_rect_images(image_t images[], perso_t *perso){
 
 	images[fond2].rectangle.x= 0;
 	images[fond2].rectangle.y= 70;
@@ -341,6 +343,12 @@ void donne_valeur_rect_images(image_t images[]){
 
   	images[carte4].rectangle.x=650;
   	images[carte4].rectangle.y= 450;
+
+		images[gameover].rectangle.x = 135;
+		images[gameover].rectangle.y = -100;
+
+		images[deathlight].rectangle.x = WIN_WIDTH/2-100;
+		images[deathlight].rectangle.y = WIN_HEIGHT/2-65;
 }
 
 
@@ -755,7 +763,7 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Ch
 
 	create_hud(&hud_pers, &hud_ennemi, *ennemi, *perso, rendu, police);
 
-	donne_valeur_rect_images(images);
+	donne_valeur_rect_images(images, perso);
 
 	creer_texte_combat("Defausse", &def, EMPLACEMENT_DEFAUSSE_X, EMPLACEMENT_DEFAUSSE_Y, rendu, police);
 	creer_texte_combat("Fuir", &fui, EMPLACEMENT_DEFAUSSE_X, EMPLACEMENT_FUITE_Y, rendu, police);
@@ -778,6 +786,7 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Ch
 
   		choix = deplacement_rectangle_selection_combat(def.rectangle, fui.rectangle, images, &rectangle_selection, sounds, musics);
 
+			//Faire mourir le joueur
 			perso->pv-=10;
 
   		if(choix == -1){//le joueur fuit le combat

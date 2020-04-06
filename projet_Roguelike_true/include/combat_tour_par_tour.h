@@ -1,7 +1,7 @@
 void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi, image_t def, image_t fuir, SDL_Rect *rect_sel,image_t images[NB_TEXTURES_LABY], hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action);
 int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, image_t images[NB_TEXTURES_LABY], SDL_Rect **rect_sel, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC]);
 void charge_textures_combat(image_t images[], SDL_Renderer *rendu, carte_t *cartes[]);
-void donne_valeur_rect_images(image_t images[]);
+void donne_valeur_rect_images(image_t images[], perso_t *pers);
 void free_image(image_t images[]);
 void tour_ennemi(perso_t *pers, ennemi_t *ennemi);
 void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t *carte);
