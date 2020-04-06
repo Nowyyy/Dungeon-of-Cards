@@ -39,7 +39,7 @@ void afficher_confirmation(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture *
 
 	SDL_RenderCopy(rendu, confirmer_texture, NULL, &confirmer_rect);
 	SDL_RenderCopy(rendu, retour_texture, NULL, &retour_rect);
-  SDL_RenderCopy(rendu, message_texture, NULL, &message_rect);
+  	SDL_RenderCopy(rendu, message_texture, NULL, &message_rect);
 
 	SDL_RenderPresent(rendu);//applique les modifs précédentes
 }
@@ -69,6 +69,9 @@ int deplacement_rectangle_selection_confirmer(int *etat, SDL_Rect confirmer_rect
 				if((*rect_sel)->y != retour_rect.y){//on n'est pas sur la dernière option, on peut descendre
 					if((*rect_sel)->y == confirmer_rect.y - RECT_SELECT_Y_DIFF){
 						(*rect_sel)->y = retour_rect.y - RECT_SELECT_Y_DIFF;
+						(*rect_sel)->x = retour_rect.x - RECT_SELECT_X_DIFF;
+						(*rect_sel)->w = retour_rect.w + 100;
+						(*rect_sel)->h = retour_rect.h + 50;
 						Mix_PlayChannel(0, sounds[move], 0);
 					}
 				}
@@ -77,6 +80,9 @@ int deplacement_rectangle_selection_confirmer(int *etat, SDL_Rect confirmer_rect
 				if((*rect_sel)->y != confirmer_rect.y){//on n'est pas sur la premiere option, on peut monter
 					if((*rect_sel)->y == retour_rect.y - RECT_SELECT_Y_DIFF){
 						(*rect_sel)->y = confirmer_rect.y - RECT_SELECT_Y_DIFF;
+						(*rect_sel)->x = confirmer_rect.x - RECT_SELECT_X_DIFF;
+						(*rect_sel)->w = confirmer_rect.w + 100;
+						(*rect_sel)->h = confirmer_rect.h + 50;
 						Mix_PlayChannel(0, sounds[move], 0);
 					}
 				}
