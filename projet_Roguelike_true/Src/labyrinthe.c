@@ -534,7 +534,7 @@ void check_ennemi(int* ennemi_max,int* compte_ennemi,salle_t salles[],int salle_
 	int max=*(ennemi_max)*0.7;
 	if(*(compte_ennemi)<*(ennemi_max)){
 		if(salles[salle_courante].ennemi_present){
-			if(salles[salle_courante].nb_ennemi ==2 && (salles[salle_courante].ennemi->pv)<=0){
+			if(salles[salle_courante].nb_ennemi ==2 && ((salles[salle_courante].ennemi->pv)<=0 ||(salles[salle_courante].ennemi2->pv)<=0) ){
 				*(compte_ennemi)+=1;
 			}
 			if(salles[salle_courante].nb_ennemi ==1 && (salles[salle_courante].ennemi->pv)<=0){

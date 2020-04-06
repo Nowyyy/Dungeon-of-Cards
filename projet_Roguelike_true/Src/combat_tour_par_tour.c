@@ -439,7 +439,7 @@ void create_hud(hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, ennemi_t ennem
 
 	char pv_pers[20], pv_ennemi[20], nom_pers[] = "Joueur";
 
-	sprintf(pv_pers, "PV  %d / %d", pers.pv, ennemi.pv_max);
+	sprintf(pv_pers, "PV  %d / %d", pers.pv, pers.pv_max);
 	sprintf(pv_ennemi, "PV  %d / %d", ennemi.pv, ennemi.pv_max);
 
 	if(hud_ennemi->existe == 0 || hud_pers->existe == 0){
@@ -824,7 +824,7 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Ch
   		while(SDL_PollEvent(&event));
 	}
 	if(ennemi->pv<=0){
-		perso->pv=50;
+		perso->pv=perso->pv_max;
 	}
 	Mix_HaltMusic();
   	TTF_CloseFont(police);
