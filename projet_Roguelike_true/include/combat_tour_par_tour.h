@@ -13,4 +13,4 @@ void range_carte_deck(carte_t *cartes[]);
 void consommable_epuise(carte_t *cartes[], int indice,  image_t images[], SDL_Renderer *rendu);
 void range_carte_tire_nouvelles(carte_t *cartes[NB_CARTES_COMBAT], int cartes_selectionnees[], image_t images[], SDL_Renderer *rendu);
 void defausse(SDL_Renderer *rendu, perso_t *perso, ennemi_t *ennemi, SDL_Rect *rectangle_selection, image_t images[], hud_combat_t hud_ennemi, hud_combat_t hud_pers, hud_combat_t action, TTF_Font *police, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], carte_t *cartes[NB_CARTES_COMBAT]);
-void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC]);
+void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], int *etat);

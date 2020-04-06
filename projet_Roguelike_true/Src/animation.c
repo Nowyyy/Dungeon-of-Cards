@@ -349,8 +349,10 @@ void anim_combat(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON]){
 
 */
 
-void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MUSIC], Mix_Chunk *sounds[NB_SON], image_t images[], TTF_Font *police, SDL_Texture *cmpPartie_texture){
+void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MUSIC], Mix_Chunk *sounds[NB_SON], image_t images[], TTF_Font *police){
 	int mort_tmp;
+
+  SDL_Texture *cmpPartie_texture;
 
 	int x_cmpPartie = WIN_WIDTH / 2-90;
 	int y_cmpPartie = WIN_HEIGHT * 0.8;
@@ -403,6 +405,7 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
 	//Fond noir et logo game over
 	SDL_RenderClear(rendu);
 	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
+
 
 	SDL_RenderCopy(rendu, images[gameover].img, NULL, &images[gameover].rectangle);
 	//Musique

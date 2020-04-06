@@ -519,12 +519,12 @@ int nb_salles_par_etage(int etage){
 
 *\brief permet d'effectuer l'animation d'entrée en combat, l'arrêt des sons, la réinitialisation du tableau des touches et envoie le joueur vers le combat au tour par tour
 */
-void vers_ecran_combat(SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], touches_t *clavier, perso_t *pers, ennemi_t *ennemi,  Mix_Music *musics[NB_MUSIC]){
+void vers_ecran_combat(SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], touches_t *clavier, perso_t *pers, ennemi_t *ennemi,  Mix_Music *musics[NB_MUSIC], int *etat){
 
 	Mix_HaltMusic();
 	anim_combat(rendu, sounds);
 	init_tab_clavier(clavier->tab);
-	combat_t_p_t(pers, ennemi, rendu, sounds, musics);
+	combat_t_p_t(pers, ennemi, rendu, sounds, musics, etat);
 	init_tab_clavier(clavier->tab);
 	choix_musique(musics, pers);
 }
@@ -600,8 +600,6 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	salle_t salles[taille*taille];
 
-	SDL_Texture *cmpPartie_texture;
-
 	animation_t anim;
 
 	touches_t clavier;
@@ -659,26 +657,18 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 		if(*continuer == TRUE){
 
-			//Si le joueur meurt
-			if(pers->pv <= 0) {
-				SDL_RenderClear(rendu);
-				salle_courante = salle_0;
-				Mix_HaltMusic();
-				mort(etat, pers, rendu, musics, sounds, images, police, cmpPartie_texture);
-			}
-
 			salle_courante = changement_de_salle(pers, salles[salle_courante], salle_courante, sounds);
 			SDL_Delay(5);
 
 			//collision avec un ennemi déclenchement animation combat et combat
 			if(combat_declenche(salles[salle_courante], *pers) == 1 && salles[salle_courante].ennemi->pv > 0 && *etat == labyrinthe){
 
-				vers_ecran_combat(rendu, sounds, &clavier, pers, salles[salle_courante].ennemi, musics);
+				vers_ecran_combat(rendu, sounds, &clavier, pers, salles[salle_courante].ennemi, musics, etat);
 				check_ennemi(ennemi_max,compte_ennemi,salles,salle_courante,pers);
 			}
 			else if(combat_declenche(salles[salle_courante], *pers) == 2 && salles[salle_courante].ennemi2->pv > 0 && *etat == labyrinthe){
 
-				vers_ecran_combat(rendu, sounds, &clavier, pers, salles[salle_courante].ennemi2, musics);
+				vers_ecran_combat(rendu, sounds, &clavier, pers, salles[salle_courante].ennemi2, musics, etat);
 				check_ennemi(ennemi_max,compte_ennemi,salles,salle_courante,pers);
 			}
 

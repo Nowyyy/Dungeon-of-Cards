@@ -15,6 +15,7 @@
 #include "../include/initialisation_sdl_fonctions.h"
 #include "../include/fonctions.h"
 #include "../include/clavier.h"
+#include "../include/animation.h"
 
 
 /**
@@ -718,7 +719,7 @@ hud_combat_t hud_pers, hud_combat_t action, TTF_Font *police, Mix_Chunk *sounds[
 
 *\brief Fonction qui permet de gérer les choix de l'utilisateur via la SDL sur le combat
 */
-void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC])
+void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], int *etat)
 {
 ////////////////Déclaration variables
 
@@ -777,6 +778,7 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Ch
 
   		choix = deplacement_rectangle_selection_combat(def.rectangle, fui.rectangle, images, &rectangle_selection, sounds, musics);
 
+			perso->pv-=10;
 
   		if(choix == -1){//le joueur fuit le combat
   			perso->fuite = 1;
@@ -823,6 +825,13 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Ch
   		detruire_action_temp(&action);
   		while(SDL_PollEvent(&event));
 	}
+
+	//Si le joueur meurt
+	if(perso->pv <= 0) {
+		Mix_HaltMusic();
+		mort(etat, perso, rendu, musics, sounds, images, police);
+	}
+
 	if(ennemi->pv<=0){
 		perso->pv=perso->pv_max;
 	}
