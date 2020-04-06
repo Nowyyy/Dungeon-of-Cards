@@ -532,7 +532,6 @@ void vers_ecran_combat(SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], touches_t
 */
 void check_ennemi(int* ennemi_max,int* compte_ennemi,salle_t salles[],int salle_courante,perso_t *pers){
 	int max=*(ennemi_max)*0.7;
-	printf("%d\n",max);
 	if(*(compte_ennemi)<*(ennemi_max)){
 		if(salles[salle_courante].ennemi_present){
 			if(salles[salle_courante].nb_ennemi ==2 && (salles[salle_courante].ennemi->pv)<=0){
@@ -543,7 +542,7 @@ void check_ennemi(int* ennemi_max,int* compte_ennemi,salle_t salles[],int salle_
 			}
 		}
 	}
-	if(*(compte_ennemi)==max){
+	if(*(compte_ennemi)==max && salles[salle_courante].ennemi->pv)<=0 ){
 		pers->pv_max+=5;
 		pers->pv+=5;
 	}
