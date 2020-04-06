@@ -1,10 +1,6 @@
--1 50 -1 ../Images/Cartes/poing.png             Poing I
--1 14 2 ../Images/Cartes/pierre.png             Pierre I
--1 7 5 ../Images/Cartes/pierre.png pierre I
-1 15 -1 ../Images/Cartes/soin.png              soin I
--1 50 -1 ../Images/Cartes/poing.png   Poing I
--1 14 3 ../Images/Cartes/pierre.png   Pierre I
-1 15 -1 ../Images/Cartes/soin.png    soin I
-1 15 -1 ../Images/Cartes/soin.png    soin I
--1 14 3 ../Images/Cartes/pierre.png   Pierre I
--1 50 -1 ../Images/Cartes/poing.png   Poing I
+-1 50 -1 ../Images/Cartes/poing.png        Poing I
+-1 14 3 ../Images/Cartes/pierre.png        Pierre I
+1 15 -1 ../Images/Cartes/soin.png         soin I
+1 10 3 ../Images/Cartes/potion_1.png      potion I
+-1 8 -1 ../Images/Cartes/poing.png     poing II
+1 7 -1 ../Images/Cartes/soin.png   soin

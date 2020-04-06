@@ -22,18 +22,34 @@
 
 #define FONT_PATH "../Font/BebasNeue.ttf"
 
+#define SOL_TEST_PATH "../Images/truc.png"
+#define SOL_TEST_2_PATH "../Images/truc2.png"
+#define SOL_TEST_3_PATH "../Images/truc3.png"
+
 #define SOL1_PATH "../Images/dalle3.png"
 #define SOL1_2_PATH "../Images/dalle3_2.png"
+#define SOL1_3_PATH "../Images/dalle_3.png"
+
 #define MUR1_PATH "../Images/mur.png"
 #define MUR1_2_PATH "../Images/mur_2.png"
+#define MUR1_3_PATH "../Images/mur_3.png"
+
 #define MUR2_PATH "../Images/mur_feu.png"
 #define MUR2_2_PATH "../Images/mur_feu_2.png"
+#define MUR2_3_PATH "../Images/mur_feu_3.png"
+
 #define SOL2_PATH "../Images/dalle_cailloux.png"
 #define SOL2_2_PATH "../Images/dalle_cailloux_2.png"
+#define SOL2_3_PATH "../Images/dalle_cailloux_3.png"
+
 #define SOL3_PATH "../Images/dalle_eau.png"
 #define SOL3_2_PATH "../Images/dalle_eau_2.png"
+#define SOL3_3_PATH "../Images/dalle_3_eau.png"
+
 #define PORTE_PATH "../Images/dalle3.png"
 #define PORTE_2_PATH "../Images/dalle3_2.png"
+#define PORTE_3_PATH "../Images/dalle_3.png"
+
 #define COMMANDES_PATH "../Images/commandes.png"
 #define INSTRUCTIONS_PATH "../Images/instructions.png"
 #define GAMEOVER_PATH "../Images/gameover.png"

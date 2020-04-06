@@ -43,7 +43,7 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 		charge_image(SOL2_PATH,&images[sol2], rendu);
 		charge_image(SOL3_PATH,&images[sol3], rendu);
 	}
-	else{
+	else if(pers->etage == 2){
 		charge_image(SOL1_2_PATH,&images[sol], rendu);
 		charge_image(MUR1_2_PATH,&images[mur], rendu);
 		charge_image(MUR2_2_PATH,&images[mur2], rendu);
@@ -51,6 +51,15 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 		charge_image(SOL2_2_PATH,&images[sol2], rendu);
 		charge_image(SOL3_2_PATH,&images[sol3], rendu);
 	}
+	else{
+		charge_image(SOL_TEST_PATH,&images[sol], rendu);
+		charge_image(MUR1_3_PATH,&images[mur], rendu);
+		charge_image(MUR2_3_PATH,&images[mur2], rendu);
+		charge_image(SOL_TEST_PATH,&images[porte], rendu);
+		charge_image(SOL_TEST_2_PATH,&images[sol2], rendu);
+		charge_image(SOL_TEST_3_PATH,&images[sol3], rendu);
+	}
+
 	charge_image(COMMANDES_PATH, &images[commandes], rendu);
 	charge_image(INSTRUCTIONS_PATH, &images[instructions], rendu);
 	charge_image(GAMEOVER_PATH, &images[gameover], rendu);
@@ -615,7 +624,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	for(int i = 0; i < taille * taille; i++){
 		if(salles[i].boss){
-			salles[i].ennemi = creer_ennemi(50, 10, 10, 10, boss, rendu);
+			salles[i].ennemi = creer_ennemi(0, 10, 10, 10, boss, rendu);
 		}
 		else{
 			creer_ennemi_pointeur(&salles[i].ennemi, &salles[i].ennemi2, salles[i].nb_ennemi, mob_commun, rendu);
