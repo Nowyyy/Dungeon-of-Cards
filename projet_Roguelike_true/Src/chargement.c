@@ -147,7 +147,6 @@ void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Fon
 		initialise_personnage(pers);
 		x_charger = WIN_WIDTH * 0.30;
 		y_charger = WIN_HEIGHT * 0.50;
-		remove(SAVE_CARTES_DECK_PATH);
 		readcarte(SAVE_CARTES_NEW_GAME_PATH, DECK);
 		readcarte(SAVE_CARTES_NEW_GAME_PATH, COLLEC);
 	}
@@ -160,8 +159,6 @@ void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Fon
 		sprintf(intermediaire,"Etage %d, Points de vie %d", pers->etage, pers->pv);
 		charger_text = strcpy(charger_text, intermediaire);
 	}
-
-
 
 	//On créé les textures qui contiendront les textes
 	get_text_and_rect(rendu, x_charger, y_charger, charger_text, police, &charger_texture, &charger_rect);

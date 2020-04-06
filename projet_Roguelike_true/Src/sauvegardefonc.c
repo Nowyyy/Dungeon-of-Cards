@@ -50,7 +50,7 @@ void savecarte (char *path, int liste){
 
   if (fichier != NULL)
    {
-      while(!hors_liste()){
+      while(!hors_liste() && !liste_vide()){
         valeur_elt(&carte2);
         fprintf(fichier,"%d %d %d %s %s\n",carte2->type,carte2->valeur,carte2->consommable,carte2->path,carte2->nom);
         suivant();
@@ -59,7 +59,7 @@ void savecarte (char *path, int liste){
    else
    {
        // On affiche un message d'erreur si on veut
-       printf("Impossible d'ouvrir le fichier sauvegarde.txt");
+       printf("Impossible d'ouvrir le fichier %s", path);
    }
    fclose(fichier);
 }
@@ -79,11 +79,13 @@ void readcarte(char *path_file, int liste){
   type_carte type;/** Type d'une carte */
   int valeur, consommable;
 
-  fscanf(fichier,"%d%d%d%s%[^\n]",&type,&valeur,&consommable,path,nom);
-
   if (fichier != NULL)
     {
-        choix_liste(liste);
+      fscanf(fichier,"%d%d%d%s%[^\n]",&type,&valeur,&consommable,path,nom);
+
+      choix_liste(liste);
+      en_tete();
+      
         while(!feof(fichier)){
 
           ajout_droit(creer_carte(nom,type,valeur,consommable,path));
@@ -93,7 +95,7 @@ void readcarte(char *path_file, int liste){
     else
     {
         // On affiche un message d'erreur si on veut
-        printf("Impossible d'ouvrir le fichier sauvegarde.txt");
+        printf("Impossible d'ouvrir le fichier %s", path_file);
     }
     fclose(fichier);
 }
@@ -122,7 +124,7 @@ void saveperso (perso_t *perso){
    else
    {
        // On affiche un message d'erreur si on veut
-       printf("Impossible d'ouvrir le fichier sauvegarde.txt");
+       printf("Impossible d'ouvrir le fichier personnage.txt");
    }
    fclose(fichier);
    if(nom_fichier != NULL){
@@ -155,7 +157,7 @@ void readperso(perso_t*perso){
    else
    {
        // On affiche un message d'erreur si on veut
-       printf("Impossible d'ouvrir le fichier sauvegarde.txt");
+       printf("Impossible d'ouvrir le fichier personnage.txt");
    }
    fclose(fichier);
    if(nom_fichier != NULL){

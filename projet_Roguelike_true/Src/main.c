@@ -92,8 +92,6 @@ int main(int argc, char* args[]){
 
 							if(etat == labyrinthe){
 								initialise_personnage(&pers);
-								remove(SAVE_CARTES_DECK_PATH);
-								remove(SAVE_CARTES_COLLEC_PATH);
 								readcarte(SAVE_CARTES_NEW_GAME_PATH, DECK);
 								readcarte(SAVE_CARTES_NEW_GAME_PATH, COLLEC);
 							}
@@ -117,8 +115,6 @@ int main(int argc, char* args[]){
 							menu_confirmation(&continuer, &etat, rendu, police, sounds, &pers);
 							if(etat == labyrinthe){
 								initialise_personnage(&pers);
-								remove(SAVE_CARTES_DECK_PATH);
-								remove(SAVE_CARTES_COLLEC_PATH);
 								readcarte(SAVE_CARTES_NEW_GAME_PATH, DECK);
 								readcarte(SAVE_CARTES_NEW_GAME_PATH, COLLEC);
 							}
