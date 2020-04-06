@@ -441,12 +441,15 @@ int combat_declenche(salle_t salle, perso_t pers){
 
 
 /**
-*\fn void creer_texture_depuis_char(image_t *texte_pv, image_t *texte_etage, perso_t perso, SDL_Renderer *rendu)
+*\fn void creer_texture_depuis_char(image_t *texte_pv, image_t *texte_etage, perso_t perso, SDL_Renderer *rendu,image_t *texte_counter,int *compte_ennemi,int *ennemi_max)
 
 *\param *texte_pv, une structure qui contiendra l'image du texte a afficher
 *\param *texte_etage, une structure qui contiendra l'image du texte a afficher
 *\param pers, le personnage à partir duquel on va récupérer des informations
 *\param *rendu, le renderer sur lequel on dessine
+*\param *texte_counter, une structure qui contiendra l'image du texte a afficher
+*\param *ennemi_max est le nombre d'ennemi max.
+*\param *compte_ennemi est un compteur des ennemis morts
 
 *\brief Crée des images à partir de texte issu des données du personnage, range ces images dans les structures correspondantes
 */

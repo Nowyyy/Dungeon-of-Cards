@@ -520,7 +520,16 @@ void vers_ecran_combat(SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], touches_t
 	choix_musique(musics, pers);
 }
 
-/*Fonction check*/
+/**
+*\fn void check_ennemi(int* ennemi_max,int* compte_ennemi,salle_t salles[],int salle_courante,perso_t *pers)
+*\param *ennemi_max est le nombre d'ennemi max.
+*\param *compte_ennemi est un compteur des ennemis morts
+*\param salles[], le tableau contenant les salles du jeu
+*\param salle_courante Permet de prendre la salle dans laquelle le personnage ce trouve
+*\param *pers, la structure du personnage
+
+*\brief permet d'ajouter des pv au joueur selon le nombre d'ennemi tué.
+*/
 void check_ennemi(int* ennemi_max,int* compte_ennemi,salle_t salles[],int salle_courante,perso_t *pers){
 	int max=*(ennemi_max)*0.7;
 	printf("%d\n",max);

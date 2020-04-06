@@ -229,10 +229,12 @@ void textures_aleatoires(salle_t salles[], int taille){
 
 
 /**
-*\fn void place_monstre_coffre_boss(salle_t tab[], int taille)
+*\fn void place_monstre_coffre_boss(salle_t tab[], int taille, int type_ennemi, SDL_Renderer * rendu,int* ennemi_max)
 
 *\param tab[], tableau contenant les salles du labyrinthe
 *\param taille, taille du tableau
+*\param *rendu, le renderer sur lequel on dessine
+*\param *ennemi_max est le nombre d'ennemi max.
 
 *\brief rempli les salles de monstres, de coffre
 */
@@ -331,7 +333,7 @@ void creation_mini_map(int taille, mini_map_t *map){
 *\param indice, la salle actuelle dans le tableau de salles
 *\param *salle_pred, pointeur sur un entier stockant l'indice de la salle précédente
 
-*\bief Ajoute la salle où se situe le joueur dans le tableau de salles découvertes 
+*\bief Ajoute la salle où se situe le joueur dans le tableau de salles découvertes
 */
 void ajoute_salle_decouverte(mini_map_t *map, salle_t salles[], int indice, int *salle_pred){
 
@@ -374,7 +376,7 @@ void placer_monstre(ennemi_t *ennemi){
 
   do{
     x = rand()%TAILLE_SALLE;
-    y = rand()%TAILLE_SALLE; 
+    y = rand()%TAILLE_SALLE;
 
   }while(x == 0 || y == 0 || y == TAILLE_SALLE - 1 || x == TAILLE_SALLE -1 || y == milieu1 || y == milieu || x == milieu || x == milieu1);
 
@@ -404,9 +406,9 @@ void creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int nb_ennemi,
     placer_monstre(*ennemi);
     *ennemi2 = NULL;
   }
-  
+
   if (nb_ennemi == 2){
-    
+
     ajoute_ennemi(ennemi2, type, rendu);
 
     do{
@@ -414,7 +416,7 @@ void creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int nb_ennemi,
 
     }while(SDL_HasIntersection(&(*ennemi)->sprites.rectangle, &(*ennemi2)->sprites.rectangle));
     (*ennemi2)->anim_courante = idle_gauche_ennemi;
-    (*ennemi2)->sprite_courant.y = (*ennemi2)->sprite_courant.h; 
+    (*ennemi2)->sprite_courant.y = (*ennemi2)->sprite_courant.h;
   }
 }
 
