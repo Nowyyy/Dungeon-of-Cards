@@ -542,7 +542,7 @@ void check_ennemi(int* ennemi_max,int* compte_ennemi,salle_t salles[],int salle_
 			}
 		}
 	}
-	if(*(compte_ennemi)==max && salles[salle_courante].ennemi->pv)<=0 ){
+	if(*(compte_ennemi)==max && (salles[salle_courante].ennemi->pv)<=0 ){
 		pers->pv_max+=5;
 		pers->pv+=5;
 	}
