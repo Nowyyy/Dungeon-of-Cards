@@ -786,8 +786,6 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Ch
 
   		choix = deplacement_rectangle_selection_combat(def.rectangle, fui.rectangle, images, &rectangle_selection, sounds, musics);
 
-			//Faire mourir le joueur
-			perso->pv-=10;
 
   		if(choix == -1){//le joueur fuit le combat
   			perso->fuite = 1;
