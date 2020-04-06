@@ -72,6 +72,9 @@ int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SD
 				if((*rect_sel)->y != retour_rect.y){//on n'est pas sur la dernière option, on peut descendre
 					if((*rect_sel)->y == charger_rect.y - RECT_SELECT_Y_DIFF){
 						(*rect_sel)->y = retour_rect.y - RECT_SELECT_Y_DIFF;
+						(*rect_sel)->x = retour_rect.x - RECT_SELECT_X_DIFF;
+						(*rect_sel)->w = retour_rect.w + 100;
+						(*rect_sel)->h = retour_rect.h + 50;
 						Mix_PlayChannel(0, sounds[move], 0);
 					}
 				}
@@ -80,6 +83,9 @@ int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SD
 				if((*rect_sel)->y != charger_rect.y){//on n'est pas sur la premiere option, on peut monter
 					if((*rect_sel)->y == retour_rect.y - RECT_SELECT_Y_DIFF){
 						(*rect_sel)->y = charger_rect.y - RECT_SELECT_Y_DIFF;
+						(*rect_sel)->x = charger_rect.x - RECT_SELECT_X_DIFF;
+						(*rect_sel)->w = charger_rect.w + 100;
+						(*rect_sel)->h = charger_rect.h + 50;
 						Mix_PlayChannel(0, sounds[move], 0);
 					}
 				}

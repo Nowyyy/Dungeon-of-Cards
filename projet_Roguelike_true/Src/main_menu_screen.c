@@ -42,10 +42,16 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 			if((*rect_sel)->y != quitter.y){//on n'est pas sur la dernière option, on peut descendre
 				if((*rect_sel)->y == jouer.y - RECT_SELECT_Y_DIFF){
 					(*rect_sel)->y = quitter.y - RECT_SELECT_Y_DIFF;
+					(*rect_sel)->x = quitter.x - RECT_SELECT_X_DIFF;
+					(*rect_sel)->w = quitter.w + 100;
+					(*rect_sel)->h = quitter.h + 50;
 					Mix_PlayChannel(0, sounds[move], 0);
 				}
 				else if((*rect_sel)->y == charger.y - RECT_SELECT_Y_DIFF){
 					(*rect_sel)->y = jouer.y - RECT_SELECT_Y_DIFF;
+					(*rect_sel)->x = jouer.x - RECT_SELECT_X_DIFF;
+					(*rect_sel)->w = jouer.w + 100;
+					(*rect_sel)->h = jouer.h + 50;
 					Mix_PlayChannel(0, sounds[move], 0);
 				}
 			}
@@ -54,11 +60,17 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 			if((*rect_sel)->y != charger.y){//on n'est pas sur la premiere option, on peut monter
 				if((*rect_sel)->y == jouer.y - RECT_SELECT_Y_DIFF){
 					(*rect_sel)->y = charger.y - RECT_SELECT_Y_DIFF;
+					(*rect_sel)->x = charger.x - RECT_SELECT_X_DIFF;
+					(*rect_sel)->w = charger.w + 100;
+					(*rect_sel)->h = charger.h + 50;
 					Mix_PlayChannel(0, sounds[move], 0);
 
 				}
 				else if((*rect_sel)->y == quitter.y - RECT_SELECT_Y_DIFF){
 					(*rect_sel)->y = jouer.y - RECT_SELECT_Y_DIFF;
+					(*rect_sel)->x = jouer.x - RECT_SELECT_X_DIFF;
+					(*rect_sel)->w = jouer.w + 100;
+					(*rect_sel)->h = jouer.h + 50;
 					Mix_PlayChannel(0, sounds[move], 0);
 
 				}
