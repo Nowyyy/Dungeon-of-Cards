@@ -169,8 +169,8 @@ void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police,
 	get_text_and_rect(rendu, x_charger, y_charger, charger, police, &charger_texture, &charger_text);
 	get_text_and_rect(rendu, x_quitter, y_quitter, quitter, police, &quitter_texture, &quitter_text);
 
-	rectangle_selection->x = jouer_text.x - RECT_SELECT_X_DIFF;
-	rectangle_selection->y = jouer_text.y - RECT_SELECT_Y_DIFF;
+	rectangle_selection->x = charger_text.x - RECT_SELECT_X_DIFF;
+	rectangle_selection->y = charger_text.y - RECT_SELECT_Y_DIFF;
 	rectangle_selection->w = jouer_text.w +100;
 	rectangle_selection->h = jouer_text.h +50;
 
