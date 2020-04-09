@@ -418,6 +418,7 @@ typedef struct loot_carte_s{
 
 }loot_carte_t;
 
+
 // Declaration des listes (drapeau et element courant)
 element_t* drapeau;
 element_t* drapeau_collec;

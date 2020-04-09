@@ -9,6 +9,7 @@
 #include "../include/constantes.h"
 #include "../include/labyrinthe.h"
 #include "../include/fonctions.h"
+#include "../include/salle.h"
 /**
  *\fn void init_salle(int salle[TAILLE_SALLE][TAILLE_SALLE])
  *\brief fonction qui génère une salle en un tableau
@@ -351,12 +352,17 @@ void ajoute_salle_decouverte(mini_map_t *map, salle_t salles[], int indice, int 
 *\param **ennemi, pointeur sur pointeur de type ennemi_t, l'ennemi que l'on va créer
 *\param type, le type d'ennemi que l'en veut créer.
 *\param *rendu, le renderer sur lequel on dessine
+*\param etage, l'étage où se situe le joueur
 
 *\brief créer un ennemi à partir d'un type donné
 */
-void ajoute_ennemi(ennemi_t **ennemi, int type, SDL_Renderer * rendu){
+void ajoute_ennemi(ennemi_t **ennemi, int type, SDL_Renderer * rendu, int etage){
 
-  *ennemi = creer_ennemi(50, 50, 10, 10, type, rendu);
+  ennemi_t ennemi_tmp;
+
+  ennemi_selon_etage(etage, 0, &ennemi_tmp);
+
+  *ennemi = creer_ennemi(ennemi_tmp.pv, ennemi_tmp.attaque, ennemi_tmp.attaque, ennemi_tmp.attaque, type, rendu);
 
   (*ennemi)->last = SDL_GetTicks();
 }
@@ -395,21 +401,22 @@ void placer_monstre(ennemi_t *ennemi){
 *\param type, le type d'ennemi que l'en veut créer.
 *\param *rendu, le renderer sur lequel on dessine
 *\param nb_ennemi, peremet de savoir combien d'ennemis sont à créer
+*\param etage, l'étage où se situe le joueur
 
 *\brief créer un/des ennemi à partir d'un type donné
 */
-void creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int nb_ennemi, int type, SDL_Renderer * rendu){
+void creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int nb_ennemi, int type, SDL_Renderer * rendu, int etage){
 
   if(nb_ennemi > 0){
 
-    ajoute_ennemi(ennemi, type, rendu);
+    ajoute_ennemi(ennemi, type, rendu, etage);
     placer_monstre(*ennemi);
     *ennemi2 = NULL;
   }
 
   if (nb_ennemi == 2){
 
-    ajoute_ennemi(ennemi2, type, rendu);
+    ajoute_ennemi(ennemi2, type, rendu, etage);
 
     do{
       placer_monstre(*ennemi2);
@@ -458,6 +465,38 @@ void affiche_mini_map(mini_map_t map, salle_t salle, SDL_Renderer *rendu){
     else{
       SDL_SetRenderDrawColor(rendu,0,0,0,255);
       SDL_RenderFillRect(rendu, &map.map[i]);
+    }
+  }
+}
+
+
+
+/**
+*\fn ennemi_selon_etage
+
+*\param etage, l'étage où se situe le joueur
+*\param boss, si l'ennemi que l'on conçoit est un boss ou non
+*\param ennemi, l'ennemi pour lequel on donne les valeurs
+
+*\brief Donne des points de vie et dommages différents selon l'étage et le style d'ennemi
+*/
+void ennemi_selon_etage(int etage, int boss, ennemi_t *ennemi){
+
+  if(boss){
+    switch(etage){
+      case 1 : ennemi->pv = 65; ennemi->attaque = 18; break;
+      case 2 : ennemi->pv = 80; ennemi->attaque = 25; break;
+      case 3 : ennemi->pv = 95; ennemi->attaque =  34; break;
+      case 4 : ennemi->pv = 110; ennemi->attaque = 42; break;
+      default : ennemi->pv = 125; ennemi->attaque = 50; break;
+    }
+  }
+  else{
+    switch(etage){
+      case 1 : ennemi->pv = 50; ennemi->attaque = 10; break;
+      case 2 : ennemi->pv = 65; ennemi->attaque = 15; break;
+      case 3 : ennemi->pv = 80; ennemi->attaque = 22; break;
+      default : ennemi->pv = 95; ennemi->attaque = 30; break;
     }
   }
 }

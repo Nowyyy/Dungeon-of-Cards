@@ -578,6 +578,8 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	SDL_Event event;
 
+	ennemi_t ennemi;
+
 	int taille = TAILLE_LABY, nb_salles_a_creer = nb_salles_par_etage(pers->etage), salle_courante, salle_pred, salle_0;
 	int mob_commun = rand()%minotaure, boss = rand()%minotaure + 4, boss_tuer = 0, trappe=0;
 
@@ -588,6 +590,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	*(ennemi_max)=0;
 	int * compt_ennold=malloc(sizeof(int));
 	*(compt_ennold)=0;
+
 	mini_map_t miniMap;
 
 	creation_mini_map(taille, &miniMap);
@@ -608,7 +611,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 /////////////////////////// Textures et initialisations///////////////////////////////////////
 
 	init_animations(&anim);
-  place_monstre_coffre_boss(salles, taille*taille, blob, rendu,ennemi_max);
+  	place_monstre_coffre_boss(salles, taille*taille, blob, rendu,ennemi_max);
 	charge_toutes_textures(images, pers, rendu,compte_ennemi,ennemi_max);
 
 	textures_aleatoires(salles, taille*taille);
@@ -616,10 +619,11 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	for(int i = 0; i < taille * taille; i++){
 		if(salles[i].boss){
-			salles[i].ennemi = creer_ennemi(0, 10, 10, 10, boss, rendu);
+			ennemi_selon_etage(pers->etage, 1, &ennemi);
+			salles[i].ennemi = creer_ennemi(ennemi.pv, ennemi.attaque, ennemi.attaque, ennemi.attaque, boss, rendu);
 		}
 		else{
-			creer_ennemi_pointeur(&salles[i].ennemi, &salles[i].ennemi2, salles[i].nb_ennemi, mob_commun, rendu);
+			creer_ennemi_pointeur(&salles[i].ennemi, &salles[i].ennemi2, salles[i].nb_ennemi, mob_commun, rendu, pers->etage);
 			creer_coffre(&salles[i].coffre_salle, rendu, &salles[i]);
 		}
 	}
