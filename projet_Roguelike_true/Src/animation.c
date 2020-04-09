@@ -362,6 +362,22 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
 
 	char cmpPartie[20];
 
+  int gap = 38;
+
+  int id_col = 0;
+
+//Charge les sprites
+  image_t spritesMort[7];
+
+  charge_image("../Images/Mort/sprite_mort1.png", &spritesMort[0], rendu);
+  charge_image("../Images/Mort/sprite_mort2.png", &spritesMort[1], rendu);
+  charge_image("../Images/Mort/sprite_mort3.png", &spritesMort[2], rendu);
+  charge_image("../Images/Mort/sprite_mort4.png", &spritesMort[3], rendu);
+  charge_image("../Images/Mort/sprite_mort5.png", &spritesMort[4], rendu);
+  charge_image("../Images/Mort/sprite_mort6.png", &spritesMort[5], rendu);
+  charge_image("../Images/Mort/sprite_mort7.png", &spritesMort[6], rendu);
+
+
 	//Reinitialisation de la sauvegarde et compteur de mort
 	mort_tmp = pers->cmpMort;
 
@@ -393,6 +409,21 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
 		rect.h += 155;
  	}
 
+
+  //Animation de mort du personnage
+  for(int i = 0; i<7; i++){
+    SDL_RenderClear(rendu);
+    Mix_PlayChannel(0, sounds[animDeath], 0);
+    pers->sprites[courant] = spritesMort[i];
+    pers->sprites[courant].rectangle.x = pers->x-40;
+    pers->sprites[courant].rectangle.y = pers->y;
+    SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
+    SDL_RenderPresent(rendu);
+
+    SDL_Delay(400);
+  }
+
+//Affichage du texte
 	if(pers->cmpMort ==1){
 		sprintf(cmpPartie, "%dere mort", pers->cmpMort);
 	}
@@ -406,25 +437,17 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
 	SDL_RenderClear(rendu);
 	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
 
-
-
-
 	SDL_RenderCopy(rendu, images[gameover].img, NULL, &images[gameover].rectangle);
+
+
 	//Musique
 	Mix_VolumeMusic(64);
 	Mix_PlayMusic(musics[gameOverMusic], 1);
 
 
-	//halo lumineux
-  //images[deathlight].rectangle.x=0;
-  //images[deathlight].rectangle.y=0;
+	//halo lumineux et personnage
 	SDL_RenderCopy(rendu, images[deathlight].img, NULL, &images[deathlight].rectangle);
-
-	//Sprite perso mort
-	pers->sprites[dead].rectangle.x = pers->x-50;
-	pers->sprites[dead].rectangle.y = pers->y;
-	pers->sprites[courant] = pers->sprites[dead];
-	SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
+  SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
 
 
 	get_text_and_rect(rendu, x_cmpPartie, y_cmpPartie, cmpPartie, police, &cmpPartie_texture, &cmpPartie_text);
@@ -442,4 +465,7 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
 		SDL_DestroyTexture(cmpPartie_texture);
 		cmpPartie_texture=NULL;
 	}
+
+  for(int i = 0; i < 7; i++)
+		libere_texture(&spritesMort[i].img);
 }

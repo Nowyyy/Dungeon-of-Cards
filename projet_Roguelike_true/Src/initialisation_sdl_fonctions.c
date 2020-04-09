@@ -224,6 +224,7 @@ void init_son(Mix_Chunk* sounds[NB_SON]){
 	sounds[collect] = Mix_LoadWAV("../Sound/collect.wav");
 	sounds[chest] = Mix_LoadWAV("../Sound/chest.wav");
 	sounds[enterFight] = Mix_LoadWAV("../Sound/enterFight.wav");
+	sounds[animDeath] = Mix_LoadWAV("../Sound/death.wav");
 
 	Mix_VolumeChunk(sounds[move], 128);
 	Mix_VolumeChunk(sounds[selection], 128);
@@ -232,6 +233,7 @@ void init_son(Mix_Chunk* sounds[NB_SON]){
 	Mix_VolumeChunk(sounds[gameOverFrame], 32);
 	Mix_VolumeChunk(sounds[chest], 128);
 	Mix_VolumeChunk(sounds[enterFight], 128);
+	Mix_VolumeChunk(sounds[animDeath], 128);
 
 }
 
@@ -269,14 +271,14 @@ musics[level5] = Mix_LoadMUS("../Sound/level5.mp3");
 *\return 1 si echec, 0 si réussite
 */
 void free_mixer(Mix_Music* musics[NB_MUSIC], Mix_Chunk* sounds[NB_SON]){
-	for(int i=menu; i<NB_SON-1; i++){
+	for(int i=move; i<NB_SON-1; i++){
 		if(sounds[i]!= NULL){
 			Mix_FreeChunk(sounds[i]);
 			sounds[i]=NULL;
 		}
 	}
 
-	for(int i=move; i<NB_MUSIC-1; i++){
+	for(int i=menu; i<NB_MUSIC-1; i++){
 		if(musics[i]!=NULL){
 			Mix_FreeMusic(musics[i]);
 			musics[i]=NULL;
