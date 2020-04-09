@@ -410,17 +410,29 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
  	}
 
 
-  //Animation de mort du personnage
+  //Animation de mort du personnage et halo
   for(int i = 0; i<7; i++){
     SDL_RenderClear(rendu);
     Mix_PlayChannel(0, sounds[animDeath], 0);
     pers->sprites[courant] = spritesMort[i];
     pers->sprites[courant].rectangle.x = pers->x-40;
     pers->sprites[courant].rectangle.y = pers->y;
+
+    if(i==2){
+      pers->sprites[courant].rectangle.y = pers->y-15;
+
+    }
+    if(i==3){
+      pers->sprites[courant].rectangle.y = pers->y-5;
+    }
+    if(i < 2){
+      pers->sprites[courant].rectangle.y = pers->y-10;
+    }
+    SDL_RenderCopy(rendu, images[deathlight].img, NULL, &images[deathlight].rectangle);
     SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
     SDL_RenderPresent(rendu);
 
-    SDL_Delay(400);
+    SDL_Delay(800);
   }
 
 //Affichage du texte
@@ -432,9 +444,12 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
 	}
 
 	//Ecran de game over
+  SDL_RenderClear(rendu);
+  SDL_RenderCopy(rendu, images[deathlight].img, NULL, &images[deathlight].rectangle);
+  SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
 
 	//Fond noir et logo game over
-	SDL_RenderClear(rendu);
+	//SDL_RenderClear(rendu);
 	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
 
 	SDL_RenderCopy(rendu, images[gameover].img, NULL, &images[gameover].rectangle);
@@ -443,12 +458,6 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
 	//Musique
 	Mix_VolumeMusic(64);
 	Mix_PlayMusic(musics[gameOverMusic], 1);
-
-
-	//halo lumineux et personnage
-	SDL_RenderCopy(rendu, images[deathlight].img, NULL, &images[deathlight].rectangle);
-  SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
-
 
 	get_text_and_rect(rendu, x_cmpPartie, y_cmpPartie, cmpPartie, police, &cmpPartie_texture, &cmpPartie_text);
 
