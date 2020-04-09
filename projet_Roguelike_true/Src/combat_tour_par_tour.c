@@ -781,8 +781,6 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Ch
 
   	while((ennemi->pv > 0 && perso->pv > 0) && fuite==1 ){
 
-			perso->pv-=10;
-
   		//affichage de l'écran et déplacement de rectangle de sélection
   		affichage_combat_personnage(rendu, perso, ennemi, def, fui, rectangle_selection, images, hud_ennemi, hud_pers, action);
 
