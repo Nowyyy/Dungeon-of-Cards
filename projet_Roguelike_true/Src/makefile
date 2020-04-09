@@ -16,7 +16,7 @@ $@ : $^
 
 ## Cleaning temps
 clean :
-	rm *.o
+	rm *.o && rm ../Sauvegarde/cartes_deck.txt ../Sauvegarde/cartes_collec.txt && clear
 
 ##launch a test
 
