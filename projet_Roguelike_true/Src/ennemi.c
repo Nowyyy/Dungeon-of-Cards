@@ -76,7 +76,7 @@ void destruction_tous_ennemis(salle_t salles[], int taille){
 
 	int i;
 
-	for(i = 0; i < taille * taille; i++){
+	for(i = 0; i < taille; i++){
 
 		if(salles[i].ennemi_present > 0 || salles[i].boss)
 			detruire_ennemi(&salles[i].ennemi);

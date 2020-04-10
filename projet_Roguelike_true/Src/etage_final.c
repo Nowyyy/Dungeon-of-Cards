@@ -38,17 +38,21 @@
 */
 void charge_textures_etage_final(image_t images[], perso_t *pers, SDL_Renderer *rendu){
 
-	charge_image(SOL1_PATH,&images[sol], rendu);
-	charge_image(MUR1_PATH,&images[mur], rendu);
-	charge_image(MUR2_PATH,&images[mur2], rendu);
-	charge_image(PORTE_PATH,&images[porte], rendu);
-	charge_image(SOL2_PATH,&images[sol2], rendu);
-	charge_image(SOL3_PATH,&images[sol3], rendu);
+	int x= 0;
+
+	charge_image(SOL1_2_PATH,&images[sol], rendu);
+	charge_image(MUR1_2_PATH,&images[mur], rendu);
+	charge_image(MUR2_2_PATH,&images[mur2], rendu);
+	charge_image(PORTE_2_PATH,&images[porte], rendu);
+	charge_image(SOL2_2_PATH,&images[sol2], rendu);
+	charge_image(SOL3_2_PATH,&images[sol3], rendu);
 
 	charge_image(HEART_PATH, &images[heart], rendu);
 	charge_image(TRAPDOOR_PATH, &images[trapdoor], rendu);
 
 	charge_sprites_personnage(pers->sprites, rendu);
+
+	creer_texture_depuis_char(&images[pv], &images[etage], *pers, rendu,&images[countertxt],&x,&x);
 
 	images[heart].rectangle.x = 25;
 	images[heart].rectangle.y = WIN_HEIGHT * 0.10;
@@ -94,8 +98,6 @@ void affichage_salle_personnage_etage_final(perso_t pers, salle_t *salle, SDL_Re
 	SDL_RenderCopy(rendu, images[etage].img, NULL, &images[etage].rectangle);
 	SDL_RenderCopy(rendu, images[heart].img, NULL, &images[heart].rectangle);
 	SDL_RenderCopy(rendu, images[trapdoor].img, NULL, &images[trapdoor].rectangle);
-	SDL_RenderCopy(rendu, images[mobcounter].img, NULL, &images[mobcounter].rectangle);
-  	SDL_RenderCopy(rendu, images[countertxt].img, NULL, &images[countertxt].rectangle);
 
   	if(salle->boss)
   		if(salle->ennemi->pv > 0)
@@ -120,19 +122,11 @@ void creation_salles_dernier_etage(salle_t salles[], int taille, SDL_Renderer *r
 	ajout_porte_salle(salles[1].salle, 3);
 	ajout_porte_salle(salles[0].salle, 1);
 
-	salles[0].ennemi = NULL;
-	salles[0].ennemi2 = NULL;
 	salles[1].ennemi = creer_ennemi(ennemi_tmp.pv, ennemi_tmp.attaque, ennemi_tmp.attaque, ennemi_tmp.attaque, sorcerer, rendu);
-	salles[1].ennemi2 = NULL;
-
-	salles[0].ennemi_present = 0;
-	salles[0].nb_ennemi = 0;
-
-	salles[1].ennemi_present = 0;
-	salles[1].nb_ennemi = 0;
 
 	salles[1].boss = TRUE; // on marque tout de suite la salle du boss
-	salles[0].boss = FALSE; // on marque tout de suite la salle du boss
+
+	salles[1].ennemi->last = SDL_GetTicks();
 
 	//remplissage tableau de collisions pour les murs et les portes
 	for(int i = 0; i < taille; i++){
@@ -199,6 +193,16 @@ void etage_final(SDL_Renderer *rendu, int *continuer, int *etat, Mix_Chunk *soun
 		indice_salle = changement_de_salle(pers, salles[indice_salle], indice_salle, sounds);
 		
 		SDL_Delay(5);
+
+		if(combat_declenche(salles[indice_salle], *pers) == 1 && salles[indice_salle].ennemi->pv > 0 && *etat == labyrinthe){
+
+			vers_ecran_combat(rendu, sounds, &clavier, pers, salles[indice_salle].ennemi, musics, etat);
+		}
+
+		if(pers->fuite){//le joueur à fuit le combat, on le renvoie dans la première salle du niveau
+			pers->fuite = 0;
+			indice_salle = 0;
+		}
 	}
 
 	Mix_HaltMusic();
@@ -212,9 +216,5 @@ void etage_final(SDL_Renderer *rendu, int *continuer, int *etat, Mix_Chunk *soun
 	for(int i = sol; i < NB_TEXTURES_LABY; i++)
 		libere_texture(&images[i].img);
 
-	printf("pas crash\n");
-
 	destruction_tous_ennemis(salles, TAILLE_ETAGE_FINAL);
-
-	printf("a pu crash\n");
 }

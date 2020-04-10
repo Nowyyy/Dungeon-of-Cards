@@ -78,6 +78,7 @@
 #define IMP_PATH "../Images/sprites_mobs/imp_sprites.png"
 #define SORCERER_PATH "../Images/sprites_mobs/sorcerer_sprites.png"
 #define WIZARD_PATH "../Images/sprites_mobs/wizard_sprite2.png"
+#define WITCH_PATH "../Images/sprites_mobs/witch_sprites.png"
 
 #define COMBAT_PATH "../Images/combat1.png"
 #define FOND_COMBAT_PATH "../Images/combat2.png"
@@ -193,7 +194,7 @@ typedef enum{fond,fond2,coeur,gui_bar,carte1,carte2,carte3,carte4, gameover, dea
 
 *\brief les types d'ennemis existants
 */
-typedef enum{squelette, blob, imp, volant, minotaure, cyclope, wizard, sorcerer}t_type_ennemis;
+typedef enum{squelette, blob, imp, volant, minotaure, cyclope, wizard, witch, sorcerer}t_type_ennemis;
 
 
 /**

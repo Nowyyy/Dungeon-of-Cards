@@ -506,13 +506,13 @@ void anim_combat_perso_attaque(perso_t *pers, carte_t *carte, SDL_Renderer *rend
   }
   SDL_Delay(50);
   SDL_RenderClear(rendu);
-  if(!strcmp(carte->nom, " Poing I") || !strcmp(carte->nom, " Poing II") || !strcmp(carte->nom, " Poing X")){
+  if(!strcmp(carte->nom, " poing I") || !strcmp(carte->nom, " poing II") || !strcmp(carte->nom, " poing X")){
     Mix_PlayChannel(0, sounds[punch], 0);
   }
-  else if(!strcmp(carte->nom," Epee I") || !strcmp(carte->nom," Epee II") || !strcmp(carte->nom," Epee X")){
+  else if(!strcmp(carte->nom," epee I") || !strcmp(carte->nom," epee II") || !strcmp(carte->nom," epee X")){
     Mix_PlayChannel(0, sounds[sword], 0);
   }
-  else if(!strcmp(carte->nom, " Pierre I") || !strcmp(carte->nom, " Pierre II") || !strcmp(carte->nom, " Pierre X")){
+  else if(!strcmp(carte->nom, " pierre I") || !strcmp(carte->nom, " pierre II") || !strcmp(carte->nom, " pierre X")){
     Mix_PlayChannel(0, sounds[rock], 0);
   }
 
@@ -543,31 +543,31 @@ void anim_combat_perso_attaque(perso_t *pers, carte_t *carte, SDL_Renderer *rend
 void anim_combat_perso(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON]){
   int tmp_x = pers->sprites[courant].rectangle.x;
 
-  if(!strcmp(carte->nom, " Poing I") || !strcmp(carte->nom, " Poing II") || !strcmp(carte->nom, " Poing X")){
+  if(!strcmp(carte->nom, " poing I") || !strcmp(carte->nom, " poing II") || !strcmp(carte->nom, " poing X")){
     anim_combat_perso_attaque(pers, carte, rendu, sounds);
   }
 
-  else if(!strcmp(carte->nom," Epee I") || !strcmp(carte->nom," Epee II") || !strcmp(carte->nom," Epee X")){
+  else if(!strcmp(carte->nom," epee I") || !strcmp(carte->nom," epee II") || !strcmp(carte->nom," epee X")){
     anim_combat_perso_attaque(pers, carte, rendu, sounds);
   }
 
-  else if(!strcmp(carte->nom, " Pierre I") || !strcmp(carte->nom, " Pierre II") || !strcmp(carte->nom, " Pierre X")){
+  else if(!strcmp(carte->nom, " pierre I") || !strcmp(carte->nom, " pierre II") || !strcmp(carte->nom, " pierre X")){
     anim_combat_perso_attaque(pers, carte, rendu, sounds);
   }
 
 
-  else if(!strcmp(carte->nom, " Potion I") || !strcmp(carte->nom, " Potion II") || !strcmp(carte->nom, " Potion X") || !strcmp(carte->nom, " Soin I") || !strcmp(carte->nom, " Soin II") || !strcmp(carte->nom, " Soin III") || !strcmp(carte->nom, " Guerison I") || !strcmp(carte->nom, " Guerison II") || !strcmp(carte->nom, " Guerison X")){
+  else if(!strcmp(carte->nom, " potion I") || !strcmp(carte->nom, " potion II") || !strcmp(carte->nom, " potion X") || !strcmp(carte->nom, " soin I") || !strcmp(carte->nom, " soin II") || !strcmp(carte->nom, " soin III") || !strcmp(carte->nom, " guerison I") || !strcmp(carte->nom, " guerison II") || !strcmp(carte->nom, " guerison X")){
 
   }
-  else if(!strcmp(carte->nom, " Poison I") || !strcmp(carte->nom, " Poison II") || !strcmp(carte->nom, " Poison X")){
-
-  }
-
-  else if(!strcmp(carte->nom, " Barriere I") || !strcmp(carte->nom, " Barriere II") || !strcmp(carte->nom, " Barriere X")){
+  else if(!strcmp(carte->nom, " poison I") || !strcmp(carte->nom, " poison II") || !strcmp(carte->nom, " poison X")){
 
   }
 
-  else if(!strcmp(carte->nom, " Boule de feu I") || !strcmp(carte->nom, " Boule de feu II") || !strcmp(carte->nom, " Boule de feu X")){
+  else if(!strcmp(carte->nom, " barriere I") || !strcmp(carte->nom, " barriere II") || !strcmp(carte->nom, " barriere X")){
+
+  }
+
+  else if(!strcmp(carte->nom, " boule de feu I") || !strcmp(carte->nom, " boule de feu II") || !strcmp(carte->nom, " boule de feu X")){
 
   }
 

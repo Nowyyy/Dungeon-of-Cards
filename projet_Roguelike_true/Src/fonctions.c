@@ -493,8 +493,12 @@ ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type,
 
     init_ennemi_valeurs(ennemi, "Sorcier", 40, 84, 7, 58, 1.5, 1.5, SORCERER_PATH, rendu);
   }
+  else if(type == witch){
 
-  if(type == minotaure || type == wizard || type == cyclope || type == sorcerer){
+    init_ennemi_valeurs(ennemi, "Sorciere", 45, 48, 4, 12, 1.2, 1.2, WITCH_PATH, rendu);
+  }
+
+  if(type == minotaure || type == wizard || type == cyclope || type == sorcerer || type == witch){
     ennemi->boss = 1;
     ennemi->sprites.rectangle.x = WIN_WIDTH / 2 - ennemi->sprites.rectangle.w / 2;
     ennemi->sprites.rectangle.y = WIN_HEIGHT / 2 - ennemi->sprites.rectangle.h / 2;

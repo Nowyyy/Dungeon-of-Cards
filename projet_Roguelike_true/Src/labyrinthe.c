@@ -195,6 +195,8 @@ void initialise_salles(salle_t tab[], int taille){
 		tab[i].depart = FALSE;
 		tab[i].decouverte = FALSE;
 		tab[i].salle_existe = FALSE;
+		tab[i].ennemi = NULL;
+		tab[i].ennemi2 = NULL;
 	}
 }
 
@@ -630,6 +632,8 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	touches_t clavier;
 
+	boss  = witch;
+
 /////////////////////////// Génération aléatoire ////////////////////////////////////////////
 
 	salle_courante = creation_labyrinthe(salles, taille, nb_salles_a_creer);
@@ -655,7 +659,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	for(int i = 0; i < taille * taille; i++){
 		if(salles[i].boss){
 			ennemi_selon_etage(pers->etage, 1, &ennemi);
-			salles[i].ennemi = creer_ennemi(0/*ennemi.pv*/, ennemi.attaque, ennemi.attaque, ennemi.attaque, boss, rendu);
+			salles[i].ennemi = creer_ennemi(ennemi.pv, ennemi.attaque, ennemi.attaque, ennemi.attaque, boss, rendu);
 		}
 		else{
 			creer_ennemi_pointeur(&salles[i].ennemi, &salles[i].ennemi2, salles[i].nb_ennemi, mob_commun, rendu, pers->etage);
@@ -752,7 +756,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	free(compte_ennemi);
 	free(ennemi_max);
 
-	destruction_tous_ennemis(salles, taille);
+	destruction_tous_ennemis(salles, taille * taille);
 
 	destruction_des_coffres(salles, taille);
 }

@@ -27,7 +27,7 @@ void animation_coffre(perso_t *pers, salle_t *salle, Mix_Chunk *sounds[NB_SON]){
 	if(salle->coffre_salle.ouvert == 0 && (salle->coffre && (SDL_HasIntersection(&pers->sprites[courant].rectangle, &salle->coffre_salle.sprite.rectangle) || salle->coffre_salle.courant > 0))){
 		//on est dans une salle avec un coffre et il n'a pas été ouvert
 
-		if(salle->coffre_salle.courant < salle->coffre_salle.nb_sprites -1 && salle->coffre_salle.last + DELAIS_ANIMATIONS + 50 <= SDL_GetTicks()){
+		if(salle->coffre_salle.courant < salle->coffre_salle.nb_sprites -1 && salle->coffre_salle.last + DELAIS_ANIMATIONS + 5 <= SDL_GetTicks()){
 
 			salle->coffre_salle.sprite_courant.x += salle->coffre_salle.sprite_courant.w + salle->coffre_salle.gap;
 			salle->coffre_salle.courant ++;

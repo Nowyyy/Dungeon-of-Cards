@@ -102,7 +102,6 @@ int main(int argc, char* args[]){
 							///////////Exploration du labyrinthe
 							saveperso(&pers);
 							Mix_HaltMusic();
-							//pers.etage = 5;
 							animation_niveau(&pers, rendu);
 						  	choix_musique(musics, &pers);
 						  	savecarte(SAVE_CARTES_DECK_PATH, DECK);
