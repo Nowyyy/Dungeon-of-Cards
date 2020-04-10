@@ -338,10 +338,13 @@ void creation_mini_map(int taille, mini_map_t *map){
 */
 void ajoute_salle_decouverte(mini_map_t *map, salle_t salles[], int indice, int *salle_pred){
 
-  salles[indice].decouverte = TRUE;
-  salles[indice].prems = 1;
-  *salle_pred = indice;
-  map->salles_decouvertes[indice] = TRUE;
+  if(indice != *salle_pred){
+
+    salles[indice].decouverte = TRUE;
+    salles[indice].prems = 1;
+    *salle_pred = indice;
+    map->salles_decouvertes[indice] = TRUE;
+  }
 }
 
 

@@ -17,6 +17,7 @@
 #include "../include/confirmer_nouveau.h"
 #include "../include/fonctions.h"
 #include "../include/animation.h"
+#include "../include/etage_final.h"
 
 
 
@@ -84,6 +85,7 @@ int main(int argc, char* args[]){
 					while(continuer){
 
 						if(etat == mainMenu){
+							///////////Menu principal
 							if(Mix_PlayingMusic() == 0){
 								Mix_VolumeMusic(15);
 								Mix_PlayMusic(musics[menu], -1);
@@ -97,21 +99,26 @@ int main(int argc, char* args[]){
 							}
 						}
 						else if (etat == labyrinthe){
-							//tout ce qui sera relatif à l'explo dans le laby
+							///////////Exploration du labyrinthe
 							saveperso(&pers);
 							Mix_HaltMusic();
+							//pers.etage = 5;
 							animation_niveau(&pers, rendu);
 						  	choix_musique(musics, &pers);
 						  	savecarte(SAVE_CARTES_DECK_PATH, DECK);
 						  	savecarte(SAVE_CARTES_COLLEC_PATH, COLLEC);
-							boucle_labyrinthe(&continuer, &etat, rendu, sounds, musics, &pers, police);
+					
+						  	if(pers.etage < 5)
+								boucle_labyrinthe(&continuer, &etat, rendu, sounds, musics, &pers, police);
+							else
+								etage_final(rendu, &continuer, &etat, sounds, musics, &pers, police);
 						}
 						else if(etat == charger_partie){
-							//charge les données du joueurs afin qu'il reprenne là où il s'était arrêté
+							///////////charge les données du joueurs afin qu'il reprenne là où il s'était arrêté
 							menu_charger_partie(&continuer, &etat, rendu, police, sounds, &pers);
 						}
 						else if(etat == confirmer_nouveau){
-							//Affiche un menu pour confirmer l'écrasement de la sauvegarde
+							///////////Affiche un menu pour confirmer l'écrasement de la sauvegarde
 							menu_confirmation(&continuer, &etat, rendu, police, sounds, &pers);
 							if(etat == labyrinthe){
 								initialise_personnage(&pers);

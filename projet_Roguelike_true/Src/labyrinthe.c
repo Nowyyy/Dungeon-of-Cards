@@ -22,6 +22,7 @@
 #include "../include/coffre.h"
 #include "../include/combat_tour_par_tour.h"
 #include "../include/animation.h"
+#include "../include/labyrinthe.h"
 
 /**
 *\fn void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu)
@@ -50,6 +51,14 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 		charge_image(PORTE_2_PATH,&images[porte], rendu);
 		charge_image(SOL2_2_PATH,&images[sol2], rendu);
 		charge_image(SOL3_2_PATH,&images[sol3], rendu);
+	}
+	else if(pers->etage == 3){
+		charge_image(SOL1_3_PATH,&images[sol], rendu);
+		charge_image(MUR1_3_PATH,&images[mur], rendu);
+		charge_image(MUR2_3_PATH,&images[mur2], rendu);
+		charge_image(PORTE_3_PATH,&images[porte], rendu);
+		charge_image(SOL2_3_PATH,&images[sol2], rendu);
+		charge_image(SOL3_3_PATH,&images[sol3], rendu);
 	}
 	else{
 		charge_image(SOL_TEST_PATH,&images[sol], rendu);
@@ -97,6 +106,9 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 *\param images[], contient toutes les images utilisées sauf celle du personnage
 *\param pers, la structure contenant le personnage
 *\param *rendu, le renderer sur lequel on dessine
+*\param *salle, la salle actuelle
+*\param map, la structure contenant la mini map
+*\param loot, structure permettant l'affichage d'un loot effectué
 
 *\brief Permet d'afficher une salle, le personnage et si on est dans la premiere salle, les instructions et commandes du jeu
 
@@ -131,7 +143,7 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 	SDL_RenderCopy(rendu, images[heart].img, NULL, &images[heart].rectangle);
 	SDL_RenderCopy(rendu, images[trapdoor].img, NULL, &images[trapdoor].rectangle);
 	SDL_RenderCopy(rendu, images[mobcounter].img, NULL, &images[mobcounter].rectangle);
-  SDL_RenderCopy(rendu, images[countertxt].img, NULL, &images[countertxt].rectangle);
+  	SDL_RenderCopy(rendu, images[countertxt].img, NULL, &images[countertxt].rectangle);
 ///////////SPRITES MONSTRES
 	if(salle->ennemi_present || salle->boss){
 		if(salle->ennemi->pv <= 0 && salle->boss){
@@ -556,6 +568,23 @@ void check_ennemi(int* ennemi_max,int* compte_ennemi,salle_t salles[],int salle_
 }
 
 
+
+/**
+*\fn void init_tableau_images(image_t images[])
+
+*\param images[], le tableau d'images
+
+*\brief met à NULL tous les pointeurs du tableau
+*/ 
+void init_tableau_images(image_t images[]){
+
+	for(int i = 0; i < NB_TEXTURES_LABY; i++){
+
+		images[i].img = NULL;
+	}
+}
+
+
 /**
 *\fn void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *gameOverMusic, perso_t *pers, carte_t *cartes, TTF_Font *police)
 
@@ -607,11 +636,17 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	salle_0 = salle_courante;
 
+	salle_pred = salle_courante;
+
 	loot->existe = 0;
 /////////////////////////// Textures et initialisations///////////////////////////////////////
 
+	init_tableau_images(images);
+
 	init_animations(&anim);
+
   	place_monstre_coffre_boss(salles, taille*taille, blob, rendu,ennemi_max);
+
 	charge_toutes_textures(images, pers, rendu,compte_ennemi,ennemi_max);
 
 	textures_aleatoires(salles, taille*taille);
@@ -620,7 +655,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	for(int i = 0; i < taille * taille; i++){
 		if(salles[i].boss){
 			ennemi_selon_etage(pers->etage, 1, &ennemi);
-			salles[i].ennemi = creer_ennemi(ennemi.pv, ennemi.attaque, ennemi.attaque, ennemi.attaque, boss, rendu);
+			salles[i].ennemi = creer_ennemi(0/*ennemi.pv*/, ennemi.attaque, ennemi.attaque, ennemi.attaque, boss, rendu);
 		}
 		else{
 			creer_ennemi_pointeur(&salles[i].ennemi, &salles[i].ennemi2, salles[i].nb_ennemi, mob_commun, rendu, pers->etage);
@@ -630,6 +665,8 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	ajoute_salle_decouverte(&miniMap, salles, salle_courante, &salle_pred);
 
+	miniMap.salles_decouvertes[salle_courante] = TRUE;//on ajoute la première salle à la mini map
+
 	init_tab_clavier(clavier.tab);
 
 /////////////////////////// boucle du labyrinthe / explo / combat ///////////////////////////
@@ -638,9 +675,8 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 		if((salles[salle_courante].nb_ennemi > 0 && salles[salle_courante].ennemi->pv > 0) || (salles[salle_courante].boss && salles[salle_courante].ennemi->pv > 0))
 			animation_ennemi(salles[salle_courante].ennemi);
 
-		if(salles[salle_courante].nb_ennemi == 2 && salles[salle_courante].ennemi2->pv > 0){
+		if(salles[salle_courante].nb_ennemi == 2 && salles[salle_courante].ennemi2->pv > 0)
 			animation_ennemi(salles[salle_courante].ennemi2);
-		}
 
 		if(salles[salle_courante].coffre){
 			animation_coffre(pers, &salles[salle_courante], sounds);

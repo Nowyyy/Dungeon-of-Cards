@@ -117,6 +117,8 @@
 #define TAILLE_LABY 8
 
 #define TAILLE 20 //Taille des chaînes de caractères
+
+#define TAILLE_ETAGE_FINAL 2 //Taille du dernier étage
 #define TAILLE_DECK 5
 
 #define DUREE_AFFICHAGE_CARTE_LOOT 5000
