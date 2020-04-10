@@ -587,6 +587,37 @@ void init_tableau_images(image_t images[]){
 }
 
 
+
+/**
+*\fn int choix_boss()
+
+*\brief Permet de choisir le boss qui peuplera l'étage
+*/
+int choix_boss(){
+
+	return (rand()%minotaure + 4);
+}
+
+
+
+/**
+*\fn int choix_monstre(int etage)
+
+*\param etage, l'étage actuel où se situe le joueur
+
+*\brief Permet de choisir le monstre qui peuplera l'étage (sauf certains monstres à certains étages qui ne ressortent pas assez sur les textures)
+*/
+int choix_monstre(int etage){
+
+	int alea = rand()%minotaure;
+
+	if(alea == volant && etage == 1)
+		return choix_monstre(etage);
+	else
+		return alea;
+}
+
+
 /**
 *\fn void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *gameOverMusic, perso_t *pers, carte_t *cartes, TTF_Font *police)
 
@@ -612,7 +643,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 	ennemi_t ennemi;
 
 	int taille = TAILLE_LABY, nb_salles_a_creer = nb_salles_par_etage(pers->etage), salle_courante, salle_pred, salle_0;
-	int mob_commun = rand()%minotaure, boss = rand()%minotaure + 4, boss_tuer = 0, trappe=0;
+	int mob_commun = choix_monstre(pers->etage), boss = choix_boss(), boss_tuer = 0, trappe=0;
 
 	int* compte_ennemi=malloc(sizeof(int));
 	*(compte_ennemi)=0;
@@ -632,7 +663,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	touches_t clavier;
 
-	boss  = witch;
+	boss  = witch;//------>pour les besoins de vérifications de l'animation, à supprimer par la suite
 
 /////////////////////////// Génération aléatoire ////////////////////////////////////////////
 

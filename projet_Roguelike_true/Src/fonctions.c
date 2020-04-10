@@ -38,6 +38,31 @@ void detruire_carte(carte_t ** carte)
 
 
 /**
+*\fn void detruire_liste(int liste)
+
+*\brief Vide puis détruis la liste passée en paramètre
+
+*\param liste, le numéro de la liste que l'on veut supprimer
+*/
+void detruire_liste(int liste){
+
+  choix_liste(liste);
+
+  en_tete();
+
+  while(!liste_vide()){
+    oter_elt();
+    suivant();
+  }
+
+  if(drapeau != NULL){
+    free(drapeau);
+    drapeau = NULL;
+  }
+}
+
+
+/**
 *\fn void ajout_carte_collec(carte_t *carte)
 
 *\param carte, la carte pour laquelle on cherche à savoir si elle existe dans la collection du joueur

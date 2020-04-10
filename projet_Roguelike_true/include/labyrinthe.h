@@ -12,3 +12,5 @@ void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Rendere
 void vers_ecran_combat(SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], touches_t *clavier, perso_t *pers, ennemi_t *ennemi,  Mix_Music *musics[NB_MUSIC], int *etat);
 void check_ennemi(int* ennemi_max,int* compte_ennemi,salle_t salles[],int salle_courante,perso_t *pers);
 void init_tableau_images(image_t images[]);
+int choix_boss();
+int choix_monstre(int etage);

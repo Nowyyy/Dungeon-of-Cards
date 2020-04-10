@@ -92,7 +92,7 @@ int main(int argc, char* args[]){
 							}
 							main_menu(&continuer, &etat, rendu, police, sounds);
 
-							if(etat == labyrinthe){
+							if(etat == labyrinthe){//cas où une save n'existe pas, on initialise joueur et decks pour lancer la partie directement
 								initialise_personnage(&pers);
 								readcarte(SAVE_CARTES_NEW_GAME_PATH, DECK);
 								readcarte(SAVE_CARTES_NEW_GAME_PATH, COLLEC);
@@ -131,49 +131,19 @@ int main(int argc, char* args[]){
 		}
 	}
 //************************* FERMETURES ***********************************************************************
-	printf("On va tout fermer\n");
 	IMG_Quit();
 	TTF_CloseFont(police); //on libère la police
 
 	init_or_quit_ttf(0);//quitte TTF
 
-	printf("IMG et ttf OK\n");
-
 	//On libère toutes les variables de son
 	free_mixer(musics, sounds);
-
-	printf("Mixer ok\n");
 
 	quit_sdl(&rendu, &window);
 	SDL_Quit();
 
-	choix_liste(DECK);
-
-	en_tete();
-
-	while(!liste_vide()){
-		oter_elt();
-		suivant();
-	}
-	if(drapeau != NULL){
-		free(drapeau);
-		drapeau = NULL;
-	}
-	printf("deck vide\n");
-
-	choix_liste(COLLEC);
-
-	en_tete();
-
-	while(!liste_vide()){
-		oter_elt();
-		suivant();
-	}
-
-	if(drapeau != NULL){
-		free(drapeau);
-		drapeau = NULL;
-	}
+	detruire_liste(DECK);
+	detruire_liste(COLLEC);
 
 	printf("Tout est fermé\n");//affiche dans la console
 

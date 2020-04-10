@@ -18,6 +18,7 @@ carte_t * creer_carte(char *, type_carte, int, int, char *);
 
 void init_ennemi_valeurs(ennemi_t *ennemi, char * nom, int w, int h, int nb_sprites, int gap, float w2, float h2, char * path, SDL_Renderer * rendu);
 
+void detruire_liste(int liste);
 
 void ajout_carte_deck(carte_t *carte);
 void ajout_carte_collec(carte_t *carte);
