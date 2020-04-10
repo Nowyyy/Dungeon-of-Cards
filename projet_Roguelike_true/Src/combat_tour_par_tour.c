@@ -375,7 +375,7 @@ void free_image(image_t images[]){
 
 *\brief permet d'effectuer l'action sélectionnée par le joueur
 */
-void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t *carte){
+void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON]){
 
 	if(carte->type == ATTAQUE){
 		if(carte->consommable > 0){
@@ -385,6 +385,7 @@ void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t *carte){
 		if(ennemi->pv < 0){
 			ennemi->pv = 0;
 		}
+		anim_combat_perso(pers, carte, rendu, sounds);
 	}
 	else{
 
@@ -801,7 +802,7 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Ch
 
   			if(alea){//le joueur commence
 
-  				tour_joueur(perso, ennemi, cartes[choix]);
+  				tour_joueur(perso, ennemi, cartes[choix], rendu, sounds);
   				actualisation_apres_tour(perso, ennemi, *cartes[choix], &action, &hud_pers, &hud_ennemi, rendu, police, alea);
   				affichage_combat_personnage(rendu, perso, ennemi, def, fui, rectangle_selection, images, hud_ennemi, hud_pers, action);
   				SDL_Delay(wait* 2);
@@ -821,7 +822,7 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Ch
   				SDL_Delay(wait* 2);
 
   				if(perso->pv > 0){
-	  				tour_joueur(perso, ennemi, cartes[choix]);
+	  				tour_joueur(perso, ennemi, cartes[choix], rendu, sounds);
 	  				actualisation_apres_tour(perso, ennemi, *cartes[choix], &action, &hud_pers, &hud_ennemi, rendu, police, alea + 1);
 	  				affichage_combat_personnage(rendu, perso, ennemi, def, fui, rectangle_selection, images, hud_ennemi, hud_pers, action);
 	  				SDL_Delay(wait);

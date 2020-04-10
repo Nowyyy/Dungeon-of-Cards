@@ -12,6 +12,7 @@
 #include "../include/personnage.h"
 #include "../include/sauvegardefonc.h"
 #include <time.h>
+#include <string.h>
 
 /**
 *\fn void animation_niveau()
@@ -432,7 +433,7 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
     SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
     SDL_RenderPresent(rendu);
 
-    SDL_Delay(800);
+    SDL_Delay(500);
   }
 
 //Affichage du texte
@@ -477,4 +478,99 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
 
   for(int i = 0; i < 7; i++)
 		libere_texture(&spritesMort[i].img);
+}
+
+
+/**
+*\fn void anim_combat_perso_attaque(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
+
+*\param *pers, contient le personnage afin de le sauvegarder
+*\param cartes, la carte jouée par le joueur
+*\param *rendu, le renderer sur lequel on dessine
+*\param *sounds[NB_SON], tableau contenant les sons
+
+*\brief Permet de gèrer les animations de combat liées à l'attaque du personnage
+
+*/
+void anim_combat_perso_attaque(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON]){
+  int i = 0;
+
+  while(i < 75){
+    SDL_Delay(25);
+    pers->sprites[courant].rectangle.x +=i;
+
+    SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
+    SDL_RenderPresent(rendu);
+
+    i+=15;
+  }
+  SDL_Delay(50);
+  SDL_RenderClear(rendu);
+  if(!strcmp(carte->nom, " Poing I") || !strcmp(carte->nom, " Poing II") || !strcmp(carte->nom, " Poing X")){
+    Mix_PlayChannel(0, sounds[punch], 0);
+  }
+  else if(!strcmp(carte->nom," Epee I") || !strcmp(carte->nom," Epee II") || !strcmp(carte->nom," Epee X")){
+    Mix_PlayChannel(0, sounds[sword], 0);
+  }
+  else if(!strcmp(carte->nom, " Pierre I") || !strcmp(carte->nom, " Pierre II") || !strcmp(carte->nom, " Pierre X")){
+    Mix_PlayChannel(0, sounds[rock], 0);
+  }
+
+  while(i>15){
+    SDL_Delay(25);
+    pers->sprites[courant].rectangle.x -=i;
+
+    SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
+    SDL_RenderPresent(rendu);
+
+    i-=15;
+  }
+
+}
+
+
+/**
+*\fn void anim_combat_perso(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
+
+*\param *pers, contient le personnage afin de le sauvegarder
+*\param cartes, la carte jouée par le joueur
+*\param *rendu, le renderer sur lequel on dessine
+*\param *sounds[NB_SON], tableau contenant les sons
+
+*\brief Permet de gèrer les animations de combat du personnage
+
+*/
+void anim_combat_perso(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON]){
+  int tmp_x = pers->sprites[courant].rectangle.x;
+
+  if(!strcmp(carte->nom, " Poing I") || !strcmp(carte->nom, " Poing II") || !strcmp(carte->nom, " Poing X")){
+    anim_combat_perso_attaque(pers, carte, rendu, sounds);
+  }
+
+  else if(!strcmp(carte->nom," Epee I") || !strcmp(carte->nom," Epee II") || !strcmp(carte->nom," Epee X")){
+    anim_combat_perso_attaque(pers, carte, rendu, sounds);
+  }
+
+  else if(!strcmp(carte->nom, " Pierre I") || !strcmp(carte->nom, " Pierre II") || !strcmp(carte->nom, " Pierre X")){
+    anim_combat_perso_attaque(pers, carte, rendu, sounds);
+  }
+
+
+  else if(!strcmp(carte->nom, " Potion I") || !strcmp(carte->nom, " Potion II") || !strcmp(carte->nom, " Potion X") || !strcmp(carte->nom, " Soin I") || !strcmp(carte->nom, " Soin II") || !strcmp(carte->nom, " Soin III") || !strcmp(carte->nom, " Guerison I") || !strcmp(carte->nom, " Guerison II") || !strcmp(carte->nom, " Guerison X")){
+
+  }
+  else if(!strcmp(carte->nom, " Poison I") || !strcmp(carte->nom, " Poison II") || !strcmp(carte->nom, " Poison X")){
+
+  }
+
+  else if(!strcmp(carte->nom, " Barriere I") || !strcmp(carte->nom, " Barriere II") || !strcmp(carte->nom, " Barriere X")){
+
+  }
+
+  else if(!strcmp(carte->nom, " Boule de feu I") || !strcmp(carte->nom, " Boule de feu II") || !strcmp(carte->nom, " Boule de feu X")){
+
+  }
+
+
+  pers->sprites[courant].rectangle.x = tmp_x;
 }

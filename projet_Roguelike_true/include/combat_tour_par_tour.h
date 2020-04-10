@@ -4,7 +4,7 @@ void charge_textures_combat(image_t images[], SDL_Renderer *rendu, carte_t *cart
 void donne_valeur_rect_images(image_t images[], perso_t *pers);
 void free_image(image_t images[]);
 void tour_ennemi(perso_t *pers, ennemi_t *ennemi);
-void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t *carte);
+void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON]);
 void create_hud(hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, ennemi_t ennemi, perso_t pers, SDL_Renderer *rendu, TTF_Font *font);
 void init_hud_action(hud_combat_t *action);
 void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hud_combat_t *action, hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, SDL_Renderer *rendu, TTF_Font *font, int  tour);

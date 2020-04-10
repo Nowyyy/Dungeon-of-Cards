@@ -154,7 +154,7 @@
 #define NB_SALLES_LEVEL_3 20
 #define NB_SALLES_LEVEL_4 25
 
-#define NB_SON 10
+#define NB_SON 14
 #define NB_MUSIC 9
 
 /**
@@ -233,7 +233,7 @@ typedef enum{haut, droite, bas, gauche}t_direction;
 
 *\brief Les différents sons utilisés
 */
-typedef enum{move=0, selection, change_salle, footsteps, gameOverFrame, death, collect, chest, enterFight, animDeath}t_sons;
+typedef enum{move=0, selection, change_salle, footsteps, gameOverFrame, death, collect, chest, enterFight, animDeath, punch, heal, sword, rock}t_sons;
 
 /**
 *\enum t_musique

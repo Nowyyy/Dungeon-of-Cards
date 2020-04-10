@@ -225,6 +225,10 @@ void init_son(Mix_Chunk* sounds[NB_SON]){
 	sounds[chest] = Mix_LoadWAV("../Sound/chest.wav");
 	sounds[enterFight] = Mix_LoadWAV("../Sound/enterFight.wav");
 	sounds[animDeath] = Mix_LoadWAV("../Sound/death.wav");
+	sounds[punch] = Mix_LoadWAV("../Sound/punch.wav");
+	sounds[heal] = Mix_LoadWAV("../Sound/heal.wav");
+	sounds[sword] = Mix_LoadWAV("../Sound/sword.wav");
+	sounds[rock] = Mix_LoadWAV("../Sound/rock.wav");
 
 	Mix_VolumeChunk(sounds[move], 128);
 	Mix_VolumeChunk(sounds[selection], 128);
@@ -234,6 +238,10 @@ void init_son(Mix_Chunk* sounds[NB_SON]){
 	Mix_VolumeChunk(sounds[chest], 128);
 	Mix_VolumeChunk(sounds[enterFight], 128);
 	Mix_VolumeChunk(sounds[animDeath], 128);
+	Mix_VolumeChunk(sounds[punch], 128);
+	Mix_VolumeChunk(sounds[heal], 128);
+	Mix_VolumeChunk(sounds[sword], 128);
+	Mix_VolumeChunk(sounds[rock], 128);
 
 }
 
