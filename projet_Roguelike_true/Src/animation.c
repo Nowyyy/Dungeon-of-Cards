@@ -532,13 +532,14 @@ void anim_combat_perso_attaque(perso_t *pers, carte_t *carte, SDL_Renderer *rend
 
     SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
     SDL_RenderPresent(rendu);
-
     i-=15;
   }
+
+  pers->sprites[courant].rectangle.x =215;
   SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
   SDL_RenderPresent(rendu);
 
-  SDL_RenderClear(rendu);
+ SDL_RenderClear(rendu);
 
 }
 
@@ -562,7 +563,7 @@ void anim_combat_ennemi_attaque(ennemi_t *ennemi, SDL_Renderer *rendu, Mix_Chunk
   int he=ennemi->sprites.rectangle.h;
   int we=ennemi->sprites.rectangle.w;
 
-  ennemi->sprites.rectangle.y = 375-(ennemi->sprites.rectangle.h);
+  ennemi->sprites.rectangle.y = 370-(ennemi->sprites.rectangle.h);
   ennemi->sprites.rectangle.x = 830;
   ennemi->sprites.rectangle.w *= 1.5;
   ennemi->sprites.rectangle.h *= 1.5;
@@ -595,12 +596,14 @@ void anim_combat_ennemi_attaque(ennemi_t *ennemi, SDL_Renderer *rendu, Mix_Chunk
     i-=15;
   }
 
+  ennemi->sprites.rectangle.x = 830;
+  SDL_RenderCopy(rendu, ennemi->sprites.img, &ennemi->sprite_courant, &ennemi->sprites.rectangle);
+  SDL_RenderPresent(rendu);
+
   ennemi->sprites.rectangle.w = we;
   ennemi->sprites.rectangle.h = he;
   ennemi->sprites.rectangle.x = xe;
   ennemi->sprites.rectangle.y = ye;
-  SDL_RenderCopy(rendu, ennemi->sprites.img, &ennemi->sprite_courant, &ennemi->sprites.rectangle);
-  SDL_RenderPresent(rendu);
 
   SDL_RenderClear(rendu);
 
