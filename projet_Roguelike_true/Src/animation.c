@@ -533,10 +533,22 @@ void anim_combat_perso_attaque(perso_t *pers, carte_t *carte, SDL_Renderer *rend
 }
 
 
+/**
+*\fn void anim_combat_perso_soin(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
+
+*\param *pers, contient le personnage afin de le sauvegarder
+*\param cartes, la carte jouée par le joueur
+*\param *rendu, le renderer sur lequel on dessine
+*\param *sounds[NB_SON], tableau contenant les sons
+
+*\brief Permet de gèrer les animations de combat liées au soin du personnage
+
+*/
 void anim_combat_perso_soin(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON]){
   image_t icon[1];
 
 
+//Si une carte soin est jouée
   if(!strcmp(carte->nom, "soin I") || !strcmp(carte->nom, "soin II") || !strcmp(carte->nom, "soin X")){
 
   	charge_image("../Images/Combat/soin.png", &icon[0], rendu);
@@ -549,6 +561,7 @@ void anim_combat_perso_soin(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, 
     SDL_RenderPresent(rendu);
   }
 
+//Si une carte potion est jouée
   else if(!strcmp(carte->nom, "potion I") || !strcmp(carte->nom, "potion II") || !strcmp(carte->nom, "potion X")){
     charge_image("../Images/Combat/potion.png", &icon[0], rendu);
 
@@ -560,6 +573,7 @@ void anim_combat_perso_soin(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, 
     SDL_RenderPresent(rendu);
   }
 
+//Si une carte guerison est jouée
   else if(!strcmp(carte->nom, "guerison I") || !strcmp(carte->nom, "guerison II") || !strcmp(carte->nom, "guerison X")){
     charge_image("../Images/deathlight.png", &icon[0], rendu);
 
@@ -577,11 +591,44 @@ void anim_combat_perso_soin(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, 
 
   SDL_RenderClear(rendu);
 
-  if(logo[0].img!=NULL){
-		SDL_DestroyTexture(logo[0].img);
-		logo[0].img=NULL;
+  if(icon[0].img!=NULL){
+		SDL_DestroyTexture(icon[0].img);
+		icon[0].img=NULL;
 	}
 
+}
+
+
+/**
+*\fn void anim_combat_perso_barriere(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
+
+*\param *pers, contient le personnage afin de le sauvegarder
+*\param cartes, la carte jouée par le joueur
+*\param *rendu, le renderer sur lequel on dessine
+*\param *sounds[NB_SON], tableau contenant les sons
+
+*\brief Permet de gèrer les animations de combat liées au bouclier du personnage
+
+*/
+void anim_combat_perso_barriere(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON]){
+  image_t icon[1];
+
+  charge_image("../Images/Combat/bouclier.png", &icon[0], rendu);
+
+  icon[0].rectangle.x = WIN_WIDTH/2 - 25;
+  icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 40;
+
+  SDL_RenderCopy(rendu, icon[0].img, NULL, &icon[0].rectangle);
+  Mix_PlayChannel(0, sounds[bouclier], 0);
+  SDL_RenderPresent(rendu);
+
+  SDL_Delay(1200);
+  SDL_RenderClear(rendu);
+
+  if(icon[0].img!=NULL){
+		SDL_DestroyTexture(icon[0].img);
+		icon[0].img=NULL;
+	}
 }
 
 
@@ -617,7 +664,7 @@ printf("le nom est %s je crois\n", carte->nom);
 
 //Jouer l'animation de barrière
   if(!strcmp(carte->nom, "barriere I") || !strcmp(carte->nom, "barriere II") || !strcmp(carte->nom, "barriere X")){
-
+    anim_combat_perso_barriere(pers, carte, rendu, sounds);
   }
 
 //Jouer l'animation de boule de feu

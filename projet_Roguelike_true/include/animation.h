@@ -7,3 +7,4 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
 void anim_combat_perso(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON]);
 void anim_combat_perso_attaque(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON]);
 void anim_combat_perso_soin(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON]);
+void anim_combat_perso_barriere(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON]);
