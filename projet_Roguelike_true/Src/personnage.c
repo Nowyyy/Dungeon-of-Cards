@@ -311,7 +311,6 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 *\fn int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *sounds[NB_SON]
 *\param *pers, la structure du personnage
 *\param *salle, la salle dans laquelle on se trouve
-*\param *continuer la variable permettant de quitter le jeu
 *\param *sounds[NB_SON], tableau contenant les sons
 
 *\brief permet de téléporter le personnage dans la salle dont il passe la porter
@@ -395,12 +394,10 @@ void initialise_personnage(perso_t *pers){
 
 
 /**
-*\fn int collision_perso_ennemi(perso_t pers, ennemi_t ennemi, int x, int y)
+*\fn int collision_perso_ennemi(perso_t pers, ennemi_t ennemi)
 
 *\param pers, la structure du personnage
 *\param ennemi, l'ennemi présent dans la salle
-*\param x
-*\param y
 
 *\return TRUE si une collision a lieu, FALSE sinon
 
@@ -413,11 +410,10 @@ int collision_perso_ennemi(perso_t pers, ennemi_t ennemi){
 
 
 /**
-*\fn int combat_declenche(salle_t salle, perso_t pers, ennemi_t ennemi)
+*\fn int combat_declenche(salle_t salle, perso_t pers)
 
 *\param salle, la salle du labyrinthe dans laquelle on se situe
 *\param pers, la structure du personnage
-*\param ennemi, l'ennemi présent dans la salle
 
 *\return TRUE si une collision est detéctée avec un ennemi, FALSE sinon
 

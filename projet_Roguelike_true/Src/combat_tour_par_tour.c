@@ -19,15 +19,16 @@
 
 
 /**
-*\fn int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir,SDL_Rect carte1,SDL_Rect carte2,SDL_Rect carte3,SDL_Rect carte4, SDL_Rect **rect_sel)
+*\fn nt deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, image_t images[NB_TEXTURES_LABY], SDL_Rect **rect_sel, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC])
 
 *\param defausse, Correspond aux coordonnées du texte défausse
 *\param fuir, Correspond aux coordonnées du texte fuir
-*\param carte1, Correspond aux coordonnées de la carte 1
-*\param carte2, Correspond aux coordonnées de la carte 2
-*\param carte3, Correspond aux coordonnées de la carte 3
-*\param carte4, Correspond aux coordonnées de la carte 4
-*\param **rect_sel Correspond aux coordonnées du rectangle de sélection
+*\param images[NB_TEXTURES_LABY], Un tableau contenant les cartes
+*\param **rect_sel, Les coordonnées et taille du rectangle de selection
+*\param *sounds[NB_SON], Contient les sons du jeu
+*\param *music[NB_MUSIC], Contient les musiques du jeu
+
+
 
 *\brief Permet de déplacer le rectangle de selection
 
@@ -145,7 +146,7 @@ int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, ima
 
 
 /**
-*\fnvoid affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi,SDL_Texture *defausse_texture ,SDL_Texture *fuir_texture,SDL_Rect defausse_rect ,SDL_Rect fuir_rect,SDL_Rect *rect_sel,image_t images[NB_TEXTURES])
+*\fn void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi, image_t def, image_t fuir, SDL_Rect *rect_sel,image_t images[NB_TEXTURES_COMBAT],hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action)
 
 *\param *rendu, le renderer sur lequel on dessine
 *\param *ennemi, la structure contenant tous les ennemis
@@ -313,9 +314,10 @@ void charge_textures_combat(image_t images[], SDL_Renderer *rendu, carte_t *cart
 
 
 /**
-*\fn void donne_valeur_rect_images(image_t images[])
+*\fn void donne_valeur_rect_images(image_t images[], perso_t *perso)
 
 *\param images[], le tableau contenant les images
+*\param *perso, Contient la structure du personnage
 
 *\brief Donne les coordonnées et ajuste les tailles des images des cartes et des fonds pour l'écran de combat
 */
@@ -367,11 +369,12 @@ void free_image(image_t images[]){
 
 
 /**
-*\fn void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t carte)
+*\fn void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
 
 *\param *pers, la structure du personnage
 *\param *ennemi, l'ennemi que le joueur affronte
-*\param carte, la carte que le joueur joue
+*\param *carte, la carte que le joueur joue
+*\param *sounds[NB_SON], Contient les sons du jeu
 
 *\brief permet d'effectuer l'action sélectionnée par le joueur
 */
@@ -403,7 +406,7 @@ void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t *carte, SDL_Renderer *
 
 
 /**
-*\fn void tour_ennemi(perso_t *pers, ennemi_t *ennemi)
+*\fn void tour_ennemi(perso_t *pers, ennemi_t *ennemi, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
 
 *\param *pers, la structure du personnage
 *\param *ennemi, l'ennemi que le joueur affronte
@@ -652,7 +655,7 @@ void range_carte_tire_nouvelles(carte_t *cartes[NB_CARTES_COMBAT], int cartes_se
 
 
 /**
-*\fn void defausse(SDL_Renderer *rendu, perso_t *perso, ennemi_t *ennemi, SDL_Rect *rectangle_selection, image_t images[], hud_combat_t hud_ennemi, hud_combat_t hud_pers, hud_combat_t action, TTF_Font *police, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC])
+*\fn void defausse(SDL_Renderer *rendu, perso_t *perso, ennemi_t *ennemi, SDL_Rect *rectangle_selection, image_t images[], hud_combat_t hud_ennemi,hud_combat_t hud_pers, hud_combat_t action, TTF_Font *police, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], carte_t *cartes[NB_CARTES_COMBAT])
 
 *\param *rendu, le renderer sur lequel on dessine
 *\param *perso, la structure contenant le personnage
@@ -726,10 +729,13 @@ hud_combat_t hud_pers, hud_combat_t action, TTF_Font *police, Mix_Chunk *sounds[
 }
 
 /**
-*\fn void combat(perso_t * perso, ennemi_t * ennemi, SDL_Renderer *rendu)
+*\fn void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], int *etat)
 *\param *perso Pointeur sur une structure qui permet de prendre les caractéristiques du personnage qui vont être modifié par l'action du personnage
 *\param *ennemi Pointeur sur une structure qui permet de prendre les caractéristiques de l'ennemi qui vont être modifié par l'action du personnage
 *\param *rendu, le renderer sur lequel on dessine
+*\param *sounds[NB_SON], Contient les sons du jeu
+*\param *music[NB_MUSIC], Contient les musiques du jeu
+*\param *etat, le choix de l'utilisateur
 
 *\brief Fonction qui permet de gérer les choix de l'utilisateur via la SDL sur le combat
 */

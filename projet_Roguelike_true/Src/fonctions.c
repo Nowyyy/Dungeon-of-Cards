@@ -458,9 +458,14 @@ void init_ennemi_valeurs(ennemi_t *ennemi, char * nom, int w, int h, int nb_spri
 }
 
 /**
-*\fn ennemi_t * creer_ennemi(char * nom)
+*\fn ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type, SDL_Renderer *rendu)
 *\brief permet de créer un ennemi selon plusieurs caractéristiques
-*\param nom pour le nom d'un ennemi
+*\param pv,point de vie de l'ennemi
+*\param vitesse, vitesse de l'ennemi
+*\param attaque, attaque de l'ennemi
+*\param defense, defense de l'ennemi
+*\param type, type de l'ennemi
+*\param rendu, le renderer sur lequel on dessine
 *\return un pointeur sur une variable structure ennemi_t
 */
 ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type, SDL_Renderer *rendu)

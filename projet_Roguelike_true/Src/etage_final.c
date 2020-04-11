@@ -70,7 +70,7 @@ void charge_textures_etage_final(image_t images[], perso_t *pers, SDL_Renderer *
 
 
 /**
-*\fn void affichage_salle_personnage_etage_final(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[], ennemi_t monstre, ennemi_t boss)
+*\fn void affichage_salle_personnage_etage_final(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[])
 
 *\param images[], contient toutes les images utilisées sauf celle du personnage
 *\param pers, la structure contenant le personnage

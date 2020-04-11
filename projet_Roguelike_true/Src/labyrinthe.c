@@ -25,11 +25,13 @@
 #include "../include/labyrinthe.h"
 
 /**
-*\fn void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu)
+*\fn void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu,int *compte_ennemi,int *ennemi_max)
 
 *\param images[], contient toutes les images utilisées sauf celle du personnage
 *\param *pers, pointeur sur la structure contenant le personnage
 *\param *rendu, le renderer sur lequel on dessine
+*\param *compte_ennemi est un compteur des ennemis morts
+*\param *ennemi_max est le nombre d'ennemi max.
 
 *\brief Permet de charger toutes les images et de les ranger dans les structures correspondantes
 
@@ -101,12 +103,12 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 
 
 /**
-*\fn void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[], ennemi_t monstre, ennemi_t boss)
+*\fn void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[], mini_map_t map, loot_carte_t loot)
 
-*\param images[], contient toutes les images utilisées sauf celle du personnage
 *\param pers, la structure contenant le personnage
-*\param *rendu, le renderer sur lequel on dessine
 *\param *salle, la salle actuelle
+*\param *rendu, le renderer sur lequel on dessine
+*\param images[], contient toutes les images utilisées sauf celle du personnage
 *\param map, la structure contenant la mini map
 *\param loot, structure permettant l'affichage d'un loot effectué
 
@@ -169,7 +171,8 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 /**
 
 *\fn void initialise_salles(salle_t tab[], int taille)
-
+*\param tab, contient les différentes salles
+*\param taille, taille du tableau
 
 *\brief remplit les tableaux des salles, initialise les variables
 
@@ -204,9 +207,9 @@ void initialise_salles(salle_t tab[], int taille){
 
 /**
 *\fn void cree_liaison(salle_t tab[], int salle1, int salle2, int porteS1)
-
-*\param *s1, la première salle pour laquelle on effectue les liaisons
-*\param *s2, la seconde salle pour laquelle on effectue les liaisons
+*\param tab, contient les différentes salles
+*\param salle1, la première salle pour laquelle on effectue les liaisons
+*\param salle2, la seconde salle pour laquelle on effectue les liaisons
 *\param porteS1, la porte de la première salle à laquelle on va rattacher la seconde
 
 *\brief Créée les liaisons entre deux salles enfonction de la porte libre sur la première
@@ -232,7 +235,7 @@ void cree_liaison(salle_t tab[], int salle1, int salle2, int porteS1){
 
 
 /**
-*\fn int tirage_au_sort_porte_a_creer(int indice, int taille, salle_t salles[])
+*\fn int tirage_au_sort_porte_a_creer(int indice, int taille, salle_t salles[], int tentatives)
 
 *\param salles[], tableau des salles du labyrinthe
 *\param taille, la taille d'une ligne ou d'une colonne du tableau
@@ -459,12 +462,15 @@ int creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer){
 
 
 /**
-*\fn void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Renderer *rendu)
+*\fn void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Renderer *rendu,image_t *counter,int *compte_ennemi,int *ennemi_max,int *compt_ennold)
 
 *\param *pers, la structure contenant le personnage
 *\param *pv, la structure contenant la texture du HUD représentant les PV du personnage
 *\param *etage, la structure contenant la texture du HUD représentant l'étage où se situe le personnage
 *\param *rendu, le renderer sur lequel on dessine
+*\param *ennemi_max est le nombre d'ennemi max.
+*\param *compte_ennemi est un compteur des ennemis morts
+*\param *compt_ennold valeur d'un ancien compteur ennemis
 
 *\brief Permet de mettre à jour le HUD selon que les PDV ou l'étage soit différents
 */
@@ -516,7 +522,7 @@ int nb_salles_par_etage(int etage){
 
 /**
 
-*\fn void vers_ecran_combat(SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], touches_t *clavier, perso_t *pers, ennemi_t *ennemi,  Mix_Music *musics[NB_MUSIC])
+*\fn void vers_ecran_combat(SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], touches_t *clavier, perso_t *pers, ennemi_t *ennemi,  Mix_Music *musics[NB_MUSIC], int *etat)
 
 *\param *rendu, le renderer sur lequel on dessine
 *\param *sounds[NB_SON], tableau contenant les sons
@@ -619,7 +625,7 @@ int choix_monstre(int etage){
 
 
 /**
-*\fn void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *gameOverMusic, perso_t *pers, carte_t *cartes, TTF_Font *police)
+*\fn void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], perso_t *pers, TTF_Font *police)
 
 *\param *continuer, pointeur sur variable permettant de savoir si le joueur souhaite quitter le programme
 *\param *etat, pointeur sur variable permettant de connaître l'écran dans lequel on est

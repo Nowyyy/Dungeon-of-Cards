@@ -327,7 +327,7 @@ void creation_mini_map(int taille, mini_map_t *map){
 
 
 /**
-*\fn void ajoute_salle_decouverte(mini_map_t *map, int indice)
+*\fn void ajoute_salle_decouverte(mini_map_t *map, salle_t salles[], int indice, int *salle_pred)
 
 *\param *map, un pointeur sur la minimap que l'on modifie
 *\param salles[], le tableau des salles du labyrinthe
@@ -350,7 +350,7 @@ void ajoute_salle_decouverte(mini_map_t *map, salle_t salles[], int indice, int 
 
 
 /**
-*\fn void ajoute_ennemi(ennemi_t **ennemi, int type, SDL_Renderer * rendu)
+*\fn void ajoute_ennemi(ennemi_t **ennemi, int type, SDL_Renderer * rendu, int etage)
 
 *\param **ennemi, pointeur sur pointeur de type ennemi_t, l'ennemi que l'on va créer
 *\param type, le type d'ennemi que l'en veut créer.
@@ -397,13 +397,13 @@ void placer_monstre(ennemi_t *ennemi){
 
 
 /**
-*\fn void creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int boss, int nb_ennemi, int type, SDL_Renderer * rendu)
+*\fn creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int nb_ennemi, int type, SDL_Renderer * rendu, int etage)
 
 *\param **ennemi, pointeur sur pointeur de type ennemi_t, l'ennemi que l'on va peut-être créer
 *\param **ennemi2, pointeur sur pointeur de type ennemi_t, l'ennemi que l'on va peut-être créer
+*\param nb_ennemi, peremet de savoir combien d'ennemis sont à créer
 *\param type, le type d'ennemi que l'en veut créer.
 *\param *rendu, le renderer sur lequel on dessine
-*\param nb_ennemi, peremet de savoir combien d'ennemis sont à créer
 *\param etage, l'étage où se situe le joueur
 
 *\brief créer un/des ennemi à partir d'un type donné

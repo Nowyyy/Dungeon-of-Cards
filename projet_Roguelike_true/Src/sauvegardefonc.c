@@ -34,9 +34,10 @@ int save_existe(){
 }
 
 /**
-*\fn void savecarte (carte_t* carte2)
+*\fn void savecarte (char *path, int liste)
+*\param path , Contient le fichier où l'on va sauvegarder les cartes
+*\param liste , la liste de carte a sauvegarder
 *\brief Fonction qui permet de sauvegarde toutes les données d'une carte
-*\param carte2 Permet de sauvegarder les cartes d'un deck
 */
 void savecarte (char *path, int liste){
 
@@ -65,9 +66,10 @@ void savecarte (char *path, int liste){
 }
 
 /**
-*\fn void readcarte(carte_t* carte2)
+*\fn void readcarte(char *path_file, int liste)
 *\brief Fonction qui permet de lire une carte
-*\param carte2 Permet de lire les cartes d'un deck
+*\param path , Contient le fichier où l'on va sauvegarder les cartes
+*\param liste , la liste de carte a sauvegarder
 */
 void readcarte(char *path_file, int liste){
 

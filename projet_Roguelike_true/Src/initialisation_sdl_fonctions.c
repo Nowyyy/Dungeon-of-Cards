@@ -91,7 +91,7 @@ int init_or_quit_ttf(int action){
 }
 
 /**
-*\fn extern void get_text_and_rect(SDL_Renderer *renderer, int x, int y, char *text,TTF_Font *font, SDL_Texture **texture, SDL_Rect *rect)
+*\fn extern void get_text_and_rect_color(SDL_Renderer *renderer, int x, int y, char *text,TTF_Font *font, SDL_Texture **texture, SDL_Rect *rect, SDL_Color textColor)
 
 *\param renderer, le rendu sur lequel on va dessiner le texte
 *\param x, la position x a laquelle sera le texte

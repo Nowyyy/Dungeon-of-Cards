@@ -14,16 +14,17 @@
 
 
 /**
-*\fn void afficher_charger_partie(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture *charger_texture, SDL_Rect charger_rect, SDL_Texture *retour_texture, SDL_Rect retour_rect)
+*\fn void afficher_charger_partie(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture *charger_texture, SDL_Rect charger_rect, SDL_Texture *retour_texture, SDL_Rect retour_rect, SDL_Texture *message_texture, SDL_Rect message_rect)
 
 *\param*rendu, le renderer sur lequel on dessine
 *\param rect_sel, le rectangle de sélection du menu
 *\param *charger_texture la texture pour le texte "Charger partie"
-*\param *retour_texture la texture pour le texte "Quitter"
 *\param charger_rect le rectangle pour charger une sauvegarde
+*\param *retour_texture la texture pour le texte "Quitter"
 *\param retour_rect le rectangle pour le texte "retour"
-*\param message_rect le rectangle pour le texte "charger une partie ?"
 *\param message_texture la texture pour le texte "charger une partie ?"
+*\param message_rect le rectangle pour le texte "charger une partie ?"
+
 
 *\brief Affiche sur le rendu les différentes textures et rectangles passés en paramètre
 */
@@ -115,7 +116,7 @@ int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SD
 
 
 /**
-*\fn void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *select, Mix_Chunk *move, perso_t *pers, carte_t *cartes)
+*\fn void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *sounds[NB_SON], perso_t *pers)
 
 *\param *continuer, pointeur sur un int permettant de savoir si le joueur veut quitter le jeu
 *\param *etat, pointeur sur un int permettant de connaitre le prochain écran auquel le joueur veut accèder
@@ -123,7 +124,6 @@ int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SD
 *\param *police, la police d'écriture pour TTF
 *\param *sounds[NB_SON], tableau contenant les sons
 *\param *pers, la structure du personnage
-*\param *cartes, la structure des cartes du joueur
 
 *\brief Permet d'afficher et de récupèrer une sauvegarde éventuelle puis de lancer le jeu
 */

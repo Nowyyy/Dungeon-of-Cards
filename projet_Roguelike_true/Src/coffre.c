@@ -1,6 +1,6 @@
 /**
 *\file coffre.c
-*\author Tudoret Aurélien
+*\author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
 *\date 14/03/2020
 *\version 0.1
 
@@ -14,7 +14,7 @@
 
 
 /**
-*\fn void animation_coffre(perso_t *pers)
+*\fn void animation_coffre(perso_t *pers, salle_t *salle, Mix_Chunk *sounds[NB_SON])
 
 *\param *pers, le personnage du jeu
 *\param *salle, la salle dans laquelle se trouve le personnage
@@ -228,11 +228,11 @@ void loot_affichage_fini(loot_carte_t *loot){
 	if(loot->existe){
 		if(loot->delai + loot->debut <= SDL_GetTicks()){
 			detruire_carte(&loot->carte);
-			libere_texture(&loot->texte.img);	
+			libere_texture(&loot->texte.img);
 			libere_texture(&loot->image.img);
-			loot->image.img = NULL;	
-			loot->texte.img = NULL;	
-			loot->carte = NULL;	
+			loot->image.img = NULL;
+			loot->texte.img = NULL;
+			loot->carte = NULL;
 
 			loot->existe = 0;
 		}
