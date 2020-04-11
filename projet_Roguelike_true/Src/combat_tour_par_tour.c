@@ -251,7 +251,7 @@ hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action){
   int y=pers->sprites[idle_droite].rectangle.y;
   pers->sprites[idle_droite].rectangle.w *= 1.5;
   pers->sprites[idle_droite].rectangle.h *= 1.5;
-  pers->sprites[idle_droite].rectangle.x = 150;
+  pers->sprites[idle_droite].rectangle.x = 215;
   pers->sprites[idle_droite].rectangle.y = 342;
   pers->sprites[courant] = pers->sprites[idle_droite];
   SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
@@ -264,7 +264,7 @@ hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action){
   int hauteur=405;
   ennemi->sprite_courant.x = 0;
   ennemi->sprite_courant.y = ennemi->sprite_courant.h;
-  ennemi->sprites.rectangle.x = 750;
+  ennemi->sprites.rectangle.x = 830;
   ennemi->sprites.rectangle.w *= 1.5;
   ennemi->sprites.rectangle.h *= 1.5;
 	ennemi->sprites.rectangle.y = hauteur-(ennemi->sprites.rectangle.h);
@@ -377,7 +377,7 @@ void free_image(image_t images[]){
 */
 void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON]){
 
-	anim_combat_perso(pers, carte, rendu, sounds);
+	anim_combat_perso(pers, carte, rendu, sounds, ennemi);
 
 	if(carte->type == ATTAQUE){
 		if(carte->consommable > 0){

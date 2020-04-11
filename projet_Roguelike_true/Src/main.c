@@ -82,6 +82,7 @@ int main(int argc, char* args[]){
 					}
 					Mix_VolumeMusic(6);
 
+
 //************************* BOUCLE DE JEU ********************************************************************
 					while(continuer){
 
@@ -103,7 +104,7 @@ int main(int argc, char* args[]){
 							///////////Exploration du labyrinthe
 							saveperso(&pers);
 							Mix_HaltMusic();
-
+						
 							animation_niveau(&pers, rendu);
 						  	choix_musique(musics, &pers);
 						  	savecarte(SAVE_CARTES_DECK_PATH, DECK);

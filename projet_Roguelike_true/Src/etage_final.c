@@ -191,7 +191,7 @@ void etage_final(SDL_Renderer *rendu, int *continuer, int *etat, Mix_Chunk *soun
 		deplacement_personnage(pers, salles[indice_salle], continuer, &anim, sounds, &clavier);
 
 		indice_salle = changement_de_salle(pers, salles[indice_salle], indice_salle, sounds);
-		
+
 		SDL_Delay(5);
 
 		if(combat_declenche(salles[indice_salle], *pers) == 1 && salles[indice_salle].ennemi->pv > 0 && *etat == labyrinthe){

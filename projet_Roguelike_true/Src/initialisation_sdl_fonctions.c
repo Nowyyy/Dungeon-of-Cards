@@ -232,6 +232,8 @@ void init_son(Mix_Chunk* sounds[NB_SON]){
 	sounds[potion] = Mix_LoadWAV("../Sound/potion.wav");
 	sounds[divine] = Mix_LoadWAV("../Sound/divine.wav");
 	sounds[bouclier] = Mix_LoadWAV("../Sound/bouclier.wav");
+	sounds[poison] = Mix_LoadWAV("../Sound/poison.wav");
+	sounds[bdf] = Mix_LoadWAV("../Sound/bdf.wav");
 
 
 	Mix_VolumeChunk(sounds[move], 32);
@@ -248,6 +250,8 @@ void init_son(Mix_Chunk* sounds[NB_SON]){
 	Mix_VolumeChunk(sounds[rock], 128);
 	Mix_VolumeChunk(sounds[divine], 128);
 	Mix_VolumeChunk(sounds[bouclier], 128);
+	Mix_VolumeChunk(sounds[poison], 64);
+	Mix_VolumeChunk(sounds[bdf], 64);
 }
 
 /**

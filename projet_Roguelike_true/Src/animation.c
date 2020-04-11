@@ -633,20 +633,125 @@ void anim_combat_perso_barriere(perso_t *pers, carte_t *carte, SDL_Renderer *ren
 
 
 /**
-*\fn void anim_combat_perso(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
+*\fn void anim_combat_perso_poison(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
+
+*\param *pers, contient le personnage afin de le sauvegarder
+*\param cartes, la carte jouée par le joueur
+*\param *rendu, le renderer sur lequel on dessine
+*\param *sounds[NB_SON], tableau contenant les sons
+*\param *ennemi, l'ennemi contre lequel le joueur va combattre
+
+*\brief Permet de gèrer les animations de combat liées au poison du personnage
+
+*/
+void anim_combat_perso_poison(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], ennemi_t *ennemi){
+  image_t icon[1];
+
+  charge_image("../Images/Combat/poison.png", &icon[0], rendu);
+
+  //Boss
+  if(!strcmp(ennemi->nom, "Sorcier")){
+    icon[0].rectangle.x = 843;
+    icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 180;
+  }
+  if(!strcmp(ennemi->nom, "Minotaure")){
+    icon[0].rectangle.x = 845;
+    icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 100;
+  }
+  if(!strcmp(ennemi->nom, "Cyclope")){
+    icon[0].rectangle.x = 845;
+    icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 130;
+  }
+  if(!strcmp(ennemi->nom, "Sorciere")){
+    icon[0].rectangle.x = 845;
+    icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 70;
+  }
+  if(!strcmp(ennemi->nom, "Mage")){
+    icon[0].rectangle.x = 840;
+    icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 120;
+  }
+
+  //Ennemis classiques
+  if(!strcmp(ennemi->nom, "Squelette")){
+    icon[0].rectangle.x = 855;
+    icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 70;
+  }
+  if(!strcmp(ennemi->nom, "Blob")){
+    icon[0].rectangle.x = 850;
+    icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 90;
+  }
+  if(!strcmp(ennemi->nom, "Volant")){
+    icon[0].rectangle.x = 845;
+    icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 60;
+  }
+  if(!strcmp(ennemi->nom, "Imp")){
+    icon[0].rectangle.x = 840;
+    icon[0].rectangle.y = pers->sprites[courant].rectangle.y -60;
+  }
+
+  SDL_RenderCopy(rendu, icon[0].img, NULL, &icon[0].rectangle);
+  Mix_PlayChannel(0, sounds[poison], 0);
+  SDL_RenderPresent(rendu);
+
+  SDL_Delay(1200);
+  SDL_RenderClear(rendu);
+
+  if(icon[0].img!=NULL){
+		SDL_DestroyTexture(icon[0].img);
+		icon[0].img=NULL;
+	}
+}
+
+
+/**
+*\fn void anim_combat_perso_barriere(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
 
 *\param *pers, contient le personnage afin de le sauvegarder
 *\param cartes, la carte jouée par le joueur
 *\param *rendu, le renderer sur lequel on dessine
 *\param *sounds[NB_SON], tableau contenant les sons
 
+*\brief Permet de gèrer les animations de combat liées à la boule de feu du personnage
+
+*/
+void anim_combat_perso_bdf(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON]){
+  image_t icon[1];
+  charge_image("../Images/Combat/bdf.png", &icon[0], rendu);
+
+  int i = 0;
+
+  icon[0].rectangle.x = WIN_WIDTH/2 - 25;
+  icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 10;
+
+  SDL_RenderCopy(rendu, icon[0].img, NULL, &icon[0].rectangle);
+  Mix_PlayChannel(0, sounds[bdf], 0);
+  SDL_RenderPresent(rendu);
+
+  SDL_Delay(1200);
+  SDL_RenderClear(rendu);
+
+  if(icon[0].img!=NULL){
+    SDL_DestroyTexture(icon[0].img);
+    icon[0].img=NULL;
+  }
+}
+
+
+/**
+*\fn void anim_combat_perso(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
+
+*\param *pers, contient le personnage afin de le sauvegarder
+*\param cartes, la carte jouée par le joueur
+*\param *rendu, le renderer sur lequel on dessine
+*\param *sounds[NB_SON], tableau contenant les sons
+*\param *ennemi, l'ennemi contre lequel le joueur va combattre
+
 *\brief Permet de gèrer les animations de combat du personnage
 
 */
-void anim_combat_perso(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON]){
+void anim_combat_perso(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], ennemi_t *ennemi){
   int tmp_x = pers->sprites[courant].rectangle.x;
 
-printf("le nom est %s je crois\n", carte->nom);
 //Jouer l'animation de combat
   if(!strcmp(carte->nom, "poing I") || !strcmp(carte->nom, "poing II") || !strcmp(carte->nom, "poing X") || !strcmp(carte->nom,"epee I") || !strcmp(carte->nom,"epee II") || !strcmp(carte->nom,"epee X") || !strcmp(carte->nom, "pierre I") || !strcmp(carte->nom, "pierre II") || !strcmp(carte->nom, "pierre X")){
     anim_combat_perso_attaque(pers, carte, rendu, sounds);
@@ -659,7 +764,7 @@ printf("le nom est %s je crois\n", carte->nom);
 
 //Jouer l'animation de poison
   if(!strcmp(carte->nom, "poison I") || !strcmp(carte->nom, "poison II") || !strcmp(carte->nom, "poison X")){
-
+    anim_combat_perso_poison(pers, carte, rendu, sounds, ennemi);
   }
 
 //Jouer l'animation de barrière
@@ -669,7 +774,7 @@ printf("le nom est %s je crois\n", carte->nom);
 
 //Jouer l'animation de boule de feu
   if(!strcmp(carte->nom, "boule de feu I") || !strcmp(carte->nom, "boule de feu II") || !strcmp(carte->nom, "boule de feu X")){
-
+    anim_combat_perso_bdf(pers, carte, rendu, sounds);
   }
 
   pers->sprites[courant].rectangle.x = tmp_x;
