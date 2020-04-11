@@ -354,8 +354,14 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
 	int mort_tmp;
 
   SDL_Texture *cmpPartie_texture;
+  int x_cmpPartie;
+  if(pers->cmpMort == 1){
+    x_cmpPartie = WIN_WIDTH / 2-60;
+  }
+  else{
+    x_cmpPartie = WIN_WIDTH / 2-47;
 
-	int x_cmpPartie = WIN_WIDTH / 2-60;
+  }
 	int y_cmpPartie = WIN_HEIGHT * 0.8;
 
 	//textes
