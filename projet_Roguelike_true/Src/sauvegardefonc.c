@@ -81,15 +81,15 @@ void readcarte(char *path_file, int liste){
 
   if (fichier != NULL)
     {
-      fscanf(fichier,"%d%d%d%s%[^\n]",&type,&valeur,&consommable,path,nom);
+      fscanf(fichier,"%d%d%d%s %[^\n]",&type,&valeur,&consommable,path,nom);
 
       choix_liste(liste);
       en_tete();
-      
+
         while(!feof(fichier)){
 
           ajout_droit(creer_carte(nom,type,valeur,consommable,path));
-          fscanf(fichier,"%d%d%d%s%[^\n]",&type,&valeur,&consommable,path,nom);
+          fscanf(fichier,"%d%d%d%s %[^\n]",&type,&valeur,&consommable,path,nom);
         }
     }
     else

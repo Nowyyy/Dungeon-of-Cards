@@ -80,6 +80,7 @@ int main(int argc, char* args[]){
 						printf("Mix_Init: %s\n", Mix_GetError());
 						exit(1);
 					}
+					Mix_VolumeMusic(6);
 
 //************************* BOUCLE DE JEU ********************************************************************
 					while(continuer){
@@ -87,7 +88,7 @@ int main(int argc, char* args[]){
 						if(etat == mainMenu){
 							///////////Menu principal
 							if(Mix_PlayingMusic() == 0){
-								Mix_VolumeMusic(15);
+								Mix_VolumeMusic(6);
 								Mix_PlayMusic(musics[menu], -1);
 							}
 							main_menu(&continuer, &etat, rendu, police, sounds);
@@ -102,11 +103,12 @@ int main(int argc, char* args[]){
 							///////////Exploration du labyrinthe
 							saveperso(&pers);
 							Mix_HaltMusic();
+
 							animation_niveau(&pers, rendu);
 						  	choix_musique(musics, &pers);
 						  	savecarte(SAVE_CARTES_DECK_PATH, DECK);
 						  	savecarte(SAVE_CARTES_COLLEC_PATH, COLLEC);
-					
+
 						  	if(pers.etage < 5)
 								boucle_labyrinthe(&continuer, &etat, rendu, sounds, musics, &pers, police);
 							else

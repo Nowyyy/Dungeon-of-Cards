@@ -226,23 +226,25 @@ void init_son(Mix_Chunk* sounds[NB_SON]){
 	sounds[enterFight] = Mix_LoadWAV("../Sound/enterFight.wav");
 	sounds[animDeath] = Mix_LoadWAV("../Sound/death.wav");
 	sounds[punch] = Mix_LoadWAV("../Sound/punch.wav");
-	sounds[heal] = Mix_LoadWAV("../Sound/heal.wav");
+	sounds[heal] = Mix_LoadWAV("../Sound/soin.wav");
 	sounds[sword] = Mix_LoadWAV("../Sound/sword.wav");
 	sounds[rock] = Mix_LoadWAV("../Sound/rock.wav");
+	sounds[potion] = Mix_LoadWAV("../Sound/potion.wav");
+	sounds[divine] = Mix_LoadWAV("../Sound/divine.wav");
 
-	Mix_VolumeChunk(sounds[move], 128);
-	Mix_VolumeChunk(sounds[selection], 128);
-	Mix_VolumeChunk(sounds[change_salle], 128);
-	Mix_VolumeChunk(sounds[footsteps], 64);
+	Mix_VolumeChunk(sounds[move], 32);
+	Mix_VolumeChunk(sounds[selection], 32);
+	Mix_VolumeChunk(sounds[change_salle], 32);
+	Mix_VolumeChunk(sounds[footsteps], 16);
 	Mix_VolumeChunk(sounds[gameOverFrame], 32);
-	Mix_VolumeChunk(sounds[chest], 128);
-	Mix_VolumeChunk(sounds[enterFight], 128);
-	Mix_VolumeChunk(sounds[animDeath], 128);
-	Mix_VolumeChunk(sounds[punch], 128);
-	Mix_VolumeChunk(sounds[heal], 128);
+	Mix_VolumeChunk(sounds[chest], 64);
+	Mix_VolumeChunk(sounds[enterFight], 32);
+	Mix_VolumeChunk(sounds[animDeath], 64);
+	Mix_VolumeChunk(sounds[punch], 64);
+	Mix_VolumeChunk(sounds[heal], 112);
 	Mix_VolumeChunk(sounds[sword], 128);
 	Mix_VolumeChunk(sounds[rock], 128);
-
+	Mix_VolumeChunk(sounds[divine], 128);
 }
 
 /**
@@ -308,25 +310,25 @@ void free_mixer(Mix_Music* musics[NB_MUSIC], Mix_Chunk* sounds[NB_SON]){
 */
 void choix_musique(Mix_Music* musics[NB_MUSIC], perso_t *pers){
 	if(pers->etage == 1){
-		Mix_VolumeMusic(20);
+		Mix_VolumeMusic(6);
 		Mix_PlayMusic(musics[level1], -1);
 	}
 	else if(pers->etage == 2){
-		Mix_VolumeMusic(80);
+		Mix_VolumeMusic(16);
 		Mix_PlayMusic(musics[level2], -1);
 	}
 	else if(pers->etage == 3){
-		Mix_VolumeMusic(48);
+		Mix_VolumeMusic(12);
 
 		Mix_PlayMusic(musics[level3], -1);
 	}
 	else if(pers->etage == 4){
-		Mix_VolumeMusic(80);
+		Mix_VolumeMusic(18);
 
 		Mix_PlayMusic(musics[level4], -1);
 	}
 	else if(pers->etage == 5){
-		Mix_VolumeMusic(20);
+		Mix_VolumeMusic(12);
 
 		Mix_PlayMusic(musics[level5], -1);
 	}

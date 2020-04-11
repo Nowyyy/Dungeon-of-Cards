@@ -457,7 +457,7 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
 
 
 	//Musique
-	Mix_VolumeMusic(64);
+	Mix_VolumeMusic(16);
 	Mix_PlayMusic(musics[gameOverMusic], 1);
 
 	get_text_and_rect(rendu, x_cmpPartie, y_cmpPartie, cmpPartie, police, &cmpPartie_texture, &cmpPartie_text);
@@ -495,6 +495,7 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
 void anim_combat_perso_attaque(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON]){
   int i = 0;
 
+//Faire avancer le personnage
   while(i < 75){
     SDL_Delay(25);
     pers->sprites[courant].rectangle.x +=i;
@@ -504,18 +505,21 @@ void anim_combat_perso_attaque(perso_t *pers, carte_t *carte, SDL_Renderer *rend
 
     i+=15;
   }
+
+  //Jouer le son correspondant et faire le flash
   SDL_Delay(50);
   SDL_RenderClear(rendu);
-  if(!strcmp(carte->nom, " poing I") || !strcmp(carte->nom, " poing II") || !strcmp(carte->nom, " poing X")){
+  if(!strcmp(carte->nom, "poing I") || !strcmp(carte->nom, "poing II") || !strcmp(carte->nom, "poing X")){
     Mix_PlayChannel(0, sounds[punch], 0);
   }
-  else if(!strcmp(carte->nom," epee I") || !strcmp(carte->nom," epee II") || !strcmp(carte->nom," epee X")){
+  else if(!strcmp(carte->nom,"epee I") || !strcmp(carte->nom,"epee II") || !strcmp(carte->nom,"epee X")){
     Mix_PlayChannel(0, sounds[sword], 0);
   }
-  else if(!strcmp(carte->nom, " pierre I") || !strcmp(carte->nom, " pierre II") || !strcmp(carte->nom, " pierre X")){
+  else if(!strcmp(carte->nom, "pierre I") || !strcmp(carte->nom, "pierre II") || !strcmp(carte->nom, "pierre X")){
     Mix_PlayChannel(0, sounds[rock], 0);
   }
 
+  //Faire revenir le perso a sa place
   while(i>15){
     SDL_Delay(25);
     pers->sprites[courant].rectangle.x -=i;
@@ -525,6 +529,58 @@ void anim_combat_perso_attaque(perso_t *pers, carte_t *carte, SDL_Renderer *rend
 
     i-=15;
   }
+
+}
+
+
+void anim_combat_perso_soin(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON]){
+  image_t icon[1];
+
+
+  if(!strcmp(carte->nom, "soin I") || !strcmp(carte->nom, "soin II") || !strcmp(carte->nom, "soin X")){
+
+  	charge_image("../Images/Combat/soin.png", &icon[0], rendu);
+
+    icon[0].rectangle.x = pers->sprites[courant].rectangle.x + 10;
+    icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 60;
+
+    SDL_RenderCopy(rendu, icon[0].img, NULL, &icon[0].rectangle);
+    Mix_PlayChannel(0, sounds[heal], 0);
+    SDL_RenderPresent(rendu);
+  }
+
+  else if(!strcmp(carte->nom, "potion I") || !strcmp(carte->nom, "potion II") || !strcmp(carte->nom, "potion X")){
+    charge_image("../Images/Combat/potion.png", &icon[0], rendu);
+
+    icon[0].rectangle.x = pers->sprites[courant].rectangle.x + 7;
+    icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 60;
+
+    SDL_RenderCopy(rendu, icon[0].img, NULL, &icon[0].rectangle);
+    Mix_PlayChannel(0, sounds[potion], 0);
+    SDL_RenderPresent(rendu);
+  }
+
+  else if(!strcmp(carte->nom, "guerison I") || !strcmp(carte->nom, "guerison II") || !strcmp(carte->nom, "guerison X")){
+    charge_image("../Images/deathlight.png", &icon[0], rendu);
+
+    icon[0].rectangle.x = pers->sprites[courant].rectangle.x - 70;
+    icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 70;
+
+    SDL_RenderCopy(rendu, icon[0].img, NULL, &icon[0].rectangle);
+    Mix_PlayChannel(0, sounds[divine], 0);
+    SDL_RenderPresent(rendu);
+  }
+
+
+
+  SDL_Delay(1200);
+
+  SDL_RenderClear(rendu);
+
+  if(logo[0].img!=NULL){
+		SDL_DestroyTexture(logo[0].img);
+		logo[0].img=NULL;
+	}
 
 }
 
@@ -543,34 +599,31 @@ void anim_combat_perso_attaque(perso_t *pers, carte_t *carte, SDL_Renderer *rend
 void anim_combat_perso(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON]){
   int tmp_x = pers->sprites[courant].rectangle.x;
 
-  if(!strcmp(carte->nom, " poing I") || !strcmp(carte->nom, " poing II") || !strcmp(carte->nom, " poing X")){
+printf("le nom est %s je crois\n", carte->nom);
+//Jouer l'animation de combat
+  if(!strcmp(carte->nom, "poing I") || !strcmp(carte->nom, "poing II") || !strcmp(carte->nom, "poing X") || !strcmp(carte->nom,"epee I") || !strcmp(carte->nom,"epee II") || !strcmp(carte->nom,"epee X") || !strcmp(carte->nom, "pierre I") || !strcmp(carte->nom, "pierre II") || !strcmp(carte->nom, "pierre X")){
     anim_combat_perso_attaque(pers, carte, rendu, sounds);
   }
 
-  else if(!strcmp(carte->nom," epee I") || !strcmp(carte->nom," epee II") || !strcmp(carte->nom," epee X")){
-    anim_combat_perso_attaque(pers, carte, rendu, sounds);
+//Jouer l'animation de soin
+  if(!strcmp(carte->nom, "potion I") || !strcmp(carte->nom, "potion II") || !strcmp(carte->nom, "potion X") || !strcmp(carte->nom, "soin I") || !strcmp(carte->nom, "soin II") || !strcmp(carte->nom, "soin X") || !strcmp(carte->nom, "guerison I") || !strcmp(carte->nom, "guerison II") || !strcmp(carte->nom, "guerison X")){
+    anim_combat_perso_soin(pers, carte, rendu, sounds);
   }
 
-  else if(!strcmp(carte->nom, " pierre I") || !strcmp(carte->nom, " pierre II") || !strcmp(carte->nom, " pierre X")){
-    anim_combat_perso_attaque(pers, carte, rendu, sounds);
-  }
-
-
-  else if(!strcmp(carte->nom, " potion I") || !strcmp(carte->nom, " potion II") || !strcmp(carte->nom, " potion X") || !strcmp(carte->nom, " soin I") || !strcmp(carte->nom, " soin II") || !strcmp(carte->nom, " soin III") || !strcmp(carte->nom, " guerison I") || !strcmp(carte->nom, " guerison II") || !strcmp(carte->nom, " guerison X")){
-
-  }
-  else if(!strcmp(carte->nom, " poison I") || !strcmp(carte->nom, " poison II") || !strcmp(carte->nom, " poison X")){
+//Jouer l'animation de poison
+  if(!strcmp(carte->nom, "poison I") || !strcmp(carte->nom, "poison II") || !strcmp(carte->nom, "poison X")){
 
   }
 
-  else if(!strcmp(carte->nom, " barriere I") || !strcmp(carte->nom, " barriere II") || !strcmp(carte->nom, " barriere X")){
+//Jouer l'animation de barrière
+  if(!strcmp(carte->nom, "barriere I") || !strcmp(carte->nom, "barriere II") || !strcmp(carte->nom, "barriere X")){
 
   }
 
-  else if(!strcmp(carte->nom, " boule de feu I") || !strcmp(carte->nom, " boule de feu II") || !strcmp(carte->nom, " boule de feu X")){
+//Jouer l'animation de boule de feu
+  if(!strcmp(carte->nom, "boule de feu I") || !strcmp(carte->nom, "boule de feu II") || !strcmp(carte->nom, "boule de feu X")){
 
   }
-
 
   pers->sprites[courant].rectangle.x = tmp_x;
 }

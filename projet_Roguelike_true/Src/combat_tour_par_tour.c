@@ -377,6 +377,8 @@ void free_image(image_t images[]){
 */
 void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON]){
 
+	anim_combat_perso(pers, carte, rendu, sounds);
+
 	if(carte->type == ATTAQUE){
 		if(carte->consommable > 0){
 			carte->consommable -= 1;
@@ -385,7 +387,6 @@ void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t *carte, SDL_Renderer *
 		if(ennemi->pv < 0){
 			ennemi->pv = 0;
 		}
-		anim_combat_perso(pers, carte, rendu, sounds);
 	}
 	else{
 
@@ -777,7 +778,7 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Ch
 
 ////////////////boucle combat
 
-	Mix_VolumeMusic(80);
+	Mix_VolumeMusic(40);
 	Mix_PlayMusic(musics[fight], -1);
 
   	while((ennemi->pv > 0 && perso->pv > 0) && fuite==1 ){

@@ -577,7 +577,7 @@ void check_ennemi(int* ennemi_max,int* compte_ennemi,salle_t salles[],int salle_
 *\param images[], le tableau d'images
 
 *\brief met à NULL tous les pointeurs du tableau
-*/ 
+*/
 void init_tableau_images(image_t images[]){
 
 	for(int i = 0; i < NB_TEXTURES_LABY; i++){
