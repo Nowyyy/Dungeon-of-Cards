@@ -529,6 +529,75 @@ void anim_combat_perso_attaque(perso_t *pers, carte_t *carte, SDL_Renderer *rend
 
     i-=15;
   }
+  SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
+  SDL_RenderPresent(rendu);
+
+  SDL_RenderClear(rendu);
+
+}
+
+
+/**
+*\fn void anim_combat_ennemi_attaque(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
+
+*\param *ennemi, l'ennemi contre lequel le joueur va combattre
+*\param cartes, la carte jouée par le joueur
+*\param *rendu, le renderer sur lequel on dessine
+*\param *sounds[NB_SON], tableau contenant les sons
+
+*\brief Permet de gèrer les animations de combat liées à l'attaque de l'ennemi
+
+*/
+void anim_combat_ennemi_attaque(ennemi_t *ennemi, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], perso_t *pers){
+  int i = 0;
+
+  int xe=ennemi->sprites.rectangle.x;
+  int ye=ennemi->sprites.rectangle.y;
+  int he=ennemi->sprites.rectangle.h;
+  int we=ennemi->sprites.rectangle.w;
+
+  ennemi->sprites.rectangle.y = 375-(ennemi->sprites.rectangle.h);
+  ennemi->sprites.rectangle.x = 830;
+  ennemi->sprites.rectangle.w *= 1.5;
+  ennemi->sprites.rectangle.h *= 1.5;
+
+
+//Faire avancer le personnage
+  while(i < 75){
+    SDL_Delay(25);
+    ennemi->sprites.rectangle.x -= i;
+
+    SDL_RenderCopy(rendu, ennemi->sprites.img, &ennemi->sprite_courant, &ennemi->sprites.rectangle);
+    SDL_RenderPresent(rendu);
+
+    i+=15;
+  }
+
+  //Jouer le son correspondant et faire le flash
+  SDL_Delay(50);
+  SDL_RenderClear(rendu);
+  Mix_PlayChannel(0, sounds[punch], 0);
+
+  //Faire revenir le perso a sa place
+  while(i>15){
+    SDL_Delay(25);
+    ennemi->sprites.rectangle.x +=i;
+
+    SDL_RenderCopy(rendu, ennemi->sprites.img, &ennemi->sprite_courant, &ennemi->sprites.rectangle);
+    SDL_RenderPresent(rendu);
+
+    i-=15;
+  }
+
+  ennemi->sprites.rectangle.w = we;
+  ennemi->sprites.rectangle.h = he;
+  ennemi->sprites.rectangle.x = xe;
+  ennemi->sprites.rectangle.y = ye;
+  SDL_RenderCopy(rendu, ennemi->sprites.img, &ennemi->sprite_courant, &ennemi->sprites.rectangle);
+  SDL_RenderPresent(rendu);
+
+  SDL_RenderClear(rendu);
+
 
 }
 
