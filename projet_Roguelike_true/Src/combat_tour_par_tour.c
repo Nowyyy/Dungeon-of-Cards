@@ -811,6 +811,8 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Ch
 					actualisation_apres_tour(perso, ennemi, *cartes[choix], &action, &hud_pers, &hud_ennemi, rendu, police, alea);
 					affichage_combat_personnage(rendu, perso, ennemi, def, fui, rectangle_selection, images, hud_ennemi, hud_pers, action);
   				SDL_Delay(wait* 2);
+					SDL_RenderPresent(rendu);
+
 
 
   				if(ennemi->pv > 0){
@@ -826,6 +828,8 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Ch
   				actualisation_apres_tour(perso, ennemi, *cartes[choix], &action, &hud_pers, &hud_ennemi, rendu, police, alea);
 					affichage_combat_personnage(rendu, perso, ennemi, def, fui, rectangle_selection, images, hud_ennemi, hud_pers, action);
   				SDL_Delay(wait* 2);
+					SDL_RenderPresent(rendu);
+
 
 
   				if(perso->pv > 0){
