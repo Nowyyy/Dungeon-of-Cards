@@ -11,8 +11,6 @@
 #include "../include/initialisation_sdl_fonctions.h"
 #include "../include/personnage.h"
 #include "../include/sauvegardefonc.h"
-#include <time.h>
-#include <string.h>
 
 /**
 *\fn void animation_niveau(perso_t *perso, SDL_Renderer *rendu)
@@ -23,7 +21,6 @@
 void animation_niveau(perso_t *perso, SDL_Renderer *rendu){
 
   //initialisation des variables
-  srand(time(NULL));
   image_t texte_etage, texte_charg, p1, p2, p3;
   char etage[15], charg[15]="chargement", cp1[10]=".", cp2[10]=".", cp3[10]=".";
   TTF_Font *police = NULL;

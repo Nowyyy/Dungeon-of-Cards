@@ -239,10 +239,11 @@ void animations_personnage(image_t sprites[], unsigned int timer, touches_t clav
 *\param salle, la salle dans laquelle le personnage se déplace
 *\param *continuer, pointeur sur variable permettant de savoir si le joueur souhaite quitter le programme
 *\param *sounds[NB_SON], tableau contenant les sons
+*\param *etat, défini l'état dans lequel le jeu se trouve ->menu, labyrinthe, chargement
 
 *\brief Gère les déplacement du personnage dans une salle
 */
-void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animation_t *anim, Mix_Chunk *sounds[NB_SON], touches_t *clavier){
+void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animation_t *anim, Mix_Chunk *sounds[NB_SON], touches_t *clavier, int *etat){
 
 	SDL_Event event;
 
@@ -297,7 +298,7 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 	}
 	else if(clavier->tab[escape] == 1){ //Touche echap
 		SDL_Delay(100);
-		*continuer=FALSE;
+		*etat = mainMenu;
 		init_tab_clavier(clavier->tab);
 	}
 

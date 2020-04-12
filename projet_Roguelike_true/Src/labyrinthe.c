@@ -728,7 +728,7 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 		affichage_salle_personnage(*pers, &salles[salle_courante], rendu, images, miniMap, *loot);
 
-		deplacement_personnage(pers, salles[salle_courante], continuer, &anim, sounds, &clavier);
+		deplacement_personnage(pers, salles[salle_courante], continuer, &anim, sounds, &clavier, etat);
 
 		if(*continuer == TRUE){
 
