@@ -188,7 +188,7 @@ void etage_final(SDL_Renderer *rendu, int *continuer, int *etat, Mix_Chunk *soun
 
 		affichage_salle_personnage_etage_final(*pers, &salles[indice_salle], rendu, images);
 
-		deplacement_personnage(pers, salles[indice_salle], continuer, &anim, sounds, &clavier);
+		deplacement_personnage(pers, salles[indice_salle], continuer, &anim, sounds, &clavier, etat);
 
 		indice_salle = changement_de_salle(pers, salles[indice_salle], indice_salle, sounds);
 
