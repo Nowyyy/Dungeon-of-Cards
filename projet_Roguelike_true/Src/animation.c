@@ -482,6 +482,9 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
 
   for(int i = 0; i < 7; i++)
 		libere_texture(&spritesMort[i].img);
+
+	//Vide le deck et en charge un nouveau pour la partie suivante
+	transfert_mort();
 }
 
 
