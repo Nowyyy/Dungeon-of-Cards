@@ -222,6 +222,45 @@ int valeur_carte(char nom[TAILLE]){
 
 }
 
+void transfert_mort(){
+	detruire_liste(DECK);
+	drapeau_deck = malloc(sizeof(element_t));
+	drapeau_deck->pred = drapeau_deck;
+	drapeau_deck->succ = drapeau_deck;
+	ec_deck = drapeau_deck;
+
+	int i,j,borne,longueur,compteur;
+	for(int type = ATTAQUE, compteur = 0 ; compteur < 2 ;compteur++, type = DEFENSE){
+		choix_liste(COLLEC);
+		for(en_tete(),borne=0,longueur=0;!hors_liste();suivant(), longueur++){
+			if(ec->carte->type == type && ec->carte->consommable == -1){
+				borne++;
+			}
+		}
+
+		j = rand()%borne + 1;
+
+		for(en_tete(),i=0;!hors_liste() && i<j;){
+			if(ec->carte->type == type && ec->carte->consommable == -1){
+				i++;
+			}
+			if(i<j){
+				suivant();
+			}
+
+		}
+		ajout_carte_deck(ec->carte);
+	}
+	for(compteur = 0;compteur<2;compteur++){
+		j = rand()%longueur;
+		printf("%d\n", j);
+		choix_liste(COLLEC);
+		for(en_tete(),i = 0;i<j;i++,suivant()){
+		}
+		ajout_carte_deck(ec->carte);
+	}
+}
+
 
 // Mise en oeuvre dynamique d'une liste de cartes
 

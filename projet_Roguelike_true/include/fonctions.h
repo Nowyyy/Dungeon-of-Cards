@@ -42,6 +42,8 @@ void detruire_carte(carte_t **);
 
 carte_t * generer_carte(int);
 
+void transfert_mort();
+
 int randRange(int min, int max, int niveau);
 
 int valeur_carte(char nom[TAILLE]);
