@@ -16,17 +16,17 @@
 /**
 *\fn void afficher_charger_partie(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture *charger_texture, SDL_Rect charger_rect, SDL_Texture *retour_texture, SDL_Rect retour_rect, SDL_Texture *message_texture, SDL_Rect message_rect)
 
-*\param*rendu, le renderer sur lequel on dessine
+*\param *rendu, le renderer sur lequel on dessine
 *\param rect_sel, le rectangle de sélection du menu
 *\param *charger_texture la texture pour le texte "Charger partie"
-*\param charger_rect le rectangle pour charger une sauvegarde
-*\param *retour_texture la texture pour le texte "Quitter"
+*\param charger_rect le rectangle pour le texte "Charger Partie"
+*\param *retour_texture la texture pour le texte "retour"
 *\param retour_rect le rectangle pour le texte "retour"
 *\param message_texture la texture pour le texte "charger une partie ?"
 *\param message_rect le rectangle pour le texte "charger une partie ?"
 
 
-*\brief Affiche sur le rendu les différentes textures et rectangles passés en paramètre
+*\brief Affiche sur le rendu les différentes textures et rectangles passés en paramètre pour former le menu de chargement de partie
 */
 void afficher_charger_partie(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture *charger_texture, SDL_Rect charger_rect, SDL_Texture *retour_texture, SDL_Rect retour_rect, SDL_Texture *message_texture, SDL_Rect message_rect){
 
@@ -52,13 +52,13 @@ void afficher_charger_partie(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture
 /**
 *\fn int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SDL_Rect retour_rect, SDL_Rect **rect_sel, Mix_Chunk *sounds[NB_SON])
 
-*\param *etat, permet de changer l'affuchage selon l'écran dans lequel se trouve le jeu
+*\param *etat, permet de changer l'affichage selon l'écran dans lequel se trouve le jeu
 *\param charger_rect, le rectangle contenant le texte relatif à la sauvegarde
 *\param retour_rect, le rectangle contenant le texte "retour", pour retourner au menu principal
 *\param **rect_sel, le rectangle de sélection permettant de sélectionner une option
 *\param *sounds[NB_SON], tableau contenant les sons
 
-*\brief Permet de déplacer d'option en option le rectangle de sélection
+*\brief Permet de déplacer d'option en option le rectangle de sélection dans le menu charger
 
 *\return retourne False pour fermer la fenetre, True pour la garder  ouverte
 */

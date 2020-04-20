@@ -4,7 +4,7 @@
 *\date 04/02/2020
 *\version 0.1
 
-*\brief Gère toute les évènements au clavier
+*\brief Gère tous les évènements au clavier
 */
 
 
@@ -16,7 +16,7 @@
 /**
 *\fn void init_tab_clavier(int tab[])
 
-*\param tab[], le tableau contenant les touches du clavier
+*\param tab[], le tableau contenant les touches du clavier qui ont été appuyées
 
 *\brief initialise le tableau d'evenement
 */
@@ -25,6 +25,7 @@ void init_tab_clavier(int tab[]){
 	for(int i = 0; i < NB_TOUCHES_UTILISEES; i++)
 		tab[i] = 0;
 }
+
 
 /**
 *\fn void event_clavier(touches_t *clavier, SDL_Event event)

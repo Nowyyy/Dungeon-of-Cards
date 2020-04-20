@@ -19,7 +19,7 @@
 
 
 /**
-*\fn nt deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, image_t images[NB_TEXTURES_LABY], SDL_Rect **rect_sel, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC])
+*\fn int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, image_t images[NB_TEXTURES_LABY], SDL_Rect **rect_sel, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC])
 
 *\param defausse, Correspond aux coordonnées du texte défausse
 *\param fuir, Correspond aux coordonnées du texte fuir
@@ -27,8 +27,6 @@
 *\param **rect_sel, Les coordonnées et taille du rectangle de selection
 *\param *sounds[NB_SON], Contient les sons du jeu
 *\param *music[NB_MUSIC], Contient les musiques du jeu
-
-
 
 *\brief Permet de déplacer le rectangle de selection
 
@@ -146,22 +144,23 @@ int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, ima
 
 
 /**
-*\fn void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi, image_t def, image_t fuir, SDL_Rect *rect_sel,image_t images[NB_TEXTURES_COMBAT],hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action)
+*\fn void affichage_combat_personnage(SDL_Renderer *rendu, perso_t *pers, ennemi_t *ennemi, image_t def, image_t fuir, SDL_Rect *rect_sel, image_t images[NB_TEXTURES_COMBAT], hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action)
 
 *\param *rendu, le renderer sur lequel on dessine
+*\param *pers, la structure contenant le personnage
 *\param *ennemi, la structure contenant tous les ennemis
-*\param pers, la structure contenant le personnage
-*\param *defausse_texture, Les textures du texte defausse
-*\param *fuir_texture, Les textures du texte fuir
-*\param defausse_rect, les coordonnées du texte defausse
-*\param fuir_rect, les coordonnées du texte fuir
+*\param def, Les textures du texte defausse
+*\param fuir, Les textures du texte fuir
 *\param *rect_sel, Les coordonnées et taille du rectangle de selection
-*\param images[NB_TEXTURES], Un tableau contenant les cartes
+*\param images[NB_TEXTURES], tableau contenant les cartes
+*\param ennemi_hud, la barre de vie de l'ennemi
+*\param pers_hud, la barre de vie du joueur
+*\param action, l'action jouée par le joueur ou l'ennemi
 
 *\brief Permet d'afficher toutes la partie combat
 
 */
-void affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi, image_t def, image_t fuir, SDL_Rect *rect_sel,image_t images[NB_TEXTURES_COMBAT],
+void affichage_combat_personnage(SDL_Renderer *rendu, perso_t *pers, ennemi_t *ennemi, image_t def, image_t fuir, SDL_Rect *rect_sel, image_t images[NB_TEXTURES_COMBAT],
 hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action){
 
 	int w5 = images[gui_bar].rectangle.w, h5 = images[gui_bar].rectangle.h;
@@ -374,6 +373,7 @@ void free_image(image_t images[]){
 *\param *pers, la structure du personnage
 *\param *ennemi, l'ennemi que le joueur affronte
 *\param *carte, la carte que le joueur joue
+*\param *rendu, le renderer sur lequel on dessine
 *\param *sounds[NB_SON], Contient les sons du jeu
 
 *\brief permet d'effectuer l'action sélectionnée par le joueur
@@ -411,7 +411,7 @@ void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t *carte, SDL_Renderer *
 *\param *pers, la structure du personnage
 *\param *ennemi, l'ennemi que le joueur affronte
 *\param *rendu, le renderer sur lequel on dessine
-*\param *sounds[], tableau des sons brefs pour les interactions
+*\param *sounds[NB_SON], tableau des sons
 
 
 *\brief permet de faire jouer l'ennemi, actions effectuées selon la situation
@@ -454,7 +454,10 @@ void creer_texte_combat(char *txt, image_t *image, int x, int y, SDL_Renderer *r
 /**
 *\fn void create_hud(hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, ennemi_t ennemi, perso_t pers, SDL_Renderer *rendu, TTF_Font *font)
 
-*\param
+*\param *hud_pers, le HUD du personnage
+*\param *hud_ennemi, le HUD de l'ennemi
+*\param *ennemi, l'ennemi que le joueur affronte
+*\param *pers, la structure du personnage
 *\param *rendu, le renderer sur lequel on dessine
 *\param *font, la police utilisée pour écrire le texte
 
@@ -507,20 +510,21 @@ void init_hud_action(hud_combat_t *action){
 
 
 /**
-*\fn void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hud_combat_t *action, hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, SDL_Renderer *rendu, TTF_Font *font, int  tour)
+*\fn void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hud_combat_t *action, hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, SDL_Renderer *rendu, TTF_Font *font, int tour)
 
-*\param *action, le hud qui affichera l'action effectuée par le joueur ou l'ennemi
 *\param *pers, la structure du personnage
 *\param *ennemi, la structure de l'ennemi
 *\param carte, la carte utilisée par le joueur lors de ce tour
+*\param *action, le hud qui affichera l'action effectuée par le joueur ou l'ennemi
 *\param *hud_pers, le hud du personnage
 *\param *hud_ennemi, le hud de l'ennemi
 *\param *rendu, le renderer sur lequel on dessine
 *\param *font, la police utilisée pour écrire le texte
+*\param tour, indique si c'est le joueur ou l'ennemi qui joue
 
 *\brief Actualise les huds des perso et ennemi, prépare le texte a affichant indiquant l'action effectuée
 */
-void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hud_combat_t *action, hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, SDL_Renderer *rendu, TTF_Font *font, int  tour){
+void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hud_combat_t *action, hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, SDL_Renderer *rendu, TTF_Font *font, int tour){
 
 	char joueur[80];
 	int x, y;
@@ -606,7 +610,16 @@ void range_carte_deck(carte_t *cartes[]){
 	}
 }
 
+/**
+*\fn void consommable_epuise(carte_t *cartes[], int indice, image_t images[], SDL_Renderer *rendu)
 
+*\param *cartes[], tableau de pointeurs sur cartes, contient les cartes utilisées pendant le combat
+*\param indice, l'indice de la carte regardée par la fonction
+*\param images[], le tableau contenant les images
+*\param *rendu, le renderer sur lequel on dessine
+
+*\brief vérifie si la carte est de type consommable et si elle est épuisée
+*/
 void consommable_epuise(carte_t *cartes[], int indice, image_t images[], SDL_Renderer *rendu){
 
 	int x = images[carte1 + indice].rectangle.x, y = images[carte1 + indice].rectangle.y;
@@ -632,10 +645,10 @@ void consommable_epuise(carte_t *cartes[], int indice, image_t images[], SDL_Ren
 /**
 *\fn void range_carte_tire_nouvelles(carte_t *cartes[NB_CARTES_COMBAT], int cartes_selectionnees[], image_t images[], SDL_Renderer *rendu)
 
-*\param *rendu, le renderer sur lequel on dessine
-*\param images[], contient toutes les images nécessaires à l'affichage de l'écran de combat
-*\param *cartes[], la tableau des cartes du joueur
+*\param *cartes[NB_CARTES_COMBAT], la tableau des cartes du joueur
 *\param cartes_selectionnees[], tableau permettant de connaître les cartes que le joueur veut défausser
+*\param images[], contient toutes les images nécessaires à l'affichage de l'écran de combat
+*\param *rendu, le renderer sur lequel on dessine
 
 *\brief effectue la défausse, les cartes que le joueur ne veut pas sont renvoyées dans le deck, de nouvelles sont tirées à la place
 */
@@ -662,7 +675,7 @@ void range_carte_tire_nouvelles(carte_t *cartes[NB_CARTES_COMBAT], int cartes_se
 
 
 /**
-*\fn void defausse(SDL_Renderer *rendu, perso_t *perso, ennemi_t *ennemi, SDL_Rect *rectangle_selection, image_t images[], hud_combat_t hud_ennemi,hud_combat_t hud_pers, hud_combat_t action, TTF_Font *police, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], carte_t *cartes[NB_CARTES_COMBAT])
+*\fn void defausse(SDL_Renderer *rendu, perso_t *perso, ennemi_t *ennemi, SDL_Rect *rectangle_selection, image_t images[], hud_combat_t hud_ennemi, hud_combat_t hud_pers, hud_combat_t action, TTF_Font *police, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], carte_t *cartes[NB_CARTES_COMBAT])
 
 *\param *rendu, le renderer sur lequel on dessine
 *\param *perso, la structure contenant le personnage
@@ -675,7 +688,7 @@ void range_carte_tire_nouvelles(carte_t *cartes[NB_CARTES_COMBAT], int cartes_se
 *\param *police, la police utilisée pour écrire du texte sur l'écran de jeu
 *\param *sounds[], tableau des sons brefs pour les interactions
 *\param *musics[], tableau des muisques d'ambience
-*\param cartes[], la tableau des cartes du joueur
+*\param *cartes[], la tableau des cartes du joueur
 
 *\brief permet d'effectuer toutes actions liées à la défausse de carte avec un affichage spécifique
 */
@@ -736,17 +749,18 @@ hud_combat_t hud_pers, hud_combat_t action, TTF_Font *police, Mix_Chunk *sounds[
 }
 
 /**
-*\fn void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], int *etat)
-*\param *perso Pointeur sur une structure qui permet de prendre les caractéristiques du personnage qui vont être modifié par l'action du personnage
-*\param *ennemi Pointeur sur une structure qui permet de prendre les caractéristiques de l'ennemi qui vont être modifié par l'action du personnage
+*\fn void combat_t_p_t(perso_t * perso, ennemi_t * ennemi, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], int *etat)
+
+*\param *perso, la structure contenant le personnage
+*\param *ennemi, la structure de l'ennemi que le joueur affronte actuellement
 *\param *rendu, le renderer sur lequel on dessine
 *\param *sounds[NB_SON], Contient les sons du jeu
 *\param *music[NB_MUSIC], Contient les musiques du jeu
-*\param *etat, le choix de l'utilisateur
+*\param *etat, permet de changer l'affichage selon l'écran dans lequel se trouve le jeu
 
 *\brief Fonction qui permet de gérer les choix de l'utilisateur via la SDL sur le combat
 */
-void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], int *etat)
+void combat_t_p_t(perso_t * perso, ennemi_t * ennemi, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], int *etat)
 {
 ////////////////Déclaration variables
 

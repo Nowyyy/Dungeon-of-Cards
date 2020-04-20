@@ -16,7 +16,7 @@
 /**
 *\fn void animation_coffre(perso_t *pers, salle_t *salle, Mix_Chunk *sounds[NB_SON])
 
-*\param *pers, le personnage du jeu
+*\param *pers, la structure du personnage
 *\param *salle, la salle dans laquelle se trouve le personnage
 *\param *sounds[NB_SON], tableau contenant les sons
 
@@ -138,15 +138,16 @@ void creer_texte_coffre(char *txt, image_t *image, int x, int y, SDL_Renderer *r
 
 
 /**
-*\fn void loot_de_carte(loot_carte_t *loot, SDL_Renderer *rendu, coffre_t coffre, int etage)
+*\fn void loot_de_carte(loot_carte_t *loot, SDL_Renderer *rendu, coffre_t *coffre, int etage)
 
 *\param *loot, la structure contenant la carte obtenue par le joueur
-*\param *rendu, le renderer sur lequel on dessinee
-*\param *coffre, le coffre que l'on contrôle (ouvert ou non)
+*\param *rendu, le renderer sur lequel on dessine
+*\param *coffre, Etat du coffre (ouvert ou non)
 *\param etage, l'étage où se situe le joueur
 
 *\brief initialise la structure de loot, generer une carte qui est envoyée dans les listes
 */
+
 void loot_de_carte(loot_carte_t *loot, SDL_Renderer *rendu, coffre_t *coffre, int etage){
 
 	if(coffre->ouvert && loot->existe == 0 && coffre->vide == 0){
@@ -181,7 +182,7 @@ void loot_de_carte(loot_carte_t *loot, SDL_Renderer *rendu, coffre_t *coffre, in
 *\param **loot, la structure contenant la carte obtenue par le joueur
 *\param *rendu, le renderer sur lequel on dessinee
 
-*\brief Détruit toutes les allocations dynamiques effectuées pour cette structure
+*\brief Détruit toutes les allocations dynamiques effectuées pour la structure loot
 */
 void afficher_loot(loot_carte_t loot, SDL_Renderer *rendu){
 

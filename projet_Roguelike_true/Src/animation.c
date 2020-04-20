@@ -4,7 +4,7 @@
 *\date 18/02/2020
 *\version 0.1
 
-*\brief Gère l'animation de chargement de niveau
+*\brief Gère les différentes animations de combat, de chargement et de mort
 */
 
 #include "../include/constantes.h"
@@ -15,7 +15,7 @@
 
 /**
 *\fn void animation_niveau(perso_t *perso, SDL_Renderer *rendu)
-*\param perso, la structure du personnaeg
+*\param *perso, la structure du personnage
 *\param *rendu, le renderer sur lequel on dessine
 *\brief Fonction qui anime le lancement d'une partie avec un chargement
 */
@@ -124,7 +124,7 @@ void animation_niveau(perso_t *perso, SDL_Renderer *rendu){
 /**
 *\fn void anim1(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON])
 *\param *rendu, le renderer sur lequel on dessine
-*\param *musics[NB_MUSIC], tableau contenant les musiques
+*\param *sounds[NB_MUSIC], le tableau contenant les sons
 
 *\brief Affiche l'animation 1 de début de combat
 */
@@ -170,7 +170,7 @@ void anim1(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON]){
 /**
 *\fn void anim2(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON])
 *\param *rendu, le renderer sur lequel on dessine
-*\param *musics[NB_MUSIC], tableau contenant les musiques
+*\param *sounds[NB_MUSIC], le tableau contenant les sons
 
 *\brief Affiche l'animation 2 de début de combat
 */
@@ -248,7 +248,7 @@ void anim2(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON]){
 /**
 *\fn void anim3(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON])
 *\param *rendu, le renderer sur lequel on dessine
-*\param *musics[NB_MUSIC], tableau contenant les musiques
+*\param *sounds[NB_MUSIC], le tableau contenant les sons
 
 *\brief Affiche l'animation 3 de début de combat
 */
@@ -314,7 +314,7 @@ void anim3(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON]){
 /**
 *\fn void anim_combat(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON])
 *\param *rendu, le renderer sur lequel on dessine
-*\param *musics[NB_MUSIC], tableau contenant les musiques
+*\param *sounds[NB_MUSIC], le tableau contenant les sons
 
 *\brief Permet de choisir quelle animation de début de combat exécuter
 */
@@ -334,19 +334,19 @@ void anim_combat(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON]){
 
 }
 
+
 /**
 *\fn void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MUSIC], Mix_Chunk *sounds[NB_SON], image_t images[], TTF_Font *police)
 
 *\param *etat, variable contenant le mode de jeu actuel
-*\param *pers, contient le personnage afin de le sauvegarder
+*\param *perso, la structure du personnage
 *\param *rendu, le renderer sur lequel on dessine
 *\param *musics[NB_MUSIC], tableau contenant les musiques
 *\param *sounds[NB_SON], tableau contenant les sons
-*\param images[], contient toutes les images du jeu sauf celles du personnage
+*\param images[], le tableau contenant toutes les images du jeu sauf celles du personnage
 *\param *police, contient la police d'écriture
 
-*\brief Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...
-
+*\brief Exécute l'animation de mort du joueur
 */
 
 void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MUSIC], Mix_Chunk *sounds[NB_SON], image_t images[], TTF_Font *police){
@@ -550,10 +550,9 @@ void anim_combat_perso_attaque(perso_t *pers, carte_t *carte, SDL_Renderer *rend
 *\fn void anim_combat_ennemi_attaque(ennemi_t *ennemi, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], perso_t *pers)
 
 *\param *ennemi, l'ennemi contre lequel le joueur va combattre
-*\param cartes, la carte jouée par le joueur
 *\param *rendu, le renderer sur lequel on dessine
 *\param *sounds[NB_SON], tableau contenant les sons
-*\param *pers, contient le personnage afin de le sauvegarder
+*\param *perso, la structure du personnage
 
 *\brief Permet de gèrer les animations de combat liées à l'attaque de l'ennemi
 
@@ -617,8 +616,8 @@ void anim_combat_ennemi_attaque(ennemi_t *ennemi, SDL_Renderer *rendu, Mix_Chunk
 /**
 *\fn void anim_combat_perso_soin(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
 
-*\param *pers, contient le personnage afin de le sauvegarder
-*\param cartes, la carte jouée par le joueur
+*\param *perso, la structure du personnage
+*\param *carte, la carte jouée par le joueur
 *\param *rendu, le renderer sur lequel on dessine
 *\param *sounds[NB_SON], tableau contenant les sons
 
@@ -683,8 +682,8 @@ void anim_combat_perso_soin(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, 
 /**
 *\fn void anim_combat_perso_barriere(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
 
-*\param *pers, contient le personnage afin de le sauvegarder
-*\param cartes, la carte jouée par le joueur
+*\param *perso, la structure du personnage
+*\param *carte, la carte jouée par le joueur
 *\param *rendu, le renderer sur lequel on dessine
 *\param *sounds[NB_SON], tableau contenant les sons
 
@@ -716,13 +715,13 @@ void anim_combat_perso_barriere(perso_t *pers, carte_t *carte, SDL_Renderer *ren
 /**
 *\fn void anim_combat_perso_poison(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], ennemi_t *ennemi)
 
-*\param *pers, contient le personnage afin de le sauvegarder
-*\param cartes, la carte jouée par le joueur
+*\param *perso, la structure du personnage
+*\param *carte, la carte jouée par le joueur
 *\param *rendu, le renderer sur lequel on dessine
 *\param *sounds[NB_SON], tableau contenant les sons
 *\param *ennemi, l'ennemi contre lequel le joueur va combattre
 
-*\brief Permet de gèrer les animations de combat liées au poison du personnage
+*\brief Permet de gèrer les animations de combat liées à la carte poison du personnage
 
 */
 void anim_combat_perso_poison(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], ennemi_t *ennemi){
@@ -787,12 +786,12 @@ void anim_combat_perso_poison(perso_t *pers, carte_t *carte, SDL_Renderer *rendu
 /**
 *\fn void anim_combat_perso_barriere(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
 
-*\param *pers, contient le personnage afin de le sauvegarder
-*\param cartes, la carte jouée par le joueur
+*\param *perso, la structure du personnage
+*\param *carte, la carte jouée par le joueur
 *\param *rendu, le renderer sur lequel on dessine
 *\param *sounds[NB_SON], tableau contenant les sons
 
-*\brief Permet de gèrer les animations de combat liées à la boule de feu du personnage
+*\brief Permet de gèrer les animations de combat liées à la carte boule de feu du personnage
 
 */
 void anim_combat_perso_bdf(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON]){
@@ -821,8 +820,8 @@ void anim_combat_perso_bdf(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, M
 /**
 *\fn void anim_combat_perso(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], ennemi_t *ennemi)
 
-*\param *pers, contient le personnage afin de le sauvegarder
-*\param cartes, la carte jouée par le joueur
+*\param *perso, la structure du personnage
+*\param *carte, la carte jouée par le joueur
 *\param *rendu, le renderer sur lequel on dessine
 *\param *sounds[NB_SON], tableau contenant les sons
 *\param *ennemi, l'ennemi contre lequel le joueur va combattre
