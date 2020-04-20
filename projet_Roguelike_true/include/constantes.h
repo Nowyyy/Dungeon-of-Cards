@@ -295,6 +295,7 @@ typedef struct ennemi_s {
   unsigned int last;
   int anim_courante;
   int id_col;
+  int heal_use;
 
   SDL_Rect sprite_courant;
 

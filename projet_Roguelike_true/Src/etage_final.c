@@ -108,6 +108,14 @@ void affichage_salle_personnage_etage_final(perso_t pers, salle_t *salle, SDL_Re
 
 
 
+/**
+*\fn void creation_salles_dernier_etage(salle_t salles[], int taille, SDL_Renderer *rendu)
+
+*\param *rendu, le renderer sur lequel on dessine
+*\param salles[], le tableau de structure de salle.
+
+*\brief Créée les deux salles du dernier étage, les lies l'une à l'autre et rempli les tableau de collisions
+*/
 void creation_salles_dernier_etage(salle_t salles[], int taille, SDL_Renderer *rendu){
 
 	ennemi_t ennemi_tmp;
@@ -122,7 +130,7 @@ void creation_salles_dernier_etage(salle_t salles[], int taille, SDL_Renderer *r
 	ajout_porte_salle(salles[1].salle, 3);
 	ajout_porte_salle(salles[0].salle, 1);
 
-	salles[1].ennemi = creer_ennemi(ennemi_tmp.pv, ennemi_tmp.attaque, ennemi_tmp.attaque, ennemi_tmp.attaque, sorcerer, rendu);
+	salles[1].ennemi = creer_ennemi(/*ennemi_tmp.pv*/1, ennemi_tmp.attaque, ennemi_tmp.attaque, ennemi_tmp.attaque, sorcerer, rendu);
 
 	salles[1].boss = TRUE; // on marque tout de suite la salle du boss
 
@@ -132,6 +140,41 @@ void creation_salles_dernier_etage(salle_t salles[], int taille, SDL_Renderer *r
 	for(int i = 0; i < taille; i++){
 		rempli_tableau_murs_portes(salles, i);
 	}
+}
+
+
+
+/**
+*\fn void ecran_victoire(SDL_Renderer * rendu, TTF_Font *police)
+
+*\param *rendu, le renderer sur lequel on dessine
+*\param *police, la police utilisée pour écrire à l'écran
+
+*\brief Affiche le message de victoire à l'intention du joueur, signifiant sa réussite totale dans le jeu
+*/
+void ecran_victoire(SDL_Renderer * rendu, TTF_Font *police){
+
+	char texte_victoire[50] = "Felicitations ! Vous avez termine le jeu !";
+
+	image_t texte_struct;
+
+	get_text_and_rect(rendu, WIN_WIDTH *0.20, WIN_HEIGHT / 2, texte_victoire, police, &texte_struct.img, &texte_struct.rectangle);
+
+
+
+	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
+
+	SDL_RenderClear(rendu);
+
+	SDL_RenderCopy(rendu, texte_struct.img, NULL, &texte_struct.rectangle);
+
+	SDL_RenderPresent(rendu);
+
+	SDL_Delay(5000);
+
+
+
+	libere_texture(&texte_struct.img);
 }
 
 
@@ -164,7 +207,7 @@ void etage_final(SDL_Renderer *rendu, int *continuer, int *etat, Mix_Chunk *soun
 
 	SDL_Event event;
 
-	int indice_salle = 0;
+	int indice_salle = 0, test = 1;
 
 //////Initialisations
 
@@ -181,7 +224,7 @@ void etage_final(SDL_Renderer *rendu, int *continuer, int *etat, Mix_Chunk *soun
 	textures_aleatoires(salles, TAILLE_ETAGE_FINAL);
 
 /////////////////////////// boucle du labyrinthe / explo / combat ///////////////////////////
-	while(*continuer == TRUE && *etat == labyrinthe){
+	while(*continuer == TRUE && *etat == labyrinthe && test){
 
 		if(salles[indice_salle].boss && salles[indice_salle].ennemi->pv > 0)
 			animation_ennemi(salles[indice_salle].ennemi);
@@ -197,6 +240,8 @@ void etage_final(SDL_Renderer *rendu, int *continuer, int *etat, Mix_Chunk *soun
 		if(combat_declenche(salles[indice_salle], *pers) == 1 && salles[indice_salle].ennemi->pv > 0 && *etat == labyrinthe){
 
 			vers_ecran_combat(rendu, sounds, &clavier, pers, salles[indice_salle].ennemi, musics, etat);
+
+			test = (pers->pv > 0 && salles[indice_salle].ennemi->pv <= 0) ? 0 : 1;
 		}
 
 		if(pers->fuite){//le joueur à fuit le combat, on le renvoie dans la première salle du niveau
@@ -209,7 +254,15 @@ void etage_final(SDL_Renderer *rendu, int *continuer, int *etat, Mix_Chunk *soun
 
 	while (SDL_PollEvent (&event));
 
-//////////////////////// On libère tous les emplacements mémoires utilisés par les images ////
+	if(pers->pv > 0){
+	// Affichage de l'écran de fin de jeu si le joueur est vainqueur 
+		affichage_salle_personnage_etage_final(*pers, &salles[indice_salle], rendu, images);
+		SDL_Delay(2000);//pour voir la salle vide dans le laby
+		ecran_victoire(rendu, police);
+		*etat = mainMenu;
+	}
+
+	//////////////////////// On libère tous les emplacements mémoires utilisés par les images ////
 	for(int i = 0; i < NB_SPRITES_PERSONNAGE; i++)
 		libere_texture(&pers->sprites[i].img);
 

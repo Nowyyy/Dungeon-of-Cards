@@ -346,11 +346,11 @@ void donne_valeur_rect_images(image_t images[], perso_t *perso){
   	images[carte4].rectangle.x=650;
   	images[carte4].rectangle.y= 450;
 
-		images[gameover].rectangle.x = 135;
-		images[gameover].rectangle.y = -100;
+	images[gameover].rectangle.x = 135;
+	images[gameover].rectangle.y = -100;
 
-		images[deathlight].rectangle.x = WIN_WIDTH/2-100;
-		images[deathlight].rectangle.y = WIN_HEIGHT/2-65;
+	images[deathlight].rectangle.x = WIN_WIDTH/2-100;
+	images[deathlight].rectangle.y = WIN_HEIGHT/2-65;
 }
 
 
@@ -418,8 +418,15 @@ void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t *carte, SDL_Renderer *
 */
 void tour_ennemi(perso_t *pers, ennemi_t *ennemi, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON]){
 
-	anim_combat_ennemi_attaque(ennemi, rendu, sounds, pers);
-	pers->pv -= ennemi->attaque;
+	if(ennemi->pv < ennemi->pv_max * 0.10 && ennemi->heal_use == 0){
+		//l'ennemi se soigne une seule fois par combat si il a moins d'un certain pourcentage de pdv restant
+		ennemi->heal_use = 1;
+		ennemi->pv = ennemi->pv_max * 0.50;
+	}
+	else{
+		anim_combat_ennemi_attaque(ennemi, rendu, sounds, pers);
+		pers->pv -= ennemi->attaque;
+	}
 }
 
 
@@ -535,7 +542,7 @@ void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hu
 		create_hud(hud_pers, hud_ennemi, *ennemi, *pers, rendu, font); //actualisation des pdv dans le hud
 
 		if(ennemi->pv != ennemi->pv_old)
-			sprintf(joueur, "%s se soigne de %d points de vie", ennemi->nom, ennemi->defense);
+			sprintf(joueur, "%s se soigne de %d points de vie", ennemi->nom, ennemi->pv - ennemi->pv_old);
 		else
 			sprintf(joueur, "%s attaque ! Vous perdez %d points de vie", ennemi->nom, ennemi->attaque);
 	}
@@ -765,6 +772,8 @@ void combat_t_p_t(perso_t * perso, ennemi_t * ennemi,SDL_Renderer *rendu, Mix_Ch
 
   	hud_ennemi.existe = 0;
   	hud_pers.existe = 0;
+
+  	ennemi->heal_use = 0;
 
   	for(int j = 0; j < NB_CARTES_COMBAT; j++)
 		tire_carte_deck(cartes, j);
