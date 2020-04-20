@@ -669,8 +669,6 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 
 	touches_t clavier;
 
-	boss  = witch;//------>pour les besoins de vérifications de l'animation, à supprimer par la suite
-
 /////////////////////////// Génération aléatoire ////////////////////////////////////////////
 
 	salle_courante = creation_labyrinthe(salles, taille, nb_salles_a_creer);

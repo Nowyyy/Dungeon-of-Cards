@@ -11,6 +11,7 @@
 #include "../include/initialisation_sdl_fonctions.h"
 #include "../include/personnage.h"
 #include "../include/sauvegardefonc.h"
+#include "../include/fonctions.h"
 
 /**
 *\fn void animation_niveau(perso_t *perso, SDL_Renderer *rendu)
@@ -390,8 +391,8 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
 
 	pers->cmpMort = mort_tmp+1;
 
-  	saveperso(pers);
-  	savecarte(SAVE_CARTES_COLLEC_PATH, COLLEC);
+  saveperso(pers);
+  savecarte(SAVE_CARTES_COLLEC_PATH, COLLEC);
 
 	//Apparition du rectangle de mort
 

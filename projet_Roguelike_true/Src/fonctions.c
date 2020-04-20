@@ -544,7 +544,7 @@ ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type,
   }
   else if(type == imp){
 
-    init_ennemi_valeurs(ennemi, "Imp", 35, 30, 7, 25, 1.5, 1.5, IMP_PATH, rendu);
+    init_ennemi_valeurs(ennemi, "Imp", 35, 30, 7, 25, 1.25, 1.25, IMP_PATH, rendu);
   }
   else if(type == minotaure){
 
@@ -556,11 +556,11 @@ ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type,
   }
   else if(type == wizard){
 
-    init_ennemi_valeurs(ennemi, "Mage", 26, 48, 10, 35, 1.8, 1.8, WIZARD_PATH, rendu);
+    init_ennemi_valeurs(ennemi, "Mage", 26, 45, 10, 35, 1.8, 1.8, WIZARD_PATH, rendu);
   }
   else if(type == sorcerer){
 
-    init_ennemi_valeurs(ennemi, "Sorcier", 40, 84, 7, 58, 1.5, 1.5, SORCERER_PATH, rendu);
+    init_ennemi_valeurs(ennemi, "Sorcier", 40, 84, 7, 58, 1.25, 1.25, SORCERER_PATH, rendu);
   }
   else if(type == witch){
 
