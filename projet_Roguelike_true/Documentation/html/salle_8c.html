@@ -1,9 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Dungeon of Cards: Référence du fichier salle.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -32,21 +32,18 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.17 -->
+<!-- Généré par Doxygen 1.8.13 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
-/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 $(function() {
   initMenu('',true,false,'search.php','Recherche');
   $(document).ready(function() { init_search(); });
 });
-/* @license-end */</script>
+</script>
 <div id="main-nav"></div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -76,6 +73,7 @@ $(function() {
 <div class="textblock"><code>#include &quot;<a class="el" href="constantes_8h_source.html">../include/constantes.h</a>&quot;</code><br />
 <code>#include &quot;../include/labyrinthe.h&quot;</code><br />
 <code>#include &quot;../include/fonctions.h&quot;</code><br />
+<code>#include &quot;../include/salle.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de salle.c:</div>
 <div class="dyncontent">
@@ -86,37 +84,46 @@ Graphe des dépendances par inclusion de salle.c:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a72924cdd696e4afd7b839337ace19e9c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8c.html#a72924cdd696e4afd7b839337ace19e9c">init_salle</a> (int salle[TAILLE_SALLE][TAILLE_SALLE])</td></tr>
-<tr class="memdesc:a72924cdd696e4afd7b839337ace19e9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui génère une salle en un tableau  <a href="salle_8c.html#a72924cdd696e4afd7b839337ace19e9c">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:a72924cdd696e4afd7b839337ace19e9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui génère une salle en un tableau  <a href="#a72924cdd696e4afd7b839337ace19e9c">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a72924cdd696e4afd7b839337ace19e9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a956c6af0fd478d5d77105b9b3e2d9ae8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8c.html#a956c6af0fd478d5d77105b9b3e2d9ae8">ajout_porte_salle</a> (int salle[TAILLE_SALLE][TAILLE_SALLE], int direction)</td></tr>
-<tr class="memdesc:a956c6af0fd478d5d77105b9b3e2d9ae8"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui ajoute une porte à un côté du carré  <a href="salle_8c.html#a956c6af0fd478d5d77105b9b3e2d9ae8">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:a956c6af0fd478d5d77105b9b3e2d9ae8"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui ajoute une porte à un côté du carré  <a href="#a956c6af0fd478d5d77105b9b3e2d9ae8">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a956c6af0fd478d5d77105b9b3e2d9ae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02d63a57b719a5f2293a57004c6bdfe3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8c.html#a02d63a57b719a5f2293a57004c6bdfe3">afficher_salle</a> (<a class="el" href="structsalle__t.html">salle_t</a> *salle, SDL_Renderer *rendu, <a class="el" href="structimage__t.html">image_t</a> texture[])</td></tr>
-<tr class="memdesc:a02d63a57b719a5f2293a57004c6bdfe3"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui génère une salle en un tableau  <a href="salle_8c.html#a02d63a57b719a5f2293a57004c6bdfe3">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:a02d63a57b719a5f2293a57004c6bdfe3"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui génère une salle en un tableau  <a href="#a02d63a57b719a5f2293a57004c6bdfe3">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a02d63a57b719a5f2293a57004c6bdfe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aede6ff0302858d4beacbb91652be15c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8c.html#aede6ff0302858d4beacbb91652be15c3">rempli_tableau_murs_portes</a> (<a class="el" href="structsalle__t.html">salle_t</a> salle[], int indiceT)</td></tr>
-<tr class="memdesc:aede6ff0302858d4beacbb91652be15c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">rempli les tableaux des murs et des portes de la salle afin de pouvoir gérer les collisions plus tard  <a href="salle_8c.html#aede6ff0302858d4beacbb91652be15c3">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:aede6ff0302858d4beacbb91652be15c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">rempli les tableaux des murs et des portes de la salle afin de pouvoir gérer les collisions plus tard  <a href="#aede6ff0302858d4beacbb91652be15c3">Plus de détails...</a><br /></td></tr>
 <tr class="separator:aede6ff0302858d4beacbb91652be15c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa20d8212045b0c56094a82c56277951e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8c.html#aa20d8212045b0c56094a82c56277951e">inverse_porte</a> (int porte)</td></tr>
-<tr class="memdesc:aa20d8212045b0c56094a82c56277951e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie l'opposée de la porte passée en paramètre.  <a href="salle_8c.html#aa20d8212045b0c56094a82c56277951e">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:aa20d8212045b0c56094a82c56277951e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie l'opposée de la porte passée en paramètre.  <a href="#aa20d8212045b0c56094a82c56277951e">Plus de détails...</a><br /></td></tr>
 <tr class="separator:aa20d8212045b0c56094a82c56277951e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86a7d9453a068f07c6edeaf1c27d1f4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8c.html#a86a7d9453a068f07c6edeaf1c27d1f4c">textures_aleatoires</a> (<a class="el" href="structsalle__t.html">salle_t</a> salles[], int taille)</td></tr>
-<tr class="memdesc:a86a7d9453a068f07c6edeaf1c27d1f4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de placer des textures différentes afin de varier le visuel des salles.  <a href="salle_8c.html#a86a7d9453a068f07c6edeaf1c27d1f4c">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:a86a7d9453a068f07c6edeaf1c27d1f4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de placer des textures différentes afin de varier le visuel des salles.  <a href="#a86a7d9453a068f07c6edeaf1c27d1f4c">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a86a7d9453a068f07c6edeaf1c27d1f4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a146edd55b79ced2a0be58d90c1beab5b"><td class="memItemLeft" align="right" valign="top"><a id="a146edd55b79ced2a0be58d90c1beab5b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>place_monstre_coffre_boss</b> (<a class="el" href="structsalle__t.html">salle_t</a> tab[], int taille, int type_ennemi, SDL_Renderer *rendu)</td></tr>
-<tr class="separator:a146edd55b79ced2a0be58d90c1beab5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46f567399dde3ba6bb3aa491d6cf8b19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8c.html#a46f567399dde3ba6bb3aa491d6cf8b19">place_monstre_coffre_boss</a> (<a class="el" href="structsalle__t.html">salle_t</a> tab[], int taille, int type_ennemi, SDL_Renderer *rendu, int *ennemi_max)</td></tr>
+<tr class="memdesc:a46f567399dde3ba6bb3aa491d6cf8b19"><td class="mdescLeft">&#160;</td><td class="mdescRight">rempli les salles de monstres, de coffre  <a href="#a46f567399dde3ba6bb3aa491d6cf8b19">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a46f567399dde3ba6bb3aa491d6cf8b19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e674506a31041499ff8034a7c91b492"><td class="memItemLeft" align="right" valign="top"><a id="a9e674506a31041499ff8034a7c91b492"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>creation_mini_map</b> (int taille, <a class="el" href="structmini__map__t.html">mini_map_t</a> *map)</td></tr>
 <tr class="separator:a9e674506a31041499ff8034a7c91b492"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa011cf4bea060eca7a9f281c5036e604"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8c.html#aa011cf4bea060eca7a9f281c5036e604">ajoute_salle_decouverte</a> (<a class="el" href="structmini__map__t.html">mini_map_t</a> *map, int indice)</td></tr>
-<tr class="separator:aa011cf4bea060eca7a9f281c5036e604"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad870ed4aa8da67448c72ff425ae5d14d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8c.html#ad870ed4aa8da67448c72ff425ae5d14d">ajoute_ennemi</a> (<a class="el" href="structennemi__t.html">ennemi_t</a> **ennemi, int type, SDL_Renderer *rendu)</td></tr>
-<tr class="memdesc:ad870ed4aa8da67448c72ff425ae5d14d"><td class="mdescLeft">&#160;</td><td class="mdescRight">créer un ennemi à partir d'un type donné  <a href="salle_8c.html#ad870ed4aa8da67448c72ff425ae5d14d">Plus de détails...</a><br /></td></tr>
-<tr class="separator:ad870ed4aa8da67448c72ff425ae5d14d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad502ea03dc71a11a4f05db0f7c151dee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8c.html#ad502ea03dc71a11a4f05db0f7c151dee">creer_ennemi_pointeur</a> (<a class="el" href="structennemi__t.html">ennemi_t</a> **ennemi, <a class="el" href="structennemi__t.html">ennemi_t</a> **ennemi2, int boss, int nb_ennemi, int type, SDL_Renderer *rendu)</td></tr>
-<tr class="memdesc:ad502ea03dc71a11a4f05db0f7c151dee"><td class="mdescLeft">&#160;</td><td class="mdescRight">créer un/des ennemi à partir d'un type donné  <a href="salle_8c.html#ad502ea03dc71a11a4f05db0f7c151dee">Plus de détails...</a><br /></td></tr>
-<tr class="separator:ad502ea03dc71a11a4f05db0f7c151dee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae696390a6c39e9dca4eb8cd9a97ac4ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8c.html#ae696390a6c39e9dca4eb8cd9a97ac4ef">ajoute_salle_decouverte</a> (<a class="el" href="structmini__map__t.html">mini_map_t</a> *map, <a class="el" href="structsalle__t.html">salle_t</a> salles[], int indice, int *salle_pred)</td></tr>
+<tr class="separator:ae696390a6c39e9dca4eb8cd9a97ac4ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f0d53fa540d44b1b479ca76a81b18eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8c.html#a7f0d53fa540d44b1b479ca76a81b18eb">ajoute_ennemi</a> (<a class="el" href="structennemi__t.html">ennemi_t</a> **ennemi, int type, SDL_Renderer *rendu, int etage)</td></tr>
+<tr class="memdesc:a7f0d53fa540d44b1b479ca76a81b18eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">créer un ennemi à partir d'un type donné  <a href="#a7f0d53fa540d44b1b479ca76a81b18eb">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a7f0d53fa540d44b1b479ca76a81b18eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab2aad656937ab08f044472034beb759"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8c.html#aab2aad656937ab08f044472034beb759">placer_monstre</a> (<a class="el" href="structennemi__t.html">ennemi_t</a> *ennemi)</td></tr>
+<tr class="memdesc:aab2aad656937ab08f044472034beb759"><td class="mdescLeft">&#160;</td><td class="mdescRight">place l'ennemi de façon à ne pas bloquer les portes  <a href="#aab2aad656937ab08f044472034beb759">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aab2aad656937ab08f044472034beb759"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0239bd5bf9337fe5eaca57ff879cde6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8c.html#a0239bd5bf9337fe5eaca57ff879cde6a">creer_ennemi_pointeur</a> (<a class="el" href="structennemi__t.html">ennemi_t</a> **ennemi, <a class="el" href="structennemi__t.html">ennemi_t</a> **ennemi2, int nb_ennemi, int type, SDL_Renderer *rendu, int etage)</td></tr>
+<tr class="memdesc:a0239bd5bf9337fe5eaca57ff879cde6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">créer un/des ennemi à partir d'un type donné  <a href="#a0239bd5bf9337fe5eaca57ff879cde6a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0239bd5bf9337fe5eaca57ff879cde6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4901e1747020375b5593d98e26f914d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="salle_8c.html#a4901e1747020375b5593d98e26f914d0">affiche_mini_map</a> (<a class="el" href="structmini__map__t.html">mini_map_t</a> map, <a class="el" href="structsalle__t.html">salle_t</a> salle, SDL_Renderer *rendu)</td></tr>
+<tr class="memdesc:a4901e1747020375b5593d98e26f914d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">effectue l'affichage à l'écran de la minimap  <a href="#a4901e1747020375b5593d98e26f914d0">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4901e1747020375b5593d98e26f914d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22b4b3e0fa4eb556deb21b3465cb6a30"><td class="memItemLeft" align="right" valign="top"><a id="a22b4b3e0fa4eb556deb21b3465cb6a30"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ennemi_selon_etage</b> (int etage, int boss, <a class="el" href="structennemi__t.html">ennemi_t</a> *ennemi)</td></tr>
+<tr class="separator:a22b4b3e0fa4eb556deb21b3465cb6a30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Programme qui créé une salle et l'affiche. </p>
@@ -124,6 +131,50 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>creation_mini_map</b>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>30 Janvier 2020 </dd></dl>
 </div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a4901e1747020375b5593d98e26f914d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4901e1747020375b5593d98e26f914d0">&#9670;&nbsp;</a></span>affiche_mini_map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affiche_mini_map </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structmini__map__t.html">mini_map_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsalle__t.html">salle_t</a>&#160;</td>
+          <td class="paramname"><em>salle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>effectue l'affichage à l'écran de la minimap </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map,la</td><td>structure contenant la minimap </td></tr>
+    <tr><td class="paramname">salle,la</td><td>salle dans laquelle se situe le joueur </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a02d63a57b719a5f2293a57004c6bdfe3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a02d63a57b719a5f2293a57004c6bdfe3">&#9670;&nbsp;</a></span>afficher_salle()</h2>
 
@@ -205,8 +256,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>creation_mini_map</b>
 
 </div>
 </div>
-<a id="ad870ed4aa8da67448c72ff425ae5d14d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad870ed4aa8da67448c72ff425ae5d14d">&#9670;&nbsp;</a></span>ajoute_ennemi()</h2>
+<a id="a7f0d53fa540d44b1b479ca76a81b18eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f0d53fa540d44b1b479ca76a81b18eb">&#9670;&nbsp;</a></span>ajoute_ennemi()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -227,7 +278,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>creation_mini_map</b>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">SDL_Renderer *&#160;</td>
-          <td class="paramname"><em>rendu</em>&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>etage</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -243,14 +300,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>creation_mini_map</b>
     <tr><td class="paramname">**ennemi,pointeur</td><td>sur pointeur de type <a class="el" href="structennemi__t.html">ennemi_t</a>, l'ennemi que l'on va créer </td></tr>
     <tr><td class="paramname">type,le</td><td>type d'ennemi que l'en veut créer. </td></tr>
     <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">etage,l'étage</td><td>où se situe le joueur </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="aa011cf4bea060eca7a9f281c5036e604"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa011cf4bea060eca7a9f281c5036e604">&#9670;&nbsp;</a></span>ajoute_salle_decouverte()</h2>
+<a id="ae696390a6c39e9dca4eb8cd9a97ac4ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae696390a6c39e9dca4eb8cd9a97ac4ef">&#9670;&nbsp;</a></span>ajoute_salle_decouverte()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -264,8 +322,20 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>creation_mini_map</b>
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="structsalle__t.html">salle_t</a>&#160;</td>
+          <td class="paramname"><em>salles</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>indice</em>&#160;</td>
+          <td class="paramname"><em>indice</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>salle_pred</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -277,22 +347,24 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>creation_mini_map</b>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">*map,un</td><td>pointeur sur la minimap que l'on modifie </td></tr>
-    <tr><td class="paramname">indice,la</td><td>salle actuelle dans le tableau de salles</td></tr>
+    <tr><td class="paramname">salles[],le</td><td>tableau des salles du labyrinthe </td></tr>
+    <tr><td class="paramname">indice,la</td><td>salle actuelle dans le tableau de salles </td></tr>
+    <tr><td class="paramname">*salle_pred,pointeur</td><td>sur un entier stockant l'indice de la salle précédente</td></tr>
   </table>
   </dd>
 </dl>
-<p>\bief Ajoute la salle où se situe le joueur dans le tableau de salles découvertes </p>
+<p>Ajoute la salle où se situe le joueur dans le tableau de salles découvertes </p>
 
 </div>
 </div>
-<a id="ad502ea03dc71a11a4f05db0f7c151dee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad502ea03dc71a11a4f05db0f7c151dee">&#9670;&nbsp;</a></span>creer_ennemi_pointeur()</h2>
+<a id="a0239bd5bf9337fe5eaca57ff879cde6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0239bd5bf9337fe5eaca57ff879cde6a">&#9670;&nbsp;</a></span>creer_ennemi_pointeur()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void creer_ennemi_pointeur </td>
+          <td class="memname">creer_ennemi_pointeur </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structennemi__t.html">ennemi_t</a> **&#160;</td>
           <td class="paramname"><em>ennemi</em>, </td>
@@ -302,12 +374,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>creation_mini_map</b>
           <td></td>
           <td class="paramtype"><a class="el" href="structennemi__t.html">ennemi_t</a> **&#160;</td>
           <td class="paramname"><em>ennemi2</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>boss</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -325,7 +391,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>creation_mini_map</b>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">SDL_Renderer *&#160;</td>
-          <td class="paramname"><em>rendu</em>&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>etage</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -340,10 +412,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>creation_mini_map</b>
   <table class="params">
     <tr><td class="paramname">**ennemi,pointeur</td><td>sur pointeur de type <a class="el" href="structennemi__t.html">ennemi_t</a>, l'ennemi que l'on va peut-être créer </td></tr>
     <tr><td class="paramname">**ennemi2,pointeur</td><td>sur pointeur de type <a class="el" href="structennemi__t.html">ennemi_t</a>, l'ennemi que l'on va peut-être créer </td></tr>
+    <tr><td class="paramname">nb_ennemi,peremet</td><td>de savoir combien d'ennemis sont à créer </td></tr>
     <tr><td class="paramname">type,le</td><td>type d'ennemi que l'en veut créer. </td></tr>
     <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
-    <tr><td class="paramname">boss,permet</td><td>de savoir si c'est un boss ou un ennemi classique que l'on doit créer </td></tr>
-    <tr><td class="paramname">nb_ennemi,peremet</td><td>de savoir combien d'ennemis sont à créer </td></tr>
+    <tr><td class="paramname">etage,l'étage</td><td>où se situe le joueur </td></tr>
   </table>
   </dd>
 </dl>
@@ -400,6 +472,89 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>creation_mini_map</b>
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>l'inverse de la porte passée en paramètre </dd></dl>
+
+</div>
+</div>
+<a id="a46f567399dde3ba6bb3aa491d6cf8b19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46f567399dde3ba6bb3aa491d6cf8b19">&#9670;&nbsp;</a></span>place_monstre_coffre_boss()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void place_monstre_coffre_boss </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsalle__t.html">salle_t</a>&#160;</td>
+          <td class="paramname"><em>tab</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>taille</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>type_ennemi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>ennemi_max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>rempli les salles de monstres, de coffre </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tab[],tableau</td><td>contenant les salles du labyrinthe </td></tr>
+    <tr><td class="paramname">taille,taille</td><td>du tableau </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">*ennemi_max</td><td>est le nombre d'ennemi max. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aab2aad656937ab08f044472034beb759"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab2aad656937ab08f044472034beb759">&#9670;&nbsp;</a></span>placer_monstre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void placer_monstre </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structennemi__t.html">ennemi_t</a> *&#160;</td>
+          <td class="paramname"><em>ennemi</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>place l'ennemi de façon à ne pas bloquer les portes </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*ennemi,l'ennemi</td><td>à modifier </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -481,7 +636,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>creation_mini_map</b>
 <hr class="footer"/><address class="footer"><small>
 Généré par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
+</a> 1.8.13
 </small></address>
 </body>
 </html>

@@ -1,5 +1,5 @@
-\hypertarget{constantes_8h}{}\doxysection{Référence du fichier /\+Users/axel/\+Documents/\+Save git/\+Projet-\/\+L2-\//projet\+\_\+\+Roguelike\+\_\+true/include/constantes.h}
-\label{constantes_8h}\index{/Users/axel/Documents/Save git/Projet-\/L2-\//projet\_Roguelike\_true/include/constantes.h@{/Users/axel/Documents/Save git/Projet-\/L2-\//projet\_Roguelike\_true/include/constantes.h}}
+\hypertarget{constantes_8h}{}\section{Référence du fichier /home/aurelien/\+Bureau/\+Projet-\/\+L2-\//projet\+\_\+\+Roguelike\+\_\+true/include/constantes.h}
+\label{constantes_8h}\index{/home/aurelien/\+Bureau/\+Projet-\/\+L2-\//projet\+\_\+\+Roguelike\+\_\+true/include/constantes.\+h@{/home/aurelien/\+Bureau/\+Projet-\/\+L2-\//projet\+\_\+\+Roguelike\+\_\+true/include/constantes.\+h}}
 
 
 Constantes et structures du projet Roguelike.  
@@ -17,30 +17,34 @@ Graphe des dépendances par inclusion de constantes.\+h\+:
 % FIG 0
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
 % FIG 1
-\doxysubsection*{Structures de données}
+\subsection*{Structures de données}
 \begin{DoxyCompactItemize}
 \item 
-struct \mbox{\hyperlink{structanimation__t}{animation\+\_\+t}}
+struct \hyperlink{structanimation__t}{animation\+\_\+t}
 \begin{DoxyCompactList}\small\item\em permet de gèrer les animations du personnage \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{structtouches__t}{touches\+\_\+t}}
+struct \hyperlink{structtouches__t}{touches\+\_\+t}
 \item 
-struct \mbox{\hyperlink{structimage__t}{image\+\_\+t}}
+struct \hyperlink{structimage__t}{image\+\_\+t}
 \item 
-struct \mbox{\hyperlink{structennemi__s}{ennemi\+\_\+s}}
+struct \hyperlink{structennemi__s}{ennemi\+\_\+s}
 \item 
-struct \mbox{\hyperlink{structcoffre__s}{coffre\+\_\+s}}
+struct \hyperlink{structcoffre__s}{coffre\+\_\+s}
 \item 
-struct \mbox{\hyperlink{structsalle__s}{salle\+\_\+s}}
+struct \hyperlink{structsalle__s}{salle\+\_\+s}
 \item 
-struct \mbox{\hyperlink{structmini__map__s}{mini\+\_\+map\+\_\+s}}
+struct \hyperlink{structmini__map__s}{mini\+\_\+map\+\_\+s}
 \item 
-struct \mbox{\hyperlink{structperso__s}{perso\+\_\+s}}
+struct \hyperlink{structperso__s}{perso\+\_\+s}
 \item 
-struct \mbox{\hyperlink{structcarte__s}{carte\+\_\+s}}
+struct \hyperlink{structcarte__s}{carte\+\_\+s}
 \item 
-struct \mbox{\hyperlink{structelement}{element}}
+struct \hyperlink{structelement}{element}
+\item 
+struct \hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+s}
+\item 
+struct \hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+s}
 \end{DoxyCompactItemize}
-\doxysubsection*{Macros}
+\subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{constantes_8h_a0a33b1743038db1adbbf1045aa839b38}\label{constantes_8h_a0a33b1743038db1adbbf1045aa839b38}} 
@@ -52,23 +56,68 @@ struct \mbox{\hyperlink{structelement}{element}}
 \mbox{\Hypertarget{constantes_8h_af326d9b4cced6fd44a9f9567dc666014}\label{constantes_8h_af326d9b4cced6fd44a9f9567dc666014}} 
 \#define {\bfseries F\+O\+N\+T\+\_\+\+P\+A\+TH}~\char`\"{}../Font/Bebas\+Neue.\+ttf\char`\"{}
 \item 
+\mbox{\Hypertarget{constantes_8h_ab2f52e6d66e6ded6502cfdee1cc5efe2}\label{constantes_8h_ab2f52e6d66e6ded6502cfdee1cc5efe2}} 
+\#define {\bfseries S\+O\+L\+\_\+\+T\+E\+S\+T\+\_\+\+P\+A\+TH}~\char`\"{}../Images/truc.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a2b3d9fb84f526ae82bc603ca814f69b2}\label{constantes_8h_a2b3d9fb84f526ae82bc603ca814f69b2}} 
+\#define {\bfseries S\+O\+L\+\_\+\+T\+E\+S\+T\+\_\+2\+\_\+\+P\+A\+TH}~\char`\"{}../Images/truc2.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_ac02db85a85b4c7f5a5e34912e3199e4a}\label{constantes_8h_ac02db85a85b4c7f5a5e34912e3199e4a}} 
+\#define {\bfseries S\+O\+L\+\_\+\+T\+E\+S\+T\+\_\+3\+\_\+\+P\+A\+TH}~\char`\"{}../Images/truc3.\+png\char`\"{}
+\item 
 \mbox{\Hypertarget{constantes_8h_a2f4c1d940488bfc90ef2d7775b49d211}\label{constantes_8h_a2f4c1d940488bfc90ef2d7775b49d211}} 
 \#define {\bfseries S\+O\+L1\+\_\+\+P\+A\+TH}~\char`\"{}../Images/dalle3.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_af2bd64114b3677e6120816017a0bc9fc}\label{constantes_8h_af2bd64114b3677e6120816017a0bc9fc}} 
+\#define {\bfseries S\+O\+L1\+\_\+2\+\_\+\+P\+A\+TH}~\char`\"{}../Images/dalle3\+\_\+2.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_af696492fe388afb636316ceef08fe2b8}\label{constantes_8h_af696492fe388afb636316ceef08fe2b8}} 
+\#define {\bfseries S\+O\+L1\+\_\+3\+\_\+\+P\+A\+TH}~\char`\"{}../Images/dalle\+\_\+3.\+png\char`\"{}
 \item 
 \mbox{\Hypertarget{constantes_8h_a1efaafbaa4b02ae3bbaa0fe0aa18e270}\label{constantes_8h_a1efaafbaa4b02ae3bbaa0fe0aa18e270}} 
 \#define {\bfseries M\+U\+R1\+\_\+\+P\+A\+TH}~\char`\"{}../Images/mur.\+png\char`\"{}
 \item 
+\mbox{\Hypertarget{constantes_8h_aecbcbc6fe2556126b8ed6f0d7dc57674}\label{constantes_8h_aecbcbc6fe2556126b8ed6f0d7dc57674}} 
+\#define {\bfseries M\+U\+R1\+\_\+2\+\_\+\+P\+A\+TH}~\char`\"{}../Images/mur\+\_\+2.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a0c3e11763f0eea36fe5ceb33574f2eaf}\label{constantes_8h_a0c3e11763f0eea36fe5ceb33574f2eaf}} 
+\#define {\bfseries M\+U\+R1\+\_\+3\+\_\+\+P\+A\+TH}~\char`\"{}../Images/mur\+\_\+3.\+png\char`\"{}
+\item 
 \mbox{\Hypertarget{constantes_8h_a68be058ceddf9f90d374d152836987a6}\label{constantes_8h_a68be058ceddf9f90d374d152836987a6}} 
 \#define {\bfseries M\+U\+R2\+\_\+\+P\+A\+TH}~\char`\"{}../Images/mur\+\_\+feu.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a42bd5d847b3ca604eab6db6aef25e8dd}\label{constantes_8h_a42bd5d847b3ca604eab6db6aef25e8dd}} 
+\#define {\bfseries M\+U\+R2\+\_\+2\+\_\+\+P\+A\+TH}~\char`\"{}../Images/mur\+\_\+feu\+\_\+2.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a2a2a94539dd86b96ae7c0d04672436b2}\label{constantes_8h_a2a2a94539dd86b96ae7c0d04672436b2}} 
+\#define {\bfseries M\+U\+R2\+\_\+3\+\_\+\+P\+A\+TH}~\char`\"{}../Images/mur\+\_\+feu\+\_\+3.\+png\char`\"{}
 \item 
 \mbox{\Hypertarget{constantes_8h_ac2c13ca16b27bb1da6a86f800d345a6f}\label{constantes_8h_ac2c13ca16b27bb1da6a86f800d345a6f}} 
 \#define {\bfseries S\+O\+L2\+\_\+\+P\+A\+TH}~\char`\"{}../Images/dalle\+\_\+cailloux.\+png\char`\"{}
 \item 
+\mbox{\Hypertarget{constantes_8h_ae339b7d883f7d4547165d717b38d04d4}\label{constantes_8h_ae339b7d883f7d4547165d717b38d04d4}} 
+\#define {\bfseries S\+O\+L2\+\_\+2\+\_\+\+P\+A\+TH}~\char`\"{}../Images/dalle\+\_\+cailloux\+\_\+2.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a6dfe967c58ee27afba95b53dacb2a4b0}\label{constantes_8h_a6dfe967c58ee27afba95b53dacb2a4b0}} 
+\#define {\bfseries S\+O\+L2\+\_\+3\+\_\+\+P\+A\+TH}~\char`\"{}../Images/dalle\+\_\+cailloux\+\_\+3.\+png\char`\"{}
+\item 
 \mbox{\Hypertarget{constantes_8h_aaa62c9e21726ccd7208567be3d5de606}\label{constantes_8h_aaa62c9e21726ccd7208567be3d5de606}} 
 \#define {\bfseries S\+O\+L3\+\_\+\+P\+A\+TH}~\char`\"{}../Images/dalle\+\_\+eau.\+png\char`\"{}
 \item 
+\mbox{\Hypertarget{constantes_8h_a8b036facaacfc0e44831bea0a1b4b53a}\label{constantes_8h_a8b036facaacfc0e44831bea0a1b4b53a}} 
+\#define {\bfseries S\+O\+L3\+\_\+2\+\_\+\+P\+A\+TH}~\char`\"{}../Images/dalle\+\_\+eau\+\_\+2.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a80ac5fe2715df3d66d7601a537820377}\label{constantes_8h_a80ac5fe2715df3d66d7601a537820377}} 
+\#define {\bfseries S\+O\+L3\+\_\+3\+\_\+\+P\+A\+TH}~\char`\"{}../Images/dalle\+\_\+3\+\_\+eau.\+png\char`\"{}
+\item 
 \mbox{\Hypertarget{constantes_8h_a4fe4d20a0e40198e0719b3d9753ba9e6}\label{constantes_8h_a4fe4d20a0e40198e0719b3d9753ba9e6}} 
 \#define {\bfseries P\+O\+R\+T\+E\+\_\+\+P\+A\+TH}~\char`\"{}../Images/dalle3.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a0e62b6745f53ec8e1cff256669e58663}\label{constantes_8h_a0e62b6745f53ec8e1cff256669e58663}} 
+\#define {\bfseries P\+O\+R\+T\+E\+\_\+2\+\_\+\+P\+A\+TH}~\char`\"{}../Images/dalle3\+\_\+2.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_ab3ff0fb6b51f0d8483caf833acad3bfe}\label{constantes_8h_ab3ff0fb6b51f0d8483caf833acad3bfe}} 
+\#define {\bfseries P\+O\+R\+T\+E\+\_\+3\+\_\+\+P\+A\+TH}~\char`\"{}../Images/dalle\+\_\+3.\+png\char`\"{}
 \item 
 \mbox{\Hypertarget{constantes_8h_abec2f5387b8475f1d70d3a2241862e63}\label{constantes_8h_abec2f5387b8475f1d70d3a2241862e63}} 
 \#define {\bfseries C\+O\+M\+M\+A\+N\+D\+E\+S\+\_\+\+P\+A\+TH}~\char`\"{}../Images/commandes.\+png\char`\"{}
@@ -87,6 +136,9 @@ struct \mbox{\hyperlink{structelement}{element}}
 \item 
 \mbox{\Hypertarget{constantes_8h_a9b3fc2d8f8a968529386273002d1c255}\label{constantes_8h_a9b3fc2d8f8a968529386273002d1c255}} 
 \#define {\bfseries T\+R\+A\+P\+D\+O\+O\+R\+\_\+\+P\+A\+TH}~\char`\"{}../Images/trapdoor2.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a3af1daf8c938de89570ec08814ab207a}\label{constantes_8h_a3af1daf8c938de89570ec08814ab207a}} 
+\#define {\bfseries M\+O\+B\+C\+O\+U\+N\+T\+E\+R\+\_\+\+P\+A\+TH}~\char`\"{}../Images/mob\+\_\+counter.\+png\char`\"{}
 \item 
 \mbox{\Hypertarget{constantes_8h_aa985864eea2cbbbe79264ba586f0aeb4}\label{constantes_8h_aa985864eea2cbbbe79264ba586f0aeb4}} 
 \#define {\bfseries C\+O\+F\+F\+R\+E\+\_\+\+P\+A\+TH}~\char`\"{}../Images/coffre\+\_\+sprites.\+png\char`\"{}
@@ -124,6 +176,9 @@ struct \mbox{\hyperlink{structelement}{element}}
 \mbox{\Hypertarget{constantes_8h_a7e7408678a21cc1c9631c8b687e86eff}\label{constantes_8h_a7e7408678a21cc1c9631c8b687e86eff}} 
 \#define {\bfseries C\+Y\+C\+L\+O\+P\+E\+\_\+\+P\+A\+TH}~\char`\"{}../Images/sprites\+\_\+mobs/cyclo\+\_\+sprites.\+png\char`\"{}
 \item 
+\mbox{\Hypertarget{constantes_8h_a288a685d912e078de1e88e8329458f3d}\label{constantes_8h_a288a685d912e078de1e88e8329458f3d}} 
+\#define {\bfseries V\+O\+L\+A\+N\+T\+\_\+\+P\+A\+TH}~\char`\"{}../Images/sprites\+\_\+mobs/volant\+\_\+sprites.\+png\char`\"{}
+\item 
 \mbox{\Hypertarget{constantes_8h_ae7e2a886d977c34d9cd5c43920f68484}\label{constantes_8h_ae7e2a886d977c34d9cd5c43920f68484}} 
 \#define {\bfseries M\+I\+N\+O\+T\+A\+U\+R\+E\+\_\+\+P\+A\+TH}~\char`\"{}../Images/sprites\+\_\+mobs/mino\+\_\+sprites.\+png\char`\"{}
 \item 
@@ -133,14 +188,29 @@ struct \mbox{\hyperlink{structelement}{element}}
 \mbox{\Hypertarget{constantes_8h_aa24dd8da76955cbeed520d41356d8182}\label{constantes_8h_aa24dd8da76955cbeed520d41356d8182}} 
 \#define {\bfseries I\+M\+P\+\_\+\+P\+A\+TH}~\char`\"{}../Images/sprites\+\_\+mobs/imp\+\_\+sprites.\+png\char`\"{}
 \item 
+\mbox{\Hypertarget{constantes_8h_ad5454403a8a2489bd06a13407c2a3659}\label{constantes_8h_ad5454403a8a2489bd06a13407c2a3659}} 
+\#define {\bfseries S\+O\+R\+C\+E\+R\+E\+R\+\_\+\+P\+A\+TH}~\char`\"{}../Images/sprites\+\_\+mobs/sorcerer\+\_\+sprites.\+png\char`\"{}
+\item 
 \mbox{\Hypertarget{constantes_8h_ac9b0de23dc441a636838e73a99547f1d}\label{constantes_8h_ac9b0de23dc441a636838e73a99547f1d}} 
 \#define {\bfseries W\+I\+Z\+A\+R\+D\+\_\+\+P\+A\+TH}~\char`\"{}../Images/sprites\+\_\+mobs/wizard\+\_\+sprite2.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a2c44fca03ecd975a79712962b13fbbc9}\label{constantes_8h_a2c44fca03ecd975a79712962b13fbbc9}} 
+\#define {\bfseries W\+I\+T\+C\+H\+\_\+\+P\+A\+TH}~\char`\"{}../Images/sprites\+\_\+mobs/witch\+\_\+sprites.\+png\char`\"{}
 \item 
 \mbox{\Hypertarget{constantes_8h_a3f2b4b33190d99cd0a98e789f5b6b698}\label{constantes_8h_a3f2b4b33190d99cd0a98e789f5b6b698}} 
 \#define {\bfseries C\+O\+M\+B\+A\+T\+\_\+\+P\+A\+TH}~\char`\"{}../Images/combat1.\+png\char`\"{}
 \item 
 \mbox{\Hypertarget{constantes_8h_a79406d46b9070a492efee2d151184661}\label{constantes_8h_a79406d46b9070a492efee2d151184661}} 
 \#define {\bfseries F\+O\+N\+D\+\_\+\+C\+O\+M\+B\+A\+T\+\_\+\+P\+A\+TH}~\char`\"{}../Images/combat2.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a2c83eed7ee8892bc50b441e031767630}\label{constantes_8h_a2c83eed7ee8892bc50b441e031767630}} 
+\#define {\bfseries G\+U\+I\+\_\+\+C\+O\+M\+B\+A\+T\+\_\+\+P\+A\+TH}~\char`\"{}../Images/G\+U\+I\+\_\+bar.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_aa8aab6bee7fc9718495828b2a13e940b}\label{constantes_8h_aa8aab6bee7fc9718495828b2a13e940b}} 
+\#define {\bfseries C\+A\+R\+T\+E\+\_\+\+G\+U\+E\+R\+I\+S\+O\+N\+\_\+\+P\+A\+TH}~\char`\"{}../Images/Cartes/guerison.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_acb491c15525e9baf37f0c70f48e63922}\label{constantes_8h_acb491c15525e9baf37f0c70f48e63922}} 
+\#define {\bfseries C\+A\+R\+T\+E\+\_\+\+S\+O\+I\+N\+\_\+\+P\+A\+TH}~\char`\"{}../Images/Cartes/soin.\+png\char`\"{}
 \item 
 \mbox{\Hypertarget{constantes_8h_ac978dba56fe7e98e6e992d142b6e34bc}\label{constantes_8h_ac978dba56fe7e98e6e992d142b6e34bc}} 
 \#define {\bfseries C\+A\+R\+T\+E\+\_\+\+E\+P\+E\+E\+\_\+\+I\+\_\+\+P\+A\+TH}~\char`\"{}../Images/Cartes/epee\+\_\+1.\+png\char`\"{}
@@ -154,17 +224,38 @@ struct \mbox{\hyperlink{structelement}{element}}
 \mbox{\Hypertarget{constantes_8h_a7b2cf68e8f91493217f9b94634a317d7}\label{constantes_8h_a7b2cf68e8f91493217f9b94634a317d7}} 
 \#define {\bfseries C\+A\+R\+T\+E\+\_\+\+P\+I\+E\+R\+R\+E\+\_\+\+P\+A\+TH}~\char`\"{}../Images/Cartes/pierre.\+png\char`\"{}
 \item 
+\mbox{\Hypertarget{constantes_8h_a39e8830d07831eb76e8e3a70a8c1d8b2}\label{constantes_8h_a39e8830d07831eb76e8e3a70a8c1d8b2}} 
+\#define {\bfseries C\+A\+R\+T\+E\+\_\+\+B\+\_\+\+D\+E\+\_\+\+F\+E\+U\+\_\+\+P\+A\+TH}~\char`\"{}../Images/Cartes/boule\+\_\+de\+\_\+feu.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a65c29e50f255f5e22fd9d4bca1c75ce0}\label{constantes_8h_a65c29e50f255f5e22fd9d4bca1c75ce0}} 
+\#define {\bfseries C\+A\+R\+T\+E\+\_\+\+P\+O\+I\+S\+O\+N\+\_\+\+P\+A\+TH}~\char`\"{}../Images/Cartes/poison.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a7a6ac3023522dad3f9fdfa24705702be}\label{constantes_8h_a7a6ac3023522dad3f9fdfa24705702be}} 
+\#define {\bfseries C\+A\+R\+T\+E\+\_\+\+B\+A\+R\+R\+I\+E\+R\+E\+\_\+\+P\+A\+TH}~\char`\"{}../Images/Cartes/barriere.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_a2d182ba9fa01ce16cbb5a13ec18ff9e9}\label{constantes_8h_a2d182ba9fa01ce16cbb5a13ec18ff9e9}} 
+\#define {\bfseries C\+A\+R\+T\+E\+\_\+\+N\+O\+\_\+\+C\+A\+R\+T\+E\+\_\+\+P\+A\+TH}~\char`\"{}../Images/Cartes/no\+\_\+carte.\+png\char`\"{}
+\item 
 \mbox{\Hypertarget{constantes_8h_a1d1a4e15b9de4b2874ae5853a0150b6b}\label{constantes_8h_a1d1a4e15b9de4b2874ae5853a0150b6b}} 
 \#define {\bfseries S\+A\+V\+E\+\_\+\+P\+E\+R\+S\+O\+\_\+\+P\+A\+TH}~\char`\"{}../Sauvegarde/personnage.\+txt\char`\"{}
 \item 
-\mbox{\Hypertarget{constantes_8h_ace01d5d405ff0c32baf1fd84e384b06f}\label{constantes_8h_ace01d5d405ff0c32baf1fd84e384b06f}} 
-\#define {\bfseries S\+A\+V\+E\+\_\+\+C\+A\+R\+T\+E\+S\+\_\+\+P\+A\+TH}~\char`\"{}../Sauvegarde/cartes.\+txt\char`\"{}
+\mbox{\Hypertarget{constantes_8h_aa0a64f9bcb70597af51d099303594a0a}\label{constantes_8h_aa0a64f9bcb70597af51d099303594a0a}} 
+\#define {\bfseries S\+A\+V\+E\+\_\+\+C\+A\+R\+T\+E\+S\+\_\+\+D\+E\+C\+K\+\_\+\+P\+A\+TH}~\char`\"{}../Sauvegarde/cartes\+\_\+deck.\+txt\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_ac4598337f53906e54491a93b02a93399}\label{constantes_8h_ac4598337f53906e54491a93b02a93399}} 
+\#define {\bfseries S\+A\+V\+E\+\_\+\+C\+A\+R\+T\+E\+S\+\_\+\+C\+O\+L\+L\+E\+C\+\_\+\+P\+A\+TH}~\char`\"{}../Sauvegarde/cartes\+\_\+collec.\+txt\char`\"{}
 \item 
 \mbox{\Hypertarget{constantes_8h_a89fcbdaabd19c7791aadf2cd2595651f}\label{constantes_8h_a89fcbdaabd19c7791aadf2cd2595651f}} 
 \#define {\bfseries S\+A\+V\+E\+\_\+\+C\+A\+R\+T\+E\+S\+\_\+\+C\+A\+T\+A\+L\+O\+G\+U\+E\+\_\+\+P\+A\+TH}~\char`\"{}../Sauvegarde/cartes\+\_\+catalogue\char`\"{}
 \item 
-\mbox{\Hypertarget{constantes_8h_ad2b84a634ac07c3cc462af4fa0ce9ddf}\label{constantes_8h_ad2b84a634ac07c3cc462af4fa0ce9ddf}} 
-\#define {\bfseries N\+B\+\_\+\+T\+E\+X\+T\+U\+R\+ES}~20
+\mbox{\Hypertarget{constantes_8h_a705b166194d9e565cb9ade525eb6714f}\label{constantes_8h_a705b166194d9e565cb9ade525eb6714f}} 
+\#define {\bfseries S\+A\+V\+E\+\_\+\+C\+A\+R\+T\+E\+S\+\_\+\+N\+E\+W\+\_\+\+G\+A\+M\+E\+\_\+\+P\+A\+TH}~\char`\"{}../Sauvegarde/cartes\+\_\+nouvelle\+\_\+partie.\+txt\char`\"{}
+\item 
+\mbox{\Hypertarget{constantes_8h_ab4aec8798ed3d51412207bc9676d4691}\label{constantes_8h_ab4aec8798ed3d51412207bc9676d4691}} 
+\#define {\bfseries N\+B\+\_\+\+T\+E\+X\+T\+U\+R\+E\+S\+\_\+\+L\+A\+BY}~15
+\item 
+\mbox{\Hypertarget{constantes_8h_a781ac0803037dbd396709f3727fafa2d}\label{constantes_8h_a781ac0803037dbd396709f3727fafa2d}} 
+\#define {\bfseries N\+B\+\_\+\+T\+E\+X\+T\+U\+R\+E\+S\+\_\+\+C\+O\+M\+B\+AT}~10
 \item 
 \mbox{\Hypertarget{constantes_8h_aa8cecfc5c5c054d2875c03e77b7be15d}\label{constantes_8h_aa8cecfc5c5c054d2875c03e77b7be15d}} 
 \#define {\bfseries T\+R\+UE}~1
@@ -172,11 +263,11 @@ struct \mbox{\hyperlink{structelement}{element}}
 \mbox{\Hypertarget{constantes_8h_aa93f0eb578d23995850d61f7d61c55c1}\label{constantes_8h_aa93f0eb578d23995850d61f7d61c55c1}} 
 \#define {\bfseries F\+A\+L\+SE}~0
 \item 
-\mbox{\Hypertarget{constantes_8h_accdc14340cb8dc0434520cae1ab073c6}\label{constantes_8h_accdc14340cb8dc0434520cae1ab073c6}} 
-\#define {\bfseries Q\+U\+I\+T\+\_\+\+S\+DL}~100
+\mbox{\Hypertarget{constantes_8h_ac662f6935027ccbb88b890f88344b9b0}\label{constantes_8h_ac662f6935027ccbb88b890f88344b9b0}} 
+\#define {\bfseries D\+E\+CK}~1
 \item 
-\mbox{\Hypertarget{constantes_8h_aab4e9825fd0e4ea7ba975f86a480793b}\label{constantes_8h_aab4e9825fd0e4ea7ba975f86a480793b}} 
-\#define {\bfseries P\+A\+S\+\_\+\+Q\+U\+I\+T\+\_\+\+S\+DL}~101
+\mbox{\Hypertarget{constantes_8h_a856d3582f18fe389a109ddabd5c839db}\label{constantes_8h_a856d3582f18fe389a109ddabd5c839db}} 
+\#define {\bfseries C\+O\+L\+L\+EC}~0
 \item 
 \mbox{\Hypertarget{constantes_8h_ab1e50feb98c6b01a2c8d40d0069e9e7b}\label{constantes_8h_ab1e50feb98c6b01a2c8d40d0069e9e7b}} 
 \#define {\bfseries T\+A\+I\+L\+L\+E\+\_\+\+S\+A\+L\+LE}~8
@@ -190,14 +281,17 @@ struct \mbox{\hyperlink{structelement}{element}}
 \mbox{\Hypertarget{constantes_8h_a7b29335add3a553ed85d0e3ace85629c}\label{constantes_8h_a7b29335add3a553ed85d0e3ace85629c}} 
 \#define {\bfseries T\+A\+I\+L\+LE}~20
 \item 
+\mbox{\Hypertarget{constantes_8h_aac8365b6f39bfb10009ff8f1a127b5bd}\label{constantes_8h_aac8365b6f39bfb10009ff8f1a127b5bd}} 
+\#define {\bfseries T\+A\+I\+L\+L\+E\+\_\+\+E\+T\+A\+G\+E\+\_\+\+F\+I\+N\+AL}~2
+\item 
 \mbox{\Hypertarget{constantes_8h_a37b09c02f39d97f315bba71116fcc977}\label{constantes_8h_a37b09c02f39d97f315bba71116fcc977}} 
 \#define {\bfseries T\+A\+I\+L\+L\+E\+\_\+\+D\+E\+CK}~5
 \item 
+\mbox{\Hypertarget{constantes_8h_a817761b3182583f485ae966cce97bf1c}\label{constantes_8h_a817761b3182583f485ae966cce97bf1c}} 
+\#define {\bfseries D\+U\+R\+E\+E\+\_\+\+A\+F\+F\+I\+C\+H\+A\+G\+E\+\_\+\+C\+A\+R\+T\+E\+\_\+\+L\+O\+OT}~5000
+\item 
 \mbox{\Hypertarget{constantes_8h_ada3c0678246b1bcd188a4e3dcbd05b4b}\label{constantes_8h_ada3c0678246b1bcd188a4e3dcbd05b4b}} 
 \#define {\bfseries N\+B\+\_\+\+S\+P\+R\+I\+T\+E\+S\+\_\+\+P\+E\+R\+S\+O\+N\+N\+A\+GE}~10
-\item 
-\mbox{\Hypertarget{constantes_8h_a09cfa66ff40a6bdae746531a79d04f05}\label{constantes_8h_a09cfa66ff40a6bdae746531a79d04f05}} 
-\#define {\bfseries N\+B\+\_\+\+S\+P\+R\+I\+T\+E\+S\+\_\+\+M\+O\+N\+S\+T\+RE}~2
 \item 
 \mbox{\Hypertarget{constantes_8h_ab8438d55f7d36cd43c8ceb5244305199}\label{constantes_8h_ab8438d55f7d36cd43c8ceb5244305199}} 
 \#define {\bfseries N\+B\+\_\+\+C\+A\+R\+T\+E\+S\+\_\+\+C\+O\+M\+B\+AT}~4
@@ -210,6 +304,15 @@ struct \mbox{\hyperlink{structelement}{element}}
 \item 
 \mbox{\Hypertarget{constantes_8h_aa2fadc29a86d20f5b430d7a3c1ec73e6}\label{constantes_8h_aa2fadc29a86d20f5b430d7a3c1ec73e6}} 
 \#define {\bfseries E\+M\+P\+L\+A\+C\+E\+M\+E\+N\+T\+\_\+\+D\+E\+P\+A\+R\+T\+\_\+\+D\+E\+S\+S\+I\+N\+\_\+\+S\+A\+L\+L\+E\+\_\+Y}~40
+\item 
+\mbox{\Hypertarget{constantes_8h_a238199b61353a46702f9530407179628}\label{constantes_8h_a238199b61353a46702f9530407179628}} 
+\#define {\bfseries E\+M\+P\+L\+A\+C\+E\+M\+E\+N\+T\+\_\+\+D\+E\+F\+A\+U\+S\+S\+E\+\_\+Y}~475
+\item 
+\mbox{\Hypertarget{constantes_8h_afbd01cf5561f150bf8f548319aefced0}\label{constantes_8h_afbd01cf5561f150bf8f548319aefced0}} 
+\#define {\bfseries E\+M\+P\+L\+A\+C\+E\+M\+E\+N\+T\+\_\+\+D\+E\+F\+A\+U\+S\+S\+E\+\_\+X}~875
+\item 
+\mbox{\Hypertarget{constantes_8h_a3b33494d719b85a5fad6ddd0d9149150}\label{constantes_8h_a3b33494d719b85a5fad6ddd0d9149150}} 
+\#define {\bfseries E\+M\+P\+L\+A\+C\+E\+M\+E\+N\+T\+\_\+\+F\+U\+I\+T\+E\+\_\+Y}~550
 \item 
 \mbox{\Hypertarget{constantes_8h_a55237989a0ca2fa4f3adb47e86fdd861}\label{constantes_8h_a55237989a0ca2fa4f3adb47e86fdd861}} 
 \#define {\bfseries V\+I\+T\+E\+S\+S\+E\+\_\+\+P\+E\+R\+SO}~1
@@ -248,40 +351,46 @@ struct \mbox{\hyperlink{structelement}{element}}
 \#define {\bfseries N\+B\+\_\+\+S\+A\+L\+L\+E\+S\+\_\+\+L\+E\+V\+E\+L\+\_\+4}~25
 \item 
 \mbox{\Hypertarget{constantes_8h_abe1d940f1e0d405a5c86d9055988e892}\label{constantes_8h_abe1d940f1e0d405a5c86d9055988e892}} 
-\#define {\bfseries N\+B\+\_\+\+S\+ON}~8
+\#define {\bfseries N\+B\+\_\+\+S\+ON}~19
 \item 
 \mbox{\Hypertarget{constantes_8h_ab4a38b78204943ea59b2d550cc7bc498}\label{constantes_8h_ab4a38b78204943ea59b2d550cc7bc498}} 
 \#define {\bfseries N\+B\+\_\+\+M\+U\+S\+IC}~9
 \end{DoxyCompactItemize}
-\doxysubsection*{Définitions de type}
+\subsection*{Définitions de type}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{constantes_8h_a0cf65619da24094c8bcb8a3825b76edd}\label{constantes_8h_a0cf65619da24094c8bcb8a3825b76edd}} 
-typedef struct \mbox{\hyperlink{structennemi__s}{ennemi\+\_\+s}} {\bfseries ennemi\+\_\+t}
+\mbox{\Hypertarget{constantes_8h_acf9629f25081ea7efee630475575453b}\label{constantes_8h_acf9629f25081ea7efee630475575453b}} 
+typedef struct \hyperlink{structennemi__s}{ennemi\+\_\+s} {\bfseries ennemi\+\_\+t}
 \item 
 \mbox{\Hypertarget{constantes_8h_a9beb93eb87565ac7a9445dd7dd124d7c}\label{constantes_8h_a9beb93eb87565ac7a9445dd7dd124d7c}} 
-typedef struct \mbox{\hyperlink{structcoffre__s}{coffre\+\_\+s}} {\bfseries coffre\+\_\+t}
+typedef struct \hyperlink{structcoffre__s}{coffre\+\_\+s} {\bfseries coffre\+\_\+t}
 \item 
 \mbox{\Hypertarget{constantes_8h_a496ace1950a1d2f3aed4b9288e19c05b}\label{constantes_8h_a496ace1950a1d2f3aed4b9288e19c05b}} 
-typedef struct \mbox{\hyperlink{structsalle__s}{salle\+\_\+s}} {\bfseries salle\+\_\+t}
+typedef struct \hyperlink{structsalle__s}{salle\+\_\+s} {\bfseries salle\+\_\+t}
 \item 
 \mbox{\Hypertarget{constantes_8h_a2b032077f5a80b551177a0d80131153f}\label{constantes_8h_a2b032077f5a80b551177a0d80131153f}} 
-typedef struct \mbox{\hyperlink{structmini__map__s}{mini\+\_\+map\+\_\+s}} {\bfseries mini\+\_\+map\+\_\+t}
+typedef struct \hyperlink{structmini__map__s}{mini\+\_\+map\+\_\+s} {\bfseries mini\+\_\+map\+\_\+t}
 \item 
-\mbox{\Hypertarget{constantes_8h_a550089442e996a6b42d393992dbc5436}\label{constantes_8h_a550089442e996a6b42d393992dbc5436}} 
-typedef struct \mbox{\hyperlink{structperso__s}{perso\+\_\+s}} {\bfseries perso\+\_\+t}
+\mbox{\Hypertarget{constantes_8h_ab783d53c09db4b03c3a6067ef144c909}\label{constantes_8h_ab783d53c09db4b03c3a6067ef144c909}} 
+typedef struct \hyperlink{structperso__s}{perso\+\_\+s} {\bfseries perso\+\_\+t}
 \item 
-\mbox{\Hypertarget{constantes_8h_a5b6991914ef584dcb9c32046c51857b1}\label{constantes_8h_a5b6991914ef584dcb9c32046c51857b1}} 
-typedef struct \mbox{\hyperlink{structcarte__s}{carte\+\_\+s}} {\bfseries carte\+\_\+t}
+\mbox{\Hypertarget{constantes_8h_ac32d6c906ea8c6ffebac589112053ae2}\label{constantes_8h_ac32d6c906ea8c6ffebac589112053ae2}} 
+typedef struct \hyperlink{structcarte__s}{carte\+\_\+s} {\bfseries carte\+\_\+t}
 \item 
-\mbox{\Hypertarget{constantes_8h_a3578cc557f82ebb906d8224ce230ef38}\label{constantes_8h_a3578cc557f82ebb906d8224ce230ef38}} 
-typedef struct \mbox{\hyperlink{structelement}{element}} {\bfseries element\+\_\+t}
+\mbox{\Hypertarget{constantes_8h_abe33e0f05080e2e3d51131a6c621ab9b}\label{constantes_8h_abe33e0f05080e2e3d51131a6c621ab9b}} 
+typedef struct \hyperlink{structelement}{element} {\bfseries element\+\_\+t}
+\item 
+\mbox{\Hypertarget{constantes_8h_af1dcc87dc9dfc0df20a966f991d8d45c}\label{constantes_8h_af1dcc87dc9dfc0df20a966f991d8d45c}} 
+typedef struct \hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+s} {\bfseries hud\+\_\+combat\+\_\+t}
+\item 
+\mbox{\Hypertarget{constantes_8h_aea8bc930523e83940ceb96b21d75f8e8}\label{constantes_8h_aea8bc930523e83940ceb96b21d75f8e8}} 
+typedef struct \hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+s} {\bfseries loot\+\_\+carte\+\_\+t}
 \end{DoxyCompactItemize}
-\doxysubsection*{Énumérations}
+\subsection*{Énumérations}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{constantes_8h_af6160d91d6f70f88713d6e293b1881f7}\label{constantes_8h_af6160d91d6f70f88713d6e293b1881f7}} 
-enum \mbox{\hyperlink{constantes_8h_af6160d91d6f70f88713d6e293b1881f7}{t\+\_\+sprites\+\_\+perso}} \{ \newline
+enum \hyperlink{constantes_8h_af6160d91d6f70f88713d6e293b1881f7}{t\+\_\+sprites\+\_\+perso} \{ \newline
 {\bfseries courant}, 
 {\bfseries idle\+\_\+droite}, 
 {\bfseries droite1}, 
@@ -294,20 +403,20 @@ enum \mbox{\hyperlink{constantes_8h_af6160d91d6f70f88713d6e293b1881f7}{t\+\_\+sp
 \newline
 {\bfseries gauche3}, 
 {\bfseries dead}
- \}
-\begin{DoxyCompactList}\small\item\em les types de sprites pour les animations du personnage \end{DoxyCompactList}\item 
+ \}\begin{DoxyCompactList}\small\item\em les types de sprites pour les animations du personnage \end{DoxyCompactList}
+\item 
 \mbox{\Hypertarget{constantes_8h_a220de005cda6dc4c575de300f1e3799e}\label{constantes_8h_a220de005cda6dc4c575de300f1e3799e}} 
-enum \mbox{\hyperlink{constantes_8h_a220de005cda6dc4c575de300f1e3799e}{t\+\_\+ligne\+\_\+sprites\+\_\+ennemi}} \{ \newline
+enum \hyperlink{constantes_8h_a220de005cda6dc4c575de300f1e3799e}{t\+\_\+ligne\+\_\+sprites\+\_\+ennemi} \{ \newline
 {\bfseries idle\+\_\+droite\+\_\+ennemi}, 
 {\bfseries idle\+\_\+gauche\+\_\+ennemi}, 
 {\bfseries walk\+\_\+droite}, 
 {\bfseries walk\+\_\+gauche}, 
 \newline
 {\bfseries ennemi\+\_\+dead}
- \}
-\begin{DoxyCompactList}\small\item\em les types de sprites pour les animations des ennemis \end{DoxyCompactList}\item 
+ \}\begin{DoxyCompactList}\small\item\em les types de sprites pour les animations des ennemis \end{DoxyCompactList}
+\item 
 \mbox{\Hypertarget{constantes_8h_ad1b7e09dd2f56578f1bc88956faf8c6f}\label{constantes_8h_ad1b7e09dd2f56578f1bc88956faf8c6f}} 
-enum \mbox{\hyperlink{constantes_8h_ad1b7e09dd2f56578f1bc88956faf8c6f}{t\+\_\+types\+\_\+textures}} \{ \newline
+enum \hyperlink{constantes_8h_ad1b7e09dd2f56578f1bc88956faf8c6f}{t\+\_\+types\+\_\+textures} \{ \newline
 {\bfseries sol} =0, 
 {\bfseries mur}, 
 {\bfseries porte}, 
@@ -318,35 +427,49 @@ enum \mbox{\hyperlink{constantes_8h_ad1b7e09dd2f56578f1bc88956faf8c6f}{t\+\_\+ty
 {\bfseries sol3}, 
 {\bfseries mur2}, 
 \newline
-{\bfseries gameover}, 
-{\bfseries deathlight}, 
 {\bfseries heart}, 
 {\bfseries trapdoor}, 
-\newline
+{\bfseries trapdoor2}, 
 {\bfseries pv}, 
+\newline
 {\bfseries etage}, 
+{\bfseries mobcounter}, 
+{\bfseries countertxt}
+ \}\begin{DoxyCompactList}\small\item\em les types de textures sur lequel le perso peut tomber \end{DoxyCompactList}
+\item 
+\mbox{\Hypertarget{constantes_8h_a4ed2f70640718d1ed7fce968963ddded}\label{constantes_8h_a4ed2f70640718d1ed7fce968963ddded}} 
+enum \hyperlink{constantes_8h_a4ed2f70640718d1ed7fce968963ddded}{t\+\_\+textures\+\_\+combat} \{ \newline
 {\bfseries fond}, 
 {\bfseries fond2}, 
+{\bfseries coeur}, 
+{\bfseries gui\+\_\+bar}, 
 \newline
 {\bfseries carte1}, 
 {\bfseries carte2}, 
 {\bfseries carte3}, 
-{\bfseries carte4}
- \}
-\begin{DoxyCompactList}\small\item\em les types de textures sur lequel le perso peut tomber \end{DoxyCompactList}\item 
+{\bfseries carte4}, 
+\newline
+{\bfseries gameover}, 
+{\bfseries deathlight}
+ \}\begin{DoxyCompactList}\small\item\em les types de textures pour les combats \end{DoxyCompactList}
+\item 
 \mbox{\Hypertarget{constantes_8h_a0b20f965ee5f3053aecabf44664f4aaa}\label{constantes_8h_a0b20f965ee5f3053aecabf44664f4aaa}} 
 enum {\bfseries t\+\_\+type\+\_\+ennemis} \{ \newline
 {\bfseries squelette}, 
 {\bfseries blob}, 
 {\bfseries imp}, 
-{\bfseries minotaure}, 
+{\bfseries volant}, 
 \newline
+{\bfseries minotaure}, 
 {\bfseries cyclope}, 
-{\bfseries wizard}
+{\bfseries wizard}, 
+{\bfseries witch}, 
+\newline
+{\bfseries sorcerer}
  \}
 \item 
 \mbox{\Hypertarget{constantes_8h_a0f3684078562a23c3ea21266d10cf275}\label{constantes_8h_a0f3684078562a23c3ea21266d10cf275}} 
-enum \mbox{\hyperlink{constantes_8h_a0f3684078562a23c3ea21266d10cf275}{t\+\_\+etat}} \{ \newline
+enum \hyperlink{constantes_8h_a0f3684078562a23c3ea21266d10cf275}{t\+\_\+etat} \{ \newline
 {\bfseries main\+Menu} = 0, 
 {\bfseries labyrinthe}, 
 {\bfseries tour\+Par\+Tour}, 
@@ -354,15 +477,16 @@ enum \mbox{\hyperlink{constantes_8h_a0f3684078562a23c3ea21266d10cf275}{t\+\_\+et
 \newline
 {\bfseries charger\+\_\+partie}, 
 {\bfseries confirmer\+\_\+nouveau}
- \}
-\begin{DoxyCompactList}\small\item\em les états que peut prendre le jeu afin de naviguer entre les menus \end{DoxyCompactList}\item 
+ \}\begin{DoxyCompactList}\small\item\em les états que peut prendre le jeu afin de naviguer entre les menus \end{DoxyCompactList}
+\item 
 \mbox{\Hypertarget{constantes_8h_a8fb27eb0b354a4f35787ef57ac90e0eb}\label{constantes_8h_a8fb27eb0b354a4f35787ef57ac90e0eb}} 
-enum \mbox{\hyperlink{constantes_8h_a8fb27eb0b354a4f35787ef57ac90e0eb}{type\+\_\+carte}} \{ {\bfseries A\+T\+T\+A\+Q\+UE} = -\/1, 
-{\bfseries D\+E\+F\+E\+N\+SE} = 1
- \}
-\begin{DoxyCompactList}\small\item\em Les différents types de cartes. \end{DoxyCompactList}\item 
+enum \hyperlink{constantes_8h_a8fb27eb0b354a4f35787ef57ac90e0eb}{type\+\_\+carte} \{ {\bfseries A\+T\+T\+A\+Q\+UE} = -\/1, 
+{\bfseries D\+E\+F\+E\+N\+SE} = 1, 
+{\bfseries N\+O\+\_\+\+C\+A\+R\+TE} = 0
+ \}\begin{DoxyCompactList}\small\item\em Les différents types de cartes. \end{DoxyCompactList}
+\item 
 \mbox{\Hypertarget{constantes_8h_ae8bdf1303543a5b8c77f80d7f3a24d12}\label{constantes_8h_ae8bdf1303543a5b8c77f80d7f3a24d12}} 
-enum \mbox{\hyperlink{constantes_8h_ae8bdf1303543a5b8c77f80d7f3a24d12}{t\+\_\+touches\+\_\+clavier}} \{ \newline
+enum \hyperlink{constantes_8h_ae8bdf1303543a5b8c77f80d7f3a24d12}{t\+\_\+touches\+\_\+clavier} \{ \newline
 {\bfseries up}, 
 {\bfseries down}, 
 {\bfseries right}, 
@@ -370,17 +494,17 @@ enum \mbox{\hyperlink{constantes_8h_ae8bdf1303543a5b8c77f80d7f3a24d12}{t\+\_\+to
 \newline
 {\bfseries entree}, 
 {\bfseries escape}
- \}
-\begin{DoxyCompactList}\small\item\em Les différents types de touches utilisées. \end{DoxyCompactList}\item 
+ \}\begin{DoxyCompactList}\small\item\em Les différents types de touches utilisées. \end{DoxyCompactList}
+\item 
 \mbox{\Hypertarget{constantes_8h_aec4e3894aa763e81148b2241ff730790}\label{constantes_8h_aec4e3894aa763e81148b2241ff730790}} 
-enum \mbox{\hyperlink{constantes_8h_aec4e3894aa763e81148b2241ff730790}{t\+\_\+direction}} \{ {\bfseries haut}, 
+enum \hyperlink{constantes_8h_aec4e3894aa763e81148b2241ff730790}{t\+\_\+direction} \{ {\bfseries haut}, 
 {\bfseries droite}, 
 {\bfseries bas}, 
 {\bfseries gauche}
- \}
-\begin{DoxyCompactList}\small\item\em Les différents types de touches utilisées. \end{DoxyCompactList}\item 
+ \}\begin{DoxyCompactList}\small\item\em Les différents types de touches utilisées. \end{DoxyCompactList}
+\item 
 \mbox{\Hypertarget{constantes_8h_a71de36288def8c30844cb07167daaed4}\label{constantes_8h_a71de36288def8c30844cb07167daaed4}} 
-enum \mbox{\hyperlink{constantes_8h_a71de36288def8c30844cb07167daaed4}{t\+\_\+sons}} \{ \newline
+enum \hyperlink{constantes_8h_a71de36288def8c30844cb07167daaed4}{t\+\_\+sons} \{ \newline
 {\bfseries move} =0, 
 {\bfseries selection}, 
 {\bfseries change\+\_\+salle}, 
@@ -389,11 +513,25 @@ enum \mbox{\hyperlink{constantes_8h_a71de36288def8c30844cb07167daaed4}{t\+\_\+so
 {\bfseries game\+Over\+Frame}, 
 {\bfseries death}, 
 {\bfseries collect}, 
-{\bfseries chest}
- \}
-\begin{DoxyCompactList}\small\item\em Les différents sons utilisés. \end{DoxyCompactList}\item 
+{\bfseries chest}, 
+\newline
+{\bfseries enter\+Fight}, 
+{\bfseries anim\+Death}, 
+{\bfseries punch}, 
+{\bfseries heal}, 
+\newline
+{\bfseries sword}, 
+{\bfseries rock}, 
+{\bfseries potion}, 
+{\bfseries divine}, 
+\newline
+{\bfseries bouclier}, 
+{\bfseries poison}, 
+{\bfseries bdf}
+ \}\begin{DoxyCompactList}\small\item\em Les différents sons utilisés. \end{DoxyCompactList}
+\item 
 \mbox{\Hypertarget{constantes_8h_ac6321ad6cd66ef7d4328555d72f161af}\label{constantes_8h_ac6321ad6cd66ef7d4328555d72f161af}} 
-enum \mbox{\hyperlink{constantes_8h_ac6321ad6cd66ef7d4328555d72f161af}{t\+\_\+musique}} \{ \newline
+enum \hyperlink{constantes_8h_ac6321ad6cd66ef7d4328555d72f161af}{t\+\_\+musique} \{ \newline
 {\bfseries menu} =0, 
 {\bfseries level1}, 
 {\bfseries game\+Over\+Music}, 
@@ -405,20 +543,32 @@ enum \mbox{\hyperlink{constantes_8h_ac6321ad6cd66ef7d4328555d72f161af}{t\+\_\+mu
 {\bfseries level4}, 
 \newline
 {\bfseries level5}
- \}
-\begin{DoxyCompactList}\small\item\em Les différentes musiques utilisées. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Variables}
+ \}\begin{DoxyCompactList}\small\item\em Les différentes musiques utilisées. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{constantes_8h_ac0bdec8145d8fdfd5a2673ef96bf14ca}\label{constantes_8h_ac0bdec8145d8fdfd5a2673ef96bf14ca}} 
-\mbox{\hyperlink{structelement}{element\+\_\+t}} $\ast$ {\bfseries drapeau}
+\hyperlink{structelement}{element\+\_\+t} $\ast$ {\bfseries drapeau}
+\item 
+\mbox{\Hypertarget{constantes_8h_ac677f93a7d97e1760cc61f11e040313e}\label{constantes_8h_ac677f93a7d97e1760cc61f11e040313e}} 
+\hyperlink{structelement}{element\+\_\+t} $\ast$ {\bfseries drapeau\+\_\+collec}
+\item 
+\mbox{\Hypertarget{constantes_8h_a48537e1b6b3910f7b076a6fc09fa4bcc}\label{constantes_8h_a48537e1b6b3910f7b076a6fc09fa4bcc}} 
+\hyperlink{structelement}{element\+\_\+t} $\ast$ {\bfseries drapeau\+\_\+deck}
 \item 
 \mbox{\Hypertarget{constantes_8h_aca122a400f96a8a768ff915610c60462}\label{constantes_8h_aca122a400f96a8a768ff915610c60462}} 
-\mbox{\hyperlink{structelement}{element\+\_\+t}} $\ast$ {\bfseries ec}
+\hyperlink{structelement}{element\+\_\+t} $\ast$ {\bfseries ec}
+\item 
+\mbox{\Hypertarget{constantes_8h_aa4c6ee2f0133f1361b7ee6184059c073}\label{constantes_8h_aa4c6ee2f0133f1361b7ee6184059c073}} 
+\hyperlink{structelement}{element\+\_\+t} $\ast$ {\bfseries ec\+\_\+collec}
+\item 
+\mbox{\Hypertarget{constantes_8h_a72d6df445fa27303d005565f76e2a229}\label{constantes_8h_a72d6df445fa27303d005565f76e2a229}} 
+\hyperlink{structelement}{element\+\_\+t} $\ast$ {\bfseries ec\+\_\+deck}
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Description détaillée}
+\subsection{Description détaillée}
 Constantes et structures du projet Roguelike. 
 
 \begin{DoxyAuthor}{Auteur}

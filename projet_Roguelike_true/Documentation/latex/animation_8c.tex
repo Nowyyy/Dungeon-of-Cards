@@ -1,5 +1,5 @@
-\hypertarget{animation_8c}{}\doxysection{Référence du fichier animation.\+c}
-\label{animation_8c}\index{animation.c@{animation.c}}
+\hypertarget{animation_8c}{}\section{Référence du fichier animation.\+c}
+\label{animation_8c}\index{animation.\+c@{animation.\+c}}
 
 
 Gère l\textquotesingle{}animation de chargement de niveau.  
@@ -7,17 +7,44 @@ Gère l\textquotesingle{}animation de chargement de niveau.
 
 {\ttfamily \#include \char`\"{}../include/constantes.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../include/initialisation\+\_\+sdl\+\_\+fonctions.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/personnage.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/sauvegardefonc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/fonctions.\+h\char`\"{}}\newline
 Graphe des dépendances par inclusion de animation.\+c\+:
 % FIG 0
-\doxysubsection*{Fonctions}
+\subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{animation_8c_ae9f57b1202e797edb889ea0448373a1f}\label{animation_8c_ae9f57b1202e797edb889ea0448373a1f}} 
-void {\bfseries animation\+\_\+niveau} (\mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$perso, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
-\end{DoxyCompactItemize}
+void \hyperlink{animation_8c_ae9f57b1202e797edb889ea0448373a1f}{animation\+\_\+niveau} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$perso, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
+\begin{DoxyCompactList}\small\item\em Fonction qui anime le lancement d\textquotesingle{}une partie avec un chargement. \end{DoxyCompactList}\item 
+void \hyperlink{animation_8c_a573bb4c8201af5d9c5fadbe61df23c24}{anim1} (S\+D\+L\+\_\+\+Renderer $\ast$rendu, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]})
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}animation 1 de début de combat. \end{DoxyCompactList}\item 
+void \hyperlink{animation_8c_aca1f7ff8f7e552dee0014f550386b454}{anim2} (S\+D\+L\+\_\+\+Renderer $\ast$rendu, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]})
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}animation 2 de début de combat. \end{DoxyCompactList}\item 
+void \hyperlink{animation_8c_aba4aa4f4dc74a3a50cc216a3ce011b22}{anim3} (S\+D\+L\+\_\+\+Renderer $\ast$rendu, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]})
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}animation 3 de début de combat. \end{DoxyCompactList}\item 
+void \hyperlink{animation_8c_a0ed1cfb0bc233bb2b8ec9026d5cdcbb7}{anim\+\_\+combat} (S\+D\+L\+\_\+\+Renderer $\ast$rendu, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]})
+\begin{DoxyCompactList}\small\item\em Permet de choisir quelle animation de début de combat exécuter. \end{DoxyCompactList}\item 
+void \hyperlink{animation_8c_af48867b89aacddc628ba6be58003d9e4}{mort} (int $\ast$etat, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$pers, S\+D\+L\+\_\+\+Renderer $\ast$rendu, Mix\+\_\+\+Music $\ast$musics\mbox{[}N\+B\+\_\+\+M\+U\+S\+IC\mbox{]}, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]}, \hyperlink{structimage__t}{image\+\_\+t} images\mbox{[}$\,$\mbox{]}, T\+T\+F\+\_\+\+Font $\ast$police)
+\begin{DoxyCompactList}\small\item\em Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage... \end{DoxyCompactList}\item 
+void \hyperlink{animation_8c_a60ce18665c2670c50d91fb4ec2bb4a90}{anim\+\_\+combat\+\_\+perso\+\_\+attaque} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$pers, \hyperlink{structcarte__t}{carte\+\_\+t} $\ast$carte, S\+D\+L\+\_\+\+Renderer $\ast$rendu, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]})
+\begin{DoxyCompactList}\small\item\em Permet de gèrer les animations de combat liées à l\textquotesingle{}attaque du personnage. \end{DoxyCompactList}\item 
+void \hyperlink{animation_8c_a8e74bd1024775fc7b250cec038a53bb7}{anim\+\_\+combat\+\_\+ennemi\+\_\+attaque} (\hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$ennemi, S\+D\+L\+\_\+\+Renderer $\ast$rendu, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]}, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$pers)
+\begin{DoxyCompactList}\small\item\em Permet de gèrer les animations de combat liées à l\textquotesingle{}attaque de l\textquotesingle{}ennemi. \end{DoxyCompactList}\item 
+void \hyperlink{animation_8c_a2e698b0cab1d5fa54a830b9533598114}{anim\+\_\+combat\+\_\+perso\+\_\+soin} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$pers, \hyperlink{structcarte__t}{carte\+\_\+t} $\ast$carte, S\+D\+L\+\_\+\+Renderer $\ast$rendu, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]})
+\begin{DoxyCompactList}\small\item\em Permet de gèrer les animations de combat liées au soin du personnage. \end{DoxyCompactList}\item 
+void \hyperlink{animation_8c_a8e495ace1b44cfe2ec04455486cbab27}{anim\+\_\+combat\+\_\+perso\+\_\+barriere} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$pers, \hyperlink{structcarte__t}{carte\+\_\+t} $\ast$carte, S\+D\+L\+\_\+\+Renderer $\ast$rendu, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]})
+\begin{DoxyCompactList}\small\item\em Permet de gèrer les animations de combat liées au bouclier du personnage. \end{DoxyCompactList}\item 
+void \hyperlink{animation_8c_af59460ad0cb8425f7f3c4167428ec393}{anim\+\_\+combat\+\_\+perso\+\_\+poison} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$pers, \hyperlink{structcarte__t}{carte\+\_\+t} $\ast$carte, S\+D\+L\+\_\+\+Renderer $\ast$rendu, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]}, \hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$ennemi)
+\begin{DoxyCompactList}\small\item\em Permet de gèrer les animations de combat liées au poison du personnage. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{animation_8c_a6552485b63bc75775d6eef9ba855aeb8}\label{animation_8c_a6552485b63bc75775d6eef9ba855aeb8}} 
+void {\bfseries anim\+\_\+combat\+\_\+perso\+\_\+bdf} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$pers, \hyperlink{structcarte__t}{carte\+\_\+t} $\ast$carte, S\+D\+L\+\_\+\+Renderer $\ast$rendu, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]})
+\item 
+void \hyperlink{animation_8c_a2d62be9d8a2999b4ef7b32e3fc92f333}{anim\+\_\+combat\+\_\+perso} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$pers, \hyperlink{structcarte__t}{carte\+\_\+t} $\ast$carte, S\+D\+L\+\_\+\+Renderer $\ast$rendu, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]}, \hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$ennemi)
+\begin{DoxyCompactList}\small\item\em Permet de gèrer les animations de combat du personnage. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Description détaillée}
+\subsection{Description détaillée}
 Gère l\textquotesingle{}animation de chargement de niveau. 
 
 \begin{DoxyAuthor}{Auteur}
@@ -29,3 +56,252 @@ Gère l\textquotesingle{}animation de chargement de niveau.
 \begin{DoxyVersion}{Version}
 0.\+1 
 \end{DoxyVersion}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{animation_8c_a573bb4c8201af5d9c5fadbe61df23c24}\label{animation_8c_a573bb4c8201af5d9c5fadbe61df23c24}} 
+\index{animation.\+c@{animation.\+c}!anim1@{anim1}}
+\index{anim1@{anim1}!animation.\+c@{animation.\+c}}
+\subsubsection{\texorpdfstring{anim1()}{anim1()}}
+{\footnotesize\ttfamily void anim1 (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}animation 1 de début de combat. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$musics\mbox{[}\+N\+B\+\_\+\+M\+U\+S\+I\+C\mbox{]},tableau} & contenant les musiques \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{animation_8c_aca1f7ff8f7e552dee0014f550386b454}\label{animation_8c_aca1f7ff8f7e552dee0014f550386b454}} 
+\index{animation.\+c@{animation.\+c}!anim2@{anim2}}
+\index{anim2@{anim2}!animation.\+c@{animation.\+c}}
+\subsubsection{\texorpdfstring{anim2()}{anim2()}}
+{\footnotesize\ttfamily void anim2 (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}animation 2 de début de combat. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$musics\mbox{[}\+N\+B\+\_\+\+M\+U\+S\+I\+C\mbox{]},tableau} & contenant les musiques \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{animation_8c_aba4aa4f4dc74a3a50cc216a3ce011b22}\label{animation_8c_aba4aa4f4dc74a3a50cc216a3ce011b22}} 
+\index{animation.\+c@{animation.\+c}!anim3@{anim3}}
+\index{anim3@{anim3}!animation.\+c@{animation.\+c}}
+\subsubsection{\texorpdfstring{anim3()}{anim3()}}
+{\footnotesize\ttfamily void anim3 (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}animation 3 de début de combat. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$musics\mbox{[}\+N\+B\+\_\+\+M\+U\+S\+I\+C\mbox{]},tableau} & contenant les musiques \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{animation_8c_a0ed1cfb0bc233bb2b8ec9026d5cdcbb7}\label{animation_8c_a0ed1cfb0bc233bb2b8ec9026d5cdcbb7}} 
+\index{animation.\+c@{animation.\+c}!anim\+\_\+combat@{anim\+\_\+combat}}
+\index{anim\+\_\+combat@{anim\+\_\+combat}!animation.\+c@{animation.\+c}}
+\subsubsection{\texorpdfstring{anim\+\_\+combat()}{anim\_combat()}}
+{\footnotesize\ttfamily void anim\+\_\+combat (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Permet de choisir quelle animation de début de combat exécuter. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$musics\mbox{[}\+N\+B\+\_\+\+M\+U\+S\+I\+C\mbox{]},tableau} & contenant les musiques \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{animation_8c_a8e74bd1024775fc7b250cec038a53bb7}\label{animation_8c_a8e74bd1024775fc7b250cec038a53bb7}} 
+\index{animation.\+c@{animation.\+c}!anim\+\_\+combat\+\_\+ennemi\+\_\+attaque@{anim\+\_\+combat\+\_\+ennemi\+\_\+attaque}}
+\index{anim\+\_\+combat\+\_\+ennemi\+\_\+attaque@{anim\+\_\+combat\+\_\+ennemi\+\_\+attaque}!animation.\+c@{animation.\+c}}
+\subsubsection{\texorpdfstring{anim\+\_\+combat\+\_\+ennemi\+\_\+attaque()}{anim\_combat\_ennemi\_attaque()}}
+{\footnotesize\ttfamily void anim\+\_\+combat\+\_\+ennemi\+\_\+attaque (\begin{DoxyParamCaption}\item[{\hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$}]{ennemi,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},  }\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{pers }\end{DoxyParamCaption})}
+
+
+
+Permet de gèrer les animations de combat liées à l\textquotesingle{}attaque de l\textquotesingle{}ennemi. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$ennemi,l\textquotesingle{}ennemi} & contre lequel le joueur va combattre \\
+\hline
+{\em cartes,la} & carte jouée par le joueur \\
+\hline
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},tableau} & contenant les sons \\
+\hline
+{\em $\ast$pers,contient} & le personnage afin de le sauvegarder \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{animation_8c_a2d62be9d8a2999b4ef7b32e3fc92f333}\label{animation_8c_a2d62be9d8a2999b4ef7b32e3fc92f333}} 
+\index{animation.\+c@{animation.\+c}!anim\+\_\+combat\+\_\+perso@{anim\+\_\+combat\+\_\+perso}}
+\index{anim\+\_\+combat\+\_\+perso@{anim\+\_\+combat\+\_\+perso}!animation.\+c@{animation.\+c}}
+\subsubsection{\texorpdfstring{anim\+\_\+combat\+\_\+perso()}{anim\_combat\_perso()}}
+{\footnotesize\ttfamily void anim\+\_\+combat\+\_\+perso (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{pers,  }\item[{\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$}]{carte,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},  }\item[{\hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$}]{ennemi }\end{DoxyParamCaption})}
+
+
+
+Permet de gèrer les animations de combat du personnage. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$pers,contient} & le personnage afin de le sauvegarder \\
+\hline
+{\em cartes,la} & carte jouée par le joueur \\
+\hline
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},tableau} & contenant les sons \\
+\hline
+{\em $\ast$ennemi,l\textquotesingle{}ennemi} & contre lequel le joueur va combattre \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{animation_8c_a60ce18665c2670c50d91fb4ec2bb4a90}\label{animation_8c_a60ce18665c2670c50d91fb4ec2bb4a90}} 
+\index{animation.\+c@{animation.\+c}!anim\+\_\+combat\+\_\+perso\+\_\+attaque@{anim\+\_\+combat\+\_\+perso\+\_\+attaque}}
+\index{anim\+\_\+combat\+\_\+perso\+\_\+attaque@{anim\+\_\+combat\+\_\+perso\+\_\+attaque}!animation.\+c@{animation.\+c}}
+\subsubsection{\texorpdfstring{anim\+\_\+combat\+\_\+perso\+\_\+attaque()}{anim\_combat\_perso\_attaque()}}
+{\footnotesize\ttfamily void anim\+\_\+combat\+\_\+perso\+\_\+attaque (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{pers,  }\item[{\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$}]{carte,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Permet de gèrer les animations de combat liées à l\textquotesingle{}attaque du personnage. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$pers,contient} & le personnage afin de le sauvegarder \\
+\hline
+{\em cartes,la} & carte jouée par le joueur \\
+\hline
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},tableau} & contenant les sons \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{animation_8c_a8e495ace1b44cfe2ec04455486cbab27}\label{animation_8c_a8e495ace1b44cfe2ec04455486cbab27}} 
+\index{animation.\+c@{animation.\+c}!anim\+\_\+combat\+\_\+perso\+\_\+barriere@{anim\+\_\+combat\+\_\+perso\+\_\+barriere}}
+\index{anim\+\_\+combat\+\_\+perso\+\_\+barriere@{anim\+\_\+combat\+\_\+perso\+\_\+barriere}!animation.\+c@{animation.\+c}}
+\subsubsection{\texorpdfstring{anim\+\_\+combat\+\_\+perso\+\_\+barriere()}{anim\_combat\_perso\_barriere()}}
+{\footnotesize\ttfamily void anim\+\_\+combat\+\_\+perso\+\_\+barriere (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{pers,  }\item[{\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$}]{carte,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Permet de gèrer les animations de combat liées au bouclier du personnage. 
+
+Permet de gèrer les animations de combat liées à la boule de feu du personnage.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$pers,contient} & le personnage afin de le sauvegarder \\
+\hline
+{\em cartes,la} & carte jouée par le joueur \\
+\hline
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},tableau} & contenant les sons \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{animation_8c_af59460ad0cb8425f7f3c4167428ec393}\label{animation_8c_af59460ad0cb8425f7f3c4167428ec393}} 
+\index{animation.\+c@{animation.\+c}!anim\+\_\+combat\+\_\+perso\+\_\+poison@{anim\+\_\+combat\+\_\+perso\+\_\+poison}}
+\index{anim\+\_\+combat\+\_\+perso\+\_\+poison@{anim\+\_\+combat\+\_\+perso\+\_\+poison}!animation.\+c@{animation.\+c}}
+\subsubsection{\texorpdfstring{anim\+\_\+combat\+\_\+perso\+\_\+poison()}{anim\_combat\_perso\_poison()}}
+{\footnotesize\ttfamily void anim\+\_\+combat\+\_\+perso\+\_\+poison (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{pers,  }\item[{\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$}]{carte,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},  }\item[{\hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$}]{ennemi }\end{DoxyParamCaption})}
+
+
+
+Permet de gèrer les animations de combat liées au poison du personnage. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$pers,contient} & le personnage afin de le sauvegarder \\
+\hline
+{\em cartes,la} & carte jouée par le joueur \\
+\hline
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},tableau} & contenant les sons \\
+\hline
+{\em $\ast$ennemi,l\textquotesingle{}ennemi} & contre lequel le joueur va combattre \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{animation_8c_a2e698b0cab1d5fa54a830b9533598114}\label{animation_8c_a2e698b0cab1d5fa54a830b9533598114}} 
+\index{animation.\+c@{animation.\+c}!anim\+\_\+combat\+\_\+perso\+\_\+soin@{anim\+\_\+combat\+\_\+perso\+\_\+soin}}
+\index{anim\+\_\+combat\+\_\+perso\+\_\+soin@{anim\+\_\+combat\+\_\+perso\+\_\+soin}!animation.\+c@{animation.\+c}}
+\subsubsection{\texorpdfstring{anim\+\_\+combat\+\_\+perso\+\_\+soin()}{anim\_combat\_perso\_soin()}}
+{\footnotesize\ttfamily void anim\+\_\+combat\+\_\+perso\+\_\+soin (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{pers,  }\item[{\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$}]{carte,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Permet de gèrer les animations de combat liées au soin du personnage. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$pers,contient} & le personnage afin de le sauvegarder \\
+\hline
+{\em cartes,la} & carte jouée par le joueur \\
+\hline
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},tableau} & contenant les sons \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{animation_8c_ae9f57b1202e797edb889ea0448373a1f}\label{animation_8c_ae9f57b1202e797edb889ea0448373a1f}} 
+\index{animation.\+c@{animation.\+c}!animation\+\_\+niveau@{animation\+\_\+niveau}}
+\index{animation\+\_\+niveau@{animation\+\_\+niveau}!animation.\+c@{animation.\+c}}
+\subsubsection{\texorpdfstring{animation\+\_\+niveau()}{animation\_niveau()}}
+{\footnotesize\ttfamily void animation\+\_\+niveau (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{perso,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu }\end{DoxyParamCaption})}
+
+
+
+Fonction qui anime le lancement d\textquotesingle{}une partie avec un chargement. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em perso,la} & structure du personnaeg \\
+\hline
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{animation_8c_af48867b89aacddc628ba6be58003d9e4}\label{animation_8c_af48867b89aacddc628ba6be58003d9e4}} 
+\index{animation.\+c@{animation.\+c}!mort@{mort}}
+\index{mort@{mort}!animation.\+c@{animation.\+c}}
+\subsubsection{\texorpdfstring{mort()}{mort()}}
+{\footnotesize\ttfamily void mort (\begin{DoxyParamCaption}\item[{int $\ast$}]{etat,  }\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{pers,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{Mix\+\_\+\+Music $\ast$}]{musics\mbox{[}\+N\+B\+\_\+\+M\+U\+S\+I\+C\mbox{]},  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},  }\item[{\hyperlink{structimage__t}{image\+\_\+t}}]{images\mbox{[}$\,$\mbox{]},  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{police }\end{DoxyParamCaption})}
+
+
+
+Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage... 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$etat,variable} & contenant le mode de jeu actuel \\
+\hline
+{\em $\ast$pers,contient} & le personnage afin de le sauvegarder \\
+\hline
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$musics\mbox{[}\+N\+B\+\_\+\+M\+U\+S\+I\+C\mbox{]},tableau} & contenant les musiques \\
+\hline
+{\em $\ast$sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},tableau} & contenant les sons \\
+\hline
+{\em images\mbox{[}$\,$\mbox{]},contient} & toutes les images du jeu sauf celles du personnage \\
+\hline
+{\em $\ast$police,contient} & la police d\textquotesingle{}écriture \\
+\hline
+\end{DoxyParams}

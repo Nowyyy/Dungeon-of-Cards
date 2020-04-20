@@ -1,9 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Dungeon of Cards: Référence du fichier combat_tour_par_tour.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -32,21 +32,18 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.17 -->
+<!-- Généré par Doxygen 1.8.13 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
-/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 $(function() {
   initMenu('',true,false,'search.php','Recherche');
   $(document).ready(function() { init_search(); });
 });
-/* @license-end */</script>
+</script>
 <div id="main-nav"></div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -77,6 +74,7 @@ $(function() {
 <code>#include &quot;../include/initialisation_sdl_fonctions.h&quot;</code><br />
 <code>#include &quot;../include/fonctions.h&quot;</code><br />
 <code>#include &quot;../include/clavier.h&quot;</code><br />
+<code>#include &quot;../include/animation.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de combat_tour_par_tour.c:</div>
 <div class="dyncontent">
@@ -86,33 +84,57 @@ Graphe des dépendances par inclusion de combat_tour_par_tour.c:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a99443aeb8d987c2c9b48bbd31c7e63c2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat__tour__par__tour_8c.html#a99443aeb8d987c2c9b48bbd31c7e63c2">deplacement_rectangle_selection_combat</a> (SDL_Rect defausse, SDL_Rect fuir, SDL_Rect carte1, SDL_Rect carte2, SDL_Rect carte3, SDL_Rect carte4, SDL_Rect **rect_sel)</td></tr>
-<tr class="memdesc:a99443aeb8d987c2c9b48bbd31c7e63c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de déplacer le rectangle de selection.  <a href="combat__tour__par__tour_8c.html#a99443aeb8d987c2c9b48bbd31c7e63c2">Plus de détails...</a><br /></td></tr>
-<tr class="separator:a99443aeb8d987c2c9b48bbd31c7e63c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b8158133c08bba87fd10ba6b445a68e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat__tour__par__tour_8c.html#a4b8158133c08bba87fd10ba6b445a68e">affichage_combat_personnage</a> (SDL_Renderer *rendu, <a class="el" href="structperso__t.html">perso_t</a> *pers, <a class="el" href="structennemi__t.html">ennemi_t</a> *ennemi, SDL_Texture *defausse_texture, SDL_Texture *fuir_texture, SDL_Rect defausse_rect, SDL_Rect fuir_rect, SDL_Rect *rect_sel, <a class="el" href="structimage__t.html">image_t</a> images[NB_TEXTURES])</td></tr>
-<tr class="memdesc:a4b8158133c08bba87fd10ba6b445a68e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet d'afficher toutes la partie combat.  <a href="combat__tour__par__tour_8c.html#a4b8158133c08bba87fd10ba6b445a68e">Plus de détails...</a><br /></td></tr>
-<tr class="separator:a4b8158133c08bba87fd10ba6b445a68e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa61c28d0a5af43fb2b409548b001d62e"><td class="memItemLeft" align="right" valign="top"><a id="aa61c28d0a5af43fb2b409548b001d62e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>charge_textures_combat</b> (<a class="el" href="structimage__t.html">image_t</a> images[], SDL_Renderer *rendu, <a class="el" href="structcarte__t.html">carte_t</a> *cartes[])</td></tr>
+<tr class="memitem:a5fdff0308734894b6467f2fd003a6179"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat__tour__par__tour_8c.html#a5fdff0308734894b6467f2fd003a6179">deplacement_rectangle_selection_combat</a> (SDL_Rect <a class="el" href="combat__tour__par__tour_8c.html#aae7ac7ac546ba66cd9eb0344dafa26b9">defausse</a>, SDL_Rect fuir, <a class="el" href="structimage__t.html">image_t</a> images[NB_TEXTURES_LABY], SDL_Rect **rect_sel, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC])</td></tr>
+<tr class="memdesc:a5fdff0308734894b6467f2fd003a6179"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de déplacer le rectangle de selection.  <a href="#a5fdff0308734894b6467f2fd003a6179">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a5fdff0308734894b6467f2fd003a6179"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a00f79d0fd786401e5572635c54daee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat__tour__par__tour_8c.html#a9a00f79d0fd786401e5572635c54daee">affichage_combat_personnage</a> (SDL_Renderer *rendu, <a class="el" href="structperso__t.html">perso_t</a> *pers, <a class="el" href="structennemi__t.html">ennemi_t</a> *ennemi, <a class="el" href="structimage__t.html">image_t</a> def, <a class="el" href="structimage__t.html">image_t</a> fuir, SDL_Rect *rect_sel, <a class="el" href="structimage__t.html">image_t</a> images[NB_TEXTURES_COMBAT], <a class="el" href="structhud__combat__s.html">hud_combat_t</a> ennemi_hud, <a class="el" href="structhud__combat__s.html">hud_combat_t</a> pers_hud, <a class="el" href="structhud__combat__s.html">hud_combat_t</a> action)</td></tr>
+<tr class="memdesc:a9a00f79d0fd786401e5572635c54daee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet d'afficher toutes la partie combat.  <a href="#a9a00f79d0fd786401e5572635c54daee">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9a00f79d0fd786401e5572635c54daee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa61c28d0a5af43fb2b409548b001d62e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat__tour__par__tour_8c.html#aa61c28d0a5af43fb2b409548b001d62e">charge_textures_combat</a> (<a class="el" href="structimage__t.html">image_t</a> images[], SDL_Renderer *rendu, <a class="el" href="structcarte__t.html">carte_t</a> *cartes[])</td></tr>
+<tr class="memdesc:aa61c28d0a5af43fb2b409548b001d62e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge dans le tableau images les visuels pour les fonds et les cartes afin de pouvoir les afficher.  <a href="#aa61c28d0a5af43fb2b409548b001d62e">Plus de détails...</a><br /></td></tr>
 <tr class="separator:aa61c28d0a5af43fb2b409548b001d62e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20d180791680d2c8edfbbc4d56a708bd"><td class="memItemLeft" align="right" valign="top"><a id="a20d180791680d2c8edfbbc4d56a708bd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>donne_valeur_rect_images</b> (<a class="el" href="structimage__t.html">image_t</a> images[])</td></tr>
-<tr class="separator:a20d180791680d2c8edfbbc4d56a708bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a880669b069085432fe3848eb8d85b0df"><td class="memItemLeft" align="right" valign="top"><a id="a880669b069085432fe3848eb8d85b0df"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>free_image</b> (<a class="el" href="structimage__t.html">image_t</a> images[])</td></tr>
+<tr class="memitem:ae23cadec183266396ed09db659447551"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat__tour__par__tour_8c.html#ae23cadec183266396ed09db659447551">donne_valeur_rect_images</a> (<a class="el" href="structimage__t.html">image_t</a> images[], <a class="el" href="structperso__t.html">perso_t</a> *perso)</td></tr>
+<tr class="memdesc:ae23cadec183266396ed09db659447551"><td class="mdescLeft">&#160;</td><td class="mdescRight">Donne les coordonnées et ajuste les tailles des images des cartes et des fonds pour l'écran de combat.  <a href="#ae23cadec183266396ed09db659447551">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae23cadec183266396ed09db659447551"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a880669b069085432fe3848eb8d85b0df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat__tour__par__tour_8c.html#a880669b069085432fe3848eb8d85b0df">free_image</a> (<a class="el" href="structimage__t.html">image_t</a> images[])</td></tr>
+<tr class="memdesc:a880669b069085432fe3848eb8d85b0df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supprime les images des cartes et des fonds utilisées pour le combat.  <a href="#a880669b069085432fe3848eb8d85b0df">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a880669b069085432fe3848eb8d85b0df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a005211a67eb4421845f3d86cb8bf8bb8"><td class="memItemLeft" align="right" valign="top"><a id="a005211a67eb4421845f3d86cb8bf8bb8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>creer_texte_combat</b> (char *txt, <a class="el" href="structimage__t.html">image_t</a> *image, int x, int y, SDL_Renderer *rendu, TTF_Font *font)</td></tr>
+<tr class="memitem:acfd21808297d2c05a058a6a23c1c50dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat__tour__par__tour_8c.html#acfd21808297d2c05a058a6a23c1c50dc">tour_joueur</a> (<a class="el" href="structperso__t.html">perso_t</a> *pers, <a class="el" href="structennemi__t.html">ennemi_t</a> *ennemi, <a class="el" href="structcarte__t.html">carte_t</a> *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])</td></tr>
+<tr class="memdesc:acfd21808297d2c05a058a6a23c1c50dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet d'effectuer l'action sélectionnée par le joueur  <a href="#acfd21808297d2c05a058a6a23c1c50dc">Plus de détails...</a><br /></td></tr>
+<tr class="separator:acfd21808297d2c05a058a6a23c1c50dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af75176c41f1d74f09325afdfaf7f86a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat__tour__par__tour_8c.html#af75176c41f1d74f09325afdfaf7f86a5">tour_ennemi</a> (<a class="el" href="structperso__t.html">perso_t</a> *pers, <a class="el" href="structennemi__t.html">ennemi_t</a> *ennemi, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])</td></tr>
+<tr class="memdesc:af75176c41f1d74f09325afdfaf7f86a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet de faire jouer l'ennemi, actions effectuées selon la situation  <a href="#af75176c41f1d74f09325afdfaf7f86a5">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af75176c41f1d74f09325afdfaf7f86a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a005211a67eb4421845f3d86cb8bf8bb8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat__tour__par__tour_8c.html#a005211a67eb4421845f3d86cb8bf8bb8">creer_texte_combat</a> (char *txt, <a class="el" href="structimage__t.html">image_t</a> *image, int x, int y, SDL_Renderer *rendu, TTF_Font *font)</td></tr>
+<tr class="memdesc:a005211a67eb4421845f3d86cb8bf8bb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de donner à une structure image, un texte et les positions où l'afficher à l'écran.  <a href="#a005211a67eb4421845f3d86cb8bf8bb8">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a005211a67eb4421845f3d86cb8bf8bb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae44f778a6e5050f764ddfa1bc4ac4be"><td class="memItemLeft" align="right" valign="top"><a id="aae44f778a6e5050f764ddfa1bc4ac4be"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>tour_joueur</b> (<a class="el" href="structperso__t.html">perso_t</a> *pers, <a class="el" href="structennemi__t.html">ennemi_t</a> *ennemi, <a class="el" href="structcarte__t.html">carte_t</a> carte)</td></tr>
-<tr class="separator:aae44f778a6e5050f764ddfa1bc4ac4be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b2a9e77933a80bd503dc6a3dbbaa353"><td class="memItemLeft" align="right" valign="top"><a id="a5b2a9e77933a80bd503dc6a3dbbaa353"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>tour_ennemi</b> (<a class="el" href="structperso__t.html">perso_t</a> *pers, <a class="el" href="structennemi__t.html">ennemi_t</a> *ennemi)</td></tr>
-<tr class="separator:a5b2a9e77933a80bd503dc6a3dbbaa353"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a803a9d0b96bbeb7d10d015ac68beb723"><td class="memItemLeft" align="right" valign="top"><a id="a803a9d0b96bbeb7d10d015ac68beb723"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>combat_t_p_t</b> (<a class="el" href="structperso__t.html">perso_t</a> *perso, <a class="el" href="structennemi__t.html">ennemi_t</a> *ennemi, SDL_Renderer *rendu)</td></tr>
-<tr class="separator:a803a9d0b96bbeb7d10d015ac68beb723"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b4b7cf590eafc88f1a2d8bb3295c605"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat__tour__par__tour_8c.html#a4b4b7cf590eafc88f1a2d8bb3295c605">create_hud</a> (<a class="el" href="structhud__combat__s.html">hud_combat_t</a> *hud_pers, <a class="el" href="structhud__combat__s.html">hud_combat_t</a> *hud_ennemi, <a class="el" href="structennemi__t.html">ennemi_t</a> ennemi, <a class="el" href="structperso__t.html">perso_t</a> pers, SDL_Renderer *rendu, TTF_Font *font)</td></tr>
+<tr class="memdesc:a4b4b7cf590eafc88f1a2d8bb3295c605"><td class="mdescLeft">&#160;</td><td class="mdescRight">Créer un HUD pour le perso et l'ennemi s'il n'existe pas, sinon détruit les textures précédentes pour mettre à jour.  <a href="#a4b4b7cf590eafc88f1a2d8bb3295c605">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4b4b7cf590eafc88f1a2d8bb3295c605"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f04a1d4afa2a9f8df8d289566f17924"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat__tour__par__tour_8c.html#a8f04a1d4afa2a9f8df8d289566f17924">init_hud_action</a> (<a class="el" href="structhud__combat__s.html">hud_combat_t</a> *action)</td></tr>
+<tr class="memdesc:a8f04a1d4afa2a9f8df8d289566f17924"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise certaines valeurs du hud action  <a href="#a8f04a1d4afa2a9f8df8d289566f17924">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8f04a1d4afa2a9f8df8d289566f17924"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26da5897db5fd5bd869e45c7b0d91168"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat__tour__par__tour_8c.html#a26da5897db5fd5bd869e45c7b0d91168">actualisation_apres_tour</a> (<a class="el" href="structperso__t.html">perso_t</a> *pers, <a class="el" href="structennemi__t.html">ennemi_t</a> *ennemi, <a class="el" href="structcarte__t.html">carte_t</a> carte, <a class="el" href="structhud__combat__s.html">hud_combat_t</a> *action, <a class="el" href="structhud__combat__s.html">hud_combat_t</a> *hud_pers, <a class="el" href="structhud__combat__s.html">hud_combat_t</a> *hud_ennemi, SDL_Renderer *rendu, TTF_Font *font, int tour)</td></tr>
+<tr class="memdesc:a26da5897db5fd5bd869e45c7b0d91168"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actualise les huds des perso et ennemi, prépare le texte a affichant indiquant l'action effectuée.  <a href="#a26da5897db5fd5bd869e45c7b0d91168">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a26da5897db5fd5bd869e45c7b0d91168"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0f4213ff665f013e064e16017a50893"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat__tour__par__tour_8c.html#ab0f4213ff665f013e064e16017a50893">detruire_action_temp</a> (<a class="el" href="structhud__combat__s.html">hud_combat_t</a> *action)</td></tr>
+<tr class="memdesc:ab0f4213ff665f013e064e16017a50893"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet de détruire l'image présente dans le champs texte de action  <a href="#ab0f4213ff665f013e064e16017a50893">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab0f4213ff665f013e064e16017a50893"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc01f06eb5ec7b03ffc02f5e1e9ba70c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat__tour__par__tour_8c.html#afc01f06eb5ec7b03ffc02f5e1e9ba70c">range_carte_deck</a> (<a class="el" href="structcarte__t.html">carte_t</a> *cartes[])</td></tr>
+<tr class="memdesc:afc01f06eb5ec7b03ffc02f5e1e9ba70c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Range les cartes encore valide dans le deck, détruit les cartes barrées.  <a href="#afc01f06eb5ec7b03ffc02f5e1e9ba70c">Plus de détails...</a><br /></td></tr>
+<tr class="separator:afc01f06eb5ec7b03ffc02f5e1e9ba70c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34826e952b965452a607a19aca56a48d"><td class="memItemLeft" align="right" valign="top"><a id="a34826e952b965452a607a19aca56a48d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>consommable_epuise</b> (<a class="el" href="structcarte__t.html">carte_t</a> *cartes[], int indice, <a class="el" href="structimage__t.html">image_t</a> images[], SDL_Renderer *rendu)</td></tr>
+<tr class="separator:a34826e952b965452a607a19aca56a48d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99bef6ca6e8ff2998af62f6790907a51"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat__tour__par__tour_8c.html#a99bef6ca6e8ff2998af62f6790907a51">range_carte_tire_nouvelles</a> (<a class="el" href="structcarte__t.html">carte_t</a> *cartes[NB_CARTES_COMBAT], int cartes_selectionnees[], <a class="el" href="structimage__t.html">image_t</a> images[], SDL_Renderer *rendu)</td></tr>
+<tr class="memdesc:a99bef6ca6e8ff2998af62f6790907a51"><td class="mdescLeft">&#160;</td><td class="mdescRight">effectue la défausse, les cartes que le joueur ne veut pas sont renvoyées dans le deck, de nouvelles sont tirées à la place  <a href="#a99bef6ca6e8ff2998af62f6790907a51">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a99bef6ca6e8ff2998af62f6790907a51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae7ac7ac546ba66cd9eb0344dafa26b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat__tour__par__tour_8c.html#aae7ac7ac546ba66cd9eb0344dafa26b9">defausse</a> (SDL_Renderer *rendu, <a class="el" href="structperso__t.html">perso_t</a> *perso, <a class="el" href="structennemi__t.html">ennemi_t</a> *ennemi, SDL_Rect *rectangle_selection, <a class="el" href="structimage__t.html">image_t</a> images[], <a class="el" href="structhud__combat__s.html">hud_combat_t</a> hud_ennemi, <a class="el" href="structhud__combat__s.html">hud_combat_t</a> hud_pers, <a class="el" href="structhud__combat__s.html">hud_combat_t</a> action, TTF_Font *police, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], <a class="el" href="structcarte__t.html">carte_t</a> *cartes[NB_CARTES_COMBAT])</td></tr>
+<tr class="memdesc:aae7ac7ac546ba66cd9eb0344dafa26b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet d'effectuer toutes actions liées à la défausse de carte avec un affichage spécifique  <a href="#aae7ac7ac546ba66cd9eb0344dafa26b9">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aae7ac7ac546ba66cd9eb0344dafa26b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91240b9e91600ef8528b96652fd76a4b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat__tour__par__tour_8c.html#a91240b9e91600ef8528b96652fd76a4b">combat_t_p_t</a> (<a class="el" href="structperso__t.html">perso_t</a> *perso, <a class="el" href="structennemi__t.html">ennemi_t</a> *ennemi, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], int *etat)</td></tr>
+<tr class="memdesc:a91240b9e91600ef8528b96652fd76a4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de gérer les choix de l'utilisateur via la SDL sur le combat.  <a href="#a91240b9e91600ef8528b96652fd76a4b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a91240b9e91600ef8528b96652fd76a4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>contient et fait appel a toutes fonctions nécessaires pour le combat </p>
@@ -120,8 +142,93 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>combat_t_p_t</b> (<a 
 <dl class="section date"><dt>Date</dt><dd>14/03/2020</dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 </div><h2 class="groupheader">Documentation des fonctions</h2>
-<a id="a4b8158133c08bba87fd10ba6b445a68e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b8158133c08bba87fd10ba6b445a68e">&#9670;&nbsp;</a></span>affichage_combat_personnage()</h2>
+<a id="a26da5897db5fd5bd869e45c7b0d91168"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26da5897db5fd5bd869e45c7b0d91168">&#9670;&nbsp;</a></span>actualisation_apres_tour()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void actualisation_apres_tour </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>pers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structennemi__t.html">ennemi_t</a> *&#160;</td>
+          <td class="paramname"><em>ennemi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcarte__t.html">carte_t</a>&#160;</td>
+          <td class="paramname"><em>carte</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structhud__combat__s.html">hud_combat_t</a> *&#160;</td>
+          <td class="paramname"><em>action</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structhud__combat__s.html">hud_combat_t</a> *&#160;</td>
+          <td class="paramname"><em>hud_pers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structhud__combat__s.html">hud_combat_t</a> *&#160;</td>
+          <td class="paramname"><em>hud_ennemi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>font</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tour</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Actualise les huds des perso et ennemi, prépare le texte a affichant indiquant l'action effectuée. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*action,le</td><td>hud qui affichera l'action effectuée par le joueur ou l'ennemi </td></tr>
+    <tr><td class="paramname">*pers,la</td><td>structure du personnage </td></tr>
+    <tr><td class="paramname">*ennemi,la</td><td>structure de l'ennemi </td></tr>
+    <tr><td class="paramname">carte,la</td><td>carte utilisée par le joueur lors de ce tour </td></tr>
+    <tr><td class="paramname">*hud_pers,le</td><td>hud du personnage </td></tr>
+    <tr><td class="paramname">*hud_ennemi,le</td><td>hud de l'ennemi </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">*font,la</td><td>police utilisée pour écrire le texte </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9a00f79d0fd786401e5572635c54daee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a00f79d0fd786401e5572635c54daee">&#9670;&nbsp;</a></span>affichage_combat_personnage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -147,26 +254,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>combat_t_p_t</b> (<a 
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SDL_Texture *&#160;</td>
-          <td class="paramname"><em>defausse_texture</em>, </td>
+          <td class="paramtype"><a class="el" href="structimage__t.html">image_t</a>&#160;</td>
+          <td class="paramname"><em>def</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SDL_Texture *&#160;</td>
-          <td class="paramname"><em>fuir_texture</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">SDL_Rect&#160;</td>
-          <td class="paramname"><em>defausse_rect</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">SDL_Rect&#160;</td>
-          <td class="paramname"><em>fuir_rect</em>, </td>
+          <td class="paramtype"><a class="el" href="structimage__t.html">image_t</a>&#160;</td>
+          <td class="paramname"><em>fuir</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -178,7 +273,25 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>combat_t_p_t</b> (<a 
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="structimage__t.html">image_t</a>&#160;</td>
-          <td class="paramname"><em>images</em>[NB_TEXTURES]&#160;</td>
+          <td class="paramname"><em>images</em>[NB_TEXTURES_COMBAT], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structhud__combat__s.html">hud_combat_t</a>&#160;</td>
+          <td class="paramname"><em>ennemi_hud</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structhud__combat__s.html">hud_combat_t</a>&#160;</td>
+          <td class="paramname"><em>pers_hud</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structhud__combat__s.html">hud_combat_t</a>&#160;</td>
+          <td class="paramname"><em>action</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -189,7 +302,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>combat_t_p_t</b> (<a 
 </div><div class="memdoc">
 
 <p>Permet d'afficher toutes la partie combat. </p>
-<p>\fnvoid <a class="el" href="combat__tour__par__tour_8c.html#a4b8158133c08bba87fd10ba6b445a68e" title="Permet d&#39;afficher toutes la partie combat.">affichage_combat_personnage(SDL_Renderer *rendu,perso_t *pers, ennemi_t * ennemi,SDL_Texture *defausse_texture ,SDL_Texture *fuir_texture,SDL_Rect defausse_rect ,SDL_Rect fuir_rect,SDL_Rect *rect_sel,image_t images[NB_TEXTURES])</a></p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
@@ -207,14 +319,355 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>combat_t_p_t</b> (<a 
 
 </div>
 </div>
-<a id="a99443aeb8d987c2c9b48bbd31c7e63c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a99443aeb8d987c2c9b48bbd31c7e63c2">&#9670;&nbsp;</a></span>deplacement_rectangle_selection_combat()</h2>
+<a id="aa61c28d0a5af43fb2b409548b001d62e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa61c28d0a5af43fb2b409548b001d62e">&#9670;&nbsp;</a></span>charge_textures_combat()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int deplacement_rectangle_selection_combat </td>
+          <td class="memname">void charge_textures_combat </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structimage__t.html">image_t</a>&#160;</td>
+          <td class="paramname"><em>images</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcarte__t.html">carte_t</a> *&#160;</td>
+          <td class="paramname"><em>cartes</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Charge dans le tableau images les visuels pour les fonds et les cartes afin de pouvoir les afficher. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">images[],le</td><td>tableau contenant les images </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">*cartes[],tableau</td><td>de pointeur sur des cartes, contient les cartes utilisées pendant le combat </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a91240b9e91600ef8528b96652fd76a4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91240b9e91600ef8528b96652fd76a4b">&#9670;&nbsp;</a></span>combat_t_p_t()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void combat_t_p_t </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>perso</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structennemi__t.html">ennemi_t</a> *&#160;</td>
+          <td class="paramname"><em>ennemi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>sounds</em>[NB_SON], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Music *&#160;</td>
+          <td class="paramname"><em>musics</em>[NB_MUSIC], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>etat</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui permet de gérer les choix de l'utilisateur via la SDL sur le combat. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*perso</td><td>Pointeur sur une structure qui permet de prendre les caractéristiques du personnage qui vont être modifié par l'action du personnage </td></tr>
+    <tr><td class="paramname">*ennemi</td><td>Pointeur sur une structure qui permet de prendre les caractéristiques de l'ennemi qui vont être modifié par l'action du personnage </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">*sounds[NB_SON],Contient</td><td>les sons du jeu </td></tr>
+    <tr><td class="paramname">*music[NB_MUSIC],Contient</td><td>les musiques du jeu </td></tr>
+    <tr><td class="paramname">*etat,le</td><td>choix de l'utilisateur </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4b4b7cf590eafc88f1a2d8bb3295c605"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b4b7cf590eafc88f1a2d8bb3295c605">&#9670;&nbsp;</a></span>create_hud()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void create_hud </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structhud__combat__s.html">hud_combat_t</a> *&#160;</td>
+          <td class="paramname"><em>hud_pers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structhud__combat__s.html">hud_combat_t</a> *&#160;</td>
+          <td class="paramname"><em>hud_ennemi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structennemi__t.html">ennemi_t</a>&#160;</td>
+          <td class="paramname"><em>ennemi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>pers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>font</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Créer un HUD pour le perso et l'ennemi s'il n'existe pas, sinon détruit les textures précédentes pour mettre à jour. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a005211a67eb4421845f3d86cb8bf8bb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a005211a67eb4421845f3d86cb8bf8bb8">&#9670;&nbsp;</a></span>creer_texte_combat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void creer_texte_combat </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>txt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structimage__t.html">image_t</a> *&#160;</td>
+          <td class="paramname"><em>image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>font</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet de donner à une structure image, un texte et les positions où l'afficher à l'écran. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*txt,le</td><td>texte que l'on souhaite afficher à l'écran, </td></tr>
+    <tr><td class="paramname">*image,la</td><td>structure qui contiendra le texte </td></tr>
+    <tr><td class="paramname">x,la</td><td>position en x où sera placée l'image </td></tr>
+    <tr><td class="paramname">y,la</td><td>position en y où sera placée l'image </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">*font,la</td><td>police utilisée pour écrire le texte </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aae7ac7ac546ba66cd9eb0344dafa26b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae7ac7ac546ba66cd9eb0344dafa26b9">&#9670;&nbsp;</a></span>defausse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void defausse </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>perso</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structennemi__t.html">ennemi_t</a> *&#160;</td>
+          <td class="paramname"><em>ennemi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect *&#160;</td>
+          <td class="paramname"><em>rectangle_selection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structimage__t.html">image_t</a>&#160;</td>
+          <td class="paramname"><em>images</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structhud__combat__s.html">hud_combat_t</a>&#160;</td>
+          <td class="paramname"><em>hud_ennemi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structhud__combat__s.html">hud_combat_t</a>&#160;</td>
+          <td class="paramname"><em>hud_pers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structhud__combat__s.html">hud_combat_t</a>&#160;</td>
+          <td class="paramname"><em>action</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>police</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>sounds</em>[NB_SON], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Music *&#160;</td>
+          <td class="paramname"><em>musics</em>[NB_MUSIC], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcarte__t.html">carte_t</a> *&#160;</td>
+          <td class="paramname"><em>cartes</em>[NB_CARTES_COMBAT]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>permet d'effectuer toutes actions liées à la défausse de carte avec un affichage spécifique </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">*perso,la</td><td>structure contenant le personnage </td></tr>
+    <tr><td class="paramname">*ennemi,la</td><td>structure de l'ennemi que le joueur affronte actuellement </td></tr>
+    <tr><td class="paramname">*rectangle_selection,le</td><td>rectangle de sélection que le joueur contrôle pour sélectionner des actions </td></tr>
+    <tr><td class="paramname">images[],contient</td><td>toutes les images nécessaires à l'affichage de l'écran de combat </td></tr>
+    <tr><td class="paramname">hud_ennemi,l'ATH</td><td>de l'ennemi, comprenant l'affichage de son nom et de ses hp </td></tr>
+    <tr><td class="paramname">hud_pers,l'ATH</td><td>du joueur, comprenant l'affichage de son nom et de ses hp </td></tr>
+    <tr><td class="paramname">action,l'ATH</td><td>permettant d'afficher du texte indicatif au joueur -&gt; fourre tout </td></tr>
+    <tr><td class="paramname">*police,la</td><td>police utilisée pour écrire du texte sur l'écran de jeu </td></tr>
+    <tr><td class="paramname">*sounds[],tableau</td><td>des sons brefs pour les interactions </td></tr>
+    <tr><td class="paramname">*musics[],tableau</td><td>des muisques d'ambience </td></tr>
+    <tr><td class="paramname">cartes[],la</td><td>tableau des cartes du joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5fdff0308734894b6467f2fd003a6179"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fdff0308734894b6467f2fd003a6179">&#9670;&nbsp;</a></span>deplacement_rectangle_selection_combat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">nt deplacement_rectangle_selection_combat </td>
           <td>(</td>
           <td class="paramtype">SDL_Rect&#160;</td>
           <td class="paramname"><em>defausse</em>, </td>
@@ -228,32 +681,26 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>combat_t_p_t</b> (<a 
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SDL_Rect&#160;</td>
-          <td class="paramname"><em>carte1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">SDL_Rect&#160;</td>
-          <td class="paramname"><em>carte2</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">SDL_Rect&#160;</td>
-          <td class="paramname"><em>carte3</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">SDL_Rect&#160;</td>
-          <td class="paramname"><em>carte4</em>, </td>
+          <td class="paramtype"><a class="el" href="structimage__t.html">image_t</a>&#160;</td>
+          <td class="paramname"><em>images</em>[NB_TEXTURES_LABY], </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">SDL_Rect **&#160;</td>
-          <td class="paramname"><em>rect_sel</em>&#160;</td>
+          <td class="paramname"><em>rect_sel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>sounds</em>[NB_SON], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Music *&#160;</td>
+          <td class="paramname"><em>musics</em>[NB_MUSIC]&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -268,11 +715,310 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>combat_t_p_t</b> (<a 
   <table class="params">
     <tr><td class="paramname">defausse,Correspond</td><td>aux coordonnées du texte défausse </td></tr>
     <tr><td class="paramname">fuir,Correspond</td><td>aux coordonnées du texte fuir </td></tr>
-    <tr><td class="paramname">carte1,Correspond</td><td>aux coordonnées de la carte 1 </td></tr>
-    <tr><td class="paramname">carte2,Correspond</td><td>aux coordonnées de la carte 2 </td></tr>
-    <tr><td class="paramname">carte3,Correspond</td><td>aux coordonnées de la carte 3 </td></tr>
-    <tr><td class="paramname">carte4,Correspond</td><td>aux coordonnées de la carte 4 </td></tr>
-    <tr><td class="paramname">**rect_sel</td><td>Correspond aux coordonnées du rectangle de sélection </td></tr>
+    <tr><td class="paramname">images[NB_TEXTURES_LABY],Un</td><td>tableau contenant les cartes </td></tr>
+    <tr><td class="paramname">**rect_sel,Les</td><td>coordonnées et taille du rectangle de selection </td></tr>
+    <tr><td class="paramname">*sounds[NB_SON],Contient</td><td>les sons du jeu </td></tr>
+    <tr><td class="paramname">*music[NB_MUSIC],Contient</td><td>les musiques du jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab0f4213ff665f013e064e16017a50893"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0f4213ff665f013e064e16017a50893">&#9670;&nbsp;</a></span>detruire_action_temp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruire_action_temp </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structhud__combat__s.html">hud_combat_t</a> *&#160;</td>
+          <td class="paramname"><em>action</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>permet de détruire l'image présente dans le champs texte de action </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*action,la</td><td>zone de texte détaillant les coups échangés entre le joueur et l'ennemi </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae23cadec183266396ed09db659447551"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae23cadec183266396ed09db659447551">&#9670;&nbsp;</a></span>donne_valeur_rect_images()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void donne_valeur_rect_images </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structimage__t.html">image_t</a>&#160;</td>
+          <td class="paramname"><em>images</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>perso</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Donne les coordonnées et ajuste les tailles des images des cartes et des fonds pour l'écran de combat. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">images[],le</td><td>tableau contenant les images </td></tr>
+    <tr><td class="paramname">*perso,Contient</td><td>la structure du personnage </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a880669b069085432fe3848eb8d85b0df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a880669b069085432fe3848eb8d85b0df">&#9670;&nbsp;</a></span>free_image()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void free_image </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structimage__t.html">image_t</a>&#160;</td>
+          <td class="paramname"><em>images</em>[]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Supprime les images des cartes et des fonds utilisées pour le combat. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">images[],le</td><td>tableau contenant les images </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8f04a1d4afa2a9f8df8d289566f17924"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f04a1d4afa2a9f8df8d289566f17924">&#9670;&nbsp;</a></span>init_hud_action()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_hud_action </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structhud__combat__s.html">hud_combat_t</a> *&#160;</td>
+          <td class="paramname"><em>action</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initialise certaines valeurs du hud action </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*action,le</td><td>hud qui affichera l'action effectuée par le joueur ou l'ennemi </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afc01f06eb5ec7b03ffc02f5e1e9ba70c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc01f06eb5ec7b03ffc02f5e1e9ba70c">&#9670;&nbsp;</a></span>range_carte_deck()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void range_carte_deck </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcarte__t.html">carte_t</a> *&#160;</td>
+          <td class="paramname"><em>cartes</em>[]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Range les cartes encore valide dans le deck, détruit les cartes barrées. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*cartes[],tableau</td><td>de pointeurs sur cartes, contient les cartes utilisées pendant le combat </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a99bef6ca6e8ff2998af62f6790907a51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99bef6ca6e8ff2998af62f6790907a51">&#9670;&nbsp;</a></span>range_carte_tire_nouvelles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void range_carte_tire_nouvelles </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcarte__t.html">carte_t</a> *&#160;</td>
+          <td class="paramname"><em>cartes</em>[NB_CARTES_COMBAT], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cartes_selectionnees</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structimage__t.html">image_t</a>&#160;</td>
+          <td class="paramname"><em>images</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>effectue la défausse, les cartes que le joueur ne veut pas sont renvoyées dans le deck, de nouvelles sont tirées à la place </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">images[],contient</td><td>toutes les images nécessaires à l'affichage de l'écran de combat </td></tr>
+    <tr><td class="paramname">*cartes[],la</td><td>tableau des cartes du joueur </td></tr>
+    <tr><td class="paramname">cartes_selectionnees[],tableau</td><td>permettant de connaître les cartes que le joueur veut défausser </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af75176c41f1d74f09325afdfaf7f86a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af75176c41f1d74f09325afdfaf7f86a5">&#9670;&nbsp;</a></span>tour_ennemi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tour_ennemi </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>pers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structennemi__t.html">ennemi_t</a> *&#160;</td>
+          <td class="paramname"><em>ennemi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>sounds</em>[NB_SON]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>permet de faire jouer l'ennemi, actions effectuées selon la situation </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*pers,la</td><td>structure du personnage </td></tr>
+    <tr><td class="paramname">*ennemi,l'ennemi</td><td>que le joueur affronte </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">*sounds[],tableau</td><td>des sons brefs pour les interactions </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acfd21808297d2c05a058a6a23c1c50dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfd21808297d2c05a058a6a23c1c50dc">&#9670;&nbsp;</a></span>tour_joueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tour_joueur </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>pers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structennemi__t.html">ennemi_t</a> *&#160;</td>
+          <td class="paramname"><em>ennemi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcarte__t.html">carte_t</a> *&#160;</td>
+          <td class="paramname"><em>carte</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>sounds</em>[NB_SON]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>permet d'effectuer l'action sélectionnée par le joueur </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*pers,la</td><td>structure du personnage </td></tr>
+    <tr><td class="paramname">*ennemi,l'ennemi</td><td>que le joueur affronte </td></tr>
+    <tr><td class="paramname">*carte,la</td><td>carte que le joueur joue </td></tr>
+    <tr><td class="paramname">*sounds[NB_SON],Contient</td><td>les sons du jeu </td></tr>
   </table>
   </dd>
 </dl>
@@ -284,7 +1030,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>combat_t_p_t</b> (<a 
 <hr class="footer"/><address class="footer"><small>
 Généré par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
+</a> 1.8.13
 </small></address>
 </body>
 </html>

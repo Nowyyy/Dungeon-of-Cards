@@ -1,5 +1,5 @@
-\hypertarget{chargement_8c}{}\doxysection{Référence du fichier chargement.\+c}
-\label{chargement_8c}\index{chargement.c@{chargement.c}}
+\hypertarget{chargement_8c}{}\section{Référence du fichier chargement.\+c}
+\label{chargement_8c}\index{chargement.\+c@{chargement.\+c}}
 
 
 Gère toute la partie concernant le chargement de partie.  
@@ -11,19 +11,18 @@ Gère toute la partie concernant le chargement de partie.
 {\ttfamily \#include \char`\"{}../include/personnage.\+h\char`\"{}}\newline
 Graphe des dépendances par inclusion de chargement.\+c\+:
 % FIG 0
-\doxysubsection*{Fonctions}
+\subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{chargement_8c_a95d7edafad0e32ac8100306666538233}{afficher\+\_\+chagrer\+\_\+partie}} (S\+D\+L\+\_\+\+Renderer $\ast$rendu, S\+D\+L\+\_\+\+Rect rect\+\_\+sel, S\+D\+L\+\_\+\+Texture $\ast$charger\+\_\+texture, S\+D\+L\+\_\+\+Rect charger\+\_\+rect, S\+D\+L\+\_\+\+Texture $\ast$retour\+\_\+texture, S\+D\+L\+\_\+\+Rect retour\+\_\+rect)
+void \hyperlink{chargement_8c_a619ab47abcf63c6e03d0cb29359d3fbb}{afficher\+\_\+charger\+\_\+partie} (S\+D\+L\+\_\+\+Renderer $\ast$rendu, S\+D\+L\+\_\+\+Rect rect\+\_\+sel, S\+D\+L\+\_\+\+Texture $\ast$charger\+\_\+texture, S\+D\+L\+\_\+\+Rect charger\+\_\+rect, S\+D\+L\+\_\+\+Texture $\ast$retour\+\_\+texture, S\+D\+L\+\_\+\+Rect retour\+\_\+rect, S\+D\+L\+\_\+\+Texture $\ast$message\+\_\+texture, S\+D\+L\+\_\+\+Rect message\+\_\+rect)
 \begin{DoxyCompactList}\small\item\em Affiche sur le rendu les différentes textures et rectangles passés en paramètre. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{chargement_8c_ad752c9683550f17b3b9f8829a1c7926e}{deplacement\+\_\+rectangle\+\_\+selection\+\_\+charger}} (int $\ast$etat, S\+D\+L\+\_\+\+Rect charger\+\_\+rect, S\+D\+L\+\_\+\+Rect retour\+\_\+rect, S\+D\+L\+\_\+\+Rect $\ast$$\ast$rect\+\_\+sel, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]})
+int \hyperlink{chargement_8c_ad752c9683550f17b3b9f8829a1c7926e}{deplacement\+\_\+rectangle\+\_\+selection\+\_\+charger} (int $\ast$etat, S\+D\+L\+\_\+\+Rect charger\+\_\+rect, S\+D\+L\+\_\+\+Rect retour\+\_\+rect, S\+D\+L\+\_\+\+Rect $\ast$$\ast$rect\+\_\+sel, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]})
 \begin{DoxyCompactList}\small\item\em Permet de déplacer d\textquotesingle{}option en option le rectangle de sélection. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{chargement_8c_ad5ff4f286b5ff11e6d79b9efec66d26f}\label{chargement_8c_ad5ff4f286b5ff11e6d79b9efec66d26f}} 
-void {\bfseries menu\+\_\+charger\+\_\+partie} (int $\ast$continuer, int $\ast$etat, S\+D\+L\+\_\+\+Renderer $\ast$rendu, T\+T\+F\+\_\+\+Font $\ast$police, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]}, \mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$pers)
-\end{DoxyCompactItemize}
+void \hyperlink{chargement_8c_ad5ff4f286b5ff11e6d79b9efec66d26f}{menu\+\_\+charger\+\_\+partie} (int $\ast$continuer, int $\ast$etat, S\+D\+L\+\_\+\+Renderer $\ast$rendu, T\+T\+F\+\_\+\+Font $\ast$police, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]}, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$pers)
+\begin{DoxyCompactList}\small\item\em Permet d\textquotesingle{}afficher et de récupèrer une sauvegarde éventuelle puis de lancer le jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Description détaillée}
+\subsection{Description détaillée}
 Gère toute la partie concernant le chargement de partie. 
 
 \begin{DoxyAuthor}{Auteur}
@@ -37,12 +36,12 @@ Gère toute la partie concernant le chargement de partie.
 \end{DoxyVersion}
 
 
-\doxysubsection{Documentation des fonctions}
-\mbox{\Hypertarget{chargement_8c_a95d7edafad0e32ac8100306666538233}\label{chargement_8c_a95d7edafad0e32ac8100306666538233}} 
-\index{chargement.c@{chargement.c}!afficher\_chagrer\_partie@{afficher\_chagrer\_partie}}
-\index{afficher\_chagrer\_partie@{afficher\_chagrer\_partie}!chargement.c@{chargement.c}}
-\doxysubsubsection{\texorpdfstring{afficher\_chagrer\_partie()}{afficher\_chagrer\_partie()}}
-{\footnotesize\ttfamily void afficher\+\_\+chagrer\+\_\+partie (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{S\+D\+L\+\_\+\+Rect}]{rect\+\_\+sel,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{charger\+\_\+texture,  }\item[{S\+D\+L\+\_\+\+Rect}]{charger\+\_\+rect,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{retour\+\_\+texture,  }\item[{S\+D\+L\+\_\+\+Rect}]{retour\+\_\+rect }\end{DoxyParamCaption})}
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{chargement_8c_a619ab47abcf63c6e03d0cb29359d3fbb}\label{chargement_8c_a619ab47abcf63c6e03d0cb29359d3fbb}} 
+\index{chargement.\+c@{chargement.\+c}!afficher\+\_\+charger\+\_\+partie@{afficher\+\_\+charger\+\_\+partie}}
+\index{afficher\+\_\+charger\+\_\+partie@{afficher\+\_\+charger\+\_\+partie}!chargement.\+c@{chargement.\+c}}
+\subsubsection{\texorpdfstring{afficher\+\_\+charger\+\_\+partie()}{afficher\_charger\_partie()}}
+{\footnotesize\ttfamily void afficher\+\_\+charger\+\_\+partie (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{S\+D\+L\+\_\+\+Rect}]{rect\+\_\+sel,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{charger\+\_\+texture,  }\item[{S\+D\+L\+\_\+\+Rect}]{charger\+\_\+rect,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{retour\+\_\+texture,  }\item[{S\+D\+L\+\_\+\+Rect}]{retour\+\_\+rect,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{message\+\_\+texture,  }\item[{S\+D\+L\+\_\+\+Rect}]{message\+\_\+rect }\end{DoxyParamCaption})}
 
 
 
@@ -50,23 +49,13 @@ Affiche sur le rendu les différentes textures et rectangles passés en paramèt
 
 
 \begin{DoxyParams}{Paramètres}
-{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
-\hline
-{\em rect\+\_\+sel,le} & rectangle de sélection du menu \\
-\hline
-{\em $\ast$charger\+\_\+texture} & la texture pour le texte \char`\"{}\+Charger partie\char`\"{} \\
-\hline
-{\em $\ast$retour\+\_\+texture} & la texture pour le texte \char`\"{}\+Quitter\char`\"{} \\
-\hline
-{\em charger\+\_\+rect} & le rectangle pour charger une sauvegarde \\
-\hline
-{\em retour\+\_\+rect} & le rectangle pour le texte \char`\"{}retour\char`\"{} \\
+{\em } & \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{chargement_8c_ad752c9683550f17b3b9f8829a1c7926e}\label{chargement_8c_ad752c9683550f17b3b9f8829a1c7926e}} 
-\index{chargement.c@{chargement.c}!deplacement\_rectangle\_selection\_charger@{deplacement\_rectangle\_selection\_charger}}
-\index{deplacement\_rectangle\_selection\_charger@{deplacement\_rectangle\_selection\_charger}!chargement.c@{chargement.c}}
-\doxysubsubsection{\texorpdfstring{deplacement\_rectangle\_selection\_charger()}{deplacement\_rectangle\_selection\_charger()}}
+\index{chargement.\+c@{chargement.\+c}!deplacement\+\_\+rectangle\+\_\+selection\+\_\+charger@{deplacement\+\_\+rectangle\+\_\+selection\+\_\+charger}}
+\index{deplacement\+\_\+rectangle\+\_\+selection\+\_\+charger@{deplacement\+\_\+rectangle\+\_\+selection\+\_\+charger}!chargement.\+c@{chargement.\+c}}
+\subsubsection{\texorpdfstring{deplacement\+\_\+rectangle\+\_\+selection\+\_\+charger()}{deplacement\_rectangle\_selection\_charger()}}
 {\footnotesize\ttfamily int deplacement\+\_\+rectangle\+\_\+selection\+\_\+charger (\begin{DoxyParamCaption}\item[{int $\ast$}]{etat,  }\item[{S\+D\+L\+\_\+\+Rect}]{charger\+\_\+rect,  }\item[{S\+D\+L\+\_\+\+Rect}]{retour\+\_\+rect,  }\item[{S\+D\+L\+\_\+\+Rect $\ast$$\ast$}]{rect\+\_\+sel,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]} }\end{DoxyParamCaption})}
 
 
@@ -89,3 +78,28 @@ Permet de déplacer d\textquotesingle{}option en option le rectangle de sélecti
 \begin{DoxyReturn}{Renvoie}
 retourne False pour fermer la fenetre, True pour la garder ouverte 
 \end{DoxyReturn}
+\mbox{\Hypertarget{chargement_8c_ad5ff4f286b5ff11e6d79b9efec66d26f}\label{chargement_8c_ad5ff4f286b5ff11e6d79b9efec66d26f}} 
+\index{chargement.\+c@{chargement.\+c}!menu\+\_\+charger\+\_\+partie@{menu\+\_\+charger\+\_\+partie}}
+\index{menu\+\_\+charger\+\_\+partie@{menu\+\_\+charger\+\_\+partie}!chargement.\+c@{chargement.\+c}}
+\subsubsection{\texorpdfstring{menu\+\_\+charger\+\_\+partie()}{menu\_charger\_partie()}}
+{\footnotesize\ttfamily void menu\+\_\+charger\+\_\+partie (\begin{DoxyParamCaption}\item[{int $\ast$}]{continuer,  }\item[{int $\ast$}]{etat,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{police,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},  }\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{pers }\end{DoxyParamCaption})}
+
+
+
+Permet d\textquotesingle{}afficher et de récupèrer une sauvegarde éventuelle puis de lancer le jeu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$continuer,pointeur} & sur un int permettant de savoir si le joueur veut quitter le jeu \\
+\hline
+{\em $\ast$etat,pointeur} & sur un int permettant de connaitre le prochain écran auquel le joueur veut accèder \\
+\hline
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$police,la} & police d\textquotesingle{}écriture pour T\+TF \\
+\hline
+{\em $\ast$sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},tableau} & contenant les sons \\
+\hline
+{\em $\ast$pers,la} & structure du personnage \\
+\hline
+\end{DoxyParams}

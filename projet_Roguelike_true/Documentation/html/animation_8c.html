@@ -1,9 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Dungeon of Cards: Référence du fichier animation.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -32,21 +32,18 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.17 -->
+<!-- Généré par Doxygen 1.8.13 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
-/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 $(function() {
   initMenu('',true,false,'search.php','Recherche');
   $(document).ready(function() { init_search(); });
 });
-/* @license-end */</script>
+</script>
 <div id="main-nav"></div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -75,6 +72,9 @@ $(function() {
 <a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="constantes_8h_source.html">../include/constantes.h</a>&quot;</code><br />
 <code>#include &quot;../include/initialisation_sdl_fonctions.h&quot;</code><br />
+<code>#include &quot;../include/personnage.h&quot;</code><br />
+<code>#include &quot;../include/sauvegardefonc.h&quot;</code><br />
+<code>#include &quot;../include/fonctions.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de animation.c:</div>
 <div class="dyncontent">
@@ -84,21 +84,637 @@ Graphe des dépendances par inclusion de animation.c:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:ae9f57b1202e797edb889ea0448373a1f"><td class="memItemLeft" align="right" valign="top"><a id="ae9f57b1202e797edb889ea0448373a1f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>animation_niveau</b> (<a class="el" href="structperso__t.html">perso_t</a> *perso, SDL_Renderer *rendu)</td></tr>
+<tr class="memitem:ae9f57b1202e797edb889ea0448373a1f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="animation_8c.html#ae9f57b1202e797edb889ea0448373a1f">animation_niveau</a> (<a class="el" href="structperso__t.html">perso_t</a> *perso, SDL_Renderer *rendu)</td></tr>
+<tr class="memdesc:ae9f57b1202e797edb889ea0448373a1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui anime le lancement d'une partie avec un chargement.  <a href="#ae9f57b1202e797edb889ea0448373a1f">Plus de détails...</a><br /></td></tr>
 <tr class="separator:ae9f57b1202e797edb889ea0448373a1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a573bb4c8201af5d9c5fadbe61df23c24"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="animation_8c.html#a573bb4c8201af5d9c5fadbe61df23c24">anim1</a> (SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])</td></tr>
+<tr class="memdesc:a573bb4c8201af5d9c5fadbe61df23c24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche l'animation 1 de début de combat.  <a href="#a573bb4c8201af5d9c5fadbe61df23c24">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a573bb4c8201af5d9c5fadbe61df23c24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca1f7ff8f7e552dee0014f550386b454"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="animation_8c.html#aca1f7ff8f7e552dee0014f550386b454">anim2</a> (SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])</td></tr>
+<tr class="memdesc:aca1f7ff8f7e552dee0014f550386b454"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche l'animation 2 de début de combat.  <a href="#aca1f7ff8f7e552dee0014f550386b454">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aca1f7ff8f7e552dee0014f550386b454"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba4aa4f4dc74a3a50cc216a3ce011b22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="animation_8c.html#aba4aa4f4dc74a3a50cc216a3ce011b22">anim3</a> (SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])</td></tr>
+<tr class="memdesc:aba4aa4f4dc74a3a50cc216a3ce011b22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche l'animation 3 de début de combat.  <a href="#aba4aa4f4dc74a3a50cc216a3ce011b22">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aba4aa4f4dc74a3a50cc216a3ce011b22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ed1cfb0bc233bb2b8ec9026d5cdcbb7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="animation_8c.html#a0ed1cfb0bc233bb2b8ec9026d5cdcbb7">anim_combat</a> (SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])</td></tr>
+<tr class="memdesc:a0ed1cfb0bc233bb2b8ec9026d5cdcbb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de choisir quelle animation de début de combat exécuter.  <a href="#a0ed1cfb0bc233bb2b8ec9026d5cdcbb7">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0ed1cfb0bc233bb2b8ec9026d5cdcbb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af48867b89aacddc628ba6be58003d9e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="animation_8c.html#af48867b89aacddc628ba6be58003d9e4">mort</a> (int *etat, <a class="el" href="structperso__t.html">perso_t</a> *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MUSIC], Mix_Chunk *sounds[NB_SON], <a class="el" href="structimage__t.html">image_t</a> images[], TTF_Font *police)</td></tr>
+<tr class="memdesc:af48867b89aacddc628ba6be58003d9e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...  <a href="#af48867b89aacddc628ba6be58003d9e4">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af48867b89aacddc628ba6be58003d9e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60ce18665c2670c50d91fb4ec2bb4a90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="animation_8c.html#a60ce18665c2670c50d91fb4ec2bb4a90">anim_combat_perso_attaque</a> (<a class="el" href="structperso__t.html">perso_t</a> *pers, <a class="el" href="structcarte__t.html">carte_t</a> *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])</td></tr>
+<tr class="memdesc:a60ce18665c2670c50d91fb4ec2bb4a90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de gèrer les animations de combat liées à l'attaque du personnage.  <a href="#a60ce18665c2670c50d91fb4ec2bb4a90">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a60ce18665c2670c50d91fb4ec2bb4a90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e74bd1024775fc7b250cec038a53bb7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="animation_8c.html#a8e74bd1024775fc7b250cec038a53bb7">anim_combat_ennemi_attaque</a> (<a class="el" href="structennemi__t.html">ennemi_t</a> *ennemi, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], <a class="el" href="structperso__t.html">perso_t</a> *pers)</td></tr>
+<tr class="memdesc:a8e74bd1024775fc7b250cec038a53bb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de gèrer les animations de combat liées à l'attaque de l'ennemi.  <a href="#a8e74bd1024775fc7b250cec038a53bb7">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8e74bd1024775fc7b250cec038a53bb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e698b0cab1d5fa54a830b9533598114"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="animation_8c.html#a2e698b0cab1d5fa54a830b9533598114">anim_combat_perso_soin</a> (<a class="el" href="structperso__t.html">perso_t</a> *pers, <a class="el" href="structcarte__t.html">carte_t</a> *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])</td></tr>
+<tr class="memdesc:a2e698b0cab1d5fa54a830b9533598114"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de gèrer les animations de combat liées au soin du personnage.  <a href="#a2e698b0cab1d5fa54a830b9533598114">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a2e698b0cab1d5fa54a830b9533598114"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e495ace1b44cfe2ec04455486cbab27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="animation_8c.html#a8e495ace1b44cfe2ec04455486cbab27">anim_combat_perso_barriere</a> (<a class="el" href="structperso__t.html">perso_t</a> *pers, <a class="el" href="structcarte__t.html">carte_t</a> *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])</td></tr>
+<tr class="memdesc:a8e495ace1b44cfe2ec04455486cbab27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de gèrer les animations de combat liées au bouclier du personnage.  <a href="#a8e495ace1b44cfe2ec04455486cbab27">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8e495ace1b44cfe2ec04455486cbab27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af59460ad0cb8425f7f3c4167428ec393"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="animation_8c.html#af59460ad0cb8425f7f3c4167428ec393">anim_combat_perso_poison</a> (<a class="el" href="structperso__t.html">perso_t</a> *pers, <a class="el" href="structcarte__t.html">carte_t</a> *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], <a class="el" href="structennemi__t.html">ennemi_t</a> *ennemi)</td></tr>
+<tr class="memdesc:af59460ad0cb8425f7f3c4167428ec393"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de gèrer les animations de combat liées au poison du personnage.  <a href="#af59460ad0cb8425f7f3c4167428ec393">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af59460ad0cb8425f7f3c4167428ec393"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6552485b63bc75775d6eef9ba855aeb8"><td class="memItemLeft" align="right" valign="top"><a id="a6552485b63bc75775d6eef9ba855aeb8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>anim_combat_perso_bdf</b> (<a class="el" href="structperso__t.html">perso_t</a> *pers, <a class="el" href="structcarte__t.html">carte_t</a> *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])</td></tr>
+<tr class="separator:a6552485b63bc75775d6eef9ba855aeb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d62be9d8a2999b4ef7b32e3fc92f333"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="animation_8c.html#a2d62be9d8a2999b4ef7b32e3fc92f333">anim_combat_perso</a> (<a class="el" href="structperso__t.html">perso_t</a> *pers, <a class="el" href="structcarte__t.html">carte_t</a> *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], <a class="el" href="structennemi__t.html">ennemi_t</a> *ennemi)</td></tr>
+<tr class="memdesc:a2d62be9d8a2999b4ef7b32e3fc92f333"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de gèrer les animations de combat du personnage.  <a href="#a2d62be9d8a2999b4ef7b32e3fc92f333">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a2d62be9d8a2999b4ef7b32e3fc92f333"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Gère l'animation de chargement de niveau. </p>
 <dl class="section author"><dt>Auteur</dt><dd>{Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas} </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>18/02/2020 </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a573bb4c8201af5d9c5fadbe61df23c24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a573bb4c8201af5d9c5fadbe61df23c24">&#9670;&nbsp;</a></span>anim1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anim1 </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>sounds</em>[NB_SON]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche l'animation 1 de début de combat. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">*musics[NB_MUSIC],tableau</td><td>contenant les musiques </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aca1f7ff8f7e552dee0014f550386b454"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca1f7ff8f7e552dee0014f550386b454">&#9670;&nbsp;</a></span>anim2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anim2 </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>sounds</em>[NB_SON]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche l'animation 2 de début de combat. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">*musics[NB_MUSIC],tableau</td><td>contenant les musiques </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aba4aa4f4dc74a3a50cc216a3ce011b22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba4aa4f4dc74a3a50cc216a3ce011b22">&#9670;&nbsp;</a></span>anim3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anim3 </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>sounds</em>[NB_SON]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche l'animation 3 de début de combat. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">*musics[NB_MUSIC],tableau</td><td>contenant les musiques </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0ed1cfb0bc233bb2b8ec9026d5cdcbb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ed1cfb0bc233bb2b8ec9026d5cdcbb7">&#9670;&nbsp;</a></span>anim_combat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anim_combat </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>sounds</em>[NB_SON]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet de choisir quelle animation de début de combat exécuter. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">*musics[NB_MUSIC],tableau</td><td>contenant les musiques </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8e74bd1024775fc7b250cec038a53bb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e74bd1024775fc7b250cec038a53bb7">&#9670;&nbsp;</a></span>anim_combat_ennemi_attaque()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anim_combat_ennemi_attaque </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structennemi__t.html">ennemi_t</a> *&#160;</td>
+          <td class="paramname"><em>ennemi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>sounds</em>[NB_SON], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>pers</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet de gèrer les animations de combat liées à l'attaque de l'ennemi. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*ennemi,l'ennemi</td><td>contre lequel le joueur va combattre </td></tr>
+    <tr><td class="paramname">cartes,la</td><td>carte jouée par le joueur </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">*sounds[NB_SON],tableau</td><td>contenant les sons </td></tr>
+    <tr><td class="paramname">*pers,contient</td><td>le personnage afin de le sauvegarder </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2d62be9d8a2999b4ef7b32e3fc92f333"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d62be9d8a2999b4ef7b32e3fc92f333">&#9670;&nbsp;</a></span>anim_combat_perso()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anim_combat_perso </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>pers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcarte__t.html">carte_t</a> *&#160;</td>
+          <td class="paramname"><em>carte</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>sounds</em>[NB_SON], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structennemi__t.html">ennemi_t</a> *&#160;</td>
+          <td class="paramname"><em>ennemi</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet de gèrer les animations de combat du personnage. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*pers,contient</td><td>le personnage afin de le sauvegarder </td></tr>
+    <tr><td class="paramname">cartes,la</td><td>carte jouée par le joueur </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">*sounds[NB_SON],tableau</td><td>contenant les sons </td></tr>
+    <tr><td class="paramname">*ennemi,l'ennemi</td><td>contre lequel le joueur va combattre </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a60ce18665c2670c50d91fb4ec2bb4a90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60ce18665c2670c50d91fb4ec2bb4a90">&#9670;&nbsp;</a></span>anim_combat_perso_attaque()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anim_combat_perso_attaque </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>pers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcarte__t.html">carte_t</a> *&#160;</td>
+          <td class="paramname"><em>carte</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>sounds</em>[NB_SON]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet de gèrer les animations de combat liées à l'attaque du personnage. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*pers,contient</td><td>le personnage afin de le sauvegarder </td></tr>
+    <tr><td class="paramname">cartes,la</td><td>carte jouée par le joueur </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">*sounds[NB_SON],tableau</td><td>contenant les sons </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8e495ace1b44cfe2ec04455486cbab27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e495ace1b44cfe2ec04455486cbab27">&#9670;&nbsp;</a></span>anim_combat_perso_barriere()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anim_combat_perso_barriere </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>pers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcarte__t.html">carte_t</a> *&#160;</td>
+          <td class="paramname"><em>carte</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>sounds</em>[NB_SON]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet de gèrer les animations de combat liées au bouclier du personnage. </p>
+<p>Permet de gèrer les animations de combat liées à la boule de feu du personnage.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*pers,contient</td><td>le personnage afin de le sauvegarder </td></tr>
+    <tr><td class="paramname">cartes,la</td><td>carte jouée par le joueur </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">*sounds[NB_SON],tableau</td><td>contenant les sons </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af59460ad0cb8425f7f3c4167428ec393"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af59460ad0cb8425f7f3c4167428ec393">&#9670;&nbsp;</a></span>anim_combat_perso_poison()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anim_combat_perso_poison </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>pers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcarte__t.html">carte_t</a> *&#160;</td>
+          <td class="paramname"><em>carte</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>sounds</em>[NB_SON], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structennemi__t.html">ennemi_t</a> *&#160;</td>
+          <td class="paramname"><em>ennemi</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet de gèrer les animations de combat liées au poison du personnage. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*pers,contient</td><td>le personnage afin de le sauvegarder </td></tr>
+    <tr><td class="paramname">cartes,la</td><td>carte jouée par le joueur </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">*sounds[NB_SON],tableau</td><td>contenant les sons </td></tr>
+    <tr><td class="paramname">*ennemi,l'ennemi</td><td>contre lequel le joueur va combattre </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2e698b0cab1d5fa54a830b9533598114"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e698b0cab1d5fa54a830b9533598114">&#9670;&nbsp;</a></span>anim_combat_perso_soin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anim_combat_perso_soin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>pers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcarte__t.html">carte_t</a> *&#160;</td>
+          <td class="paramname"><em>carte</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>sounds</em>[NB_SON]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet de gèrer les animations de combat liées au soin du personnage. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*pers,contient</td><td>le personnage afin de le sauvegarder </td></tr>
+    <tr><td class="paramname">cartes,la</td><td>carte jouée par le joueur </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">*sounds[NB_SON],tableau</td><td>contenant les sons </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae9f57b1202e797edb889ea0448373a1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9f57b1202e797edb889ea0448373a1f">&#9670;&nbsp;</a></span>animation_niveau()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void animation_niveau </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>perso</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui anime le lancement d'une partie avec un chargement. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">perso,la</td><td>structure du personnaeg </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af48867b89aacddc628ba6be58003d9e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af48867b89aacddc628ba6be58003d9e4">&#9670;&nbsp;</a></span>mort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mort </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>etat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>pers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Music *&#160;</td>
+          <td class="paramname"><em>musics</em>[NB_MUSIC], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>sounds</em>[NB_SON], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structimage__t.html">image_t</a>&#160;</td>
+          <td class="paramname"><em>images</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>police</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage... </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*etat,variable</td><td>contenant le mode de jeu actuel </td></tr>
+    <tr><td class="paramname">*pers,contient</td><td>le personnage afin de le sauvegarder </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">*musics[NB_MUSIC],tableau</td><td>contenant les musiques </td></tr>
+    <tr><td class="paramname">*sounds[NB_SON],tableau</td><td>contenant les sons </td></tr>
+    <tr><td class="paramname">images[],contient</td><td>toutes les images du jeu sauf celles du personnage </td></tr>
+    <tr><td class="paramname">*police,contient</td><td>la police d'écriture </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Généré par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
+</a> 1.8.13
 </small></address>
 </body>
 </html>

@@ -1,0 +1,142 @@
+\hypertarget{etage__final_8c}{}\section{Référence du fichier etage\+\_\+final.\+c}
+\label{etage__final_8c}\index{etage\+\_\+final.\+c@{etage\+\_\+final.\+c}}
+{\ttfamily \#include \char`\"{}../include/constantes.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/salle.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/combat\+\_\+tour\+\_\+par\+\_\+tour.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/animation.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/ennemi.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/initialisation\+\_\+sdl\+\_\+fonctions.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/personnage.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/fonctions.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/sauvegardefonc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/clavier.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/labyrinthe.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de etage\+\_\+final.\+c\+:
+% FIG 0
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{etage__final_8c_aab34afca0fa7446f9ad559728fc187b0}{charge\+\_\+textures\+\_\+etage\+\_\+final} (\hyperlink{structimage__t}{image\+\_\+t} images\mbox{[}$\,$\mbox{]}, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$pers, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
+\begin{DoxyCompactList}\small\item\em Permet de charger toutes les images et de les ranger dans les structures correspondantes. \end{DoxyCompactList}\item 
+void \hyperlink{etage__final_8c_a246fe9f4a7432512ad84e99a7280f380}{affichage\+\_\+salle\+\_\+personnage\+\_\+etage\+\_\+final} (\hyperlink{structperso__t}{perso\+\_\+t} pers, \hyperlink{structsalle__t}{salle\+\_\+t} $\ast$salle, S\+D\+L\+\_\+\+Renderer $\ast$rendu, \hyperlink{structimage__t}{image\+\_\+t} images\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Permet d\textquotesingle{}afficher une salle, le personnage et si on est dans la premiere salle, les instructions et commandes du jeu. \end{DoxyCompactList}\item 
+void \hyperlink{etage__final_8c_a0b7481b9c06b7783ed1705a1b34fa36e}{creation\+\_\+salles\+\_\+dernier\+\_\+etage} (\hyperlink{structsalle__t}{salle\+\_\+t} salles\mbox{[}$\,$\mbox{]}, int taille, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
+\begin{DoxyCompactList}\small\item\em Créée les deux salles du dernier étage, les lies l\textquotesingle{}une à l\textquotesingle{}autre et rempli les tableau de collisions. \end{DoxyCompactList}\item 
+void \hyperlink{etage__final_8c_a17589597f6c7eae6bef1556d46c57835}{ecran\+\_\+victoire} (S\+D\+L\+\_\+\+Renderer $\ast$rendu, T\+T\+F\+\_\+\+Font $\ast$police)
+\begin{DoxyCompactList}\small\item\em Affiche le message de victoire à l\textquotesingle{}intention du joueur, signifiant sa réussite totale dans le jeu. \end{DoxyCompactList}\item 
+void \hyperlink{etage__final_8c_a02da2526f5d1d52972b02e94d7064848}{etage\+\_\+final} (S\+D\+L\+\_\+\+Renderer $\ast$rendu, int $\ast$continuer, int $\ast$etat, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]}, Mix\+\_\+\+Music $\ast$musics\mbox{[}N\+B\+\_\+\+M\+U\+S\+IC\mbox{]}, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$pers, T\+T\+F\+\_\+\+Font $\ast$police)
+\begin{DoxyCompactList}\small\item\em Permet de gèrer le dernier étage du jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+\{Tudoret Aurélien, Jourry Axel, Marin Timothée, Malabry Thomas\}
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10/04/2020
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+d\textquotesingle{}afficher et de gèrer le dernier étage et le combat contre le boss 
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{etage__final_8c_a246fe9f4a7432512ad84e99a7280f380}\label{etage__final_8c_a246fe9f4a7432512ad84e99a7280f380}} 
+\index{etage\+\_\+final.\+c@{etage\+\_\+final.\+c}!affichage\+\_\+salle\+\_\+personnage\+\_\+etage\+\_\+final@{affichage\+\_\+salle\+\_\+personnage\+\_\+etage\+\_\+final}}
+\index{affichage\+\_\+salle\+\_\+personnage\+\_\+etage\+\_\+final@{affichage\+\_\+salle\+\_\+personnage\+\_\+etage\+\_\+final}!etage\+\_\+final.\+c@{etage\+\_\+final.\+c}}
+\subsubsection{\texorpdfstring{affichage\+\_\+salle\+\_\+personnage\+\_\+etage\+\_\+final()}{affichage\_salle\_personnage\_etage\_final()}}
+{\footnotesize\ttfamily void affichage\+\_\+salle\+\_\+personnage\+\_\+etage\+\_\+final (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{pers,  }\item[{\hyperlink{structsalle__t}{salle\+\_\+t} $\ast$}]{salle,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{\hyperlink{structimage__t}{image\+\_\+t}}]{images\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Permet d\textquotesingle{}afficher une salle, le personnage et si on est dans la premiere salle, les instructions et commandes du jeu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em images\mbox{[}$\,$\mbox{]},contient} & toutes les images utilisées sauf celle du personnage \\
+\hline
+{\em pers,la} & structure contenant le personnage \\
+\hline
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$salle,la} & salle actuelle \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{etage__final_8c_aab34afca0fa7446f9ad559728fc187b0}\label{etage__final_8c_aab34afca0fa7446f9ad559728fc187b0}} 
+\index{etage\+\_\+final.\+c@{etage\+\_\+final.\+c}!charge\+\_\+textures\+\_\+etage\+\_\+final@{charge\+\_\+textures\+\_\+etage\+\_\+final}}
+\index{charge\+\_\+textures\+\_\+etage\+\_\+final@{charge\+\_\+textures\+\_\+etage\+\_\+final}!etage\+\_\+final.\+c@{etage\+\_\+final.\+c}}
+\subsubsection{\texorpdfstring{charge\+\_\+textures\+\_\+etage\+\_\+final()}{charge\_textures\_etage\_final()}}
+{\footnotesize\ttfamily void charge\+\_\+textures\+\_\+etage\+\_\+final (\begin{DoxyParamCaption}\item[{\hyperlink{structimage__t}{image\+\_\+t}}]{images\mbox{[}$\,$\mbox{]},  }\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{pers,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu }\end{DoxyParamCaption})}
+
+
+
+Permet de charger toutes les images et de les ranger dans les structures correspondantes. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em images\mbox{[}$\,$\mbox{]},contient} & toutes les images utilisées sauf celle du personnage \\
+\hline
+{\em $\ast$pers,pointeur} & sur la structure contenant le personnage \\
+\hline
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{etage__final_8c_a0b7481b9c06b7783ed1705a1b34fa36e}\label{etage__final_8c_a0b7481b9c06b7783ed1705a1b34fa36e}} 
+\index{etage\+\_\+final.\+c@{etage\+\_\+final.\+c}!creation\+\_\+salles\+\_\+dernier\+\_\+etage@{creation\+\_\+salles\+\_\+dernier\+\_\+etage}}
+\index{creation\+\_\+salles\+\_\+dernier\+\_\+etage@{creation\+\_\+salles\+\_\+dernier\+\_\+etage}!etage\+\_\+final.\+c@{etage\+\_\+final.\+c}}
+\subsubsection{\texorpdfstring{creation\+\_\+salles\+\_\+dernier\+\_\+etage()}{creation\_salles\_dernier\_etage()}}
+{\footnotesize\ttfamily void creation\+\_\+salles\+\_\+dernier\+\_\+etage (\begin{DoxyParamCaption}\item[{\hyperlink{structsalle__t}{salle\+\_\+t}}]{salles\mbox{[}$\,$\mbox{]},  }\item[{int}]{taille,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu }\end{DoxyParamCaption})}
+
+
+
+Créée les deux salles du dernier étage, les lies l\textquotesingle{}une à l\textquotesingle{}autre et rempli les tableau de collisions. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em salles\mbox{[}$\,$\mbox{]},le} & tableau de structure de salle. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{etage__final_8c_a17589597f6c7eae6bef1556d46c57835}\label{etage__final_8c_a17589597f6c7eae6bef1556d46c57835}} 
+\index{etage\+\_\+final.\+c@{etage\+\_\+final.\+c}!ecran\+\_\+victoire@{ecran\+\_\+victoire}}
+\index{ecran\+\_\+victoire@{ecran\+\_\+victoire}!etage\+\_\+final.\+c@{etage\+\_\+final.\+c}}
+\subsubsection{\texorpdfstring{ecran\+\_\+victoire()}{ecran\_victoire()}}
+{\footnotesize\ttfamily void ecran\+\_\+victoire (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{police }\end{DoxyParamCaption})}
+
+
+
+Affiche le message de victoire à l\textquotesingle{}intention du joueur, signifiant sa réussite totale dans le jeu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$police,la} & police utilisée pour écrire à l\textquotesingle{}écran \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{etage__final_8c_a02da2526f5d1d52972b02e94d7064848}\label{etage__final_8c_a02da2526f5d1d52972b02e94d7064848}} 
+\index{etage\+\_\+final.\+c@{etage\+\_\+final.\+c}!etage\+\_\+final@{etage\+\_\+final}}
+\index{etage\+\_\+final@{etage\+\_\+final}!etage\+\_\+final.\+c@{etage\+\_\+final.\+c}}
+\subsubsection{\texorpdfstring{etage\+\_\+final()}{etage\_final()}}
+{\footnotesize\ttfamily void etage\+\_\+final (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{int $\ast$}]{continuer,  }\item[{int $\ast$}]{etat,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},  }\item[{Mix\+\_\+\+Music $\ast$}]{musics\mbox{[}\+N\+B\+\_\+\+M\+U\+S\+I\+C\mbox{]},  }\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{pers,  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{police }\end{DoxyParamCaption})}
+
+
+
+Permet de gèrer le dernier étage du jeu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$continuer,pointeur} & sur variable permettant de savoir si le joueur souhaite quitter le programme \\
+\hline
+{\em $\ast$etat,pointeur} & sur variable permettant de connaître l\textquotesingle{}écran dans lequel on est \\
+\hline
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},tableau} & contenant les sons \\
+\hline
+{\em $\ast$musics\mbox{[}\+N\+B\+\_\+\+M\+U\+S\+I\+C\mbox{]},tableau} & contenant les musiques \\
+\hline
+{\em $\ast$pers,la} & structure du personnage \\
+\hline
+\end{DoxyParams}

@@ -1,5 +1,5 @@
-\hypertarget{labyrinthe_8c}{}\doxysection{Référence du fichier labyrinthe.\+c}
-\label{labyrinthe_8c}\index{labyrinthe.c@{labyrinthe.c}}
+\hypertarget{labyrinthe_8c}{}\section{Référence du fichier labyrinthe.\+c}
+\label{labyrinthe_8c}\index{labyrinthe.\+c@{labyrinthe.\+c}}
 
 
 contient et fait appel a toutes fonctions nécessaires pour la gestion du labyrinthe  
@@ -15,43 +15,49 @@ contient et fait appel a toutes fonctions nécessaires pour la gestion du labyri
 {\ttfamily \#include \char`\"{}../include/ennemi.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../include/coffre.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../include/combat\+\_\+tour\+\_\+par\+\_\+tour.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/animation.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/labyrinthe.\+h\char`\"{}}\newline
 Graphe des dépendances par inclusion de labyrinthe.\+c\+:
 % FIG 0
-\doxysubsection*{Fonctions}
+\subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{labyrinthe_8c_ae7ba54121ba01810050ad04afa756ea9}{charge\+\_\+toutes\+\_\+textures}} (\mbox{\hyperlink{structimage__t}{image\+\_\+t}} images\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$pers, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
+void \hyperlink{labyrinthe_8c_af5c6adcdb1fe9de0b94a36b343fdae0f}{charge\+\_\+toutes\+\_\+textures} (\hyperlink{structimage__t}{image\+\_\+t} images\mbox{[}$\,$\mbox{]}, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$pers, S\+D\+L\+\_\+\+Renderer $\ast$rendu, int $\ast$compte\+\_\+ennemi, int $\ast$ennemi\+\_\+max)
 \begin{DoxyCompactList}\small\item\em Permet de charger toutes les images et de les ranger dans les structures correspondantes. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{labyrinthe_8c_a67c7924550b0bef3a89597e8b11cf49f}\label{labyrinthe_8c_a67c7924550b0bef3a89597e8b11cf49f}} 
-void {\bfseries affichage\+\_\+salle\+\_\+personnage} (\mbox{\hyperlink{structperso__t}{perso\+\_\+t}} pers, \mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} $\ast$salle, S\+D\+L\+\_\+\+Renderer $\ast$rendu, \mbox{\hyperlink{structimage__t}{image\+\_\+t}} images\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{structmini__map__t}{mini\+\_\+map\+\_\+t}} map)
-\item 
-\mbox{\Hypertarget{labyrinthe_8c_a6611ded1089f127ef4ba210a728fcef3}\label{labyrinthe_8c_a6611ded1089f127ef4ba210a728fcef3}} 
-void \mbox{\hyperlink{labyrinthe_8c_a6611ded1089f127ef4ba210a728fcef3}{initialise\+\_\+salles}} (\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} tab\mbox{[}$\,$\mbox{]}, int taille)
+void \hyperlink{labyrinthe_8c_a14b58aa06a027c10ca7fe89bd1b7a829}{affichage\+\_\+salle\+\_\+personnage} (\hyperlink{structperso__t}{perso\+\_\+t} pers, \hyperlink{structsalle__t}{salle\+\_\+t} $\ast$salle, S\+D\+L\+\_\+\+Renderer $\ast$rendu, \hyperlink{structimage__t}{image\+\_\+t} images\mbox{[}$\,$\mbox{]}, \hyperlink{structmini__map__t}{mini\+\_\+map\+\_\+t} map, \hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+t} loot)
+\begin{DoxyCompactList}\small\item\em Permet d\textquotesingle{}afficher une salle, le personnage et si on est dans la premiere salle, les instructions et commandes du jeu. \end{DoxyCompactList}\item 
+void \hyperlink{labyrinthe_8c_a6611ded1089f127ef4ba210a728fcef3}{initialise\+\_\+salles} (\hyperlink{structsalle__t}{salle\+\_\+t} tab\mbox{[}$\,$\mbox{]}, int taille)
 \begin{DoxyCompactList}\small\item\em remplit les tableaux des salles, initialise les variables \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{labyrinthe_8c_a8dae688c154d2ac7dbe22ed996476d18}{cree\+\_\+liaison}} (\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} tab\mbox{[}$\,$\mbox{]}, int salle1, int salle2, int porte\+S1)
+void \hyperlink{labyrinthe_8c_a8dae688c154d2ac7dbe22ed996476d18}{cree\+\_\+liaison} (\hyperlink{structsalle__t}{salle\+\_\+t} tab\mbox{[}$\,$\mbox{]}, int salle1, int salle2, int porte\+S1)
 \begin{DoxyCompactList}\small\item\em Créée les liaisons entre deux salles enfonction de la porte libre sur la première. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{labyrinthe_8c_a7acbd2cdf266f9afca54f6198cd5bcbc}\label{labyrinthe_8c_a7acbd2cdf266f9afca54f6198cd5bcbc}} 
-void {\bfseries mort} (int $\ast$etat, \mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$pers, S\+D\+L\+\_\+\+Renderer $\ast$rendu, Mix\+\_\+\+Music $\ast$musics\mbox{[}N\+B\+\_\+\+M\+U\+S\+IC\mbox{]}, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]}, \mbox{\hyperlink{structimage__t}{image\+\_\+t}} images\mbox{[}$\,$\mbox{]}, T\+T\+F\+\_\+\+Font $\ast$police, S\+D\+L\+\_\+\+Texture $\ast$cmp\+Partie\+\_\+texture)
-\item 
-\mbox{\Hypertarget{labyrinthe_8c_ad741733c59a1c247f0cdd30e3460f481}\label{labyrinthe_8c_ad741733c59a1c247f0cdd30e3460f481}} 
-int {\bfseries tirage\+\_\+au\+\_\+sort\+\_\+porte\+\_\+a\+\_\+creer} (int indice, int taille, \mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} salles\mbox{[}$\,$\mbox{]}, int tentatives)
-\item 
-int \mbox{\hyperlink{labyrinthe_8c_ae8694792a04ea90eb0f99f37ea5bcb12}{indice\+\_\+salle}} (int salle\+\_\+actuelle, int porte\+\_\+salle\+\_\+actuelle, int taille)
+int \hyperlink{labyrinthe_8c_ad741733c59a1c247f0cdd30e3460f481}{tirage\+\_\+au\+\_\+sort\+\_\+porte\+\_\+a\+\_\+creer} (int indice, int taille, \hyperlink{structsalle__t}{salle\+\_\+t} salles\mbox{[}$\,$\mbox{]}, int tentatives)
+\begin{DoxyCompactList}\small\item\em Permet de renvoyer la direction vers laquelle on peut tenter de créer une liaison avec une autre salle. \end{DoxyCompactList}\item 
+int \hyperlink{labyrinthe_8c_ae8694792a04ea90eb0f99f37ea5bcb12}{indice\+\_\+salle} (int salle\+\_\+actuelle, int porte\+\_\+salle\+\_\+actuelle, int taille)
 \begin{DoxyCompactList}\small\item\em Renvoie l\textquotesingle{}indice d\textquotesingle{}une salle correspondant à la direction dans laquelle on crée la porte. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{labyrinthe_8c_ad82ec89667610a13923d806c205b9e46}{salles\+\_\+compatibles}} (int salle1, int porte1, int salle2, int porte2, \mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} salles\mbox{[}$\,$\mbox{]})
+int \hyperlink{labyrinthe_8c_ad82ec89667610a13923d806c205b9e46}{salles\+\_\+compatibles} (int salle1, int porte1, int salle2, int porte2, \hyperlink{structsalle__t}{salle\+\_\+t} salles\mbox{[}$\,$\mbox{]})
 \begin{DoxyCompactList}\small\item\em Permet de savoir si deux salles sont compatibles entre elles. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{labyrinthe_8c_a1df93f8f3ffacdca34d1ead8bb681166}{creation\+\_\+labyrinthe}} (\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} salles\mbox{[}$\,$\mbox{]}, int taille, int nb\+\_\+salles\+\_\+a\+\_\+creer)
+int \hyperlink{labyrinthe_8c_a1df93f8f3ffacdca34d1ead8bb681166}{creation\+\_\+labyrinthe} (\hyperlink{structsalle__t}{salle\+\_\+t} salles\mbox{[}$\,$\mbox{]}, int taille, int nb\+\_\+salles\+\_\+a\+\_\+creer)
 \begin{DoxyCompactList}\small\item\em créer un labyrinthe de salles connectées entres elles, généré aléatoirement \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{labyrinthe_8c_a58f5b55f5504317713166245f6e4e2dc}{modifie\+\_\+texture\+\_\+hud}} (\mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$pers, \mbox{\hyperlink{structimage__t}{image\+\_\+t}} $\ast$pv, \mbox{\hyperlink{structimage__t}{image\+\_\+t}} $\ast$etage, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
+void \hyperlink{labyrinthe_8c_aac1526eaedf6a6a7865de5ab09d91778}{modifie\+\_\+texture\+\_\+hud} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$pers, \hyperlink{structimage__t}{image\+\_\+t} $\ast$pv, \hyperlink{structimage__t}{image\+\_\+t} $\ast$etage, S\+D\+L\+\_\+\+Renderer $\ast$rendu, \hyperlink{structimage__t}{image\+\_\+t} $\ast$counter, int $\ast$compte\+\_\+ennemi, int $\ast$ennemi\+\_\+max, int $\ast$compt\+\_\+ennold)
 \begin{DoxyCompactList}\small\item\em Permet de mettre à jour le H\+UD selon que les P\+DV ou l\textquotesingle{}étage soit différents. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{labyrinthe_8c_a70a1b9723d5630b15980cdaf5d6c636d}{nb\+\_\+salles\+\_\+par\+\_\+etage}} (int etage)
+int \hyperlink{labyrinthe_8c_a70a1b9723d5630b15980cdaf5d6c636d}{nb\+\_\+salles\+\_\+par\+\_\+etage} (int etage)
 \begin{DoxyCompactList}\small\item\em Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage... \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{labyrinthe_8c_acaa91713a2728be5e5758220176f22b8}\label{labyrinthe_8c_acaa91713a2728be5e5758220176f22b8}} 
-void {\bfseries boucle\+\_\+labyrinthe} (int $\ast$continuer, int $\ast$etat, S\+D\+L\+\_\+\+Renderer $\ast$rendu, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]}, Mix\+\_\+\+Music $\ast$musics\mbox{[}N\+B\+\_\+\+M\+U\+S\+IC\mbox{]}, \mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$pers, T\+T\+F\+\_\+\+Font $\ast$police)
-\end{DoxyCompactItemize}
+void \hyperlink{labyrinthe_8c_a2bf4267f645d0cd3b29d678757f8317a}{vers\+\_\+ecran\+\_\+combat} (S\+D\+L\+\_\+\+Renderer $\ast$rendu, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]}, \hyperlink{structtouches__t}{touches\+\_\+t} $\ast$clavier, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$pers, \hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$ennemi, Mix\+\_\+\+Music $\ast$musics\mbox{[}N\+B\+\_\+\+M\+U\+S\+IC\mbox{]}, int $\ast$etat)
+\begin{DoxyCompactList}\small\item\em permet d\textquotesingle{}effectuer l\textquotesingle{}animation d\textquotesingle{}entrée en combat, l\textquotesingle{}arrêt des sons, la réinitialisation du tableau des touches et envoie le joueur vers le combat au tour par tour \end{DoxyCompactList}\item 
+void \hyperlink{labyrinthe_8c_ad4315ef10b1b55955c15921e2de5cfe9}{check\+\_\+ennemi} (int $\ast$ennemi\+\_\+max, int $\ast$compte\+\_\+ennemi, \hyperlink{structsalle__t}{salle\+\_\+t} salles\mbox{[}$\,$\mbox{]}, int salle\+\_\+courante, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$pers)
+\begin{DoxyCompactList}\small\item\em permet d\textquotesingle{}ajouter des pv au joueur selon le nombre d\textquotesingle{}ennemi tué. \end{DoxyCompactList}\item 
+void \hyperlink{labyrinthe_8c_a18050db489d818020e8e44d8bacf1303}{init\+\_\+tableau\+\_\+images} (\hyperlink{structimage__t}{image\+\_\+t} images\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em met à N\+U\+LL tous les pointeurs du tableau \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{labyrinthe_8c_a686f296d332ea8f3b830a9e909b312e6}\label{labyrinthe_8c_a686f296d332ea8f3b830a9e909b312e6}} 
+int \hyperlink{labyrinthe_8c_a686f296d332ea8f3b830a9e909b312e6}{choix\+\_\+boss} ()
+\begin{DoxyCompactList}\small\item\em Permet de choisir le boss qui peuplera l\textquotesingle{}étage. \end{DoxyCompactList}\item 
+int \hyperlink{labyrinthe_8c_ab7a95c0a468aac8a7ac044bfba80329a}{choix\+\_\+monstre} (int etage)
+\begin{DoxyCompactList}\small\item\em Permet de choisir le monstre qui peuplera l\textquotesingle{}étage (sauf certains monstres à certains étages qui ne ressortent pas assez sur les textures) \end{DoxyCompactList}\item 
+void \hyperlink{labyrinthe_8c_acaa91713a2728be5e5758220176f22b8}{boucle\+\_\+labyrinthe} (int $\ast$continuer, int $\ast$etat, S\+D\+L\+\_\+\+Renderer $\ast$rendu, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]}, Mix\+\_\+\+Music $\ast$musics\mbox{[}N\+B\+\_\+\+M\+U\+S\+IC\mbox{]}, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$pers, T\+T\+F\+\_\+\+Font $\ast$police)
+\begin{DoxyCompactList}\small\item\em Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage... \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Description détaillée}
+\subsection{Description détaillée}
 contient et fait appel a toutes fonctions nécessaires pour la gestion du labyrinthe 
 
 \begin{DoxyAuthor}{Auteur}
@@ -65,12 +71,62 @@ contient et fait appel a toutes fonctions nécessaires pour la gestion du labyri
 \end{DoxyVersion}
 
 
-\doxysubsection{Documentation des fonctions}
-\mbox{\Hypertarget{labyrinthe_8c_ae7ba54121ba01810050ad04afa756ea9}\label{labyrinthe_8c_ae7ba54121ba01810050ad04afa756ea9}} 
-\index{labyrinthe.c@{labyrinthe.c}!charge\_toutes\_textures@{charge\_toutes\_textures}}
-\index{charge\_toutes\_textures@{charge\_toutes\_textures}!labyrinthe.c@{labyrinthe.c}}
-\doxysubsubsection{\texorpdfstring{charge\_toutes\_textures()}{charge\_toutes\_textures()}}
-{\footnotesize\ttfamily void charge\+\_\+toutes\+\_\+textures (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structimage__t}{image\+\_\+t}}}]{images\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$}]{pers,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu }\end{DoxyParamCaption})}
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{labyrinthe_8c_a14b58aa06a027c10ca7fe89bd1b7a829}\label{labyrinthe_8c_a14b58aa06a027c10ca7fe89bd1b7a829}} 
+\index{labyrinthe.\+c@{labyrinthe.\+c}!affichage\+\_\+salle\+\_\+personnage@{affichage\+\_\+salle\+\_\+personnage}}
+\index{affichage\+\_\+salle\+\_\+personnage@{affichage\+\_\+salle\+\_\+personnage}!labyrinthe.\+c@{labyrinthe.\+c}}
+\subsubsection{\texorpdfstring{affichage\+\_\+salle\+\_\+personnage()}{affichage\_salle\_personnage()}}
+{\footnotesize\ttfamily void affichage\+\_\+salle\+\_\+personnage (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{pers,  }\item[{\hyperlink{structsalle__t}{salle\+\_\+t} $\ast$}]{salle,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{\hyperlink{structimage__t}{image\+\_\+t}}]{images\mbox{[}$\,$\mbox{]},  }\item[{\hyperlink{structmini__map__t}{mini\+\_\+map\+\_\+t}}]{map,  }\item[{\hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+t}}]{loot }\end{DoxyParamCaption})}
+
+
+
+Permet d\textquotesingle{}afficher une salle, le personnage et si on est dans la premiere salle, les instructions et commandes du jeu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em pers,la} & structure contenant le personnage \\
+\hline
+{\em $\ast$salle,la} & salle actuelle \\
+\hline
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em images\mbox{[}$\,$\mbox{]},contient} & toutes les images utilisées sauf celle du personnage \\
+\hline
+{\em map,la} & structure contenant la mini map \\
+\hline
+{\em loot,structure} & permettant l\textquotesingle{}affichage d\textquotesingle{}un loot effectué \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{labyrinthe_8c_acaa91713a2728be5e5758220176f22b8}\label{labyrinthe_8c_acaa91713a2728be5e5758220176f22b8}} 
+\index{labyrinthe.\+c@{labyrinthe.\+c}!boucle\+\_\+labyrinthe@{boucle\+\_\+labyrinthe}}
+\index{boucle\+\_\+labyrinthe@{boucle\+\_\+labyrinthe}!labyrinthe.\+c@{labyrinthe.\+c}}
+\subsubsection{\texorpdfstring{boucle\+\_\+labyrinthe()}{boucle\_labyrinthe()}}
+{\footnotesize\ttfamily void boucle\+\_\+labyrinthe (\begin{DoxyParamCaption}\item[{int $\ast$}]{continuer,  }\item[{int $\ast$}]{etat,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},  }\item[{Mix\+\_\+\+Music $\ast$}]{musics\mbox{[}\+N\+B\+\_\+\+M\+U\+S\+I\+C\mbox{]},  }\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{pers,  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{police }\end{DoxyParamCaption})}
+
+
+
+Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage... 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$continuer,pointeur} & sur variable permettant de savoir si le joueur souhaite quitter le programme \\
+\hline
+{\em $\ast$etat,pointeur} & sur variable permettant de connaître l\textquotesingle{}écran dans lequel on est \\
+\hline
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},tableau} & contenant les sons \\
+\hline
+{\em $\ast$musics\mbox{[}\+N\+B\+\_\+\+M\+U\+S\+I\+C\mbox{]},tableau} & contenant les musiques \\
+\hline
+{\em $\ast$pers,la} & structure du personnage \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{labyrinthe_8c_af5c6adcdb1fe9de0b94a36b343fdae0f}\label{labyrinthe_8c_af5c6adcdb1fe9de0b94a36b343fdae0f}} 
+\index{labyrinthe.\+c@{labyrinthe.\+c}!charge\+\_\+toutes\+\_\+textures@{charge\+\_\+toutes\+\_\+textures}}
+\index{charge\+\_\+toutes\+\_\+textures@{charge\+\_\+toutes\+\_\+textures}!labyrinthe.\+c@{labyrinthe.\+c}}
+\subsubsection{\texorpdfstring{charge\+\_\+toutes\+\_\+textures()}{charge\_toutes\_textures()}}
+{\footnotesize\ttfamily void charge\+\_\+toutes\+\_\+textures (\begin{DoxyParamCaption}\item[{\hyperlink{structimage__t}{image\+\_\+t}}]{images\mbox{[}$\,$\mbox{]},  }\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{pers,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{int $\ast$}]{compte\+\_\+ennemi,  }\item[{int $\ast$}]{ennemi\+\_\+max }\end{DoxyParamCaption})}
 
 
 
@@ -84,12 +140,54 @@ Permet de charger toutes les images et de les ranger dans les structures corresp
 \hline
 {\em $\ast$rendu,le} & renderer sur lequel on dessine \\
 \hline
+{\em $\ast$compte\+\_\+ennemi} & est un compteur des ennemis morts \\
+\hline
+{\em $\ast$ennemi\+\_\+max} & est le nombre d\textquotesingle{}ennemi max. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{labyrinthe_8c_ad4315ef10b1b55955c15921e2de5cfe9}\label{labyrinthe_8c_ad4315ef10b1b55955c15921e2de5cfe9}} 
+\index{labyrinthe.\+c@{labyrinthe.\+c}!check\+\_\+ennemi@{check\+\_\+ennemi}}
+\index{check\+\_\+ennemi@{check\+\_\+ennemi}!labyrinthe.\+c@{labyrinthe.\+c}}
+\subsubsection{\texorpdfstring{check\+\_\+ennemi()}{check\_ennemi()}}
+{\footnotesize\ttfamily void check\+\_\+ennemi (\begin{DoxyParamCaption}\item[{int $\ast$}]{ennemi\+\_\+max,  }\item[{int $\ast$}]{compte\+\_\+ennemi,  }\item[{\hyperlink{structsalle__t}{salle\+\_\+t}}]{salles\mbox{[}$\,$\mbox{]},  }\item[{int}]{salle\+\_\+courante,  }\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{pers }\end{DoxyParamCaption})}
+
+
+
+permet d\textquotesingle{}ajouter des pv au joueur selon le nombre d\textquotesingle{}ennemi tué. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$ennemi\+\_\+max} & est le nombre d\textquotesingle{}ennemi max. \\
+\hline
+{\em $\ast$compte\+\_\+ennemi} & est un compteur des ennemis morts \\
+\hline
+{\em salles\mbox{[}$\,$\mbox{]},le} & tableau contenant les salles du jeu \\
+\hline
+{\em salle\+\_\+courante} & Permet de prendre la salle dans laquelle le personnage ce trouve \\
+\hline
+{\em $\ast$pers,la} & structure du personnage \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{labyrinthe_8c_ab7a95c0a468aac8a7ac044bfba80329a}\label{labyrinthe_8c_ab7a95c0a468aac8a7ac044bfba80329a}} 
+\index{labyrinthe.\+c@{labyrinthe.\+c}!choix\+\_\+monstre@{choix\+\_\+monstre}}
+\index{choix\+\_\+monstre@{choix\+\_\+monstre}!labyrinthe.\+c@{labyrinthe.\+c}}
+\subsubsection{\texorpdfstring{choix\+\_\+monstre()}{choix\_monstre()}}
+{\footnotesize\ttfamily int choix\+\_\+monstre (\begin{DoxyParamCaption}\item[{int}]{etage }\end{DoxyParamCaption})}
+
+
+
+Permet de choisir le monstre qui peuplera l\textquotesingle{}étage (sauf certains monstres à certains étages qui ne ressortent pas assez sur les textures) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em etage,l\textquotesingle{}étage} & actuel où se situe le joueur \\
+\hline
 \end{DoxyParams}
 \mbox{\Hypertarget{labyrinthe_8c_a1df93f8f3ffacdca34d1ead8bb681166}\label{labyrinthe_8c_a1df93f8f3ffacdca34d1ead8bb681166}} 
-\index{labyrinthe.c@{labyrinthe.c}!creation\_labyrinthe@{creation\_labyrinthe}}
-\index{creation\_labyrinthe@{creation\_labyrinthe}!labyrinthe.c@{labyrinthe.c}}
-\doxysubsubsection{\texorpdfstring{creation\_labyrinthe()}{creation\_labyrinthe()}}
-{\footnotesize\ttfamily int creation\+\_\+labyrinthe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}}}]{salles\mbox{[}$\,$\mbox{]},  }\item[{int}]{taille,  }\item[{int}]{nb\+\_\+salles\+\_\+a\+\_\+creer }\end{DoxyParamCaption})}
+\index{labyrinthe.\+c@{labyrinthe.\+c}!creation\+\_\+labyrinthe@{creation\+\_\+labyrinthe}}
+\index{creation\+\_\+labyrinthe@{creation\+\_\+labyrinthe}!labyrinthe.\+c@{labyrinthe.\+c}}
+\subsubsection{\texorpdfstring{creation\+\_\+labyrinthe()}{creation\_labyrinthe()}}
+{\footnotesize\ttfamily int creation\+\_\+labyrinthe (\begin{DoxyParamCaption}\item[{\hyperlink{structsalle__t}{salle\+\_\+t}}]{salles\mbox{[}$\,$\mbox{]},  }\item[{int}]{taille,  }\item[{int}]{nb\+\_\+salles\+\_\+a\+\_\+creer }\end{DoxyParamCaption})}
 
 
 
@@ -108,10 +206,10 @@ créer un labyrinthe de salles connectées entres elles, généré aléatoiremen
 l\textquotesingle{}indice de la première salle du laby 
 \end{DoxyReturn}
 \mbox{\Hypertarget{labyrinthe_8c_a8dae688c154d2ac7dbe22ed996476d18}\label{labyrinthe_8c_a8dae688c154d2ac7dbe22ed996476d18}} 
-\index{labyrinthe.c@{labyrinthe.c}!cree\_liaison@{cree\_liaison}}
-\index{cree\_liaison@{cree\_liaison}!labyrinthe.c@{labyrinthe.c}}
-\doxysubsubsection{\texorpdfstring{cree\_liaison()}{cree\_liaison()}}
-{\footnotesize\ttfamily void cree\+\_\+liaison (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}}}]{tab\mbox{[}$\,$\mbox{]},  }\item[{int}]{salle1,  }\item[{int}]{salle2,  }\item[{int}]{porte\+S1 }\end{DoxyParamCaption})}
+\index{labyrinthe.\+c@{labyrinthe.\+c}!cree\+\_\+liaison@{cree\+\_\+liaison}}
+\index{cree\+\_\+liaison@{cree\+\_\+liaison}!labyrinthe.\+c@{labyrinthe.\+c}}
+\subsubsection{\texorpdfstring{cree\+\_\+liaison()}{cree\_liaison()}}
+{\footnotesize\ttfamily void cree\+\_\+liaison (\begin{DoxyParamCaption}\item[{\hyperlink{structsalle__t}{salle\+\_\+t}}]{tab\mbox{[}$\,$\mbox{]},  }\item[{int}]{salle1,  }\item[{int}]{salle2,  }\item[{int}]{porte\+S1 }\end{DoxyParamCaption})}
 
 
 
@@ -119,17 +217,19 @@ Créée les liaisons entre deux salles enfonction de la porte libre sur la premi
 
 
 \begin{DoxyParams}{Paramètres}
-{\em $\ast$s1,la} & première salle pour laquelle on effectue les liaisons \\
+{\em tab,contient} & les différentes salles \\
 \hline
-{\em $\ast$s2,la} & seconde salle pour laquelle on effectue les liaisons \\
+{\em salle1,la} & première salle pour laquelle on effectue les liaisons \\
+\hline
+{\em salle2,la} & seconde salle pour laquelle on effectue les liaisons \\
 \hline
 {\em porte\+S1,la} & porte de la première salle à laquelle on va rattacher la seconde \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{labyrinthe_8c_ae8694792a04ea90eb0f99f37ea5bcb12}\label{labyrinthe_8c_ae8694792a04ea90eb0f99f37ea5bcb12}} 
-\index{labyrinthe.c@{labyrinthe.c}!indice\_salle@{indice\_salle}}
-\index{indice\_salle@{indice\_salle}!labyrinthe.c@{labyrinthe.c}}
-\doxysubsubsection{\texorpdfstring{indice\_salle()}{indice\_salle()}}
+\index{labyrinthe.\+c@{labyrinthe.\+c}!indice\+\_\+salle@{indice\+\_\+salle}}
+\index{indice\+\_\+salle@{indice\+\_\+salle}!labyrinthe.\+c@{labyrinthe.\+c}}
+\subsubsection{\texorpdfstring{indice\+\_\+salle()}{indice\_salle()}}
 {\footnotesize\ttfamily int indice\+\_\+salle (\begin{DoxyParamCaption}\item[{int}]{salle\+\_\+actuelle,  }\item[{int}]{porte\+\_\+salle\+\_\+actuelle,  }\item[{int}]{taille }\end{DoxyParamCaption})}
 
 
@@ -148,11 +248,43 @@ Renvoie l\textquotesingle{}indice d\textquotesingle{}une salle correspondant à 
 \begin{DoxyReturn}{Renvoie}
 l\textquotesingle{}indice de la salle à lier avec la salle courante 
 \end{DoxyReturn}
-\mbox{\Hypertarget{labyrinthe_8c_a58f5b55f5504317713166245f6e4e2dc}\label{labyrinthe_8c_a58f5b55f5504317713166245f6e4e2dc}} 
-\index{labyrinthe.c@{labyrinthe.c}!modifie\_texture\_hud@{modifie\_texture\_hud}}
-\index{modifie\_texture\_hud@{modifie\_texture\_hud}!labyrinthe.c@{labyrinthe.c}}
-\doxysubsubsection{\texorpdfstring{modifie\_texture\_hud()}{modifie\_texture\_hud()}}
-{\footnotesize\ttfamily void modifie\+\_\+texture\+\_\+hud (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$}]{pers,  }\item[{\mbox{\hyperlink{structimage__t}{image\+\_\+t}} $\ast$}]{pv,  }\item[{\mbox{\hyperlink{structimage__t}{image\+\_\+t}} $\ast$}]{etage,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{labyrinthe_8c_a18050db489d818020e8e44d8bacf1303}\label{labyrinthe_8c_a18050db489d818020e8e44d8bacf1303}} 
+\index{labyrinthe.\+c@{labyrinthe.\+c}!init\+\_\+tableau\+\_\+images@{init\+\_\+tableau\+\_\+images}}
+\index{init\+\_\+tableau\+\_\+images@{init\+\_\+tableau\+\_\+images}!labyrinthe.\+c@{labyrinthe.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+tableau\+\_\+images()}{init\_tableau\_images()}}
+{\footnotesize\ttfamily void init\+\_\+tableau\+\_\+images (\begin{DoxyParamCaption}\item[{\hyperlink{structimage__t}{image\+\_\+t}}]{images\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+met à N\+U\+LL tous les pointeurs du tableau 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em images\mbox{[}$\,$\mbox{]},le} & tableau d\textquotesingle{}images \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{labyrinthe_8c_a6611ded1089f127ef4ba210a728fcef3}\label{labyrinthe_8c_a6611ded1089f127ef4ba210a728fcef3}} 
+\index{labyrinthe.\+c@{labyrinthe.\+c}!initialise\+\_\+salles@{initialise\+\_\+salles}}
+\index{initialise\+\_\+salles@{initialise\+\_\+salles}!labyrinthe.\+c@{labyrinthe.\+c}}
+\subsubsection{\texorpdfstring{initialise\+\_\+salles()}{initialise\_salles()}}
+{\footnotesize\ttfamily void initialise\+\_\+salles (\begin{DoxyParamCaption}\item[{\hyperlink{structsalle__t}{salle\+\_\+t}}]{tab\mbox{[}$\,$\mbox{]},  }\item[{int}]{taille }\end{DoxyParamCaption})}
+
+
+
+remplit les tableaux des salles, initialise les variables 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em tab,contient} & les différentes salles \\
+\hline
+{\em taille,taille} & du tableau \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{labyrinthe_8c_aac1526eaedf6a6a7865de5ab09d91778}\label{labyrinthe_8c_aac1526eaedf6a6a7865de5ab09d91778}} 
+\index{labyrinthe.\+c@{labyrinthe.\+c}!modifie\+\_\+texture\+\_\+hud@{modifie\+\_\+texture\+\_\+hud}}
+\index{modifie\+\_\+texture\+\_\+hud@{modifie\+\_\+texture\+\_\+hud}!labyrinthe.\+c@{labyrinthe.\+c}}
+\subsubsection{\texorpdfstring{modifie\+\_\+texture\+\_\+hud()}{modifie\_texture\_hud()}}
+{\footnotesize\ttfamily void modifie\+\_\+texture\+\_\+hud (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{pers,  }\item[{\hyperlink{structimage__t}{image\+\_\+t} $\ast$}]{pv,  }\item[{\hyperlink{structimage__t}{image\+\_\+t} $\ast$}]{etage,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{\hyperlink{structimage__t}{image\+\_\+t} $\ast$}]{counter,  }\item[{int $\ast$}]{compte\+\_\+ennemi,  }\item[{int $\ast$}]{ennemi\+\_\+max,  }\item[{int $\ast$}]{compt\+\_\+ennold }\end{DoxyParamCaption})}
 
 
 
@@ -168,11 +300,17 @@ Permet de mettre à jour le H\+UD selon que les P\+DV ou l\textquotesingle{}éta
 \hline
 {\em $\ast$rendu,le} & renderer sur lequel on dessine \\
 \hline
+{\em $\ast$ennemi\+\_\+max} & est le nombre d\textquotesingle{}ennemi max. \\
+\hline
+{\em $\ast$compte\+\_\+ennemi} & est un compteur des ennemis morts \\
+\hline
+{\em $\ast$compt\+\_\+ennold} & valeur d\textquotesingle{}un ancien compteur ennemis \\
+\hline
 \end{DoxyParams}
 \mbox{\Hypertarget{labyrinthe_8c_a70a1b9723d5630b15980cdaf5d6c636d}\label{labyrinthe_8c_a70a1b9723d5630b15980cdaf5d6c636d}} 
-\index{labyrinthe.c@{labyrinthe.c}!nb\_salles\_par\_etage@{nb\_salles\_par\_etage}}
-\index{nb\_salles\_par\_etage@{nb\_salles\_par\_etage}!labyrinthe.c@{labyrinthe.c}}
-\doxysubsubsection{\texorpdfstring{nb\_salles\_par\_etage()}{nb\_salles\_par\_etage()}}
+\index{labyrinthe.\+c@{labyrinthe.\+c}!nb\+\_\+salles\+\_\+par\+\_\+etage@{nb\+\_\+salles\+\_\+par\+\_\+etage}}
+\index{nb\+\_\+salles\+\_\+par\+\_\+etage@{nb\+\_\+salles\+\_\+par\+\_\+etage}!labyrinthe.\+c@{labyrinthe.\+c}}
+\subsubsection{\texorpdfstring{nb\+\_\+salles\+\_\+par\+\_\+etage()}{nb\_salles\_par\_etage()}}
 {\footnotesize\ttfamily int nb\+\_\+salles\+\_\+par\+\_\+etage (\begin{DoxyParamCaption}\item[{int}]{etage }\end{DoxyParamCaption})}
 
 
@@ -188,10 +326,10 @@ Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacemen
 le nombres de salles à créer pour cet étage 
 \end{DoxyReturn}
 \mbox{\Hypertarget{labyrinthe_8c_ad82ec89667610a13923d806c205b9e46}\label{labyrinthe_8c_ad82ec89667610a13923d806c205b9e46}} 
-\index{labyrinthe.c@{labyrinthe.c}!salles\_compatibles@{salles\_compatibles}}
-\index{salles\_compatibles@{salles\_compatibles}!labyrinthe.c@{labyrinthe.c}}
-\doxysubsubsection{\texorpdfstring{salles\_compatibles()}{salles\_compatibles()}}
-{\footnotesize\ttfamily int salles\+\_\+compatibles (\begin{DoxyParamCaption}\item[{int}]{salle1,  }\item[{int}]{porte1,  }\item[{int}]{salle2,  }\item[{int}]{porte2,  }\item[{\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}}}]{salles\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+\index{labyrinthe.\+c@{labyrinthe.\+c}!salles\+\_\+compatibles@{salles\+\_\+compatibles}}
+\index{salles\+\_\+compatibles@{salles\+\_\+compatibles}!labyrinthe.\+c@{labyrinthe.\+c}}
+\subsubsection{\texorpdfstring{salles\+\_\+compatibles()}{salles\_compatibles()}}
+{\footnotesize\ttfamily int salles\+\_\+compatibles (\begin{DoxyParamCaption}\item[{int}]{salle1,  }\item[{int}]{porte1,  }\item[{int}]{salle2,  }\item[{int}]{porte2,  }\item[{\hyperlink{structsalle__t}{salle\+\_\+t}}]{salles\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
 
 
 
@@ -211,3 +349,52 @@ Permet de savoir si deux salles sont compatibles entre elles.
 \begin{DoxyReturn}{Renvoie}
 True si les salles sont compatibles, false sinon 
 \end{DoxyReturn}
+\mbox{\Hypertarget{labyrinthe_8c_ad741733c59a1c247f0cdd30e3460f481}\label{labyrinthe_8c_ad741733c59a1c247f0cdd30e3460f481}} 
+\index{labyrinthe.\+c@{labyrinthe.\+c}!tirage\+\_\+au\+\_\+sort\+\_\+porte\+\_\+a\+\_\+creer@{tirage\+\_\+au\+\_\+sort\+\_\+porte\+\_\+a\+\_\+creer}}
+\index{tirage\+\_\+au\+\_\+sort\+\_\+porte\+\_\+a\+\_\+creer@{tirage\+\_\+au\+\_\+sort\+\_\+porte\+\_\+a\+\_\+creer}!labyrinthe.\+c@{labyrinthe.\+c}}
+\subsubsection{\texorpdfstring{tirage\+\_\+au\+\_\+sort\+\_\+porte\+\_\+a\+\_\+creer()}{tirage\_au\_sort\_porte\_a\_creer()}}
+{\footnotesize\ttfamily int tirage\+\_\+au\+\_\+sort\+\_\+porte\+\_\+a\+\_\+creer (\begin{DoxyParamCaption}\item[{int}]{indice,  }\item[{int}]{taille,  }\item[{\hyperlink{structsalle__t}{salle\+\_\+t}}]{salles\mbox{[}$\,$\mbox{]},  }\item[{int}]{tentatives }\end{DoxyParamCaption})}
+
+
+
+Permet de renvoyer la direction vers laquelle on peut tenter de créer une liaison avec une autre salle. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em salles\mbox{[}$\,$\mbox{]},tableau} & des salles du labyrinthe \\
+\hline
+{\em taille,la} & taille d\textquotesingle{}une ligne ou d\textquotesingle{}une colonne du tableau \\
+\hline
+{\em indice,l\textquotesingle{}indice} & de la salle courante \\
+\hline
+{\em tentatives,le} & nombres d\textquotesingle{}essais pour trouver une liaison avec le jeu de données actuelles\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+la direction valide dans laquelle créée une porte selon l\textquotesingle{}emplacement de la salle actuelle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{labyrinthe_8c_a2bf4267f645d0cd3b29d678757f8317a}\label{labyrinthe_8c_a2bf4267f645d0cd3b29d678757f8317a}} 
+\index{labyrinthe.\+c@{labyrinthe.\+c}!vers\+\_\+ecran\+\_\+combat@{vers\+\_\+ecran\+\_\+combat}}
+\index{vers\+\_\+ecran\+\_\+combat@{vers\+\_\+ecran\+\_\+combat}!labyrinthe.\+c@{labyrinthe.\+c}}
+\subsubsection{\texorpdfstring{vers\+\_\+ecran\+\_\+combat()}{vers\_ecran\_combat()}}
+{\footnotesize\ttfamily void vers\+\_\+ecran\+\_\+combat (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},  }\item[{\hyperlink{structtouches__t}{touches\+\_\+t} $\ast$}]{clavier,  }\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{pers,  }\item[{\hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$}]{ennemi,  }\item[{Mix\+\_\+\+Music $\ast$}]{musics\mbox{[}\+N\+B\+\_\+\+M\+U\+S\+I\+C\mbox{]},  }\item[{int $\ast$}]{etat }\end{DoxyParamCaption})}
+
+
+
+permet d\textquotesingle{}effectuer l\textquotesingle{}animation d\textquotesingle{}entrée en combat, l\textquotesingle{}arrêt des sons, la réinitialisation du tableau des touches et envoie le joueur vers le combat au tour par tour 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},tableau} & contenant les sons \\
+\hline
+{\em $\ast$musics\mbox{[}\+N\+B\+\_\+\+M\+U\+S\+I\+C\mbox{]},tableau} & contenant les musiques \\
+\hline
+{\em $\ast$pers,la} & structure du personnage \\
+\hline
+{\em $\ast$clavier,structure} & représentant les touchs du clavier enfoncées par le joueur \\
+\hline
+{\em $\ast$ennemi,l\textquotesingle{}ennemi} & contre lequel le joueur va combattre \\
+\hline
+\end{DoxyParams}

@@ -1,5 +1,5 @@
-\hypertarget{salle_8c}{}\doxysection{Référence du fichier salle.\+c}
-\label{salle_8c}\index{salle.c@{salle.c}}
+\hypertarget{salle_8c}{}\section{Référence du fichier salle.\+c}
+\label{salle_8c}\index{salle.\+c@{salle.\+c}}
 
 
 Programme qui créé une salle et l\textquotesingle{}affiche.  
@@ -8,38 +8,45 @@ Programme qui créé une salle et l\textquotesingle{}affiche.
 {\ttfamily \#include \char`\"{}../include/constantes.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../include/labyrinthe.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../include/fonctions.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/salle.\+h\char`\"{}}\newline
 Graphe des dépendances par inclusion de salle.\+c\+:
 % FIG 0
-\doxysubsection*{Fonctions}
+\subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{salle_8c_a72924cdd696e4afd7b839337ace19e9c}{init\+\_\+salle}} (int salle\mbox{[}T\+A\+I\+L\+L\+E\+\_\+\+S\+A\+L\+LE\mbox{]}\mbox{[}T\+A\+I\+L\+L\+E\+\_\+\+S\+A\+L\+LE\mbox{]})
+void \hyperlink{salle_8c_a72924cdd696e4afd7b839337ace19e9c}{init\+\_\+salle} (int salle\mbox{[}T\+A\+I\+L\+L\+E\+\_\+\+S\+A\+L\+LE\mbox{]}\mbox{[}T\+A\+I\+L\+L\+E\+\_\+\+S\+A\+L\+LE\mbox{]})
 \begin{DoxyCompactList}\small\item\em fonction qui génère une salle en un tableau \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{salle_8c_a956c6af0fd478d5d77105b9b3e2d9ae8}{ajout\+\_\+porte\+\_\+salle}} (int salle\mbox{[}T\+A\+I\+L\+L\+E\+\_\+\+S\+A\+L\+LE\mbox{]}\mbox{[}T\+A\+I\+L\+L\+E\+\_\+\+S\+A\+L\+LE\mbox{]}, int direction)
+void \hyperlink{salle_8c_a956c6af0fd478d5d77105b9b3e2d9ae8}{ajout\+\_\+porte\+\_\+salle} (int salle\mbox{[}T\+A\+I\+L\+L\+E\+\_\+\+S\+A\+L\+LE\mbox{]}\mbox{[}T\+A\+I\+L\+L\+E\+\_\+\+S\+A\+L\+LE\mbox{]}, int direction)
 \begin{DoxyCompactList}\small\item\em fonction qui ajoute une porte à un côté du carré \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{salle_8c_a02d63a57b719a5f2293a57004c6bdfe3}{afficher\+\_\+salle}} (\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} $\ast$salle, S\+D\+L\+\_\+\+Renderer $\ast$rendu, \mbox{\hyperlink{structimage__t}{image\+\_\+t}} texture\mbox{[}$\,$\mbox{]})
+void \hyperlink{salle_8c_a02d63a57b719a5f2293a57004c6bdfe3}{afficher\+\_\+salle} (\hyperlink{structsalle__t}{salle\+\_\+t} $\ast$salle, S\+D\+L\+\_\+\+Renderer $\ast$rendu, \hyperlink{structimage__t}{image\+\_\+t} texture\mbox{[}$\,$\mbox{]})
 \begin{DoxyCompactList}\small\item\em fonction qui génère une salle en un tableau \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{salle_8c_aede6ff0302858d4beacbb91652be15c3}{rempli\+\_\+tableau\+\_\+murs\+\_\+portes}} (\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} salle\mbox{[}$\,$\mbox{]}, int indiceT)
+void \hyperlink{salle_8c_aede6ff0302858d4beacbb91652be15c3}{rempli\+\_\+tableau\+\_\+murs\+\_\+portes} (\hyperlink{structsalle__t}{salle\+\_\+t} salle\mbox{[}$\,$\mbox{]}, int indiceT)
 \begin{DoxyCompactList}\small\item\em rempli les tableaux des murs et des portes de la salle afin de pouvoir gérer les collisions plus tard \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{salle_8c_aa20d8212045b0c56094a82c56277951e}{inverse\+\_\+porte}} (int porte)
+int \hyperlink{salle_8c_aa20d8212045b0c56094a82c56277951e}{inverse\+\_\+porte} (int porte)
 \begin{DoxyCompactList}\small\item\em Renvoie l\textquotesingle{}opposée de la porte passée en paramètre. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{salle_8c_a86a7d9453a068f07c6edeaf1c27d1f4c}{textures\+\_\+aleatoires}} (\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} salles\mbox{[}$\,$\mbox{]}, int taille)
+void \hyperlink{salle_8c_a86a7d9453a068f07c6edeaf1c27d1f4c}{textures\+\_\+aleatoires} (\hyperlink{structsalle__t}{salle\+\_\+t} salles\mbox{[}$\,$\mbox{]}, int taille)
 \begin{DoxyCompactList}\small\item\em Permet de placer des textures différentes afin de varier le visuel des salles. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{salle_8c_a146edd55b79ced2a0be58d90c1beab5b}\label{salle_8c_a146edd55b79ced2a0be58d90c1beab5b}} 
-void {\bfseries place\+\_\+monstre\+\_\+coffre\+\_\+boss} (\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} tab\mbox{[}$\,$\mbox{]}, int taille, int type\+\_\+ennemi, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
-\item 
+void \hyperlink{salle_8c_a46f567399dde3ba6bb3aa491d6cf8b19}{place\+\_\+monstre\+\_\+coffre\+\_\+boss} (\hyperlink{structsalle__t}{salle\+\_\+t} tab\mbox{[}$\,$\mbox{]}, int taille, int type\+\_\+ennemi, S\+D\+L\+\_\+\+Renderer $\ast$rendu, int $\ast$ennemi\+\_\+max)
+\begin{DoxyCompactList}\small\item\em rempli les salles de monstres, de coffre \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{salle_8c_a9e674506a31041499ff8034a7c91b492}\label{salle_8c_a9e674506a31041499ff8034a7c91b492}} 
-void {\bfseries creation\+\_\+mini\+\_\+map} (int taille, \mbox{\hyperlink{structmini__map__t}{mini\+\_\+map\+\_\+t}} $\ast$map)
+void {\bfseries creation\+\_\+mini\+\_\+map} (int taille, \hyperlink{structmini__map__t}{mini\+\_\+map\+\_\+t} $\ast$map)
 \item 
-void \mbox{\hyperlink{salle_8c_aa011cf4bea060eca7a9f281c5036e604}{ajoute\+\_\+salle\+\_\+decouverte}} (\mbox{\hyperlink{structmini__map__t}{mini\+\_\+map\+\_\+t}} $\ast$map, int indice)
+void \hyperlink{salle_8c_ae696390a6c39e9dca4eb8cd9a97ac4ef}{ajoute\+\_\+salle\+\_\+decouverte} (\hyperlink{structmini__map__t}{mini\+\_\+map\+\_\+t} $\ast$map, \hyperlink{structsalle__t}{salle\+\_\+t} salles\mbox{[}$\,$\mbox{]}, int indice, int $\ast$salle\+\_\+pred)
 \item 
-void \mbox{\hyperlink{salle_8c_ad870ed4aa8da67448c72ff425ae5d14d}{ajoute\+\_\+ennemi}} (\mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$$\ast$ennemi, int type, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
+void \hyperlink{salle_8c_a7f0d53fa540d44b1b479ca76a81b18eb}{ajoute\+\_\+ennemi} (\hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$$\ast$ennemi, int type, S\+D\+L\+\_\+\+Renderer $\ast$rendu, int etage)
 \begin{DoxyCompactList}\small\item\em créer un ennemi à partir d\textquotesingle{}un type donné \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{salle_8c_ad502ea03dc71a11a4f05db0f7c151dee}{creer\+\_\+ennemi\+\_\+pointeur}} (\mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$$\ast$ennemi, \mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$$\ast$ennemi2, int boss, int nb\+\_\+ennemi, int type, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
-\begin{DoxyCompactList}\small\item\em créer un/des ennemi à partir d\textquotesingle{}un type donné \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \hyperlink{salle_8c_aab2aad656937ab08f044472034beb759}{placer\+\_\+monstre} (\hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$ennemi)
+\begin{DoxyCompactList}\small\item\em place l\textquotesingle{}ennemi de façon à ne pas bloquer les portes \end{DoxyCompactList}\item 
+void \hyperlink{salle_8c_a0239bd5bf9337fe5eaca57ff879cde6a}{creer\+\_\+ennemi\+\_\+pointeur} (\hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$$\ast$ennemi, \hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$$\ast$ennemi2, int nb\+\_\+ennemi, int type, S\+D\+L\+\_\+\+Renderer $\ast$rendu, int etage)
+\begin{DoxyCompactList}\small\item\em créer un/des ennemi à partir d\textquotesingle{}un type donné \end{DoxyCompactList}\item 
+void \hyperlink{salle_8c_a4901e1747020375b5593d98e26f914d0}{affiche\+\_\+mini\+\_\+map} (\hyperlink{structmini__map__t}{mini\+\_\+map\+\_\+t} map, \hyperlink{structsalle__t}{salle\+\_\+t} salle, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
+\begin{DoxyCompactList}\small\item\em effectue l\textquotesingle{}affichage à l\textquotesingle{}écran de la minimap \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{salle_8c_a22b4b3e0fa4eb556deb21b3465cb6a30}\label{salle_8c_a22b4b3e0fa4eb556deb21b3465cb6a30}} 
+void {\bfseries ennemi\+\_\+selon\+\_\+etage} (int etage, int boss, \hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$ennemi)
+\end{DoxyCompactItemize}
 
 
-\doxysubsection{Description détaillée}
+\subsection{Description détaillée}
 Programme qui créé une salle et l\textquotesingle{}affiche. 
 
 \begin{DoxyAuthor}{Auteur}
@@ -53,12 +60,31 @@ Programme qui créé une salle et l\textquotesingle{}affiche.
 \end{DoxyDate}
 
 
-\doxysubsection{Documentation des fonctions}
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{salle_8c_a4901e1747020375b5593d98e26f914d0}\label{salle_8c_a4901e1747020375b5593d98e26f914d0}} 
+\index{salle.\+c@{salle.\+c}!affiche\+\_\+mini\+\_\+map@{affiche\+\_\+mini\+\_\+map}}
+\index{affiche\+\_\+mini\+\_\+map@{affiche\+\_\+mini\+\_\+map}!salle.\+c@{salle.\+c}}
+\subsubsection{\texorpdfstring{affiche\+\_\+mini\+\_\+map()}{affiche\_mini\_map()}}
+{\footnotesize\ttfamily void affiche\+\_\+mini\+\_\+map (\begin{DoxyParamCaption}\item[{\hyperlink{structmini__map__t}{mini\+\_\+map\+\_\+t}}]{map,  }\item[{\hyperlink{structsalle__t}{salle\+\_\+t}}]{salle,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu }\end{DoxyParamCaption})}
+
+
+
+effectue l\textquotesingle{}affichage à l\textquotesingle{}écran de la minimap 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map,la} & structure contenant la minimap \\
+\hline
+{\em salle,la} & salle dans laquelle se situe le joueur \\
+\hline
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{salle_8c_a02d63a57b719a5f2293a57004c6bdfe3}\label{salle_8c_a02d63a57b719a5f2293a57004c6bdfe3}} 
-\index{salle.c@{salle.c}!afficher\_salle@{afficher\_salle}}
-\index{afficher\_salle@{afficher\_salle}!salle.c@{salle.c}}
-\doxysubsubsection{\texorpdfstring{afficher\_salle()}{afficher\_salle()}}
-{\footnotesize\ttfamily void afficher\+\_\+salle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} $\ast$}]{salle,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{\mbox{\hyperlink{structimage__t}{image\+\_\+t}}}]{texture\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+\index{salle.\+c@{salle.\+c}!afficher\+\_\+salle@{afficher\+\_\+salle}}
+\index{afficher\+\_\+salle@{afficher\+\_\+salle}!salle.\+c@{salle.\+c}}
+\subsubsection{\texorpdfstring{afficher\+\_\+salle()}{afficher\_salle()}}
+{\footnotesize\ttfamily void afficher\+\_\+salle (\begin{DoxyParamCaption}\item[{\hyperlink{structsalle__t}{salle\+\_\+t} $\ast$}]{salle,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{\hyperlink{structimage__t}{image\+\_\+t}}]{texture\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
 
 
 
@@ -74,9 +100,9 @@ fonction qui génère une salle en un tableau
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{salle_8c_a956c6af0fd478d5d77105b9b3e2d9ae8}\label{salle_8c_a956c6af0fd478d5d77105b9b3e2d9ae8}} 
-\index{salle.c@{salle.c}!ajout\_porte\_salle@{ajout\_porte\_salle}}
-\index{ajout\_porte\_salle@{ajout\_porte\_salle}!salle.c@{salle.c}}
-\doxysubsubsection{\texorpdfstring{ajout\_porte\_salle()}{ajout\_porte\_salle()}}
+\index{salle.\+c@{salle.\+c}!ajout\+\_\+porte\+\_\+salle@{ajout\+\_\+porte\+\_\+salle}}
+\index{ajout\+\_\+porte\+\_\+salle@{ajout\+\_\+porte\+\_\+salle}!salle.\+c@{salle.\+c}}
+\subsubsection{\texorpdfstring{ajout\+\_\+porte\+\_\+salle()}{ajout\_porte\_salle()}}
 {\footnotesize\ttfamily void ajout\+\_\+porte\+\_\+salle (\begin{DoxyParamCaption}\item[{int}]{salle\mbox{[}\+T\+A\+I\+L\+L\+E\+\_\+\+S\+A\+L\+L\+E\mbox{]}\mbox{[}\+T\+A\+I\+L\+L\+E\+\_\+\+S\+A\+L\+L\+E\mbox{]},  }\item[{int}]{direction }\end{DoxyParamCaption})}
 
 
@@ -90,11 +116,11 @@ fonction qui ajoute une porte à un côté du carré
 {\em direction} & correspond à un nombre entre 0 et 3 indiquant quel mur est seléctionné. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{salle_8c_ad870ed4aa8da67448c72ff425ae5d14d}\label{salle_8c_ad870ed4aa8da67448c72ff425ae5d14d}} 
-\index{salle.c@{salle.c}!ajoute\_ennemi@{ajoute\_ennemi}}
-\index{ajoute\_ennemi@{ajoute\_ennemi}!salle.c@{salle.c}}
-\doxysubsubsection{\texorpdfstring{ajoute\_ennemi()}{ajoute\_ennemi()}}
-{\footnotesize\ttfamily void ajoute\+\_\+ennemi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$$\ast$}]{ennemi,  }\item[{int}]{type,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{salle_8c_a7f0d53fa540d44b1b479ca76a81b18eb}\label{salle_8c_a7f0d53fa540d44b1b479ca76a81b18eb}} 
+\index{salle.\+c@{salle.\+c}!ajoute\+\_\+ennemi@{ajoute\+\_\+ennemi}}
+\index{ajoute\+\_\+ennemi@{ajoute\+\_\+ennemi}!salle.\+c@{salle.\+c}}
+\subsubsection{\texorpdfstring{ajoute\+\_\+ennemi()}{ajoute\_ennemi()}}
+{\footnotesize\ttfamily void ajoute\+\_\+ennemi (\begin{DoxyParamCaption}\item[{\hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$$\ast$}]{ennemi,  }\item[{int}]{type,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{int}]{etage }\end{DoxyParamCaption})}
 
 
 
@@ -102,31 +128,37 @@ créer un ennemi à partir d\textquotesingle{}un type donné
 
 
 \begin{DoxyParams}{Paramètres}
-{\em $\ast$$\ast$ennemi,pointeur} & sur pointeur de type \mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}}, l\textquotesingle{}ennemi que l\textquotesingle{}on va créer \\
+{\em $\ast$$\ast$ennemi,pointeur} & sur pointeur de type \hyperlink{structennemi__t}{ennemi\+\_\+t}, l\textquotesingle{}ennemi que l\textquotesingle{}on va créer \\
 \hline
 {\em type,le} & type d\textquotesingle{}ennemi que l\textquotesingle{}en veut créer. \\
 \hline
 {\em $\ast$rendu,le} & renderer sur lequel on dessine \\
 \hline
+{\em etage,l\textquotesingle{}étage} & où se situe le joueur \\
+\hline
 \end{DoxyParams}
-\mbox{\Hypertarget{salle_8c_aa011cf4bea060eca7a9f281c5036e604}\label{salle_8c_aa011cf4bea060eca7a9f281c5036e604}} 
-\index{salle.c@{salle.c}!ajoute\_salle\_decouverte@{ajoute\_salle\_decouverte}}
-\index{ajoute\_salle\_decouverte@{ajoute\_salle\_decouverte}!salle.c@{salle.c}}
-\doxysubsubsection{\texorpdfstring{ajoute\_salle\_decouverte()}{ajoute\_salle\_decouverte()}}
-{\footnotesize\ttfamily void ajoute\+\_\+salle\+\_\+decouverte (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmini__map__t}{mini\+\_\+map\+\_\+t}} $\ast$}]{map,  }\item[{int}]{indice }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{salle_8c_ae696390a6c39e9dca4eb8cd9a97ac4ef}\label{salle_8c_ae696390a6c39e9dca4eb8cd9a97ac4ef}} 
+\index{salle.\+c@{salle.\+c}!ajoute\+\_\+salle\+\_\+decouverte@{ajoute\+\_\+salle\+\_\+decouverte}}
+\index{ajoute\+\_\+salle\+\_\+decouverte@{ajoute\+\_\+salle\+\_\+decouverte}!salle.\+c@{salle.\+c}}
+\subsubsection{\texorpdfstring{ajoute\+\_\+salle\+\_\+decouverte()}{ajoute\_salle\_decouverte()}}
+{\footnotesize\ttfamily void ajoute\+\_\+salle\+\_\+decouverte (\begin{DoxyParamCaption}\item[{\hyperlink{structmini__map__t}{mini\+\_\+map\+\_\+t} $\ast$}]{map,  }\item[{\hyperlink{structsalle__t}{salle\+\_\+t}}]{salles\mbox{[}$\,$\mbox{]},  }\item[{int}]{indice,  }\item[{int $\ast$}]{salle\+\_\+pred }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Paramètres}
 {\em $\ast$map,un} & pointeur sur la minimap que l\textquotesingle{}on modifie \\
 \hline
-{\em indice,la} & salle actuelle dans le tableau de salles\\
+{\em salles\mbox{[}$\,$\mbox{]},le} & tableau des salles du labyrinthe \\
+\hline
+{\em indice,la} & salle actuelle dans le tableau de salles \\
+\hline
+{\em $\ast$salle\+\_\+pred,pointeur} & sur un entier stockant l\textquotesingle{}indice de la salle précédente\\
 \hline
 \end{DoxyParams}
-\textbackslash{}bief Ajoute la salle où se situe le joueur dans le tableau de salles découvertes \mbox{\Hypertarget{salle_8c_ad502ea03dc71a11a4f05db0f7c151dee}\label{salle_8c_ad502ea03dc71a11a4f05db0f7c151dee}} 
-\index{salle.c@{salle.c}!creer\_ennemi\_pointeur@{creer\_ennemi\_pointeur}}
-\index{creer\_ennemi\_pointeur@{creer\_ennemi\_pointeur}!salle.c@{salle.c}}
-\doxysubsubsection{\texorpdfstring{creer\_ennemi\_pointeur()}{creer\_ennemi\_pointeur()}}
-{\footnotesize\ttfamily void creer\+\_\+ennemi\+\_\+pointeur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$$\ast$}]{ennemi,  }\item[{\mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$$\ast$}]{ennemi2,  }\item[{int}]{boss,  }\item[{int}]{nb\+\_\+ennemi,  }\item[{int}]{type,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu }\end{DoxyParamCaption})}
+Ajoute la salle où se situe le joueur dans le tableau de salles découvertes \mbox{\Hypertarget{salle_8c_a0239bd5bf9337fe5eaca57ff879cde6a}\label{salle_8c_a0239bd5bf9337fe5eaca57ff879cde6a}} 
+\index{salle.\+c@{salle.\+c}!creer\+\_\+ennemi\+\_\+pointeur@{creer\+\_\+ennemi\+\_\+pointeur}}
+\index{creer\+\_\+ennemi\+\_\+pointeur@{creer\+\_\+ennemi\+\_\+pointeur}!salle.\+c@{salle.\+c}}
+\subsubsection{\texorpdfstring{creer\+\_\+ennemi\+\_\+pointeur()}{creer\_ennemi\_pointeur()}}
+{\footnotesize\ttfamily creer\+\_\+ennemi\+\_\+pointeur (\begin{DoxyParamCaption}\item[{\hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$$\ast$}]{ennemi,  }\item[{\hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$$\ast$}]{ennemi2,  }\item[{int}]{nb\+\_\+ennemi,  }\item[{int}]{type,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{int}]{etage }\end{DoxyParamCaption})}
 
 
 
@@ -134,23 +166,23 @@ créer un/des ennemi à partir d\textquotesingle{}un type donné
 
 
 \begin{DoxyParams}{Paramètres}
-{\em $\ast$$\ast$ennemi,pointeur} & sur pointeur de type \mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}}, l\textquotesingle{}ennemi que l\textquotesingle{}on va peut-\/être créer \\
+{\em $\ast$$\ast$ennemi,pointeur} & sur pointeur de type \hyperlink{structennemi__t}{ennemi\+\_\+t}, l\textquotesingle{}ennemi que l\textquotesingle{}on va peut-\/être créer \\
 \hline
-{\em $\ast$$\ast$ennemi2,pointeur} & sur pointeur de type \mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}}, l\textquotesingle{}ennemi que l\textquotesingle{}on va peut-\/être créer \\
+{\em $\ast$$\ast$ennemi2,pointeur} & sur pointeur de type \hyperlink{structennemi__t}{ennemi\+\_\+t}, l\textquotesingle{}ennemi que l\textquotesingle{}on va peut-\/être créer \\
+\hline
+{\em nb\+\_\+ennemi,peremet} & de savoir combien d\textquotesingle{}ennemis sont à créer \\
 \hline
 {\em type,le} & type d\textquotesingle{}ennemi que l\textquotesingle{}en veut créer. \\
 \hline
 {\em $\ast$rendu,le} & renderer sur lequel on dessine \\
 \hline
-{\em boss,permet} & de savoir si c\textquotesingle{}est un boss ou un ennemi classique que l\textquotesingle{}on doit créer \\
-\hline
-{\em nb\+\_\+ennemi,peremet} & de savoir combien d\textquotesingle{}ennemis sont à créer \\
+{\em etage,l\textquotesingle{}étage} & où se situe le joueur \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{salle_8c_a72924cdd696e4afd7b839337ace19e9c}\label{salle_8c_a72924cdd696e4afd7b839337ace19e9c}} 
-\index{salle.c@{salle.c}!init\_salle@{init\_salle}}
-\index{init\_salle@{init\_salle}!salle.c@{salle.c}}
-\doxysubsubsection{\texorpdfstring{init\_salle()}{init\_salle()}}
+\index{salle.\+c@{salle.\+c}!init\+\_\+salle@{init\+\_\+salle}}
+\index{init\+\_\+salle@{init\+\_\+salle}!salle.\+c@{salle.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+salle()}{init\_salle()}}
 {\footnotesize\ttfamily void init\+\_\+salle (\begin{DoxyParamCaption}\item[{int}]{salle\mbox{[}\+T\+A\+I\+L\+L\+E\+\_\+\+S\+A\+L\+L\+E\mbox{]}\mbox{[}\+T\+A\+I\+L\+L\+E\+\_\+\+S\+A\+L\+L\+E\mbox{]} }\end{DoxyParamCaption})}
 
 
@@ -163,9 +195,9 @@ fonction qui génère une salle en un tableau
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{salle_8c_aa20d8212045b0c56094a82c56277951e}\label{salle_8c_aa20d8212045b0c56094a82c56277951e}} 
-\index{salle.c@{salle.c}!inverse\_porte@{inverse\_porte}}
-\index{inverse\_porte@{inverse\_porte}!salle.c@{salle.c}}
-\doxysubsubsection{\texorpdfstring{inverse\_porte()}{inverse\_porte()}}
+\index{salle.\+c@{salle.\+c}!inverse\+\_\+porte@{inverse\+\_\+porte}}
+\index{inverse\+\_\+porte@{inverse\+\_\+porte}!salle.\+c@{salle.\+c}}
+\subsubsection{\texorpdfstring{inverse\+\_\+porte()}{inverse\_porte()}}
 {\footnotesize\ttfamily int inverse\+\_\+porte (\begin{DoxyParamCaption}\item[{int}]{porte }\end{DoxyParamCaption})}
 
 
@@ -180,11 +212,47 @@ Renvoie l\textquotesingle{}opposée de la porte passée en paramètre.
 \begin{DoxyReturn}{Renvoie}
 l\textquotesingle{}inverse de la porte passée en paramètre 
 \end{DoxyReturn}
+\mbox{\Hypertarget{salle_8c_a46f567399dde3ba6bb3aa491d6cf8b19}\label{salle_8c_a46f567399dde3ba6bb3aa491d6cf8b19}} 
+\index{salle.\+c@{salle.\+c}!place\+\_\+monstre\+\_\+coffre\+\_\+boss@{place\+\_\+monstre\+\_\+coffre\+\_\+boss}}
+\index{place\+\_\+monstre\+\_\+coffre\+\_\+boss@{place\+\_\+monstre\+\_\+coffre\+\_\+boss}!salle.\+c@{salle.\+c}}
+\subsubsection{\texorpdfstring{place\+\_\+monstre\+\_\+coffre\+\_\+boss()}{place\_monstre\_coffre\_boss()}}
+{\footnotesize\ttfamily void place\+\_\+monstre\+\_\+coffre\+\_\+boss (\begin{DoxyParamCaption}\item[{\hyperlink{structsalle__t}{salle\+\_\+t}}]{tab\mbox{[}$\,$\mbox{]},  }\item[{int}]{taille,  }\item[{int}]{type\+\_\+ennemi,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{int $\ast$}]{ennemi\+\_\+max }\end{DoxyParamCaption})}
+
+
+
+rempli les salles de monstres, de coffre 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em tab\mbox{[}$\,$\mbox{]},tableau} & contenant les salles du labyrinthe \\
+\hline
+{\em taille,taille} & du tableau \\
+\hline
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$ennemi\+\_\+max} & est le nombre d\textquotesingle{}ennemi max. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{salle_8c_aab2aad656937ab08f044472034beb759}\label{salle_8c_aab2aad656937ab08f044472034beb759}} 
+\index{salle.\+c@{salle.\+c}!placer\+\_\+monstre@{placer\+\_\+monstre}}
+\index{placer\+\_\+monstre@{placer\+\_\+monstre}!salle.\+c@{salle.\+c}}
+\subsubsection{\texorpdfstring{placer\+\_\+monstre()}{placer\_monstre()}}
+{\footnotesize\ttfamily void placer\+\_\+monstre (\begin{DoxyParamCaption}\item[{\hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$}]{ennemi }\end{DoxyParamCaption})}
+
+
+
+place l\textquotesingle{}ennemi de façon à ne pas bloquer les portes 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$ennemi,l\textquotesingle{}ennemi} & à modifier \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{salle_8c_aede6ff0302858d4beacbb91652be15c3}\label{salle_8c_aede6ff0302858d4beacbb91652be15c3}} 
-\index{salle.c@{salle.c}!rempli\_tableau\_murs\_portes@{rempli\_tableau\_murs\_portes}}
-\index{rempli\_tableau\_murs\_portes@{rempli\_tableau\_murs\_portes}!salle.c@{salle.c}}
-\doxysubsubsection{\texorpdfstring{rempli\_tableau\_murs\_portes()}{rempli\_tableau\_murs\_portes()}}
-{\footnotesize\ttfamily void rempli\+\_\+tableau\+\_\+murs\+\_\+portes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}}}]{salle\mbox{[}$\,$\mbox{]},  }\item[{int}]{indiceT }\end{DoxyParamCaption})}
+\index{salle.\+c@{salle.\+c}!rempli\+\_\+tableau\+\_\+murs\+\_\+portes@{rempli\+\_\+tableau\+\_\+murs\+\_\+portes}}
+\index{rempli\+\_\+tableau\+\_\+murs\+\_\+portes@{rempli\+\_\+tableau\+\_\+murs\+\_\+portes}!salle.\+c@{salle.\+c}}
+\subsubsection{\texorpdfstring{rempli\+\_\+tableau\+\_\+murs\+\_\+portes()}{rempli\_tableau\_murs\_portes()}}
+{\footnotesize\ttfamily void rempli\+\_\+tableau\+\_\+murs\+\_\+portes (\begin{DoxyParamCaption}\item[{\hyperlink{structsalle__t}{salle\+\_\+t}}]{salle\mbox{[}$\,$\mbox{]},  }\item[{int}]{indiceT }\end{DoxyParamCaption})}
 
 
 
@@ -196,10 +264,10 @@ rempli les tableaux des murs et des portes de la salle afin de pouvoir gérer le
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{salle_8c_a86a7d9453a068f07c6edeaf1c27d1f4c}\label{salle_8c_a86a7d9453a068f07c6edeaf1c27d1f4c}} 
-\index{salle.c@{salle.c}!textures\_aleatoires@{textures\_aleatoires}}
-\index{textures\_aleatoires@{textures\_aleatoires}!salle.c@{salle.c}}
-\doxysubsubsection{\texorpdfstring{textures\_aleatoires()}{textures\_aleatoires()}}
-{\footnotesize\ttfamily void textures\+\_\+aleatoires (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}}}]{salles\mbox{[}$\,$\mbox{]},  }\item[{int}]{taille }\end{DoxyParamCaption})}
+\index{salle.\+c@{salle.\+c}!textures\+\_\+aleatoires@{textures\+\_\+aleatoires}}
+\index{textures\+\_\+aleatoires@{textures\+\_\+aleatoires}!salle.\+c@{salle.\+c}}
+\subsubsection{\texorpdfstring{textures\+\_\+aleatoires()}{textures\_aleatoires()}}
+{\footnotesize\ttfamily void textures\+\_\+aleatoires (\begin{DoxyParamCaption}\item[{\hyperlink{structsalle__t}{salle\+\_\+t}}]{salles\mbox{[}$\,$\mbox{]},  }\item[{int}]{taille }\end{DoxyParamCaption})}
 
 
 

@@ -1,5 +1,5 @@
-\hypertarget{combat__tour__par__tour_8c}{}\doxysection{Référence du fichier combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}
-\label{combat__tour__par__tour_8c}\index{combat\_tour\_par\_tour.c@{combat\_tour\_par\_tour.c}}
+\hypertarget{combat__tour__par__tour_8c}{}\section{Référence du fichier combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}
+\label{combat__tour__par__tour_8c}\index{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}}
 
 
 contient et fait appel a toutes fonctions nécessaires pour le combat  
@@ -9,39 +9,50 @@ contient et fait appel a toutes fonctions nécessaires pour le combat
 {\ttfamily \#include \char`\"{}../include/initialisation\+\_\+sdl\+\_\+fonctions.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../include/fonctions.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../include/clavier.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/animation.\+h\char`\"{}}\newline
 Graphe des dépendances par inclusion de combat\+\_\+tour\+\_\+par\+\_\+tour.\+c\+:
 % FIG 0
-\doxysubsection*{Fonctions}
+\subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{combat__tour__par__tour_8c_a99443aeb8d987c2c9b48bbd31c7e63c2}{deplacement\+\_\+rectangle\+\_\+selection\+\_\+combat}} (S\+D\+L\+\_\+\+Rect defausse, S\+D\+L\+\_\+\+Rect fuir, S\+D\+L\+\_\+\+Rect carte1, S\+D\+L\+\_\+\+Rect carte2, S\+D\+L\+\_\+\+Rect carte3, S\+D\+L\+\_\+\+Rect carte4, S\+D\+L\+\_\+\+Rect $\ast$$\ast$rect\+\_\+sel)
+int \hyperlink{combat__tour__par__tour_8c_a5fdff0308734894b6467f2fd003a6179}{deplacement\+\_\+rectangle\+\_\+selection\+\_\+combat} (S\+D\+L\+\_\+\+Rect \hyperlink{combat__tour__par__tour_8c_aae7ac7ac546ba66cd9eb0344dafa26b9}{defausse}, S\+D\+L\+\_\+\+Rect fuir, \hyperlink{structimage__t}{image\+\_\+t} images\mbox{[}N\+B\+\_\+\+T\+E\+X\+T\+U\+R\+E\+S\+\_\+\+L\+A\+BY\mbox{]}, S\+D\+L\+\_\+\+Rect $\ast$$\ast$rect\+\_\+sel, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]}, Mix\+\_\+\+Music $\ast$musics\mbox{[}N\+B\+\_\+\+M\+U\+S\+IC\mbox{]})
 \begin{DoxyCompactList}\small\item\em Permet de déplacer le rectangle de selection. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{combat__tour__par__tour_8c_a4b8158133c08bba87fd10ba6b445a68e}{affichage\+\_\+combat\+\_\+personnage}} (S\+D\+L\+\_\+\+Renderer $\ast$rendu, \mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$pers, \mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$ennemi, S\+D\+L\+\_\+\+Texture $\ast$defausse\+\_\+texture, S\+D\+L\+\_\+\+Texture $\ast$fuir\+\_\+texture, S\+D\+L\+\_\+\+Rect defausse\+\_\+rect, S\+D\+L\+\_\+\+Rect fuir\+\_\+rect, S\+D\+L\+\_\+\+Rect $\ast$rect\+\_\+sel, \mbox{\hyperlink{structimage__t}{image\+\_\+t}} images\mbox{[}N\+B\+\_\+\+T\+E\+X\+T\+U\+R\+ES\mbox{]})
+void \hyperlink{combat__tour__par__tour_8c_a9a00f79d0fd786401e5572635c54daee}{affichage\+\_\+combat\+\_\+personnage} (S\+D\+L\+\_\+\+Renderer $\ast$rendu, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$pers, \hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$ennemi, \hyperlink{structimage__t}{image\+\_\+t} def, \hyperlink{structimage__t}{image\+\_\+t} fuir, S\+D\+L\+\_\+\+Rect $\ast$rect\+\_\+sel, \hyperlink{structimage__t}{image\+\_\+t} images\mbox{[}N\+B\+\_\+\+T\+E\+X\+T\+U\+R\+E\+S\+\_\+\+C\+O\+M\+B\+AT\mbox{]}, \hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t} ennemi\+\_\+hud, \hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t} pers\+\_\+hud, \hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t} action)
 \begin{DoxyCompactList}\small\item\em Permet d\textquotesingle{}afficher toutes la partie combat. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{combat__tour__par__tour_8c_aa61c28d0a5af43fb2b409548b001d62e}\label{combat__tour__par__tour_8c_aa61c28d0a5af43fb2b409548b001d62e}} 
-void {\bfseries charge\+\_\+textures\+\_\+combat} (\mbox{\hyperlink{structimage__t}{image\+\_\+t}} images\mbox{[}$\,$\mbox{]}, S\+D\+L\+\_\+\+Renderer $\ast$rendu, \mbox{\hyperlink{structcarte__t}{carte\+\_\+t}} $\ast$cartes\mbox{[}$\,$\mbox{]})
+void \hyperlink{combat__tour__par__tour_8c_aa61c28d0a5af43fb2b409548b001d62e}{charge\+\_\+textures\+\_\+combat} (\hyperlink{structimage__t}{image\+\_\+t} images\mbox{[}$\,$\mbox{]}, S\+D\+L\+\_\+\+Renderer $\ast$rendu, \hyperlink{structcarte__t}{carte\+\_\+t} $\ast$cartes\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Charge dans le tableau images les visuels pour les fonds et les cartes afin de pouvoir les afficher. \end{DoxyCompactList}\item 
+void \hyperlink{combat__tour__par__tour_8c_ae23cadec183266396ed09db659447551}{donne\+\_\+valeur\+\_\+rect\+\_\+images} (\hyperlink{structimage__t}{image\+\_\+t} images\mbox{[}$\,$\mbox{]}, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$perso)
+\begin{DoxyCompactList}\small\item\em Donne les coordonnées et ajuste les tailles des images des cartes et des fonds pour l\textquotesingle{}écran de combat. \end{DoxyCompactList}\item 
+void \hyperlink{combat__tour__par__tour_8c_a880669b069085432fe3848eb8d85b0df}{free\+\_\+image} (\hyperlink{structimage__t}{image\+\_\+t} images\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Supprime les images des cartes et des fonds utilisées pour le combat. \end{DoxyCompactList}\item 
+void \hyperlink{combat__tour__par__tour_8c_acfd21808297d2c05a058a6a23c1c50dc}{tour\+\_\+joueur} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$pers, \hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$ennemi, \hyperlink{structcarte__t}{carte\+\_\+t} $\ast$carte, S\+D\+L\+\_\+\+Renderer $\ast$rendu, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]})
+\begin{DoxyCompactList}\small\item\em permet d\textquotesingle{}effectuer l\textquotesingle{}action sélectionnée par le joueur \end{DoxyCompactList}\item 
+void \hyperlink{combat__tour__par__tour_8c_af75176c41f1d74f09325afdfaf7f86a5}{tour\+\_\+ennemi} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$pers, \hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$ennemi, S\+D\+L\+\_\+\+Renderer $\ast$rendu, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]})
+\begin{DoxyCompactList}\small\item\em permet de faire jouer l\textquotesingle{}ennemi, actions effectuées selon la situation \end{DoxyCompactList}\item 
+void \hyperlink{combat__tour__par__tour_8c_a005211a67eb4421845f3d86cb8bf8bb8}{creer\+\_\+texte\+\_\+combat} (char $\ast$txt, \hyperlink{structimage__t}{image\+\_\+t} $\ast$image, int x, int y, S\+D\+L\+\_\+\+Renderer $\ast$rendu, T\+T\+F\+\_\+\+Font $\ast$font)
+\begin{DoxyCompactList}\small\item\em Permet de donner à une structure image, un texte et les positions où l\textquotesingle{}afficher à l\textquotesingle{}écran. \end{DoxyCompactList}\item 
+void \hyperlink{combat__tour__par__tour_8c_a4b4b7cf590eafc88f1a2d8bb3295c605}{create\+\_\+hud} (\hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t} $\ast$hud\+\_\+pers, \hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t} $\ast$hud\+\_\+ennemi, \hyperlink{structennemi__t}{ennemi\+\_\+t} ennemi, \hyperlink{structperso__t}{perso\+\_\+t} pers, S\+D\+L\+\_\+\+Renderer $\ast$rendu, T\+T\+F\+\_\+\+Font $\ast$font)
+\begin{DoxyCompactList}\small\item\em Créer un H\+UD pour le perso et l\textquotesingle{}ennemi s\textquotesingle{}il n\textquotesingle{}existe pas, sinon détruit les textures précédentes pour mettre à jour. \end{DoxyCompactList}\item 
+void \hyperlink{combat__tour__par__tour_8c_a8f04a1d4afa2a9f8df8d289566f17924}{init\+\_\+hud\+\_\+action} (\hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t} $\ast$action)
+\begin{DoxyCompactList}\small\item\em initialise certaines valeurs du hud action \end{DoxyCompactList}\item 
+void \hyperlink{combat__tour__par__tour_8c_a26da5897db5fd5bd869e45c7b0d91168}{actualisation\+\_\+apres\+\_\+tour} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$pers, \hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$ennemi, \hyperlink{structcarte__t}{carte\+\_\+t} carte, \hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t} $\ast$action, \hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t} $\ast$hud\+\_\+pers, \hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t} $\ast$hud\+\_\+ennemi, S\+D\+L\+\_\+\+Renderer $\ast$rendu, T\+T\+F\+\_\+\+Font $\ast$font, int tour)
+\begin{DoxyCompactList}\small\item\em Actualise les huds des perso et ennemi, prépare le texte a affichant indiquant l\textquotesingle{}action effectuée. \end{DoxyCompactList}\item 
+void \hyperlink{combat__tour__par__tour_8c_ab0f4213ff665f013e064e16017a50893}{detruire\+\_\+action\+\_\+temp} (\hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t} $\ast$action)
+\begin{DoxyCompactList}\small\item\em permet de détruire l\textquotesingle{}image présente dans le champs texte de action \end{DoxyCompactList}\item 
+void \hyperlink{combat__tour__par__tour_8c_afc01f06eb5ec7b03ffc02f5e1e9ba70c}{range\+\_\+carte\+\_\+deck} (\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$cartes\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Range les cartes encore valide dans le deck, détruit les cartes barrées. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{combat__tour__par__tour_8c_a34826e952b965452a607a19aca56a48d}\label{combat__tour__par__tour_8c_a34826e952b965452a607a19aca56a48d}} 
+void {\bfseries consommable\+\_\+epuise} (\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$cartes\mbox{[}$\,$\mbox{]}, int indice, \hyperlink{structimage__t}{image\+\_\+t} images\mbox{[}$\,$\mbox{]}, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
 \item 
-\mbox{\Hypertarget{combat__tour__par__tour_8c_a20d180791680d2c8edfbbc4d56a708bd}\label{combat__tour__par__tour_8c_a20d180791680d2c8edfbbc4d56a708bd}} 
-void {\bfseries donne\+\_\+valeur\+\_\+rect\+\_\+images} (\mbox{\hyperlink{structimage__t}{image\+\_\+t}} images\mbox{[}$\,$\mbox{]})
-\item 
-\mbox{\Hypertarget{combat__tour__par__tour_8c_a880669b069085432fe3848eb8d85b0df}\label{combat__tour__par__tour_8c_a880669b069085432fe3848eb8d85b0df}} 
-void {\bfseries free\+\_\+image} (\mbox{\hyperlink{structimage__t}{image\+\_\+t}} images\mbox{[}$\,$\mbox{]})
-\item 
-\mbox{\Hypertarget{combat__tour__par__tour_8c_a005211a67eb4421845f3d86cb8bf8bb8}\label{combat__tour__par__tour_8c_a005211a67eb4421845f3d86cb8bf8bb8}} 
-void {\bfseries creer\+\_\+texte\+\_\+combat} (char $\ast$txt, \mbox{\hyperlink{structimage__t}{image\+\_\+t}} $\ast$image, int x, int y, S\+D\+L\+\_\+\+Renderer $\ast$rendu, T\+T\+F\+\_\+\+Font $\ast$font)
-\item 
-\mbox{\Hypertarget{combat__tour__par__tour_8c_aae44f778a6e5050f764ddfa1bc4ac4be}\label{combat__tour__par__tour_8c_aae44f778a6e5050f764ddfa1bc4ac4be}} 
-void {\bfseries tour\+\_\+joueur} (\mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$pers, \mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$ennemi, \mbox{\hyperlink{structcarte__t}{carte\+\_\+t}} carte)
-\item 
-\mbox{\Hypertarget{combat__tour__par__tour_8c_a5b2a9e77933a80bd503dc6a3dbbaa353}\label{combat__tour__par__tour_8c_a5b2a9e77933a80bd503dc6a3dbbaa353}} 
-void {\bfseries tour\+\_\+ennemi} (\mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$pers, \mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$ennemi)
-\item 
-\mbox{\Hypertarget{combat__tour__par__tour_8c_a803a9d0b96bbeb7d10d015ac68beb723}\label{combat__tour__par__tour_8c_a803a9d0b96bbeb7d10d015ac68beb723}} 
-void {\bfseries combat\+\_\+t\+\_\+p\+\_\+t} (\mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$perso, \mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$ennemi, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
-\end{DoxyCompactItemize}
+void \hyperlink{combat__tour__par__tour_8c_a99bef6ca6e8ff2998af62f6790907a51}{range\+\_\+carte\+\_\+tire\+\_\+nouvelles} (\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$cartes\mbox{[}N\+B\+\_\+\+C\+A\+R\+T\+E\+S\+\_\+\+C\+O\+M\+B\+AT\mbox{]}, int cartes\+\_\+selectionnees\mbox{[}$\,$\mbox{]}, \hyperlink{structimage__t}{image\+\_\+t} images\mbox{[}$\,$\mbox{]}, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
+\begin{DoxyCompactList}\small\item\em effectue la défausse, les cartes que le joueur ne veut pas sont renvoyées dans le deck, de nouvelles sont tirées à la place \end{DoxyCompactList}\item 
+void \hyperlink{combat__tour__par__tour_8c_aae7ac7ac546ba66cd9eb0344dafa26b9}{defausse} (S\+D\+L\+\_\+\+Renderer $\ast$rendu, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$perso, \hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$ennemi, S\+D\+L\+\_\+\+Rect $\ast$rectangle\+\_\+selection, \hyperlink{structimage__t}{image\+\_\+t} images\mbox{[}$\,$\mbox{]}, \hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t} hud\+\_\+ennemi, \hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t} hud\+\_\+pers, \hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t} action, T\+T\+F\+\_\+\+Font $\ast$police, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]}, Mix\+\_\+\+Music $\ast$musics\mbox{[}N\+B\+\_\+\+M\+U\+S\+IC\mbox{]}, \hyperlink{structcarte__t}{carte\+\_\+t} $\ast$cartes\mbox{[}N\+B\+\_\+\+C\+A\+R\+T\+E\+S\+\_\+\+C\+O\+M\+B\+AT\mbox{]})
+\begin{DoxyCompactList}\small\item\em permet d\textquotesingle{}effectuer toutes actions liées à la défausse de carte avec un affichage spécifique \end{DoxyCompactList}\item 
+void \hyperlink{combat__tour__par__tour_8c_a91240b9e91600ef8528b96652fd76a4b}{combat\+\_\+t\+\_\+p\+\_\+t} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$perso, \hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$ennemi, S\+D\+L\+\_\+\+Renderer $\ast$rendu, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]}, Mix\+\_\+\+Music $\ast$musics\mbox{[}N\+B\+\_\+\+M\+U\+S\+IC\mbox{]}, int $\ast$etat)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de gérer les choix de l\textquotesingle{}utilisateur via la S\+DL sur le combat. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Description détaillée}
+\subsection{Description détaillée}
 contient et fait appel a toutes fonctions nécessaires pour le combat 
 
 \begin{DoxyAuthor}{Auteur}
@@ -55,18 +66,45 @@ contient et fait appel a toutes fonctions nécessaires pour le combat
 \end{DoxyVersion}
 
 
-\doxysubsection{Documentation des fonctions}
-\mbox{\Hypertarget{combat__tour__par__tour_8c_a4b8158133c08bba87fd10ba6b445a68e}\label{combat__tour__par__tour_8c_a4b8158133c08bba87fd10ba6b445a68e}} 
-\index{combat\_tour\_par\_tour.c@{combat\_tour\_par\_tour.c}!affichage\_combat\_personnage@{affichage\_combat\_personnage}}
-\index{affichage\_combat\_personnage@{affichage\_combat\_personnage}!combat\_tour\_par\_tour.c@{combat\_tour\_par\_tour.c}}
-\doxysubsubsection{\texorpdfstring{affichage\_combat\_personnage()}{affichage\_combat\_personnage()}}
-{\footnotesize\ttfamily void affichage\+\_\+combat\+\_\+personnage (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{\mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$}]{pers,  }\item[{\mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$}]{ennemi,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{defausse\+\_\+texture,  }\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{fuir\+\_\+texture,  }\item[{S\+D\+L\+\_\+\+Rect}]{defausse\+\_\+rect,  }\item[{S\+D\+L\+\_\+\+Rect}]{fuir\+\_\+rect,  }\item[{S\+D\+L\+\_\+\+Rect $\ast$}]{rect\+\_\+sel,  }\item[{\mbox{\hyperlink{structimage__t}{image\+\_\+t}}}]{images\mbox{[}\+N\+B\+\_\+\+T\+E\+X\+T\+U\+R\+E\+S\mbox{]} }\end{DoxyParamCaption})}
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{combat__tour__par__tour_8c_a26da5897db5fd5bd869e45c7b0d91168}\label{combat__tour__par__tour_8c_a26da5897db5fd5bd869e45c7b0d91168}} 
+\index{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}!actualisation\+\_\+apres\+\_\+tour@{actualisation\+\_\+apres\+\_\+tour}}
+\index{actualisation\+\_\+apres\+\_\+tour@{actualisation\+\_\+apres\+\_\+tour}!combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}}
+\subsubsection{\texorpdfstring{actualisation\+\_\+apres\+\_\+tour()}{actualisation\_apres\_tour()}}
+{\footnotesize\ttfamily void actualisation\+\_\+apres\+\_\+tour (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{pers,  }\item[{\hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$}]{ennemi,  }\item[{\hyperlink{structcarte__t}{carte\+\_\+t}}]{carte,  }\item[{\hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t} $\ast$}]{action,  }\item[{\hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t} $\ast$}]{hud\+\_\+pers,  }\item[{\hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t} $\ast$}]{hud\+\_\+ennemi,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{font,  }\item[{int}]{tour }\end{DoxyParamCaption})}
+
+
+
+Actualise les huds des perso et ennemi, prépare le texte a affichant indiquant l\textquotesingle{}action effectuée. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$action,le} & hud qui affichera l\textquotesingle{}action effectuée par le joueur ou l\textquotesingle{}ennemi \\
+\hline
+{\em $\ast$pers,la} & structure du personnage \\
+\hline
+{\em $\ast$ennemi,la} & structure de l\textquotesingle{}ennemi \\
+\hline
+{\em carte,la} & carte utilisée par le joueur lors de ce tour \\
+\hline
+{\em $\ast$hud\+\_\+pers,le} & hud du personnage \\
+\hline
+{\em $\ast$hud\+\_\+ennemi,le} & hud de l\textquotesingle{}ennemi \\
+\hline
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$font,la} & police utilisée pour écrire le texte \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat__tour__par__tour_8c_a9a00f79d0fd786401e5572635c54daee}\label{combat__tour__par__tour_8c_a9a00f79d0fd786401e5572635c54daee}} 
+\index{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}!affichage\+\_\+combat\+\_\+personnage@{affichage\+\_\+combat\+\_\+personnage}}
+\index{affichage\+\_\+combat\+\_\+personnage@{affichage\+\_\+combat\+\_\+personnage}!combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}}
+\subsubsection{\texorpdfstring{affichage\+\_\+combat\+\_\+personnage()}{affichage\_combat\_personnage()}}
+{\footnotesize\ttfamily void affichage\+\_\+combat\+\_\+personnage (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{pers,  }\item[{\hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$}]{ennemi,  }\item[{\hyperlink{structimage__t}{image\+\_\+t}}]{def,  }\item[{\hyperlink{structimage__t}{image\+\_\+t}}]{fuir,  }\item[{S\+D\+L\+\_\+\+Rect $\ast$}]{rect\+\_\+sel,  }\item[{\hyperlink{structimage__t}{image\+\_\+t}}]{images\mbox{[}\+N\+B\+\_\+\+T\+E\+X\+T\+U\+R\+E\+S\+\_\+\+C\+O\+M\+B\+A\+T\mbox{]},  }\item[{\hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t}}]{ennemi\+\_\+hud,  }\item[{\hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t}}]{pers\+\_\+hud,  }\item[{\hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t}}]{action }\end{DoxyParamCaption})}
 
 
 
 Permet d\textquotesingle{}afficher toutes la partie combat. 
-
-\textbackslash{}fnvoid \mbox{\hyperlink{combat__tour__par__tour_8c_a4b8158133c08bba87fd10ba6b445a68e}{affichage\+\_\+combat\+\_\+personnage(\+S\+D\+L\+\_\+\+Renderer $\ast$rendu,perso\+\_\+t $\ast$pers, ennemi\+\_\+t $\ast$ ennemi,\+S\+D\+L\+\_\+\+Texture $\ast$defausse\+\_\+texture ,\+S\+D\+L\+\_\+\+Texture $\ast$fuir\+\_\+texture,\+S\+D\+L\+\_\+\+Rect defausse\+\_\+rect ,\+S\+D\+L\+\_\+\+Rect fuir\+\_\+rect,\+S\+D\+L\+\_\+\+Rect $\ast$rect\+\_\+sel,image\+\_\+t images\mbox{[}\+N\+B\+\_\+\+T\+E\+X\+T\+U\+R\+E\+S\mbox{]})}}
 
 
 \begin{DoxyParams}{Paramètres}
@@ -89,11 +127,132 @@ Permet d\textquotesingle{}afficher toutes la partie combat.
 {\em images\mbox{[}\+N\+B\+\_\+\+T\+E\+X\+T\+U\+R\+E\+S\mbox{]},Un} & tableau contenant les cartes \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{combat__tour__par__tour_8c_a99443aeb8d987c2c9b48bbd31c7e63c2}\label{combat__tour__par__tour_8c_a99443aeb8d987c2c9b48bbd31c7e63c2}} 
-\index{combat\_tour\_par\_tour.c@{combat\_tour\_par\_tour.c}!deplacement\_rectangle\_selection\_combat@{deplacement\_rectangle\_selection\_combat}}
-\index{deplacement\_rectangle\_selection\_combat@{deplacement\_rectangle\_selection\_combat}!combat\_tour\_par\_tour.c@{combat\_tour\_par\_tour.c}}
-\doxysubsubsection{\texorpdfstring{deplacement\_rectangle\_selection\_combat()}{deplacement\_rectangle\_selection\_combat()}}
-{\footnotesize\ttfamily int deplacement\+\_\+rectangle\+\_\+selection\+\_\+combat (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Rect}]{defausse,  }\item[{S\+D\+L\+\_\+\+Rect}]{fuir,  }\item[{S\+D\+L\+\_\+\+Rect}]{carte1,  }\item[{S\+D\+L\+\_\+\+Rect}]{carte2,  }\item[{S\+D\+L\+\_\+\+Rect}]{carte3,  }\item[{S\+D\+L\+\_\+\+Rect}]{carte4,  }\item[{S\+D\+L\+\_\+\+Rect $\ast$$\ast$}]{rect\+\_\+sel }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{combat__tour__par__tour_8c_aa61c28d0a5af43fb2b409548b001d62e}\label{combat__tour__par__tour_8c_aa61c28d0a5af43fb2b409548b001d62e}} 
+\index{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}!charge\+\_\+textures\+\_\+combat@{charge\+\_\+textures\+\_\+combat}}
+\index{charge\+\_\+textures\+\_\+combat@{charge\+\_\+textures\+\_\+combat}!combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}}
+\subsubsection{\texorpdfstring{charge\+\_\+textures\+\_\+combat()}{charge\_textures\_combat()}}
+{\footnotesize\ttfamily void charge\+\_\+textures\+\_\+combat (\begin{DoxyParamCaption}\item[{\hyperlink{structimage__t}{image\+\_\+t}}]{images\mbox{[}$\,$\mbox{]},  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$}]{cartes\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Charge dans le tableau images les visuels pour les fonds et les cartes afin de pouvoir les afficher. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em images\mbox{[}$\,$\mbox{]},le} & tableau contenant les images \\
+\hline
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$cartes\mbox{[}$\,$\mbox{]},tableau} & de pointeur sur des cartes, contient les cartes utilisées pendant le combat \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat__tour__par__tour_8c_a91240b9e91600ef8528b96652fd76a4b}\label{combat__tour__par__tour_8c_a91240b9e91600ef8528b96652fd76a4b}} 
+\index{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}!combat\+\_\+t\+\_\+p\+\_\+t@{combat\+\_\+t\+\_\+p\+\_\+t}}
+\index{combat\+\_\+t\+\_\+p\+\_\+t@{combat\+\_\+t\+\_\+p\+\_\+t}!combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}}
+\subsubsection{\texorpdfstring{combat\+\_\+t\+\_\+p\+\_\+t()}{combat\_t\_p\_t()}}
+{\footnotesize\ttfamily void combat\+\_\+t\+\_\+p\+\_\+t (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{perso,  }\item[{\hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$}]{ennemi,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},  }\item[{Mix\+\_\+\+Music $\ast$}]{musics\mbox{[}\+N\+B\+\_\+\+M\+U\+S\+I\+C\mbox{]},  }\item[{int $\ast$}]{etat }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet de gérer les choix de l\textquotesingle{}utilisateur via la S\+DL sur le combat. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$perso} & Pointeur sur une structure qui permet de prendre les caractéristiques du personnage qui vont être modifié par l\textquotesingle{}action du personnage \\
+\hline
+{\em $\ast$ennemi} & Pointeur sur une structure qui permet de prendre les caractéristiques de l\textquotesingle{}ennemi qui vont être modifié par l\textquotesingle{}action du personnage \\
+\hline
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},Contient} & les sons du jeu \\
+\hline
+{\em $\ast$music\mbox{[}\+N\+B\+\_\+\+M\+U\+S\+I\+C\mbox{]},Contient} & les musiques du jeu \\
+\hline
+{\em $\ast$etat,le} & choix de l\textquotesingle{}utilisateur \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat__tour__par__tour_8c_a4b4b7cf590eafc88f1a2d8bb3295c605}\label{combat__tour__par__tour_8c_a4b4b7cf590eafc88f1a2d8bb3295c605}} 
+\index{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}!create\+\_\+hud@{create\+\_\+hud}}
+\index{create\+\_\+hud@{create\+\_\+hud}!combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}}
+\subsubsection{\texorpdfstring{create\+\_\+hud()}{create\_hud()}}
+{\footnotesize\ttfamily void create\+\_\+hud (\begin{DoxyParamCaption}\item[{\hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t} $\ast$}]{hud\+\_\+pers,  }\item[{\hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t} $\ast$}]{hud\+\_\+ennemi,  }\item[{\hyperlink{structennemi__t}{ennemi\+\_\+t}}]{ennemi,  }\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{pers,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{font }\end{DoxyParamCaption})}
+
+
+
+Créer un H\+UD pour le perso et l\textquotesingle{}ennemi s\textquotesingle{}il n\textquotesingle{}existe pas, sinon détruit les textures précédentes pour mettre à jour. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat__tour__par__tour_8c_a005211a67eb4421845f3d86cb8bf8bb8}\label{combat__tour__par__tour_8c_a005211a67eb4421845f3d86cb8bf8bb8}} 
+\index{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}!creer\+\_\+texte\+\_\+combat@{creer\+\_\+texte\+\_\+combat}}
+\index{creer\+\_\+texte\+\_\+combat@{creer\+\_\+texte\+\_\+combat}!combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}}
+\subsubsection{\texorpdfstring{creer\+\_\+texte\+\_\+combat()}{creer\_texte\_combat()}}
+{\footnotesize\ttfamily void creer\+\_\+texte\+\_\+combat (\begin{DoxyParamCaption}\item[{char $\ast$}]{txt,  }\item[{\hyperlink{structimage__t}{image\+\_\+t} $\ast$}]{image,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{font }\end{DoxyParamCaption})}
+
+
+
+Permet de donner à une structure image, un texte et les positions où l\textquotesingle{}afficher à l\textquotesingle{}écran. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$txt,le} & texte que l\textquotesingle{}on souhaite afficher à l\textquotesingle{}écran, \\
+\hline
+{\em $\ast$image,la} & structure qui contiendra le texte \\
+\hline
+{\em x,la} & position en x où sera placée l\textquotesingle{}image \\
+\hline
+{\em y,la} & position en y où sera placée l\textquotesingle{}image \\
+\hline
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$font,la} & police utilisée pour écrire le texte \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat__tour__par__tour_8c_aae7ac7ac546ba66cd9eb0344dafa26b9}\label{combat__tour__par__tour_8c_aae7ac7ac546ba66cd9eb0344dafa26b9}} 
+\index{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}!defausse@{defausse}}
+\index{defausse@{defausse}!combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}}
+\subsubsection{\texorpdfstring{defausse()}{defausse()}}
+{\footnotesize\ttfamily void defausse (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{perso,  }\item[{\hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$}]{ennemi,  }\item[{S\+D\+L\+\_\+\+Rect $\ast$}]{rectangle\+\_\+selection,  }\item[{\hyperlink{structimage__t}{image\+\_\+t}}]{images\mbox{[}$\,$\mbox{]},  }\item[{\hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t}}]{hud\+\_\+ennemi,  }\item[{\hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t}}]{hud\+\_\+pers,  }\item[{\hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t}}]{action,  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{police,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},  }\item[{Mix\+\_\+\+Music $\ast$}]{musics\mbox{[}\+N\+B\+\_\+\+M\+U\+S\+I\+C\mbox{]},  }\item[{\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$}]{cartes\mbox{[}\+N\+B\+\_\+\+C\+A\+R\+T\+E\+S\+\_\+\+C\+O\+M\+B\+A\+T\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+permet d\textquotesingle{}effectuer toutes actions liées à la défausse de carte avec un affichage spécifique 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$perso,la} & structure contenant le personnage \\
+\hline
+{\em $\ast$ennemi,la} & structure de l\textquotesingle{}ennemi que le joueur affronte actuellement \\
+\hline
+{\em $\ast$rectangle\+\_\+selection,le} & rectangle de sélection que le joueur contrôle pour sélectionner des actions \\
+\hline
+{\em images\mbox{[}$\,$\mbox{]},contient} & toutes les images nécessaires à l\textquotesingle{}affichage de l\textquotesingle{}écran de combat \\
+\hline
+{\em hud\+\_\+ennemi,l\textquotesingle{}\+A\+TH} & de l\textquotesingle{}ennemi, comprenant l\textquotesingle{}affichage de son nom et de ses hp \\
+\hline
+{\em hud\+\_\+pers,l\textquotesingle{}\+A\+TH} & du joueur, comprenant l\textquotesingle{}affichage de son nom et de ses hp \\
+\hline
+{\em action,l\textquotesingle{}\+A\+TH} & permettant d\textquotesingle{}afficher du texte indicatif au joueur -\/$>$ fourre tout \\
+\hline
+{\em $\ast$police,la} & police utilisée pour écrire du texte sur l\textquotesingle{}écran de jeu \\
+\hline
+{\em $\ast$sounds\mbox{[}$\,$\mbox{]},tableau} & des sons brefs pour les interactions \\
+\hline
+{\em $\ast$musics\mbox{[}$\,$\mbox{]},tableau} & des muisques d\textquotesingle{}ambience \\
+\hline
+{\em cartes\mbox{[}$\,$\mbox{]},la} & tableau des cartes du joueur \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat__tour__par__tour_8c_a5fdff0308734894b6467f2fd003a6179}\label{combat__tour__par__tour_8c_a5fdff0308734894b6467f2fd003a6179}} 
+\index{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}!deplacement\+\_\+rectangle\+\_\+selection\+\_\+combat@{deplacement\+\_\+rectangle\+\_\+selection\+\_\+combat}}
+\index{deplacement\+\_\+rectangle\+\_\+selection\+\_\+combat@{deplacement\+\_\+rectangle\+\_\+selection\+\_\+combat}!combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}}
+\subsubsection{\texorpdfstring{deplacement\+\_\+rectangle\+\_\+selection\+\_\+combat()}{deplacement\_rectangle\_selection\_combat()}}
+{\footnotesize\ttfamily nt deplacement\+\_\+rectangle\+\_\+selection\+\_\+combat (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Rect}]{defausse,  }\item[{S\+D\+L\+\_\+\+Rect}]{fuir,  }\item[{\hyperlink{structimage__t}{image\+\_\+t}}]{images\mbox{[}\+N\+B\+\_\+\+T\+E\+X\+T\+U\+R\+E\+S\+\_\+\+L\+A\+B\+Y\mbox{]},  }\item[{S\+D\+L\+\_\+\+Rect $\ast$$\ast$}]{rect\+\_\+sel,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},  }\item[{Mix\+\_\+\+Music $\ast$}]{musics\mbox{[}\+N\+B\+\_\+\+M\+U\+S\+I\+C\mbox{]} }\end{DoxyParamCaption})}
 
 
 
@@ -105,14 +264,152 @@ Permet de déplacer le rectangle de selection.
 \hline
 {\em fuir,Correspond} & aux coordonnées du texte fuir \\
 \hline
-{\em carte1,Correspond} & aux coordonnées de la carte 1 \\
+{\em images\mbox{[}\+N\+B\+\_\+\+T\+E\+X\+T\+U\+R\+E\+S\+\_\+\+L\+A\+B\+Y\mbox{]},Un} & tableau contenant les cartes \\
 \hline
-{\em carte2,Correspond} & aux coordonnées de la carte 2 \\
+{\em $\ast$$\ast$rect\+\_\+sel,Les} & coordonnées et taille du rectangle de selection \\
 \hline
-{\em carte3,Correspond} & aux coordonnées de la carte 3 \\
+{\em $\ast$sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},Contient} & les sons du jeu \\
 \hline
-{\em carte4,Correspond} & aux coordonnées de la carte 4 \\
+{\em $\ast$music\mbox{[}\+N\+B\+\_\+\+M\+U\+S\+I\+C\mbox{]},Contient} & les musiques du jeu \\
 \hline
-{\em $\ast$$\ast$rect\+\_\+sel} & Correspond aux coordonnées du rectangle de sélection \\
+\end{DoxyParams}
+\mbox{\Hypertarget{combat__tour__par__tour_8c_ab0f4213ff665f013e064e16017a50893}\label{combat__tour__par__tour_8c_ab0f4213ff665f013e064e16017a50893}} 
+\index{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}!detruire\+\_\+action\+\_\+temp@{detruire\+\_\+action\+\_\+temp}}
+\index{detruire\+\_\+action\+\_\+temp@{detruire\+\_\+action\+\_\+temp}!combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}}
+\subsubsection{\texorpdfstring{detruire\+\_\+action\+\_\+temp()}{detruire\_action\_temp()}}
+{\footnotesize\ttfamily void detruire\+\_\+action\+\_\+temp (\begin{DoxyParamCaption}\item[{\hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t} $\ast$}]{action }\end{DoxyParamCaption})}
+
+
+
+permet de détruire l\textquotesingle{}image présente dans le champs texte de action 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$action,la} & zone de texte détaillant les coups échangés entre le joueur et l\textquotesingle{}ennemi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat__tour__par__tour_8c_ae23cadec183266396ed09db659447551}\label{combat__tour__par__tour_8c_ae23cadec183266396ed09db659447551}} 
+\index{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}!donne\+\_\+valeur\+\_\+rect\+\_\+images@{donne\+\_\+valeur\+\_\+rect\+\_\+images}}
+\index{donne\+\_\+valeur\+\_\+rect\+\_\+images@{donne\+\_\+valeur\+\_\+rect\+\_\+images}!combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}}
+\subsubsection{\texorpdfstring{donne\+\_\+valeur\+\_\+rect\+\_\+images()}{donne\_valeur\_rect\_images()}}
+{\footnotesize\ttfamily void donne\+\_\+valeur\+\_\+rect\+\_\+images (\begin{DoxyParamCaption}\item[{\hyperlink{structimage__t}{image\+\_\+t}}]{images\mbox{[}$\,$\mbox{]},  }\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{perso }\end{DoxyParamCaption})}
+
+
+
+Donne les coordonnées et ajuste les tailles des images des cartes et des fonds pour l\textquotesingle{}écran de combat. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em images\mbox{[}$\,$\mbox{]},le} & tableau contenant les images \\
+\hline
+{\em $\ast$perso,Contient} & la structure du personnage \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat__tour__par__tour_8c_a880669b069085432fe3848eb8d85b0df}\label{combat__tour__par__tour_8c_a880669b069085432fe3848eb8d85b0df}} 
+\index{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}!free\+\_\+image@{free\+\_\+image}}
+\index{free\+\_\+image@{free\+\_\+image}!combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}}
+\subsubsection{\texorpdfstring{free\+\_\+image()}{free\_image()}}
+{\footnotesize\ttfamily void free\+\_\+image (\begin{DoxyParamCaption}\item[{\hyperlink{structimage__t}{image\+\_\+t}}]{images\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Supprime les images des cartes et des fonds utilisées pour le combat. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em images\mbox{[}$\,$\mbox{]},le} & tableau contenant les images \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat__tour__par__tour_8c_a8f04a1d4afa2a9f8df8d289566f17924}\label{combat__tour__par__tour_8c_a8f04a1d4afa2a9f8df8d289566f17924}} 
+\index{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}!init\+\_\+hud\+\_\+action@{init\+\_\+hud\+\_\+action}}
+\index{init\+\_\+hud\+\_\+action@{init\+\_\+hud\+\_\+action}!combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+hud\+\_\+action()}{init\_hud\_action()}}
+{\footnotesize\ttfamily void init\+\_\+hud\+\_\+action (\begin{DoxyParamCaption}\item[{\hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+t} $\ast$}]{action }\end{DoxyParamCaption})}
+
+
+
+initialise certaines valeurs du hud action 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$action,le} & hud qui affichera l\textquotesingle{}action effectuée par le joueur ou l\textquotesingle{}ennemi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat__tour__par__tour_8c_afc01f06eb5ec7b03ffc02f5e1e9ba70c}\label{combat__tour__par__tour_8c_afc01f06eb5ec7b03ffc02f5e1e9ba70c}} 
+\index{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}!range\+\_\+carte\+\_\+deck@{range\+\_\+carte\+\_\+deck}}
+\index{range\+\_\+carte\+\_\+deck@{range\+\_\+carte\+\_\+deck}!combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}}
+\subsubsection{\texorpdfstring{range\+\_\+carte\+\_\+deck()}{range\_carte\_deck()}}
+{\footnotesize\ttfamily void range\+\_\+carte\+\_\+deck (\begin{DoxyParamCaption}\item[{\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$}]{cartes\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Range les cartes encore valide dans le deck, détruit les cartes barrées. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$cartes\mbox{[}$\,$\mbox{]},tableau} & de pointeurs sur cartes, contient les cartes utilisées pendant le combat \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat__tour__par__tour_8c_a99bef6ca6e8ff2998af62f6790907a51}\label{combat__tour__par__tour_8c_a99bef6ca6e8ff2998af62f6790907a51}} 
+\index{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}!range\+\_\+carte\+\_\+tire\+\_\+nouvelles@{range\+\_\+carte\+\_\+tire\+\_\+nouvelles}}
+\index{range\+\_\+carte\+\_\+tire\+\_\+nouvelles@{range\+\_\+carte\+\_\+tire\+\_\+nouvelles}!combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}}
+\subsubsection{\texorpdfstring{range\+\_\+carte\+\_\+tire\+\_\+nouvelles()}{range\_carte\_tire\_nouvelles()}}
+{\footnotesize\ttfamily void range\+\_\+carte\+\_\+tire\+\_\+nouvelles (\begin{DoxyParamCaption}\item[{\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$}]{cartes\mbox{[}\+N\+B\+\_\+\+C\+A\+R\+T\+E\+S\+\_\+\+C\+O\+M\+B\+A\+T\mbox{]},  }\item[{int}]{cartes\+\_\+selectionnees\mbox{[}$\,$\mbox{]},  }\item[{\hyperlink{structimage__t}{image\+\_\+t}}]{images\mbox{[}$\,$\mbox{]},  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu }\end{DoxyParamCaption})}
+
+
+
+effectue la défausse, les cartes que le joueur ne veut pas sont renvoyées dans le deck, de nouvelles sont tirées à la place 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em images\mbox{[}$\,$\mbox{]},contient} & toutes les images nécessaires à l\textquotesingle{}affichage de l\textquotesingle{}écran de combat \\
+\hline
+{\em $\ast$cartes\mbox{[}$\,$\mbox{]},la} & tableau des cartes du joueur \\
+\hline
+{\em cartes\+\_\+selectionnees\mbox{[}$\,$\mbox{]},tableau} & permettant de connaître les cartes que le joueur veut défausser \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat__tour__par__tour_8c_af75176c41f1d74f09325afdfaf7f86a5}\label{combat__tour__par__tour_8c_af75176c41f1d74f09325afdfaf7f86a5}} 
+\index{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}!tour\+\_\+ennemi@{tour\+\_\+ennemi}}
+\index{tour\+\_\+ennemi@{tour\+\_\+ennemi}!combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}}
+\subsubsection{\texorpdfstring{tour\+\_\+ennemi()}{tour\_ennemi()}}
+{\footnotesize\ttfamily void tour\+\_\+ennemi (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{pers,  }\item[{\hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$}]{ennemi,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+permet de faire jouer l\textquotesingle{}ennemi, actions effectuées selon la situation 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$pers,la} & structure du personnage \\
+\hline
+{\em $\ast$ennemi,l\textquotesingle{}ennemi} & que le joueur affronte \\
+\hline
+{\em $\ast$rendu,le} & renderer sur lequel on dessine \\
+\hline
+{\em $\ast$sounds\mbox{[}$\,$\mbox{]},tableau} & des sons brefs pour les interactions \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat__tour__par__tour_8c_acfd21808297d2c05a058a6a23c1c50dc}\label{combat__tour__par__tour_8c_acfd21808297d2c05a058a6a23c1c50dc}} 
+\index{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}!tour\+\_\+joueur@{tour\+\_\+joueur}}
+\index{tour\+\_\+joueur@{tour\+\_\+joueur}!combat\+\_\+tour\+\_\+par\+\_\+tour.\+c@{combat\+\_\+tour\+\_\+par\+\_\+tour.\+c}}
+\subsubsection{\texorpdfstring{tour\+\_\+joueur()}{tour\_joueur()}}
+{\footnotesize\ttfamily void tour\+\_\+joueur (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{pers,  }\item[{\hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$}]{ennemi,  }\item[{\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$}]{carte,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+permet d\textquotesingle{}effectuer l\textquotesingle{}action sélectionnée par le joueur 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$pers,la} & structure du personnage \\
+\hline
+{\em $\ast$ennemi,l\textquotesingle{}ennemi} & que le joueur affronte \\
+\hline
+{\em $\ast$carte,la} & carte que le joueur joue \\
+\hline
+{\em $\ast$sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},Contient} & les sons du jeu \\
 \hline
 \end{DoxyParams}

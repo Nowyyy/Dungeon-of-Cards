@@ -1,9 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Dungeon of Cards: Référence du fichier coffre.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -32,21 +32,18 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.17 -->
+<!-- Généré par Doxygen 1.8.13 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
-/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 $(function() {
   initMenu('',true,false,'search.php','Recherche');
   $(document).ready(function() { init_search(); });
 });
-/* @license-end */</script>
+</script>
 <div id="main-nav"></div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -75,6 +72,7 @@ $(function() {
 <a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="constantes_8h_source.html">../include/constantes.h</a>&quot;</code><br />
 <code>#include &quot;../include/initialisation_sdl_fonctions.h&quot;</code><br />
+<code>#include &quot;../include/fonctions.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de coffre.c:</div>
 <div class="dyncontent">
@@ -84,22 +82,139 @@ Graphe des dépendances par inclusion de coffre.c:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:ad52c2bd6ddbc235b9be0c84622e3305e"><td class="memItemLeft" align="right" valign="top"><a id="ad52c2bd6ddbc235b9be0c84622e3305e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>animation_coffre</b> (<a class="el" href="structperso__t.html">perso_t</a> *pers, <a class="el" href="structsalle__t.html">salle_t</a> *salle, Mix_Chunk *sounds[NB_SON])</td></tr>
+<tr class="memitem:ad52c2bd6ddbc235b9be0c84622e3305e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="coffre_8c.html#ad52c2bd6ddbc235b9be0c84622e3305e">animation_coffre</a> (<a class="el" href="structperso__t.html">perso_t</a> *pers, <a class="el" href="structsalle__t.html">salle_t</a> *salle, Mix_Chunk *sounds[NB_SON])</td></tr>
+<tr class="memdesc:ad52c2bd6ddbc235b9be0c84622e3305e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet d'effectuer l'animation du coffre s'il est en contact avec le joueur.  <a href="#ad52c2bd6ddbc235b9be0c84622e3305e">Plus de détails...</a><br /></td></tr>
 <tr class="separator:ad52c2bd6ddbc235b9be0c84622e3305e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a022618e8a6479bd20c53be88df9b4dc9"><td class="memItemLeft" align="right" valign="top"><a id="a022618e8a6479bd20c53be88df9b4dc9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>creer_coffre</b> (<a class="el" href="structcoffre__t.html">coffre_t</a> *coffre, SDL_Renderer *rendu, int coffre_existe)</td></tr>
-<tr class="separator:a022618e8a6479bd20c53be88df9b4dc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98554ba24d82c57e9bbcfa0f3b68b13c"><td class="memItemLeft" align="right" valign="top"><a id="a98554ba24d82c57e9bbcfa0f3b68b13c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>creer_coffre</b> (<a class="el" href="structcoffre__t.html">coffre_t</a> *coffre, SDL_Renderer *rendu, <a class="el" href="structsalle__t.html">salle_t</a> *salle)</td></tr>
+<tr class="separator:a98554ba24d82c57e9bbcfa0f3b68b13c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b5e8a53671fe295003e0491b1543385"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="coffre_8c.html#a1b5e8a53671fe295003e0491b1543385">destruction_des_coffres</a> (<a class="el" href="structsalle__t.html">salle_t</a> salles[], int taille)</td></tr>
-<tr class="memdesc:a1b5e8a53671fe295003e0491b1543385"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libère tous les emplacements mémoires attribués aux coffres.  <a href="coffre_8c.html#a1b5e8a53671fe295003e0491b1543385">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:a1b5e8a53671fe295003e0491b1543385"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libère tous les emplacements mémoires attribués aux coffres.  <a href="#a1b5e8a53671fe295003e0491b1543385">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a1b5e8a53671fe295003e0491b1543385"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e880cd3ee573de74a61914a9e9ab8dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="coffre_8c.html#a8e880cd3ee573de74a61914a9e9ab8dc">creer_texte_coffre</a> (char *txt, <a class="el" href="structimage__t.html">image_t</a> *image, int x, int y, SDL_Renderer *rendu)</td></tr>
+<tr class="memdesc:a8e880cd3ee573de74a61914a9e9ab8dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Créer le texte qui servira a afficher le contenu du coffre.  <a href="#a8e880cd3ee573de74a61914a9e9ab8dc">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8e880cd3ee573de74a61914a9e9ab8dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b584bdcc79e3df5a5e2e6ff6b9c5ee0"><td class="memItemLeft" align="right" valign="top"><a id="a0b584bdcc79e3df5a5e2e6ff6b9c5ee0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>loot_de_carte</b> (<a class="el" href="structloot__carte__s.html">loot_carte_t</a> *loot, SDL_Renderer *rendu, <a class="el" href="structcoffre__t.html">coffre_t</a> *coffre, int etage)</td></tr>
+<tr class="separator:a0b584bdcc79e3df5a5e2e6ff6b9c5ee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae10cc445c585a549c84d2b35ea279d16"><td class="memItemLeft" align="right" valign="top"><a id="ae10cc445c585a549c84d2b35ea279d16"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>afficher_loot</b> (<a class="el" href="structloot__carte__s.html">loot_carte_t</a> loot, SDL_Renderer *rendu)</td></tr>
+<tr class="separator:ae10cc445c585a549c84d2b35ea279d16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bb65664d15c0e48ed041b9eac06269d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="coffre_8c.html#a8bb65664d15c0e48ed041b9eac06269d">detruire_loot</a> (<a class="el" href="structloot__carte__s.html">loot_carte_t</a> **loot)</td></tr>
+<tr class="memdesc:a8bb65664d15c0e48ed041b9eac06269d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Détruit toutes les allocations dynamiques effectuées pour cette structure.  <a href="#a8bb65664d15c0e48ed041b9eac06269d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8bb65664d15c0e48ed041b9eac06269d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63a2a5c35893caafebbd764d64c43dd5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="coffre_8c.html#a63a2a5c35893caafebbd764d64c43dd5">loot_affichage_fini</a> (<a class="el" href="structloot__carte__s.html">loot_carte_t</a> *loot)</td></tr>
+<tr class="memdesc:a63a2a5c35893caafebbd764d64c43dd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contrôle si la durée d'affichage du loot est dépassée ou non, si oui elle détruit les éléments dans la structure.  <a href="#a63a2a5c35893caafebbd764d64c43dd5">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a63a2a5c35893caafebbd764d64c43dd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>permet de gérer animation et drop d'objets des coffres </p>
-<dl class="section author"><dt>Auteur</dt><dd>Tudoret Aurélien </dd></dl>
+<dl class="section author"><dt>Auteur</dt><dd>{Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas} </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>14/03/2020 </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 </div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="ad52c2bd6ddbc235b9be0c84622e3305e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad52c2bd6ddbc235b9be0c84622e3305e">&#9670;&nbsp;</a></span>animation_coffre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void animation_coffre </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>pers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsalle__t.html">salle_t</a> *&#160;</td>
+          <td class="paramname"><em>salle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>sounds</em>[NB_SON]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet d'effectuer l'animation du coffre s'il est en contact avec le joueur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*pers,le</td><td>personnage du jeu </td></tr>
+    <tr><td class="paramname">*salle,la</td><td>salle dans laquelle se trouve le personnage </td></tr>
+    <tr><td class="paramname">*sounds[NB_SON],tableau</td><td>contenant les sons </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8e880cd3ee573de74a61914a9e9ab8dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e880cd3ee573de74a61914a9e9ab8dc">&#9670;&nbsp;</a></span>creer_texte_coffre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void creer_texte_coffre </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>txt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structimage__t.html">image_t</a> *&#160;</td>
+          <td class="paramname"><em>image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Créer le texte qui servira a afficher le contenu du coffre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*txt,le</td><td>texte que l'on va afficher </td></tr>
+    <tr><td class="paramname">*image,la</td><td>structure qui contiendra le texte </td></tr>
+    <tr><td class="paramname">x,la</td><td>position x à l'écran du texte </td></tr>
+    <tr><td class="paramname">y,la</td><td>position y à l'écran du texte </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessinee </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a1b5e8a53671fe295003e0491b1543385"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1b5e8a53671fe295003e0491b1543385">&#9670;&nbsp;</a></span>destruction_des_coffres()</h2>
 
@@ -137,12 +252,66 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>creer_coffre</b> (<a 
 
 </div>
 </div>
+<a id="a8bb65664d15c0e48ed041b9eac06269d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bb65664d15c0e48ed041b9eac06269d">&#9670;&nbsp;</a></span>detruire_loot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruire_loot </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structloot__carte__s.html">loot_carte_t</a> **&#160;</td>
+          <td class="paramname"><em>loot</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Détruit toutes les allocations dynamiques effectuées pour cette structure. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">**loot,la</td><td>structure contenant la carte obtenue par le joueur </td></tr>
+    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessinee</td></tr>
+    <tr><td class="paramname">**loot,la</td><td>structure contenant la carte obtenue par le joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a63a2a5c35893caafebbd764d64c43dd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63a2a5c35893caafebbd764d64c43dd5">&#9670;&nbsp;</a></span>loot_affichage_fini()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void loot_affichage_fini </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structloot__carte__s.html">loot_carte_t</a> *&#160;</td>
+          <td class="paramname"><em>loot</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Contrôle si la durée d'affichage du loot est dépassée ou non, si oui elle détruit les éléments dans la structure. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*loot,la</td><td>structure contenant la carte obtenue par le joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Généré par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.17
+</a> 1.8.13
 </small></address>
 </body>
 </html>

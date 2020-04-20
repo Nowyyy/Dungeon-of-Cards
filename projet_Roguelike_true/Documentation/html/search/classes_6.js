@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['salle_5fs_136',['salle_s',['../structsalle__s.html',1,'']]],
-  ['salle_5ft_137',['salle_t',['../structsalle__t.html',1,'']]]
+  ['mini_5fmap_5fs',['mini_map_s',['../structmini__map__s.html',1,'']]],
+  ['mini_5fmap_5ft',['mini_map_t',['../structmini__map__t.html',1,'']]]
 ];
