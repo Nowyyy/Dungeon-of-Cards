@@ -180,40 +180,40 @@ int valeur_carte(char nom[TAILLE]){
   }
 
   if(!strncmp(nom, communes[0], 4)){
-    min = 5;
-    max = 10;
+    min = 10;
+    max = 14;
   }
   else if(!strncmp(nom, communes[1], 4)){
-    min = 5;
-    max = 7;
+    min = 15;
+    max = 19;
   }
   else if(!strncmp(nom, communes[2], 4)){
-    min = 7;
-    max = 10;
+    min = 20;
+    max = 24;
   }
   else if(!strncmp(nom, peu_communes[0], 4)){
-    min = 10;
-    max = 15;
+    min = 25;
+    max = 29;
   }
   else if(!strncmp(nom, peu_communes[1], 4)){
-    min = 6;
-    max = 11;
+    min = 30;
+    max = 34;
   }
   else if(!strncmp(nom, peu_communes[2], 4)){
-    min = 12;
-    max = 17;
+    min = 35;
+    max = 39;
   }
   else if(!strncmp(nom, rares[0], 4)){
-    min = 20;
-    max = 23;
+    min = 40;
+    max = 43;
   }
   else if(!strncmp(nom, rares[1], 4)){
-    min = 25;
-    max = 35;
+    min = 44;
+    max = 46;
   }
   else if(!strncmp(nom, rares[2], 4)){
-    min = 25;
-    max = 35;
+    min = 47;
+    max = 50;
   }
   else {
     return -1;
