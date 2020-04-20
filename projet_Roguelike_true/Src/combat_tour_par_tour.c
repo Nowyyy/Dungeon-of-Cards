@@ -245,14 +245,15 @@ hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action){
   SDL_RenderCopy(rendu, fuir.img, NULL, &fuir.rectangle);
 
   /*Mise en place du personnage*/
+	int hauteur=405;
   int w=pers->sprites[idle_droite].rectangle.w;
   int h=pers->sprites[idle_droite].rectangle.h;
   int x=pers->sprites[idle_droite].rectangle.x;
   int y=pers->sprites[idle_droite].rectangle.y;
-  pers->sprites[idle_droite].rectangle.w *= 1.5;
-  pers->sprites[idle_droite].rectangle.h *= 1.5;
+  pers->sprites[idle_droite].rectangle.w *= 1.2;
+  pers->sprites[idle_droite].rectangle.h *= 1.2;
   pers->sprites[idle_droite].rectangle.x = 215;
-  pers->sprites[idle_droite].rectangle.y = 342;
+  pers->sprites[idle_droite].rectangle.y = hauteur-(pers->sprites[idle_droite].rectangle.h);
   pers->sprites[courant] = pers->sprites[idle_droite];
   SDL_RenderCopy(rendu, pers->sprites[courant].img, NULL, &pers->sprites[0].rectangle);
 
@@ -261,12 +262,11 @@ hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action){
   int ye=ennemi->sprites.rectangle.y;
   int he=ennemi->sprites.rectangle.h;
   int we=ennemi->sprites.rectangle.w;
-  int hauteur=405;
   ennemi->sprite_courant.x = 0;
   ennemi->sprite_courant.y = ennemi->sprite_courant.h;
   ennemi->sprites.rectangle.x = 830;
-  ennemi->sprites.rectangle.w *= 1.5;
-  ennemi->sprites.rectangle.h *= 1.5;
+  ennemi->sprites.rectangle.w *= 1.2;
+  ennemi->sprites.rectangle.h *= 1.2;
 	ennemi->sprites.rectangle.y = hauteur-(ennemi->sprites.rectangle.h);
   ennemi->sprites = ennemi->sprites;
   SDL_RenderCopy(rendu, ennemi->sprites.img, &ennemi->sprite_courant, &ennemi->sprites.rectangle);
