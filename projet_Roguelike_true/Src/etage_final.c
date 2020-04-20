@@ -254,7 +254,7 @@ void etage_final(SDL_Renderer *rendu, int *continuer, int *etat, Mix_Chunk *soun
 
 	while (SDL_PollEvent (&event));
 
-	if(pers->pv > 0){
+	if(pers->pv > 0 && !test){
 	// Affichage de l'écran de fin de jeu si le joueur est vainqueur 
 		affichage_salle_personnage_etage_final(*pers, &salles[indice_salle], rendu, images);
 		SDL_Delay(2000);//pour voir la salle vide dans le laby

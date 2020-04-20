@@ -16,7 +16,7 @@ $@ : $^
 
 ## Cleaning temps
 clean :
-	rm *.o && rm ../Sauvegarde/cartes_deck.txt ../Sauvegarde/cartes_collec.txt && clear
+	rm *.o && rm ../Sauvegarde/cartes_deck.txt ../Sauvegarde/cartes_collec.txt && rm ../bin/DungeonOfCards &&clear
 
 ##launch a test
 
