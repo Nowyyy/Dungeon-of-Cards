@@ -233,7 +233,7 @@ void animations_personnage(image_t sprites[], unsigned int timer, touches_t clav
 
 
 /**
-*\fn void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animation_t *anim, Mix_Chunk *sounds[NB_SON], touches_t *clavier)
+*\fn void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animation_t *anim, Mix_Chunk *sounds[NB_SON], touches_t *clavier, int *etat)
 
 *\param pers, la structure du pêrsonnage que l'on souhaite déplacer
 *\param salle, la salle dans laquelle le personnage se déplace

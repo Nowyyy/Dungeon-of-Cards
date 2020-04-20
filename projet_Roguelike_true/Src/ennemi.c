@@ -1,7 +1,7 @@
 /**
 *\file ennemi.c
-*\author Tudoret Aurélien
-*\version 0.
+*\author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
+*\version 0.1
 *\date 12/03/2020
 
 *\brief Permet de gérer les déplacements et animations des ennemis dans le labyrinthe et en combat
@@ -38,9 +38,9 @@ void animation_ennemi(ennemi_t *ennemi){
 
 	if(ennemi->last + DELAIS_ANIMATIONS*1.25  <= SDL_GetTicks()){
 
-		if((ennemi->anim_courante == idle_droite_ennemi || ennemi->anim_courante == idle_gauche_ennemi) 
+		if((ennemi->anim_courante == idle_droite_ennemi || ennemi->anim_courante == idle_gauche_ennemi)
 			&& ennemi->id_col < ennemi->nb_sprites_idle - 1){
-			
+
 			ennemi->sprite_courant.x += ennemi->sprite_courant.w + ennemi->gap;
 			ennemi->id_col ++;
 		}

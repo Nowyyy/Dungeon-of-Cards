@@ -136,7 +136,7 @@ void ajout_carte_deck(carte_t *tampon){
 
 *\param int min Borne inférieure de l'intervalle
 *\param int max Borne supérieure de l'intervalle
-
+*\param niveau de la carte
 *\brief Génère une valeur aléatoire parmi un intervalle. L'intervalle est modifié en fonction du niveau de la carte.
 *\return la valeur sous forme d'un int
 */
@@ -442,8 +442,8 @@ void ajout_gauche(carte_t * t){
 *\brief permet de créer une carte selon différentes caractéristiques données
 *\param nom pour le nom de la carte
 *\param type pour le type de la carte
-*\param cible pour la cible de la carte
 *\param valeur pour la valeur de la force de la carte
+*\param path, chemin de la carte
 *\return un pointeur sur une variable structure carte_t
 */
 carte_t * creer_carte(char * nom, type_carte type, int valeur, int consommable, char *path)

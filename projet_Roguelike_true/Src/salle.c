@@ -128,6 +128,7 @@ void afficher_salle(salle_t *salle, SDL_Renderer *rendu, image_t texture[]){
 *\fn void rempli_tableau_murs_portes(salle_t salle[], int indiceT)
 
 *\param *salle la salle pour laquelle on va completer les tableaux
+*\param indiceT, indice du tableau
 
 *\brief rempli les tableaux des murs et des portes de la salle afin de pouvoir gérer les collisions plus tard
 */
@@ -234,6 +235,7 @@ void textures_aleatoires(salle_t salles[], int taille){
 
 *\param tab[], tableau contenant les salles du labyrinthe
 *\param taille, taille du tableau
+*\param type_ennemi, type de l'ennemi
 *\param *rendu, le renderer sur lequel on dessine
 *\param *ennemi_max est le nombre d'ennemi max.
 

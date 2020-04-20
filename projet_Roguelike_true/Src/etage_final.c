@@ -72,10 +72,10 @@ void charge_textures_etage_final(image_t images[], perso_t *pers, SDL_Renderer *
 /**
 *\fn void affichage_salle_personnage_etage_final(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[])
 
-*\param images[], contient toutes les images utilisées sauf celle du personnage
 *\param pers, la structure contenant le personnage
-*\param *rendu, le renderer sur lequel on dessine
 *\param *salle, la salle actuelle
+*\param *rendu, le renderer sur lequel on dessine
+*\param images[], contient toutes les images utilisées sauf celle du personnage
 
 *\brief Permet d'afficher une salle, le personnage et si on est dans la premiere salle, les instructions et commandes du jeu
 
@@ -111,8 +111,10 @@ void affichage_salle_personnage_etage_final(perso_t pers, salle_t *salle, SDL_Re
 /**
 *\fn void creation_salles_dernier_etage(salle_t salles[], int taille, SDL_Renderer *rendu)
 
-*\param *rendu, le renderer sur lequel on dessine
+
 *\param salles[], le tableau de structure de salle.
+*\param taille, la taille de l'étage
+*\param *rendu, le renderer sur lequel on dessine
 
 *\brief Créée les deux salles du dernier étage, les lies l'une à l'autre et rempli les tableau de collisions
 */
@@ -184,12 +186,13 @@ void ecran_victoire(SDL_Renderer * rendu, TTF_Font *police){
 /**
 *\fn void etage_final(SDL_Renderer *rendu, int *continuer, int *etat, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], perso_t *pers, TTF_Font *police)
 
+*\param *rendu, le renderer sur lequel on dessine
 *\param *continuer, pointeur sur variable permettant de savoir si le joueur souhaite quitter le programme
 *\param *etat, pointeur sur variable permettant de connaître l'écran dans lequel on est
-*\param *rendu, le renderer sur lequel on dessine
 *\param *sounds[NB_SON], tableau contenant les sons
 *\param *musics[NB_MUSIC], tableau contenant les musiques
 *\param *pers, la structure du personnage
+*\param *police, la police utilisée pour écrire du texte sur l'écran de jeu
 
 *\brief Permet de gèrer le dernier étage du jeu
 */
@@ -255,7 +258,7 @@ void etage_final(SDL_Renderer *rendu, int *continuer, int *etat, Mix_Chunk *soun
 	while (SDL_PollEvent (&event));
 
 	if(pers->pv > 0 && !test){
-	// Affichage de l'écran de fin de jeu si le joueur est vainqueur 
+	// Affichage de l'écran de fin de jeu si le joueur est vainqueur
 		affichage_salle_personnage_etage_final(*pers, &salles[indice_salle], rendu, images);
 		SDL_Delay(2000);//pour voir la salle vide dans le laby
 		ecran_victoire(rendu, police);

@@ -237,9 +237,9 @@ void cree_liaison(salle_t tab[], int salle1, int salle2, int porteS1){
 /**
 *\fn int tirage_au_sort_porte_a_creer(int indice, int taille, salle_t salles[], int tentatives)
 
-*\param salles[], tableau des salles du labyrinthe
-*\param taille, la taille d'une ligne ou d'une colonne du tableau
 *\param indice, l'indice de la salle courante
+*\param taille, la taille d'une ligne ou d'une colonne du tableau
+*\param salles[], tableau des salles du labyrinthe
 *\param tentatives, le nombres d'essais pour trouver une liaison avec le jeu de données actuelles
 
 *\return la direction valide dans laquelle créée une porte selon l'emplacement de la salle actuelle
@@ -339,7 +339,7 @@ int indice_salle(int salle_actuelle, int porte_salle_actuelle, int taille){
 *\param porte1, la porte de la salle1 pour laquelle on cherche une correspondance dans la salle 2
 *\param salle2, la seconde salle qu'on cherche a lier
 *\param porte2, la porte de la salle2 pour laquelle on cherche une correspondance dans la salle 1
-
+*\param salles[], tableau des différentes salles
 *\return True si les salles sont compatibles, false sinon
 
 *\brief Permet de savoir si deux salles sont compatibles entre elles
@@ -530,6 +530,7 @@ int nb_salles_par_etage(int etage){
 *\param *pers, la structure du personnage
 *\param *clavier, structure représentant les touchs du clavier enfoncées par le joueur
 *\param *ennemi, l'ennemi contre lequel le joueur va combattre
+*\param etat, état de la collision avec l'ennemi
 
 *\brief permet d'effectuer l'animation d'entrée en combat, l'arrêt des sons, la réinitialisation du tableau des touches et envoie le joueur vers le combat au tour par tour
 */
@@ -633,6 +634,7 @@ int choix_monstre(int etage){
 *\param *sounds[NB_SON], tableau contenant les sons
 *\param *musics[NB_MUSIC], tableau contenant les musiques
 *\param *pers, la structure du personnage
+*\param *police, la police utilisée pour écrire du texte sur l'écran de jeu
 
 *\brief Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...
 */
