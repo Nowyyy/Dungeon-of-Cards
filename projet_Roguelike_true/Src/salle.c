@@ -490,16 +490,16 @@ void ennemi_selon_etage(int etage, int boss, ennemi_t *ennemi){
   if(boss){
     switch(etage){
       case 1 : ennemi->pv = 65; ennemi->attaque = 18; break;
-      case 2 : ennemi->pv = 80; ennemi->attaque = 25; break;
-      case 3 : ennemi->pv = 95; ennemi->attaque =  34; break;
-      case 4 : ennemi->pv = 110; ennemi->attaque = 42; break;
-      default : ennemi->pv = 125; ennemi->attaque = 50; break;
+      case 2 : ennemi->pv = 80; ennemi->attaque = 23; break;
+      case 3 : ennemi->pv = 95; ennemi->attaque =  28; break;
+      case 4 : ennemi->pv = 110; ennemi->attaque = 33; break;
+      default : ennemi->pv = 125; ennemi->attaque = 40; break;
     }
   }
   else{
     switch(etage){
       case 1 : ennemi->pv = 50; ennemi->attaque = 10; break;
-      case 2 : ennemi->pv = 65; ennemi->attaque = 13; break;
+      case 2 : ennemi->pv = 65; ennemi->attaque = 15; break;
       case 3 : ennemi->pv = 80; ennemi->attaque = 20; break;
       default : ennemi->pv = 95; ennemi->attaque = 25; break;
     }
