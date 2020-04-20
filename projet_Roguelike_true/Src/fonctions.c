@@ -222,6 +222,10 @@ int valeur_carte(char nom[TAILLE]){
 
 }
 
+/**
+*\fn void transfert_mort()
+*\brief A la mort du personnage, vide son deck puis le rempli avec des cartes semi-aléatoires pour la partie suivante
+*/
 void transfert_mort(){
 	detruire_liste(DECK);
 	drapeau_deck = malloc(sizeof(element_t));
