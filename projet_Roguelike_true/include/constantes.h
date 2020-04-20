@@ -156,7 +156,7 @@
 #define NB_SALLES_LEVEL_4 25
 
 #define NB_SON 19
-#define NB_MUSIC 9
+#define NB_MUSIC 10
 
 /**
 *\enum t_sprites_perso
@@ -241,7 +241,7 @@ typedef enum{move=0, selection, change_salle, footsteps, gameOverFrame, death, c
 
 *\brief Les différentes musiques utilisées
 */
-typedef enum{menu=0, level1, gameOverMusic, fight, boss, level2, level3, level4, level5}t_musique;
+typedef enum{menu=0, level1, gameOverMusic, fight, boss, level2, level3, level4, level5, victory}t_musique;
 
 /**
 *\struct animation_t

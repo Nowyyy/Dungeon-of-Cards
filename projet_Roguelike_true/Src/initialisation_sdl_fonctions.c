@@ -274,6 +274,7 @@ musics[level2] = Mix_LoadMUS("../Sound/level2.mp3");
 musics[level3] = Mix_LoadMUS("../Sound/level3.mp3");
 musics[level4] = Mix_LoadMUS("../Sound/level4.mp3");
 musics[level5] = Mix_LoadMUS("../Sound/level5.mp3");
+musics[victory] = Mix_LoadMUS("../Sound/victory.mp3");
 
 }
 

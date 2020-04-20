@@ -151,35 +151,57 @@ void creation_salles_dernier_etage(salle_t salles[], int taille, SDL_Renderer *r
 
 *\param *rendu, le renderer sur lequel on dessine
 *\param *police, la police utilisée pour écrire à l'écran
+*\param *musics[NB_MUSIC], tableau contenant les musiques
+*\param mort, le nombre de morts du joueur
 
 *\brief Affiche le message de victoire à l'intention du joueur, signifiant sa réussite totale dans le jeu
 */
-void ecran_victoire(SDL_Renderer * rendu, TTF_Font *police){
+void ecran_victoire(SDL_Renderer * rendu, TTF_Font *police, Mix_Music *musics[NB_MUSIC], int mort){
 
-	char texte_victoire[50] = "Felicitations ! Vous avez termine le jeu !";
-
+	char texte_victoire[50] = "Felicitations ! Vous vous etes echappes !";
+	int x_cmpPartie = WIN_WIDTH / 2-90;
+	int y_cmpPartie = WIN_HEIGHT * 0.8;
+	SDL_Texture *cmpPartie_texture;
+	SDL_Rect cmpPartie_text;
+	char cmpPartie[20];
 	image_t texte_struct;
+	image_t logo[1];
 
+//Affichage du logo du jeu
 	get_text_and_rect(rendu, WIN_WIDTH *0.20, WIN_HEIGHT / 2, texte_victoire, police, &texte_struct.img, &texte_struct.rectangle);
+	charge_image("../Images/logo.png", &logo[0], rendu);
 
+	logo[0].rectangle.x = 140;
+	logo[0].rectangle.y = 60;
 
+//Affichage du compteur de mort
+	sprintf(cmpPartie, "en %d morts", mort);
 
 	SDL_SetRenderDrawColor(rendu,0,0,0,255);//on met un fond noir
 
 	SDL_RenderClear(rendu);
 
+//Affichage du texte de fin
+	get_text_and_rect(rendu, x_cmpPartie, y_cmpPartie, cmpPartie, police, &cmpPartie_texture, &cmpPartie_text);
+
+	SDL_RenderCopy(rendu, cmpPartie_texture, NULL, &cmpPartie_text);
+	SDL_RenderCopy(rendu, logo[0].img, NULL, &logo[0].rectangle);
 	SDL_RenderCopy(rendu, texte_struct.img, NULL, &texte_struct.rectangle);
 
 	SDL_RenderPresent(rendu);
+	Mix_VolumeMusic(30);
+	Mix_PlayMusic(musics[victory], 0);
 
-	SDL_Delay(5000);
-
+	while(Mix_PlayingMusic() == 1);
 
 
 	libere_texture(&texte_struct.img);
+
+	if(logo[0].img!=NULL){
+		SDL_DestroyTexture(logo[0].img);
+		logo[0].img=NULL;
+	}
 }
-
-
 
 
 
@@ -226,6 +248,8 @@ void etage_final(SDL_Renderer *rendu, int *continuer, int *etat, Mix_Chunk *soun
 
 	textures_aleatoires(salles, TAILLE_ETAGE_FINAL);
 
+
+
 /////////////////////////// boucle du labyrinthe / explo / combat ///////////////////////////
 	while(*continuer == TRUE && *etat == labyrinthe && test){
 
@@ -260,8 +284,10 @@ void etage_final(SDL_Renderer *rendu, int *continuer, int *etat, Mix_Chunk *soun
 	if(pers->pv > 0 && !test){
 	// Affichage de l'écran de fin de jeu si le joueur est vainqueur
 		affichage_salle_personnage_etage_final(*pers, &salles[indice_salle], rendu, images);
+		Mix_HaltMusic();
+
 		SDL_Delay(2000);//pour voir la salle vide dans le laby
-		ecran_victoire(rendu, police);
+		ecran_victoire(rendu, police, musics, pers->cmpMort);
 		*etat = mainMenu;
 	}
 
