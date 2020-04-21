@@ -762,6 +762,8 @@ void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk
 				trappe = 1;
 				pers->x = WIN_WIDTH / 2 - pers->sprites[courant].rectangle.w / 2;
 				pers->y = WIN_HEIGHT / 2 - pers->sprites[courant].rectangle.h / 2;
+
+				loot_boss(loot, rendu, pers->etage);//on liit une carte à la mort du boss
 			}
 
 			//Si on passe sur la trappe on accède au niveau suivant

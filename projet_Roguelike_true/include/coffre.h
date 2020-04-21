@@ -6,3 +6,4 @@ void loot_de_carte(loot_carte_t *loot, SDL_Renderer *rendu, coffre_t *coffre, in
 void detruire_loot(loot_carte_t **loot);
 void afficher_loot(loot_carte_t loot, SDL_Renderer *rendu);
 void loot_affichage_fini(loot_carte_t *loot);
+void loot_boss(loot_carte_t *loot, SDL_Renderer *rendu, int etage);

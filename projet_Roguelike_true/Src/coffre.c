@@ -11,6 +11,7 @@
 #include "../include/constantes.h"
 #include "../include/initialisation_sdl_fonctions.h"
 #include "../include/fonctions.h"
+#include "../include/coffre.h"
 
 
 /**
@@ -204,6 +205,7 @@ void afficher_loot(loot_carte_t loot, SDL_Renderer *rendu){
 void detruire_loot(loot_carte_t **loot){
 
 	if((*loot)->existe){
+
 		detruire_carte(&(*loot)->carte);
 		(*loot)->carte = NULL;
 		libere_texture(&(*loot)->texte.img);
@@ -238,4 +240,46 @@ void loot_affichage_fini(loot_carte_t *loot){
 			loot->existe = 0;
 		}
 	}
+}
+
+
+
+
+/**
+*\fn void loot_boss(loot_carte_t *loot, SDL_Renderer *rendu, int etage)
+
+*\param *loot, la structure contenant la carte obtenue par le joueur
+*\param *rendu, le renderer sur lequel on dessine
+*\param etage, l'étage où se situe le joueur
+
+*\brief initialise la structure de loot, generer une carte qui est envoyée dans les listes
+//la carte est une récompense pour avoir battu un boss
+*/
+
+void loot_boss(loot_carte_t *loot, SDL_Renderer *rendu, int etage){
+
+	if(loot->existe == 1){
+
+		loot->debut -= 500; //pour être sûr de détruire tout loot précédement existant
+
+		loot_affichage_fini(loot);
+	}
+
+	loot->existe = 1;
+
+	loot->carte = generer_carte(etage + 1);//pour avoir une carte de niveau supérieur
+
+	ajout_carte_deck(loot->carte);
+	ajout_carte_collec(loot->carte);
+
+	charge_image(loot->carte->path, &loot->image, rendu);
+
+	loot->image.rectangle.x = WIN_WIDTH * 0.05;
+	loot->image.rectangle.y = WIN_HEIGHT * 0.45;
+
+	loot->delai = DUREE_AFFICHAGE_CARTE_LOOT;
+
+	loot->debut = SDL_GetTicks();
+
+	creer_texte_coffre("Vous avez obtenu :", &loot->texte, WIN_WIDTH * 0.03, WIN_HEIGHT *0.40, rendu);
 }

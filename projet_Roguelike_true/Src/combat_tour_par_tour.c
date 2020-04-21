@@ -426,6 +426,9 @@ void tour_ennemi(perso_t *pers, ennemi_t *ennemi, SDL_Renderer *rendu, Mix_Chunk
 	else{
 		anim_combat_ennemi_attaque(ennemi, rendu, sounds, pers);
 		pers->pv -= ennemi->attaque;
+
+		if(pers->pv < 0)
+			pers->pv = 0;
 	}
 }
 
