@@ -132,7 +132,7 @@ void creation_salles_dernier_etage(salle_t salles[], int taille, SDL_Renderer *r
 	ajout_porte_salle(salles[1].salle, 3);
 	ajout_porte_salle(salles[0].salle, 1);
 
-	salles[1].ennemi = creer_ennemi(/*ennemi_tmp.pv*/1, ennemi_tmp.attaque, ennemi_tmp.attaque, ennemi_tmp.attaque, sorcerer, rendu);
+	salles[1].ennemi = creer_ennemi(ennemi_tmp.pv, ennemi_tmp.attaque, ennemi_tmp.attaque, ennemi_tmp.attaque, sorcerer, rendu);
 
 	salles[1].boss = TRUE; // on marque tout de suite la salle du boss
 

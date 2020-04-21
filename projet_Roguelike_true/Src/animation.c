@@ -391,8 +391,14 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
 
 	pers->cmpMort = mort_tmp+1;
 
-  saveperso(pers);
+  saveperso(pers);//on sauvegarde le personnage et le deck afin de les préserver
   savecarte(SAVE_CARTES_COLLEC_PATH, COLLEC);
+
+  //on détruit les listes, afin d'éviter les conflits entre les sauvegardes et la duplication
+  //de cartes
+  detruire_liste(DECK);
+  detruire_liste(COLLEC);
+  init_liste();
 
 	//Apparition du rectangle de mort
 
@@ -484,8 +490,12 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
   for(int i = 0; i < 7; i++)
 		libere_texture(&spritesMort[i].img);
 
-	//Vide le deck et en charge un nouveau pour la partie suivante
-	transfert_mort();
+	//Charge à nouveau les cartes de la collec précédement sauvegardées
+  readcarte(SAVE_CARTES_COLLEC_PATH, COLLEC);
+
+	transfert_mort();//on prend des cartes de la collec pour les mettre dans le deck
+
+  savecarte(SAVE_CARTES_DECK_PATH, DECK);//on sauvegarde le deck remplit de nouvelles cartes
 }
 
 

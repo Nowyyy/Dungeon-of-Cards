@@ -11,6 +11,7 @@
 #include "../include/initialisation_sdl_fonctions.h"
 #include "../include/personnage.h"
 #include "../include/sauvegardefonc.h"
+#include "../include/fonctions.h"
 
 /**
 *\fn void afficher_confirmation(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture *charger_texture, SDL_Rect confirmer_rect, SDL_Texture *retour_texture, SDL_Rect retour_rect, SDL_Texture *message_texture, SDL_Rect message_rect)
@@ -89,8 +90,13 @@ int deplacement_rectangle_selection_confirmer(int *etat, SDL_Rect confirmer_rect
 			}
 			else if(event.key.keysym.sym == SDLK_RETURN){//touche entrée
 				if((*rect_sel)->y == confirmer_rect.y - RECT_SELECT_Y_DIFF){
-          initialise_personnage(pers);
 					*etat = labyrinthe;
+
+					//on détruit les listes à nouveau, afin de ne pas les retrouvées remplies dans une nouvelle partie
+					detruire_liste(COLLEC);
+					detruire_liste(DECK);
+					init_liste();
+
 					Mix_PlayChannel(1, sounds[selection], 0);
 				}
 				else if((*rect_sel)->y == retour_rect.y - RECT_SELECT_Y_DIFF){

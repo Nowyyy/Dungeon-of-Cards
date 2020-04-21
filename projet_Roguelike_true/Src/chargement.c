@@ -11,6 +11,7 @@
 #include "../include/initialisation_sdl_fonctions.h"
 #include "../include/sauvegardefonc.h"
 #include "../include/personnage.h"
+#include "../include/fonctions.h"
 
 
 /**
@@ -98,6 +99,12 @@ int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SD
 				}
 				else if((*rect_sel)->y == retour_rect.y - RECT_SELECT_Y_DIFF){
 					*etat = mainMenu;
+
+					//on détruit les listes à nouveau, afin de ne pas les retrouvées remplies dans une nouvelle partie
+					detruire_liste(COLLEC);
+					detruire_liste(DECK);
+					init_liste();
+
 					Mix_PlayChannel(1, sounds[selection], 0);
 				}
 			}
@@ -157,6 +164,13 @@ void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Fon
 		readcarte(SAVE_CARTES_NEW_GAME_PATH, COLLEC);
 	}
 	else{
+
+		//Si les listes existent on les détruit, afin d'éviter les conflits entre les sauvegardes et la duplication
+		//de cartes
+		detruire_liste(COLLEC);
+		detruire_liste(DECK);
+		init_liste();
+
 		readperso(pers);
 		readcarte(SAVE_CARTES_DECK_PATH, DECK);
 		readcarte(SAVE_CARTES_COLLEC_PATH, COLLEC);

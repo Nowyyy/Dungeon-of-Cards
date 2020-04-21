@@ -48,11 +48,13 @@ void detruire_liste(int liste){
 
   choix_liste(liste);
 
-  en_tete();
+  if(drapeau != NULL){
+    en_tete();
 
-  while(!liste_vide()){
-    oter_elt();
-    suivant();
+    while(!liste_vide()){
+      oter_elt();
+      suivant();
+    }
   }
 
   if(drapeau != NULL){
@@ -227,11 +229,6 @@ int valeur_carte(char nom[TAILLE]){
 *\brief A la mort du personnage, vide son deck puis le rempli avec des cartes semi-aléatoires pour la partie suivante
 */
 void transfert_mort(){
-	detruire_liste(DECK);
-	drapeau_deck = malloc(sizeof(element_t));
-	drapeau_deck->pred = drapeau_deck;
-	drapeau_deck->succ = drapeau_deck;
-	ec_deck = drapeau_deck;
 
 	int i,j,borne,longueur,compteur;
 	for(int type = ATTAQUE, compteur = 0 ; compteur < 2 ;compteur++, type = DEFENSE){
