@@ -147,7 +147,7 @@ void creation_salles_dernier_etage(salle_t salles[], int taille, SDL_Renderer *r
 
 
 /**
-*\fn void ecran_victoire(SDL_Renderer * rendu, TTF_Font *police)
+*\fn void ecran_victoire(SDL_Renderer * rendu, TTF_Font *police, Mix_Music *musics[NB_MUSIC], int mort)
 
 *\param *rendu, le renderer sur lequel on dessine
 *\param *police, la police utilisée pour écrire à l'écran

@@ -18,8 +18,8 @@ char rares[][TAILLE] = {{"boule de feu"},{"poison"},{"guerison"}};
 
 /**
 *\fn void detruire_carte(carte_t ** carte)
-*\brief Fonction qui permet de détruire une carte
 *\param carte Un pointeur de pointeur de carte. On détruit libère la zone mémoire située à l'adresse pointée.
+*\brief Fonction qui permet de détruire une carte
 */
 void detruire_carte(carte_t ** carte)
 {
@@ -39,10 +39,8 @@ void detruire_carte(carte_t ** carte)
 
 /**
 *\fn void detruire_liste(int liste)
-
-*\brief Vide puis détruis la liste passée en paramètre
-
 *\param liste, le numéro de la liste que l'on veut supprimer
+*\brief Vide puis détruit la liste passée en paramètre
 */
 void detruire_liste(int liste){
 
@@ -67,7 +65,7 @@ void detruire_liste(int liste){
 /**
 *\fn void ajout_carte_collec(carte_t *carte)
 
-*\param carte, la carte pour laquelle on cherche à savoir si elle existe dans la collection du joueur
+*\param *carte, la carte pour laquelle on cherche à savoir si elle existe dans la collection du joueur
 
 *\brief ajoute une carte à la collection du joueur s'il ne la possède pas déjà, ou s'il n'en possède aucune
 */
@@ -99,7 +97,7 @@ void ajout_carte_collec(carte_t *carte){
 /**
 *\fn void ajout_carte_deck(carte_t *tampon)
 
-*\param carte, la carte à ajouter
+*\param *tampon, la carte qui sera ajoutée au deck
 
 *\brief ajoute une carte au deck du joueur
 */
@@ -136,9 +134,9 @@ void ajout_carte_deck(carte_t *tampon){
 /**
 *\fn int randRange(int min, int max, int niveau)
 
-*\param int min Borne inférieure de l'intervalle
-*\param int max Borne supérieure de l'intervalle
-*\param niveau de la carte
+*\param int min, Borne inférieure de l'intervalle
+*\param int max, Borne supérieure de l'intervalle
+*\param niveau, le niveau de la carte
 *\brief Génère une valeur aléatoire parmi un intervalle. L'intervalle est modifié en fonction du niveau de la carte.
 *\return la valeur sous forme d'un int
 */
@@ -269,7 +267,7 @@ void transfert_mort(){
 // Primitives de manipulation de la liste
 /**
 *\fn void choix_liste()
-*\param choix 0 = COLLECTION et 1 = DECK. Les valeurs sont définies dans constantes.h
+*\param choix, 0 = COLLECTION et 1 = DECK. Les valeurs sont définies dans constantes.h
 *\brief Selection entre le deck et la collection
 */
 void choix_liste(int choix){
@@ -359,9 +357,9 @@ void suivant(){
     ec = ec->succ;
 }
 /**
-*\fn void valeur_elt(carte_t * t)
+*\fn void valeur_elt(carte_t ** t)
 *\brief Fonction qui permet de prendre une valeur de la liste
-*\param t un pointeur qui permet de prendre une valeur dans la liste
+*\param **t, un pointeur qui permet de prendre une valeur dans la liste
 */
 void valeur_elt(carte_t ** t){
 	if (!hors_liste())
@@ -371,7 +369,7 @@ void valeur_elt(carte_t ** t){
 /**
 *\fn void modif_elt(carte_t t)
 *\brief Fonction qui permet de modifier une valeur dans une liste
-*\param t une variable qui permet de modifier une valeur dans la liste
+*\param t, une variable qui permet de modifier une valeur dans la liste
 */
 void modif_elt(carte_t t){
 	if (!hors_liste())
@@ -379,9 +377,8 @@ void modif_elt(carte_t t){
 }
 
 /**
-*\fn void oter_elt(carte_t t)
+*\fn void oter_elt()
 *\brief Fonction qui permet de supprimer une valeur de la liste
-*\param t une variable qui va être supprimer de la liste
 */
 void oter_elt(){
 	element_t * temp;
@@ -403,7 +400,7 @@ void oter_elt(){
 /**
 *\fn void ajout_droit(carte_t * t)
 *\brief Fonction qui permet d'ajouter un objet après l'objet sur lequel l'utilisteur se trouve
-*\param t un pointeur qui va contenir une valeur qui va être rajouté
+*\param *t, un pointeur qui va contenir une valeur qui va être rajouté
 */
 void ajout_droit(carte_t * t){
 	element_t* nouv;
@@ -422,7 +419,7 @@ void ajout_droit(carte_t * t){
 /**
 *\fn void ajout_gauche(carte_t * t)
 *\brief Fonction qui permet d'ajouter un objet avant l'objet sur lequel l'utilisteur se trouve
-*\param t un pointeur qui va contenir une valeur qui va être rajouté
+*\param *t, un pointeur qui va contenir une valeur qui va être rajouté
 */
 void ajout_gauche(carte_t * t){
 	element_t* nouv;
@@ -438,16 +435,17 @@ void ajout_gauche(carte_t * t){
 	}
 }
 
+
 /**
-*\fn carte_t * creer_carte(char * nom, type_carte type, int * cible, int valeur)
+*\fn carte_t * creer_carte(char *nom, type_carte type, int valeur, int consommable, char *path)
 *\brief permet de créer une carte selon différentes caractéristiques données
-*\param nom pour le nom de la carte
-*\param type pour le type de la carte
-*\param valeur pour la valeur de la force de la carte
-*\param path, chemin de la carte
+*\param *nom, le nom de la carte
+*\param type, le type de la carte
+*\param valeur, la valeur de la force de la carte
+*\param path, le chemin de la carte
 *\return un pointeur sur une variable structure carte_t
 */
-carte_t * creer_carte(char * nom, type_carte type, int valeur, int consommable, char *path)
+carte_t * creer_carte(char *nom, type_carte type, int valeur, int consommable, char *path)
 {
   carte_t * carte = NULL ;
   static unsigned long int cpt = 0 ;
@@ -467,22 +465,22 @@ carte_t * creer_carte(char * nom, type_carte type, int valeur, int consommable, 
 
 
 /**
-*\fn void init_ennemi_valeurs(ennemi_t *ennemi, char * nom, int w, int h, int nb_sprites, int gap, float w2, float h2, char * path, SDL_Renderer * rendu)
+*\fn void init_ennemi_valeurs(ennemi_t *ennemi, char *nom, int w, int h, int nb_sprites, int gap, float w2, float h2, char *path, SDL_Renderer *rendu)
 
-*\param ennemi, l'ennemi dont on rempli la structure
-*\param nom, le nom du monstre
+*\param *ennemi, l'ennemi dont on rempli la structure
+*\param *nom, le nom du monstre
 *\param w, la taille du sprite en largeur
 *\param h, la taille du sprite en hauteur
 *\param nb_sprites, le nombre de sprites par lignes
 *\param gap, l'espace entre deux sprites sur l'image globale
 *\param w2, la taille en largeur que l'on veut pour le sprite
 *\param h2, la taille en hauteur que l'on veut pour le sprite
-*\param path, le chemin vers l'image de l'ennemi
-*\param rendu, le renderer sur lequel on dessine
+*\param *path, le chemin vers l'image de l'ennemi
+*\param *rendu, le renderer sur lequel on dessine
 
 *\brief donne à un ennemi les valeurs correspondant à ses sprites
 */
-void init_ennemi_valeurs(ennemi_t *ennemi, char * nom, int w, int h, int nb_sprites, int gap, float w2, float h2, char * path, SDL_Renderer * rendu){
+void init_ennemi_valeurs(ennemi_t *ennemi, char *nom, int w, int h, int nb_sprites, int gap, float w2, float h2, char *path, SDL_Renderer *rendu){
 
   charge_image(path, &ennemi->sprites, rendu);
   ennemi->w = ennemi->sprites.rectangle.w;
@@ -500,12 +498,12 @@ void init_ennemi_valeurs(ennemi_t *ennemi, char * nom, int w, int h, int nb_spri
 /**
 *\fn ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type, SDL_Renderer *rendu)
 *\brief permet de créer un ennemi selon plusieurs caractéristiques
-*\param pv,point de vie de l'ennemi
+*\param pv, point de vie de l'ennemi
 *\param vitesse, vitesse de l'ennemi
 *\param attaque, attaque de l'ennemi
 *\param defense, defense de l'ennemi
 *\param type, type de l'ennemi
-*\param rendu, le renderer sur lequel on dessine
+*\param *rendu, le renderer sur lequel on dessine
 *\return un pointeur sur une variable structure ennemi_t
 */
 ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type, SDL_Renderer *rendu)

@@ -20,7 +20,15 @@
 #include "../include/etage_final.h"
 
 
+/**
+*\fn int main(int argc, char* args[])
 
+*\param argc, le nombre d'arguments
+*\param args[], le tableau contenant tous les arguments
+*\brief Corps principal du jeu
+
+*\return 1 ou 0 si le programme s'est bien exécuté ou non.
+*/
 int main(int argc, char* args[]){
 
 //************************* DECLARATION VARIABLES************************************************************

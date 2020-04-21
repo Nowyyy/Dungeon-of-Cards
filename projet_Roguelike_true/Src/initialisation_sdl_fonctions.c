@@ -47,8 +47,6 @@ int initialisation_sdl(SDL_Window **window, SDL_Renderer **rendu){
 *\param **window contient la fenetre du jeu que l'on veut détruire
 *\param **rendu est le rendu dans la fenetre que l'on veut détruire
 
-*\return 0 si tout c'est bien passé, 1 si une erreur est apparue
-
 *\brief détruit les renderer et window passés en paramètre
 */
 void quit_sdl(SDL_Renderer **rendu, SDL_Window **window){
@@ -91,7 +89,7 @@ int init_or_quit_ttf(int action){
 }
 
 /**
-*\fn extern void get_text_and_rect_color(SDL_Renderer *renderer, int x, int y, char *text,TTF_Font *font, SDL_Texture **texture, SDL_Rect *rect, SDL_Color textColor)
+*\fn extern void get_text_and_rect_color(SDL_Renderer *renderer, int x, int y, char *text, TTF_Font *font, SDL_Texture **texture, SDL_Rect *rect, SDL_Color textColor)
 
 *\param renderer, le rendu sur lequel on va dessiner le texte
 *\param x, la position x a laquelle sera le texte
@@ -104,7 +102,7 @@ int init_or_quit_ttf(int action){
 
 *\brief Modifie une texture et un rect afin d'afficher le texte aux coordonnées données sur le renderer avec la police
 */
-extern void get_text_and_rect_color(SDL_Renderer *renderer, int x, int y, char *text,TTF_Font *font, SDL_Texture **texture, SDL_Rect *rect, SDL_Color textColor){
+extern void get_text_and_rect_color(SDL_Renderer *renderer, int x, int y, char *text, TTF_Font *font, SDL_Texture **texture, SDL_Rect *rect, SDL_Color textColor){
 
     int text_width;
     int text_height;
@@ -132,9 +130,9 @@ extern void get_text_and_rect_color(SDL_Renderer *renderer, int x, int y, char *
 
 
 /**
-*\fn extern void get_text_and_rect(SDL_Renderer *renderer, int x, int y, char *text,TTF_Font *font, SDL_Texture **texture, SDL_Rect *rect)
+*\fn extern void get_text_and_rect(SDL_Renderer *renderer, int x, int y, char *text, TTF_Font *font, SDL_Texture **texture, SDL_Rect *rect)
 
-*\param renderer, le rendu sur lequel on va dessiner le texte
+*\param *renderer, le rendu sur lequel on va dessiner le texte
 *\param x, la position x a laquelle sera le texte
 *\param y, la position y a laquelle sera le texte
 *\param *text, le texte que l'on souhaite dessiner à l'écran
@@ -144,7 +142,7 @@ extern void get_text_and_rect_color(SDL_Renderer *renderer, int x, int y, char *
 
 *\brief Modifie une texture et un rect afin d'afficher le texte aux coordonnées données sur le renderer avec la police
 */
-extern void get_text_and_rect(SDL_Renderer *renderer, int x, int y, char *text,TTF_Font *font, SDL_Texture **texture, SDL_Rect *rect){
+extern void get_text_and_rect(SDL_Renderer *renderer, int x, int y, char *text, TTF_Font *font, SDL_Texture **texture, SDL_Rect *rect){
 
     int text_width;
     int text_height;
@@ -204,14 +202,14 @@ int charge_image(char *path_img, image_t *struct_image, SDL_Renderer *rendu){
 
 	return 0;
 }
+
+
 /**
 *\fn void init_son(Mix_Chunk* sounds[NB_SON])
 
 *\param *sounds[NB_SON] est un tableau contenant les emplacements de chaque son
 
 *\brief initialise un tableau avec tous les sons utilisés
-
-*\return 1 si echec, 0 si réussite
 */
 void init_son(Mix_Chunk* sounds[NB_SON]){
 
@@ -260,8 +258,6 @@ void init_son(Mix_Chunk* sounds[NB_SON]){
 *\param *musics[NB_MUSIC] est un tableau contenant les emplacements de chaque musiques
 
 *\brief initialise un tableau avec toutes les musiques utilisées
-
-*\return 1 si echec, 0 si réussite
 */
 void init_music(Mix_Music* musics[NB_MUSIC]){
 
@@ -285,8 +281,6 @@ musics[victory] = Mix_LoadMUS("../Sound/victory.mp3");
 *\param *sounds[NB_SON] est un tableau contenant les emplacements de chaque son
 
 *\brief libère tous les sons et toutes les musiques utilisées
-
-*\return 1 si echec, 0 si réussite
 */
 void free_mixer(Mix_Music* musics[NB_MUSIC], Mix_Chunk* sounds[NB_SON]){
 	for(int i=move; i<NB_SON-1; i++){
@@ -313,8 +307,6 @@ void free_mixer(Mix_Music* musics[NB_MUSIC], Mix_Chunk* sounds[NB_SON]){
 *\param *pers est un tableau contenant les emplacements de chaque son
 
 *\brief libère tous les sons et toutes les musiques utilisées
-
-*\return 1 si echec, 0 si réussite
 */
 void choix_musique(Mix_Music* musics[NB_MUSIC], perso_t *pers){
 	if(pers->etage == 1){

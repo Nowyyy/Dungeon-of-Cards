@@ -39,10 +39,10 @@ void charge_sprites_personnage(image_t sprites[], SDL_Renderer *rendu){
 
 
 /**
-*\fn int test_collision(salle_t salle, perso_t pers, int direction)
+*\fn int test_collision(salle_t salle, perso_t *pers, int direction)
 
 *\param salle, la salle pour laquelle on test les collisions
-*\param pers, le personnage pour lequel on test les collisions
+*\param *pers, le personnage pour lequel on test les collisions
 *\param direction, la direction dans laquelle se rend le personnage
 
 *\brief permet de regarder si le personnage entre en collision avec un des murs de la salle
@@ -90,9 +90,8 @@ void init_animations(animation_t *anim){
 
 /**
 *\fn void change_animation(animation_t *anim, image_t sprites[], int nouvelle_animation)
-
-*\param sprites[], le tableau de sprites du personnage
 *\param *anim, la structure qui gère les animations
+*\param sprites[], le tableau de sprites du personnage
 *\param nouvelle_animation, l'indice du tableau ou se trouve la nouvelle animation a utiliser
 
 *\brief permet de changer d'animation selon la nouvelle passée en paramètre
@@ -235,10 +234,12 @@ void animations_personnage(image_t sprites[], unsigned int timer, touches_t clav
 /**
 *\fn void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animation_t *anim, Mix_Chunk *sounds[NB_SON], touches_t *clavier, int *etat)
 
-*\param pers, la structure du pêrsonnage que l'on souhaite déplacer
+*\param *pers, la structure du pêrsonnage que l'on souhaite déplacer
 *\param salle, la salle dans laquelle le personnage se déplace
 *\param *continuer, pointeur sur variable permettant de savoir si le joueur souhaite quitter le programme
+*\param *anim, la structure qui gère les animations
 *\param *sounds[NB_SON], tableau contenant les sons
+*\param clavier, la structure de touches du clavier
 *\param *etat, défini l'état dans lequel le jeu se trouve ->menu, labyrinthe, chargement
 
 *\brief Gère les déplacement du personnage dans une salle
@@ -312,6 +313,7 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 *\fn int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *sounds[NB_SON]
 *\param *pers, la structure du personnage
 *\param *salle, la salle dans laquelle on se trouve
+*\param indice, l'indice de la salle dans laquelle le joueur se situe
 *\param *sounds[NB_SON], tableau contenant les sons
 
 *\brief permet de téléporter le personnage dans la salle dont il passe la porter
@@ -438,19 +440,19 @@ int combat_declenche(salle_t salle, perso_t pers){
 
 
 /**
-*\fn void creer_texture_depuis_char(image_t *texte_pv, image_t *texte_etage, perso_t perso, SDL_Renderer *rendu,image_t *texte_counter,int *compte_ennemi,int *ennemi_max)
+*\fn void creer_texture_depuis_char(image_t *texte_pv, image_t *texte_etage, perso_t perso, SDL_Renderer *rendu, image_t *texte_counter, int *compte_ennemi, int *ennemi_max)
 
 *\param *texte_pv, une structure qui contiendra l'image du texte a afficher
 *\param *texte_etage, une structure qui contiendra l'image du texte a afficher
 *\param pers, le personnage à partir duquel on va récupérer des informations
 *\param *rendu, le renderer sur lequel on dessine
 *\param *texte_counter, une structure qui contiendra l'image du texte a afficher
-*\param *ennemi_max est le nombre d'ennemi max.
 *\param *compte_ennemi est un compteur des ennemis morts
+*\param *ennemi_max est le nombre d'ennemi max.
 
 *\brief Crée des images à partir de texte issu des données du personnage, range ces images dans les structures correspondantes
 */
-void creer_texture_depuis_char(image_t *texte_pv, image_t *texte_etage, perso_t perso, SDL_Renderer *rendu,image_t *texte_counter,int *compte_ennemi,int *ennemi_max){
+void creer_texture_depuis_char(image_t *texte_pv, image_t *texte_etage, perso_t perso, SDL_Renderer *rendu, image_t *texte_counter, int *compte_ennemi, int *ennemi_max){
 
 	char pv[15], etage[15],counter[15];
 

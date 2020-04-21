@@ -12,8 +12,8 @@
 #include "../include/salle.h"
 /**
  *\fn void init_salle(int salle[TAILLE_SALLE][TAILLE_SALLE])
- *\brief fonction qui génère une salle en un tableau
  *\param salle[TAILLE_SALLE][TAILLE_SALLE] est le tableau de TAILLE_SALLE qui comprend la salle
+ *\brief fonction qui génère une salle en un tableau
  */
 void init_salle(int salle[TAILLE_SALLE][TAILLE_SALLE]){
 
@@ -41,11 +41,13 @@ void init_salle(int salle[TAILLE_SALLE][TAILLE_SALLE]){
   }
 }
 
+
 /**
  *\fn void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction)
- *\brief fonction qui ajoute une porte à un côté du carré
  *\param salle[TAILLE_SALLE][TAILLE_SALLE] est le tableau de TAILLE_SALLE qui comprend la salle
  *\param direction correspond à un nombre entre 0 et 3 indiquant quel mur est seléctionné.
+ *\brief fonction qui ajoute une porte à un côté du carré
+
  */
 void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction){
 
@@ -96,11 +98,12 @@ void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction){
 /**
  *\fn void afficher_salle(salle_t *salle, SDL_Renderer *rendu, image_t texture[])
 
- *\brief fonction qui génère une salle en un tableau
-
  *\param *salle est une salle comportant le tableau a afficher
  *\param *rendu, le renderer sur lequel on dessine
  *\param texture[], contient toutes les images utilisées sauf celle du personnage
+
+ *\brief fonction qui génère une salle en un tableau
+
  */
 void afficher_salle(salle_t *salle, SDL_Renderer *rendu, image_t texture[]){
 
@@ -127,7 +130,7 @@ void afficher_salle(salle_t *salle, SDL_Renderer *rendu, image_t texture[]){
 /**
 *\fn void rempli_tableau_murs_portes(salle_t salle[], int indiceT)
 
-*\param *salle la salle pour laquelle on va completer les tableaux
+*\param salle[], la salle pour laquelle on va completer les tableaux
 *\param indiceT, indice du tableau
 
 *\brief rempli les tableaux des murs et des portes de la salle afin de pouvoir gérer les collisions plus tard
@@ -231,17 +234,17 @@ void textures_aleatoires(salle_t salles[], int taille){
 
 
 /**
-*\fn void place_monstre_coffre_boss(salle_t tab[], int taille, int type_ennemi, SDL_Renderer * rendu,int* ennemi_max)
+*\fn void place_monstre_coffre_boss(salle_t tab[], int taille, int type_ennemi, SDL_Renderer *rendu, int *ennemi_max)
 
 *\param tab[], tableau contenant les salles du labyrinthe
 *\param taille, taille du tableau
 *\param type_ennemi, type de l'ennemi
 *\param *rendu, le renderer sur lequel on dessine
-*\param *ennemi_max est le nombre d'ennemi max.
+*\param *ennemi_max, est le nombre d'ennemi max.
 
 *\brief rempli les salles de monstres, de coffre
 */
-void place_monstre_coffre_boss(salle_t tab[], int taille, int type_ennemi, SDL_Renderer * rendu,int* ennemi_max){
+void place_monstre_coffre_boss(salle_t tab[], int taille, int type_ennemi, SDL_Renderer *rendu, int *ennemi_max){
 
   int alea;
 
@@ -352,7 +355,7 @@ void ajoute_salle_decouverte(mini_map_t *map, salle_t salles[], int indice, int 
 
 
 /**
-*\fn void ajoute_ennemi(ennemi_t **ennemi, int type, SDL_Renderer * rendu, int etage)
+*\fn void ajoute_ennemi(ennemi_t **ennemi, int type, SDL_Renderer *rendu, int etage)
 
 *\param **ennemi, pointeur sur pointeur de type ennemi_t, l'ennemi que l'on va créer
 *\param type, le type d'ennemi que l'en veut créer.
@@ -361,7 +364,7 @@ void ajoute_salle_decouverte(mini_map_t *map, salle_t salles[], int indice, int 
 
 *\brief créer un ennemi à partir d'un type donné
 */
-void ajoute_ennemi(ennemi_t **ennemi, int type, SDL_Renderer * rendu, int etage){
+void ajoute_ennemi(ennemi_t **ennemi, int type, SDL_Renderer *rendu, int etage){
 
   ennemi_t ennemi_tmp;
 
@@ -399,7 +402,7 @@ void placer_monstre(ennemi_t *ennemi){
 
 
 /**
-*\fn creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int nb_ennemi, int type, SDL_Renderer * rendu, int etage)
+*\fn creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int nb_ennemi, int type, SDL_Renderer *rendu, int etage)
 
 *\param **ennemi, pointeur sur pointeur de type ennemi_t, l'ennemi que l'on va peut-être créer
 *\param **ennemi2, pointeur sur pointeur de type ennemi_t, l'ennemi que l'on va peut-être créer
@@ -410,7 +413,7 @@ void placer_monstre(ennemi_t *ennemi){
 
 *\brief créer un/des ennemi à partir d'un type donné
 */
-void creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int nb_ennemi, int type, SDL_Renderer * rendu, int etage){
+void creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int nb_ennemi, int type, SDL_Renderer *rendu, int etage){
 
   if(nb_ennemi > 0){
 
@@ -481,7 +484,7 @@ void affiche_mini_map(mini_map_t map, salle_t salle, SDL_Renderer *rendu){
 
 *\param etage, l'étage où se situe le joueur
 *\param boss, si l'ennemi que l'on conçoit est un boss ou non
-*\param ennemi, l'ennemi pour lequel on donne les valeurs
+*\param *ennemi, l'ennemi pour lequel on donne les valeurs
 
 *\brief Donne des points de vie et dommages différents selon l'étage et le style d'ennemi
 */

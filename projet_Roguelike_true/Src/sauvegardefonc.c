@@ -35,8 +35,8 @@ int save_existe(){
 
 /**
 *\fn void savecarte (char *path, int liste)
-*\param path , Contient le fichier où l'on va sauvegarder les cartes
-*\param liste , la liste de carte a sauvegarder
+*\param *path, Contient le fichier où l'on va sauvegarder les cartes
+*\param liste, la liste de carte a sauvegarder
 *\brief Fonction qui permet de sauvegarde toutes les données d'une carte
 */
 void savecarte (char *path, int liste){
@@ -72,9 +72,9 @@ void savecarte (char *path, int liste){
 
 /**
 *\fn void readcarte(char *path_file, int liste)
-*\brief Fonction qui permet de lire une carte
-*\param path , Contient le fichier où l'on va sauvegarder les cartes
+*\param *path_file , Contient le fichier où l'on va sauvegarder les cartes
 *\param liste , la liste de carte a sauvegarder
+*\brief Fonction qui permet de lire une carte
 */
 void readcarte(char *path_file, int liste){
 
@@ -94,7 +94,7 @@ void readcarte(char *path_file, int liste){
       en_tete();
 
         while(!feof(fichier)){
-          
+
           ajout_droit(creer_carte(nom,type,valeur,consommable,path));
           fscanf(fichier,"%d%d%d%s %[^\n]",&type,&valeur,&consommable,path,nom);
         }
@@ -111,8 +111,9 @@ void readcarte(char *path_file, int liste){
 
 /**
 *\fn void saveperso (perso_t *perso)
+*\param *perso, Pour savoir les données du perso à sauvegarder
 *\brief Fonction qui permet de sauvegarder les données du personnage
-*\param perso Pour savoir les données du perso à sauvegarder
+
 */
 void saveperso (perso_t *perso){
 
@@ -143,9 +144,9 @@ void saveperso (perso_t *perso){
 
 
 /**
-*\fn void readperso(perso_t*perso)
+*\fn void readperso(perso_t *perso)
+*\param *perso Pour savoir les données du perso à sauvegarder
 *\brief Fonction qui permet de lire les données du personnage
-*\param perso Pour savoir les données du perso à sauvegarder
 */
 void readperso(perso_t*perso){
 

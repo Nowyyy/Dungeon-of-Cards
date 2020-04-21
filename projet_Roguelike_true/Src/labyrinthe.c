@@ -25,7 +25,7 @@
 #include "../include/labyrinthe.h"
 
 /**
-*\fn void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu,int *compte_ennemi,int *ennemi_max)
+*\fn void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu, int *compte_ennemi, int *ennemi_max)
 
 *\param images[], contient toutes les images utilisées sauf celle du personnage
 *\param *pers, pointeur sur la structure contenant le personnage
@@ -36,7 +36,7 @@
 *\brief Permet de charger toutes les images et de les ranger dans les structures correspondantes
 
 */
-void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu,int *compte_ennemi,int *ennemi_max){
+void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu, int *compte_ennemi, int *ennemi_max){
 
 	if(pers->etage == 1){
 		charge_image(SOL1_PATH,&images[sol], rendu);
@@ -462,7 +462,7 @@ int creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer){
 
 
 /**
-*\fn void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Renderer *rendu,image_t *counter,int *compte_ennemi,int *ennemi_max,int *compt_ennold)
+*\fn void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Renderer *rendu, image_t *counter, int *compte_ennemi, int *ennemi_max, int *compt_ennold)
 
 *\param *pers, la structure contenant le personnage
 *\param *pv, la structure contenant la texture du HUD représentant les PV du personnage
@@ -474,7 +474,7 @@ int creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer){
 
 *\brief Permet de mettre à jour le HUD selon que les PDV ou l'étage soit différents
 */
-void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Renderer *rendu,image_t *counter,int *compte_ennemi,int *ennemi_max,int *compt_ennold){
+void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Renderer *rendu, image_t *counter, int *compte_ennemi, int *ennemi_max, int *compt_ennold){
 
 	if(pers->pv != pers->pv_old || pers->etage != pers->etage_old || *(compt_ennold)!=*(compte_ennemi)){
 		pers->pv_old = pers->pv;
@@ -545,7 +545,7 @@ void vers_ecran_combat(SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], touches_t
 }
 
 /**
-*\fn void check_ennemi(int* ennemi_max,int* compte_ennemi,salle_t salles[],int salle_courante,perso_t *pers)
+*\fn void check_ennemi(int *ennemi_max, int *compte_ennemi, salle_t salles[], int salle_courante, perso_t *pers)
 *\param *ennemi_max est le nombre d'ennemi max.
 *\param *compte_ennemi est un compteur des ennemis morts
 *\param salles[], le tableau contenant les salles du jeu
@@ -554,7 +554,7 @@ void vers_ecran_combat(SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], touches_t
 
 *\brief permet d'ajouter des pv au joueur selon le nombre d'ennemi tué.
 */
-void check_ennemi(int* ennemi_max,int* compte_ennemi,salle_t salles[],int salle_courante,perso_t *pers){
+void check_ennemi(int *ennemi_max, int *compte_ennemi, salle_t salles[], int salle_courante, perso_t *pers){
 	int max=*(ennemi_max)*0.7;
 	if(*(compte_ennemi)<*(ennemi_max)){
 		if(salles[salle_courante].ennemi_present){
@@ -599,6 +599,7 @@ void init_tableau_images(image_t images[]){
 *\fn int choix_boss()
 
 *\brief Permet de choisir le boss qui peuplera l'étage
+*\return le boss choisi
 */
 int choix_boss(){
 
@@ -611,7 +612,7 @@ int choix_boss(){
 *\fn int choix_monstre(int etage)
 
 *\param etage, l'étage actuel où se situe le joueur
-
+*\return Le monstre choisi
 *\brief Permet de choisir le monstre qui peuplera l'étage (sauf certains monstres à certains étages qui ne ressortent pas assez sur les textures)
 */
 int choix_monstre(int etage){

@@ -19,14 +19,14 @@
 *\param jouer, le rectangle contenant le texte "Commencer partie"
 *\param charger, le rectangle contenant le texte "Charger partie"
 *\param quitter, le rectangle contenant le texte "Quitter"
-*\param *rect_sel, le rectangle de sélection permettant de sélectionner une option
-*\param *sounds[NB_SON], tableau contenant les sons
+*\param **rect_sel, le rectangle de sélection permettant de sélectionner une option
 *\param *etat, l'endroit ou ce trouve le rectangle
+*\param *sounds[NB_SON], tableau contenant les sons
 *\brief Permet de déplacer d'option en option le rectangle de sélection
 
 *\return retourne False pour fermer la fenetre, True pour la garder  ouverte
 */
-int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect quitter, SDL_Rect **rect_sel, int *etat, Mix_Chunk* sounds[NB_SON]){
+int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect quitter, SDL_Rect **rect_sel, int *etat, Mix_Chunk *sounds[NB_SON]){
 
 	SDL_Event event;
 
@@ -115,10 +115,10 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 *\param *jouer_text la texture pour le texte "Commencer partie"
 *\param *charger_text la texture pour le texte "Charger partie"
 *\param *quitter_text la texture pour le texte "Quitter"
+*\param *rect_sel le rectangle de sélection
 *\param jouer_rect le rectangle pour le texte "Commencer partie"
 *\param charger_rect le rectangle pour le texte "Charger partie"
 *\param quitter_rect le rectangle pour le texte "Quitter"
-*\param rect_sel le rectangle de sélection
 *\param logo[] le logo du jeu
 
 *\brief Affiche sur le rendu les différentes textures et rectangles passés en paramètre

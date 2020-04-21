@@ -14,13 +14,13 @@
 #include "../include/fonctions.h"
 
 /**
-*\fn void afficher_confirmation(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture *charger_texture, SDL_Rect confirmer_rect, SDL_Texture *retour_texture, SDL_Rect retour_rect, SDL_Texture *message_texture, SDL_Rect message_rect)
+*\fn void afficher_confirmation(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture *confirmer_texture, SDL_Rect confirmer_rect, SDL_Texture *retour_texture, SDL_Rect retour_rect, SDL_Texture *message_texture, SDL_Rect message_rect)
 
-*\param*rendu, le renderer sur lequel on dessine
+*\param *rendu, le renderer sur lequel on dessine
 *\param rect_sel, le rectangle de sélection du menu
-*\param *confirmer_texture la texture pour le texte "Charger partie"
-*\param *retour_texture la texture pour le texte "Quitter"
+*\param *confirmer_texture, la texture pour le texte "Charger partie"
 *\param confirmer_rect le rectangle pour confirmer l'écrasement de la partie
+*\param *retour_texture la texture pour le texte "Quitter"
 *\param retour_rect le rectangle pour le texte "retour"
 *\param *message_texture la texture pour le texte du message
 *\param message_rect le rectangke pour le texte du message
@@ -44,6 +44,7 @@ void afficher_confirmation(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture *
 
 	SDL_RenderPresent(rendu);//applique les modifs précédentes
 }
+
 
 /**
 *\fn int deplacement_rectangle_selection_confirmer(int *etat, SDL_Rect confirmer_rect, SDL_Rect retour_rect, SDL_Rect **rect_sel, Mix_Chunk *sounds[NB_SON], perso_t *pers)
