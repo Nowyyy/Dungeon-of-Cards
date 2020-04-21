@@ -94,8 +94,12 @@ void readcarte(char *path_file, int liste){
       en_tete();
 
         while(!feof(fichier)){
-
-          ajout_droit(creer_carte(nom,type,valeur,consommable,path));
+          if(!strcmp(path_file,SAVE_CARTES_NEW_GAME_PATH) && liste == DECK){
+            ajout_droit(creer_carte(nom,type,valeur_carte(nom),consommable,path));
+          }
+          else {
+            ajout_droit(creer_carte(nom,type,valeur,consommable,path));
+          }
           fscanf(fichier,"%d%d%d%s %[^\n]",&type,&valeur,&consommable,path,nom);
         }
     }
