@@ -561,16 +561,16 @@ void check_ennemi(int *ennemi_max, int *compte_ennemi, salle_t salles[], int sal
 			if(salles[salle_courante].nb_ennemi ==2 && ((salles[salle_courante].ennemi->pv)<=0 ||(salles[salle_courante].ennemi2->pv)<=0) ){
 				*(compte_ennemi)+=1;
 			}
-			if(salles[salle_courante].nb_ennemi ==1 && (salles[salle_courante].ennemi->pv)<=0){
+			if((salles[salle_courante].nb_ennemi ==1) && ((salles[salle_courante].ennemi->pv)<=0) && ((salles[salle_courante].ennemi->boss)==0)){
 				*(compte_ennemi)+=1;
 			}
 		}
 	}
-	if(*(compte_ennemi)==max && (salles[salle_courante].ennemi->pv)<=0 ){
+	if(*(compte_ennemi)==max && ((salles[salle_courante].ennemi->pv)<=0) && ((salles[salle_courante].ennemi->boss)==0)){
 		pers->pv_max+=5;
 		pers->pv+=5;
 	}
-	if(*(compte_ennemi)==*(ennemi_max)){
+	if(*(compte_ennemi)==*(ennemi_max) && ((salles[salle_courante].ennemi->boss)==0) ){
 		pers->pv_max+=10;
 		pers->pv+=10;
 	}
