@@ -575,7 +575,7 @@ void anim_combat_ennemi_attaque(ennemi_t *ennemi, SDL_Renderer *rendu, Mix_Chunk
   int he=ennemi->sprites.rectangle.h;
   int we=ennemi->sprites.rectangle.w;
 
-  ennemi->sprites.rectangle.y = 370-(ennemi->sprites.rectangle.h);
+  ennemi->sprites.rectangle.y = 375-(ennemi->sprites.rectangle.h);
   ennemi->sprites.rectangle.x = 830;
   ennemi->sprites.rectangle.w *= 1.5;
   ennemi->sprites.rectangle.h *= 1.5;
@@ -643,7 +643,7 @@ void anim_combat_perso_soin(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, 
 
   	charge_image("../Images/Combat/soin.png", &icon[0], rendu);
 
-    icon[0].rectangle.x = pers->sprites[courant].rectangle.x + 10;
+    icon[0].rectangle.x = pers->sprites[courant].rectangle.x + 4;
     icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 60;
 
     SDL_RenderCopy(rendu, icon[0].img, NULL, &icon[0].rectangle);
@@ -655,7 +655,7 @@ void anim_combat_perso_soin(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, 
   else if(!strcmp(carte->nom, "potion I") || !strcmp(carte->nom, "potion II") || !strcmp(carte->nom, "potion X")){
     charge_image("../Images/Combat/potion.png", &icon[0], rendu);
 
-    icon[0].rectangle.x = pers->sprites[courant].rectangle.x + 7;
+    icon[0].rectangle.x = pers->sprites[courant].rectangle.x + 1;
     icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 60;
 
     SDL_RenderCopy(rendu, icon[0].img, NULL, &icon[0].rectangle);
@@ -667,7 +667,7 @@ void anim_combat_perso_soin(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, 
   else if(!strcmp(carte->nom, "guerison I") || !strcmp(carte->nom, "guerison II") || !strcmp(carte->nom, "guerison X")){
     charge_image("../Images/deathlight.png", &icon[0], rendu);
 
-    icon[0].rectangle.x = pers->sprites[courant].rectangle.x - 70;
+    icon[0].rectangle.x = pers->sprites[courant].rectangle.x - 75;
     icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 70;
 
     SDL_RenderCopy(rendu, icon[0].img, NULL, &icon[0].rectangle);
@@ -741,42 +741,42 @@ void anim_combat_perso_poison(perso_t *pers, carte_t *carte, SDL_Renderer *rendu
 
   //Boss
   if(!strcmp(ennemi->nom, "Sorcier")){
-    icon[0].rectangle.x = 843;
-    icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 180;
+    icon[0].rectangle.x = 832;
+    icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 140;
   }
   if(!strcmp(ennemi->nom, "Minotaure")){
-    icon[0].rectangle.x = 845;
+    icon[0].rectangle.x = 840;
     icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 100;
   }
   if(!strcmp(ennemi->nom, "Cyclope")){
     icon[0].rectangle.x = 845;
-    icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 130;
+    icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 120;
   }
   if(!strcmp(ennemi->nom, "Sorciere")){
-    icon[0].rectangle.x = 845;
-    icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 70;
+    icon[0].rectangle.x = 835;
+    icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 80;
   }
   if(!strcmp(ennemi->nom, "Mage")){
-    icon[0].rectangle.x = 840;
+    icon[0].rectangle.x = 835;
     icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 120;
   }
 
   //Ennemis classiques
   if(!strcmp(ennemi->nom, "Squelette")){
-    icon[0].rectangle.x = 855;
-    icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 70;
+    icon[0].rectangle.x = 850;
+    icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 67;
   }
   if(!strcmp(ennemi->nom, "Blob")){
-    icon[0].rectangle.x = 850;
+    icon[0].rectangle.x = 845;
     icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 90;
   }
   if(!strcmp(ennemi->nom, "Volant")){
-    icon[0].rectangle.x = 845;
+    icon[0].rectangle.x = 840;
     icon[0].rectangle.y = pers->sprites[courant].rectangle.y - 60;
   }
   if(!strcmp(ennemi->nom, "Imp")){
-    icon[0].rectangle.x = 840;
-    icon[0].rectangle.y = pers->sprites[courant].rectangle.y -60;
+    icon[0].rectangle.x = 835;
+    icon[0].rectangle.y = pers->sprites[courant].rectangle.y -54;
   }
 
   SDL_RenderCopy(rendu, icon[0].img, NULL, &icon[0].rectangle);
