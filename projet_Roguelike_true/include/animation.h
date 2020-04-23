@@ -1,4 +1,3 @@
-void animation_niveau(perso_t *perso, SDL_Renderer *rendu);
 void anim_combat(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON]);
 void anim1(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON]);
 void anim2(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON]);
@@ -11,3 +10,4 @@ void anim_combat_perso_barriere(perso_t *pers, carte_t *carte, SDL_Renderer *ren
 void anim_combat_perso_poison(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], ennemi_t *ennemi);
 void anim_combat_perso_bdf(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON]);
 void anim_combat_ennemi_attaque(ennemi_t *ennemi, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], perso_t *pers);
+void animation_niveau_histoire(perso_t *perso, SDL_Renderer *rendu);

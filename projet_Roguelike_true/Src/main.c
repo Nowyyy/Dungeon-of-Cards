@@ -112,12 +112,12 @@ int main(int argc, char* args[]){
 							///////////Exploration du labyrinthe
 							saveperso(&pers);
 							Mix_HaltMusic();
-							animation_niveau(&pers, rendu);
-						  	choix_musique(musics, &pers);
-						  	savecarte(SAVE_CARTES_DECK_PATH, DECK);
-						  	savecarte(SAVE_CARTES_COLLEC_PATH, COLLEC);
+							animation_niveau_histoire(&pers, rendu);
+						  choix_musique(musics, &pers);
+						  savecarte(SAVE_CARTES_DECK_PATH, DECK);
+						  savecarte(SAVE_CARTES_COLLEC_PATH, COLLEC);
 
-						  	if(pers.etage < 5)
+						  if(pers.etage < 5)
 								boucle_labyrinthe(&continuer, &etat, rendu, sounds, musics, &pers, police);
 							else
 								etage_final(rendu, &continuer, &etat, sounds, musics, &pers, police);

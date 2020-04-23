@@ -12,49 +12,140 @@
 #include "../include/personnage.h"
 #include "../include/sauvegardefonc.h"
 #include "../include/fonctions.h"
+#include "../include/clavier.h"
 
 /**
 *\fn void animation_niveau(perso_t *perso, SDL_Renderer *rendu)
 *\param *perso, la structure du personnage
 *\param *rendu, le renderer sur lequel on dessine
-*\brief Fonction qui anime le lancement d'une partie avec un chargement
+*\brief Fonction qui anime le lancement d'une partie avec un chargement et une histoire
 */
-void animation_niveau(perso_t *perso, SDL_Renderer *rendu){
+void animation_niveau_histoire(perso_t *perso, SDL_Renderer *rendu){
 
-  //initialisation des variables
-  image_t texte_etage, texte_charg, p1, p2, p3;
-  char etage[15], charg[15]="chargement", cp1[10]=".", cp2[10]=".", cp3[10]=".";
+//initialisation des variables
+  //Relatif a l'histoire de l'étage 1
+  image_t texte_etage1_1, texte_etage1_2;
+  char etage1_1[300] = "Un village terrorise par un terrible sorcier qui s'est installe dans un chateau souterrain.";
+  char etage1_2[300] = "Un jeune heros decide de prouver sa valeur en entrant seul dans l'antre du monstre.";
+  int etage1_1_x = 80, etage1_1_y = 250, etage1_2_x = 110, etage1_2_y = 350;
+
+  //Relatif a l'histoire de l'étage 2
+  image_t texte_etage2_1, texte_etage2_2;
+  char etage2_1[300]= "Apres un terrible combat contre une des creations du sorcier,";
+  char etage2_2[300]= "le heros continue sa descente dans les entrailles du chateau.";
+  int etage2_1_x = 225, etage2_1_y = 250, etage2_2_x = 230, etage2_2_y = 350;
+
+  //Relatif a l'histoire de l'étage 3
+  image_t texte_etage3_1, texte_etage3_2, texte_etage3_3;
+  char etage3_1[300]= "Un nouvel ennemi abbatu, de terribles cauchemars enfin termines.";
+  char etage3_2[300]= "Le heros sent sa force grandir au fil des combats mais il doit s'endurcir,";
+  char etage3_3[300]= "la puissance du sorcier le balaireai d'un coup sans cela.";
+  int etage3_1_x = 205, etage3_1_y = 250, etage3_2_x = 178, etage3_2_y = 300, etage3_3_x = 258, etage3_3_y = 350;
+
+  //Relatif a l'histoire de l'étage 4
+  image_t texte_etage4_1, texte_etage4_2;
+  char etage4_1[300]= "Plus qu'une abomination a faire tomber avant d'affronter le terrible sorcier.";
+  char etage4_2[300]= "Les combats deviennent plus ardus, les monstres gardant leur chef sont puissants...";
+  int etage4_1_x = 145, etage4_1_y = 250, etage4_2_x = 110, etage4_2_y = 350;
+
+  //Relatif a l'histoire de l'étage 5
+  image_t texte_etage5_1, texte_etage5_2;
+  char etage5_1[300]= "Le face a face arrive enfin, fort de son experience et de ses nouveaux pouvoirs glanes";
+  char etage5_2[300]= "a travers le chateau, le heros se prepare pour son ultime combat";
+  int etage5_1_x = 110, etage5_1_y = 250, etage5_2_x = 210, etage5_2_y = 350;
+
+  //initialisation des polices
   TTF_Font *police = NULL;
-  int x_etage = 480, y_etage = 250, x_charg = 450, y_charg = 350;
-  int p1_x = 2000, p1_y = 350, p2_x = 2000, p2_y = 350, p3_x = 2000, p3_y = 350;
-  int char_alea = rand()%(9-4)+4;
-  int cmp = 0, cmp2=0;
+  TTF_Font *police_big = NULL;
   police = TTF_OpenFont(FONT_PATH, 30);
+  police_big = TTF_OpenFont(FONT_PATH, 50);
+
+  //Relatif aux textes d'étagen de chargement et d'appuyer sur une touche
+  image_t texte_etage, texte_charg, p1, p2, p3, texte_continuer;
+  char etage[15], charg[15]="chargement", cp1[10]=".", cp2[10]=".", cp3[10]=".", continuer[40]="Appuyez sur entree pour continuer";
+  int x_etage = WIN_WIDTH/2 - 60, y_etage = 100, x_charg = 470, y_charg = 500;
+  int p1_x = 2000, p1_y = y_charg, p2_x = 2000, p2_y = y_charg, p3_x = 2000, p3_y = y_charg;
+  int continuer_x = 362, continuer_y = y_charg;
+  int char_alea = rand()%(9-4)+4;
+  int cmp = 0, cmp2=0, suite = 0;
+  SDL_Color color_etage={237, 56, 51};
+  SDL_Color color_charge={134, 134, 134};
+
+  //Relatif au fond d'écran
   SDL_Rect rect;
  	rect.w = 1080;
  	rect.h = 620;
 
-  sprintf(etage, "Etage %d", perso->etage);
-  get_text_and_rect(rendu, x_etage, y_etage, etage, police, &texte_etage.img, &texte_etage.rectangle);
-  get_text_and_rect(rendu, x_charg, y_charg, charg, police, &texte_charg.img, &texte_charg.rectangle);
-  get_text_and_rect(rendu, p1_x, p1_y, cp1, police, &p1.img, &p1.rectangle);
-  get_text_and_rect(rendu, p2_x, p2_y, cp2, police, &p2.img, &p2.rectangle);
-  get_text_and_rect(rendu, p3_x, p3_y, cp3, police, &p3.img, &p3.rectangle);
+  //Relatif à l'attente de la touche entrée
+  SDL_Event event;
+  touches_t touches;
 
-  //Animation
+  init_tab_clavier(touches.tab);
+
+  //Initialisation des textes
+  sprintf(etage, "Etage %d", perso->etage);
+  get_text_and_rect_color(rendu, x_etage, y_etage, etage, police_big, &texte_etage.img, &texte_etage.rectangle, color_etage);
+  get_text_and_rect_color(rendu, x_charg, y_charg, charg, police, &texte_charg.img, &texte_charg.rectangle, color_charge);
+  get_text_and_rect_color(rendu, p1_x, p1_y, cp1, police, &p1.img, &p1.rectangle, color_charge);
+  get_text_and_rect_color(rendu, p2_x, p2_y, cp2, police, &p2.img, &p2.rectangle, color_charge);
+  get_text_and_rect_color(rendu, p3_x, p3_y, cp3, police, &p3.img, &p3.rectangle, color_charge);
+  get_text_and_rect_color(rendu, continuer_x, continuer_y, continuer, police, &texte_continuer.img, &texte_continuer.rectangle, color_charge);
+
+
+  //Affichage de l'écran
   SDL_SetRenderDrawColor(rendu, 0, 0, 0, 255);
   SDL_RenderClear(rendu);
   SDL_RenderFillRect(rendu, &rect);
   SDL_RenderPresent(rendu);
-
   SDL_Delay(100);
-
   SDL_RenderClear(rendu);
+
+  //Afficher texte etage 1
+  if(perso->etage == 1){
+    get_text_and_rect(rendu, etage1_1_x, etage1_1_y, etage1_1, police, &texte_etage1_1.img, &texte_etage1_1.rectangle);
+    get_text_and_rect(rendu, etage1_2_x, etage1_2_y, etage1_2, police, &texte_etage1_2.img, &texte_etage1_2.rectangle);
+    SDL_RenderCopy(rendu, texte_etage1_1.img, NULL, &texte_etage1_1.rectangle);
+    SDL_RenderCopy(rendu, texte_etage1_2.img, NULL, &texte_etage1_2.rectangle);
+  }
+
+  //Affichage texte etage 2
+  else if(perso->etage == 2){
+    get_text_and_rect(rendu, etage2_1_x, etage2_1_y, etage2_1, police, &texte_etage2_1.img, &texte_etage2_1.rectangle);
+    get_text_and_rect(rendu, etage2_2_x, etage2_2_y, etage2_2, police, &texte_etage2_2.img, &texte_etage2_2.rectangle);
+    SDL_RenderCopy(rendu, texte_etage2_1.img, NULL, &texte_etage2_1.rectangle);
+    SDL_RenderCopy(rendu, texte_etage2_2.img, NULL, &texte_etage2_2.rectangle);
+  }
+
+  //Affichage texte etage 3
+  else if(perso->etage == 3){
+    get_text_and_rect(rendu, etage3_1_x, etage3_1_y, etage3_1, police, &texte_etage3_1.img, &texte_etage3_1.rectangle);
+    get_text_and_rect(rendu, etage3_2_x, etage3_2_y, etage3_2, police, &texte_etage3_2.img, &texte_etage3_2.rectangle);
+    get_text_and_rect(rendu, etage3_3_x, etage3_3_y, etage3_3, police, &texte_etage3_3.img, &texte_etage3_3.rectangle);
+    SDL_RenderCopy(rendu, texte_etage3_1.img, NULL, &texte_etage3_1.rectangle);
+    SDL_RenderCopy(rendu, texte_etage3_2.img, NULL, &texte_etage3_2.rectangle);
+    SDL_RenderCopy(rendu, texte_etage3_3.img, NULL, &texte_etage3_3.rectangle);
+  }
+
+  //Affichage texte etage 4
+  else if(perso->etage == 4){
+    get_text_and_rect(rendu, etage4_1_x, etage4_1_y, etage4_1, police, &texte_etage4_1.img, &texte_etage4_1.rectangle);
+    get_text_and_rect(rendu, etage4_2_x, etage4_2_y, etage4_2, police, &texte_etage4_2.img, &texte_etage4_2.rectangle);
+    SDL_RenderCopy(rendu, texte_etage4_1.img, NULL, &texte_etage4_1.rectangle);
+    SDL_RenderCopy(rendu, texte_etage4_2.img, NULL, &texte_etage4_2.rectangle);
+  }
+
+  //Affichage texte etage 5
+  else if(perso->etage == 5){
+    get_text_and_rect(rendu, etage5_1_x, etage5_1_y, etage5_1, police, &texte_etage5_1.img, &texte_etage5_1.rectangle);
+    get_text_and_rect(rendu, etage5_2_x, etage5_2_y, etage5_2, police, &texte_etage5_2.img, &texte_etage5_2.rectangle);
+    SDL_RenderCopy(rendu, texte_etage5_1.img, NULL, &texte_etage5_1.rectangle);
+    SDL_RenderCopy(rendu, texte_etage5_2.img, NULL, &texte_etage5_2.rectangle);
+  }
+
   SDL_RenderCopy(rendu, texte_etage.img, NULL, &texte_etage.rectangle);
   SDL_RenderCopy(rendu, texte_charg.img, NULL, &texte_charg.rectangle);
 
   SDL_RenderPresent(rendu);
-
   //Faire clignoter les points
   while(cmp != char_alea){
     if(cmp2==0){
@@ -65,17 +156,14 @@ void animation_niveau(perso_t *perso, SDL_Renderer *rendu){
       p3.rectangle.x = 2000;
     }
     else if(cmp2==1){
-      p1.rectangle.x = 580;
+      p1.rectangle.x = x_charg + 130;
     }
-
     else if(cmp2==2){
-      p2.rectangle.x = 585;
+      p2.rectangle.x = x_charg + 135;
     }
-
     else if(cmp2==3){
-      p3.rectangle.x = 590;
+      p3.rectangle.x = x_charg + 140;
       cmp2=-1;
-
     }
 
     SDL_RenderClear(rendu);
@@ -84,16 +172,79 @@ void animation_niveau(perso_t *perso, SDL_Renderer *rendu){
     SDL_RenderCopy(rendu, p1.img, NULL, &p1.rectangle);
     SDL_RenderCopy(rendu, p2.img, NULL, &p2.rectangle);
     SDL_RenderCopy(rendu, p3.img, NULL, &p3.rectangle);
+    if(perso->etage == 1){
+      SDL_RenderCopy(rendu, texte_etage1_1.img, NULL, &texte_etage1_1.rectangle);
+      SDL_RenderCopy(rendu, texte_etage1_2.img, NULL, &texte_etage1_2.rectangle);
+    }
+
+    if(perso->etage == 2){
+      SDL_RenderCopy(rendu, texte_etage2_1.img, NULL, &texte_etage2_1.rectangle);
+      SDL_RenderCopy(rendu, texte_etage2_2.img, NULL, &texte_etage2_2.rectangle);
+    }
+
+    if(perso->etage == 3){
+      SDL_RenderCopy(rendu, texte_etage3_1.img, NULL, &texte_etage3_1.rectangle);
+      SDL_RenderCopy(rendu, texte_etage3_2.img, NULL, &texte_etage3_2.rectangle);
+      SDL_RenderCopy(rendu, texte_etage3_3.img, NULL, &texte_etage3_3.rectangle);
+    }
+
+    if(perso->etage == 4){
+      SDL_RenderCopy(rendu, texte_etage4_1.img, NULL, &texte_etage4_1.rectangle);
+      SDL_RenderCopy(rendu, texte_etage4_2.img, NULL, &texte_etage4_2.rectangle);
+    }
+    if(perso->etage == 5){
+      SDL_RenderCopy(rendu, texte_etage5_1.img, NULL, &texte_etage5_1.rectangle);
+      SDL_RenderCopy(rendu, texte_etage5_2.img, NULL, &texte_etage5_2.rectangle);
+    }
     SDL_RenderPresent(rendu);
-
-
     cmp++;
     cmp2++;
     SDL_Delay(500);
   }
 
-	TTF_CloseFont(police); //on libère la police
+  //On raffiche les textes + le appuyer sur une touche pour continuer
+  SDL_RenderClear(rendu);
+  SDL_RenderCopy(rendu, texte_etage.img, NULL, &texte_etage.rectangle);
+  SDL_RenderCopy(rendu, texte_continuer.img, NULL, &texte_continuer.rectangle);
+  if(perso->etage == 1){
+    SDL_RenderCopy(rendu, texte_etage1_1.img, NULL, &texte_etage1_1.rectangle);
+    SDL_RenderCopy(rendu, texte_etage1_2.img, NULL, &texte_etage1_2.rectangle);
+  }
+  if(perso->etage == 2){
+    SDL_RenderCopy(rendu, texte_etage2_1.img, NULL, &texte_etage2_1.rectangle);
+    SDL_RenderCopy(rendu, texte_etage2_2.img, NULL, &texte_etage2_2.rectangle);
+  }
+  if(perso->etage == 3){
+    SDL_RenderCopy(rendu, texte_etage3_1.img, NULL, &texte_etage3_1.rectangle);
+    SDL_RenderCopy(rendu, texte_etage3_2.img, NULL, &texte_etage3_2.rectangle);
+    SDL_RenderCopy(rendu, texte_etage3_3.img, NULL, &texte_etage3_3.rectangle);
+  }
+  if(perso->etage == 4){
+    SDL_RenderCopy(rendu, texte_etage4_1.img, NULL, &texte_etage4_1.rectangle);
+    SDL_RenderCopy(rendu, texte_etage4_2.img, NULL, &texte_etage4_2.rectangle);
+  }
+  if(perso->etage == 5){
+    SDL_RenderCopy(rendu, texte_etage5_1.img, NULL, &texte_etage5_1.rectangle);
+    SDL_RenderCopy(rendu, texte_etage5_2.img, NULL, &texte_etage5_2.rectangle);
+  }
+  SDL_RenderPresent(rendu);
 
+//Attendre la touche entrée
+  while(SDL_PollEvent(&event));
+  while(SDL_PollEvent(&event) || suite == 0){
+    event_clavier(&touches, event);
+
+    if(touches.tab[entree] == 1){
+      suite = 1;
+    }
+    SDL_Delay(5);
+  }
+
+  //Libération des polices
+	TTF_CloseFont(police);
+  TTF_CloseFont(police_big);
+
+//Libération de tous les textes
   if(texte_etage.img != NULL){
     SDL_DestroyTexture(texte_etage.img);
     texte_etage.img=NULL;
@@ -117,6 +268,66 @@ void animation_niveau(perso_t *perso, SDL_Renderer *rendu){
   if(p3.img!=NULL){
     SDL_DestroyTexture(p3.img);
     p3.img=NULL;
+  }
+
+  if(texte_continuer.img!=NULL){
+    SDL_DestroyTexture(texte_continuer.img);
+    texte_continuer.img=NULL;
+  }
+
+  if(texte_etage1_1.img!=NULL){
+    SDL_DestroyTexture(texte_etage1_1.img);
+    texte_etage1_1.img=NULL;
+  }
+
+  if(texte_etage1_2.img!=NULL){
+    SDL_DestroyTexture(texte_etage1_2.img);
+    texte_etage1_2.img=NULL;
+  }
+
+  if(texte_etage2_1.img!=NULL){
+    SDL_DestroyTexture(texte_etage2_1.img);
+    texte_etage2_1.img=NULL;
+  }
+
+  if(texte_etage2_2.img!=NULL){
+    SDL_DestroyTexture(texte_etage2_2.img);
+    texte_etage2_2.img=NULL;
+  }
+
+  if(texte_etage3_1.img!=NULL){
+    SDL_DestroyTexture(texte_etage3_1.img);
+    texte_etage3_1.img=NULL;
+  }
+
+  if(texte_etage3_2.img!=NULL){
+    SDL_DestroyTexture(texte_etage3_2.img);
+    texte_etage3_2.img=NULL;
+  }
+
+  if(texte_etage3_3.img!=NULL){
+    SDL_DestroyTexture(texte_etage3_3.img);
+    texte_etage3_3.img=NULL;
+  }
+
+  if(texte_etage4_1.img!=NULL){
+    SDL_DestroyTexture(texte_etage4_1.img);
+    texte_etage4_1.img=NULL;
+  }
+
+  if(texte_etage4_2.img!=NULL){
+    SDL_DestroyTexture(texte_etage4_2.img);
+    texte_etage4_2.img=NULL;
+  }
+
+  if(texte_etage5_1.img!=NULL){
+    SDL_DestroyTexture(texte_etage5_1.img);
+    texte_etage5_1.img=NULL;
+  }
+
+  if(texte_etage5_2.img!=NULL){
+    SDL_DestroyTexture(texte_etage5_2.img);
+    texte_etage5_2.img=NULL;
   }
 }
 
