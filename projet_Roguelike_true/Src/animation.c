@@ -54,6 +54,19 @@ void animation_niveau_histoire(perso_t *perso, SDL_Renderer *rendu){
   char etage5_2[300]= "a travers le chateau, le heros se prepare pour son ultime combat";
   int etage5_1_x = 110, etage5_1_y = 250, etage5_2_x = 210, etage5_2_y = 350;
 
+
+  texte_etage5_2.img = NULL;
+  texte_etage5_2.img = NULL;
+  texte_etage4_1.img = NULL;
+  texte_etage4_2.img = NULL;
+  texte_etage3_1.img = NULL;
+  texte_etage3_2.img = NULL;
+  texte_etage2_1.img = NULL;
+  texte_etage2_2.img = NULL;
+  texte_etage1_1.img = NULL;
+  texte_etage1_2.img = NULL;
+
+
   //initialisation des polices
   TTF_Font *police = NULL;
   TTF_Font *police_big = NULL;
@@ -270,65 +283,17 @@ void animation_niveau_histoire(perso_t *perso, SDL_Renderer *rendu){
     p3.img=NULL;
   }
 
-  if(texte_continuer.img!=NULL){
-    SDL_DestroyTexture(texte_continuer.img);
-    texte_continuer.img=NULL;
-  }
-
-  if(texte_etage1_1.img!=NULL){
-    SDL_DestroyTexture(texte_etage1_1.img);
-    texte_etage1_1.img=NULL;
-  }
-
-  if(texte_etage1_2.img!=NULL){
-    SDL_DestroyTexture(texte_etage1_2.img);
-    texte_etage1_2.img=NULL;
-  }
-
-  if(texte_etage2_1.img!=NULL){
-    SDL_DestroyTexture(texte_etage2_1.img);
-    texte_etage2_1.img=NULL;
-  }
-
-  if(texte_etage2_2.img!=NULL){
-    SDL_DestroyTexture(texte_etage2_2.img);
-    texte_etage2_2.img=NULL;
-  }
-
-  if(texte_etage3_1.img!=NULL){
-    SDL_DestroyTexture(texte_etage3_1.img);
-    texte_etage3_1.img=NULL;
-  }
-
-  if(texte_etage3_2.img!=NULL){
-    SDL_DestroyTexture(texte_etage3_2.img);
-    texte_etage3_2.img=NULL;
-  }
-
-  if(texte_etage3_3.img!=NULL){
-    SDL_DestroyTexture(texte_etage3_3.img);
-    texte_etage3_3.img=NULL;
-  }
-
-  if(texte_etage4_1.img!=NULL){
-    SDL_DestroyTexture(texte_etage4_1.img);
-    texte_etage4_1.img=NULL;
-  }
-
-  if(texte_etage4_2.img!=NULL){
-    SDL_DestroyTexture(texte_etage4_2.img);
-    texte_etage4_2.img=NULL;
-  }
-
-  if(texte_etage5_1.img!=NULL){
-    SDL_DestroyTexture(texte_etage5_1.img);
-    texte_etage5_1.img=NULL;
-  }
-
-  if(texte_etage5_2.img!=NULL){
-    SDL_DestroyTexture(texte_etage5_2.img);
-    texte_etage5_2.img=NULL;
-  }
+  libere_texture(&texte_continuer.img);
+  libere_texture(&texte_etage1_1.img);
+  libere_texture(&texte_etage1_2.img);
+  libere_texture(&texte_etage2_1.img);
+  libere_texture(&texte_etage2_2.img);
+  libere_texture(&texte_etage3_1.img);
+  libere_texture(&texte_etage3_2.img);
+  libere_texture(&texte_etage4_1.img);
+  libere_texture(&texte_etage4_2.img);
+  libere_texture(&texte_etage5_1.img);
+  libere_texture(&texte_etage5_2.img);
 }
 
 
