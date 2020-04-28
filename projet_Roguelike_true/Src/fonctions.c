@@ -108,7 +108,7 @@ void ajout_carte_deck(carte_t *tampon){
 
   if(!liste_vide()){
 
-    for(en_tete();!hors_liste() && strcmp(tampon->nom, ec->carte->nom);suivant()){
+    for(en_tete();!hors_liste() && strcmp(tampon->path, ec->carte->path);suivant()){
 
     }
 
@@ -116,6 +116,8 @@ void ajout_carte_deck(carte_t *tampon){
       //carte possédée et a usage limité, on up le nb d'usages restants
       ec->carte->consommable += tampon->consommable;
     }
+    else if(!hors_liste() && ec->carte->valeur < tampon->valeur)
+      ec->carte->valeur = tampon->valeur;
     else if(hors_liste()){
       //carte non présente dans le deck
       en_queue();
