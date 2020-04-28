@@ -56,7 +56,7 @@ void animation_niveau_histoire(perso_t *perso, SDL_Renderer *rendu){
 
 
   texte_etage5_2.img = NULL;
-  texte_etage5_2.img = NULL;
+  texte_etage5_1.img = NULL;
   texte_etage4_1.img = NULL;
   texte_etage4_2.img = NULL;
   texte_etage3_1.img = NULL;
@@ -65,6 +65,7 @@ void animation_niveau_histoire(perso_t *perso, SDL_Renderer *rendu){
   texte_etage2_2.img = NULL;
   texte_etage1_1.img = NULL;
   texte_etage1_2.img = NULL;
+  texte_etage3_3.img = NULL;
 
 
   //initialisation des polices
@@ -257,31 +258,13 @@ void animation_niveau_histoire(perso_t *perso, SDL_Renderer *rendu){
 	TTF_CloseFont(police);
   TTF_CloseFont(police_big);
 
-//Libération de tous les textes
-  if(texte_etage.img != NULL){
-    SDL_DestroyTexture(texte_etage.img);
-    texte_etage.img=NULL;
-  }
+//Libération de tous les textures
+  libere_texture(&texte_etage.img);
+  libere_texture(&texte_charg.img);
 
-  if(texte_charg.img!=NULL){
-    SDL_DestroyTexture(texte_charg.img);
-    texte_charg.img=NULL;
-  }
-
-  if(p1.img!=NULL){
-    SDL_DestroyTexture(p1.img);
-    p1.img=NULL;
-  }
-
-  if(p2.img!=NULL){
-    SDL_DestroyTexture(p2.img);
-    p2.img=NULL;
-  }
-
-  if(p3.img!=NULL){
-    SDL_DestroyTexture(p3.img);
-    p3.img=NULL;
-  }
+  libere_texture(&p1.img);
+  libere_texture(&p2.img);
+  libere_texture(&p3.img);
 
   libere_texture(&texte_continuer.img);
   libere_texture(&texte_etage1_1.img);
@@ -290,6 +273,7 @@ void animation_niveau_histoire(perso_t *perso, SDL_Renderer *rendu){
   libere_texture(&texte_etage2_2.img);
   libere_texture(&texte_etage3_1.img);
   libere_texture(&texte_etage3_2.img);
+  libere_texture(&texte_etage3_3.img);
   libere_texture(&texte_etage4_1.img);
   libere_texture(&texte_etage4_2.img);
   libere_texture(&texte_etage5_1.img);

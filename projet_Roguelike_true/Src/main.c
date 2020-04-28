@@ -113,9 +113,9 @@ int main(int argc, char* args[]){
 							saveperso(&pers);
 							Mix_HaltMusic();
 							animation_niveau_histoire(&pers, rendu);
-						  choix_musique(musics, &pers);
-						  savecarte(SAVE_CARTES_DECK_PATH, DECK);
-						  savecarte(SAVE_CARTES_COLLEC_PATH, COLLEC);
+						  	choix_musique(musics, &pers);
+						  	savecarte(SAVE_CARTES_DECK_PATH, DECK);
+						  	savecarte(SAVE_CARTES_COLLEC_PATH, COLLEC);
 
 						  if(pers.etage < 5)
 								boucle_labyrinthe(&continuer, &etat, rendu, sounds, musics, &pers, police);
