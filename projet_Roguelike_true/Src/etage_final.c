@@ -289,6 +289,24 @@ void etage_final(SDL_Renderer *rendu, int *continuer, int *etat, Mix_Chunk *soun
 		SDL_Delay(2000);//pour voir la salle vide dans le laby
 		ecran_victoire(rendu, police, musics, pers->cmpMort);
 		*etat = mainMenu;
+
+		initialise_personnage(pers);
+
+		saveperso(pers);//on sauvegarde le personnage et le deck afin de les préserver
+  		savecarte(SAVE_CARTES_COLLEC_PATH, COLLEC);
+
+		//on détruit les listes, afin d'éviter les conflits entre les sauvegardes et la duplication
+		//de cartes
+		detruire_liste(DECK);
+		detruire_liste(COLLEC);
+		init_liste();
+
+		//Charge à nouveau les cartes de la collec précédement sauvegardées
+ 		readcarte(SAVE_CARTES_COLLEC_PATH, COLLEC);
+
+		transfert_mort();//on prend des cartes de la collec pour les mettre dans le deck
+
+  		savecarte(SAVE_CARTES_DECK_PATH, DECK);//on sauvegarde le deck remplit de nouvelles cartes
 	}
 
 	//////////////////////// On libère tous les emplacements mémoires utilisés par les images ////
