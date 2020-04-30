@@ -10,6 +10,9 @@
 #include "../include/labyrinthe.h"
 #include "../include/fonctions.h"
 #include "../include/salle.h"
+
+
+//Ecrit par Axel Jourry
 /**
  *\fn void init_salle(int salle[TAILLE_SALLE][TAILLE_SALLE])
  *\param salle[TAILLE_SALLE][TAILLE_SALLE] est le tableau de TAILLE_SALLE qui comprend la salle
@@ -42,6 +45,7 @@ void init_salle(int salle[TAILLE_SALLE][TAILLE_SALLE]){
 }
 
 
+//Ecrit par Axel Jourry
 /**
  *\fn void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction)
  *\param salle[TAILLE_SALLE][TAILLE_SALLE] est le tableau de TAILLE_SALLE qui comprend la salle
@@ -95,6 +99,7 @@ void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction){
 }
 
 
+//Ecrit par Axel Jourry
 /**
  *\fn void afficher_salle(salle_t *salle, SDL_Renderer *rendu, image_t texture[])
 
@@ -167,6 +172,7 @@ void rempli_tableau_murs_portes(salle_t salle[], int indiceT){
 }
 
 
+
 /**
 *\fn int inverse_porte(int porte)
 
@@ -189,7 +195,6 @@ int inverse_porte(int porte){
   }
   return 1;
 }
-
 
 
 
@@ -295,6 +300,7 @@ void place_monstre_coffre_boss(salle_t tab[], int taille, int type_ennemi, SDL_R
 }
 
 
+
 /**
 *\fn void creation_mini_map(int taille, int indice, mini_map_t *map)
 
@@ -329,6 +335,7 @@ void creation_mini_map(int taille, mini_map_t *map){
     }
   }
 }
+
 
 
 /**
@@ -376,6 +383,7 @@ void ajoute_ennemi(ennemi_t **ennemi, int type, SDL_Renderer *rendu, int etage){
 }
 
 
+
 /**
 *\fn void placer_monstre(ennemi_t *ennemi)
 
@@ -397,7 +405,6 @@ void placer_monstre(ennemi_t *ennemi){
   ennemi->sprites.rectangle.y = y * TAILLE_IMAGE + EMPLACEMENT_DEPART_DESSIN_SALLE_Y;
   ennemi->sprites.rectangle.x = x * TAILLE_IMAGE + EMPLACEMENT_DEPART_DESSIN_SALLE_X;
 }
-
 
 
 
@@ -434,7 +441,6 @@ void creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int nb_ennemi,
     (*ennemi2)->sprite_courant.y = (*ennemi2)->sprite_courant.h;
   }
 }
-
 
 
 

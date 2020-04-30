@@ -10,6 +10,8 @@
 #include "../include/constantes.h"
 #include "../include/fonctions.h"
 
+
+
 /**
 *\fn void change_anim_ligne(ennemi_t *ennemi, int nouvelle_anim)
 
@@ -25,6 +27,7 @@ void change_anim_ligne(ennemi_t *ennemi, int nouvelle_anim){
 	ennemi->anim_courante = nouvelle_anim;
 	ennemi->id_col = 0;
 }
+
 
 
 /**

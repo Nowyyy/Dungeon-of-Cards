@@ -24,6 +24,8 @@
 #include "../include/animation.h"
 #include "../include/labyrinthe.h"
 
+
+//Ajouts par Axel Jourry
 /**
 *\fn void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu, int *compte_ennemi, int *ennemi_max)
 
@@ -461,6 +463,7 @@ int creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer){
 }
 
 
+
 /**
 *\fn void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Renderer *rendu, image_t *counter, int *compte_ennemi, int *ennemi_max, int *compt_ennold)
 
@@ -520,8 +523,8 @@ int nb_salles_par_etage(int etage){
 }
 
 
+//Ajouts par Axel Joury
 /**
-
 *\fn void vers_ecran_combat(SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], touches_t *clavier, perso_t *pers, ennemi_t *ennemi,  Mix_Music *musics[NB_MUSIC], int *etat)
 
 *\param *rendu, le renderer sur lequel on dessine
@@ -543,6 +546,8 @@ void vers_ecran_combat(SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], touches_t
 	init_tab_clavier(clavier->tab);
 	choix_musique(musics, pers);
 }
+
+
 
 /**
 *\fn void check_ennemi(int *ennemi_max, int *compte_ennemi, salle_t salles[], int salle_courante, perso_t *pers)
@@ -626,6 +631,7 @@ int choix_monstre(int etage){
 }
 
 
+//Ajouts par Axel Jourry
 /**
 *\fn void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], perso_t *pers, TTF_Font *police)
 

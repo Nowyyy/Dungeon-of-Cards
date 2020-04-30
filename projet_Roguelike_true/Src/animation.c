@@ -14,6 +14,7 @@
 #include "../include/fonctions.h"
 #include "../include/clavier.h"
 
+//Ecrit par Axel Jourry. Ajouts par Aurélien.
 /**
 *\fn void animation_niveau(perso_t *perso, SDL_Renderer *rendu)
 *\param *perso, la structure du personnage
@@ -281,6 +282,7 @@ void animation_niveau_histoire(perso_t *perso, SDL_Renderer *rendu){
 }
 
 
+//Ecrit par Axel Jourry.
 /**
 *\fn void anim1(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON])
 *\param *rendu, le renderer sur lequel on dessine
@@ -327,6 +329,7 @@ void anim1(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON]){
 }
 
 
+//Ecrit par Axel Jourry.
 /**
 *\fn void anim2(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON])
 *\param *rendu, le renderer sur lequel on dessine
@@ -405,6 +408,7 @@ void anim2(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON]){
 }
 
 
+//Ecrit par Axel Jourry.
 /**
 *\fn void anim3(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON])
 *\param *rendu, le renderer sur lequel on dessine
@@ -471,6 +475,8 @@ void anim3(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON]){
 
 }
 
+
+//Ecrit par Axel Jourry.
 /**
 *\fn void anim_combat(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON])
 *\param *rendu, le renderer sur lequel on dessine
@@ -495,6 +501,7 @@ void anim_combat(SDL_Renderer *rendu, Mix_Chunk* sounds[NB_SON]){
 }
 
 
+//Ecrit par Axel Jourry. Ajouts par Aurélien.
 /**
 *\fn void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MUSIC], Mix_Chunk *sounds[NB_SON], image_t images[], TTF_Font *police)
 
@@ -659,6 +666,7 @@ void mort(int *etat, perso_t *pers, SDL_Renderer *rendu, Mix_Music *musics[NB_MU
 }
 
 
+//Ecrit par Axel Jourry.
 /**
 *\fn void anim_combat_perso_attaque(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
 
@@ -716,6 +724,7 @@ void anim_combat_perso_attaque(perso_t *pers, carte_t *carte, SDL_Renderer *rend
 }
 
 
+//Ecrit par Axel Jourry.
 /**
 *\fn void anim_combat_ennemi_attaque(ennemi_t *ennemi, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], perso_t *pers)
 
@@ -783,6 +792,7 @@ void anim_combat_ennemi_attaque(ennemi_t *ennemi, SDL_Renderer *rendu, Mix_Chunk
 }
 
 
+//Ecrit par Axel Jourry.
 /**
 *\fn void anim_combat_perso_soin(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
 
@@ -849,6 +859,7 @@ void anim_combat_perso_soin(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, 
 }
 
 
+//Ecrit par Axel Jourry.
 /**
 *\fn void anim_combat_perso_barriere(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
 
@@ -882,6 +893,7 @@ void anim_combat_perso_barriere(perso_t *pers, carte_t *carte, SDL_Renderer *ren
 }
 
 
+//Ecrit par Axel Jourry.
 /**
 *\fn void anim_combat_perso_poison(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], ennemi_t *ennemi)
 
@@ -953,6 +965,7 @@ void anim_combat_perso_poison(perso_t *pers, carte_t *carte, SDL_Renderer *rendu
 }
 
 
+//Ecrit par Axel Jourry.
 /**
 *\fn void anim_combat_perso_barriere(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
 
@@ -987,6 +1000,7 @@ void anim_combat_perso_bdf(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, M
 }
 
 
+//Ecrit par Axel Jourry.
 /**
 *\fn void anim_combat_perso(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], ennemi_t *ennemi)
 

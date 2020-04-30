@@ -18,6 +18,7 @@
 #include "../include/animation.h"
 
 
+//Ajouts par Axel Jourry.
 /**
 *\fn int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, image_t images[NB_TEXTURES_LABY], SDL_Rect **rect_sel, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC])
 
@@ -138,9 +139,6 @@ int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, ima
 	}
 	return NB_CARTES;
 }
-
-
-
 
 
 /**
@@ -367,6 +365,7 @@ void free_image(image_t images[]){
 }
 
 
+//Ajouts par Axel Jourry
 /**
 *\fn void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
 
@@ -405,6 +404,7 @@ void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t *carte, SDL_Renderer *
 }
 
 
+//Ajouts par Axel Jourry
 /**
 *\fn void tour_ennemi(perso_t *pers, ennemi_t *ennemi, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
 
@@ -433,6 +433,7 @@ void tour_ennemi(perso_t *pers, ennemi_t *ennemi, SDL_Renderer *rendu, Mix_Chunk
 }
 
 
+
 /**
 *\fn void creer_texte_combat(char *txt, image_t *image, int x, int y, SDL_Renderer *rendu, TTF_Font *font)
 
@@ -452,6 +453,7 @@ void creer_texte_combat(char *txt, image_t *image, int x, int y, SDL_Renderer *r
 
 	get_text_and_rect(rendu,image->rectangle.x, image->rectangle.y, txt, font, &image->img, &image->rectangle);
 }
+
 
 
 /**
@@ -492,6 +494,8 @@ void create_hud(hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, ennemi_t ennem
 	creer_texte_combat(ennemi.nom, &hud_ennemi->nom, WIN_WIDTH * 0.65, WIN_HEIGHT *0.02, rendu, font);
 	creer_texte_combat(pv_ennemi, &hud_ennemi->pv, WIN_WIDTH * 0.85, WIN_HEIGHT *0.02, rendu, font);
 }
+
+
 
 /**
 *\fn void init_hud_action(hud_combat_t *action)
@@ -567,6 +571,7 @@ void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hu
 }
 
 
+
 /**
 *\fn void detruire_action_temp(hud_combat_t *action)
 
@@ -586,6 +591,7 @@ void detruire_action_temp(hud_combat_t *action){
 		action->cartes[3] = 0;
 	}
 }
+
 
 
 /**
@@ -612,6 +618,8 @@ void range_carte_deck(carte_t *cartes[]){
 		}
 	}
 }
+
+
 
 /**
 *\fn void consommable_epuise(carte_t *cartes[], int indice, image_t images[], SDL_Renderer *rendu)
@@ -751,6 +759,8 @@ hud_combat_t hud_pers, hud_combat_t action, TTF_Font *police, Mix_Chunk *sounds[
 	detruire_action_temp(&action);
 }
 
+
+//Ajouts par Axel Jourry
 /**
 *\fn void combat_t_p_t(perso_t * perso, ennemi_t * ennemi, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], int *etat)
 

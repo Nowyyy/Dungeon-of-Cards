@@ -26,6 +26,7 @@
 #include "../include/labyrinthe.h"
 
 
+
 /**
 *\fn void charge_textures_etage_final(image_t images[], perso_t *pers, SDL_Renderer *rendu)
 
@@ -65,7 +66,6 @@ void charge_textures_etage_final(image_t images[], perso_t *pers, SDL_Renderer *
 	pers->sprites[courant].rectangle.x = pers->x;
 	pers->sprites[courant].rectangle.y = pers->y;
 }
-
 
 
 
@@ -145,7 +145,7 @@ void creation_salles_dernier_etage(salle_t salles[], int taille, SDL_Renderer *r
 }
 
 
-
+//Créé par Aurélien Tudoret. Modifications par Axel Jourry
 /**
 *\fn void ecran_victoire(SDL_Renderer * rendu, TTF_Font *police, Mix_Music *musics[NB_MUSIC], int mort)
 
@@ -204,7 +204,7 @@ void ecran_victoire(SDL_Renderer * rendu, TTF_Font *police, Mix_Music *musics[NB
 }
 
 
-
+//Ecrit par Aurélien Tudoret, Ajouts par Axel Jourry
 /**
 *\fn void etage_final(SDL_Renderer *rendu, int *continuer, int *etat, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], perso_t *pers, TTF_Font *police)
 

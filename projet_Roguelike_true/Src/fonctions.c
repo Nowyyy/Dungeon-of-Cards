@@ -16,6 +16,8 @@ char communes[][TAILLE] = {{"soin"},{"poing"},{"pierre"}};
 char peu_communes[][TAILLE] = {{"potion"},{"barriere"},{"epee"}};
 char rares[][TAILLE] = {{"boule de feu"},{"poison"},{"guerison"}};
 
+
+
 /**
 *\fn void detruire_carte(carte_t ** carte)
 *\param carte Un pointeur de pointeur de carte. On détruit libère la zone mémoire située à l'adresse pointée.
@@ -35,6 +37,7 @@ void detruire_carte(carte_t ** carte)
     }
   }
 }
+
 
 
 /**
@@ -60,6 +63,7 @@ void detruire_liste(int liste){
     drapeau = NULL;
   }
 }
+
 
 
 /**
@@ -133,6 +137,7 @@ void ajout_carte_deck(carte_t *tampon){
 }
 
 
+
 /**
 *\fn int randRange(int min, int max, int niveau)
 
@@ -162,6 +167,8 @@ int randRange(int min, int max, int niveau){
     int num = (rand() %(min - max + 1)) + min;
     return num;
 }
+
+
 
 /**
 *\fn int valeur_carte(char nom[TAILLE])
@@ -223,6 +230,8 @@ int valeur_carte(char nom[TAILLE]){
   return randRange(min,max,niveau);
 
 }
+
+
 
 /**
 *\fn void transfert_mort()
@@ -287,6 +296,8 @@ void choix_liste(int choix){
 	}
 }
 
+
+
 /**
 *\fn void init_liste()
 *\brief Fonction initialisant les listes. Par défaut, la liste deck est ensuite sélectionner
@@ -306,6 +317,7 @@ void init_liste(){
 }
 
 
+
 /**
 *\fn int liste_vide()
 *\brief Fonction qui permet de vérifier si une liste est vide
@@ -323,6 +335,8 @@ int hors_liste(){
 	return ec==drapeau;
 }
 
+
+
 /**
 *\fn void en_tete()
 *\brief Fonction qui permet de se mettre au début de la liste
@@ -332,6 +346,8 @@ void en_tete(){
 		ec = drapeau->succ;
 }
 
+
+
 /**
 *\fn void en_queue()
 *\brief Fonction qui permet de se mettre en fin de la liste
@@ -340,6 +356,8 @@ void en_queue(){
 	if (!liste_vide())
 		ec = drapeau->pred;
 }
+
+
 
 /**
 *\fn void precedent()
@@ -352,6 +370,8 @@ void precedent(){
     ec = ec->pred;
 }
 
+
+
 /**
 *\fn void suivant()
 *\brief Fonction qui permet d'avancer dans la liste
@@ -362,6 +382,9 @@ void suivant(){
   else
     ec = ec->succ;
 }
+
+
+
 /**
 *\fn void valeur_elt(carte_t ** t)
 *\brief Fonction qui permet de prendre une valeur de la liste
@@ -372,6 +395,8 @@ void valeur_elt(carte_t ** t){
 		*t = ec->carte;
 }
 
+
+
 /**
 *\fn void modif_elt(carte_t t)
 *\brief Fonction qui permet de modifier une valeur dans une liste
@@ -381,6 +406,8 @@ void modif_elt(carte_t t){
 	if (!hors_liste())
 		*ec->carte = t;
 }
+
+
 
 /**
 *\fn void oter_elt()
@@ -403,6 +430,7 @@ void oter_elt(){
 }
 
 
+
 /**
 *\fn void ajout_droit(carte_t * t)
 *\brief Fonction qui permet d'ajouter un objet après l'objet sur lequel l'utilisteur se trouve
@@ -422,6 +450,8 @@ void ajout_droit(carte_t * t){
 	}
 }
 
+
+
 /**
 *\fn void ajout_gauche(carte_t * t)
 *\brief Fonction qui permet d'ajouter un objet avant l'objet sur lequel l'utilisteur se trouve
@@ -440,6 +470,7 @@ void ajout_gauche(carte_t * t){
 		ec = nouv;
 	}
 }
+
 
 
 /**
@@ -468,6 +499,7 @@ carte_t * creer_carte(char *nom, type_carte type, int valeur, int consommable, c
   carte->consommable = consommable;
   return(carte);
 }
+
 
 
 /**
@@ -500,6 +532,8 @@ void init_ennemi_valeurs(ennemi_t *ennemi, char *nom, int w, int h, int nb_sprit
 
   strcpy(ennemi->nom, nom);
 }
+
+
 
 /**
 *\fn ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type, SDL_Renderer *rendu)
@@ -580,6 +614,8 @@ ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type,
 
   return(ennemi);
 }
+
+
 
 /**
 *\fn carte_t* generer_carte(int etage)
@@ -675,6 +711,8 @@ carte_t * generer_carte(int etage){
   }
 }
 
+
+
 void afficher_liste(){
 
   if(liste_vide())
@@ -703,6 +741,7 @@ void detruire_ennemi(ennemi_t ** ennemi)
     *ennemi = NULL;
   }
 }
+
 
 
 /**

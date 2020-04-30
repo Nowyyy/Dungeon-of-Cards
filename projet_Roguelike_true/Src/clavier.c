@@ -27,6 +27,7 @@ void init_tab_clavier(int tab[]){
 }
 
 
+//Ecrit par Aurélien Tudoret. Ajout par Axel Jourry
 /**
 *\fn void event_clavier(touches_t *clavier, SDL_Event event)
 

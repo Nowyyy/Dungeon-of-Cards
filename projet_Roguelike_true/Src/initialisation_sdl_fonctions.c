@@ -7,6 +7,8 @@
 */
 #include "../include/constantes.h"
 
+
+
 /**
 *\fn int initialisation_sdl(SDL_Window **window, SDL_Renderer **rendu)
 
@@ -41,6 +43,7 @@ int initialisation_sdl(SDL_Window **window, SDL_Renderer **rendu){
 }
 
 
+
 /**
 *\fn void quit_sdl(SDL_Renderer **rendu, SDL_Window **window)
 
@@ -61,7 +64,6 @@ void quit_sdl(SDL_Renderer **rendu, SDL_Window **window){
 	}
 
 }
-
 
 
 
@@ -87,6 +89,8 @@ int init_or_quit_ttf(int action){
 		return 0;
 	}
 }
+
+
 
 /**
 *\fn extern void get_text_and_rect_color(SDL_Renderer *renderer, int x, int y, char *text, TTF_Font *font, SDL_Texture **texture, SDL_Rect *rect, SDL_Color textColor)
@@ -169,6 +173,7 @@ extern void get_text_and_rect(SDL_Renderer *renderer, int x, int y, char *text, 
 }
 
 
+
 /**
 *\fn int charge_image(char *path_img, image_t *struct_image, SDL_Renderer *rendu)
 
@@ -204,6 +209,7 @@ int charge_image(char *path_img, image_t *struct_image, SDL_Renderer *rendu){
 }
 
 
+//Créé par Axel Jourry
 /**
 *\fn void init_son(Mix_Chunk* sounds[NB_SON])
 
@@ -252,6 +258,8 @@ void init_son(Mix_Chunk* sounds[NB_SON]){
 	Mix_VolumeChunk(sounds[bdf], 64);
 }
 
+
+//Créé par Axel Jourry
 /**
 *\fn void init_music(Mix_Music* musics[NB_MUSIC])
 
@@ -274,6 +282,8 @@ musics[victory] = Mix_LoadMUS("../Sound/victory.mp3");
 
 }
 
+
+//Créé par Axel Jourry
 /**
 *\fn free_mixer(Mix_Music* musics[NB_MUSIC], Mix_Chunk* sounds[NB_SON])
 
@@ -300,13 +310,15 @@ void free_mixer(Mix_Music* musics[NB_MUSIC], Mix_Chunk* sounds[NB_SON]){
 	Mix_CloseAudio();
 }
 
+
+//Créé par Axel Jourry
 /**
 *\fn choix_musique(Mix_Music* musics[NB_MUSIC], perso_t *pers)
 
 *\param *musics[NB_MUSIC] est un tableau contenant les emplacements de chaque musiques
 *\param *pers est un tableau contenant les emplacements de chaque son
 
-*\brief libère tous les sons et toutes les musiques utilisées
+*\brief Choisi la musique en fonction de l'étage
 */
 void choix_musique(Mix_Music* musics[NB_MUSIC], perso_t *pers){
 	if(pers->etage == 1){

@@ -14,6 +14,7 @@
 #include "../include/fonctions.h"
 
 
+
 /**
 *\fn void afficher_charger_partie(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture *charger_texture, SDL_Rect charger_rect, SDL_Texture *retour_texture, SDL_Rect retour_rect, SDL_Texture *message_texture, SDL_Rect message_rect)
 

@@ -14,7 +14,6 @@
 
 
 /**
-
 *\fn void charge_sprites_personnage(image_t sprites[], SDL_Renderer *rendu)
 
 *\param sprites[], tableau qui contiendra tous les sprites du personnage
@@ -36,6 +35,7 @@ void charge_sprites_personnage(image_t sprites[], SDL_Renderer *rendu){
 
 	sprites[courant] = sprites[idle_droite];
 }
+
 
 
 /**
@@ -73,6 +73,7 @@ int test_collision(salle_t salle, perso_t *pers, int direction){
 }
 
 
+
 /**
 *\fn void init_animations(animation_t *anim)
 
@@ -104,7 +105,7 @@ void change_animation(animation_t *anim, image_t sprites[], int nouvelle_animati
 }
 
 
-
+//Ajouts par Axel Jourry
 /**
 *\fn void animations_personnage(image_t sprites[], unsigned int timer, touches_t clavier, animation_t *anim, Mix_Chunk *sounds[NB_SON])
 
@@ -231,6 +232,7 @@ void animations_personnage(image_t sprites[], unsigned int timer, touches_t clav
 }
 
 
+//Ajouts par Axel
 /**
 *\fn void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animation_t *anim, Mix_Chunk *sounds[NB_SON], touches_t *clavier, int *etat)
 
@@ -308,7 +310,7 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 }
 
 
-
+//Ajouts par Axel
 /**
 *\fn int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *sounds[NB_SON]
 *\param *pers, la structure du personnage
@@ -412,6 +414,7 @@ int collision_perso_ennemi(perso_t pers, ennemi_t ennemi){
 }
 
 
+
 /**
 *\fn int combat_declenche(salle_t salle, perso_t pers)
 
@@ -437,6 +440,7 @@ int combat_declenche(salle_t salle, perso_t pers){
 
 	return FALSE;
 }
+
 
 
 /**
