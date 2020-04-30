@@ -117,8 +117,14 @@ int main(int argc, char* args[]){
 						  	savecarte(SAVE_CARTES_DECK_PATH, DECK);
 						  	savecarte(SAVE_CARTES_COLLEC_PATH, COLLEC);
 
-						  if(pers.etage < 5)
+						  if(pers.etage < 5){
+							choix_liste(DECK);
+							if(liste_vide()){
+						    printf("Erreur : deck vide. Vérifiez le fichier cartes_nouvelle_partie.txt dans Sauvegarde.\n");
+						    exit(1);
+						  }
 								boucle_labyrinthe(&continuer, &etat, rendu, sounds, musics, &pers, police);
+							}
 							else
 								etage_final(rendu, &continuer, &etat, sounds, musics, &pers, police);
 						}

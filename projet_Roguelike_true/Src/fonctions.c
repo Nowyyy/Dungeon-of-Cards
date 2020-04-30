@@ -260,6 +260,10 @@ void transfert_mort(){
 		}
 		ajout_carte_deck(ec->carte);
 	}
+  if(liste_vide()){
+    printf("Erreur : collection vide. Vérifiez le fichier cartes_nouvelle_partie.txt dans Sauvegarde.\n");
+    exit(1);
+  }
 }
 
 
