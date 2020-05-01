@@ -17,7 +17,7 @@ char peu_communes[][TAILLE] = {{"potion"},{"barriere"},{"epee"}};
 char rares[][TAILLE] = {{"boule de feu"},{"poison"},{"guerison"}};
 
 
-
+//Ecrit par Timothée Marin, ajouts par Aurélien Tudoret
 /**
 *\fn void detruire_carte(carte_t ** carte)
 *\param carte Un pointeur de pointeur de carte. On détruit libère la zone mémoire située à l'adresse pointée.
@@ -39,7 +39,7 @@ void detruire_carte(carte_t ** carte)
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void detruire_liste(int liste)
 *\param liste, le numéro de la liste que l'on veut supprimer
@@ -65,7 +65,7 @@ void detruire_liste(int liste){
 }
 
 
-
+//Ecrit par Timothée Marin et Aurélien Tudoret
 /**
 *\fn void ajout_carte_collec(carte_t *carte)
 
@@ -97,7 +97,7 @@ void ajout_carte_collec(carte_t *carte){
 }
 
 
-
+//Ecrit par Timothée Marin et Aurélien Tudoret
 /**
 *\fn void ajout_carte_deck(carte_t *tampon)
 
@@ -408,7 +408,7 @@ void modif_elt(carte_t t){
 }
 
 
-
+//Ecrit par Timothée Marin, ajouts par Aurélien Tudoret
 /**
 *\fn void oter_elt()
 *\brief Fonction qui permet de supprimer une valeur de la liste
@@ -430,7 +430,7 @@ void oter_elt(){
 }
 
 
-
+//Ecrit par Timothée Marin, ajouts par Aurélien Tudoret
 /**
 *\fn void ajout_droit(carte_t * t)
 *\brief Fonction qui permet d'ajouter un objet après l'objet sur lequel l'utilisteur se trouve
@@ -451,7 +451,7 @@ void ajout_droit(carte_t * t){
 }
 
 
-
+//Ecrit par Timothée Marin, ajouts par Aurélien Tudoret
 /**
 *\fn void ajout_gauche(carte_t * t)
 *\brief Fonction qui permet d'ajouter un objet avant l'objet sur lequel l'utilisteur se trouve
@@ -472,7 +472,7 @@ void ajout_gauche(carte_t * t){
 }
 
 
-
+//Ecrit par Timothée Marin, ajouts par Aurélien Tudoret
 /**
 *\fn carte_t * creer_carte(char *nom, type_carte type, int valeur, int consommable, char *path)
 *\brief permet de créer une carte selon différentes caractéristiques données
@@ -501,7 +501,7 @@ carte_t * creer_carte(char *nom, type_carte type, int valeur, int consommable, c
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void init_ennemi_valeurs(ennemi_t *ennemi, char *nom, int w, int h, int nb_sprites, int gap, float w2, float h2, char *path, SDL_Renderer *rendu)
 
@@ -534,7 +534,7 @@ void init_ennemi_valeurs(ennemi_t *ennemi, char *nom, int w, int h, int nb_sprit
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type, SDL_Renderer *rendu)
 *\brief permet de créer un ennemi selon plusieurs caractéristiques
@@ -722,6 +722,8 @@ void afficher_liste(){
   en_queue();
   printf("\n");
 }
+
+//Ecrit par Timothée Marin et Aurélien Tudoret
 /**
 *\fn void detruire_ennemi(ennemi_t ** ennemi)
 *\brief Fonction qui permet de détruire un ennemi
@@ -743,7 +745,7 @@ void detruire_ennemi(ennemi_t ** ennemi)
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void tire_carte_deck(carte_t *cartes[], int indice)
 

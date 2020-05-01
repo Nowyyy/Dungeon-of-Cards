@@ -12,7 +12,7 @@
 #include "../include/clavier.h"
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void charge_sprites_personnage(image_t sprites[], SDL_Renderer *rendu)
 
@@ -37,7 +37,7 @@ void charge_sprites_personnage(image_t sprites[], SDL_Renderer *rendu){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn int test_collision(salle_t salle, perso_t *pers, int direction)
 
@@ -73,7 +73,7 @@ int test_collision(salle_t salle, perso_t *pers, int direction){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void init_animations(animation_t *anim)
 
@@ -88,7 +88,7 @@ void init_animations(animation_t *anim){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void change_animation(animation_t *anim, image_t sprites[], int nouvelle_animation)
 *\param *anim, la structure qui gère les animations
@@ -105,7 +105,7 @@ void change_animation(animation_t *anim, image_t sprites[], int nouvelle_animati
 }
 
 
-//Ajouts par Axel Jourry
+//Ecrit par Aurélien Tudoret. Ajouts par Axel Jourry
 /**
 *\fn void animations_personnage(image_t sprites[], unsigned int timer, touches_t clavier, animation_t *anim, Mix_Chunk *sounds[NB_SON])
 
@@ -232,7 +232,7 @@ void animations_personnage(image_t sprites[], unsigned int timer, touches_t clav
 }
 
 
-//Ajouts par Axel
+//Ecrit par Aurélien Tudoret. Ajouts par Axel
 /**
 *\fn void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animation_t *anim, Mix_Chunk *sounds[NB_SON], touches_t *clavier, int *etat)
 
@@ -310,7 +310,7 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 }
 
 
-//Ajouts par Axel
+//Ecrit par Aurélien Tudoret. Ajouts par Axel
 /**
 *\fn int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *sounds[NB_SON]
 *\param *pers, la structure du personnage
@@ -371,7 +371,7 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *sou
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void initialise_personnage(perso_t *pers)
 
@@ -397,7 +397,7 @@ void initialise_personnage(perso_t *pers){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn int collision_perso_ennemi(perso_t pers, ennemi_t ennemi)
 
@@ -414,7 +414,7 @@ int collision_perso_ennemi(perso_t pers, ennemi_t ennemi){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn int combat_declenche(salle_t salle, perso_t pers)
 
@@ -442,7 +442,7 @@ int combat_declenche(salle_t salle, perso_t pers){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void creer_texture_depuis_char(image_t *texte_pv, image_t *texte_etage, perso_t perso, SDL_Renderer *rendu, image_t *texte_counter, int *compte_ennemi, int *ennemi_max)
 

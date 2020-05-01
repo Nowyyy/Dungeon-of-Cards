@@ -177,19 +177,7 @@ void menu_confirmation(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font 
 		rectangle_selection=NULL;
 	}
 
-	if(retour_texture != NULL){
-		SDL_DestroyTexture(retour_texture);
-		retour_texture = NULL;
-	}
-
-	if(confirmer_texture != NULL){
-		SDL_DestroyTexture(confirmer_texture);
-		confirmer_texture=NULL;
-	}
-
-	if(message_texture != NULL){
-		SDL_DestroyTexture(message_texture);
-		message_texture=NULL;
-	}
-
+	libere_texture(&message_texture);
+	libere_texture(&confirmer_texture);
+	libere_texture(&retour_texture);
 }

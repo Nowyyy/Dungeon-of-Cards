@@ -851,11 +851,7 @@ void anim_combat_perso_soin(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, 
 
   SDL_RenderClear(rendu);
 
-  if(icon[0].img!=NULL){
-		SDL_DestroyTexture(icon[0].img);
-		icon[0].img=NULL;
-	}
-
+  libere_texture(&icon[0].img);
 }
 
 
@@ -886,10 +882,7 @@ void anim_combat_perso_barriere(perso_t *pers, carte_t *carte, SDL_Renderer *ren
   SDL_Delay(1200);
   SDL_RenderClear(rendu);
 
-  if(icon[0].img!=NULL){
-		SDL_DestroyTexture(icon[0].img);
-		icon[0].img=NULL;
-	}
+  libere_texture(&icon[0].img);
 }
 
 
@@ -958,10 +951,7 @@ void anim_combat_perso_poison(perso_t *pers, carte_t *carte, SDL_Renderer *rendu
   SDL_Delay(1200);
   SDL_RenderClear(rendu);
 
-  if(icon[0].img!=NULL){
-		SDL_DestroyTexture(icon[0].img);
-		icon[0].img=NULL;
-	}
+  libere_texture(&icon[0].img);
 }
 
 
@@ -993,10 +983,7 @@ void anim_combat_perso_bdf(perso_t *pers, carte_t *carte, SDL_Renderer *rendu, M
   SDL_Delay(1200);
   SDL_RenderClear(rendu);
 
-  if(icon[0].img!=NULL){
-    SDL_DestroyTexture(icon[0].img);
-    icon[0].img=NULL;
-  }
+  libere_texture(&icon[0].img);
 }
 
 

@@ -11,7 +11,7 @@
 #include "../include/fonctions.h"
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void change_anim_ligne(ennemi_t *ennemi, int nouvelle_anim)
 
@@ -29,7 +29,7 @@ void change_anim_ligne(ennemi_t *ennemi, int nouvelle_anim){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void animation_ennemi(ennemi_t *ennemi)
 
@@ -66,7 +66,7 @@ void animation_ennemi(ennemi_t *ennemi){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void destruction_tous_ennemis(salle_t salles[], int taille)
 

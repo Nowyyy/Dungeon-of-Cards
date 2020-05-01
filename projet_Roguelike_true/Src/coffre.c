@@ -13,7 +13,7 @@
 #include "../include/fonctions.h"
 #include "../include/coffre.h"
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void animation_coffre(perso_t *pers, salle_t *salle, Mix_Chunk *sounds[NB_SON])
 
@@ -50,6 +50,7 @@ void animation_coffre(perso_t *pers, salle_t *salle, Mix_Chunk *sounds[NB_SON]){
 }
 
 
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void creer_coffre(coffre_t *coffre, SDL_Renderer *rendu, int coffre_existe)
 
@@ -90,7 +91,7 @@ void creer_coffre(coffre_t *coffre, SDL_Renderer *rendu, salle_t *salle){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void destruction_des_coffres(salle_t salles[], int taille)
 
@@ -111,6 +112,7 @@ void destruction_des_coffres(salle_t salles[], int taille){
 }
 
 
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void creer_texte_coffre(char *txt, image_t *image, int x, int y, SDL_Renderer *rendu)
 
@@ -137,7 +139,7 @@ void creer_texte_coffre(char *txt, image_t *image, int x, int y, SDL_Renderer *r
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void loot_de_carte(loot_carte_t *loot, SDL_Renderer *rendu, coffre_t *coffre, int etage)
 
@@ -176,7 +178,7 @@ void loot_de_carte(loot_carte_t *loot, SDL_Renderer *rendu, coffre_t *coffre, in
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void detruire_loot(loot_carte_t **loot)
 
@@ -195,6 +197,7 @@ void afficher_loot(loot_carte_t loot, SDL_Renderer *rendu){
 }
 
 
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void detruire_loot(loot_carte_t **loot)
 
@@ -219,6 +222,7 @@ void detruire_loot(loot_carte_t **loot){
 }
 
 
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void loot_affichage_fini(loot_carte_t *loot)
 
@@ -244,7 +248,7 @@ void loot_affichage_fini(loot_carte_t *loot){
 
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void loot_boss(loot_carte_t *loot, SDL_Renderer *rendu, int etage)
 

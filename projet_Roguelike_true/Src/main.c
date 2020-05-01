@@ -20,7 +20,7 @@
 #include "../include/etage_final.h"
 
 
-//Ajouts par Axel Jourry
+//Ecrit par Aurélien Tudoret. Ajouts par Axel Jourry
 /**
 *\fn int main(int argc, char* args[])
 

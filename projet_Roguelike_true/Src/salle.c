@@ -99,7 +99,7 @@ void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction){
 }
 
 
-//Ecrit par Axel Jourry
+//Ecrit par Axel Jourry. Ajouts par Aurélien Tudoret
 /**
  *\fn void afficher_salle(salle_t *salle, SDL_Renderer *rendu, image_t texture[])
 
@@ -131,7 +131,7 @@ void afficher_salle(salle_t *salle, SDL_Renderer *rendu, image_t texture[]){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void rempli_tableau_murs_portes(salle_t salle[], int indiceT)
 
@@ -172,7 +172,7 @@ void rempli_tableau_murs_portes(salle_t salle[], int indiceT){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn int inverse_porte(int porte)
 
@@ -197,7 +197,7 @@ int inverse_porte(int porte){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void textures_aleatoires(salle_t salles[], int taille)
 
@@ -237,7 +237,7 @@ void textures_aleatoires(salle_t salles[], int taille){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void place_monstre_coffre_boss(salle_t tab[], int taille, int type_ennemi, SDL_Renderer *rendu, int *ennemi_max)
 
@@ -300,7 +300,7 @@ void place_monstre_coffre_boss(salle_t tab[], int taille, int type_ennemi, SDL_R
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void creation_mini_map(int taille, int indice, mini_map_t *map)
 
@@ -337,7 +337,7 @@ void creation_mini_map(int taille, mini_map_t *map){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void ajoute_salle_decouverte(mini_map_t *map, salle_t salles[], int indice, int *salle_pred)
 
@@ -360,7 +360,7 @@ void ajoute_salle_decouverte(mini_map_t *map, salle_t salles[], int indice, int 
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void ajoute_ennemi(ennemi_t **ennemi, int type, SDL_Renderer *rendu, int etage)
 
@@ -383,7 +383,7 @@ void ajoute_ennemi(ennemi_t **ennemi, int type, SDL_Renderer *rendu, int etage){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void placer_monstre(ennemi_t *ennemi)
 
@@ -407,7 +407,7 @@ void placer_monstre(ennemi_t *ennemi){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int nb_ennemi, int type, SDL_Renderer *rendu, int etage)
 
@@ -443,7 +443,7 @@ void creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int nb_ennemi,
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void affiche_mini_map(mini_map_t map, salle_t salle, SDL_Renderer *rendu)
 
@@ -484,7 +484,7 @@ void affiche_mini_map(mini_map_t map, salle_t salle, SDL_Renderer *rendu){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn ennemi_selon_etage
 

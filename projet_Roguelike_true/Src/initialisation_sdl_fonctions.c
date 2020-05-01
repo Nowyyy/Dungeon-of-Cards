@@ -8,7 +8,7 @@
 #include "../include/constantes.h"
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn int initialisation_sdl(SDL_Window **window, SDL_Renderer **rendu)
 
@@ -43,7 +43,7 @@ int initialisation_sdl(SDL_Window **window, SDL_Renderer **rendu){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void quit_sdl(SDL_Renderer **rendu, SDL_Window **window)
 
@@ -66,7 +66,7 @@ void quit_sdl(SDL_Renderer **rendu, SDL_Window **window){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn int init_or_quit_ttf(int action)
 
@@ -91,7 +91,7 @@ int init_or_quit_ttf(int action){
 }
 
 
-
+//Ecrit par Axel Jourry
 /**
 *\fn extern void get_text_and_rect_color(SDL_Renderer *renderer, int x, int y, char *text, TTF_Font *font, SDL_Texture **texture, SDL_Rect *rect, SDL_Color textColor)
 
@@ -132,7 +132,7 @@ extern void get_text_and_rect_color(SDL_Renderer *renderer, int x, int y, char *
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn extern void get_text_and_rect(SDL_Renderer *renderer, int x, int y, char *text, TTF_Font *font, SDL_Texture **texture, SDL_Rect *rect)
 
@@ -173,7 +173,7 @@ extern void get_text_and_rect(SDL_Renderer *renderer, int x, int y, char *text, 
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn int charge_image(char *path_img, image_t *struct_image, SDL_Renderer *rendu)
 
@@ -346,7 +346,7 @@ void choix_musique(Mix_Music* musics[NB_MUSIC], perso_t *pers){
 	}
 }
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void libere_texture(SDL_Texture **texture)
 

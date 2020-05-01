@@ -13,7 +13,7 @@
 #include "../include/sauvegardefonc.h"
 
 
-//Ajouts par Axel Jourry
+//Ecrit par Aurélien Tudoret. Ajouts par Axel Jourry
 /**
 *\fn int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect quitter, SDL_Rect **rect_sel, int *etat, Mix_Chunk *sounds[NB_SON])
 
@@ -108,7 +108,7 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void affichage_menu(SDL_Renderer *rendu, SDL_Texture *jouer_text, SDL_Texture *charger_text, SDL_Texture *quitter_text, SDL_Rect *rect_sel, SDL_Rect jouer_rect, SDL_Rect charger_rect, SDL_Rect quitter_rect, image_t logo[])
 
@@ -148,7 +148,7 @@ void affichage_menu(SDL_Renderer *rendu, SDL_Texture *jouer_text, SDL_Texture *c
 
 
 
-//Ajouts par Axel Jourry
+//Ecrit par Aurélien Tudoret. Ajouts par Axel Jourry
 /**
 *\fn void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *sounds[NB_SON])
 
@@ -207,24 +207,8 @@ void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police,
 		rectangle_selection=NULL;
 	}
 
-
-	if(jouer_texture != NULL){
-		SDL_DestroyTexture(jouer_texture);
-		jouer_texture = NULL;
-	}
-	if(charger_texture != NULL){
-		SDL_DestroyTexture(charger_texture);
-		charger_texture=NULL;
-	}
-
-	if(quitter_texture != NULL){
-		SDL_DestroyTexture(quitter_texture);
-		quitter_texture=NULL;
-	}
-
-	if(logo[0].img!=NULL){
-		SDL_DestroyTexture(logo[0].img);
-		logo[0].img=NULL;
-	}
-
+	libere_texture(&logo[0].img);
+	libere_texture(&quitter_texture);
+	libere_texture(&jouer_texture);
+	libere_texture(&charger_texture);
 }

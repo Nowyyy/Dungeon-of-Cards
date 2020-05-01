@@ -12,7 +12,7 @@
 #include "../include/constantes.h"
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void init_tab_clavier(int tab[])
 

@@ -25,7 +25,7 @@
 #include "../include/labyrinthe.h"
 
 
-//Ajouts par Axel Jourry
+//Ecrit par Aurélien Tudoret. Ajouts par Axel Jourry
 /**
 *\fn void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu, int *compte_ennemi, int *ennemi_max)
 
@@ -104,6 +104,7 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 }
 
 
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[], mini_map_t map, loot_carte_t loot)
 
@@ -169,15 +170,14 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
-
 *\fn void initialise_salles(salle_t tab[], int taille)
+
 *\param tab, contient les différentes salles
 *\param taille, taille du tableau
 
 *\brief remplit les tableaux des salles, initialise les variables
-
 */
 void initialise_salles(salle_t tab[], int taille){
 
@@ -206,9 +206,10 @@ void initialise_salles(salle_t tab[], int taille){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void cree_liaison(salle_t tab[], int salle1, int salle2, int porteS1)
+
 *\param tab, contient les différentes salles
 *\param salle1, la première salle pour laquelle on effectue les liaisons
 *\param salle2, la seconde salle pour laquelle on effectue les liaisons
@@ -236,6 +237,7 @@ void cree_liaison(salle_t tab[], int salle1, int salle2, int porteS1){
 }
 
 
+//Ecrit par Aurélien Tudoret
 /**
 *\fn int tirage_au_sort_porte_a_creer(int indice, int taille, salle_t salles[], int tentatives)
 
@@ -247,7 +249,6 @@ void cree_liaison(salle_t tab[], int salle1, int salle2, int porteS1){
 *\return la direction valide dans laquelle créée une porte selon l'emplacement de la salle actuelle
 
 *\brief Permet de renvoyer la direction vers laquelle on peut tenter de créer une liaison avec une autre salle
-
 */
 int tirage_au_sort_porte_a_creer(int indice, int taille, salle_t salles[], int tentatives){
 
@@ -305,7 +306,7 @@ int tirage_au_sort_porte_a_creer(int indice, int taille, salle_t salles[], int t
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn int indice_salle(int salle_actuelle, int porte_salle_actuelle, int taille)
 
@@ -333,7 +334,7 @@ int indice_salle(int salle_actuelle, int porte_salle_actuelle, int taille){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn int salles_compatibles(int salle1, int porte1, int salle2, int porte2, salle_t salles[])
 
@@ -365,7 +366,7 @@ int salles_compatibles(int salle1, int porte1, int salle2, int porte2, salle_t s
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn int creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer)
 
@@ -463,7 +464,7 @@ int creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer){
 }
 
 
-
+//Ecrit par Aurélien Tudoret. Ajouts par Thomas Malabry
 /**
 *\fn void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Renderer *rendu, image_t *counter, int *compte_ennemi, int *ennemi_max, int *compt_ennold)
 
@@ -501,7 +502,7 @@ void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Rendere
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn int nb_salles_par_etage(int etage)
 
@@ -523,7 +524,7 @@ int nb_salles_par_etage(int etage){
 }
 
 
-//Ajouts par Axel Joury
+//Ecrit par Aurélien Tudoret. Ajouts par Axel Joury
 /**
 *\fn void vers_ecran_combat(SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], touches_t *clavier, perso_t *pers, ennemi_t *ennemi,  Mix_Music *musics[NB_MUSIC], int *etat)
 
@@ -582,7 +583,7 @@ void check_ennemi(int *ennemi_max, int *compte_ennemi, salle_t salles[], int sal
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void init_tableau_images(image_t images[])
 
@@ -599,7 +600,7 @@ void init_tableau_images(image_t images[]){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn int choix_boss()
 
@@ -612,7 +613,7 @@ int choix_boss(){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn int choix_monstre(int etage)
 
@@ -631,7 +632,7 @@ int choix_monstre(int etage){
 }
 
 
-//Ajouts par Axel Jourry
+//Ecrit par Aurélien Tudoret. Ajouts par Axel Jourry
 /**
 *\fn void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], perso_t *pers, TTF_Font *police)
 

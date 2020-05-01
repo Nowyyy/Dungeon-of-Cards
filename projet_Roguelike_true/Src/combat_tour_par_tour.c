@@ -18,7 +18,7 @@
 #include "../include/animation.h"
 
 
-//Ajouts par Axel Jourry.
+//Ecrit par Thomas Malabry et Aurélien Tudoret. Ajouts par Axel Jourry.
 /**
 *\fn int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, image_t images[NB_TEXTURES_LABY], SDL_Rect **rect_sel, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC])
 
@@ -141,6 +141,7 @@ int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, ima
 }
 
 
+//Ecrit par Thomas Malabry et Aurélien Tudoret
 /**
 *\fn void affichage_combat_personnage(SDL_Renderer *rendu, perso_t *pers, ennemi_t *ennemi, image_t def, image_t fuir, SDL_Rect *rect_sel, image_t images[NB_TEXTURES_COMBAT], hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action)
 
@@ -156,7 +157,6 @@ int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, ima
 *\param action, l'action jouée par le joueur ou l'ennemi
 
 *\brief Permet d'afficher toutes la partie combat
-
 */
 void affichage_combat_personnage(SDL_Renderer *rendu, perso_t *pers, ennemi_t *ennemi, image_t def, image_t fuir, SDL_Rect *rect_sel, image_t images[NB_TEXTURES_COMBAT],
 hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action){
@@ -285,7 +285,7 @@ hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void charge_textures_combat(image_t images[], SDL_Renderer *rendu, carte_t *cartes[])
 
@@ -310,6 +310,7 @@ void charge_textures_combat(image_t images[], SDL_Renderer *rendu, carte_t *cart
 }
 
 
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void donne_valeur_rect_images(image_t images[], perso_t *perso)
 
@@ -351,6 +352,7 @@ void donne_valeur_rect_images(image_t images[], perso_t *perso){
 }
 
 
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void free_image(image_t images[])
 
@@ -365,7 +367,7 @@ void free_image(image_t images[]){
 }
 
 
-//Ajouts par Axel Jourry
+//Ecrit par Aurélien Tudoret. Ajouts par Axel Jourry
 /**
 *\fn void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
 
@@ -404,7 +406,7 @@ void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t *carte, SDL_Renderer *
 }
 
 
-//Ajouts par Axel Jourry
+//Ecrit par Aurélien Tudoret. Ajouts par Axel Jourry
 /**
 *\fn void tour_ennemi(perso_t *pers, ennemi_t *ennemi, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
 
@@ -433,7 +435,7 @@ void tour_ennemi(perso_t *pers, ennemi_t *ennemi, SDL_Renderer *rendu, Mix_Chunk
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void creer_texte_combat(char *txt, image_t *image, int x, int y, SDL_Renderer *rendu, TTF_Font *font)
 
@@ -455,7 +457,7 @@ void creer_texte_combat(char *txt, image_t *image, int x, int y, SDL_Renderer *r
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void create_hud(hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, ennemi_t ennemi, perso_t pers, SDL_Renderer *rendu, TTF_Font *font)
 
@@ -496,7 +498,7 @@ void create_hud(hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, ennemi_t ennem
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void init_hud_action(hud_combat_t *action)
 
@@ -515,7 +517,7 @@ void init_hud_action(hud_combat_t *action){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hud_combat_t *action, hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, SDL_Renderer *rendu, TTF_Font *font, int tour)
 
@@ -571,7 +573,7 @@ void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hu
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void detruire_action_temp(hud_combat_t *action)
 
@@ -593,7 +595,7 @@ void detruire_action_temp(hud_combat_t *action){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void range_carte_deck(carte_t *cartes[])
 
@@ -620,7 +622,7 @@ void range_carte_deck(carte_t *cartes[]){
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void consommable_epuise(carte_t *cartes[], int indice, image_t images[], SDL_Renderer *rendu)
 
@@ -652,7 +654,7 @@ void consommable_epuise(carte_t *cartes[], int indice, image_t images[], SDL_Ren
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void range_carte_tire_nouvelles(carte_t *cartes[NB_CARTES_COMBAT], int cartes_selectionnees[], image_t images[], SDL_Renderer *rendu)
 
@@ -684,7 +686,7 @@ void range_carte_tire_nouvelles(carte_t *cartes[NB_CARTES_COMBAT], int cartes_se
 }
 
 
-
+//Ecrit par Aurélien Tudoret
 /**
 *\fn void defausse(SDL_Renderer *rendu, perso_t *perso, ennemi_t *ennemi, SDL_Rect *rectangle_selection, image_t images[], hud_combat_t hud_ennemi, hud_combat_t hud_pers, hud_combat_t action, TTF_Font *police, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], carte_t *cartes[NB_CARTES_COMBAT])
 
@@ -760,7 +762,7 @@ hud_combat_t hud_pers, hud_combat_t action, TTF_Font *police, Mix_Chunk *sounds[
 }
 
 
-//Ajouts par Axel Jourry
+//Ecrit par Thomas Malabry Aurélien Tudoret. Ajouts par Axel Jourry
 /**
 *\fn void combat_t_p_t(perso_t * perso, ennemi_t * ennemi, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], int *etat)
 
