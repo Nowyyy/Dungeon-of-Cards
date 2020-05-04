@@ -237,7 +237,7 @@ void textures_aleatoires(salle_t salles[], int taille){
 }
 
 
-//Ecrit par Aurélien Tudoret
+//Ecrit par Aurélien Tudoret. Ajouts par Thomas Malabry
 /**
 *\fn void place_monstre_coffre_boss(salle_t tab[], int taille, int type_ennemi, SDL_Renderer *rendu, int *ennemi_max)
 
@@ -484,7 +484,7 @@ void affiche_mini_map(mini_map_t map, salle_t salle, SDL_Renderer *rendu){
 }
 
 
-//Ecrit par Aurélien Tudoret
+//Ecrit par Aurélien Tudoret. Ajouts par Thomas Malabry
 /**
 *\fn ennemi_selon_etage
 

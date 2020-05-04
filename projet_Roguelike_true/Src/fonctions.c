@@ -169,7 +169,7 @@ int randRange(int min, int max, int niveau){
 }
 
 
-
+// Ajouts par Thomas Malabry.
 /**
 *\fn int valeur_carte(char nom[TAILLE])
 

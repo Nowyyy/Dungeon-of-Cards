@@ -33,7 +33,7 @@ int save_existe(){
 }
 
 
-//Ajouts par Aurélien Tudoret
+//Ecrit par Thomas Malabry. Ajouts par Aurélien Tudoret
 /**
 *\fn void savecarte (char *path, int liste)
 *\param *path, Contient le fichier où l'on va sauvegarder les cartes
@@ -72,7 +72,7 @@ void savecarte (char *path, int liste){
 }
 
 
-//Ajouts par Aurélien Tudoret
+//Ecrit par Thomas Malabry. Ajouts par Aurélien Tudoret
 /**
 *\fn void readcarte(char *path_file, int liste)
 *\param *path_file , Contient le fichier où l'on va sauvegarder les cartes
@@ -115,7 +115,7 @@ void readcarte(char *path_file, int liste){
 }
 
 
-//Ajouts par Aurélien Tudoret
+//Ecrit par Thomas Malabry. Ajouts par Aurélien Tudoret
 /**
 *\fn void saveperso (perso_t *perso)
 *\param *perso, Pour savoir les données du perso à sauvegarder
@@ -149,7 +149,7 @@ void saveperso (perso_t *perso){
 }
 
 
-//Ajouts par Aurélien Tudoret
+//Ecrit par Thomas Malabry. Ajouts par Aurélien Tudoret
 /**
 *\fn void readperso(perso_t *perso)
 *\param *perso Pour savoir les données du perso à sauvegarder

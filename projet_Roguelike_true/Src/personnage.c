@@ -442,7 +442,7 @@ int combat_declenche(salle_t salle, perso_t pers){
 }
 
 
-//Ecrit par Aurélien Tudoret
+//Ecrit par Aurélien Tudoret. Ajouts par Thomas Malabry
 /**
 *\fn void creer_texture_depuis_char(image_t *texte_pv, image_t *texte_etage, perso_t perso, SDL_Renderer *rendu, image_t *texte_counter, int *compte_ennemi, int *ennemi_max)
 

@@ -367,7 +367,7 @@ void free_image(image_t images[]){
 }
 
 
-//Ecrit par Aurélien Tudoret. Ajouts par Axel Jourry
+//Ecrit par Aurélien Tudoret et Thomas Malabry. Ajouts par Axel Jourry
 /**
 *\fn void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
 
@@ -406,7 +406,7 @@ void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t *carte, SDL_Renderer *
 }
 
 
-//Ecrit par Aurélien Tudoret. Ajouts par Axel Jourry
+//Ecrit par Aurélien Tudoret et Thomas Malabry. Ajouts par Axel Jourry
 /**
 *\fn void tour_ennemi(perso_t *pers, ennemi_t *ennemi, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
 

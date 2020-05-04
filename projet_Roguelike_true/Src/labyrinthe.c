@@ -25,7 +25,7 @@
 #include "../include/labyrinthe.h"
 
 
-//Ecrit par Aurélien Tudoret. Ajouts par Axel Jourry
+//Ecrit par Aurélien Tudoret. Ajouts par Axel Jourry et Thomas Malabry.
 /**
 *\fn void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu, int *compte_ennemi, int *ennemi_max)
 
@@ -549,7 +549,7 @@ void vers_ecran_combat(SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], touches_t
 }
 
 
-
+//Ecrit par Thomas Malabry.
 /**
 *\fn void check_ennemi(int *ennemi_max, int *compte_ennemi, salle_t salles[], int salle_courante, perso_t *pers)
 *\param *ennemi_max est le nombre d'ennemi max.
@@ -632,7 +632,7 @@ int choix_monstre(int etage){
 }
 
 
-//Ecrit par Aurélien Tudoret. Ajouts par Axel Jourry
+//Ecrit par Aurélien Tudoret. Ajouts par Axel Jourry et Thomas Malabry.
 /**
 *\fn void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], perso_t *pers, TTF_Font *police)
 
