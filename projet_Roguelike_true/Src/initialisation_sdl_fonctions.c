@@ -360,6 +360,4 @@ void libere_texture(SDL_Texture **texture){
 		SDL_DestroyTexture(*texture);
 		*texture = NULL;
 	}
-	else
-		printf("fail libere texture\n");
 }

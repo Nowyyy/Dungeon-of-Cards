@@ -7,14 +7,14 @@
 *\brief Constantes et structures du projet Roguelike
 */
 
-#include <SDL2/SDL.h>
+#include <./SDL2/SDL.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_image.h>
+#include <./SDL2/SDL_ttf.h>
+#include <./SDL2/SDL_image.h>
 #include <time.h>
 #include <string.h>
-#include "SDL2/SDL_mixer.h"
+#include <./SDL2/SDL_mixer.h>
 
 
 #define WIN_HEIGHT 620
