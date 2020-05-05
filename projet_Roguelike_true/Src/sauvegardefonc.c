@@ -72,7 +72,7 @@ void savecarte (char *path, int liste){
 }
 
 
-//Ecrit par Thomas Malabry. Ajouts par Aurélien Tudoret
+//Ecrit par Thomas Malabry. Ajouts par Aurélien Tudoret et Timothée Marin
 /**
 *\fn void readcarte(char *path_file, int liste)
 *\param *path_file , Contient le fichier où l'on va sauvegarder les cartes
