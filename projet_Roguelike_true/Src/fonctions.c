@@ -137,7 +137,7 @@ void ajout_carte_deck(carte_t *tampon){
 }
 
 
-
+//Ecrit par Timothée Marin
 /**
 *\fn int randRange(int min, int max, int niveau)
 
@@ -168,8 +168,7 @@ int randRange(int min, int max, int niveau){
     return num;
 }
 
-
-// Ajouts par Thomas Malabry.
+//Ecrit par Timothée Marin, Ajouts par Thomas Malabry.
 /**
 *\fn int valeur_carte(char nom[TAILLE])
 
@@ -232,7 +231,7 @@ int valeur_carte(char nom[TAILLE]){
 }
 
 
-
+//Ecrit par Timothée Marin
 /**
 *\fn void transfert_mort()
 *\brief A la mort du personnage, vide son deck puis le rempli avec des cartes semi-aléatoires pour la partie suivante
@@ -280,6 +279,7 @@ void transfert_mort(){
 
 
 // Primitives de manipulation de la liste
+//Ecrit par Timothée Marin
 /**
 *\fn void choix_liste()
 *\param choix, 0 = COLLECTION et 1 = DECK. Les valeurs sont définies dans constantes.h
@@ -297,7 +297,7 @@ void choix_liste(int choix){
 }
 
 
-
+//Ecrit par Timothée Marin
 /**
 *\fn void init_liste()
 *\brief Fonction initialisant les listes. Par défaut, la liste deck est ensuite sélectionner
@@ -317,7 +317,7 @@ void init_liste(){
 }
 
 
-
+//Ecrit par Timothée Marin
 /**
 *\fn int liste_vide()
 *\brief Fonction qui permet de vérifier si une liste est vide
@@ -326,6 +326,8 @@ void init_liste(){
 int liste_vide(){
 	return drapeau->pred==drapeau;
 }
+
+//Ecrit par Timothée Marin
 /**
 *\fn int hors_liste()
 *\brief Fonction qui permet de vérifier si on est pas hors liste
@@ -336,7 +338,7 @@ int hors_liste(){
 }
 
 
-
+//Ecrit par Timothée Marin
 /**
 *\fn void en_tete()
 *\brief Fonction qui permet de se mettre au début de la liste
@@ -347,7 +349,7 @@ void en_tete(){
 }
 
 
-
+//Ecrit par Timothée Marin
 /**
 *\fn void en_queue()
 *\brief Fonction qui permet de se mettre en fin de la liste
@@ -358,7 +360,7 @@ void en_queue(){
 }
 
 
-
+//Ecrit par Timothée Marin
 /**
 *\fn void precedent()
 *\brief Fonction qui permet de reculer dans la liste
@@ -371,7 +373,7 @@ void precedent(){
 }
 
 
-
+//Ecrit par Timothée Marin
 /**
 *\fn void suivant()
 *\brief Fonction qui permet d'avancer dans la liste
@@ -384,7 +386,7 @@ void suivant(){
 }
 
 
-
+//Ecrit par Timothée Marin
 /**
 *\fn void valeur_elt(carte_t ** t)
 *\brief Fonction qui permet de prendre une valeur de la liste
@@ -396,7 +398,7 @@ void valeur_elt(carte_t ** t){
 }
 
 
-
+//Ecrit par Timothée Marin
 /**
 *\fn void modif_elt(carte_t t)
 *\brief Fonction qui permet de modifier une valeur dans une liste
@@ -616,7 +618,7 @@ ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type,
 }
 
 
-
+//Ecrit par Timothée Marin
 /**
 *\fn carte_t* generer_carte(int etage)
 *\brief permet de créer une carte au hasard, plus ou moins forte selon l'étage
@@ -712,9 +714,12 @@ carte_t * generer_carte(int etage){
 }
 
 
-
+//Ecrit par Timothée Marin
+/**
+*\fn void afficher_liste()
+*\brief Fonction qui permet d'afficher la liste actuelle dans le terminal
+*/
 void afficher_liste(){
-
   if(liste_vide())
     printf("\nListe vide.\n\n");
   for(en_tete();!hors_liste();suivant())
