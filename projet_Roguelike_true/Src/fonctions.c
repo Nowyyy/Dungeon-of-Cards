@@ -645,6 +645,9 @@ carte_t * generer_carte(int etage){
 		case 5:
 			puissance = 2;
 			break;
+    default:
+      return 0;
+      break;
 	}
 	//printf("puissance : %d\n", puissance);
 	r = rand()%15;
@@ -667,6 +670,9 @@ carte_t * generer_carte(int etage){
 				strncat(nom, puissances[puissance], 3);
         return(creer_carte(nom,ATTAQUE,0,5, CARTE_PIERRE_PATH));
         break;
+      default:
+        return 0;
+        break;
     }
   }
   else if (r > 9 && r < 14){
@@ -687,6 +693,9 @@ carte_t * generer_carte(int etage){
 				strcpy(nom, peu_communes[i]);
 				strncat(nom, puissances[puissance], 3);
         return(creer_carte(nom,ATTAQUE,0,-1, CARTE_EPEE_I_PATH));
+        break;
+      default:
+        return 0;
         break;
     }
   }
@@ -709,6 +718,9 @@ carte_t * generer_carte(int etage){
 				strncat(nom, puissances[puissance], 3);
         return(creer_carte(nom,DEFENSE,0,1, CARTE_GUERISON_PATH));
         break;
+      default:
+      return 0;
+      break;
     }
   }
 }
