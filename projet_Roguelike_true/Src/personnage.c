@@ -1,8 +1,8 @@
 /**
 *\file personnage.c
 *\author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
-*\date 04/02/2020
-*\version 0.1
+*\date 13/05/2020
+*\version 1.0
 
 *\brief Gère toute la partie concernant le personnage
 */

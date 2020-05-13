@@ -1,8 +1,8 @@
 /**
 * \file main.c
-* \date 30/01/2020
+* \date 13/05/2020
 * \author {Tudoret Aurélien, Jourry Axel, Malabry Thomas, Marin Timothée}
-* \version 0.1
+* \version 1.0
 * \brief Le projet de deuxième année de licence, un roguelike/rpg
 */
 

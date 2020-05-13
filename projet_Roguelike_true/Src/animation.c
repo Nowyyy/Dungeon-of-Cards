@@ -1,8 +1,8 @@
 /**
 *\file animation.c
 *\author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
-*\date 18/02/2020
-*\version 0.1
+*\date 13/05/2020
+*\version 1.0
 
 *\brief Gère les différentes animations de combat, de chargement et de mort
 */

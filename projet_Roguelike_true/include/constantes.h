@@ -1,8 +1,8 @@
 /**
 *\file constantes.h
 *\author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
-*\date 30/01/2020
-*\version 0.1
+*\date 13/05/2020
+*\version 1.0
 
 *\brief Constantes et structures du projet Roguelike
 */

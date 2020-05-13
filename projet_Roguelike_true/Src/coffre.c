@@ -1,8 +1,8 @@
 /**
 *\file coffre.c
 *\author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
-*\date 14/03/2020
-*\version 0.1
+*\date 13/05/2020
+*\version 1.0
 
 *\brief permet de gérer animation et drop d'objets des coffres
 */

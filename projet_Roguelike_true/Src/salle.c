@@ -2,8 +2,8 @@
  *\file salle.c
  *\brief Programme qui créé une salle et l'affiche.
  *\author {Axel Jourry, Aurélien Tudoret}
- *\version 0.1
- *\date 30 Janvier 2020
+ *\version 1.0
+ *\date 13/05/2020
  */
 
 #include "../include/constantes.h"

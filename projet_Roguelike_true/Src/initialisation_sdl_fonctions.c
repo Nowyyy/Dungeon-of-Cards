@@ -1,8 +1,8 @@
 /**
 *\file initialisation_sdl_fonctions.c
 *\author {Jourry Axel, Tudoret Aurélien, Malabry Thomas, Marin Timothée}
-*\date 30/01/2020
-*\version 0.1
+*\date 13/05/2020
+*\version 1.0
 *\brief fonctions de la sdl pour son initialisation, fichier .c
 */
 #include "../include/constantes.h"

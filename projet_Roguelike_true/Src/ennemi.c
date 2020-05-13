@@ -1,8 +1,8 @@
 /**
 *\file ennemi.c
 *\author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
-*\version 0.1
-*\date 12/03/2020
+*\version 1.0
+*\date 13/05/2020
 
 *\brief Permet de gérer les déplacements et animations des ennemis dans le labyrinthe et en combat
 */

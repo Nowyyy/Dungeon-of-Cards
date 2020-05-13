@@ -3,7 +3,7 @@
 *\brief Fichier référençant toutes les fonctions du système de combat.
 *\author {Malabry Thomas Aurélien Tudoret Jourry Axel Marin Timothée}
 *\version 1.0
-*\date 13/02/2020
+*\date 13/05/2020
 */
 
 

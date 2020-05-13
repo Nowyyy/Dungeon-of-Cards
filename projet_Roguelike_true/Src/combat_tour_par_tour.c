@@ -4,9 +4,9 @@
 
 *\author {Tudoret Aurélien, Jourry Axel, Marin Timothée, Malabry Thomas}
 
-*\date 14/03/2020
+*\date 13/05/2020
 
-*\version 0.1
+*\version 1.0
 
 *\brief contient et fait appel a toutes fonctions nécessaires pour le combat
 */
