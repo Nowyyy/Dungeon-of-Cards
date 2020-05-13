@@ -64,29 +64,29 @@ int main(int argc, char* args[]){
 //************************* INITIALISATION SDL + TTF ********************************************************
 
 	if(initialisation_sdl(&window, &rendu)){
-		printf("Erreur création fenetre ou rendu\n");
+		exit(1);
 	}
 	else{
 
 		if(init_or_quit_ttf(1)){//initialise TTF (permet s d'écrire sur l'écran)
-			printf("Erreur init TTF\n");
+			exit(1);
 		}
 		else{
 
 			if((IMG_Init(IMG_INIT_PNG)&IMG_INIT_PNG) != IMG_INIT_PNG){
-				printf("Erreur init sdl_image\n");
+					exit(1);
 			}
 			else{
 
 				police = TTF_OpenFont(FONT_PATH, 50);//charge la police pour écrire a l'ecran
 
-				if(!police)
-					printf("Erreur police\n");
+				if(!police){
+					exit(1);
+				}
+
 				else{
 
 					if (flags != (result = Mix_Init(flags))) {
-						printf("Could not initialize mixer (result: %d).\n", result);
-						printf("Mix_Init: %s\n", Mix_GetError());
 						exit(1);
 					}
 					Mix_VolumeMusic(6);
@@ -120,10 +120,6 @@ int main(int argc, char* args[]){
 
 						  if(pers.etage < 5){
 							choix_liste(DECK);
-							if(liste_vide()){
-						    printf("Erreur : deck vide. Vérifiez le fichier cartes_nouvelle_partie.txt dans Sauvegarde.\n");
-						    exit(1);
-						  }
 								boucle_labyrinthe(&continuer, &etat, rendu, sounds, musics, &pers, police);
 							}
 							else
@@ -161,8 +157,5 @@ int main(int argc, char* args[]){
 
 	detruire_liste(DECK);
 	detruire_liste(COLLEC);
-
-	printf("Tout est fermé\n");//affiche dans la console
-
 	return 0;
 }

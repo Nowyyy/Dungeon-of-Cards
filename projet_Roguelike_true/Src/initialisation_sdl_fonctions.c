@@ -189,11 +189,6 @@ int charge_image(char *path_img, image_t *struct_image, SDL_Renderer *rendu){
 
 	SDL_Surface *image = IMG_Load(path_img);
 
-	if(!image){
-		printf("Erreur chargement image %s\n", SDL_GetError());
-		return 1;
-	}
-
 	struct_image->img = SDL_CreateTextureFromSurface(rendu, image);
 
 	struct_image->rectangle.w = image->w;

@@ -162,7 +162,6 @@ int randRange(int min, int max, int niveau){
         max = tmp + min;
         break;
     }
-    //printf("Min : %d Max : %d\n", min, max);
     int i;
     int num = (rand() %(min - max + 1)) + min;
     return num;
@@ -262,16 +261,11 @@ void transfert_mort(){
 	}
 	for(compteur = 0;compteur<2;compteur++){
 		j = rand()%longueur;
-		printf("%d\n", j);
 		choix_liste(COLLEC);
 		for(en_tete(),i = 0;i<j;i++,suivant()){
 		}
 		ajout_carte_deck(ec->carte);
 	}
-  if(liste_vide()){
-    printf("Erreur : collection vide. Vérifiez le fichier cartes_nouvelle_partie.txt dans Sauvegarde.\n");
-    exit(1);
-  }
 }
 
 
@@ -649,9 +643,7 @@ carte_t * generer_carte(int etage){
       return 0;
       break;
 	}
-	//printf("puissance : %d\n", puissance);
 	r = rand()%15;
-	//printf("%s\n", puissances[puissance]);
   if (r < 10){
 		i = rand()%3;
     switch (i) {
@@ -676,7 +668,6 @@ carte_t * generer_carte(int etage){
     }
   }
   else if (r > 9 && r < 14){
-    //printf("Peu commune\n");
 		i = rand()%3;
     switch (i) {
       case 0:
@@ -700,7 +691,6 @@ carte_t * generer_carte(int etage){
     }
   }
   else{
-    //printf("Rare\n");
 		i = rand()%3;
     switch (i) {
       case 0:

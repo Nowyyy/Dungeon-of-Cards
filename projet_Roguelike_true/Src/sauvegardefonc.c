@@ -63,11 +63,6 @@ void savecarte (char *path, int liste){
         fprintf(fichier, "\n");
       }
    }
-   else
-   {
-       // On affiche un message d'erreur si on veut
-       printf("Impossible d'ouvrir le fichier %s", path);
-   }
    fclose(fichier);
 }
 
@@ -106,11 +101,6 @@ void readcarte(char *path_file, int liste){
           fscanf(fichier,"%d%d%d%s %[^\n]",&type,&valeur,&consommable,path,nom);
         }
     }
-    else
-    {
-        // On affiche un message d'erreur si on veut
-        printf("Impossible d'ouvrir le fichier %s", path_file);
-    }
     fclose(fichier);
 }
 
@@ -135,11 +125,6 @@ void saveperso (perso_t *perso){
   if (fichier != NULL)
    {
        fprintf(fichier,"%d %d %d %d %d %d\n",perso->pv,perso->x,perso->y, perso->etage, perso->cmpMort, perso->pv_max);
-   }
-   else
-   {
-       // On affiche un message d'erreur si on veut
-       printf("Impossible d'ouvrir le fichier personnage.txt");
    }
    fclose(fichier);
    if(nom_fichier != NULL){
@@ -168,11 +153,6 @@ void readperso(perso_t*perso){
   if (fichier != NULL)
    {
        fscanf(fichier,"%d %d %d %d %d %d\n",&perso->pv,&perso->x,&perso->y,&perso->etage, &perso->cmpMort, &perso->pv_max);
-   }
-   else
-   {
-       // On affiche un message d'erreur si on veut
-       printf("Impossible d'ouvrir le fichier personnage.txt");
    }
    fclose(fichier);
    if(nom_fichier != NULL){
