@@ -1,6 +1,6 @@
 /**
 *\file clavier.c
-*\author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
+*\author Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas
 *\date 13/05/2020
 *\version 1.0
 
@@ -13,10 +13,11 @@
 
 
 //Ecrit par Aurélien Tudoret
+
 /**
 *\fn void init_tab_clavier(int tab[])
 
-*\param tab[], le tableau contenant les touches du clavier qui ont été appuyées
+*\param tab[] le tableau contenant les touches du clavier qui ont été appuyées
 
 *\brief initialise le tableau d'evenement
 */
@@ -28,12 +29,13 @@ void init_tab_clavier(int tab[]){
 
 
 //Ecrit par Aurélien Tudoret. Ajout par Axel Jourry
+
 /**
 *\fn void event_clavier(touches_t *clavier, SDL_Event event)
 
-*\param *clavier, la structure contenant les touches du clavier
+*\param *clavier la structure contenant les touches du clavier
 
-*\param event, l'evenement lu au clavier
+*\param event l'evenement lu au clavier
 
 *\brief Range dans un tableau les evenements lus au clavier
 */

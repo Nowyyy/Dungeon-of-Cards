@@ -1,50 +1,50 @@
-\hypertarget{constantes_8h}{}\section{Référence du fichier /home/aurelien/\+Bureau/\+Projet-\/\+L2-\//projet\+\_\+\+Roguelike\+\_\+true/include/constantes.h}
-\label{constantes_8h}\index{/home/aurelien/\+Bureau/\+Projet-\/\+L2-\//projet\+\_\+\+Roguelike\+\_\+true/include/constantes.\+h@{/home/aurelien/\+Bureau/\+Projet-\/\+L2-\//projet\+\_\+\+Roguelike\+\_\+true/include/constantes.\+h}}
+\hypertarget{constantes_8h}{}\doxysection{Référence du fichier /\+Users/axel/\+Documents/\+Save git/\+Projet-\/\+L2-\//projet\+\_\+\+Roguelike/include/constantes.h}
+\label{constantes_8h}\index{/Users/axel/Documents/Save git/Projet-\/L2-\//projet\_Roguelike/include/constantes.h@{/Users/axel/Documents/Save git/Projet-\/L2-\//projet\_Roguelike/include/constantes.h}}
 
 
 Constantes et structures du projet Roguelike.  
 
 
-{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L.\+h$>$}\newline
+{\ttfamily \#include $<$./\+S\+D\+L2/\+S\+D\+L.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
-{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L\+\_\+ttf.\+h$>$}\newline
-{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include $<$./\+S\+D\+L2/\+S\+D\+L\+\_\+ttf.\+h$>$}\newline
+{\ttfamily \#include $<$./\+S\+D\+L2/\+S\+D\+L\+\_\+image.\+h$>$}\newline
 {\ttfamily \#include $<$time.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
-{\ttfamily \#include \char`\"{}S\+D\+L2/\+S\+D\+L\+\_\+mixer.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$./\+S\+D\+L2/\+S\+D\+L\+\_\+mixer.\+h$>$}\newline
 Graphe des dépendances par inclusion de constantes.\+h\+:
 % FIG 0
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
 % FIG 1
-\subsection*{Structures de données}
+\doxysubsection*{Structures de données}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{structanimation__t}{animation\+\_\+t}
+struct \mbox{\hyperlink{structanimation__t}{animation\+\_\+t}}
 \begin{DoxyCompactList}\small\item\em permet de gèrer les animations du personnage \end{DoxyCompactList}\item 
-struct \hyperlink{structtouches__t}{touches\+\_\+t}
+struct \mbox{\hyperlink{structtouches__t}{touches\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em permet de gèrer les touches utilisées \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structimage__t}{image\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em contient les éléments necéssaires au stockage d\textquotesingle{}une image \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structennemi__s}{ennemi\+\_\+s}}
 \item 
-struct \hyperlink{structimage__t}{image\+\_\+t}
+struct \mbox{\hyperlink{structcoffre__s}{coffre\+\_\+s}}
 \item 
-struct \hyperlink{structennemi__s}{ennemi\+\_\+s}
+struct \mbox{\hyperlink{structsalle__s}{salle\+\_\+s}}
 \item 
-struct \hyperlink{structcoffre__s}{coffre\+\_\+s}
+struct \mbox{\hyperlink{structmini__map__s}{mini\+\_\+map\+\_\+s}}
 \item 
-struct \hyperlink{structsalle__s}{salle\+\_\+s}
+struct \mbox{\hyperlink{structperso__s}{perso\+\_\+s}}
 \item 
-struct \hyperlink{structmini__map__s}{mini\+\_\+map\+\_\+s}
+struct \mbox{\hyperlink{structcarte__s}{carte\+\_\+s}}
 \item 
-struct \hyperlink{structperso__s}{perso\+\_\+s}
+struct \mbox{\hyperlink{structelement}{element}}
 \item 
-struct \hyperlink{structcarte__s}{carte\+\_\+s}
+struct \mbox{\hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+s}}
 \item 
-struct \hyperlink{structelement}{element}
-\item 
-struct \hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+s}
-\item 
-struct \hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+s}
+struct \mbox{\hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+s}}
 \end{DoxyCompactItemize}
-\subsection*{Macros}
+\doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{constantes_8h_a0a33b1743038db1adbbf1045aa839b38}\label{constantes_8h_a0a33b1743038db1adbbf1045aa839b38}} 
@@ -354,43 +354,43 @@ struct \hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+s}
 \#define {\bfseries N\+B\+\_\+\+S\+ON}~19
 \item 
 \mbox{\Hypertarget{constantes_8h_ab4a38b78204943ea59b2d550cc7bc498}\label{constantes_8h_ab4a38b78204943ea59b2d550cc7bc498}} 
-\#define {\bfseries N\+B\+\_\+\+M\+U\+S\+IC}~9
+\#define {\bfseries N\+B\+\_\+\+M\+U\+S\+IC}~10
 \end{DoxyCompactItemize}
-\subsection*{Définitions de type}
+\doxysubsection*{Définitions de type}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{constantes_8h_acf9629f25081ea7efee630475575453b}\label{constantes_8h_acf9629f25081ea7efee630475575453b}} 
-typedef struct \hyperlink{structennemi__s}{ennemi\+\_\+s} {\bfseries ennemi\+\_\+t}
+\mbox{\Hypertarget{constantes_8h_a0cf65619da24094c8bcb8a3825b76edd}\label{constantes_8h_a0cf65619da24094c8bcb8a3825b76edd}} 
+typedef struct \mbox{\hyperlink{structennemi__s}{ennemi\+\_\+s}} {\bfseries ennemi\+\_\+t}
 \item 
 \mbox{\Hypertarget{constantes_8h_a9beb93eb87565ac7a9445dd7dd124d7c}\label{constantes_8h_a9beb93eb87565ac7a9445dd7dd124d7c}} 
-typedef struct \hyperlink{structcoffre__s}{coffre\+\_\+s} {\bfseries coffre\+\_\+t}
+typedef struct \mbox{\hyperlink{structcoffre__s}{coffre\+\_\+s}} {\bfseries coffre\+\_\+t}
 \item 
 \mbox{\Hypertarget{constantes_8h_a496ace1950a1d2f3aed4b9288e19c05b}\label{constantes_8h_a496ace1950a1d2f3aed4b9288e19c05b}} 
-typedef struct \hyperlink{structsalle__s}{salle\+\_\+s} {\bfseries salle\+\_\+t}
+typedef struct \mbox{\hyperlink{structsalle__s}{salle\+\_\+s}} {\bfseries salle\+\_\+t}
 \item 
 \mbox{\Hypertarget{constantes_8h_a2b032077f5a80b551177a0d80131153f}\label{constantes_8h_a2b032077f5a80b551177a0d80131153f}} 
-typedef struct \hyperlink{structmini__map__s}{mini\+\_\+map\+\_\+s} {\bfseries mini\+\_\+map\+\_\+t}
+typedef struct \mbox{\hyperlink{structmini__map__s}{mini\+\_\+map\+\_\+s}} {\bfseries mini\+\_\+map\+\_\+t}
 \item 
-\mbox{\Hypertarget{constantes_8h_ab783d53c09db4b03c3a6067ef144c909}\label{constantes_8h_ab783d53c09db4b03c3a6067ef144c909}} 
-typedef struct \hyperlink{structperso__s}{perso\+\_\+s} {\bfseries perso\+\_\+t}
+\mbox{\Hypertarget{constantes_8h_a550089442e996a6b42d393992dbc5436}\label{constantes_8h_a550089442e996a6b42d393992dbc5436}} 
+typedef struct \mbox{\hyperlink{structperso__s}{perso\+\_\+s}} {\bfseries perso\+\_\+t}
 \item 
-\mbox{\Hypertarget{constantes_8h_ac32d6c906ea8c6ffebac589112053ae2}\label{constantes_8h_ac32d6c906ea8c6ffebac589112053ae2}} 
-typedef struct \hyperlink{structcarte__s}{carte\+\_\+s} {\bfseries carte\+\_\+t}
+\mbox{\Hypertarget{constantes_8h_a5b6991914ef584dcb9c32046c51857b1}\label{constantes_8h_a5b6991914ef584dcb9c32046c51857b1}} 
+typedef struct \mbox{\hyperlink{structcarte__s}{carte\+\_\+s}} {\bfseries carte\+\_\+t}
 \item 
-\mbox{\Hypertarget{constantes_8h_abe33e0f05080e2e3d51131a6c621ab9b}\label{constantes_8h_abe33e0f05080e2e3d51131a6c621ab9b}} 
-typedef struct \hyperlink{structelement}{element} {\bfseries element\+\_\+t}
+\mbox{\Hypertarget{constantes_8h_a3578cc557f82ebb906d8224ce230ef38}\label{constantes_8h_a3578cc557f82ebb906d8224ce230ef38}} 
+typedef struct \mbox{\hyperlink{structelement}{element}} {\bfseries element\+\_\+t}
 \item 
 \mbox{\Hypertarget{constantes_8h_af1dcc87dc9dfc0df20a966f991d8d45c}\label{constantes_8h_af1dcc87dc9dfc0df20a966f991d8d45c}} 
-typedef struct \hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+s} {\bfseries hud\+\_\+combat\+\_\+t}
+typedef struct \mbox{\hyperlink{structhud__combat__s}{hud\+\_\+combat\+\_\+s}} {\bfseries hud\+\_\+combat\+\_\+t}
 \item 
 \mbox{\Hypertarget{constantes_8h_aea8bc930523e83940ceb96b21d75f8e8}\label{constantes_8h_aea8bc930523e83940ceb96b21d75f8e8}} 
-typedef struct \hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+s} {\bfseries loot\+\_\+carte\+\_\+t}
+typedef struct \mbox{\hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+s}} {\bfseries loot\+\_\+carte\+\_\+t}
 \end{DoxyCompactItemize}
-\subsection*{Énumérations}
+\doxysubsection*{Énumérations}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{constantes_8h_af6160d91d6f70f88713d6e293b1881f7}\label{constantes_8h_af6160d91d6f70f88713d6e293b1881f7}} 
-enum \hyperlink{constantes_8h_af6160d91d6f70f88713d6e293b1881f7}{t\+\_\+sprites\+\_\+perso} \{ \newline
+enum \mbox{\hyperlink{constantes_8h_af6160d91d6f70f88713d6e293b1881f7}{t\+\_\+sprites\+\_\+perso}} \{ \newline
 {\bfseries courant}, 
 {\bfseries idle\+\_\+droite}, 
 {\bfseries droite1}, 
@@ -403,20 +403,20 @@ enum \hyperlink{constantes_8h_af6160d91d6f70f88713d6e293b1881f7}{t\+\_\+sprites\
 \newline
 {\bfseries gauche3}, 
 {\bfseries dead}
- \}\begin{DoxyCompactList}\small\item\em les types de sprites pour les animations du personnage \end{DoxyCompactList}
-\item 
+ \}
+\begin{DoxyCompactList}\small\item\em les types de sprites pour les animations du personnage \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{constantes_8h_a220de005cda6dc4c575de300f1e3799e}\label{constantes_8h_a220de005cda6dc4c575de300f1e3799e}} 
-enum \hyperlink{constantes_8h_a220de005cda6dc4c575de300f1e3799e}{t\+\_\+ligne\+\_\+sprites\+\_\+ennemi} \{ \newline
+enum \mbox{\hyperlink{constantes_8h_a220de005cda6dc4c575de300f1e3799e}{t\+\_\+ligne\+\_\+sprites\+\_\+ennemi}} \{ \newline
 {\bfseries idle\+\_\+droite\+\_\+ennemi}, 
 {\bfseries idle\+\_\+gauche\+\_\+ennemi}, 
 {\bfseries walk\+\_\+droite}, 
 {\bfseries walk\+\_\+gauche}, 
 \newline
 {\bfseries ennemi\+\_\+dead}
- \}\begin{DoxyCompactList}\small\item\em les types de sprites pour les animations des ennemis \end{DoxyCompactList}
-\item 
+ \}
+\begin{DoxyCompactList}\small\item\em les types de sprites pour les animations des ennemis \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{constantes_8h_ad1b7e09dd2f56578f1bc88956faf8c6f}\label{constantes_8h_ad1b7e09dd2f56578f1bc88956faf8c6f}} 
-enum \hyperlink{constantes_8h_ad1b7e09dd2f56578f1bc88956faf8c6f}{t\+\_\+types\+\_\+textures} \{ \newline
+enum \mbox{\hyperlink{constantes_8h_ad1b7e09dd2f56578f1bc88956faf8c6f}{t\+\_\+types\+\_\+textures}} \{ \newline
 {\bfseries sol} =0, 
 {\bfseries mur}, 
 {\bfseries porte}, 
@@ -435,10 +435,10 @@ enum \hyperlink{constantes_8h_ad1b7e09dd2f56578f1bc88956faf8c6f}{t\+\_\+types\+\
 {\bfseries etage}, 
 {\bfseries mobcounter}, 
 {\bfseries countertxt}
- \}\begin{DoxyCompactList}\small\item\em les types de textures sur lequel le perso peut tomber \end{DoxyCompactList}
-\item 
+ \}
+\begin{DoxyCompactList}\small\item\em les types de textures sur lequel le perso peut tomber \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{constantes_8h_a4ed2f70640718d1ed7fce968963ddded}\label{constantes_8h_a4ed2f70640718d1ed7fce968963ddded}} 
-enum \hyperlink{constantes_8h_a4ed2f70640718d1ed7fce968963ddded}{t\+\_\+textures\+\_\+combat} \{ \newline
+enum \mbox{\hyperlink{constantes_8h_a4ed2f70640718d1ed7fce968963ddded}{t\+\_\+textures\+\_\+combat}} \{ \newline
 {\bfseries fond}, 
 {\bfseries fond2}, 
 {\bfseries coeur}, 
@@ -451,10 +451,10 @@ enum \hyperlink{constantes_8h_a4ed2f70640718d1ed7fce968963ddded}{t\+\_\+textures
 \newline
 {\bfseries gameover}, 
 {\bfseries deathlight}
- \}\begin{DoxyCompactList}\small\item\em les types de textures pour les combats \end{DoxyCompactList}
-\item 
+ \}
+\begin{DoxyCompactList}\small\item\em les types de textures pour les combats \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{constantes_8h_a0b20f965ee5f3053aecabf44664f4aaa}\label{constantes_8h_a0b20f965ee5f3053aecabf44664f4aaa}} 
-enum {\bfseries t\+\_\+type\+\_\+ennemis} \{ \newline
+enum \mbox{\hyperlink{constantes_8h_a0b20f965ee5f3053aecabf44664f4aaa}{t\+\_\+type\+\_\+ennemis}} \{ \newline
 {\bfseries squelette}, 
 {\bfseries blob}, 
 {\bfseries imp}, 
@@ -467,9 +467,9 @@ enum {\bfseries t\+\_\+type\+\_\+ennemis} \{ \newline
 \newline
 {\bfseries sorcerer}
  \}
-\item 
+\begin{DoxyCompactList}\small\item\em les types d\textquotesingle{}ennemis existants \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{constantes_8h_a0f3684078562a23c3ea21266d10cf275}\label{constantes_8h_a0f3684078562a23c3ea21266d10cf275}} 
-enum \hyperlink{constantes_8h_a0f3684078562a23c3ea21266d10cf275}{t\+\_\+etat} \{ \newline
+enum \mbox{\hyperlink{constantes_8h_a0f3684078562a23c3ea21266d10cf275}{t\+\_\+etat}} \{ \newline
 {\bfseries main\+Menu} = 0, 
 {\bfseries labyrinthe}, 
 {\bfseries tour\+Par\+Tour}, 
@@ -477,16 +477,16 @@ enum \hyperlink{constantes_8h_a0f3684078562a23c3ea21266d10cf275}{t\+\_\+etat} \{
 \newline
 {\bfseries charger\+\_\+partie}, 
 {\bfseries confirmer\+\_\+nouveau}
- \}\begin{DoxyCompactList}\small\item\em les états que peut prendre le jeu afin de naviguer entre les menus \end{DoxyCompactList}
-\item 
+ \}
+\begin{DoxyCompactList}\small\item\em les états que peut prendre le jeu afin de naviguer entre les menus \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{constantes_8h_a8fb27eb0b354a4f35787ef57ac90e0eb}\label{constantes_8h_a8fb27eb0b354a4f35787ef57ac90e0eb}} 
-enum \hyperlink{constantes_8h_a8fb27eb0b354a4f35787ef57ac90e0eb}{type\+\_\+carte} \{ {\bfseries A\+T\+T\+A\+Q\+UE} = -\/1, 
+enum \mbox{\hyperlink{constantes_8h_a8fb27eb0b354a4f35787ef57ac90e0eb}{type\+\_\+carte}} \{ {\bfseries A\+T\+T\+A\+Q\+UE} = -\/1, 
 {\bfseries D\+E\+F\+E\+N\+SE} = 1, 
 {\bfseries N\+O\+\_\+\+C\+A\+R\+TE} = 0
- \}\begin{DoxyCompactList}\small\item\em Les différents types de cartes. \end{DoxyCompactList}
-\item 
+ \}
+\begin{DoxyCompactList}\small\item\em Les différents types de cartes. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{constantes_8h_ae8bdf1303543a5b8c77f80d7f3a24d12}\label{constantes_8h_ae8bdf1303543a5b8c77f80d7f3a24d12}} 
-enum \hyperlink{constantes_8h_ae8bdf1303543a5b8c77f80d7f3a24d12}{t\+\_\+touches\+\_\+clavier} \{ \newline
+enum \mbox{\hyperlink{constantes_8h_ae8bdf1303543a5b8c77f80d7f3a24d12}{t\+\_\+touches\+\_\+clavier}} \{ \newline
 {\bfseries up}, 
 {\bfseries down}, 
 {\bfseries right}, 
@@ -494,17 +494,17 @@ enum \hyperlink{constantes_8h_ae8bdf1303543a5b8c77f80d7f3a24d12}{t\+\_\+touches\
 \newline
 {\bfseries entree}, 
 {\bfseries escape}
- \}\begin{DoxyCompactList}\small\item\em Les différents types de touches utilisées. \end{DoxyCompactList}
-\item 
+ \}
+\begin{DoxyCompactList}\small\item\em Les différents types de touches utilisées. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{constantes_8h_aec4e3894aa763e81148b2241ff730790}\label{constantes_8h_aec4e3894aa763e81148b2241ff730790}} 
-enum \hyperlink{constantes_8h_aec4e3894aa763e81148b2241ff730790}{t\+\_\+direction} \{ {\bfseries haut}, 
+enum \mbox{\hyperlink{constantes_8h_aec4e3894aa763e81148b2241ff730790}{t\+\_\+direction}} \{ {\bfseries haut}, 
 {\bfseries droite}, 
 {\bfseries bas}, 
 {\bfseries gauche}
- \}\begin{DoxyCompactList}\small\item\em Les différents types de touches utilisées. \end{DoxyCompactList}
-\item 
+ \}
+\begin{DoxyCompactList}\small\item\em Les différents types de touches utilisées. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{constantes_8h_a71de36288def8c30844cb07167daaed4}\label{constantes_8h_a71de36288def8c30844cb07167daaed4}} 
-enum \hyperlink{constantes_8h_a71de36288def8c30844cb07167daaed4}{t\+\_\+sons} \{ \newline
+enum \mbox{\hyperlink{constantes_8h_a71de36288def8c30844cb07167daaed4}{t\+\_\+sons}} \{ \newline
 {\bfseries move} =0, 
 {\bfseries selection}, 
 {\bfseries change\+\_\+salle}, 
@@ -528,10 +528,10 @@ enum \hyperlink{constantes_8h_a71de36288def8c30844cb07167daaed4}{t\+\_\+sons} \{
 {\bfseries bouclier}, 
 {\bfseries poison}, 
 {\bfseries bdf}
- \}\begin{DoxyCompactList}\small\item\em Les différents sons utilisés. \end{DoxyCompactList}
-\item 
+ \}
+\begin{DoxyCompactList}\small\item\em Les différents sons utilisés. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{constantes_8h_ac6321ad6cd66ef7d4328555d72f161af}\label{constantes_8h_ac6321ad6cd66ef7d4328555d72f161af}} 
-enum \hyperlink{constantes_8h_ac6321ad6cd66ef7d4328555d72f161af}{t\+\_\+musique} \{ \newline
+enum \mbox{\hyperlink{constantes_8h_ac6321ad6cd66ef7d4328555d72f161af}{t\+\_\+musique}} \{ \newline
 {\bfseries menu} =0, 
 {\bfseries level1}, 
 {\bfseries game\+Over\+Music}, 
@@ -542,41 +542,42 @@ enum \hyperlink{constantes_8h_ac6321ad6cd66ef7d4328555d72f161af}{t\+\_\+musique}
 {\bfseries level3}, 
 {\bfseries level4}, 
 \newline
-{\bfseries level5}
- \}\begin{DoxyCompactList}\small\item\em Les différentes musiques utilisées. \end{DoxyCompactList}
-\end{DoxyCompactItemize}
-\subsection*{Variables}
+{\bfseries level5}, 
+{\bfseries victory}
+ \}
+\begin{DoxyCompactList}\small\item\em Les différentes musiques utilisées. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{constantes_8h_ac0bdec8145d8fdfd5a2673ef96bf14ca}\label{constantes_8h_ac0bdec8145d8fdfd5a2673ef96bf14ca}} 
-\hyperlink{structelement}{element\+\_\+t} $\ast$ {\bfseries drapeau}
+\mbox{\hyperlink{structelement}{element\+\_\+t}} $\ast$ {\bfseries drapeau}
 \item 
 \mbox{\Hypertarget{constantes_8h_ac677f93a7d97e1760cc61f11e040313e}\label{constantes_8h_ac677f93a7d97e1760cc61f11e040313e}} 
-\hyperlink{structelement}{element\+\_\+t} $\ast$ {\bfseries drapeau\+\_\+collec}
+\mbox{\hyperlink{structelement}{element\+\_\+t}} $\ast$ {\bfseries drapeau\+\_\+collec}
 \item 
 \mbox{\Hypertarget{constantes_8h_a48537e1b6b3910f7b076a6fc09fa4bcc}\label{constantes_8h_a48537e1b6b3910f7b076a6fc09fa4bcc}} 
-\hyperlink{structelement}{element\+\_\+t} $\ast$ {\bfseries drapeau\+\_\+deck}
+\mbox{\hyperlink{structelement}{element\+\_\+t}} $\ast$ {\bfseries drapeau\+\_\+deck}
 \item 
 \mbox{\Hypertarget{constantes_8h_aca122a400f96a8a768ff915610c60462}\label{constantes_8h_aca122a400f96a8a768ff915610c60462}} 
-\hyperlink{structelement}{element\+\_\+t} $\ast$ {\bfseries ec}
+\mbox{\hyperlink{structelement}{element\+\_\+t}} $\ast$ {\bfseries ec}
 \item 
 \mbox{\Hypertarget{constantes_8h_aa4c6ee2f0133f1361b7ee6184059c073}\label{constantes_8h_aa4c6ee2f0133f1361b7ee6184059c073}} 
-\hyperlink{structelement}{element\+\_\+t} $\ast$ {\bfseries ec\+\_\+collec}
+\mbox{\hyperlink{structelement}{element\+\_\+t}} $\ast$ {\bfseries ec\+\_\+collec}
 \item 
 \mbox{\Hypertarget{constantes_8h_a72d6df445fa27303d005565f76e2a229}\label{constantes_8h_a72d6df445fa27303d005565f76e2a229}} 
-\hyperlink{structelement}{element\+\_\+t} $\ast$ {\bfseries ec\+\_\+deck}
+\mbox{\hyperlink{structelement}{element\+\_\+t}} $\ast$ {\bfseries ec\+\_\+deck}
 \end{DoxyCompactItemize}
 
 
-\subsection{Description détaillée}
+\doxysubsection{Description détaillée}
 Constantes et structures du projet Roguelike. 
 
 \begin{DoxyAuthor}{Auteur}
-\{Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas\} 
+Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
-30/01/2020 
+13/05/2020 
 \end{DoxyDate}
 \begin{DoxyVersion}{Version}
-0.\+1 
+1.\+0 
 \end{DoxyVersion}

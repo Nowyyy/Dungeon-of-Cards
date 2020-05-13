@@ -1,6 +1,6 @@
 /**
 *\file constantes.h
-*\author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
+*\author Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas
 *\date 13/05/2020
 *\version 1.0
 
@@ -190,7 +190,7 @@ typedef enum{fond,fond2,coeur,gui_bar,carte1,carte2,carte3,carte4, gameover, dea
 
 
 /**
-*\enum t_types_ennemis
+*\enum t_type_ennemis
 
 *\brief les types d'ennemis existants
 */
@@ -258,7 +258,7 @@ typedef struct{
 
 
 /**
-*\struct touchs_t
+*\struct touches_t
 
 *\brief permet de gèrer les touches utilisées
 */
@@ -268,7 +268,7 @@ typedef struct{
 }touches_t;
 
 /**
-*\struct t_image
+*\struct image_t
 
 *\brief contient les éléments necéssaires au stockage d'une image
 */
@@ -280,7 +280,7 @@ typedef struct{
 
 /**
 *\struct ennemi_t
-*\Permet de définir un ennemi
+*\brief Permet de définir un ennemi
 */
 typedef struct ennemi_s {
   int pv, pv_max, pv_old;/**Point de vie d'un ennemi*/
@@ -304,7 +304,7 @@ typedef struct ennemi_s {
 
 /**
 *\struct coffre_t
-*\Contient les éléments nécessaires à l'initialisation d'un coffre
+*\brief Contient les éléments nécessaires à l'initialisation d'un coffre
 */
 typedef struct coffre_s{
 
@@ -363,7 +363,7 @@ typedef struct mini_map_s{
 
 /**
 *\struct perso_t
-*\Permet de définir un personnage
+*\brief Permet de définir un personnage
 */
 typedef struct perso_s {
   int pv;/**Point de vie d'un personnage*/

@@ -1,9 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Dungeon of Cards: Référence du fichier etage_final.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -32,18 +32,21 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.13 -->
+<!-- Généré par Doxygen 1.8.17 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 $(function() {
   initMenu('',true,false,'search.php','Recherche');
   $(document).ready(function() { init_search(); });
 });
-</script>
+/* @license-end */</script>
 <div id="main-nav"></div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -67,6 +70,9 @@ $(function() {
 <div class="title">Référence du fichier etage_final.c</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Permet d'afficher et de gèrer le dernier étage et le combat contre le boss.  
+<a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="constantes_8h_source.html">../include/constantes.h</a>&quot;</code><br />
 <code>#include &quot;../include/salle.h&quot;</code><br />
 <code>#include &quot;../include/combat_tour_par_tour.h&quot;</code><br />
@@ -88,26 +94,26 @@ Graphe des dépendances par inclusion de etage_final.c:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:aab34afca0fa7446f9ad559728fc187b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etage__final_8c.html#aab34afca0fa7446f9ad559728fc187b0">charge_textures_etage_final</a> (<a class="el" href="structimage__t.html">image_t</a> images[], <a class="el" href="structperso__t.html">perso_t</a> *pers, SDL_Renderer *rendu)</td></tr>
-<tr class="memdesc:aab34afca0fa7446f9ad559728fc187b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de charger toutes les images et de les ranger dans les structures correspondantes.  <a href="#aab34afca0fa7446f9ad559728fc187b0">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:aab34afca0fa7446f9ad559728fc187b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de charger toutes les images et de les ranger dans les structures correspondantes.  <a href="etage__final_8c.html#aab34afca0fa7446f9ad559728fc187b0">Plus de détails...</a><br /></td></tr>
 <tr class="separator:aab34afca0fa7446f9ad559728fc187b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a246fe9f4a7432512ad84e99a7280f380"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etage__final_8c.html#a246fe9f4a7432512ad84e99a7280f380">affichage_salle_personnage_etage_final</a> (<a class="el" href="structperso__t.html">perso_t</a> pers, <a class="el" href="structsalle__t.html">salle_t</a> *salle, SDL_Renderer *rendu, <a class="el" href="structimage__t.html">image_t</a> images[])</td></tr>
-<tr class="memdesc:a246fe9f4a7432512ad84e99a7280f380"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet d'afficher une salle, le personnage et si on est dans la premiere salle, les instructions et commandes du jeu.  <a href="#a246fe9f4a7432512ad84e99a7280f380">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:a246fe9f4a7432512ad84e99a7280f380"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet d'afficher une salle, le personnage et si on est dans la premiere salle, les instructions et commandes du jeu.  <a href="etage__final_8c.html#a246fe9f4a7432512ad84e99a7280f380">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a246fe9f4a7432512ad84e99a7280f380"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b7481b9c06b7783ed1705a1b34fa36e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etage__final_8c.html#a0b7481b9c06b7783ed1705a1b34fa36e">creation_salles_dernier_etage</a> (<a class="el" href="structsalle__t.html">salle_t</a> salles[], int taille, SDL_Renderer *rendu)</td></tr>
-<tr class="memdesc:a0b7481b9c06b7783ed1705a1b34fa36e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Créée les deux salles du dernier étage, les lies l'une à l'autre et rempli les tableau de collisions.  <a href="#a0b7481b9c06b7783ed1705a1b34fa36e">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:a0b7481b9c06b7783ed1705a1b34fa36e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Créée les deux salles du dernier étage, les lies l'une à l'autre et rempli les tableau de collisions.  <a href="etage__final_8c.html#a0b7481b9c06b7783ed1705a1b34fa36e">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a0b7481b9c06b7783ed1705a1b34fa36e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17589597f6c7eae6bef1556d46c57835"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etage__final_8c.html#a17589597f6c7eae6bef1556d46c57835">ecran_victoire</a> (SDL_Renderer *rendu, TTF_Font *police)</td></tr>
-<tr class="memdesc:a17589597f6c7eae6bef1556d46c57835"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche le message de victoire à l'intention du joueur, signifiant sa réussite totale dans le jeu.  <a href="#a17589597f6c7eae6bef1556d46c57835">Plus de détails...</a><br /></td></tr>
-<tr class="separator:a17589597f6c7eae6bef1556d46c57835"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1955f2023bb66531755d1fcec38f85e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etage__final_8c.html#ad1955f2023bb66531755d1fcec38f85e">ecran_victoire</a> (SDL_Renderer *rendu, TTF_Font *police, Mix_Music *musics[NB_MUSIC], int <a class="el" href="animation_8c.html#af48867b89aacddc628ba6be58003d9e4">mort</a>)</td></tr>
+<tr class="memdesc:ad1955f2023bb66531755d1fcec38f85e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche le message de victoire à l'intention du joueur, signifiant sa réussite totale dans le jeu.  <a href="etage__final_8c.html#ad1955f2023bb66531755d1fcec38f85e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ad1955f2023bb66531755d1fcec38f85e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02da2526f5d1d52972b02e94d7064848"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etage__final_8c.html#a02da2526f5d1d52972b02e94d7064848">etage_final</a> (SDL_Renderer *rendu, int *continuer, int *etat, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], <a class="el" href="structperso__t.html">perso_t</a> *pers, TTF_Font *police)</td></tr>
-<tr class="memdesc:a02da2526f5d1d52972b02e94d7064848"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de gèrer le dernier étage du jeu.  <a href="#a02da2526f5d1d52972b02e94d7064848">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:a02da2526f5d1d52972b02e94d7064848"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de gèrer le dernier étage du jeu.  <a href="etage__final_8c.html#a02da2526f5d1d52972b02e94d7064848">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a02da2526f5d1d52972b02e94d7064848"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>{Tudoret Aurélien, Jourry Axel, Marin Timothée, Malabry Thomas}</dd></dl>
-<dl class="section date"><dt>Date</dt><dd>10/04/2020</dd></dl>
-<dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
-<p>d'afficher et de gèrer le dernier étage et le combat contre le boss </p>
+<div class="textblock"><p>Permet d'afficher et de gèrer le dernier étage et le combat contre le boss. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Tudoret Aurélien, Jourry Axel, Marin Timothée, Malabry Thomas</dd></dl>
+<dl class="section date"><dt>Date</dt><dd>13/05/2020</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 </div><h2 class="groupheader">Documentation des fonctions</h2>
 <a id="a246fe9f4a7432512ad84e99a7280f380"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a246fe9f4a7432512ad84e99a7280f380">&#9670;&nbsp;</a></span>affichage_salle_personnage_etage_final()</h2>
@@ -150,10 +156,10 @@ Fonctions</h2></td></tr>
 <p>Permet d'afficher une salle, le personnage et si on est dans la premiere salle, les instructions et commandes du jeu. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">images[],contient</td><td>toutes les images utilisées sauf celle du personnage </td></tr>
-    <tr><td class="paramname">pers,la</td><td>structure contenant le personnage </td></tr>
-    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
-    <tr><td class="paramname">*salle,la</td><td>salle actuelle </td></tr>
+    <tr><td class="paramname">pers</td><td>la structure contenant le personnage </td></tr>
+    <tr><td class="paramname">*salle</td><td>la salle actuelle </td></tr>
+    <tr><td class="paramname">*rendu</td><td>le renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">images[]</td><td>contient toutes les images utilisées sauf celle du personnage </td></tr>
   </table>
   </dd>
 </dl>
@@ -195,9 +201,9 @@ Fonctions</h2></td></tr>
 <p>Permet de charger toutes les images et de les ranger dans les structures correspondantes. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">images[],contient</td><td>toutes les images utilisées sauf celle du personnage </td></tr>
-    <tr><td class="paramname">*pers,pointeur</td><td>sur la structure contenant le personnage </td></tr>
-    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">images[]</td><td>contient toutes les images utilisées sauf celle du personnage </td></tr>
+    <tr><td class="paramname">*pers</td><td>le pointeur sur la structure contenant le personnage </td></tr>
+    <tr><td class="paramname">*rendu</td><td>le renderer sur lequel on dessine </td></tr>
   </table>
   </dd>
 </dl>
@@ -239,16 +245,17 @@ Fonctions</h2></td></tr>
 <p>Créée les deux salles du dernier étage, les lies l'une à l'autre et rempli les tableau de collisions. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
-    <tr><td class="paramname">salles[],le</td><td>tableau de structure de salle. </td></tr>
+    <tr><td class="paramname">salles[]</td><td>le tableau de structure de salle. </td></tr>
+    <tr><td class="paramname">taille</td><td>la taille de l'étage </td></tr>
+    <tr><td class="paramname">*rendu</td><td>le renderer sur lequel on dessine </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a17589597f6c7eae6bef1556d46c57835"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a17589597f6c7eae6bef1556d46c57835">&#9670;&nbsp;</a></span>ecran_victoire()</h2>
+<a id="ad1955f2023bb66531755d1fcec38f85e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1955f2023bb66531755d1fcec38f85e">&#9670;&nbsp;</a></span>ecran_victoire()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -263,7 +270,19 @@ Fonctions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">TTF_Font *&#160;</td>
-          <td class="paramname"><em>police</em>&#160;</td>
+          <td class="paramname"><em>police</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Music *&#160;</td>
+          <td class="paramname"><em>musics</em>[NB_MUSIC], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mort</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -276,8 +295,10 @@ Fonctions</h2></td></tr>
 <p>Affiche le message de victoire à l'intention du joueur, signifiant sa réussite totale dans le jeu. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
-    <tr><td class="paramname">*police,la</td><td>police utilisée pour écrire à l'écran </td></tr>
+    <tr><td class="paramname">*rendu</td><td>le renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">*police</td><td>la police utilisée pour écrire à l'écran </td></tr>
+    <tr><td class="paramname">*musics[NB_MUSIC]</td><td>le tableau contenant les musiques </td></tr>
+    <tr><td class="paramname">mort</td><td>le nombre de morts du joueur </td></tr>
   </table>
   </dd>
 </dl>
@@ -343,12 +364,13 @@ Fonctions</h2></td></tr>
 <p>Permet de gèrer le dernier étage du jeu. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*continuer,pointeur</td><td>sur variable permettant de savoir si le joueur souhaite quitter le programme </td></tr>
-    <tr><td class="paramname">*etat,pointeur</td><td>sur variable permettant de connaître l'écran dans lequel on est </td></tr>
-    <tr><td class="paramname">*rendu,le</td><td>renderer sur lequel on dessine </td></tr>
-    <tr><td class="paramname">*sounds[NB_SON],tableau</td><td>contenant les sons </td></tr>
-    <tr><td class="paramname">*musics[NB_MUSIC],tableau</td><td>contenant les musiques </td></tr>
-    <tr><td class="paramname">*pers,la</td><td>structure du personnage </td></tr>
+    <tr><td class="paramname">*rendu</td><td>le renderer sur lequel on dessine </td></tr>
+    <tr><td class="paramname">*continuer</td><td>le pointeur sur variable permettant de savoir si le joueur souhaite quitter le programme </td></tr>
+    <tr><td class="paramname">*etat</td><td>le pointeur sur variable permettant de connaître l'écran dans lequel on est </td></tr>
+    <tr><td class="paramname">*sounds[NB_SON]</td><td>le tableau contenant les sons </td></tr>
+    <tr><td class="paramname">*musics[NB_MUSIC]</td><td>le tableau contenant les musiques </td></tr>
+    <tr><td class="paramname">*pers</td><td>la structure du personnage </td></tr>
+    <tr><td class="paramname">*police</td><td>la police utilisée pour écrire du texte sur l'écran de jeu </td></tr>
   </table>
   </dd>
 </dl>
@@ -360,7 +382,7 @@ Fonctions</h2></td></tr>
 <hr class="footer"/><address class="footer"><small>
 Généré par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
+</a> 1.8.17
 </small></address>
 </body>
 </html>

@@ -2,7 +2,7 @@
 
 *\file combat_tour_par_tour.c
 
-*\author {Tudoret Aurélien, Jourry Axel, Marin Timothée, Malabry Thomas}
+*\author Tudoret Aurélien, Jourry Axel, Marin Timothée, Malabry Thomas
 
 *\date 13/05/2020
 
@@ -22,12 +22,12 @@
 /**
 *\fn int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, image_t images[NB_TEXTURES_LABY], SDL_Rect **rect_sel, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC])
 
-*\param defausse, Correspond aux coordonnées du texte défausse
-*\param fuir, Correspond aux coordonnées du texte fuir
-*\param images[NB_TEXTURES_LABY], Un tableau contenant les cartes
-*\param **rect_sel, Les coordonnées et taille du rectangle de selection
-*\param *sounds[NB_SON], Contient les sons du jeu
-*\param *music[NB_MUSIC], Contient les musiques du jeu
+*\param defausse Correspond aux coordonnées du texte défausse
+*\param fuir Correspond aux coordonnées du texte fuir
+*\param images[NB_TEXTURES_LABY] Un tableau contenant les cartes
+*\param **rect_sel Les coordonnées et taille du rectangle de selection
+*\param *sounds[NB_SON] Contient les sons du jeu
+*\param *music[NB_MUSIC] Contient les musiques du jeu
 
 *\brief Permet de déplacer le rectangle de selection
 
@@ -145,16 +145,16 @@ int deplacement_rectangle_selection_combat(SDL_Rect defausse, SDL_Rect fuir, ima
 /**
 *\fn void affichage_combat_personnage(SDL_Renderer *rendu, perso_t *pers, ennemi_t *ennemi, image_t def, image_t fuir, SDL_Rect *rect_sel, image_t images[NB_TEXTURES_COMBAT], hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action)
 
-*\param *rendu, le renderer sur lequel on dessine
-*\param *pers, la structure contenant le personnage
-*\param *ennemi, la structure contenant tous les ennemis
-*\param def, Les textures du texte defausse
-*\param fuir, Les textures du texte fuir
-*\param *rect_sel, Les coordonnées et taille du rectangle de selection
-*\param images[NB_TEXTURES], tableau contenant les cartes
-*\param ennemi_hud, la barre de vie de l'ennemi
-*\param pers_hud, la barre de vie du joueur
-*\param action, l'action jouée par le joueur ou l'ennemi
+*\param *rendu le renderer sur lequel on dessine
+*\param *pers la structure contenant le personnage
+*\param *ennemi la structure contenant tous les ennemis
+*\param def Les textures du texte defausse
+*\param fuir Les textures du texte fuir
+*\param *rect_sel Les coordonnées et taille du rectangle de selection
+*\param images[NB_TEXTURES] le tableau contenant les cartes
+*\param ennemi_hud la barre de vie de l'ennemi
+*\param pers_hud la barre de vie du joueur
+*\param action l'action jouée par le joueur ou l'ennemi
 
 *\brief Permet d'afficher toutes la partie combat
 */
@@ -289,9 +289,9 @@ hud_combat_t ennemi_hud, hud_combat_t pers_hud, hud_combat_t action){
 /**
 *\fn void charge_textures_combat(image_t images[], SDL_Renderer *rendu, carte_t *cartes[])
 
-*\param images[], le tableau contenant les images
-*\param *rendu, le renderer sur lequel on dessine
-*\param *cartes[], tableau de pointeur sur des cartes, contient les cartes utilisées pendant le combat
+*\param images[] le tableau contenant les images
+*\param *rendu le renderer sur lequel on dessine
+*\param *cartes[] le tableau de pointeur sur des cartes, contient les cartes utilisées pendant le combat
 
 *\brief Charge dans le tableau images les visuels pour les fonds et les cartes afin de pouvoir les afficher
 */
@@ -314,8 +314,8 @@ void charge_textures_combat(image_t images[], SDL_Renderer *rendu, carte_t *cart
 /**
 *\fn void donne_valeur_rect_images(image_t images[], perso_t *perso)
 
-*\param images[], le tableau contenant les images
-*\param *perso, Contient la structure du personnage
+*\param images[] le tableau contenant les images
+*\param *perso Contient la structure du personnage
 
 *\brief Donne les coordonnées et ajuste les tailles des images des cartes et des fonds pour l'écran de combat
 */
@@ -356,7 +356,7 @@ void donne_valeur_rect_images(image_t images[], perso_t *perso){
 /**
 *\fn void free_image(image_t images[])
 
-*\param images[], le tableau contenant les images
+*\param images[] le tableau contenant les images
 
 *\brief Supprime les images des cartes et des fonds utilisées pour le combat
 */
@@ -371,11 +371,11 @@ void free_image(image_t images[]){
 /**
 *\fn void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t *carte, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
 
-*\param *pers, la structure du personnage
-*\param *ennemi, l'ennemi que le joueur affronte
-*\param *carte, la carte que le joueur joue
-*\param *rendu, le renderer sur lequel on dessine
-*\param *sounds[NB_SON], Contient les sons du jeu
+*\param *pers la structure du personnage
+*\param *ennemi l'ennemi que le joueur affronte
+*\param *carte la carte que le joueur joue
+*\param *rendu le renderer sur lequel on dessine
+*\param *sounds[NB_SON] Contient les sons du jeu
 
 *\brief permet d'effectuer l'action sélectionnée par le joueur
 */
@@ -410,10 +410,10 @@ void tour_joueur(perso_t *pers, ennemi_t *ennemi, carte_t *carte, SDL_Renderer *
 /**
 *\fn void tour_ennemi(perso_t *pers, ennemi_t *ennemi, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON])
 
-*\param *pers, la structure du personnage
-*\param *ennemi, l'ennemi que le joueur affronte
-*\param *rendu, le renderer sur lequel on dessine
-*\param *sounds[NB_SON], tableau des sons
+*\param *pers la structure du personnage
+*\param *ennemi l'ennemi que le joueur affronte
+*\param *rendu le renderer sur lequel on dessine
+*\param *sounds[NB_SON] le tableau des sons
 
 
 *\brief permet de faire jouer l'ennemi, actions effectuées selon la situation
@@ -439,12 +439,12 @@ void tour_ennemi(perso_t *pers, ennemi_t *ennemi, SDL_Renderer *rendu, Mix_Chunk
 /**
 *\fn void creer_texte_combat(char *txt, image_t *image, int x, int y, SDL_Renderer *rendu, TTF_Font *font)
 
-*\param *txt, le texte que l'on souhaite afficher à l'écran,
-*\param *image, la structure qui contiendra le texte
-*\param x, la position en x où sera placée l'image
-*\param y, la position en y où sera placée l'image
-*\param *rendu, le renderer sur lequel on dessine
-*\param *font, la police utilisée pour écrire le texte
+*\param *txt le texte que l'on souhaite afficher à l'écran,
+*\param *image la structure qui contiendra le texte
+*\param x la position en x où sera placée l'image
+*\param y la position en y où sera placée l'image
+*\param *rendu le renderer sur lequel on dessine
+*\param *font la police utilisée pour écrire le texte
 
 *\brief Permet de donner à une structure image, un texte et les positions où l'afficher à l'écran
 */
@@ -461,12 +461,12 @@ void creer_texte_combat(char *txt, image_t *image, int x, int y, SDL_Renderer *r
 /**
 *\fn void create_hud(hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, ennemi_t ennemi, perso_t pers, SDL_Renderer *rendu, TTF_Font *font)
 
-*\param *hud_pers, le HUD du personnage
-*\param *hud_ennemi, le HUD de l'ennemi
-*\param *ennemi, l'ennemi que le joueur affronte
-*\param *pers, la structure du personnage
-*\param *rendu, le renderer sur lequel on dessine
-*\param *font, la police utilisée pour écrire le texte
+*\param *hud_pers le HUD du personnage
+*\param *hud_ennemi le HUD de l'ennemi
+*\param *ennemi l'ennemi que le joueur affronte
+*\param *pers la structure du personnage
+*\param *rendu le renderer sur lequel on dessine
+*\param *font la police utilisée pour écrire le texte
 
 *\brief Créer un HUD pour le perso et l'ennemi s'il n'existe pas, sinon détruit les textures précédentes pour mettre à jour
 */
@@ -502,7 +502,7 @@ void create_hud(hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, ennemi_t ennem
 /**
 *\fn void init_hud_action(hud_combat_t *action)
 
-*\param *action, le hud qui affichera l'action effectuée par le joueur ou l'ennemi
+*\param *action le hud qui affichera l'action effectuée par le joueur ou l'ennemi
 
 *\brief initialise certaines valeurs du hud action
 */
@@ -521,15 +521,15 @@ void init_hud_action(hud_combat_t *action){
 /**
 *\fn void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hud_combat_t *action, hud_combat_t *hud_pers, hud_combat_t *hud_ennemi, SDL_Renderer *rendu, TTF_Font *font, int tour)
 
-*\param *pers, la structure du personnage
-*\param *ennemi, la structure de l'ennemi
-*\param carte, la carte utilisée par le joueur lors de ce tour
-*\param *action, le hud qui affichera l'action effectuée par le joueur ou l'ennemi
-*\param *hud_pers, le hud du personnage
-*\param *hud_ennemi, le hud de l'ennemi
-*\param *rendu, le renderer sur lequel on dessine
-*\param *font, la police utilisée pour écrire le texte
-*\param tour, indique si c'est le joueur ou l'ennemi qui joue
+*\param *pers la structure du personnage
+*\param *ennemi la structure de l'ennemi
+*\param carte la carte utilisée par le joueur lors de ce tour
+*\param *action le hud qui affichera l'action effectuée par le joueur ou l'ennemi
+*\param *hud_pers le hud du personnage
+*\param *hud_ennemi le hud de l'ennemi
+*\param *rendu le renderer sur lequel on dessine
+*\param *font la police utilisée pour écrire le texte
+*\param tour indique si c'est le joueur ou l'ennemi qui joue
 
 *\brief Actualise les huds des perso et ennemi, prépare le texte a affichant indiquant l'action effectuée
 */
@@ -577,7 +577,7 @@ void actualisation_apres_tour(perso_t *pers, ennemi_t *ennemi, carte_t carte, hu
 /**
 *\fn void detruire_action_temp(hud_combat_t *action)
 
-*\param *action, la zone de texte détaillant les coups échangés entre le joueur et l'ennemi
+*\param *action la zone de texte détaillant les coups échangés entre le joueur et l'ennemi
 
 *\brief permet de détruire l'image présente dans le champs texte de action
 */
@@ -599,7 +599,7 @@ void detruire_action_temp(hud_combat_t *action){
 /**
 *\fn void range_carte_deck(carte_t *cartes[])
 
-\param *cartes[], tableau de pointeurs sur cartes, contient les cartes utilisées pendant le combat
+\param *cartes[] le tableau de pointeurs sur cartes, contient les cartes utilisées pendant le combat
 
 *\brief Range les cartes encore valide dans le deck, détruit les cartes barrées
 */
@@ -626,10 +626,10 @@ void range_carte_deck(carte_t *cartes[]){
 /**
 *\fn void consommable_epuise(carte_t *cartes[], int indice, image_t images[], SDL_Renderer *rendu)
 
-*\param *cartes[], tableau de pointeurs sur cartes, contient les cartes utilisées pendant le combat
-*\param indice, l'indice de la carte regardée par la fonction
-*\param images[], le tableau contenant les images
-*\param *rendu, le renderer sur lequel on dessine
+*\param *cartes[] le tableau de pointeurs sur cartes, contient les cartes utilisées pendant le combat
+*\param indice l'indice de la carte regardée par la fonction
+*\param images[] le tableau contenant les images
+*\param *rendu le renderer sur lequel on dessine
 
 *\brief vérifie si la carte est de type consommable et si elle est épuisée
 */
@@ -658,10 +658,10 @@ void consommable_epuise(carte_t *cartes[], int indice, image_t images[], SDL_Ren
 /**
 *\fn void range_carte_tire_nouvelles(carte_t *cartes[NB_CARTES_COMBAT], int cartes_selectionnees[], image_t images[], SDL_Renderer *rendu)
 
-*\param *cartes[NB_CARTES_COMBAT], la tableau des cartes du joueur
-*\param cartes_selectionnees[], tableau permettant de connaître les cartes que le joueur veut défausser
-*\param images[], contient toutes les images nécessaires à l'affichage de l'écran de combat
-*\param *rendu, le renderer sur lequel on dessine
+*\param *cartes[NB_CARTES_COMBAT] la tableau des cartes du joueur
+*\param cartes_selectionnees[] le tableau permettant de connaître les cartes que le joueur veut défausser
+*\param images[] contient toutes les images nécessaires à l'affichage de l'écran de combat
+*\param *rendu le renderer sur lequel on dessine
 
 *\brief effectue la défausse, les cartes que le joueur ne veut pas sont renvoyées dans le deck, de nouvelles sont tirées à la place
 */
@@ -690,18 +690,18 @@ void range_carte_tire_nouvelles(carte_t *cartes[NB_CARTES_COMBAT], int cartes_se
 /**
 *\fn void defausse(SDL_Renderer *rendu, perso_t *perso, ennemi_t *ennemi, SDL_Rect *rectangle_selection, image_t images[], hud_combat_t hud_ennemi, hud_combat_t hud_pers, hud_combat_t action, TTF_Font *police, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], carte_t *cartes[NB_CARTES_COMBAT])
 
-*\param *rendu, le renderer sur lequel on dessine
-*\param *perso, la structure contenant le personnage
-*\param *ennemi, la structure de l'ennemi que le joueur affronte actuellement
-*\param *rectangle_selection, le rectangle de sélection que le joueur contrôle pour sélectionner des actions
-*\param images[], contient toutes les images nécessaires à l'affichage de l'écran de combat
-*\param hud_ennemi, l'ATH de l'ennemi, comprenant l'affichage de son nom et de ses hp
-*\param hud_pers, l'ATH du joueur, comprenant l'affichage de son nom et de ses hp
-*\param action, l'ATH permettant d'afficher du texte indicatif au joueur -> fourre tout
-*\param *police, la police utilisée pour écrire du texte sur l'écran de jeu
-*\param *sounds[], tableau des sons brefs pour les interactions
-*\param *musics[], tableau des muisques d'ambience
-*\param *cartes[], la tableau des cartes du joueur
+*\param *rendu le renderer sur lequel on dessine
+*\param *perso la structure contenant le personnage
+*\param *ennemi la structure de l'ennemi que le joueur affronte actuellement
+*\param *rectangle_selection le rectangle de sélection que le joueur contrôle pour sélectionner des actions
+*\param images[] contient toutes les images nécessaires à l'affichage de l'écran de combat
+*\param hud_ennemi l'ATH de l'ennemi, comprenant l'affichage de son nom et de ses hp
+*\param hud_pers l'ATH du joueur, comprenant l'affichage de son nom et de ses hp
+*\param action l'ATH permettant d'afficher du texte indicatif au joueur -> fourre tout
+*\param *police la police utilisée pour écrire du texte sur l'écran de jeu
+*\param *sounds[] le tableau des sons brefs pour les interactions
+*\param *musics[] le tableau des muisques d'ambience
+*\param *cartes[] le tableau des cartes du joueur
 
 *\brief permet d'effectuer toutes actions liées à la défausse de carte avec un affichage spécifique
 */
@@ -766,12 +766,12 @@ hud_combat_t hud_pers, hud_combat_t action, TTF_Font *police, Mix_Chunk *sounds[
 /**
 *\fn void combat_t_p_t(perso_t * perso, ennemi_t * ennemi, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], int *etat)
 
-*\param *perso, la structure contenant le personnage
-*\param *ennemi, la structure de l'ennemi que le joueur affronte actuellement
-*\param *rendu, le renderer sur lequel on dessine
-*\param *sounds[NB_SON], Contient les sons du jeu
-*\param *music[NB_MUSIC], Contient les musiques du jeu
-*\param *etat, permet de changer l'affichage selon l'écran dans lequel se trouve le jeu
+*\param *perso la structure contenant le personnage
+*\param *ennemi la structure de l'ennemi que le joueur affronte actuellement
+*\param *rendu le renderer sur lequel on dessine
+*\param *sounds[NB_SON] Contient les sons du jeu
+*\param *music[NB_MUSIC] Contient les musiques du jeu
+*\param *etat permet de changer l'affichage selon l'écran dans lequel se trouve le jeu
 
 *\brief Fonction qui permet de gérer les choix de l'utilisateur via la SDL sur le combat
 */

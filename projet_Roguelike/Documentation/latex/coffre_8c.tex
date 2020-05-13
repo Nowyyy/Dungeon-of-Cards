@@ -1,5 +1,5 @@
-\hypertarget{coffre_8c}{}\section{Référence du fichier coffre.\+c}
-\label{coffre_8c}\index{coffre.\+c@{coffre.\+c}}
+\hypertarget{coffre_8c}{}\doxysection{Référence du fichier coffre.\+c}
+\label{coffre_8c}\index{coffre.c@{coffre.c}}
 
 
 permet de gérer animation et drop d\textquotesingle{}objets des coffres  
@@ -8,52 +8,69 @@ permet de gérer animation et drop d\textquotesingle{}objets des coffres
 {\ttfamily \#include \char`\"{}../include/constantes.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../include/initialisation\+\_\+sdl\+\_\+fonctions.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../include/fonctions.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/coffre.\+h\char`\"{}}\newline
 Graphe des dépendances par inclusion de coffre.\+c\+:
 % FIG 0
-\subsection*{Fonctions}
+\doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{coffre_8c_ad52c2bd6ddbc235b9be0c84622e3305e}{animation\+\_\+coffre} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$pers, \hyperlink{structsalle__t}{salle\+\_\+t} $\ast$salle, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]})
+void \mbox{\hyperlink{coffre_8c_ad52c2bd6ddbc235b9be0c84622e3305e}{animation\+\_\+coffre}} (\mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$pers, \mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} $\ast$salle, Mix\+\_\+\+Chunk $\ast$sounds\mbox{[}N\+B\+\_\+\+S\+ON\mbox{]})
 \begin{DoxyCompactList}\small\item\em Permet d\textquotesingle{}effectuer l\textquotesingle{}animation du coffre s\textquotesingle{}il est en contact avec le joueur. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{coffre_8c_a98554ba24d82c57e9bbcfa0f3b68b13c}\label{coffre_8c_a98554ba24d82c57e9bbcfa0f3b68b13c}} 
-void {\bfseries creer\+\_\+coffre} (\hyperlink{structcoffre__t}{coffre\+\_\+t} $\ast$coffre, S\+D\+L\+\_\+\+Renderer $\ast$rendu, \hyperlink{structsalle__t}{salle\+\_\+t} $\ast$salle)
-\item 
-void \hyperlink{coffre_8c_a1b5e8a53671fe295003e0491b1543385}{destruction\+\_\+des\+\_\+coffres} (\hyperlink{structsalle__t}{salle\+\_\+t} salles\mbox{[}$\,$\mbox{]}, int taille)
+void \mbox{\hyperlink{coffre_8c_a98554ba24d82c57e9bbcfa0f3b68b13c}{creer\+\_\+coffre}} (\mbox{\hyperlink{structcoffre__t}{coffre\+\_\+t}} $\ast$coffre, S\+D\+L\+\_\+\+Renderer $\ast$rendu, \mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} $\ast$salle)
+\begin{DoxyCompactList}\small\item\em Créer un coffre dans les salles dédiées. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{coffre_8c_a1b5e8a53671fe295003e0491b1543385}{destruction\+\_\+des\+\_\+coffres}} (\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} salles\mbox{[}$\,$\mbox{]}, int taille)
 \begin{DoxyCompactList}\small\item\em Libère tous les emplacements mémoires attribués aux coffres. \end{DoxyCompactList}\item 
-void \hyperlink{coffre_8c_a8e880cd3ee573de74a61914a9e9ab8dc}{creer\+\_\+texte\+\_\+coffre} (char $\ast$txt, \hyperlink{structimage__t}{image\+\_\+t} $\ast$image, int x, int y, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
+void \mbox{\hyperlink{coffre_8c_a8e880cd3ee573de74a61914a9e9ab8dc}{creer\+\_\+texte\+\_\+coffre}} (char $\ast$txt, \mbox{\hyperlink{structimage__t}{image\+\_\+t}} $\ast$image, int x, int y, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
 \begin{DoxyCompactList}\small\item\em Créer le texte qui servira a afficher le contenu du coffre. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{coffre_8c_a0b584bdcc79e3df5a5e2e6ff6b9c5ee0}\label{coffre_8c_a0b584bdcc79e3df5a5e2e6ff6b9c5ee0}} 
-void {\bfseries loot\+\_\+de\+\_\+carte} (\hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+t} $\ast$loot, S\+D\+L\+\_\+\+Renderer $\ast$rendu, \hyperlink{structcoffre__t}{coffre\+\_\+t} $\ast$coffre, int etage)
-\item 
-\mbox{\Hypertarget{coffre_8c_ae10cc445c585a549c84d2b35ea279d16}\label{coffre_8c_ae10cc445c585a549c84d2b35ea279d16}} 
-void {\bfseries afficher\+\_\+loot} (\hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+t} loot, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
-\item 
-void \hyperlink{coffre_8c_a8bb65664d15c0e48ed041b9eac06269d}{detruire\+\_\+loot} (\hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+t} $\ast$$\ast$loot)
+void \mbox{\hyperlink{coffre_8c_a0b584bdcc79e3df5a5e2e6ff6b9c5ee0}{loot\+\_\+de\+\_\+carte}} (\mbox{\hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+t}} $\ast$loot, S\+D\+L\+\_\+\+Renderer $\ast$rendu, \mbox{\hyperlink{structcoffre__t}{coffre\+\_\+t}} $\ast$coffre, int etage)
+\begin{DoxyCompactList}\small\item\em initialise la structure de loot, generer une carte qui est envoyée dans les listes \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{coffre_8c_ae10cc445c585a549c84d2b35ea279d16}{afficher\+\_\+loot}} (\mbox{\hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+t}} loot, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
+\begin{DoxyCompactList}\small\item\em Détruit toutes les allocations dynamiques effectuées pour la structure loot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{coffre_8c_a8bb65664d15c0e48ed041b9eac06269d}{detruire\+\_\+loot}} (\mbox{\hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+t}} $\ast$$\ast$loot)
 \begin{DoxyCompactList}\small\item\em Détruit toutes les allocations dynamiques effectuées pour cette structure. \end{DoxyCompactList}\item 
-void \hyperlink{coffre_8c_a63a2a5c35893caafebbd764d64c43dd5}{loot\+\_\+affichage\+\_\+fini} (\hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+t} $\ast$loot)
-\begin{DoxyCompactList}\small\item\em Contrôle si la durée d\textquotesingle{}affichage du loot est dépassée ou non, si oui elle détruit les éléments dans la structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \mbox{\hyperlink{coffre_8c_a63a2a5c35893caafebbd764d64c43dd5}{loot\+\_\+affichage\+\_\+fini}} (\mbox{\hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+t}} $\ast$loot)
+\begin{DoxyCompactList}\small\item\em Contrôle si la durée d\textquotesingle{}affichage du loot est dépassée ou non, si oui elle détruit les éléments dans la structure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{coffre_8c_a1e12cd74e7ec4000f8418093302779d8}{loot\+\_\+boss}} (\mbox{\hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+t}} $\ast$loot, S\+D\+L\+\_\+\+Renderer $\ast$rendu, int etage)
+\begin{DoxyCompactList}\small\item\em Initialise la structure de loot, generer une carte qui est envoyée dans les listes. la carte est une récompense pour avoir battu un boss. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\subsection{Description détaillée}
+\doxysubsection{Description détaillée}
 permet de gérer animation et drop d\textquotesingle{}objets des coffres 
 
 \begin{DoxyAuthor}{Auteur}
-\{Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas\} 
+Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
-14/03/2020 
+13/05/2020 
 \end{DoxyDate}
 \begin{DoxyVersion}{Version}
-0.\+1 
+1.\+0 
 \end{DoxyVersion}
 
 
-\subsection{Documentation des fonctions}
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{coffre_8c_ae10cc445c585a549c84d2b35ea279d16}\label{coffre_8c_ae10cc445c585a549c84d2b35ea279d16}} 
+\index{coffre.c@{coffre.c}!afficher\_loot@{afficher\_loot}}
+\index{afficher\_loot@{afficher\_loot}!coffre.c@{coffre.c}}
+\doxysubsubsection{\texorpdfstring{afficher\_loot()}{afficher\_loot()}}
+{\footnotesize\ttfamily void afficher\+\_\+loot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+t}}}]{loot,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu }\end{DoxyParamCaption})}
+
+
+
+Détruit toutes les allocations dynamiques effectuées pour la structure loot. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em loot} & la structure contenant la carte obtenue par le joueur \\
+\hline
+{\em $\ast$rendu} & le renderer sur lequel on dessinee \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{coffre_8c_ad52c2bd6ddbc235b9be0c84622e3305e}\label{coffre_8c_ad52c2bd6ddbc235b9be0c84622e3305e}} 
-\index{coffre.\+c@{coffre.\+c}!animation\+\_\+coffre@{animation\+\_\+coffre}}
-\index{animation\+\_\+coffre@{animation\+\_\+coffre}!coffre.\+c@{coffre.\+c}}
-\subsubsection{\texorpdfstring{animation\+\_\+coffre()}{animation\_coffre()}}
-{\footnotesize\ttfamily void animation\+\_\+coffre (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{pers,  }\item[{\hyperlink{structsalle__t}{salle\+\_\+t} $\ast$}]{salle,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]} }\end{DoxyParamCaption})}
+\index{coffre.c@{coffre.c}!animation\_coffre@{animation\_coffre}}
+\index{animation\_coffre@{animation\_coffre}!coffre.c@{coffre.c}}
+\doxysubsubsection{\texorpdfstring{animation\_coffre()}{animation\_coffre()}}
+{\footnotesize\ttfamily void animation\+\_\+coffre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structperso__t}{perso\+\_\+t}} $\ast$}]{pers,  }\item[{\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} $\ast$}]{salle,  }\item[{Mix\+\_\+\+Chunk $\ast$}]{sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]} }\end{DoxyParamCaption})}
 
 
 
@@ -61,18 +78,37 @@ Permet d\textquotesingle{}effectuer l\textquotesingle{}animation du coffre s\tex
 
 
 \begin{DoxyParams}{Paramètres}
-{\em $\ast$pers,le} & personnage du jeu \\
+{\em $\ast$pers} & la structure du personnage \\
 \hline
-{\em $\ast$salle,la} & salle dans laquelle se trouve le personnage \\
+{\em $\ast$salle} & la salle dans laquelle se trouve le personnage \\
 \hline
-{\em $\ast$sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]},tableau} & contenant les sons \\
+{\em $\ast$sounds\mbox{[}\+N\+B\+\_\+\+S\+O\+N\mbox{]}} & le tableau contenant les sons \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{coffre_8c_a98554ba24d82c57e9bbcfa0f3b68b13c}\label{coffre_8c_a98554ba24d82c57e9bbcfa0f3b68b13c}} 
+\index{coffre.c@{coffre.c}!creer\_coffre@{creer\_coffre}}
+\index{creer\_coffre@{creer\_coffre}!coffre.c@{coffre.c}}
+\doxysubsubsection{\texorpdfstring{creer\_coffre()}{creer\_coffre()}}
+{\footnotesize\ttfamily void creer\+\_\+coffre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcoffre__t}{coffre\+\_\+t}} $\ast$}]{coffre,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} $\ast$}]{salle }\end{DoxyParamCaption})}
+
+
+
+Créer un coffre dans les salles dédiées. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$coffre} & le coffre pour lequel on assigne une image et une animation \\
+\hline
+{\em $\ast$rendu} & le renderer sur lequel on dessine \\
+\hline
+{\em $\ast$salle} & la salle courante, permet de vérifier les valeurs \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{coffre_8c_a8e880cd3ee573de74a61914a9e9ab8dc}\label{coffre_8c_a8e880cd3ee573de74a61914a9e9ab8dc}} 
-\index{coffre.\+c@{coffre.\+c}!creer\+\_\+texte\+\_\+coffre@{creer\+\_\+texte\+\_\+coffre}}
-\index{creer\+\_\+texte\+\_\+coffre@{creer\+\_\+texte\+\_\+coffre}!coffre.\+c@{coffre.\+c}}
-\subsubsection{\texorpdfstring{creer\+\_\+texte\+\_\+coffre()}{creer\_texte\_coffre()}}
-{\footnotesize\ttfamily void creer\+\_\+texte\+\_\+coffre (\begin{DoxyParamCaption}\item[{char $\ast$}]{txt,  }\item[{\hyperlink{structimage__t}{image\+\_\+t} $\ast$}]{image,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu }\end{DoxyParamCaption})}
+\index{coffre.c@{coffre.c}!creer\_texte\_coffre@{creer\_texte\_coffre}}
+\index{creer\_texte\_coffre@{creer\_texte\_coffre}!coffre.c@{coffre.c}}
+\doxysubsubsection{\texorpdfstring{creer\_texte\_coffre()}{creer\_texte\_coffre()}}
+{\footnotesize\ttfamily void creer\+\_\+texte\+\_\+coffre (\begin{DoxyParamCaption}\item[{char $\ast$}]{txt,  }\item[{\mbox{\hyperlink{structimage__t}{image\+\_\+t}} $\ast$}]{image,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu }\end{DoxyParamCaption})}
 
 
 
@@ -80,22 +116,22 @@ Créer le texte qui servira a afficher le contenu du coffre.
 
 
 \begin{DoxyParams}{Paramètres}
-{\em $\ast$txt,le} & texte que l\textquotesingle{}on va afficher \\
+{\em $\ast$txt} & le texte que l\textquotesingle{}on va afficher \\
 \hline
-{\em $\ast$image,la} & structure qui contiendra le texte \\
+{\em $\ast$image} & la structure qui contiendra le texte \\
 \hline
-{\em x,la} & position x à l\textquotesingle{}écran du texte \\
+{\em x} & la position x à l\textquotesingle{}écran du texte \\
 \hline
-{\em y,la} & position y à l\textquotesingle{}écran du texte \\
+{\em y} & la position y à l\textquotesingle{}écran du texte \\
 \hline
-{\em $\ast$rendu,le} & renderer sur lequel on dessinee \\
+{\em $\ast$rendu} & le renderer sur lequel on dessinee \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{coffre_8c_a1b5e8a53671fe295003e0491b1543385}\label{coffre_8c_a1b5e8a53671fe295003e0491b1543385}} 
-\index{coffre.\+c@{coffre.\+c}!destruction\+\_\+des\+\_\+coffres@{destruction\+\_\+des\+\_\+coffres}}
-\index{destruction\+\_\+des\+\_\+coffres@{destruction\+\_\+des\+\_\+coffres}!coffre.\+c@{coffre.\+c}}
-\subsubsection{\texorpdfstring{destruction\+\_\+des\+\_\+coffres()}{destruction\_des\_coffres()}}
-{\footnotesize\ttfamily void destruction\+\_\+des\+\_\+coffres (\begin{DoxyParamCaption}\item[{\hyperlink{structsalle__t}{salle\+\_\+t}}]{salles\mbox{[}$\,$\mbox{]},  }\item[{int}]{taille }\end{DoxyParamCaption})}
+\index{coffre.c@{coffre.c}!destruction\_des\_coffres@{destruction\_des\_coffres}}
+\index{destruction\_des\_coffres@{destruction\_des\_coffres}!coffre.c@{coffre.c}}
+\doxysubsubsection{\texorpdfstring{destruction\_des\_coffres()}{destruction\_des\_coffres()}}
+{\footnotesize\ttfamily void destruction\+\_\+des\+\_\+coffres (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}}}]{salles\mbox{[}$\,$\mbox{]},  }\item[{int}]{taille }\end{DoxyParamCaption})}
 
 
 
@@ -103,16 +139,16 @@ Libère tous les emplacements mémoires attribués aux coffres.
 
 
 \begin{DoxyParams}{Paramètres}
-{\em salles\mbox{[}$\,$\mbox{]},le} & tableau contenant toutes les salles du labyrinthe \\
+{\em salles\mbox{[}$\,$\mbox{]}} & le tableau contenant toutes les salles du labyrinthe \\
 \hline
-{\em taille,la} & taille du tableau de salles \\
+{\em taille} & la taille du tableau de salles \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{coffre_8c_a8bb65664d15c0e48ed041b9eac06269d}\label{coffre_8c_a8bb65664d15c0e48ed041b9eac06269d}} 
-\index{coffre.\+c@{coffre.\+c}!detruire\+\_\+loot@{detruire\+\_\+loot}}
-\index{detruire\+\_\+loot@{detruire\+\_\+loot}!coffre.\+c@{coffre.\+c}}
-\subsubsection{\texorpdfstring{detruire\+\_\+loot()}{detruire\_loot()}}
-{\footnotesize\ttfamily void detruire\+\_\+loot (\begin{DoxyParamCaption}\item[{\hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+t} $\ast$$\ast$}]{loot }\end{DoxyParamCaption})}
+\index{coffre.c@{coffre.c}!detruire\_loot@{detruire\_loot}}
+\index{detruire\_loot@{detruire\_loot}!coffre.c@{coffre.c}}
+\doxysubsubsection{\texorpdfstring{detruire\_loot()}{detruire\_loot()}}
+{\footnotesize\ttfamily void detruire\+\_\+loot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+t}} $\ast$$\ast$}]{loot }\end{DoxyParamCaption})}
 
 
 
@@ -120,18 +156,14 @@ Détruit toutes les allocations dynamiques effectuées pour cette structure.
 
 
 \begin{DoxyParams}{Paramètres}
-{\em $\ast$$\ast$loot,la} & structure contenant la carte obtenue par le joueur \\
-\hline
-{\em $\ast$rendu,le} & renderer sur lequel on dessinee\\
-\hline
-{\em $\ast$$\ast$loot,la} & structure contenant la carte obtenue par le joueur \\
+{\em $\ast$$\ast$loot} & la structure contenant la carte obtenue par le joueur \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{coffre_8c_a63a2a5c35893caafebbd764d64c43dd5}\label{coffre_8c_a63a2a5c35893caafebbd764d64c43dd5}} 
-\index{coffre.\+c@{coffre.\+c}!loot\+\_\+affichage\+\_\+fini@{loot\+\_\+affichage\+\_\+fini}}
-\index{loot\+\_\+affichage\+\_\+fini@{loot\+\_\+affichage\+\_\+fini}!coffre.\+c@{coffre.\+c}}
-\subsubsection{\texorpdfstring{loot\+\_\+affichage\+\_\+fini()}{loot\_affichage\_fini()}}
-{\footnotesize\ttfamily void loot\+\_\+affichage\+\_\+fini (\begin{DoxyParamCaption}\item[{\hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+t} $\ast$}]{loot }\end{DoxyParamCaption})}
+\index{coffre.c@{coffre.c}!loot\_affichage\_fini@{loot\_affichage\_fini}}
+\index{loot\_affichage\_fini@{loot\_affichage\_fini}!coffre.c@{coffre.c}}
+\doxysubsubsection{\texorpdfstring{loot\_affichage\_fini()}{loot\_affichage\_fini()}}
+{\footnotesize\ttfamily void loot\+\_\+affichage\+\_\+fini (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+t}} $\ast$}]{loot }\end{DoxyParamCaption})}
 
 
 
@@ -139,6 +171,46 @@ Contrôle si la durée d\textquotesingle{}affichage du loot est dépassée ou no
 
 
 \begin{DoxyParams}{Paramètres}
-{\em $\ast$loot,la} & structure contenant la carte obtenue par le joueur \\
+{\em $\ast$loot} & la structure contenant la carte obtenue par le joueur \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{coffre_8c_a1e12cd74e7ec4000f8418093302779d8}\label{coffre_8c_a1e12cd74e7ec4000f8418093302779d8}} 
+\index{coffre.c@{coffre.c}!loot\_boss@{loot\_boss}}
+\index{loot\_boss@{loot\_boss}!coffre.c@{coffre.c}}
+\doxysubsubsection{\texorpdfstring{loot\_boss()}{loot\_boss()}}
+{\footnotesize\ttfamily void loot\+\_\+boss (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+t}} $\ast$}]{loot,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{int}]{etage }\end{DoxyParamCaption})}
+
+
+
+Initialise la structure de loot, generer une carte qui est envoyée dans les listes. la carte est une récompense pour avoir battu un boss. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$loot} & la structure contenant la carte obtenue par le joueur \\
+\hline
+{\em $\ast$rendu} & le renderer sur lequel on dessine \\
+\hline
+{\em etage} & l\textquotesingle{}étage où se situe le joueur \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{coffre_8c_a0b584bdcc79e3df5a5e2e6ff6b9c5ee0}\label{coffre_8c_a0b584bdcc79e3df5a5e2e6ff6b9c5ee0}} 
+\index{coffre.c@{coffre.c}!loot\_de\_carte@{loot\_de\_carte}}
+\index{loot\_de\_carte@{loot\_de\_carte}!coffre.c@{coffre.c}}
+\doxysubsubsection{\texorpdfstring{loot\_de\_carte()}{loot\_de\_carte()}}
+{\footnotesize\ttfamily void loot\+\_\+de\+\_\+carte (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structloot__carte__s}{loot\+\_\+carte\+\_\+t}} $\ast$}]{loot,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu,  }\item[{\mbox{\hyperlink{structcoffre__t}{coffre\+\_\+t}} $\ast$}]{coffre,  }\item[{int}]{etage }\end{DoxyParamCaption})}
+
+
+
+initialise la structure de loot, generer une carte qui est envoyée dans les listes 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$loot} & la structure contenant la carte obtenue par le joueur \\
+\hline
+{\em $\ast$rendu} & le renderer sur lequel on dessine \\
+\hline
+{\em $\ast$coffre} & l\textquotesingle{}etat du coffre (ouvert ou non) \\
+\hline
+{\em etage} & l\textquotesingle{}étage où se situe le joueur \\
 \hline
 \end{DoxyParams}

@@ -1,6 +1,6 @@
 /**
 *\file main_menu_screen.c
-*\author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
+*\author Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas
 *\date 13/05/2020
 *\version 1.0
 
@@ -17,12 +17,12 @@
 /**
 *\fn int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect quitter, SDL_Rect **rect_sel, int *etat, Mix_Chunk *sounds[NB_SON])
 
-*\param jouer, le rectangle contenant le texte "Commencer partie"
-*\param charger, le rectangle contenant le texte "Charger partie"
-*\param quitter, le rectangle contenant le texte "Quitter"
-*\param **rect_sel, le rectangle de sélection permettant de sélectionner une option
-*\param *etat, l'endroit ou ce trouve le rectangle
-*\param *sounds[NB_SON], tableau contenant les sons
+*\param jouer le rectangle contenant le texte "Commencer partie"
+*\param charger le rectangle contenant le texte "Charger partie"
+*\param quitter le rectangle contenant le texte "Quitter"
+*\param **rect_sel le rectangle de sélection permettant de sélectionner une option
+*\param *etat l'endroit ou ce trouve le rectangle
+*\param *sounds[NB_SON] le tableau contenant les sons
 *\brief Permet de déplacer d'option en option le rectangle de sélection
 
 *\return retourne False pour fermer la fenetre, True pour la garder  ouverte
@@ -112,7 +112,7 @@ int deplacement_rectangle_selection(SDL_Rect jouer, SDL_Rect charger, SDL_Rect q
 /**
 *\fn void affichage_menu(SDL_Renderer *rendu, SDL_Texture *jouer_text, SDL_Texture *charger_text, SDL_Texture *quitter_text, SDL_Rect *rect_sel, SDL_Rect jouer_rect, SDL_Rect charger_rect, SDL_Rect quitter_rect, image_t logo[])
 
-*\param *rendu, le rendu sur lequel on dessine
+*\param *rendu le rendu sur lequel on dessine
 *\param *jouer_text la texture pour le texte "Commencer partie"
 *\param *charger_text la texture pour le texte "Charger partie"
 *\param *quitter_text la texture pour le texte "Quitter"
@@ -152,11 +152,11 @@ void affichage_menu(SDL_Renderer *rendu, SDL_Texture *jouer_text, SDL_Texture *c
 /**
 *\fn void main_menu(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *sounds[NB_SON])
 
-*\param *continuer, permet de savoir si le joueur souhaite quitter le jeu ou non
-*\param *etat, représente l'écran dans lequel on est, actuellement me menu du jeu
-*\param *rendu, le rendu que l'on utilise pour dessiner à l'écran
-*\param *police, la police utilisée pour écrire sur l'écran
-*\param *sounds[NB_SON], tableau contenant les sons
+*\param *continuer permet de savoir si le joueur souhaite quitter le jeu ou non
+*\param *etat représente l'écran dans lequel on est, actuellement me menu du jeu
+*\param *rendu le rendu que l'on utilise pour dessiner à l'écran
+*\param *police la police utilisée pour écrire sur l'écran
+*\param *sounds[NB_SON] le tableau contenant les sons
 
 *\brief gère l'affichage à l'écran du menu principal, permet de choisir entre différentes options (jouer, charger, quitter)
 */

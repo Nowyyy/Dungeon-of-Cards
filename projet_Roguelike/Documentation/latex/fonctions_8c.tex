@@ -1,5 +1,5 @@
-\hypertarget{fonctions_8c}{}\section{Référence du fichier fonctions.\+c}
-\label{fonctions_8c}\index{fonctions.\+c@{fonctions.\+c}}
+\hypertarget{fonctions_8c}{}\doxysection{Référence du fichier fonctions.\+c}
+\label{fonctions_8c}\index{fonctions.c@{fonctions.c}}
 
 
 Fichier référençant toutes les fonctions du système de combat.  
@@ -10,75 +10,72 @@ Fichier référençant toutes les fonctions du système de combat.
 {\ttfamily \#include \char`\"{}../include/fonctions.\+h\char`\"{}}\newline
 Graphe des dépendances par inclusion de fonctions.\+c\+:
 % FIG 0
-\subsection*{Fonctions}
+\doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{fonctions_8c_a46537a1af57b2735c29b55ed06765950}{detruire\+\_\+carte} (\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$$\ast$carte)
+void \mbox{\hyperlink{fonctions_8c_a46537a1af57b2735c29b55ed06765950}{detruire\+\_\+carte}} (\mbox{\hyperlink{structcarte__t}{carte\+\_\+t}} $\ast$$\ast$carte)
 \begin{DoxyCompactList}\small\item\em Fonction qui permet de détruire une carte. \end{DoxyCompactList}\item 
-void \hyperlink{fonctions_8c_a9f6d8d245973a18e7309a8fa789f4b7c}{detruire\+\_\+liste} (int liste)
-\begin{DoxyCompactList}\small\item\em Vide puis détruis la liste passée en paramètre. \end{DoxyCompactList}\item 
-void \hyperlink{fonctions_8c_a03a1181d7f7326b6fd6e98810eb71c63}{ajout\+\_\+carte\+\_\+collec} (\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$carte)
+void \mbox{\hyperlink{fonctions_8c_a9f6d8d245973a18e7309a8fa789f4b7c}{detruire\+\_\+liste}} (int liste)
+\begin{DoxyCompactList}\small\item\em Vide puis détruit la liste passée en paramètre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonctions_8c_a03a1181d7f7326b6fd6e98810eb71c63}{ajout\+\_\+carte\+\_\+collec}} (\mbox{\hyperlink{structcarte__t}{carte\+\_\+t}} $\ast$carte)
 \begin{DoxyCompactList}\small\item\em ajoute une carte à la collection du joueur s\textquotesingle{}il ne la possède pas déjà, ou s\textquotesingle{}il n\textquotesingle{}en possède aucune \end{DoxyCompactList}\item 
-void \hyperlink{fonctions_8c_a979b215c07cbf8cb4f033d8ed541fffd}{ajout\+\_\+carte\+\_\+deck} (\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$tampon)
+void \mbox{\hyperlink{fonctions_8c_a979b215c07cbf8cb4f033d8ed541fffd}{ajout\+\_\+carte\+\_\+deck}} (\mbox{\hyperlink{structcarte__t}{carte\+\_\+t}} $\ast$tampon)
 \begin{DoxyCompactList}\small\item\em ajoute une carte au deck du joueur \end{DoxyCompactList}\item 
-int \hyperlink{fonctions_8c_afeb0a238326c35ffd0b47cec84c2500f}{rand\+Range} (int min, int max, int niveau)
+int \mbox{\hyperlink{fonctions_8c_afeb0a238326c35ffd0b47cec84c2500f}{rand\+Range}} (int min, int max, int niveau)
 \begin{DoxyCompactList}\small\item\em Génère une valeur aléatoire parmi un intervalle. L\textquotesingle{}intervalle est modifié en fonction du niveau de la carte. \end{DoxyCompactList}\item 
-int \hyperlink{fonctions_8c_a485622b74a0c45d50fcf716490e5c1a7}{valeur\+\_\+carte} (char nom\mbox{[}T\+A\+I\+L\+LE\mbox{]})
-\begin{DoxyCompactList}\small\item\em Génère une valeur aléatoire parmi un intervalle défini pour chaque carte grâce à la fonction \hyperlink{fonctions_8c_afeb0a238326c35ffd0b47cec84c2500f}{rand\+Range()} \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fonctions_8c_a485622b74a0c45d50fcf716490e5c1a7}{valeur\+\_\+carte}} (char nom\mbox{[}T\+A\+I\+L\+LE\mbox{]})
+\begin{DoxyCompactList}\small\item\em Génère une valeur aléatoire parmi un intervalle défini pour chaque carte grâce à la fonction \mbox{\hyperlink{fonctions_8c_afeb0a238326c35ffd0b47cec84c2500f}{rand\+Range()}} \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{fonctions_8c_afe7ff9327fa42c3f6a5740f04b5bd2a6}\label{fonctions_8c_afe7ff9327fa42c3f6a5740f04b5bd2a6}} 
-void {\bfseries transfert\+\_\+mort} ()
-\item 
-\mbox{\Hypertarget{fonctions_8c_aab694bf2cfddcb450d0e799fb3619927}\label{fonctions_8c_aab694bf2cfddcb450d0e799fb3619927}} 
-void {\bfseries choix\+\_\+liste} (int choix)
-\item 
+void \mbox{\hyperlink{fonctions_8c_afe7ff9327fa42c3f6a5740f04b5bd2a6}{transfert\+\_\+mort}} ()
+\begin{DoxyCompactList}\small\item\em A la mort du personnage, vide son deck puis le rempli avec des cartes semi-\/aléatoires pour la partie suivante. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonctions_8c_aab694bf2cfddcb450d0e799fb3619927}{choix\+\_\+liste}} (int choix)
+\begin{DoxyCompactList}\small\item\em Selection entre le deck et la collection. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{fonctions_8c_ab80fe591c4ab95f27b317a9e6f6955e1}\label{fonctions_8c_ab80fe591c4ab95f27b317a9e6f6955e1}} 
-void \hyperlink{fonctions_8c_ab80fe591c4ab95f27b317a9e6f6955e1}{init\+\_\+liste} ()
+void \mbox{\hyperlink{fonctions_8c_ab80fe591c4ab95f27b317a9e6f6955e1}{init\+\_\+liste}} ()
 \begin{DoxyCompactList}\small\item\em Fonction initialisant les listes. Par défaut, la liste deck est ensuite sélectionner. \end{DoxyCompactList}\item 
-int \hyperlink{fonctions_8c_a9c70c18ad120ac199ddcd39f0824a865}{liste\+\_\+vide} ()
+int \mbox{\hyperlink{fonctions_8c_a9c70c18ad120ac199ddcd39f0824a865}{liste\+\_\+vide}} ()
 \begin{DoxyCompactList}\small\item\em Fonction qui permet de vérifier si une liste est vide. \end{DoxyCompactList}\item 
-int \hyperlink{fonctions_8c_adda7a0d25a9bfeed725f12efc6c254f8}{hors\+\_\+liste} ()
+int \mbox{\hyperlink{fonctions_8c_adda7a0d25a9bfeed725f12efc6c254f8}{hors\+\_\+liste}} ()
 \begin{DoxyCompactList}\small\item\em Fonction qui permet de vérifier si on est pas hors liste. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{fonctions_8c_a205229e638af73f963938189b0dd12d4}\label{fonctions_8c_a205229e638af73f963938189b0dd12d4}} 
-void \hyperlink{fonctions_8c_a205229e638af73f963938189b0dd12d4}{en\+\_\+tete} ()
+void \mbox{\hyperlink{fonctions_8c_a205229e638af73f963938189b0dd12d4}{en\+\_\+tete}} ()
 \begin{DoxyCompactList}\small\item\em Fonction qui permet de se mettre au début de la liste. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{fonctions_8c_ab0ff9fb3b16656cf42a159f527244501}\label{fonctions_8c_ab0ff9fb3b16656cf42a159f527244501}} 
-void \hyperlink{fonctions_8c_ab0ff9fb3b16656cf42a159f527244501}{en\+\_\+queue} ()
+void \mbox{\hyperlink{fonctions_8c_ab0ff9fb3b16656cf42a159f527244501}{en\+\_\+queue}} ()
 \begin{DoxyCompactList}\small\item\em Fonction qui permet de se mettre en fin de la liste. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{fonctions_8c_a7508531ae1735a204a105dedbdc06ee3}\label{fonctions_8c_a7508531ae1735a204a105dedbdc06ee3}} 
-void \hyperlink{fonctions_8c_a7508531ae1735a204a105dedbdc06ee3}{precedent} ()
+void \mbox{\hyperlink{fonctions_8c_a7508531ae1735a204a105dedbdc06ee3}{precedent}} ()
 \begin{DoxyCompactList}\small\item\em Fonction qui permet de reculer dans la liste. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{fonctions_8c_ad99c86c7caff6844bb873680d5e9f26b}\label{fonctions_8c_ad99c86c7caff6844bb873680d5e9f26b}} 
-void \hyperlink{fonctions_8c_ad99c86c7caff6844bb873680d5e9f26b}{suivant} ()
+void \mbox{\hyperlink{fonctions_8c_ad99c86c7caff6844bb873680d5e9f26b}{suivant}} ()
 \begin{DoxyCompactList}\small\item\em Fonction qui permet d\textquotesingle{}avancer dans la liste. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{fonctions_8c_a76e5d57f22e07a46e0ec392560f9b26e}\label{fonctions_8c_a76e5d57f22e07a46e0ec392560f9b26e}} 
-void {\bfseries valeur\+\_\+elt} (\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$$\ast$t)
-\item 
-void \hyperlink{fonctions_8c_af97c08a21ffaaf3024fafd53a1a87921}{modif\+\_\+elt} (\hyperlink{structcarte__t}{carte\+\_\+t} t)
+void \mbox{\hyperlink{fonctions_8c_a76e5d57f22e07a46e0ec392560f9b26e}{valeur\+\_\+elt}} (\mbox{\hyperlink{structcarte__t}{carte\+\_\+t}} $\ast$$\ast$t)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de prendre une valeur de la liste. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonctions_8c_af97c08a21ffaaf3024fafd53a1a87921}{modif\+\_\+elt}} (\mbox{\hyperlink{structcarte__t}{carte\+\_\+t}} t)
 \begin{DoxyCompactList}\small\item\em Fonction qui permet de modifier une valeur dans une liste. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{fonctions_8c_a1221b0ffb16cd3b7309c17d9dfc78398}\label{fonctions_8c_a1221b0ffb16cd3b7309c17d9dfc78398}} 
-void {\bfseries oter\+\_\+elt} ()
-\item 
-void \hyperlink{fonctions_8c_aa44f89ec4da70467c269566bb0b35d2f}{ajout\+\_\+droit} (\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$t)
+void \mbox{\hyperlink{fonctions_8c_a1221b0ffb16cd3b7309c17d9dfc78398}{oter\+\_\+elt}} ()
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de supprimer une valeur de la liste. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonctions_8c_aa44f89ec4da70467c269566bb0b35d2f}{ajout\+\_\+droit}} (\mbox{\hyperlink{structcarte__t}{carte\+\_\+t}} $\ast$t)
 \begin{DoxyCompactList}\small\item\em Fonction qui permet d\textquotesingle{}ajouter un objet après l\textquotesingle{}objet sur lequel l\textquotesingle{}utilisteur se trouve. \end{DoxyCompactList}\item 
-void \hyperlink{fonctions_8c_a0342296839dd4a75d97f808fb1db9ba3}{ajout\+\_\+gauche} (\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$t)
+void \mbox{\hyperlink{fonctions_8c_a0342296839dd4a75d97f808fb1db9ba3}{ajout\+\_\+gauche}} (\mbox{\hyperlink{structcarte__t}{carte\+\_\+t}} $\ast$t)
 \begin{DoxyCompactList}\small\item\em Fonction qui permet d\textquotesingle{}ajouter un objet avant l\textquotesingle{}objet sur lequel l\textquotesingle{}utilisteur se trouve. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{fonctions_8c_a12740986f2295ca850862c2ee6b1ca27}\label{fonctions_8c_a12740986f2295ca850862c2ee6b1ca27}} 
-\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$ {\bfseries creer\+\_\+carte} (char $\ast$nom, \hyperlink{constantes_8h_a8fb27eb0b354a4f35787ef57ac90e0eb}{type\+\_\+carte} type, int valeur, int consommable, char $\ast$path)
-\item 
-void \hyperlink{fonctions_8c_a007a501bacb1444c2463c0006a302c05}{init\+\_\+ennemi\+\_\+valeurs} (\hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$ennemi, char $\ast$nom, int w, int h, int nb\+\_\+sprites, int gap, float w2, float h2, char $\ast$path, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
+\mbox{\hyperlink{structcarte__t}{carte\+\_\+t}} $\ast$ \mbox{\hyperlink{fonctions_8c_a48f378641ffa640b3e01878bdf0b0716}{creer\+\_\+carte}} (char $\ast$nom, \mbox{\hyperlink{constantes_8h_a8fb27eb0b354a4f35787ef57ac90e0eb}{type\+\_\+carte}} type, int valeur, int consommable, char $\ast$path)
+\begin{DoxyCompactList}\small\item\em permet de créer une carte selon différentes caractéristiques données \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonctions_8c_a007a501bacb1444c2463c0006a302c05}{init\+\_\+ennemi\+\_\+valeurs}} (\mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$ennemi, char $\ast$nom, int w, int h, int nb\+\_\+sprites, int gap, float w2, float h2, char $\ast$path, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
 \begin{DoxyCompactList}\small\item\em donne à un ennemi les valeurs correspondant à ses sprites \end{DoxyCompactList}\item 
-\hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$ \hyperlink{fonctions_8c_ac3933b6b82440d2fc997144a316705d7}{creer\+\_\+ennemi} (int pv, int vitesse, int attaque, int defense, int type, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
+\mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$ \mbox{\hyperlink{fonctions_8c_ac3933b6b82440d2fc997144a316705d7}{creer\+\_\+ennemi}} (int pv, int vitesse, int attaque, int defense, int type, S\+D\+L\+\_\+\+Renderer $\ast$rendu)
 \begin{DoxyCompactList}\small\item\em permet de créer un ennemi selon plusieurs caractéristiques \end{DoxyCompactList}\item 
-\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$ \hyperlink{fonctions_8c_ae74ad391916781fff2db82dfeaf524d7}{generer\+\_\+carte} (int etage)
+\mbox{\hyperlink{structcarte__t}{carte\+\_\+t}} $\ast$ \mbox{\hyperlink{fonctions_8c_ae74ad391916781fff2db82dfeaf524d7}{generer\+\_\+carte}} (int etage)
 \begin{DoxyCompactList}\small\item\em permet de créer une carte au hasard, plus ou moins forte selon l\textquotesingle{}étage \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{fonctions_8c_aca8f735d238f737bf47a3b60a516f294}\label{fonctions_8c_aca8f735d238f737bf47a3b60a516f294}} 
-void {\bfseries afficher\+\_\+liste} ()
-\item 
-void \hyperlink{fonctions_8c_a10827fcceed76a61d146d8d52cce0df3}{detruire\+\_\+ennemi} (\hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$$\ast$ennemi)
+void \mbox{\hyperlink{fonctions_8c_aca8f735d238f737bf47a3b60a516f294}{afficher\+\_\+liste}} ()
+\begin{DoxyCompactList}\small\item\em Fonction qui permet d\textquotesingle{}afficher la liste actuelle dans le terminal. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonctions_8c_a10827fcceed76a61d146d8d52cce0df3}{detruire\+\_\+ennemi}} (\mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$$\ast$ennemi)
 \begin{DoxyCompactList}\small\item\em Fonction qui permet de détruire un ennemi. \end{DoxyCompactList}\item 
-void \hyperlink{fonctions_8c_a6ecd5a0ef54f544dfdf23191050dac90}{tire\+\_\+carte\+\_\+deck} (\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$cartes\mbox{[}$\,$\mbox{]}, int indice)
+void \mbox{\hyperlink{fonctions_8c_a6ecd5a0ef54f544dfdf23191050dac90}{tire\+\_\+carte\+\_\+deck}} (\mbox{\hyperlink{structcarte__t}{carte\+\_\+t}} $\ast$cartes\mbox{[}$\,$\mbox{]}, int indice)
 \begin{DoxyCompactList}\small\item\em tire des cartes au hasard dans le deck du joueur afin qu\textquotesingle{}il puisse les utiliser au combat \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Variables}
+\doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{fonctions_8c_a10bd59064e05a179e3f8ac7a07f19c65}\label{fonctions_8c_a10bd59064e05a179e3f8ac7a07f19c65}} 
@@ -92,26 +89,26 @@ char {\bfseries rares} \mbox{[}$\,$\mbox{]}\mbox{[}T\+A\+I\+L\+LE\mbox{]} = \{\{
 \end{DoxyCompactItemize}
 
 
-\subsection{Description détaillée}
+\doxysubsection{Description détaillée}
 Fichier référençant toutes les fonctions du système de combat. 
 
 \begin{DoxyAuthor}{Auteur}
-\{Malabry Thomas Aurélien Tudoret Jourry Axel Marin Timothée\} 
+Malabry Thomas Aurélien Tudoret Jourry Axel Marin Timothée 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
 1.\+0 
 \end{DoxyVersion}
 \begin{DoxyDate}{Date}
-13/02/2020 
+13/05/2020 
 \end{DoxyDate}
 
 
-\subsection{Documentation des fonctions}
+\doxysubsection{Documentation des fonctions}
 \mbox{\Hypertarget{fonctions_8c_a03a1181d7f7326b6fd6e98810eb71c63}\label{fonctions_8c_a03a1181d7f7326b6fd6e98810eb71c63}} 
-\index{fonctions.\+c@{fonctions.\+c}!ajout\+\_\+carte\+\_\+collec@{ajout\+\_\+carte\+\_\+collec}}
-\index{ajout\+\_\+carte\+\_\+collec@{ajout\+\_\+carte\+\_\+collec}!fonctions.\+c@{fonctions.\+c}}
-\subsubsection{\texorpdfstring{ajout\+\_\+carte\+\_\+collec()}{ajout\_carte\_collec()}}
-{\footnotesize\ttfamily void ajout\+\_\+carte\+\_\+collec (\begin{DoxyParamCaption}\item[{\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$}]{carte }\end{DoxyParamCaption})}
+\index{fonctions.c@{fonctions.c}!ajout\_carte\_collec@{ajout\_carte\_collec}}
+\index{ajout\_carte\_collec@{ajout\_carte\_collec}!fonctions.c@{fonctions.c}}
+\doxysubsubsection{\texorpdfstring{ajout\_carte\_collec()}{ajout\_carte\_collec()}}
+{\footnotesize\ttfamily void ajout\+\_\+carte\+\_\+collec (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcarte__t}{carte\+\_\+t}} $\ast$}]{carte }\end{DoxyParamCaption})}
 
 
 
@@ -119,14 +116,14 @@ ajoute une carte à la collection du joueur s\textquotesingle{}il ne la possède
 
 
 \begin{DoxyParams}{Paramètres}
-{\em carte,la} & carte pour laquelle on cherche à savoir si elle existe dans la collection du joueur \\
+{\em $\ast$carte} & la carte pour laquelle on cherche à savoir si elle existe dans la collection du joueur \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{fonctions_8c_a979b215c07cbf8cb4f033d8ed541fffd}\label{fonctions_8c_a979b215c07cbf8cb4f033d8ed541fffd}} 
-\index{fonctions.\+c@{fonctions.\+c}!ajout\+\_\+carte\+\_\+deck@{ajout\+\_\+carte\+\_\+deck}}
-\index{ajout\+\_\+carte\+\_\+deck@{ajout\+\_\+carte\+\_\+deck}!fonctions.\+c@{fonctions.\+c}}
-\subsubsection{\texorpdfstring{ajout\+\_\+carte\+\_\+deck()}{ajout\_carte\_deck()}}
-{\footnotesize\ttfamily void ajout\+\_\+carte\+\_\+deck (\begin{DoxyParamCaption}\item[{\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$}]{tampon }\end{DoxyParamCaption})}
+\index{fonctions.c@{fonctions.c}!ajout\_carte\_deck@{ajout\_carte\_deck}}
+\index{ajout\_carte\_deck@{ajout\_carte\_deck}!fonctions.c@{fonctions.c}}
+\doxysubsubsection{\texorpdfstring{ajout\_carte\_deck()}{ajout\_carte\_deck()}}
+{\footnotesize\ttfamily void ajout\+\_\+carte\+\_\+deck (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcarte__t}{carte\+\_\+t}} $\ast$}]{tampon }\end{DoxyParamCaption})}
 
 
 
@@ -134,14 +131,14 @@ ajoute une carte au deck du joueur
 
 
 \begin{DoxyParams}{Paramètres}
-{\em carte,la} & carte à ajouter \\
+{\em $\ast$tampon} & la carte qui sera ajoutée au deck \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{fonctions_8c_aa44f89ec4da70467c269566bb0b35d2f}\label{fonctions_8c_aa44f89ec4da70467c269566bb0b35d2f}} 
-\index{fonctions.\+c@{fonctions.\+c}!ajout\+\_\+droit@{ajout\+\_\+droit}}
-\index{ajout\+\_\+droit@{ajout\+\_\+droit}!fonctions.\+c@{fonctions.\+c}}
-\subsubsection{\texorpdfstring{ajout\+\_\+droit()}{ajout\_droit()}}
-{\footnotesize\ttfamily void ajout\+\_\+droit (\begin{DoxyParamCaption}\item[{\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$}]{t }\end{DoxyParamCaption})}
+\index{fonctions.c@{fonctions.c}!ajout\_droit@{ajout\_droit}}
+\index{ajout\_droit@{ajout\_droit}!fonctions.c@{fonctions.c}}
+\doxysubsubsection{\texorpdfstring{ajout\_droit()}{ajout\_droit()}}
+{\footnotesize\ttfamily void ajout\+\_\+droit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcarte__t}{carte\+\_\+t}} $\ast$}]{t }\end{DoxyParamCaption})}
 
 
 
@@ -149,14 +146,14 @@ Fonction qui permet d\textquotesingle{}ajouter un objet après l\textquotesingle
 
 
 \begin{DoxyParams}{Paramètres}
-{\em t} & un pointeur qui va contenir une valeur qui va être rajouté \\
+{\em $\ast$t} & un pointeur qui va contenir une valeur qui va être rajouté \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{fonctions_8c_a0342296839dd4a75d97f808fb1db9ba3}\label{fonctions_8c_a0342296839dd4a75d97f808fb1db9ba3}} 
-\index{fonctions.\+c@{fonctions.\+c}!ajout\+\_\+gauche@{ajout\+\_\+gauche}}
-\index{ajout\+\_\+gauche@{ajout\+\_\+gauche}!fonctions.\+c@{fonctions.\+c}}
-\subsubsection{\texorpdfstring{ajout\+\_\+gauche()}{ajout\_gauche()}}
-{\footnotesize\ttfamily void ajout\+\_\+gauche (\begin{DoxyParamCaption}\item[{\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$}]{t }\end{DoxyParamCaption})}
+\index{fonctions.c@{fonctions.c}!ajout\_gauche@{ajout\_gauche}}
+\index{ajout\_gauche@{ajout\_gauche}!fonctions.c@{fonctions.c}}
+\doxysubsubsection{\texorpdfstring{ajout\_gauche()}{ajout\_gauche()}}
+{\footnotesize\ttfamily void ajout\+\_\+gauche (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcarte__t}{carte\+\_\+t}} $\ast$}]{t }\end{DoxyParamCaption})}
 
 
 
@@ -164,14 +161,53 @@ Fonction qui permet d\textquotesingle{}ajouter un objet avant l\textquotesingle{
 
 
 \begin{DoxyParams}{Paramètres}
-{\em t} & un pointeur qui va contenir une valeur qui va être rajouté \\
+{\em $\ast$t} & un pointeur qui va contenir une valeur qui va être rajouté \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{fonctions_8c_aab694bf2cfddcb450d0e799fb3619927}\label{fonctions_8c_aab694bf2cfddcb450d0e799fb3619927}} 
+\index{fonctions.c@{fonctions.c}!choix\_liste@{choix\_liste}}
+\index{choix\_liste@{choix\_liste}!fonctions.c@{fonctions.c}}
+\doxysubsubsection{\texorpdfstring{choix\_liste()}{choix\_liste()}}
+{\footnotesize\ttfamily void choix\+\_\+liste (\begin{DoxyParamCaption}\item[{int}]{choix }\end{DoxyParamCaption})}
+
+
+
+Selection entre le deck et la collection. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em choix} & 0 = C\+O\+L\+L\+E\+C\+T\+I\+ON et 1 = D\+E\+CK. Les valeurs sont définies dans \mbox{\hyperlink{constantes_8h}{constantes.\+h}} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{fonctions_8c_a48f378641ffa640b3e01878bdf0b0716}\label{fonctions_8c_a48f378641ffa640b3e01878bdf0b0716}} 
+\index{fonctions.c@{fonctions.c}!creer\_carte@{creer\_carte}}
+\index{creer\_carte@{creer\_carte}!fonctions.c@{fonctions.c}}
+\doxysubsubsection{\texorpdfstring{creer\_carte()}{creer\_carte()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcarte__t}{carte\+\_\+t}} $\ast$ creer\+\_\+carte (\begin{DoxyParamCaption}\item[{char $\ast$}]{nom,  }\item[{\mbox{\hyperlink{constantes_8h_a8fb27eb0b354a4f35787ef57ac90e0eb}{type\+\_\+carte}}}]{type,  }\item[{int}]{valeur,  }\item[{int}]{consommable,  }\item[{char $\ast$}]{path }\end{DoxyParamCaption})}
+
+
+
+permet de créer une carte selon différentes caractéristiques données 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$nom} & le nom de la carte \\
+\hline
+{\em type} & le type de la carte \\
+\hline
+{\em valeur} & la valeur de la force de la carte \\
+\hline
+{\em path} & le chemin de la carte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un pointeur sur une variable structure \mbox{\hyperlink{structcarte__t}{carte\+\_\+t}} 
+\end{DoxyReturn}
 \mbox{\Hypertarget{fonctions_8c_ac3933b6b82440d2fc997144a316705d7}\label{fonctions_8c_ac3933b6b82440d2fc997144a316705d7}} 
-\index{fonctions.\+c@{fonctions.\+c}!creer\+\_\+ennemi@{creer\+\_\+ennemi}}
-\index{creer\+\_\+ennemi@{creer\+\_\+ennemi}!fonctions.\+c@{fonctions.\+c}}
-\subsubsection{\texorpdfstring{creer\+\_\+ennemi()}{creer\_ennemi()}}
-{\footnotesize\ttfamily \hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$ creer\+\_\+ennemi (\begin{DoxyParamCaption}\item[{int}]{pv,  }\item[{int}]{vitesse,  }\item[{int}]{attaque,  }\item[{int}]{defense,  }\item[{int}]{type,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu }\end{DoxyParamCaption})}
+\index{fonctions.c@{fonctions.c}!creer\_ennemi@{creer\_ennemi}}
+\index{creer\_ennemi@{creer\_ennemi}!fonctions.c@{fonctions.c}}
+\doxysubsubsection{\texorpdfstring{creer\_ennemi()}{creer\_ennemi()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$ creer\+\_\+ennemi (\begin{DoxyParamCaption}\item[{int}]{pv,  }\item[{int}]{vitesse,  }\item[{int}]{attaque,  }\item[{int}]{defense,  }\item[{int}]{type,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu }\end{DoxyParamCaption})}
 
 
 
@@ -179,27 +215,27 @@ permet de créer un ennemi selon plusieurs caractéristiques
 
 
 \begin{DoxyParams}{Paramètres}
-{\em pv,point} & de vie de l\textquotesingle{}ennemi \\
+{\em pv} & les points de vie de l\textquotesingle{}ennemi \\
 \hline
-{\em vitesse,vitesse} & de l\textquotesingle{}ennemi \\
+{\em vitesse} & la vitesse de l\textquotesingle{}ennemi \\
 \hline
-{\em attaque,attaque} & de l\textquotesingle{}ennemi \\
+{\em attaque} & l\textquotesingle{}attaque de l\textquotesingle{}ennemi \\
 \hline
-{\em defense,defense} & de l\textquotesingle{}ennemi \\
+{\em defense} & la defense de l\textquotesingle{}ennemi \\
 \hline
-{\em type,type} & de l\textquotesingle{}ennemi \\
+{\em type} & le type de l\textquotesingle{}ennemi \\
 \hline
-{\em rendu,le} & renderer sur lequel on dessine \\
+{\em $\ast$rendu} & le renderer sur lequel on dessine \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
-un pointeur sur une variable structure \hyperlink{structennemi__t}{ennemi\+\_\+t} 
+un pointeur sur une variable structure \mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} 
 \end{DoxyReturn}
 \mbox{\Hypertarget{fonctions_8c_a46537a1af57b2735c29b55ed06765950}\label{fonctions_8c_a46537a1af57b2735c29b55ed06765950}} 
-\index{fonctions.\+c@{fonctions.\+c}!detruire\+\_\+carte@{detruire\+\_\+carte}}
-\index{detruire\+\_\+carte@{detruire\+\_\+carte}!fonctions.\+c@{fonctions.\+c}}
-\subsubsection{\texorpdfstring{detruire\+\_\+carte()}{detruire\_carte()}}
-{\footnotesize\ttfamily void detruire\+\_\+carte (\begin{DoxyParamCaption}\item[{\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$$\ast$}]{carte }\end{DoxyParamCaption})}
+\index{fonctions.c@{fonctions.c}!detruire\_carte@{detruire\_carte}}
+\index{detruire\_carte@{detruire\_carte}!fonctions.c@{fonctions.c}}
+\doxysubsubsection{\texorpdfstring{detruire\_carte()}{detruire\_carte()}}
+{\footnotesize\ttfamily void detruire\+\_\+carte (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcarte__t}{carte\+\_\+t}} $\ast$$\ast$}]{carte }\end{DoxyParamCaption})}
 
 
 
@@ -211,10 +247,10 @@ Fonction qui permet de détruire une carte.
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{fonctions_8c_a10827fcceed76a61d146d8d52cce0df3}\label{fonctions_8c_a10827fcceed76a61d146d8d52cce0df3}} 
-\index{fonctions.\+c@{fonctions.\+c}!detruire\+\_\+ennemi@{detruire\+\_\+ennemi}}
-\index{detruire\+\_\+ennemi@{detruire\+\_\+ennemi}!fonctions.\+c@{fonctions.\+c}}
-\subsubsection{\texorpdfstring{detruire\+\_\+ennemi()}{detruire\_ennemi()}}
-{\footnotesize\ttfamily void detruire\+\_\+ennemi (\begin{DoxyParamCaption}\item[{\hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$$\ast$}]{ennemi }\end{DoxyParamCaption})}
+\index{fonctions.c@{fonctions.c}!detruire\_ennemi@{detruire\_ennemi}}
+\index{detruire\_ennemi@{detruire\_ennemi}!fonctions.c@{fonctions.c}}
+\doxysubsubsection{\texorpdfstring{detruire\_ennemi()}{detruire\_ennemi()}}
+{\footnotesize\ttfamily void detruire\+\_\+ennemi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$$\ast$}]{ennemi }\end{DoxyParamCaption})}
 
 
 
@@ -226,25 +262,25 @@ Fonction qui permet de détruire un ennemi.
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{fonctions_8c_a9f6d8d245973a18e7309a8fa789f4b7c}\label{fonctions_8c_a9f6d8d245973a18e7309a8fa789f4b7c}} 
-\index{fonctions.\+c@{fonctions.\+c}!detruire\+\_\+liste@{detruire\+\_\+liste}}
-\index{detruire\+\_\+liste@{detruire\+\_\+liste}!fonctions.\+c@{fonctions.\+c}}
-\subsubsection{\texorpdfstring{detruire\+\_\+liste()}{detruire\_liste()}}
+\index{fonctions.c@{fonctions.c}!detruire\_liste@{detruire\_liste}}
+\index{detruire\_liste@{detruire\_liste}!fonctions.c@{fonctions.c}}
+\doxysubsubsection{\texorpdfstring{detruire\_liste()}{detruire\_liste()}}
 {\footnotesize\ttfamily void detruire\+\_\+liste (\begin{DoxyParamCaption}\item[{int}]{liste }\end{DoxyParamCaption})}
 
 
 
-Vide puis détruis la liste passée en paramètre. 
+Vide puis détruit la liste passée en paramètre. 
 
 
 \begin{DoxyParams}{Paramètres}
-{\em liste,le} & numéro de la liste que l\textquotesingle{}on veut supprimer \\
+{\em liste} & le numéro de la liste que l\textquotesingle{}on veut supprimer \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{fonctions_8c_ae74ad391916781fff2db82dfeaf524d7}\label{fonctions_8c_ae74ad391916781fff2db82dfeaf524d7}} 
-\index{fonctions.\+c@{fonctions.\+c}!generer\+\_\+carte@{generer\+\_\+carte}}
-\index{generer\+\_\+carte@{generer\+\_\+carte}!fonctions.\+c@{fonctions.\+c}}
-\subsubsection{\texorpdfstring{generer\+\_\+carte()}{generer\_carte()}}
-{\footnotesize\ttfamily \hyperlink{structcarte__t}{carte\+\_\+t} $\ast$ generer\+\_\+carte (\begin{DoxyParamCaption}\item[{int}]{etage }\end{DoxyParamCaption})}
+\index{fonctions.c@{fonctions.c}!generer\_carte@{generer\_carte}}
+\index{generer\_carte@{generer\_carte}!fonctions.c@{fonctions.c}}
+\doxysubsubsection{\texorpdfstring{generer\_carte()}{generer\_carte()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcarte__t}{carte\+\_\+t}} $\ast$ generer\+\_\+carte (\begin{DoxyParamCaption}\item[{int}]{etage }\end{DoxyParamCaption})}
 
 
 
@@ -252,16 +288,16 @@ permet de créer une carte au hasard, plus ou moins forte selon l\textquotesingl
 
 
 \begin{DoxyParams}{Paramètres}
-{\em etage} & l\textquotesingle{}étage actuel qui détermine le niveau de la carte \\
+{\em l\textquotesingle{}etage} & l\textquotesingle{}étage actuel qui détermine le niveau de la carte \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
 un carte\+\_\+t$\ast$ 
 \end{DoxyReturn}
 \mbox{\Hypertarget{fonctions_8c_adda7a0d25a9bfeed725f12efc6c254f8}\label{fonctions_8c_adda7a0d25a9bfeed725f12efc6c254f8}} 
-\index{fonctions.\+c@{fonctions.\+c}!hors\+\_\+liste@{hors\+\_\+liste}}
-\index{hors\+\_\+liste@{hors\+\_\+liste}!fonctions.\+c@{fonctions.\+c}}
-\subsubsection{\texorpdfstring{hors\+\_\+liste()}{hors\_liste()}}
+\index{fonctions.c@{fonctions.c}!hors\_liste@{hors\_liste}}
+\index{hors\_liste@{hors\_liste}!fonctions.c@{fonctions.c}}
+\doxysubsubsection{\texorpdfstring{hors\_liste()}{hors\_liste()}}
 {\footnotesize\ttfamily int hors\+\_\+liste (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
@@ -272,10 +308,10 @@ Fonction qui permet de vérifier si on est pas hors liste.
 1 si on est dans la liste, 0 si on est hors liste 
 \end{DoxyReturn}
 \mbox{\Hypertarget{fonctions_8c_a007a501bacb1444c2463c0006a302c05}\label{fonctions_8c_a007a501bacb1444c2463c0006a302c05}} 
-\index{fonctions.\+c@{fonctions.\+c}!init\+\_\+ennemi\+\_\+valeurs@{init\+\_\+ennemi\+\_\+valeurs}}
-\index{init\+\_\+ennemi\+\_\+valeurs@{init\+\_\+ennemi\+\_\+valeurs}!fonctions.\+c@{fonctions.\+c}}
-\subsubsection{\texorpdfstring{init\+\_\+ennemi\+\_\+valeurs()}{init\_ennemi\_valeurs()}}
-{\footnotesize\ttfamily void init\+\_\+ennemi\+\_\+valeurs (\begin{DoxyParamCaption}\item[{\hyperlink{structennemi__t}{ennemi\+\_\+t} $\ast$}]{ennemi,  }\item[{char $\ast$}]{nom,  }\item[{int}]{w,  }\item[{int}]{h,  }\item[{int}]{nb\+\_\+sprites,  }\item[{int}]{gap,  }\item[{float}]{w2,  }\item[{float}]{h2,  }\item[{char $\ast$}]{path,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu }\end{DoxyParamCaption})}
+\index{fonctions.c@{fonctions.c}!init\_ennemi\_valeurs@{init\_ennemi\_valeurs}}
+\index{init\_ennemi\_valeurs@{init\_ennemi\_valeurs}!fonctions.c@{fonctions.c}}
+\doxysubsubsection{\texorpdfstring{init\_ennemi\_valeurs()}{init\_ennemi\_valeurs()}}
+{\footnotesize\ttfamily void init\+\_\+ennemi\+\_\+valeurs (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structennemi__t}{ennemi\+\_\+t}} $\ast$}]{ennemi,  }\item[{char $\ast$}]{nom,  }\item[{int}]{w,  }\item[{int}]{h,  }\item[{int}]{nb\+\_\+sprites,  }\item[{int}]{gap,  }\item[{float}]{w2,  }\item[{float}]{h2,  }\item[{char $\ast$}]{path,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{rendu }\end{DoxyParamCaption})}
 
 
 
@@ -283,31 +319,31 @@ donne à un ennemi les valeurs correspondant à ses sprites
 
 
 \begin{DoxyParams}{Paramètres}
-{\em ennemi,l\textquotesingle{}ennemi} & dont on rempli la structure \\
+{\em $\ast$ennemi} & l\textquotesingle{}ennemi dont on rempli la structure \\
 \hline
-{\em nom,le} & nom du monstre \\
+{\em $\ast$nom} & le nom du monstre \\
 \hline
-{\em w,la} & taille du sprite en largeur \\
+{\em w} & la taille du sprite en largeur \\
 \hline
-{\em h,la} & taille du sprite en hauteur \\
+{\em h} & la taille du sprite en hauteur \\
 \hline
-{\em nb\+\_\+sprites,le} & nombre de sprites par lignes \\
+{\em nb\+\_\+sprites} & le nombre de sprites par lignes \\
 \hline
-{\em gap,l\textquotesingle{}espace} & entre deux sprites sur l\textquotesingle{}image globale \\
+{\em gap} & l\textquotesingle{}espace entre deux sprites sur l\textquotesingle{}image globale \\
 \hline
-{\em w2,la} & taille en largeur que l\textquotesingle{}on veut pour le sprite \\
+{\em w2} & la taille en largeur que l\textquotesingle{}on veut pour le sprite \\
 \hline
-{\em h2,la} & taille en hauteur que l\textquotesingle{}on veut pour le sprite \\
+{\em h2} & la taille en hauteur que l\textquotesingle{}on veut pour le sprite \\
 \hline
-{\em path,le} & chemin vers l\textquotesingle{}image de l\textquotesingle{}ennemi \\
+{\em $\ast$path} & le chemin vers l\textquotesingle{}image de l\textquotesingle{}ennemi \\
 \hline
-{\em rendu,le} & renderer sur lequel on dessine \\
+{\em $\ast$rendu} & le renderer sur lequel on dessine \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{fonctions_8c_a9c70c18ad120ac199ddcd39f0824a865}\label{fonctions_8c_a9c70c18ad120ac199ddcd39f0824a865}} 
-\index{fonctions.\+c@{fonctions.\+c}!liste\+\_\+vide@{liste\+\_\+vide}}
-\index{liste\+\_\+vide@{liste\+\_\+vide}!fonctions.\+c@{fonctions.\+c}}
-\subsubsection{\texorpdfstring{liste\+\_\+vide()}{liste\_vide()}}
+\index{fonctions.c@{fonctions.c}!liste\_vide@{liste\_vide}}
+\index{liste\_vide@{liste\_vide}!fonctions.c@{fonctions.c}}
+\doxysubsubsection{\texorpdfstring{liste\_vide()}{liste\_vide()}}
 {\footnotesize\ttfamily int liste\+\_\+vide (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
@@ -318,10 +354,10 @@ Fonction qui permet de vérifier si une liste est vide.
 1 si la liste est vide, 0 si la liste est pas vide 
 \end{DoxyReturn}
 \mbox{\Hypertarget{fonctions_8c_af97c08a21ffaaf3024fafd53a1a87921}\label{fonctions_8c_af97c08a21ffaaf3024fafd53a1a87921}} 
-\index{fonctions.\+c@{fonctions.\+c}!modif\+\_\+elt@{modif\+\_\+elt}}
-\index{modif\+\_\+elt@{modif\+\_\+elt}!fonctions.\+c@{fonctions.\+c}}
-\subsubsection{\texorpdfstring{modif\+\_\+elt()}{modif\_elt()}}
-{\footnotesize\ttfamily void modif\+\_\+elt (\begin{DoxyParamCaption}\item[{\hyperlink{structcarte__t}{carte\+\_\+t}}]{t }\end{DoxyParamCaption})}
+\index{fonctions.c@{fonctions.c}!modif\_elt@{modif\_elt}}
+\index{modif\_elt@{modif\_elt}!fonctions.c@{fonctions.c}}
+\doxysubsubsection{\texorpdfstring{modif\_elt()}{modif\_elt()}}
+{\footnotesize\ttfamily void modif\+\_\+elt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcarte__t}{carte\+\_\+t}}}]{t }\end{DoxyParamCaption})}
 
 
 
@@ -333,9 +369,9 @@ Fonction qui permet de modifier une valeur dans une liste.
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{fonctions_8c_afeb0a238326c35ffd0b47cec84c2500f}\label{fonctions_8c_afeb0a238326c35ffd0b47cec84c2500f}} 
-\index{fonctions.\+c@{fonctions.\+c}!rand\+Range@{rand\+Range}}
-\index{rand\+Range@{rand\+Range}!fonctions.\+c@{fonctions.\+c}}
-\subsubsection{\texorpdfstring{rand\+Range()}{randRange()}}
+\index{fonctions.c@{fonctions.c}!randRange@{randRange}}
+\index{randRange@{randRange}!fonctions.c@{fonctions.c}}
+\doxysubsubsection{\texorpdfstring{randRange()}{randRange()}}
 {\footnotesize\ttfamily int rand\+Range (\begin{DoxyParamCaption}\item[{int}]{min,  }\item[{int}]{max,  }\item[{int}]{niveau }\end{DoxyParamCaption})}
 
 
@@ -344,19 +380,21 @@ Génère une valeur aléatoire parmi un intervalle. L\textquotesingle{}intervall
 
 
 \begin{DoxyParams}{Paramètres}
-{\em int} & min Borne inférieure de l\textquotesingle{}intervalle \\
+{\em min} & la borne inférieure de l\textquotesingle{}intervalle \\
 \hline
-{\em int} & max Borne supérieure de l\textquotesingle{}intervalle\\
+{\em max} & la borne supérieure de l\textquotesingle{}intervalle \\
+\hline
+{\em niveau} & le niveau de la carte \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
 la valeur sous forme d\textquotesingle{}un int 
 \end{DoxyReturn}
 \mbox{\Hypertarget{fonctions_8c_a6ecd5a0ef54f544dfdf23191050dac90}\label{fonctions_8c_a6ecd5a0ef54f544dfdf23191050dac90}} 
-\index{fonctions.\+c@{fonctions.\+c}!tire\+\_\+carte\+\_\+deck@{tire\+\_\+carte\+\_\+deck}}
-\index{tire\+\_\+carte\+\_\+deck@{tire\+\_\+carte\+\_\+deck}!fonctions.\+c@{fonctions.\+c}}
-\subsubsection{\texorpdfstring{tire\+\_\+carte\+\_\+deck()}{tire\_carte\_deck()}}
-{\footnotesize\ttfamily void tire\+\_\+carte\+\_\+deck (\begin{DoxyParamCaption}\item[{\hyperlink{structcarte__t}{carte\+\_\+t} $\ast$}]{cartes\mbox{[}$\,$\mbox{]},  }\item[{int}]{indice }\end{DoxyParamCaption})}
+\index{fonctions.c@{fonctions.c}!tire\_carte\_deck@{tire\_carte\_deck}}
+\index{tire\_carte\_deck@{tire\_carte\_deck}!fonctions.c@{fonctions.c}}
+\doxysubsubsection{\texorpdfstring{tire\_carte\_deck()}{tire\_carte\_deck()}}
+{\footnotesize\ttfamily void tire\+\_\+carte\+\_\+deck (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcarte__t}{carte\+\_\+t}} $\ast$}]{cartes\mbox{[}$\,$\mbox{]},  }\item[{int}]{indice }\end{DoxyParamCaption})}
 
 
 
@@ -364,26 +402,41 @@ tire des cartes au hasard dans le deck du joueur afin qu\textquotesingle{}il pui
 
 
 \begin{DoxyParams}{Paramètres}
-{\em $\ast$cartes\mbox{[}$\,$\mbox{]},tableau} & de pointeurs sur \hyperlink{structcarte__t}{carte\+\_\+t}, contiendra les cartes utilisées pendant le combat \\
+{\em $\ast$cartes\mbox{[}$\,$\mbox{]}} & le tableau de pointeurs sur \mbox{\hyperlink{structcarte__t}{carte\+\_\+t}}, contiendra les cartes utilisées pendant le combat \\
 \hline
-{\em indice,l\textquotesingle{}indice} & du tableau que l\textquotesingle{}on souhaite remplir \\
+{\em indice} & l\textquotesingle{}indice du tableau que l\textquotesingle{}on souhaite remplir \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{fonctions_8c_a485622b74a0c45d50fcf716490e5c1a7}\label{fonctions_8c_a485622b74a0c45d50fcf716490e5c1a7}} 
-\index{fonctions.\+c@{fonctions.\+c}!valeur\+\_\+carte@{valeur\+\_\+carte}}
-\index{valeur\+\_\+carte@{valeur\+\_\+carte}!fonctions.\+c@{fonctions.\+c}}
-\subsubsection{\texorpdfstring{valeur\+\_\+carte()}{valeur\_carte()}}
+\index{fonctions.c@{fonctions.c}!valeur\_carte@{valeur\_carte}}
+\index{valeur\_carte@{valeur\_carte}!fonctions.c@{fonctions.c}}
+\doxysubsubsection{\texorpdfstring{valeur\_carte()}{valeur\_carte()}}
 {\footnotesize\ttfamily int valeur\+\_\+carte (\begin{DoxyParamCaption}\item[{char}]{nom\mbox{[}\+T\+A\+I\+L\+L\+E\mbox{]} }\end{DoxyParamCaption})}
 
 
 
-Génère une valeur aléatoire parmi un intervalle défini pour chaque carte grâce à la fonction \hyperlink{fonctions_8c_afeb0a238326c35ffd0b47cec84c2500f}{rand\+Range()} 
+Génère une valeur aléatoire parmi un intervalle défini pour chaque carte grâce à la fonction \mbox{\hyperlink{fonctions_8c_afeb0a238326c35ffd0b47cec84c2500f}{rand\+Range()}} 
 
 
 \begin{DoxyParams}{Paramètres}
-{\em nom,le} & nom de la carte dont on veut générer une valeur\\
+{\em nom} & le nom de la carte dont on veut générer une valeur\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
 la valeur sous forme d\textquotesingle{}un int 
 \end{DoxyReturn}
+\mbox{\Hypertarget{fonctions_8c_a76e5d57f22e07a46e0ec392560f9b26e}\label{fonctions_8c_a76e5d57f22e07a46e0ec392560f9b26e}} 
+\index{fonctions.c@{fonctions.c}!valeur\_elt@{valeur\_elt}}
+\index{valeur\_elt@{valeur\_elt}!fonctions.c@{fonctions.c}}
+\doxysubsubsection{\texorpdfstring{valeur\_elt()}{valeur\_elt()}}
+{\footnotesize\ttfamily void valeur\+\_\+elt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcarte__t}{carte\+\_\+t}} $\ast$$\ast$}]{t }\end{DoxyParamCaption})}
+
+
+
+Fonction qui permet de prendre une valeur de la liste. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$$\ast$t} & un pointeur qui permet de prendre une valeur dans la liste \\
+\hline
+\end{DoxyParams}

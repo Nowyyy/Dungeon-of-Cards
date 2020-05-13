@@ -1,7 +1,7 @@
 /**
 *\file sauvegardefonc.c
 *\brief Fichier qui référence les différentes fonctions de sauvegarde
-*\author {Malabry Thomas Aurélien Tudoret Jourry Axel Marin Timothée}
+*\author Malabry Thomas Aurélien Tudoret Jourry Axel Marin Timothée
 *\version 1.0
 *\date 13/05/2020
 */
@@ -36,8 +36,8 @@ int save_existe(){
 //Ecrit par Thomas Malabry. Ajouts par Aurélien Tudoret
 /**
 *\fn void savecarte (char *path, int liste)
-*\param *path, Contient le fichier où l'on va sauvegarder les cartes
-*\param liste, la liste de carte a sauvegarder
+*\param *path Contient le fichier où l'on va sauvegarder les cartes
+*\param liste la liste de carte a sauvegarder
 *\brief Fonction qui permet de sauvegarde toutes les données d'une carte
 */
 void savecarte (char *path, int liste){
@@ -70,8 +70,8 @@ void savecarte (char *path, int liste){
 //Ecrit par Thomas Malabry. Ajouts par Aurélien Tudoret et Timothée Marin
 /**
 *\fn void readcarte(char *path_file, int liste)
-*\param *path_file , Contient le fichier où l'on va sauvegarder les cartes
-*\param liste , la liste de carte a sauvegarder
+*\param *path_file Contient le fichier où l'on va sauvegarder les cartes
+*\param liste la liste de carte a sauvegarder
 *\brief Fonction qui permet de lire une carte
 */
 void readcarte(char *path_file, int liste){
@@ -108,8 +108,8 @@ void readcarte(char *path_file, int liste){
 //Ecrit par Thomas Malabry. Ajouts par Aurélien Tudoret
 /**
 *\fn void saveperso (perso_t *perso)
-*\param *perso, Pour savoir les données du perso à sauvegarder
-*\brief Fonction qui permet de sauvegarder les données du personnage
+*\param *perso Pour savoir les données du perso à sauvegarder
+*\brief Fonction permet de sauvegarder les données du personnage
 
 */
 void saveperso (perso_t *perso){
@@ -137,7 +137,7 @@ void saveperso (perso_t *perso){
 //Ecrit par Thomas Malabry. Ajouts par Aurélien Tudoret
 /**
 *\fn void readperso(perso_t *perso)
-*\param *perso Pour savoir les données du perso à sauvegarder
+*\param *perso savoir les données du perso à sauvegarder
 *\brief Fonction qui permet de lire les données du personnage
 */
 void readperso(perso_t*perso){

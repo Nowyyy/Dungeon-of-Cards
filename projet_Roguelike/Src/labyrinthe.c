@@ -29,11 +29,11 @@
 /**
 *\fn void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu, int *compte_ennemi, int *ennemi_max)
 
-*\param images[], contient toutes les images utilisées sauf celle du personnage
-*\param *pers, pointeur sur la structure contenant le personnage
-*\param *rendu, le renderer sur lequel on dessine
-*\param *compte_ennemi est un compteur des ennemis morts
-*\param *ennemi_max est le nombre d'ennemi max.
+*\param images[] contient toutes les images utilisées sauf celle du personnage
+*\param *pers le pointeur sur la structure contenant le personnage
+*\param *rendu le renderer sur lequel on dessine
+*\param *compte_ennemi un compteur des ennemis morts
+*\param *ennemi_max le nombre d'ennemi max.
 
 *\brief Permet de charger toutes les images et de les ranger dans les structures correspondantes
 
@@ -108,12 +108,12 @@ void charge_toutes_textures(image_t images[], perso_t *pers, SDL_Renderer *rendu
 /**
 *\fn void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rendu, image_t images[], mini_map_t map, loot_carte_t loot)
 
-*\param pers, la structure contenant le personnage
-*\param *salle, la salle actuelle
-*\param *rendu, le renderer sur lequel on dessine
-*\param images[], contient toutes les images utilisées sauf celle du personnage
-*\param map, la structure contenant la mini map
-*\param loot, structure permettant l'affichage d'un loot effectué
+*\param pers la structure contenant le personnage
+*\param *salle la salle actuelle
+*\param *rendu le renderer sur lequel on dessine
+*\param images[] contient toutes les images utilisées sauf celle du personnage
+*\param map la structure contenant la mini map
+*\param loot la structure permettant l'affichage d'un loot effectué
 
 *\brief Permet d'afficher une salle, le personnage et si on est dans la premiere salle, les instructions et commandes du jeu
 
@@ -174,8 +174,8 @@ void affichage_salle_personnage(perso_t pers, salle_t *salle, SDL_Renderer *rend
 /**
 *\fn void initialise_salles(salle_t tab[], int taille)
 
-*\param tab, contient les différentes salles
-*\param taille, taille du tableau
+*\param tab contient les différentes salles
+*\param taille la taille du tableau
 
 *\brief remplit les tableaux des salles, initialise les variables
 */
@@ -210,10 +210,10 @@ void initialise_salles(salle_t tab[], int taille){
 /**
 *\fn void cree_liaison(salle_t tab[], int salle1, int salle2, int porteS1)
 
-*\param tab, contient les différentes salles
-*\param salle1, la première salle pour laquelle on effectue les liaisons
-*\param salle2, la seconde salle pour laquelle on effectue les liaisons
-*\param porteS1, la porte de la première salle à laquelle on va rattacher la seconde
+*\param tab contient les différentes salles
+*\param salle1 la première salle pour laquelle on effectue les liaisons
+*\param salle2 la seconde salle pour laquelle on effectue les liaisons
+*\param porteS1 la porte de la première salle à laquelle on va rattacher la seconde
 
 *\brief Créée les liaisons entre deux salles enfonction de la porte libre sur la première
 */
@@ -241,10 +241,10 @@ void cree_liaison(salle_t tab[], int salle1, int salle2, int porteS1){
 /**
 *\fn int tirage_au_sort_porte_a_creer(int indice, int taille, salle_t salles[], int tentatives)
 
-*\param indice, l'indice de la salle courante
-*\param taille, la taille d'une ligne ou d'une colonne du tableau
-*\param salles[], tableau des salles du labyrinthe
-*\param tentatives, le nombres d'essais pour trouver une liaison avec le jeu de données actuelles
+*\param indice l'indice de la salle courante
+*\param taille la taille d'une ligne ou d'une colonne du tableau
+*\param salles[] le tableau des salles du labyrinthe
+*\param tentatives le nombres d'essais pour trouver une liaison avec le jeu de données actuelles
 
 *\return la direction valide dans laquelle créée une porte selon l'emplacement de la salle actuelle
 
@@ -310,9 +310,9 @@ int tirage_au_sort_porte_a_creer(int indice, int taille, salle_t salles[], int t
 /**
 *\fn int indice_salle(int salle_actuelle, int porte_salle_actuelle, int taille)
 
-*\param salle_actuelle, l'indice de la salle ou l'on se trouve actuellement
-*\param porte_salle_actuelle, la porte par laquelle on passe pour rejoindre une autre salle
-*\param taille, la taille d'une ligne ou d'une colonne du tableau
+*\param salle_actuelle l'indice de la salle ou l'on se trouve actuellement
+*\param porte_salle_actuelle la porte par laquelle on passe pour rejoindre une autre salle
+*\param taille la taille d'une ligne ou d'une colonne du tableau
 
 *\return l'indice de la salle à lier avec la salle courante
 
@@ -338,11 +338,11 @@ int indice_salle(int salle_actuelle, int porte_salle_actuelle, int taille){
 /**
 *\fn int salles_compatibles(int salle1, int porte1, int salle2, int porte2, salle_t salles[])
 
-*\param salle1, la première salle qu'on cherche a lier
-*\param porte1, la porte de la salle1 pour laquelle on cherche une correspondance dans la salle 2
-*\param salle2, la seconde salle qu'on cherche a lier
-*\param porte2, la porte de la salle2 pour laquelle on cherche une correspondance dans la salle 1
-*\param salles[], tableau des différentes salles
+*\param salle1 la première salle qu'on cherche a lier
+*\param porte1 la porte de la salle1 pour laquelle on cherche une correspondance dans la salle 2
+*\param salle2 la seconde salle qu'on cherche a lier
+*\param porte2 la porte de la salle2 pour laquelle on cherche une correspondance dans la salle 1
+*\param salles[] le tableau des différentes salles
 *\return True si les salles sont compatibles, false sinon
 
 *\brief Permet de savoir si deux salles sont compatibles entre elles
@@ -370,9 +370,9 @@ int salles_compatibles(int salle1, int porte1, int salle2, int porte2, salle_t s
 /**
 *\fn int creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer)
 
-*\param salles[], le tableau contenant les salles du jeu
-*\param taille, la taille d'une ligne ou d'une colonne du tableau
-*\param nb_salles_a_creer, le nombre de salles que l'on souhaite pouvoir parcourir dans le donjon
+*\param salles[] le tableau contenant les salles du jeu
+*\param taille la taille d'une ligne ou d'une colonne du tableau
+*\param nb_salles_a_creer le nombre de salles que l'on souhaite pouvoir parcourir dans le donjon
 
 *\brief créer un labyrinthe de salles connectées entres elles, généré aléatoirement
 
@@ -468,13 +468,13 @@ int creation_labyrinthe(salle_t salles[], int taille, int nb_salles_a_creer){
 /**
 *\fn void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Renderer *rendu, image_t *counter, int *compte_ennemi, int *ennemi_max, int *compt_ennold)
 
-*\param *pers, la structure contenant le personnage
-*\param *pv, la structure contenant la texture du HUD représentant les PV du personnage
-*\param *etage, la structure contenant la texture du HUD représentant l'étage où se situe le personnage
-*\param *rendu, le renderer sur lequel on dessine
-*\param *ennemi_max est le nombre d'ennemi max.
-*\param *compte_ennemi est un compteur des ennemis morts
-*\param *compt_ennold valeur d'un ancien compteur ennemis
+*\param *pers la structure contenant le personnage
+*\param *pv la structure contenant la texture du HUD représentant les PV du personnage
+*\param *etage la structure contenant la texture du HUD représentant l'étage où se situe le personnage
+*\param *rendu le renderer sur lequel on dessine
+*\param *ennemi_max le nombre d'ennemi max.
+*\param *compte_ennemi un compteur des ennemis morts
+*\param *compt_ennold la valeur d'un ancien compteur ennemis
 
 *\brief Permet de mettre à jour le HUD selon que les PDV ou l'étage soit différents
 */
@@ -506,7 +506,7 @@ void modifie_texture_hud(perso_t *pers, image_t *pv, image_t *etage, SDL_Rendere
 /**
 *\fn int nb_salles_par_etage(int etage)
 
-*\param etage, l'étage où se situe le joueur
+*\param etage l'étage où se situe le joueur
 
 *\return le nombres de salles à créer pour cet étage
 *\brief Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...
@@ -528,13 +528,13 @@ int nb_salles_par_etage(int etage){
 /**
 *\fn void vers_ecran_combat(SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], touches_t *clavier, perso_t *pers, ennemi_t *ennemi,  Mix_Music *musics[NB_MUSIC], int *etat)
 
-*\param *rendu, le renderer sur lequel on dessine
-*\param *sounds[NB_SON], tableau contenant les sons
-*\param *musics[NB_MUSIC], tableau contenant les musiques
-*\param *pers, la structure du personnage
-*\param *clavier, structure représentant les touchs du clavier enfoncées par le joueur
-*\param *ennemi, l'ennemi contre lequel le joueur va combattre
-*\param etat, état de la collision avec l'ennemi
+*\param *rendu le renderer sur lequel on dessine
+*\param *sounds[NB_SON] le tableau contenant les sons
+*\param *musics[NB_MUSIC] le tableau contenant les musiques
+*\param *pers la structure du personnage
+*\param *clavier la structure représentant les touchs du clavier enfoncées par le joueur
+*\param *ennemi l'ennemi contre lequel le joueur va combattre
+*\param etat l'état de la collision avec l'ennemi
 
 *\brief permet d'effectuer l'animation d'entrée en combat, l'arrêt des sons, la réinitialisation du tableau des touches et envoie le joueur vers le combat au tour par tour
 */
@@ -552,11 +552,11 @@ void vers_ecran_combat(SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], touches_t
 //Ecrit par Thomas Malabry.
 /**
 *\fn void check_ennemi(int *ennemi_max, int *compte_ennemi, salle_t salles[], int salle_courante, perso_t *pers)
-*\param *ennemi_max est le nombre d'ennemi max.
-*\param *compte_ennemi est un compteur des ennemis morts
-*\param salles[], le tableau contenant les salles du jeu
-*\param salle_courante Permet de prendre la salle dans laquelle le personnage ce trouve
-*\param *pers, la structure du personnage
+*\param *ennemi_max le nombre d'ennemi max.
+*\param *compte_ennemi un compteur des ennemis morts
+*\param salles[] le tableau contenant les salles du jeu
+*\param salle_courante permet de prendre la salle dans laquelle le personnage ce trouve
+*\param *pers la structure du personnage
 
 *\brief permet d'ajouter des pv au joueur selon le nombre d'ennemi tué.
 */
@@ -587,7 +587,7 @@ void check_ennemi(int *ennemi_max, int *compte_ennemi, salle_t salles[], int sal
 /**
 *\fn void init_tableau_images(image_t images[])
 
-*\param images[], le tableau d'images
+*\param images[] le tableau d'images
 
 *\brief met à NULL tous les pointeurs du tableau
 */
@@ -617,7 +617,7 @@ int choix_boss(){
 /**
 *\fn int choix_monstre(int etage)
 
-*\param etage, l'étage actuel où se situe le joueur
+*\param etage l'étage actuel où se situe le joueur
 *\return Le monstre choisi
 *\brief Permet de choisir le monstre qui peuplera l'étage (sauf certains monstres à certains étages qui ne ressortent pas assez sur les textures)
 */
@@ -636,13 +636,13 @@ int choix_monstre(int etage){
 /**
 *\fn void boucle_labyrinthe(int *continuer, int *etat, SDL_Renderer *rendu, Mix_Chunk *sounds[NB_SON], Mix_Music *musics[NB_MUSIC], perso_t *pers, TTF_Font *police)
 
-*\param *continuer, pointeur sur variable permettant de savoir si le joueur souhaite quitter le programme
-*\param *etat, pointeur sur variable permettant de connaître l'écran dans lequel on est
-*\param *rendu, le renderer sur lequel on dessine
-*\param *sounds[NB_SON], tableau contenant les sons
-*\param *musics[NB_MUSIC], tableau contenant les musiques
-*\param *pers, la structure du personnage
-*\param *police, la police utilisée pour écrire du texte sur l'écran de jeu
+*\param *continuer le pointeur sur variable permettant de savoir si le joueur souhaite quitter le programme
+*\param *etat le pointeur sur variable permettant de connaître l'écran dans lequel on est
+*\param *rendu le renderer sur lequel on dessine
+*\param *sounds[NB_SON] le tableau contenant les sons
+*\param *musics[NB_MUSIC] le tableau contenant les musiques
+*\param *pers la structure du personnage
+*\param *police la police utilisée pour écrire du texte sur l'écran de jeu
 
 *\brief Permet de gèrer toutes la partie labyrinthe, création, destruction, deplacement personnage...
 */

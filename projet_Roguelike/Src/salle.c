@@ -1,7 +1,7 @@
 /**
  *\file salle.c
  *\brief Programme qui créé une salle et l'affiche.
- *\author {Axel Jourry, Aurélien Tudoret}
+ *\author Malabry Thomas Aurélien Tudoret Jourry Axel Marin Timothée
  *\version 1.0
  *\date 13/05/2020
  */
@@ -15,7 +15,7 @@
 //Ecrit par Axel Jourry
 /**
  *\fn void init_salle(int salle[TAILLE_SALLE][TAILLE_SALLE])
- *\param salle[TAILLE_SALLE][TAILLE_SALLE] est le tableau de TAILLE_SALLE qui comprend la salle
+ *\param salle[TAILLE_SALLE][TAILLE_SALLE] le tableau de TAILLE_SALLE qui comprend la salle
  *\brief fonction qui génère une salle en un tableau
  */
 void init_salle(int salle[TAILLE_SALLE][TAILLE_SALLE]){
@@ -48,8 +48,8 @@ void init_salle(int salle[TAILLE_SALLE][TAILLE_SALLE]){
 //Ecrit par Axel Jourry
 /**
  *\fn void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction)
- *\param salle[TAILLE_SALLE][TAILLE_SALLE] est le tableau de TAILLE_SALLE qui comprend la salle
- *\param direction correspond à un nombre entre 0 et 3 indiquant quel mur est seléctionné.
+ *\param salle[TAILLE_SALLE][TAILLE_SALLE] le tableau de TAILLE_SALLE qui comprend la salle
+ *\param la direction correspond à un nombre entre 0 et 3 indiquant quel mur est seléctionné.
  *\brief fonction qui ajoute une porte à un côté du carré
 
  */
@@ -103,9 +103,9 @@ void ajout_porte_salle(int salle[TAILLE_SALLE][TAILLE_SALLE], int direction){
 /**
  *\fn void afficher_salle(salle_t *salle, SDL_Renderer *rendu, image_t texture[])
 
- *\param *salle est une salle comportant le tableau a afficher
- *\param *rendu, le renderer sur lequel on dessine
- *\param texture[], contient toutes les images utilisées sauf celle du personnage
+ *\param *salle une salle comportant le tableau a afficher
+ *\param *rendu le renderer sur lequel on dessine
+ *\param texture[] contient toutes les images utilisées sauf celle du personnage
 
  *\brief fonction qui génère une salle en un tableau
 
@@ -135,8 +135,8 @@ void afficher_salle(salle_t *salle, SDL_Renderer *rendu, image_t texture[]){
 /**
 *\fn void rempli_tableau_murs_portes(salle_t salle[], int indiceT)
 
-*\param salle[], la salle pour laquelle on va completer les tableaux
-*\param indiceT, indice du tableau
+*\param salle[] la salle pour laquelle on va completer les tableaux
+*\param indiceT indice du tableau
 
 *\brief rempli les tableaux des murs et des portes de la salle afin de pouvoir gérer les collisions plus tard
 */
@@ -176,7 +176,7 @@ void rempli_tableau_murs_portes(salle_t salle[], int indiceT){
 /**
 *\fn int inverse_porte(int porte)
 
-*\param porte, la porte que l'on souhaite inverser
+*\param porte la porte que l'on souhaite inverser
 
 *\return l'inverse de la porte passée en paramètre
 
@@ -201,8 +201,8 @@ int inverse_porte(int porte){
 /**
 *\fn void textures_aleatoires(salle_t salles[], int taille)
 
-*\param salles[], le tableau contenant les salles du labyrinthe
-*\param taille, la taille de la salle
+*\param salles[] le tableau contenant les salles du labyrinthe
+*\param taille la taille de la salle
 
 *\brief Permet de placer des textures différentes afin de varier le visuel des salles
 */
@@ -241,11 +241,11 @@ void textures_aleatoires(salle_t salles[], int taille){
 /**
 *\fn void place_monstre_coffre_boss(salle_t tab[], int taille, int type_ennemi, SDL_Renderer *rendu, int *ennemi_max)
 
-*\param tab[], tableau contenant les salles du labyrinthe
-*\param taille, taille du tableau
-*\param type_ennemi, type de l'ennemi
-*\param *rendu, le renderer sur lequel on dessine
-*\param *ennemi_max, est le nombre d'ennemi max.
+*\param tab[] le tableau contenant les salles du labyrinthe
+*\param taille la taille du tableau
+*\param type_ennemi le type de l'ennemi
+*\param *rendu le renderer sur lequel on dessine
+*\param *ennemi_max le nombre d'ennemi max.
 
 *\brief rempli les salles de monstres, de coffre
 */
@@ -302,10 +302,10 @@ void place_monstre_coffre_boss(salle_t tab[], int taille, int type_ennemi, SDL_R
 
 //Ecrit par Aurélien Tudoret
 /**
-*\fn void creation_mini_map(int taille, int indice, mini_map_t *map)
+*\fn void creation_mini_map(int taille, mini_map_t *map)
 
-*\param taille, la taille d'un côté du labyrinthe
-*\param *map, un pointeur sur la minimap que l'on rempli
+*\param taille la taille d'un côté du labyrinthe
+*\param *map un pointeur sur la minimap que l'on rempli
 
 *\brief Créée et initialise la mini map avec toutes les salles considerées comme non-découvertes
 */
@@ -341,10 +341,10 @@ void creation_mini_map(int taille, mini_map_t *map){
 /**
 *\fn void ajoute_salle_decouverte(mini_map_t *map, salle_t salles[], int indice, int *salle_pred)
 
-*\param *map, un pointeur sur la minimap que l'on modifie
-*\param salles[], le tableau des salles du labyrinthe
-*\param indice, la salle actuelle dans le tableau de salles
-*\param *salle_pred, pointeur sur un entier stockant l'indice de la salle précédente
+*\param *map un pointeur sur la minimap que l'on modifie
+*\param salles[] le tableau des salles du labyrinthe
+*\param indice la salle actuelle dans le tableau de salles
+*\param *salle_pred le pointeur sur un entier stockant l'indice de la salle précédente
 
 *\bief Ajoute la salle où se situe le joueur dans le tableau de salles découvertes
 */
@@ -364,10 +364,10 @@ void ajoute_salle_decouverte(mini_map_t *map, salle_t salles[], int indice, int 
 /**
 *\fn void ajoute_ennemi(ennemi_t **ennemi, int type, SDL_Renderer *rendu, int etage)
 
-*\param **ennemi, pointeur sur pointeur de type ennemi_t, l'ennemi que l'on va créer
-*\param type, le type d'ennemi que l'en veut créer.
-*\param *rendu, le renderer sur lequel on dessine
-*\param etage, l'étage où se situe le joueur
+*\param **ennemi le pointeur sur pointeur de type ennemi_t, l'ennemi que l'on va créer
+*\param type le type d'ennemi que l'en veut créer.
+*\param *rendu le renderer sur lequel on dessine
+*\param etage l'étage où se situe le joueur
 
 *\brief créer un ennemi à partir d'un type donné
 */
@@ -387,7 +387,7 @@ void ajoute_ennemi(ennemi_t **ennemi, int type, SDL_Renderer *rendu, int etage){
 /**
 *\fn void placer_monstre(ennemi_t *ennemi)
 
-*\param *ennemi, l'ennemi à modifier
+*\param *ennemi l'ennemi à modifier
 
 *\brief place l'ennemi de façon à ne pas bloquer les portes
 */
@@ -411,12 +411,12 @@ void placer_monstre(ennemi_t *ennemi){
 /**
 *\fn creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int nb_ennemi, int type, SDL_Renderer *rendu, int etage)
 
-*\param **ennemi, pointeur sur pointeur de type ennemi_t, l'ennemi que l'on va peut-être créer
-*\param **ennemi2, pointeur sur pointeur de type ennemi_t, l'ennemi que l'on va peut-être créer
-*\param nb_ennemi, peremet de savoir combien d'ennemis sont à créer
-*\param type, le type d'ennemi que l'en veut créer.
-*\param *rendu, le renderer sur lequel on dessine
-*\param etage, l'étage où se situe le joueur
+*\param **ennemi le pointeur sur pointeur de type ennemi_t, l'ennemi que l'on va peut-être créer
+*\param **ennemi2 le pointeur sur pointeur de type ennemi_t, l'ennemi que l'on va peut-être créer
+*\param nb_ennemi permet de savoir combien d'ennemis sont à créer
+*\param type le type d'ennemi que l'en veut créer.
+*\param *rendu le renderer sur lequel on dessine
+*\param etage l'étage où se situe le joueur
 
 *\brief créer un/des ennemi à partir d'un type donné
 */
@@ -447,9 +447,9 @@ void creer_ennemi_pointeur(ennemi_t **ennemi, ennemi_t **ennemi2, int nb_ennemi,
 /**
 *\fn void affiche_mini_map(mini_map_t map, salle_t salle, SDL_Renderer *rendu)
 
-*\param map, la structure contenant la minimap
-*\param salle, la salle dans laquelle se situe le joueur
-*\param *rendu, le renderer sur lequel on dessine
+*\param map la structure contenant la minimap
+*\param salle la salle dans laquelle se situe le joueur
+*\param *rendu le renderer sur lequel on dessine
 
 *\brief effectue l'affichage à l'écran de la minimap
 */
@@ -486,11 +486,11 @@ void affiche_mini_map(mini_map_t map, salle_t salle, SDL_Renderer *rendu){
 
 //Ecrit par Aurélien Tudoret. Ajouts par Thomas Malabry
 /**
-*\fn ennemi_selon_etage
+*\fn ennemi_selon_etage(int etage, int boss, ennemi_t *ennemi)
 
-*\param etage, l'étage où se situe le joueur
-*\param boss, si l'ennemi que l'on conçoit est un boss ou non
-*\param *ennemi, l'ennemi pour lequel on donne les valeurs
+*\param etage l'étage où se situe le joueur
+*\param boss si l'ennemi que l'on conçoit est un boss ou non
+*\param *ennemi l'ennemi pour lequel on donne les valeurs
 
 *\brief Donne des points de vie et dommages différents selon l'étage et le style d'ennemi
 */

@@ -1,7 +1,7 @@
 /**
 *\file fonctions.c
 *\brief Fichier référençant toutes les fonctions du système de combat.
-*\author {Malabry Thomas Aurélien Tudoret Jourry Axel Marin Timothée}
+*\author Malabry Thomas Aurélien Tudoret Jourry Axel Marin Timothée
 *\version 1.0
 *\date 13/05/2020
 */
@@ -42,7 +42,7 @@ void detruire_carte(carte_t ** carte)
 //Ecrit par Aurélien Tudoret
 /**
 *\fn void detruire_liste(int liste)
-*\param liste, le numéro de la liste que l'on veut supprimer
+*\param liste le numéro de la liste que l'on veut supprimer
 *\brief Vide puis détruit la liste passée en paramètre
 */
 void detruire_liste(int liste){
@@ -69,7 +69,7 @@ void detruire_liste(int liste){
 /**
 *\fn void ajout_carte_collec(carte_t *carte)
 
-*\param *carte, la carte pour laquelle on cherche à savoir si elle existe dans la collection du joueur
+*\param *carte la carte pour laquelle on cherche à savoir si elle existe dans la collection du joueur
 
 *\brief ajoute une carte à la collection du joueur s'il ne la possède pas déjà, ou s'il n'en possède aucune
 */
@@ -101,7 +101,7 @@ void ajout_carte_collec(carte_t *carte){
 /**
 *\fn void ajout_carte_deck(carte_t *tampon)
 
-*\param *tampon, la carte qui sera ajoutée au deck
+*\param *tampon la carte qui sera ajoutée au deck
 
 *\brief ajoute une carte au deck du joueur
 */
@@ -141,9 +141,9 @@ void ajout_carte_deck(carte_t *tampon){
 /**
 *\fn int randRange(int min, int max, int niveau)
 
-*\param int min, Borne inférieure de l'intervalle
-*\param int max, Borne supérieure de l'intervalle
-*\param niveau, le niveau de la carte
+*\param min la borne inférieure de l'intervalle
+*\param max la borne supérieure de l'intervalle
+*\param niveau le niveau de la carte
 *\brief Génère une valeur aléatoire parmi un intervalle. L'intervalle est modifié en fonction du niveau de la carte.
 *\return la valeur sous forme d'un int
 */
@@ -171,7 +171,7 @@ int randRange(int min, int max, int niveau){
 /**
 *\fn int valeur_carte(char nom[TAILLE])
 
-*\param nom, le nom de la carte dont on veut générer une valeur
+*\param nom le nom de la carte dont on veut générer une valeur
 
 *\brief Génère une valeur aléatoire parmi un intervalle défini pour chaque carte grâce à la fonction randRange()
 *\return la valeur sous forme d'un int
@@ -275,8 +275,8 @@ void transfert_mort(){
 // Primitives de manipulation de la liste
 //Ecrit par Timothée Marin
 /**
-*\fn void choix_liste()
-*\param choix, 0 = COLLECTION et 1 = DECK. Les valeurs sont définies dans constantes.h
+*\fn void choix_liste(int choix)
+*\param choix 0 = COLLECTION et 1 = DECK. Les valeurs sont définies dans constantes.h
 *\brief Selection entre le deck et la collection
 */
 void choix_liste(int choix){
@@ -384,7 +384,7 @@ void suivant(){
 /**
 *\fn void valeur_elt(carte_t ** t)
 *\brief Fonction qui permet de prendre une valeur de la liste
-*\param **t, un pointeur qui permet de prendre une valeur dans la liste
+*\param **t un pointeur qui permet de prendre une valeur dans la liste
 */
 void valeur_elt(carte_t ** t){
 	if (!hors_liste())
@@ -396,7 +396,7 @@ void valeur_elt(carte_t ** t){
 /**
 *\fn void modif_elt(carte_t t)
 *\brief Fonction qui permet de modifier une valeur dans une liste
-*\param t, une variable qui permet de modifier une valeur dans la liste
+*\param t une variable qui permet de modifier une valeur dans la liste
 */
 void modif_elt(carte_t t){
 	if (!hors_liste())
@@ -430,7 +430,7 @@ void oter_elt(){
 /**
 *\fn void ajout_droit(carte_t * t)
 *\brief Fonction qui permet d'ajouter un objet après l'objet sur lequel l'utilisteur se trouve
-*\param *t, un pointeur qui va contenir une valeur qui va être rajouté
+*\param *t un pointeur qui va contenir une valeur qui va être rajouté
 */
 void ajout_droit(carte_t * t){
 	element_t* nouv;
@@ -451,7 +451,7 @@ void ajout_droit(carte_t * t){
 /**
 *\fn void ajout_gauche(carte_t * t)
 *\brief Fonction qui permet d'ajouter un objet avant l'objet sur lequel l'utilisteur se trouve
-*\param *t, un pointeur qui va contenir une valeur qui va être rajouté
+*\param *t un pointeur qui va contenir une valeur qui va être rajouté
 */
 void ajout_gauche(carte_t * t){
 	element_t* nouv;
@@ -472,10 +472,10 @@ void ajout_gauche(carte_t * t){
 /**
 *\fn carte_t * creer_carte(char *nom, type_carte type, int valeur, int consommable, char *path)
 *\brief permet de créer une carte selon différentes caractéristiques données
-*\param *nom, le nom de la carte
-*\param type, le type de la carte
-*\param valeur, la valeur de la force de la carte
-*\param path, le chemin de la carte
+*\param *nom le nom de la carte
+*\param type le type de la carte
+*\param valeur la valeur de la force de la carte
+*\param path le chemin de la carte
 *\return un pointeur sur une variable structure carte_t
 */
 carte_t * creer_carte(char *nom, type_carte type, int valeur, int consommable, char *path)
@@ -501,16 +501,16 @@ carte_t * creer_carte(char *nom, type_carte type, int valeur, int consommable, c
 /**
 *\fn void init_ennemi_valeurs(ennemi_t *ennemi, char *nom, int w, int h, int nb_sprites, int gap, float w2, float h2, char *path, SDL_Renderer *rendu)
 
-*\param *ennemi, l'ennemi dont on rempli la structure
-*\param *nom, le nom du monstre
-*\param w, la taille du sprite en largeur
-*\param h, la taille du sprite en hauteur
-*\param nb_sprites, le nombre de sprites par lignes
-*\param gap, l'espace entre deux sprites sur l'image globale
-*\param w2, la taille en largeur que l'on veut pour le sprite
-*\param h2, la taille en hauteur que l'on veut pour le sprite
-*\param *path, le chemin vers l'image de l'ennemi
-*\param *rendu, le renderer sur lequel on dessine
+*\param *ennemi l'ennemi dont on rempli la structure
+*\param *nom le nom du monstre
+*\param w la taille du sprite en largeur
+*\param h la taille du sprite en hauteur
+*\param nb_sprites le nombre de sprites par lignes
+*\param gap l'espace entre deux sprites sur l'image globale
+*\param w2 la taille en largeur que l'on veut pour le sprite
+*\param h2 la taille en hauteur que l'on veut pour le sprite
+*\param *path le chemin vers l'image de l'ennemi
+*\param *rendu le renderer sur lequel on dessine
 
 *\brief donne à un ennemi les valeurs correspondant à ses sprites
 */
@@ -534,12 +534,12 @@ void init_ennemi_valeurs(ennemi_t *ennemi, char *nom, int w, int h, int nb_sprit
 /**
 *\fn ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type, SDL_Renderer *rendu)
 *\brief permet de créer un ennemi selon plusieurs caractéristiques
-*\param pv, point de vie de l'ennemi
-*\param vitesse, vitesse de l'ennemi
-*\param attaque, attaque de l'ennemi
-*\param defense, defense de l'ennemi
-*\param type, type de l'ennemi
-*\param *rendu, le renderer sur lequel on dessine
+*\param pv les points de vie de l'ennemi
+*\param vitesse la vitesse de l'ennemi
+*\param attaque l'attaque de l'ennemi
+*\param defense la defense de l'ennemi
+*\param type le type de l'ennemi
+*\param *rendu  le renderer sur lequel on dessine
 *\return un pointeur sur une variable structure ennemi_t
 */
 ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type, SDL_Renderer *rendu)
@@ -616,7 +616,7 @@ ennemi_t * creer_ennemi(int pv, int vitesse, int attaque, int defense, int type,
 /**
 *\fn carte_t* generer_carte(int etage)
 *\brief permet de créer une carte au hasard, plus ou moins forte selon l'étage
-*\param etage l'étage actuel qui détermine le niveau de la carte
+*\param l'etage l'étage actuel qui détermine le niveau de la carte
 *\return un carte_t*
 */
 carte_t * generer_carte(int etage){
@@ -756,8 +756,8 @@ void detruire_ennemi(ennemi_t ** ennemi)
 /**
 *\fn void tire_carte_deck(carte_t *cartes[], int indice)
 
-*\param *cartes[], tableau de pointeurs sur carte_t, contiendra les cartes utilisées pendant le combat
-*\param indice, l'indice du tableau que l'on souhaite remplir
+*\param *cartes[] le tableau de pointeurs sur carte_t, contiendra les cartes utilisées pendant le combat
+*\param indice l'indice du tableau que l'on souhaite remplir
 
 *\brief tire des cartes au hasard dans le deck du joueur afin qu'il puisse les utiliser au combat
 */

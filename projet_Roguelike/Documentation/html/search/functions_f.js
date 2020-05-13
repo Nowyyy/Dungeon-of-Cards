@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['salles_5fcompatibles',['salles_compatibles',['../labyrinthe_8c.html#ad82ec89667610a13923d806c205b9e46',1,'labyrinthe.c']]],
-  ['save_5fexiste',['save_existe',['../sauvegardefonc_8c.html#a686c37ea6237c0fef16c1456f3b6dcdc',1,'sauvegardefonc.c']]],
-  ['savecarte',['savecarte',['../sauvegardefonc_8c.html#a35ea2571d8f77ad067c3d99ac3389137',1,'sauvegardefonc.c']]],
-  ['saveperso',['saveperso',['../sauvegardefonc_8c.html#adfffdd5ff305cb709114289a15cfbc30',1,'sauvegardefonc.c']]],
-  ['suivant',['suivant',['../fonctions_8c.html#ad99c86c7caff6844bb873680d5e9f26b',1,'fonctions.c']]]
+  ['randrange_359',['randRange',['../fonctions_8c.html#afeb0a238326c35ffd0b47cec84c2500f',1,'fonctions.c']]],
+  ['range_5fcarte_5fdeck_360',['range_carte_deck',['../combat__tour__par__tour_8c.html#afc01f06eb5ec7b03ffc02f5e1e9ba70c',1,'combat_tour_par_tour.c']]],
+  ['range_5fcarte_5ftire_5fnouvelles_361',['range_carte_tire_nouvelles',['../combat__tour__par__tour_8c.html#a99bef6ca6e8ff2998af62f6790907a51',1,'combat_tour_par_tour.c']]],
+  ['readcarte_362',['readcarte',['../sauvegardefonc_8c.html#a3ff600f5315973bb0d73191b277bc6b8',1,'sauvegardefonc.c']]],
+  ['readperso_363',['readperso',['../sauvegardefonc_8c.html#a7434e7a2ba208daf87b0eb164465743b',1,'sauvegardefonc.c']]],
+  ['rempli_5ftableau_5fmurs_5fportes_364',['rempli_tableau_murs_portes',['../salle_8c.html#aede6ff0302858d4beacbb91652be15c3',1,'salle.c']]]
 ];

@@ -1,6 +1,6 @@
 /**
 *\file coffre.c
-*\author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
+*\author Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas
 *\date 13/05/2020
 *\version 1.0
 
@@ -14,12 +14,13 @@
 #include "../include/coffre.h"
 
 //Ecrit par Aurélien Tudoret
+
 /**
 *\fn void animation_coffre(perso_t *pers, salle_t *salle, Mix_Chunk *sounds[NB_SON])
 
-*\param *pers, la structure du personnage
-*\param *salle, la salle dans laquelle se trouve le personnage
-*\param *sounds[NB_SON], tableau contenant les sons
+*\param *pers la structure du personnage
+*\param *salle la salle dans laquelle se trouve le personnage
+*\param *sounds[NB_SON] le tableau contenant les sons
 
 *\brief Permet d'effectuer l'animation du coffre s'il est en contact avec le joueur
 */
@@ -51,12 +52,13 @@ void animation_coffre(perso_t *pers, salle_t *salle, Mix_Chunk *sounds[NB_SON]){
 
 
 //Ecrit par Aurélien Tudoret
-/**
-*\fn void creer_coffre(coffre_t *coffre, SDL_Renderer *rendu, int coffre_existe)
 
-*\param *coffre, le coffre pour lequel on assigne une image et une animation
-*\param *rendu, le renderer sur lequel on dessine
-*\param *salle, la salle courante, permet de vérifier les valeurs
+/**
+*\fn void creer_coffre(coffre_t *coffre, SDL_Renderer *rendu, salle_t *salle)
+
+*\param *coffre le coffre pour lequel on assigne une image et une animation
+*\param *rendu le renderer sur lequel on dessine
+*\param *salle la salle courante, permet de vérifier les valeurs
 
 *\brief Créer un coffre dans les salles dédiées
 */
@@ -92,11 +94,12 @@ void creer_coffre(coffre_t *coffre, SDL_Renderer *rendu, salle_t *salle){
 
 
 //Ecrit par Aurélien Tudoret
+
 /**
 *\fn void destruction_des_coffres(salle_t salles[], int taille)
 
-*\param salles[], le tableau contenant toutes les salles du labyrinthe
-*\param taille, la taille du tableau de salles
+*\param salles[] le tableau contenant toutes les salles du labyrinthe
+*\param taille la taille du tableau de salles
 
 *\brief Libère tous les emplacements mémoires attribués aux coffres
 */
@@ -116,11 +119,11 @@ void destruction_des_coffres(salle_t salles[], int taille){
 /**
 *\fn void creer_texte_coffre(char *txt, image_t *image, int x, int y, SDL_Renderer *rendu)
 
-*\param *txt, le texte que l'on va afficher
-*\param *image, la structure qui contiendra le texte
-*\param x, la position x à l'écran du texte
-*\param y, la position y à l'écran du texte
-*\param *rendu, le renderer sur lequel on dessinee
+*\param *txt le texte que l'on va afficher
+*\param *image la structure qui contiendra le texte
+*\param x la position x à l'écran du texte
+*\param y la position y à l'écran du texte
+*\param *rendu le renderer sur lequel on dessinee
 
 *\brief Créer le texte qui servira a afficher le contenu du coffre
 */
@@ -140,13 +143,14 @@ void creer_texte_coffre(char *txt, image_t *image, int x, int y, SDL_Renderer *r
 
 
 //Ecrit par Aurélien Tudoret
+
 /**
 *\fn void loot_de_carte(loot_carte_t *loot, SDL_Renderer *rendu, coffre_t *coffre, int etage)
 
-*\param *loot, la structure contenant la carte obtenue par le joueur
-*\param *rendu, le renderer sur lequel on dessine
-*\param *coffre, Etat du coffre (ouvert ou non)
-*\param etage, l'étage où se situe le joueur
+*\param *loot la structure contenant la carte obtenue par le joueur
+*\param *rendu le renderer sur lequel on dessine
+*\param *coffre l'etat du coffre (ouvert ou non)
+*\param etage l'étage où se situe le joueur
 
 *\brief initialise la structure de loot, generer une carte qui est envoyée dans les listes
 */
@@ -180,10 +184,10 @@ void loot_de_carte(loot_carte_t *loot, SDL_Renderer *rendu, coffre_t *coffre, in
 
 //Ecrit par Aurélien Tudoret
 /**
-*\fn void detruire_loot(loot_carte_t **loot)
+*\fn void afficher_loot(loot_carte_t loot, SDL_Renderer *rendu)
 
-*\param **loot, la structure contenant la carte obtenue par le joueur
-*\param *rendu, le renderer sur lequel on dessinee
+*\param loot la structure contenant la carte obtenue par le joueur
+*\param *rendu le renderer sur lequel on dessinee
 
 *\brief Détruit toutes les allocations dynamiques effectuées pour la structure loot
 */
@@ -198,10 +202,11 @@ void afficher_loot(loot_carte_t loot, SDL_Renderer *rendu){
 
 
 //Ecrit par Aurélien Tudoret
+
 /**
 *\fn void detruire_loot(loot_carte_t **loot)
 
-*\param **loot, la structure contenant la carte obtenue par le joueur
+*\param **loot la structure contenant la carte obtenue par le joueur
 
 *\brief Détruit toutes les allocations dynamiques effectuées pour cette structure
 */
@@ -223,10 +228,11 @@ void detruire_loot(loot_carte_t **loot){
 
 
 //Ecrit par Aurélien Tudoret
+
 /**
 *\fn void loot_affichage_fini(loot_carte_t *loot)
 
-*\param *loot, la structure contenant la carte obtenue par le joueur
+*\param *loot la structure contenant la carte obtenue par le joueur
 
 *\brief Contrôle si la durée d'affichage du loot est dépassée ou non, si oui elle détruit les éléments dans la structure
 */
@@ -249,15 +255,15 @@ void loot_affichage_fini(loot_carte_t *loot){
 
 
 //Ecrit par Aurélien Tudoret
+
 /**
 *\fn void loot_boss(loot_carte_t *loot, SDL_Renderer *rendu, int etage)
 
-*\param *loot, la structure contenant la carte obtenue par le joueur
-*\param *rendu, le renderer sur lequel on dessine
-*\param etage, l'étage où se situe le joueur
+*\param *loot la structure contenant la carte obtenue par le joueur
+*\param *rendu le renderer sur lequel on dessine
+*\param etage l'étage où se situe le joueur
 
-*\brief initialise la structure de loot, generer une carte qui est envoyée dans les listes
-//la carte est une récompense pour avoir battu un boss
+*\brief Initialise la structure de loot, generer une carte qui est envoyée dans les listes. la carte est une récompense pour avoir battu un boss
 */
 
 void loot_boss(loot_carte_t *loot, SDL_Renderer *rendu, int etage){

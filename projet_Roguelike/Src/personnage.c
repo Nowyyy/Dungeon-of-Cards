@@ -1,6 +1,6 @@
 /**
 *\file personnage.c
-*\author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
+*\author Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas
 *\date 13/05/2020
 *\version 1.0
 
@@ -16,8 +16,8 @@
 /**
 *\fn void charge_sprites_personnage(image_t sprites[], SDL_Renderer *rendu)
 
-*\param sprites[], tableau qui contiendra tous les sprites du personnage
-*\param *rendu, le rendu sur lequel on dessinera le personnage
+*\param sprites[] le tableau qui contiendra tous les sprites du personnage
+*\param *rendu le rendu sur lequel on dessinera le personnage
 
 *\brief fonction qui charge tous les sprites du personnage
 */
@@ -41,9 +41,9 @@ void charge_sprites_personnage(image_t sprites[], SDL_Renderer *rendu){
 /**
 *\fn int test_collision(salle_t salle, perso_t *pers, int direction)
 
-*\param salle, la salle pour laquelle on test les collisions
-*\param *pers, le personnage pour lequel on test les collisions
-*\param direction, la direction dans laquelle se rend le personnage
+*\param salle la salle pour laquelle on test les collisions
+*\param *pers le personnage pour lequel on test les collisions
+*\param direction la direction dans laquelle se rend le personnage
 
 *\brief permet de regarder si le personnage entre en collision avec un des murs de la salle
 
@@ -77,7 +77,7 @@ int test_collision(salle_t salle, perso_t *pers, int direction){
 /**
 *\fn void init_animations(animation_t *anim)
 
-*\param *anim, la structure qui gère les animations
+*\param *anim la structure qui gère les animations
 
 *\brief Initialise la structure d'animations
 */
@@ -91,9 +91,9 @@ void init_animations(animation_t *anim){
 //Ecrit par Aurélien Tudoret
 /**
 *\fn void change_animation(animation_t *anim, image_t sprites[], int nouvelle_animation)
-*\param *anim, la structure qui gère les animations
-*\param sprites[], le tableau de sprites du personnage
-*\param nouvelle_animation, l'indice du tableau ou se trouve la nouvelle animation a utiliser
+*\param *anim la structure qui gère les animations
+*\param sprites[] le tableau de sprites du personnage
+*\param nouvelle_animation l'indice du tableau ou se trouve la nouvelle animation a utiliser
 
 *\brief permet de changer d'animation selon la nouvelle passée en paramètre
 */
@@ -109,11 +109,11 @@ void change_animation(animation_t *anim, image_t sprites[], int nouvelle_animati
 /**
 *\fn void animations_personnage(image_t sprites[], unsigned int timer, touches_t clavier, animation_t *anim, Mix_Chunk *sounds[NB_SON])
 
-*\param sprites[], le tableau de sprites du personnage
-*\param timer, le temps d'execution du jeu
-*\param clavier, la structure de touches du clavier
-*\param *anim, la structure qui gère les animations
-*\param *sounds[NB_SON], tableau contenant les sons
+*\param sprites[] le tableau de sprites du personnage
+*\param timer le temps d'execution du jeu
+*\param clavier la structure de touches du clavier
+*\param *anim la structure qui gère les animations
+*\param *sounds[NB_SON] le tableau contenant les sons
 
 *\brief permet de changer d'animation selon le déplacement du personnage
 */
@@ -236,13 +236,13 @@ void animations_personnage(image_t sprites[], unsigned int timer, touches_t clav
 /**
 *\fn void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animation_t *anim, Mix_Chunk *sounds[NB_SON], touches_t *clavier, int *etat)
 
-*\param *pers, la structure du pêrsonnage que l'on souhaite déplacer
-*\param salle, la salle dans laquelle le personnage se déplace
-*\param *continuer, pointeur sur variable permettant de savoir si le joueur souhaite quitter le programme
-*\param *anim, la structure qui gère les animations
-*\param *sounds[NB_SON], tableau contenant les sons
-*\param clavier, la structure de touches du clavier
-*\param *etat, défini l'état dans lequel le jeu se trouve ->menu, labyrinthe, chargement
+*\param *pers la structure du pêrsonnage que l'on souhaite déplacer
+*\param salle la salle dans laquelle le personnage se déplace
+*\param *continuer le pointeur sur variable permettant de savoir si le joueur souhaite quitter le programme
+*\param *anim la structure qui gère les animations
+*\param *sounds[NB_SON] le tableau contenant les sons
+*\param clavier la structure de touches du clavier
+*\param *etat défini l'état dans lequel le jeu se trouve ->menu, labyrinthe, chargement
 
 *\brief Gère les déplacement du personnage dans une salle
 */
@@ -311,12 +311,13 @@ void deplacement_personnage(perso_t *pers, salle_t salle, int *continuer, animat
 
 
 //Ecrit par Aurélien Tudoret. Ajouts par Axel
+
 /**
-*\fn int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *sounds[NB_SON]
-*\param *pers, la structure du personnage
-*\param *salle, la salle dans laquelle on se trouve
-*\param indice, l'indice de la salle dans laquelle le joueur se situe
-*\param *sounds[NB_SON], tableau contenant les sons
+*\fn int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *sounds[NB_SON])
+*\param *pers la structure du personnage
+*\param salle la salle dans laquelle on se trouve
+*\param indice l'indice de la salle dans laquelle le joueur se situe
+*\param *sounds[NB_SON] le tableau contenant les sons
 
 *\brief permet de téléporter le personnage dans la salle dont il passe la porter
 
@@ -375,7 +376,7 @@ int changement_de_salle(perso_t *pers, salle_t salle, int indice, Mix_Chunk *sou
 /**
 *\fn void initialise_personnage(perso_t *pers)
 
-*\param *pers, la structure du personnage
+*\param *pers la structure du personnage
 
 *\brief initialise les valeurs de base pour le personnage
 */
@@ -401,8 +402,8 @@ void initialise_personnage(perso_t *pers){
 /**
 *\fn int collision_perso_ennemi(perso_t pers, ennemi_t ennemi)
 
-*\param pers, la structure du personnage
-*\param ennemi, l'ennemi présent dans la salle
+*\param pers la structure du personnage
+*\param ennemi l'ennemi présent dans la salle
 
 *\return TRUE si une collision a lieu, FALSE sinon
 
@@ -418,8 +419,8 @@ int collision_perso_ennemi(perso_t pers, ennemi_t ennemi){
 /**
 *\fn int combat_declenche(salle_t salle, perso_t pers)
 
-*\param salle, la salle du labyrinthe dans laquelle on se situe
-*\param pers, la structure du personnage
+*\param salle la salle du labyrinthe dans laquelle on se situe
+*\param pers la structure du personnage
 
 *\return TRUE si une collision est detéctée avec un ennemi, FALSE sinon
 
@@ -446,13 +447,13 @@ int combat_declenche(salle_t salle, perso_t pers){
 /**
 *\fn void creer_texture_depuis_char(image_t *texte_pv, image_t *texte_etage, perso_t perso, SDL_Renderer *rendu, image_t *texte_counter, int *compte_ennemi, int *ennemi_max)
 
-*\param *texte_pv, une structure qui contiendra l'image du texte a afficher
-*\param *texte_etage, une structure qui contiendra l'image du texte a afficher
-*\param pers, le personnage à partir duquel on va récupérer des informations
-*\param *rendu, le renderer sur lequel on dessine
-*\param *texte_counter, une structure qui contiendra l'image du texte a afficher
-*\param *compte_ennemi est un compteur des ennemis morts
-*\param *ennemi_max est le nombre d'ennemi max.
+*\param *texte_pv une structure qui contiendra l'image du texte a afficher
+*\param *texte_etage une structure qui contiendra l'image du texte a afficher
+*\param pers le personnage à partir duquel on va récupérer des informations
+*\param *rendu le renderer sur lequel on dessine
+*\param *texte_counter une structure qui contiendra l'image du texte a afficher
+*\param *compte_ennemi un compteur des ennemis morts
+*\param *ennemi_max le nombre d'ennemi max.
 
 *\brief Crée des images à partir de texte issu des données du personnage, range ces images dans les structures correspondantes
 */

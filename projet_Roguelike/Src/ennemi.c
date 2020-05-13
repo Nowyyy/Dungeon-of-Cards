@@ -1,6 +1,6 @@
 /**
 *\file ennemi.c
-*\author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
+*\author Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas
 *\version 1.0
 *\date 13/05/2020
 
@@ -15,8 +15,8 @@
 /**
 *\fn void change_anim_ligne(ennemi_t *ennemi, int nouvelle_anim)
 
-*\param *ennemi, l'ennemi pour lequel on change l'animation
-*\param nouvelle_anim, la nouvelle animation que doit effectuer l'ennemi
+*\param *ennemi l'ennemi pour lequel on change l'animation
+*\param nouvelle_anim la nouvelle animation que doit effectuer l'ennemi
 
 *\brief Permet de donner à l'ennemi l'animation qu'il devra effectuer par la suite
 */
@@ -33,7 +33,7 @@ void change_anim_ligne(ennemi_t *ennemi, int nouvelle_anim){
 /**
 *\fn void animation_ennemi(ennemi_t *ennemi)
 
-*\param *ennemi, l'ennemi pour lequel on veut effectuer une animation
+*\param *ennemi l'ennemi pour lequel on veut effectuer une animation
 
 *\brief Permet de passer d'animations en animations pour un ennemi
 */
@@ -70,8 +70,8 @@ void animation_ennemi(ennemi_t *ennemi){
 /**
 *\fn void destruction_tous_ennemis(salle_t salles[], int taille)
 
-*\param salles[], le tableau contenant toutes les salles du labyrinthe
-*\param taille, la taille du tableau de salles
+*\param salles[] le tableau contenant toutes les salles du labyrinthe
+*\param taille la taille du tableau de salles
 
 *\brief Libère tous les emplacements mémoires attribués aux ennemis
 */

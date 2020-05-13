@@ -1,7 +1,7 @@
 /**
 * \file main.c
 * \date 13/05/2020
-* \author {Tudoret Aurélien, Jourry Axel, Malabry Thomas, Marin Timothée}
+* \author Tudoret Aurélien, Jourry Axel, Malabry Thomas, Marin Timothée
 * \version 1.0
 * \brief Le projet de deuxième année de licence, un roguelike/rpg
 */
@@ -24,8 +24,8 @@
 /**
 *\fn int main(int argc, char* args[])
 
-*\param argc, le nombre d'arguments
-*\param args[], le tableau contenant tous les arguments
+*\param argc le nombre d'arguments
+*\param args[] le tableau contenant tous les arguments
 *\brief Corps principal du jeu
 
 *\return 1 ou 0 si le programme s'est bien exécuté ou non.

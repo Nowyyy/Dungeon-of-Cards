@@ -1,6 +1,6 @@
 /**
 *\file confirmer_nouveau.c
-*\author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
+*\author Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas
 *\date 13/05/2020
 *\version 1.0
 
@@ -18,9 +18,9 @@
 /**
 *\fn void afficher_confirmation(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture *confirmer_texture, SDL_Rect confirmer_rect, SDL_Texture *retour_texture, SDL_Rect retour_rect, SDL_Texture *message_texture, SDL_Rect message_rect)
 
-*\param *rendu, le renderer sur lequel on dessine
-*\param rect_sel, le rectangle de sélection du menu
-*\param *confirmer_texture, la texture pour le texte "Charger partie"
+*\param *rendu le renderer sur lequel on dessine
+*\param rect_sel le rectangle de sélection du menu
+*\param *confirmer_texture la texture pour le texte "Charger partie"
 *\param confirmer_rect le rectangle pour confirmer l'écrasement de la partie
 *\param *retour_texture la texture pour le texte "Quitter"
 *\param retour_rect le rectangle pour le texte "retour"
@@ -52,12 +52,12 @@ void afficher_confirmation(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture *
 /**
 *\fn int deplacement_rectangle_selection_confirmer(int *etat, SDL_Rect confirmer_rect, SDL_Rect retour_rect, SDL_Rect **rect_sel, Mix_Chunk *sounds[NB_SON], perso_t *pers)
 
-*\param *etat, permet de changer l'affuchage selon l'écran dans lequel se trouve le jeu
-*\param confirmer_rect, le rectangle contenant le texte de confirmation d'ecrasement de partie
-*\param retour_rect, le rectangle contenant le texte "retour", pour retourner au menu principal
-*\param **rect_sel, le rectangle de sélection permettant de sélectionner une option
-*\param *sounds[NB_SON], tableau contenant les sons
-*\param *pers, la structure du personnage
+*\param *etat permet de changer l'affichage selon l'écran dans lequel se trouve le jeu
+*\param confirmer_rect le rectangle contenant le texte de confirmation d'ecrasement de partie
+*\param retour_rect le rectangle contenant le texte "retour", pour retourner au menu principal
+*\param **rect_sel le rectangle de sélection permettant de sélectionner une option
+*\param *sounds[NB_SON] le tableau contenant les sons
+*\param *pers la structure du personnage
 
 *\brief Permet de déplacer d'option en option le rectangle de sélection
 
@@ -122,12 +122,12 @@ int deplacement_rectangle_selection_confirmer(int *etat, SDL_Rect confirmer_rect
 /**
 *\fn void menu_confirmation(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *sounds[NB_SON], perso_t *pers)
 
-*\param *continuer, pointeur sur un int permettant de savoir si le joueur veut quitter le jeu
-*\param *etat, pointeur sur un int permettant de connaitre le prochain écran auquel le joueur veut accèder
-*\param *rendu, le renderer sur lequel on dessine
-*\param *police, la police d'écriture pour TTF
-*\param *sounds[NB_SON], tableau contenant les sons
-*\param *pers, la structure du personnage
+*\param *continuer le pointeur sur un int permettant de savoir si le joueur veut quitter le jeu
+*\param *etat le pointeur sur un int permettant de connaitre le prochain écran auquel le joueur veut accèder
+*\param *rendu le renderer sur lequel on dessine
+*\param *police la police d'écriture pour TTF
+*\param *sounds[NB_SON] le tableau contenant les sons
+*\param *pers la structure du personnage
 
 *\brief Permet d'afficher un menu confirmant l'écrasement de la sauvegarde et de l'écraser ou non en fonction du choix du joueur
 */

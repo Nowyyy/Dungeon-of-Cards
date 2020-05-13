@@ -1,6 +1,6 @@
 /**
 *\file chargement.c
-*\author {Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas}
+*\author Jourry Axel, Tudoret Aurélien, Marin Timothée, Malabry Thomas
 *\date 13/05/2020
 *\version 1.0
 
@@ -15,11 +15,12 @@
 
 
 //Ecrit par Aurélien Tudoret
+
 /**
 *\fn void afficher_charger_partie(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture *charger_texture, SDL_Rect charger_rect, SDL_Texture *retour_texture, SDL_Rect retour_rect, SDL_Texture *message_texture, SDL_Rect message_rect)
 
-*\param *rendu, le renderer sur lequel on dessine
-*\param rect_sel, le rectangle de sélection du menu
+*\param *rendu le renderer sur lequel on dessine
+*\param rect_sel le rectangle de sélection du menu
 *\param *charger_texture la texture pour le texte "Charger partie"
 *\param charger_rect le rectangle pour le texte "Charger Partie"
 *\param *retour_texture la texture pour le texte "retour"
@@ -51,14 +52,15 @@ void afficher_charger_partie(SDL_Renderer *rendu, SDL_Rect rect_sel, SDL_Texture
 
 
 //Ecrit par Aurélien Tudoret
+
 /**
 *\fn int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SDL_Rect retour_rect, SDL_Rect **rect_sel, Mix_Chunk *sounds[NB_SON])
 
-*\param *etat, permet de changer l'affichage selon l'écran dans lequel se trouve le jeu
-*\param charger_rect, le rectangle contenant le texte relatif à la sauvegarde
-*\param retour_rect, le rectangle contenant le texte "retour", pour retourner au menu principal
-*\param **rect_sel, le rectangle de sélection permettant de sélectionner une option
-*\param *sounds[NB_SON], tableau contenant les sons
+*\param *etat permet de changer l'affichage selon l'écran dans lequel se trouve le jeu
+*\param charger_rect le rectangle contenant le texte relatif à la sauvegarde
+*\param retour_rect le rectangle contenant le texte "retour", pour retourner au menu principal
+*\param **rect_sel le rectangle de sélection permettant de sélectionner une option
+*\param *sounds[NB_SON] le tableau contenant les sons
 
 *\brief Permet de déplacer d'option en option le rectangle de sélection dans le menu charger
 
@@ -123,15 +125,16 @@ int deplacement_rectangle_selection_charger(int *etat, SDL_Rect charger_rect, SD
 
 
 //Ecrit par Aurélien Tudoret
+
 /**
 *\fn void menu_charger_partie(int *continuer, int *etat, SDL_Renderer *rendu, TTF_Font *police, Mix_Chunk *sounds[NB_SON], perso_t *pers)
 
-*\param *continuer, pointeur sur un int permettant de savoir si le joueur veut quitter le jeu
-*\param *etat, pointeur sur un int permettant de connaitre le prochain écran auquel le joueur veut accèder
-*\param *rendu, le renderer sur lequel on dessine
-*\param *police, la police d'écriture pour TTF
-*\param *sounds[NB_SON], tableau contenant les sons
-*\param *pers, la structure du personnage
+*\param *continuer le pointeur sur un int permettant de savoir si le joueur veut quitter le jeu
+*\param *etat le pointeur sur un int permettant de connaitre le prochain écran auquel le joueur veut accèder
+*\param *rendu le renderer sur lequel on dessine
+*\param *police la police d'écriture pour TTF
+*\param *sounds[NB_SON] le tableau contenant les sons
+*\param *pers la structure du personnage
 
 *\brief Permet d'afficher et de récupèrer une sauvegarde éventuelle puis de lancer le jeu
 */
