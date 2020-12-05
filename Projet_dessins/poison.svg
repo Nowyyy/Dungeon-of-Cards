@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="poison.svg"
+   inkscape:export-filename="/home/aurelien/Bureau/Projet-L2-/projet_Roguelike_true/Images/Cartes/poison.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8"
+     inkscape:cx="121.67294"
+     inkscape:cy="430.37118"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1853"
+     inkscape:window-height="1025"
+     inkscape:window-x="1987"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot11"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="scale(0.26458333)"><flowRegion
+         id="flowRegion13"><rect
+           id="rect15"
+           width="109.64285"
+           height="26.785688"
+           x="67.85714"
+           y="732.51971" /></flowRegion><flowPara
+         id="flowPara17">Aazza</flowPara></flowRoot>    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="29.954613"
+       y="198.34821"
+       id="text21"><tspan
+         sodipodi:role="line"
+         id="tspan19"
+         x="29.954613"
+         y="207.71198"
+         style="stroke-width:0.26458332" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555556px;line-height:0.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;"
+       x="16.819941"
+       y="202.88393"
+       id="text25"><tspan
+         sodipodi:role="line"
+         id="tspan23"
+         x="16.819941"
+         y="206.95602"
+         style="line-height:0.25;stroke-width:0.26458332;font-size:7.05555556px;" /></text>
+    <rect
+       style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:0.26406416"
+       id="rect3715"
+       width="37.041668"
+       height="52.916668"
+       x="11.701865"
+       y="154.44368"
+       ry="2.6424792"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:1;fill:#cccccc;fill-opacity:1;fill-rule:evenodd;stroke-width:0.28435823"
+       id="rect3713"
+       width="33.413879"
+       height="49.003803"
+       x="13.515761"
+       y="156.4001"
+       ry="2.8366086"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:1;fill:#784421;fill-opacity:1;fill-rule:evenodd;stroke-width:0.22419555"
+       id="rect3717"
+       width="33.413963"
+       height="16.769356"
+       x="13.515761"
+       y="188.63454"
+       ry="0"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:1;fill:#784421;fill-opacity:1;fill-rule:evenodd;stroke-width:0.32528096"
+       id="rect3719"
+       width="33.413879"
+       height="5.7959876"
+       x="13.515761"
+       y="156.4001"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.33754015px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.18177699"
+       x="21.545845"
+       y="175.6964"
+       id="text29"
+       transform="scale(0.90313629,1.1072526)"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         x="21.545845"
+         y="175.6964"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.33754015px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.18177699"
+         id="tspan109">Attack </tspan><tspan
+         sodipodi:role="line"
+         x="21.545845"
+         y="183.61832"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.33754015px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.18177699"
+         id="tspan85" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.63336897px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.2608012"
+       x="18.348711"
+       y="169.48181"
+       id="text44"
+       transform="scale(1.052536,0.95008626)"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         id="tspan42"
+         x="18.348711"
+         y="169.48181"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.63336897px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.2608012">Poison</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="14.2686"
+       y="198.53722"
+       id="text3830"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         id="tspan3828"
+         x="14.2686"
+         y="198.53722"
+         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.52777767px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332">Limited number</tspan></text>
+    <image
+       y="168.01562"
+       x="23.340027"
+       id="image911"
+       xlink:href="data:image/png;base64,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
+"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="13.229167"
+       width="13.229167" />
+  </g>
+</svg>

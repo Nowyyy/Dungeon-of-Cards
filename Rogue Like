@@ -1,0 +1,16 @@
+Rogue Like (nom à définir)
+
+Rogue like consistant à traverser les niveaux (établis en étages) sans mourir afin d’atteindre le boss final. Si le joueur meurt pendant la partie, il doit recommencer du début.
+
+Jeu vu du dessus ou en isométrique (à définir).
+Les niveaux seront générés aléatoirement.
+Lorsque le joueur rentre en contact avec un ennemi, un combat au tour par tout se déclenche.
+
+Les combats au tour par tour sont basés sur un système de cartes, permettant d’attaquer (corps à corps, arme, magie) de défense (parade, contre attaque, bouclier) ou encore des items de bonus, de soins.
+Les cartes du joueur sont constitués en un petit deck (nombre de cartes à définir).
+
+Afin de trouver de meilleurs cartes, le joueur pourra ouvrir des coffres dispersés dans les niveaux.
+
+Le but d’un roguelike étant l’amélioration du personnage au fur et à mesure des parties, De nouvelles cartes pourront être débloquées en battant les boss. Nous réfléchissons aussi à l’établissement d’un système d’XP permettant au joueur de monter en niveau afin d’améliorer ses statistiques(endurance, vie, vitesse). Ce système serait lent et ne retournerait pas à 0 à chaque mort.
+
+Un système serait en place afin que le jeu sauvegarde automatiquement à chaque étage, permettant d’interrompre sa partie à tout moment. Cependant, afin d’éviter toute tricherie, cette sauvegarde serait partiellement supprimée à la mort du joueur. Il ne resterait que les cartes débloquées ainsi que l’XP.

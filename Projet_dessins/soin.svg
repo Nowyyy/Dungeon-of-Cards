@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="soin.svg"
+   inkscape:export-filename="/home/aurelien/Bureau/Projet-L2-/projet_Roguelike_true/Images/Cartes/soin.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8"
+     inkscape:cx="121.67294"
+     inkscape:cy="416.08546"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1374"
+     inkscape:window-height="861"
+     inkscape:window-x="2240"
+     inkscape:window-y="127"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot11"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="scale(0.26458333)"><flowRegion
+         id="flowRegion13"><rect
+           id="rect15"
+           width="109.64285"
+           height="26.785688"
+           x="67.85714"
+           y="732.51971" /></flowRegion><flowPara
+         id="flowPara17">Aazza</flowPara></flowRoot>    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="29.954613"
+       y="198.34821"
+       id="text21"><tspan
+         sodipodi:role="line"
+         id="tspan19"
+         x="29.954613"
+         y="207.71198"
+         style="stroke-width:0.26458332" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555556px;line-height:0.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;"
+       x="16.819941"
+       y="202.88393"
+       id="text25"><tspan
+         sodipodi:role="line"
+         id="tspan23"
+         x="16.819941"
+         y="206.95602"
+         style="line-height:0.25;stroke-width:0.26458332;font-size:7.05555556px;" /></text>
+    <rect
+       style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:0.26406416"
+       id="rect3715"
+       width="37.041668"
+       height="52.916668"
+       x="11.701865"
+       y="154.44368"
+       ry="2.6424792"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:1;fill:#cccccc;fill-opacity:1;fill-rule:evenodd;stroke-width:0.28435823"
+       id="rect3713"
+       width="33.413879"
+       height="49.003803"
+       x="13.515761"
+       y="156.4001"
+       ry="2.8366086"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:1;fill:#784421;fill-opacity:1;fill-rule:evenodd;stroke-width:0.22419555"
+       id="rect3717"
+       width="33.413963"
+       height="16.769356"
+       x="13.515761"
+       y="188.63454"
+       ry="0"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:1;fill:#784421;fill-opacity:1;fill-rule:evenodd;stroke-width:0.32528096"
+       id="rect3719"
+       width="33.413879"
+       height="5.7959876"
+       x="13.515761"
+       y="156.4001"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.33754015px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.18177699"
+       x="18.51161"
+       y="175.52571"
+       id="text29"
+       transform="scale(0.90313629,1.1072526)"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         x="18.51161"
+         y="175.52571"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.33754015px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.18177699"
+         id="tspan109">Support </tspan><tspan
+         sodipodi:role="line"
+         x="18.51161"
+         y="183.44763"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.33754015px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.18177699"
+         id="tspan85" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.63336897px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.2608012"
+       x="20.323816"
+       y="169.48181"
+       id="text44"
+       transform="scale(1.052536,0.95008626)"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         id="tspan42"
+         x="20.323816"
+         y="169.48181"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.63336897px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.2608012">SOIN</tspan></text>
+    <image
+       y="167.13368"
+       x="22.042315"
+       id="image3825"
+       xlink:href="data:image/png;base64,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 AAAASUVORK5CYII= "
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="17.638887"
+       width="16.580555"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="14.2686"
+       y="198.53722"
+       id="text3830"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         id="tspan3828"
+         x="14.2686"
+         y="198.53722"
+         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.52777767px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332">Limited number</tspan></text>
+  </g>
+</svg>
